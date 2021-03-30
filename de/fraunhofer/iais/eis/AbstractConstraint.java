@@ -16,8 +16,6 @@ import java.io.Serializable;
 import javax.validation.constraints.*;
 import com.fasterxml.jackson.annotation.*;
 
-//Adding a test line
-
 /**
 	"Abstract Constraint"@en
 
