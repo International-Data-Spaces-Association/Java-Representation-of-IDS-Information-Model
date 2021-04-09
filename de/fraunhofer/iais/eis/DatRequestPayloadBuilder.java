@@ -8,13 +8,29 @@ import java.lang.String;
 import java.math.BigInteger;
 import java.net.URL;
 import java.net.URI;
-import java.util.*;
-import javax.validation.constraints.*;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
-import javax.validation.constraints.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 public class DatRequestPayloadBuilder {
 
@@ -24,72 +40,127 @@ public class DatRequestPayloadBuilder {
 		datRequestPayloadImpl = new DatRequestPayloadImpl();
 	}
 
-	public DatRequestPayloadBuilder(@javax.validation.constraints.NotNull URI id) {
+	public DatRequestPayloadBuilder(URI id) {
 		this();
 		datRequestPayloadImpl.id = id;
 	}
 
 
+	/**
+	* This function allows setting a value for aud
+	* @param _aud_ desired value to be set
+	* @return Builder object with new value for aud
+	*/
 	final public DatRequestPayloadBuilder _aud_(Audience _aud_) {
 		this.datRequestPayloadImpl._aud = _aud_;
 		return this;
 	}
 
 
+	/**
+	* This function allows setting a value for sub
+	* @param _sub_ desired value to be set
+	* @return Builder object with new value for sub
+	*/
 	final public DatRequestPayloadBuilder _sub_(String _sub_) {
 		this.datRequestPayloadImpl._sub = _sub_;
 		return this;
 	}
 
 
+	/**
+	* This function allows setting a value for nbf
+	* @param _nbf_ desired value to be set
+	* @return Builder object with new value for nbf
+	*/
 	final public DatRequestPayloadBuilder _nbf_(BigInteger _nbf_) {
 		this.datRequestPayloadImpl._nbf = _nbf_;
 		return this;
 	}
 
 
+	/**
+	* This function allows setting a value for exp
+	* @param _exp_ desired value to be set
+	* @return Builder object with new value for exp
+	*/
 	final public DatRequestPayloadBuilder _exp_(BigInteger _exp_) {
 		this.datRequestPayloadImpl._exp = _exp_;
 		return this;
 	}
 
 
+	/**
+	* This function allows setting a value for iat
+	* @param _iat_ desired value to be set
+	* @return Builder object with new value for iat
+	*/
 	final public DatRequestPayloadBuilder _iat_(BigInteger _iat_) {
 		this.datRequestPayloadImpl._iat = _iat_;
 		return this;
 	}
 
 
+	/**
+	* This function allows setting a value for scope
+	* @param _scope_ desired value to be set
+	* @return Builder object with new value for scope
+	*/
 	final public DatRequestPayloadBuilder _scope_(String _scope_) {
 		this.datRequestPayloadImpl._scope = _scope_;
 		return this;
 	}
 
 
-	final public DatRequestPayloadBuilder _transportCertsSha256_(java.util.ArrayList<? extends String> _transportCertsSha256_) {
+	/**
+	* This function allows setting a value for transportCertsSha256
+	* @param _transportCertsSha256_ desired value to be set
+	* @return Builder object with new value for transportCertsSha256
+	*/
+	final public DatRequestPayloadBuilder _transportCertsSha256_(ArrayList<? extends String> _transportCertsSha256_) {
 		this.datRequestPayloadImpl._transportCertsSha256 = _transportCertsSha256_;
 		return this;
 	}
 
 
+	/**
+	* This function allows setting a value for referringConnector
+	* @param _referringConnector_ desired value to be set
+	* @return Builder object with new value for referringConnector
+	*/
 	final public DatRequestPayloadBuilder _referringConnector_(URI _referringConnector_) {
 		this.datRequestPayloadImpl._referringConnector = _referringConnector_;
 		return this;
 	}
 
 
+	/**
+	* This function allows setting a value for iss
+	* @param _iss_ desired value to be set
+	* @return Builder object with new value for iss
+	*/
 	final public DatRequestPayloadBuilder _iss_(String _iss_) {
 		this.datRequestPayloadImpl._iss = _iss_;
 		return this;
 	}
 
 
+	/**
+	* This function allows setting a value for securityProfile
+	* @param _securityProfile_ desired value to be set
+	* @return Builder object with new value for securityProfile
+	*/
 	final public DatRequestPayloadBuilder _securityProfile_(SecurityProfile _securityProfile_) {
 		this.datRequestPayloadImpl._securityProfile = _securityProfile_;
 		return this;
 	}
+	/**
+	* This function takes the values that were set previously via the other functions of this class and turns them into a Java bean.
+	* @return Bean with specified values
+	* @throws ConstraintViolationException This exception is thrown, if a validator is used and a violation is found.
+	*/
 
-	public final DatRequestPayload build() throws ConstraintViolationException {
+	final public DatRequestPayload build() throws ConstraintViolationException {
 		VocabUtil.getInstance().validate(datRequestPayloadImpl);
 		return datRequestPayloadImpl;
 	}

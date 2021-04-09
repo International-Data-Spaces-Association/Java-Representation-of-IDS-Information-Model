@@ -8,13 +8,29 @@ import java.lang.String;
 import java.math.BigInteger;
 import java.net.URL;
 import java.net.URI;
-import java.util.*;
-import javax.validation.constraints.*;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
-import javax.validation.constraints.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 public class GenericEndpointBuilder {
 
@@ -24,59 +40,104 @@ public class GenericEndpointBuilder {
 		genericEndpointImpl = new GenericEndpointImpl();
 	}
 
-	public GenericEndpointBuilder(@javax.validation.constraints.NotNull URI id) {
+	public GenericEndpointBuilder(URI id) {
 		this();
 		genericEndpointImpl.id = id;
 	}
 
+	/**
+	* This function allows setting a value for genericEndpointAuthentication
+	* @param _genericEndpointAuthentication_ desired value to be set
+	* @return Builder object with new value for genericEndpointAuthentication
+	*/
 	final public GenericEndpointBuilder _genericEndpointAuthentication_(BasicAuthentication _genericEndpointAuthentication_) {
 		this.genericEndpointImpl._genericEndpointAuthentication = _genericEndpointAuthentication_;
 		return this;
 	}
 
 
+	/**
+	* This function allows setting a value for genericEndpointConfiguration
+	* @param _genericEndpointConfiguration_ desired value to be set
+	* @return Builder object with new value for genericEndpointConfiguration
+	*/
 	final public GenericEndpointBuilder _genericEndpointConfiguration_(String _genericEndpointConfiguration_) {
 		this.genericEndpointImpl._genericEndpointConfiguration = _genericEndpointConfiguration_;
 		return this;
 	}
 
 
-	final public GenericEndpointBuilder _endpointInformation_(java.util.ArrayList<? extends de.fraunhofer.iais.eis.util.TypedLiteral> _endpointInformation_) {
+	/**
+	* This function allows setting a value for endpointInformation
+	* @param _endpointInformation_ desired value to be set
+	* @return Builder object with new value for endpointInformation
+	*/
+	final public GenericEndpointBuilder _endpointInformation_(ArrayList<? extends TypedLiteral> _endpointInformation_) {
 		this.genericEndpointImpl._endpointInformation = _endpointInformation_;
 		return this;
 	}
 
 
-	final public GenericEndpointBuilder _endpointDocumentation_(java.util.ArrayList<? extends URI> _endpointDocumentation_) {
+	/**
+	* This function allows setting a value for endpointDocumentation
+	* @param _endpointDocumentation_ desired value to be set
+	* @return Builder object with new value for endpointDocumentation
+	*/
+	final public GenericEndpointBuilder _endpointDocumentation_(ArrayList<? extends URI> _endpointDocumentation_) {
 		this.genericEndpointImpl._endpointDocumentation = _endpointDocumentation_;
 		return this;
 	}
 
 
+	/**
+	* This function allows setting a value for accessURL
+	* @param _accessURL_ desired value to be set
+	* @return Builder object with new value for accessURL
+	*/
 	final public GenericEndpointBuilder _accessURL_(URI _accessURL_) {
 		this.genericEndpointImpl._accessURL = _accessURL_;
 		return this;
 	}
 
 
+	/**
+	* This function allows setting a value for path
+	* @param _path_ desired value to be set
+	* @return Builder object with new value for path
+	*/
 	final public GenericEndpointBuilder _path_(String _path_) {
 		this.genericEndpointImpl._path = _path_;
 		return this;
 	}
 
 
+	/**
+	* This function allows setting a value for inboundPath
+	* @param _inboundPath_ desired value to be set
+	* @return Builder object with new value for inboundPath
+	*/
 	final public GenericEndpointBuilder _inboundPath_(String _inboundPath_) {
 		this.genericEndpointImpl._inboundPath = _inboundPath_;
 		return this;
 	}
 
 
+	/**
+	* This function allows setting a value for outboundPath
+	* @param _outboundPath_ desired value to be set
+	* @return Builder object with new value for outboundPath
+	*/
 	final public GenericEndpointBuilder _outboundPath_(String _outboundPath_) {
 		this.genericEndpointImpl._outboundPath = _outboundPath_;
 		return this;
 	}
+	/**
+	* This function takes the values that were set previously via the other functions of this class and turns them into a Java bean.
+	* @return Bean with specified values
+	* @throws ConstraintViolationException This exception is thrown, if a validator is used and a violation is found.
+	*/
 
-	public final GenericEndpoint build() throws ConstraintViolationException {
+	final public GenericEndpoint build() throws ConstraintViolationException {
 		VocabUtil.getInstance().validate(genericEndpointImpl);
 		return genericEndpointImpl;
 	}

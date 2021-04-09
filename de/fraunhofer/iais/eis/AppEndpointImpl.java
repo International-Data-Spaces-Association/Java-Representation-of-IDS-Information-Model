@@ -8,132 +8,155 @@ import java.lang.String;
 import java.math.BigInteger;
 import java.net.URL;
 import java.net.URI;
-import java.util.*;
-import javax.validation.constraints.*;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
-import javax.validation.constraints.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /** 
-	"DataApp Endpoint"@en
-
-	"Description of endpoints a DataApp offers."@en */
+* "DataApp Endpoint"@en
+* "Description of endpoints a DataApp offers."@en 
+*/
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeName("ids:AppEndpoint")
 public class AppEndpointImpl implements Serializable, AppEndpoint {
 
 	@JsonProperty("@id")
 	@JsonAlias({"@id", "id"})
-	@javax.validation.constraints.NotNull URI id;
+	@NotNull
+	protected URI id;
 
 	//List of all labels of this class
 	@JsonIgnore
-	java.util.List<TypedLiteral> label = Arrays.asList(new TypedLiteral("DataApp Endpoint", "en"));
+	protected List<TypedLiteral> label = Arrays.asList(new TypedLiteral("DataApp Endpoint", "en"));
+
 	//List of all comments of this class
 	@JsonIgnore
-	java.util.List<TypedLiteral> comment = Arrays.asList(new TypedLiteral("Description of endpoints a DataApp offers.", "en"));
+	protected List<TypedLiteral> comment = Arrays.asList(new TypedLiteral("Description of endpoints a DataApp offers.", "en"));
 
 	// all classes have a generic property array
 	@JsonIgnore
-	java.util.Map<String,Object> properties;
+	protected Map<String,Object> properties;
 
-	// instance fields as derived from information model
+	// instance fields as derived from the IDSA Information Model ontology
 
 	/**
-	"access URL"@en
-
-	"Access URL of an endpoint."@en
+	* "access URL"@en
+	* "Access URL of an endpoint."@en
 	*/
 	@JsonAlias({"ids:accessURL", "accessURL"})
-	 URI _accessURL;
+	protected URI _accessURL;
+
 
 	/**
-	"app endpoint media type"@en
-
-	"Mediatype, such as IANA types, of the data an endpoint expects or returns ."@en
+	* "app endpoint media type"@en
+	* "Mediatype, such as IANA types, of the data an endpoint expects or returns ."@en
 	*/
 	@JsonAlias({"ids:appEndpointMediaType", "appEndpointMediaType"})
-	 MediaType _appEndpointMediaType;
+	protected MediaType _appEndpointMediaType;
+
 
 	/**
-	"app endpoint port"@en
-
-	"Port used to access the endpoint."@en
+	* "app endpoint port"@en
+	* "Port used to access the endpoint."@en
 	*/
 	@JsonAlias({"ids:appEndpointPort", "appEndpointPort"})
-	 BigInteger _appEndpointPort;
+	protected BigInteger _appEndpointPort;
+
 
 	/**
-	"app endpoint protocol"@en
-
-	"Protocol used to communicate with the app endpoint."@en
+	* "app endpoint protocol"@en
+	* "Protocol used to communicate with the app endpoint."@en
 	*/
 	@JsonAlias({"ids:appEndpointProtocol", "appEndpointProtocol"})
-	 String _appEndpointProtocol;
+	protected String _appEndpointProtocol;
+
 
 	/**
-	"App endpoint type"@en
-
-	"Type of an app endpoint. Data apps have different endpoint types, e.g., for input, output or health status."@en
+	* "App endpoint type"@en
+	* "Type of an app endpoint. Data apps have different endpoint types, e.g., for input, output or health status."@en
 	*/
-	@NotNull@JsonAlias({"ids:appEndpointType", "appEndpointType"})
-	 AppEndpointType _appEndpointType;
+	@NotNull
+	@JsonAlias({"ids:appEndpointType", "appEndpointType"})
+	protected AppEndpointType _appEndpointType;
+
 
 	/**
-	"endpoint documentation"@en
-
-	"IRI reference to a documentation of the endpoint, e.g., reference to an OpenAPI-based documentation."@en
+	* "endpoint documentation"@en
+	* "IRI reference to a documentation of the endpoint, e.g., reference to an OpenAPI-based documentation."@en
 	*/
 	@JsonAlias({"ids:endpointDocumentation", "endpointDocumentation"})
-	 java.util.ArrayList<? extends URI> _endpointDocumentation;
+	protected ArrayList<? extends URI> _endpointDocumentation;
+
 
 	/**
-	"endpoint information"@en
-
-	"Human-readable information and description of the endpoint."@en
+	* "endpoint information"@en
+	* "Human-readable information and description of the endpoint."@en
 	*/
 	@JsonAlias({"ids:endpointInformation", "endpointInformation"})
-	 java.util.ArrayList<? extends de.fraunhofer.iais.eis.util.TypedLiteral> _endpointInformation;
+	protected ArrayList<? extends TypedLiteral> _endpointInformation;
+
 
 	/**
-	"inbound topic"@en
-
-	"Relative path used for inbound communication via this endpoint, i.e., input messages and faults only."@en
+	* "inbound topic"@en
+	* "Relative path used for inbound communication via this endpoint, i.e., input messages and faults only."@en
 	*/
 	@JsonAlias({"ids:inboundPath", "inboundPath"})
-	 String _inboundPath;
+	protected String _inboundPath;
+
 
 	/**
-	"language"@en
-
-	"Natural language(s) used within the content."@en
+	* "language"@en
+	* "Natural language(s) used within the content."@en
 	*/
 	@JsonAlias({"ids:language", "language"})
-	 Language _language;
+	protected Language _language;
+
 
 	/**
-	"outbound topic"@en
-
-	"Relative path used for outbound communication via this endpoint, i.e., output messages and faults only."@en
+	* "outbound topic"@en
+	* "Relative path used for outbound communication via this endpoint, i.e., output messages and faults only."@en
 	*/
 	@JsonAlias({"ids:outboundPath", "outboundPath"})
-	 String _outboundPath;
+	protected String _outboundPath;
+
 
 	/**
-	"path"@en
-
-	"Relative path, topic or queue at which the content is published by the related host."@en
+	* "path"@en
+	* "Relative path, topic or queue at which the content is published by the related host."@en
 	*/
 	@JsonAlias({"ids:path", "path"})
-	 String _path;
+	protected String _path;
+
 
 	// no manual construction
-	AppEndpointImpl() {
+	protected AppEndpointImpl() {
 		id = VocabUtil.getInstance().createRandomUrl("appEndpoint");
 	}
 
+	/**
+	* This function retrieves the ID of the current object (can be set via the constructor of the builder class)
+	* @return ID of current object as URI
+	*/
 	@JsonProperty("@id")
 	final public URI getId() {
 		return id;
@@ -143,20 +166,30 @@ public class AppEndpointImpl implements Serializable, AppEndpoint {
 		return VocabUtil.getInstance().toRdf(this);
 	}
 
-	public java.util.List<TypedLiteral> getLabel() {
+	/**
+	* This function retrieves a human readable label about the current class, as defined in the ontology.
+	* This label could, for example, be used as a field heading in a user interface
+	* @return Human readable label
+	*/
+	public List<TypedLiteral> getLabel() {
 		return this.label;
 	}
 
-	public java.util.List<TypedLiteral> getComment() {
+	/**
+	* This function retrieves a human readable explanatory comment about the current class, as defined in the ontology.
+	* This comment could, for example, be used as a tooltip in a user interface
+	* @return Human readable explanatory comment
+	*/
+	public List<TypedLiteral> getComment() {
 		return this.comment;
 	}
 
 	// getter and setter for generic property map
 	@JsonAnyGetter
-	public java.util.Map<String,Object> getProperties() {
+	public Map<String,Object> getProperties() {
 		if (this.properties == null) return null;
 		Iterator<String> iter = this.properties.keySet().iterator();
-		java.util.Map<String,Object> resultset = new HashMap<String, Object>();
+		Map<String,Object> resultset = new HashMap<String, Object>();
 		while (iter.hasNext()) {
 			String key = iter.next();
 			resultset.put(key,urifyObjects(this.properties.get(key)));
@@ -173,9 +206,9 @@ public class AppEndpointImpl implements Serializable, AppEndpoint {
 			ArrayList<Object> result_array = new ArrayList<Object>();
 			((ArrayList) value).forEach(x -> result_array.add(urifyObjects(x)));
 			return result_array;
-		} else if (value instanceof java.util.Map) {
-			java.util.Map<String, Object> result_map = new HashMap<String, Object>();
-			((java.util.Map) value).forEach((k,v) -> result_map.put(k.toString(), urifyObjects(v)));
+		} else if (value instanceof Map) {
+			Map<String, Object> result_map = new HashMap<String, Object>();
+			((Map) value).forEach((k,v) -> result_map.put(k.toString(), urifyObjects(v)));
 			return result_map;
 		}
 		return value;
@@ -183,129 +216,231 @@ public class AppEndpointImpl implements Serializable, AppEndpoint {
 
 	@JsonAnySetter
 	public void setProperty(String property, Object value) {
-	if (this.properties == null) this.properties = new java.util.HashMap<String,Object>();
-	if (property.startsWith("@")) {return ;};
-	this.properties.put(property, value) ;
+		if (this.properties == null) this.properties = new HashMap<String,Object>();
+		if (property.startsWith("@")) {return ;};
+		this.properties.put(property, value) ;
 	}
-	// accessor method implementations as derived from information model
 
-	final public 
-	
+	// accessor method implementations as derived from the IDSA Information Model ontology
+
+
+	/**
+	* "Type of an app endpoint. Data apps have different endpoint types, e.g., for input, output or health status."@en
+	* @return Returns the AppEndpointType for the property appEndpointType.
+	* More information under https://w3id.org/idsa/core/appEndpointType
+	*/
 	@NotNull
 	@JsonProperty("ids:appEndpointType")
-	AppEndpointType getAppEndpointType() {
+	final public AppEndpointType getAppEndpointType() {
 		return _appEndpointType;
 	}
+
+	
+	/**
+	* "Type of an app endpoint. Data apps have different endpoint types, e.g., for input, output or health status."@en
+	* @param _appEndpointType_ desired value for the property appEndpointType.
+	* More information under https://w3id.org/idsa/core/appEndpointType
+	*/
 	final public void setAppEndpointType (AppEndpointType _appEndpointType_) {
 		this._appEndpointType = _appEndpointType_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "Port used to access the endpoint."@en
+	* @return Returns the BigInteger for the property appEndpointPort.
+	* More information under https://w3id.org/idsa/core/appEndpointPort
+	*/
 	@JsonProperty("ids:appEndpointPort")
-	BigInteger getAppEndpointPort() {
+	final public BigInteger getAppEndpointPort() {
 		return _appEndpointPort;
 	}
+
+	
+	/**
+	* "Port used to access the endpoint."@en
+	* @param _appEndpointPort_ desired value for the property appEndpointPort.
+	* More information under https://w3id.org/idsa/core/appEndpointPort
+	*/
 	final public void setAppEndpointPort (BigInteger _appEndpointPort_) {
 		this._appEndpointPort = _appEndpointPort_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "Mediatype, such as IANA types, of the data an endpoint expects or returns ."@en
+	* @return Returns the MediaType for the property appEndpointMediaType.
+	* More information under https://w3id.org/idsa/core/appEndpointMediaType
+	*/
 	@JsonProperty("ids:appEndpointMediaType")
-	MediaType getAppEndpointMediaType() {
+	final public MediaType getAppEndpointMediaType() {
 		return _appEndpointMediaType;
 	}
+
+	
+	/**
+	* "Mediatype, such as IANA types, of the data an endpoint expects or returns ."@en
+	* @param _appEndpointMediaType_ desired value for the property appEndpointMediaType.
+	* More information under https://w3id.org/idsa/core/appEndpointMediaType
+	*/
 	final public void setAppEndpointMediaType (MediaType _appEndpointMediaType_) {
 		this._appEndpointMediaType = _appEndpointMediaType_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "Protocol used to communicate with the app endpoint."@en
+	* @return Returns the String for the property appEndpointProtocol.
+	* More information under https://w3id.org/idsa/core/appEndpointProtocol
+	*/
 	@JsonProperty("ids:appEndpointProtocol")
-	String getAppEndpointProtocol() {
+	final public String getAppEndpointProtocol() {
 		return _appEndpointProtocol;
 	}
+
+	
+	/**
+	* "Protocol used to communicate with the app endpoint."@en
+	* @param _appEndpointProtocol_ desired value for the property appEndpointProtocol.
+	* More information under https://w3id.org/idsa/core/appEndpointProtocol
+	*/
 	final public void setAppEndpointProtocol (String _appEndpointProtocol_) {
 		this._appEndpointProtocol = _appEndpointProtocol_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "Natural language(s) used within the content."@en
+	* @return Returns the Language for the property language.
+	* More information under https://w3id.org/idsa/core/language
+	*/
 	@JsonProperty("ids:language")
-	Language getLanguage() {
+	final public Language getLanguage() {
 		return _language;
 	}
+
+	
+	/**
+	* "Natural language(s) used within the content."@en
+	* @param _language_ desired value for the property language.
+	* More information under https://w3id.org/idsa/core/language
+	*/
 	final public void setLanguage (Language _language_) {
 		this._language = _language_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "Human-readable information and description of the endpoint."@en
+	* @return Returns the ArrayList of TypedLiteral for the property endpointInformation.
+	* More information under https://w3id.org/idsa/core/endpointInformation
+	*/
 	@JsonProperty("ids:endpointInformation")
-	java.util.ArrayList<? extends de.fraunhofer.iais.eis.util.TypedLiteral> getEndpointInformation() {
+	final public ArrayList<? extends TypedLiteral> getEndpointInformation() {
 		return _endpointInformation;
 	}
-	final public void setEndpointInformation (java.util.ArrayList<? extends de.fraunhofer.iais.eis.util.TypedLiteral> _endpointInformation_) {
+
+	
+	/**
+	* "Human-readable information and description of the endpoint."@en
+	* @param _endpointInformation_ desired value for the property endpointInformation.
+	* More information under https://w3id.org/idsa/core/endpointInformation
+	*/
+	final public void setEndpointInformation (ArrayList<? extends TypedLiteral> _endpointInformation_) {
 		this._endpointInformation = _endpointInformation_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "IRI reference to a documentation of the endpoint, e.g., reference to an OpenAPI-based documentation."@en
+	* @return Returns the ArrayList of URI for the property endpointDocumentation.
+	* More information under https://w3id.org/idsa/core/endpointDocumentation
+	*/
 	@JsonProperty("ids:endpointDocumentation")
-	java.util.ArrayList<? extends URI> getEndpointDocumentation() {
+	final public ArrayList<? extends URI> getEndpointDocumentation() {
 		return _endpointDocumentation;
 	}
-	final public void setEndpointDocumentation (java.util.ArrayList<? extends URI> _endpointDocumentation_) {
+
+	
+	/**
+	* "IRI reference to a documentation of the endpoint, e.g., reference to an OpenAPI-based documentation."@en
+	* @param _endpointDocumentation_ desired value for the property endpointDocumentation.
+	* More information under https://w3id.org/idsa/core/endpointDocumentation
+	*/
+	final public void setEndpointDocumentation (ArrayList<? extends URI> _endpointDocumentation_) {
 		this._endpointDocumentation = _endpointDocumentation_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "Access URL of an endpoint."@en
+	* @return Returns the URI for the property accessURL.
+	* More information under https://w3id.org/idsa/core/accessURL
+	*/
 	@JsonProperty("ids:accessURL")
-	URI getAccessURL() {
+	final public URI getAccessURL() {
 		return _accessURL;
 	}
+
+	
+	/**
+	* "Access URL of an endpoint."@en
+	* @param _accessURL_ desired value for the property accessURL.
+	* More information under https://w3id.org/idsa/core/accessURL
+	*/
 	final public void setAccessURL (URI _accessURL_) {
 		this._accessURL = _accessURL_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "Relative path, topic or queue at which the content is published by the related host."@en
+	* @return Returns the String for the property path.
+	* More information under https://w3id.org/idsa/core/path
+	*/
 	@JsonProperty("ids:path")
-	String getPath() {
+	final public String getPath() {
 		return _path;
 	}
+
+	
+	/**
+	* "Relative path, topic or queue at which the content is published by the related host."@en
+	* @param _path_ desired value for the property path.
+	* More information under https://w3id.org/idsa/core/path
+	*/
 	final public void setPath (String _path_) {
 		this._path = _path_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "Relative path used for inbound communication via this endpoint, i.e., input messages and faults only."@en
+	* @return Returns the String for the property inboundPath.
+	* More information under https://w3id.org/idsa/core/inboundPath
+	*/
 	@JsonProperty("ids:inboundPath")
-	String getInboundPath() {
+	final public String getInboundPath() {
 		return _inboundPath;
 	}
+
+	
+	/**
+	* "Relative path used for inbound communication via this endpoint, i.e., input messages and faults only."@en
+	* @param _inboundPath_ desired value for the property inboundPath.
+	* More information under https://w3id.org/idsa/core/inboundPath
+	*/
 	final public void setInboundPath (String _inboundPath_) {
 		this._inboundPath = _inboundPath_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "Relative path used for outbound communication via this endpoint, i.e., output messages and faults only."@en
+	* @return Returns the String for the property outboundPath.
+	* More information under https://w3id.org/idsa/core/outboundPath
+	*/
 	@JsonProperty("ids:outboundPath")
-	String getOutboundPath() {
+	final public String getOutboundPath() {
 		return _outboundPath;
 	}
+
+	
+	/**
+	* "Relative path used for outbound communication via this endpoint, i.e., output messages and faults only."@en
+	* @param _outboundPath_ desired value for the property outboundPath.
+	* More information under https://w3id.org/idsa/core/outboundPath
+	*/
 	final public void setOutboundPath (String _outboundPath_) {
 		this._outboundPath = _outboundPath_;
 	}

@@ -8,261 +8,282 @@ import java.lang.String;
 import java.math.BigInteger;
 import java.net.URL;
 import java.net.URI;
-import java.util.*;
-import javax.validation.constraints.*;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
-import javax.validation.constraints.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /** 
-	"Resource"@en
-
-	"Resource is a single digital content or a coherent set of digital contents. Resource content is formalized in Representations and optionally materialized as Artifacts. The Resource\'s content is exposed via defined Interfaces at various protocol Endpoints."@en */
+* "Resource"@en
+* "Resource is a single digital content or a coherent set of digital contents. Resource content is formalized in Representations and optionally materialized as Artifacts. The Resource\'s content is exposed via defined Interfaces at various protocol Endpoints."@en 
+*/
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeName("ids:Resource")
 public class ResourceImpl implements Serializable, Resource {
 
 	@JsonProperty("@id")
 	@JsonAlias({"@id", "id"})
-	@javax.validation.constraints.NotNull URI id;
+	@NotNull
+	protected URI id;
 
 	//List of all labels of this class
 	@JsonIgnore
-	java.util.List<TypedLiteral> label = Arrays.asList(new TypedLiteral("Resource", "en"));
+	protected List<TypedLiteral> label = Arrays.asList(new TypedLiteral("Resource", "en"));
+
 	//List of all comments of this class
 	@JsonIgnore
-	java.util.List<TypedLiteral> comment = Arrays.asList(new TypedLiteral("Resource is a single digital content or a coherent set of digital contents. Resource content is formalized in Representations and optionally materialized as Artifacts. The Resource's content is exposed via defined Interfaces at various protocol Endpoints.", "en"));
+	protected List<TypedLiteral> comment = Arrays.asList(new TypedLiteral("Resource is a single digital content or a coherent set of digital contents. Resource content is formalized in Representations and optionally materialized as Artifacts. The Resource's content is exposed via defined Interfaces at various protocol Endpoints.", "en"));
 
 	// all classes have a generic property array
 	@JsonIgnore
-	java.util.Map<String,Object> properties;
+	protected Map<String,Object> properties;
 
-	// instance fields as derived from information model
+	// instance fields as derived from the IDSA Information Model ontology
 
 	/**
-	"Accrual periodicity"@en
-
-	"The regular period with which items are added to a collection."@en
+	* "Accrual periodicity"@en
+	* "The regular period with which items are added to a collection."@en
 	*/
 	@JsonAlias({"ids:accrualPeriodicity", "accrualPeriodicity"})
-	 Frequency _accrualPeriodicity;
+	protected Frequency _accrualPeriodicity;
+
 
 	/**
-	"content part"@en
-
-	"Reference to a Digital Content (physically or logically) included, definition of part-whole hierarchies."@en
+	* "content part"@en
+	* "Reference to a Digital Content (physically or logically) included, definition of part-whole hierarchies."@en
 	*/
 	@JsonAlias({"ids:contentPart", "contentPart"})
-	 java.util.ArrayList<? extends DigitalContent> _contentPart;
+	protected ArrayList<? extends DigitalContent> _contentPart;
 
 
 	/**
-	"content standard"@en
-
-	"IRI containing document, which defines the standard for the given Digital Content. The content is assumed to conform to that Standard."@en
+	* "content standard"@en
+	* "IRI containing document, which defines the standard for the given Digital Content. The content is assumed to conform to that Standard."@en
 	*/
 	@JsonAlias({"ids:contentStandard", "contentStandard"})
-	 URI _contentStandard;
+	protected URI _contentStandard;
+
 
 	/**
-	"content type"@en
-
-	"Detailed type, genre or interpretation of the Digital Content."@en
+	* "content type"@en
+	* "Detailed type, genre or interpretation of the Digital Content."@en
 	*/
 	@JsonAlias({"ids:contentType", "contentType"})
-	 ContentType _contentType;
+	protected ContentType _contentType;
+
 
 	/**
-	"contract offer"@en
-
-	"Reference to a Contract Offer defining the authorized use of the Resource."@en
+	* "contract offer"@en
+	* "Reference to a Contract Offer defining the authorized use of the Resource."@en
 	*/
 	@JsonAlias({"ids:contractOffer", "contractOffer"})
-	 java.util.ArrayList<? extends ContractOffer> _contractOffer;
+	protected ArrayList<? extends ContractOffer> _contractOffer;
+
 
 	/**
-	"created"@en
-
-	"The date of the creation of the Digital Content. In contrast to the ids:temporalCoverage, creation dates of ids:Representation, ids:Artifacts or any other form of meta-data, this property describes the creation date of referenced Digital Content itself."@en
+	* "created"@en
+	* "The date of the creation of the Digital Content. In contrast to the ids:temporalCoverage, creation dates of ids:Representation, ids:Artifacts or any other form of meta-data, this property describes the creation date of referenced Digital Content itself."@en
 	*/
 	@JsonAlias({"ids:created", "created"})
-	 XMLGregorianCalendar _created;
+	protected XMLGregorianCalendar _created;
+
 
 	/**
-	"Custom License"@en
-
-	"URL reference to a custom license regulating the general usage of the Resource."@en
+	* "Custom License"@en
+	* "URL reference to a custom license regulating the general usage of the Resource."@en
 	*/
 	@JsonAlias({"ids:customLicense", "customLicense"})
-	 URI _customLicense;
+	protected URI _customLicense;
+
 
 	/**
-	"Default representation"@en
-
-	"Default representation of the content."@en
+	* "Default representation"@en
+	* "Default representation of the content."@en
 	*/
 	@JsonAlias({"ids:defaultRepresentation", "defaultRepresentation"})
-	 java.util.ArrayList<? extends Representation> _defaultRepresentation;
+	protected ArrayList<? extends Representation> _defaultRepresentation;
+
 
 	/**
-	"description"@en
-
-	"Explanation of the resource in a natural language text."@en
+	* "description"@en
+	* "Explanation of the resource in a natural language text."@en
 	*/
 	@JsonAlias({"ids:description", "description"})
-	 java.util.ArrayList<? extends de.fraunhofer.iais.eis.util.TypedLiteral> _description;
+	protected ArrayList<? extends TypedLiteral> _description;
+
 
 	/**
-	"keyword"@en
-
-	"Controlled keywords that describe the nature, purpose, or use of the content."@en
+	* "keyword"@en
+	* "Controlled keywords that describe the nature, purpose, or use of the content."@en
 	*/
 	@JsonAlias({"ids:keyword", "keyword"})
-	 java.util.ArrayList<? extends de.fraunhofer.iais.eis.util.TypedLiteral> _keyword;
+	protected ArrayList<? extends TypedLiteral> _keyword;
+
 
 	/**
-	"language"@en
-
-	"Natural language(s) used within the content."@en
+	* "language"@en
+	* "Natural language(s) used within the content."@en
 	*/
 	@JsonAlias({"ids:language", "language"})
-	 java.util.ArrayList<? extends Language> _language;
+	protected ArrayList<? extends Language> _language;
+
 
 	/**
-	"modified"@en
-
-	"The date/time this Digital Content has been changed the last time. Only one \'modified\' attribute is usually needed."@en
+	* "modified"@en
+	* "The date/time this Digital Content has been changed the last time. Only one \'modified\' attribute is usually needed."@en
 	*/
 	@JsonAlias({"ids:modified", "modified"})
-	 XMLGregorianCalendar _modified;
+	protected XMLGregorianCalendar _modified;
+
 
 	/**
-	"publisher"@en
-
-	"The publisher of the resource (which may differ from the sovereign)."@en
+	* "publisher"@en
+	* "The publisher of the resource (which may differ from the sovereign)."@en
 	*/
 	@JsonAlias({"ids:publisher", "publisher"})
-	 URI _publisher;
+	protected URI _publisher;
+
 
 	/**
-	"representation"@en
-
-	"Representation of the content."@en
+	* "representation"@en
+	* "Representation of the content."@en
 	*/
 	@JsonAlias({"ids:representation", "representation"})
-	 java.util.ArrayList<? extends Representation> _representation;
+	protected ArrayList<? extends Representation> _representation;
+
 
 	/**
-	"resource endpoint"@en
-
-	"Reference to the Endpoints serving the resource\'s content or let you exchange messages with an IDS Connector."@en
+	* "resource endpoint"@en
+	* "Reference to the Endpoints serving the resource\'s content or let you exchange messages with an IDS Connector."@en
 	*/
 	@JsonAlias({"ids:resourceEndpoint", "resourceEndpoint"})
-	 java.util.ArrayList<? extends ConnectorEndpoint> _resourceEndpoint;
+	protected ArrayList<? extends ConnectorEndpoint> _resourceEndpoint;
+
 
 	/**
-	"resource part"@en
-
-	"Reference to a Resource (physically or logically) included, definition of part-whole hierarchies."@en
+	* "resource part"@en
+	* "Reference to a Resource (physically or logically) included, definition of part-whole hierarchies."@en
 	*/
 	@JsonAlias({"ids:resourcePart", "resourcePart"})
-	 java.util.ArrayList<? extends Resource> _resourcePart;
+	protected ArrayList<? extends Resource> _resourcePart;
+
 
 	/**
-	"sample"@en
-
-	"Sample Resource instance."@en
+	* "sample"@en
+	* "Sample Resource instance."@en
 	*/
 	@JsonAlias({"ids:sample", "sample"})
-	 java.util.ArrayList<? extends Resource> _sample;
+	protected ArrayList<? extends Resource> _sample;
+
 
 	/**
-	"shapeGraph"@en
-
-	"Reference to SHACL shape graph, which describes domain-specific knowledge."@en
+	* "shapeGraph"@en
+	* "Reference to SHACL shape graph, which describes domain-specific knowledge."@en
 	*/
 	@JsonAlias({"ids:shapesGraph", "shapesGraph"})
-	 URI _shapesGraph;
+	protected URI _shapesGraph;
+
 
 	/**
-	"sovereign"@en
-
-	"The \'owner\', i.e. sovereign of the data."@en
+	* "sovereign"@en
+	* "The \'owner\', i.e. sovereign of the data."@en
 	*/
 	@JsonAlias({"ids:sovereign", "sovereign"})
-	 URI _sovereign;
+	protected URI _sovereign;
+
 
 	/**
-	"spatial coverage"@en
-
-	"Named spatial entity covered by the Resource."@en
+	* "spatial coverage"@en
+	* "Named spatial entity covered by the Resource."@en
 	*/
 	@JsonAlias({"ids:spatialCoverage", "spatialCoverage"})
-	 java.util.ArrayList<? extends Location> _spatialCoverage;
+	protected ArrayList<? extends Location> _spatialCoverage;
+
 
 	/**
-	"Standard License"@en
-
-	"\n    Reference to a well-known License regulating the general usage of the Resource.\n    Check wikidata license documentation for an extensive list of licenses.\n    License IRI should refer to the direct of link for a given standard license,\n    e.g., MIT license (https://www.wikidata.org/wiki/Q334661). The label of the resolved wikidata license IRI can be used to\n    present the license in human-readable form.\n    "@en
+	* "Standard License"@en
+	* "\n    Reference to a well-known License regulating the general usage of the Resource.\n    Check wikidata license documentation for an extensive list of licenses.\n    License IRI should refer to the direct of link for a given standard license,\n    e.g., MIT license (https://www.wikidata.org/wiki/Q334661). The label of the resolved wikidata license IRI can be used to\n    present the license in human-readable form.\n    "@en
 	*/
 	@JsonAlias({"ids:standardLicense", "standardLicense"})
-	 URI _standardLicense;
+	protected URI _standardLicense;
+
 
 	/**
-	"temporal coverage"@en
-
-	"Temporal period or instance covered by the content."@en
+	* "temporal coverage"@en
+	* "Temporal period or instance covered by the content."@en
 	*/
 	@JsonAlias({"ids:temporalCoverage", "temporalCoverage"})
-	 java.util.ArrayList<? extends TemporalEntity> _temporalCoverage;
+	protected ArrayList<? extends TemporalEntity> _temporalCoverage;
+
 
 	/**
-	"temporal resolution"@en
-
-	"Minimum time between collected data points in a time series within this content."@en
+	* "temporal resolution"@en
+	* "Minimum time between collected data points in a time series within this content."@en
 	*/
 	@JsonAlias({"ids:temporalResolution", "temporalResolution"})
-	 Frequency _temporalResolution;
+	protected Frequency _temporalResolution;
+
 
 	/**
-	"theme"@en
-
-	"Abstract or concrete concept related to or referred by the content."@en
+	* "theme"@en
+	* "Abstract or concrete concept related to or referred by the content."@en
 	*/
 	@JsonAlias({"ids:theme", "theme"})
-	 java.util.ArrayList<? extends URI> _theme;
+	protected ArrayList<? extends URI> _theme;
+
 
 	/**
-	"title"@en
-
-	"(Localized) name of the entity."@en
+	* "title"@en
+	* "(Localized) name of the entity."@en
 	*/
 	@JsonAlias({"ids:title", "title"})
-	 java.util.ArrayList<? extends de.fraunhofer.iais.eis.util.TypedLiteral> _title;
+	protected ArrayList<? extends TypedLiteral> _title;
+
 
 	/**
-	"variant"@en
-
-	"(Equivalent) variant of given Resource, e.g. a translation."@en
+	* "variant"@en
+	* "(Equivalent) variant of given Resource, e.g. a translation."@en
 	*/
 	@JsonAlias({"ids:variant", "variant"})
-	 Resource _variant;
+	protected Resource _variant;
+
 
 	/**
-	"version"@en
-
-	"Version identifier of the Managed Entity"@en
+	* "version"@en
+	* "Version identifier of the Managed Entity"@en
 	*/
 	@JsonAlias({"ids:version", "version"})
-	 String _version;
+	protected String _version;
+
 
 	// no manual construction
-	ResourceImpl() {
+	protected ResourceImpl() {
 		id = VocabUtil.getInstance().createRandomUrl("resource");
 	}
 
+	/**
+	* This function retrieves the ID of the current object (can be set via the constructor of the builder class)
+	* @return ID of current object as URI
+	*/
 	@JsonProperty("@id")
 	final public URI getId() {
 		return id;
@@ -272,20 +293,30 @@ public class ResourceImpl implements Serializable, Resource {
 		return VocabUtil.getInstance().toRdf(this);
 	}
 
-	public java.util.List<TypedLiteral> getLabel() {
+	/**
+	* This function retrieves a human readable label about the current class, as defined in the ontology.
+	* This label could, for example, be used as a field heading in a user interface
+	* @return Human readable label
+	*/
+	public List<TypedLiteral> getLabel() {
 		return this.label;
 	}
 
-	public java.util.List<TypedLiteral> getComment() {
+	/**
+	* This function retrieves a human readable explanatory comment about the current class, as defined in the ontology.
+	* This comment could, for example, be used as a tooltip in a user interface
+	* @return Human readable explanatory comment
+	*/
+	public List<TypedLiteral> getComment() {
 		return this.comment;
 	}
 
 	// getter and setter for generic property map
 	@JsonAnyGetter
-	public java.util.Map<String,Object> getProperties() {
+	public Map<String,Object> getProperties() {
 		if (this.properties == null) return null;
 		Iterator<String> iter = this.properties.keySet().iterator();
-		java.util.Map<String,Object> resultset = new HashMap<String, Object>();
+		Map<String,Object> resultset = new HashMap<String, Object>();
 		while (iter.hasNext()) {
 			String key = iter.next();
 			resultset.put(key,urifyObjects(this.properties.get(key)));
@@ -302,9 +333,9 @@ public class ResourceImpl implements Serializable, Resource {
 			ArrayList<Object> result_array = new ArrayList<Object>();
 			((ArrayList) value).forEach(x -> result_array.add(urifyObjects(x)));
 			return result_array;
-		} else if (value instanceof java.util.Map) {
-			java.util.Map<String, Object> result_map = new HashMap<String, Object>();
-			((java.util.Map) value).forEach((k,v) -> result_map.put(k.toString(), urifyObjects(v)));
+		} else if (value instanceof Map) {
+			Map<String, Object> result_map = new HashMap<String, Object>();
+			((Map) value).forEach((k,v) -> result_map.put(k.toString(), urifyObjects(v)));
 			return result_map;
 		}
 		return value;
@@ -312,308 +343,555 @@ public class ResourceImpl implements Serializable, Resource {
 
 	@JsonAnySetter
 	public void setProperty(String property, Object value) {
-	if (this.properties == null) this.properties = new java.util.HashMap<String,Object>();
-	if (property.startsWith("@")) {return ;};
-	this.properties.put(property, value) ;
+		if (this.properties == null) this.properties = new HashMap<String,Object>();
+		if (property.startsWith("@")) {return ;};
+		this.properties.put(property, value) ;
 	}
-	// accessor method implementations as derived from information model
 
-	final public 
-	
-	
+	// accessor method implementations as derived from the IDSA Information Model ontology
+
+
+	/**
+	* "\n    Reference to a well-known License regulating the general usage of the Resource.\n    Check wikidata license documentation for an extensive list of licenses.\n    License IRI should refer to the direct of link for a given standard license,\n    e.g., MIT license (https://www.wikidata.org/wiki/Q334661). The label of the resolved wikidata license IRI can be used to\n    present the license in human-readable form.\n    "@en
+	* @return Returns the URI for the property standardLicense.
+	* More information under https://w3id.org/idsa/core/standardLicense
+	*/
 	@JsonProperty("ids:standardLicense")
-	URI getStandardLicense() {
+	final public URI getStandardLicense() {
 		return _standardLicense;
 	}
+
+	
+	/**
+	* "\n    Reference to a well-known License regulating the general usage of the Resource.\n    Check wikidata license documentation for an extensive list of licenses.\n    License IRI should refer to the direct of link for a given standard license,\n    e.g., MIT license (https://www.wikidata.org/wiki/Q334661). The label of the resolved wikidata license IRI can be used to\n    present the license in human-readable form.\n    "@en
+	* @param _standardLicense_ desired value for the property standardLicense.
+	* More information under https://w3id.org/idsa/core/standardLicense
+	*/
 	final public void setStandardLicense (URI _standardLicense_) {
 		this._standardLicense = _standardLicense_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "URL reference to a custom license regulating the general usage of the Resource."@en
+	* @return Returns the URI for the property customLicense.
+	* More information under https://w3id.org/idsa/core/customLicense
+	*/
 	@JsonProperty("ids:customLicense")
-	URI getCustomLicense() {
+	final public URI getCustomLicense() {
 		return _customLicense;
 	}
+
+	
+	/**
+	* "URL reference to a custom license regulating the general usage of the Resource."@en
+	* @param _customLicense_ desired value for the property customLicense.
+	* More information under https://w3id.org/idsa/core/customLicense
+	*/
 	final public void setCustomLicense (URI _customLicense_) {
 		this._customLicense = _customLicense_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "Reference to the Endpoints serving the resource\'s content or let you exchange messages with an IDS Connector."@en
+	* @return Returns the ArrayList of ConnectorEndpoint for the property resourceEndpoint.
+	* More information under https://w3id.org/idsa/core/resourceEndpoint
+	*/
 	@JsonProperty("ids:resourceEndpoint")
-	java.util.ArrayList<? extends ConnectorEndpoint> getResourceEndpoint() {
+	final public ArrayList<? extends ConnectorEndpoint> getResourceEndpoint() {
 		return _resourceEndpoint;
 	}
-	final public void setResourceEndpoint (java.util.ArrayList<? extends ConnectorEndpoint> _resourceEndpoint_) {
+
+	
+	/**
+	* "Reference to the Endpoints serving the resource\'s content or let you exchange messages with an IDS Connector."@en
+	* @param _resourceEndpoint_ desired value for the property resourceEndpoint.
+	* More information under https://w3id.org/idsa/core/resourceEndpoint
+	*/
+	final public void setResourceEndpoint (ArrayList<? extends ConnectorEndpoint> _resourceEndpoint_) {
 		this._resourceEndpoint = _resourceEndpoint_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "Reference to a Resource (physically or logically) included, definition of part-whole hierarchies."@en
+	* @return Returns the ArrayList of Resource for the property resourcePart.
+	* More information under https://w3id.org/idsa/core/resourcePart
+	*/
 	@JsonProperty("ids:resourcePart")
-	java.util.ArrayList<? extends Resource> getResourcePart() {
+	final public ArrayList<? extends Resource> getResourcePart() {
 		return _resourcePart;
 	}
-	final public void setResourcePart (java.util.ArrayList<? extends Resource> _resourcePart_) {
+
+	
+	/**
+	* "Reference to a Resource (physically or logically) included, definition of part-whole hierarchies."@en
+	* @param _resourcePart_ desired value for the property resourcePart.
+	* More information under https://w3id.org/idsa/core/resourcePart
+	*/
+	final public void setResourcePart (ArrayList<? extends Resource> _resourcePart_) {
 		this._resourcePart = _resourcePart_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "Reference to a Contract Offer defining the authorized use of the Resource."@en
+	* @return Returns the ArrayList of ContractOffer for the property contractOffer.
+	* More information under https://w3id.org/idsa/core/contractOffer
+	*/
 	@JsonProperty("ids:contractOffer")
-	java.util.ArrayList<? extends ContractOffer> getContractOffer() {
+	final public ArrayList<? extends ContractOffer> getContractOffer() {
 		return _contractOffer;
 	}
-	final public void setContractOffer (java.util.ArrayList<? extends ContractOffer> _contractOffer_) {
+
+	
+	/**
+	* "Reference to a Contract Offer defining the authorized use of the Resource."@en
+	* @param _contractOffer_ desired value for the property contractOffer.
+	* More information under https://w3id.org/idsa/core/contractOffer
+	*/
+	final public void setContractOffer (ArrayList<? extends ContractOffer> _contractOffer_) {
 		this._contractOffer = _contractOffer_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "Sample Resource instance."@en
+	* @return Returns the ArrayList of Resource for the property sample.
+	* More information under https://w3id.org/idsa/core/sample
+	*/
 	@JsonProperty("ids:sample")
-	java.util.ArrayList<? extends Resource> getSample() {
+	final public ArrayList<? extends Resource> getSample() {
 		return _sample;
 	}
-	final public void setSample (java.util.ArrayList<? extends Resource> _sample_) {
+
+	
+	/**
+	* "Sample Resource instance."@en
+	* @param _sample_ desired value for the property sample.
+	* More information under https://w3id.org/idsa/core/sample
+	*/
+	final public void setSample (ArrayList<? extends Resource> _sample_) {
 		this._sample = _sample_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "The publisher of the resource (which may differ from the sovereign)."@en
+	* @return Returns the URI for the property publisher.
+	* More information under https://w3id.org/idsa/core/publisher
+	*/
 	@JsonProperty("ids:publisher")
-	URI getPublisher() {
+	final public URI getPublisher() {
 		return _publisher;
 	}
+
+	
+	/**
+	* "The publisher of the resource (which may differ from the sovereign)."@en
+	* @param _publisher_ desired value for the property publisher.
+	* More information under https://w3id.org/idsa/core/publisher
+	*/
 	final public void setPublisher (URI _publisher_) {
 		this._publisher = _publisher_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "The \'owner\', i.e. sovereign of the data."@en
+	* @return Returns the URI for the property sovereign.
+	* More information under https://w3id.org/idsa/core/sovereign
+	*/
 	@JsonProperty("ids:sovereign")
-	URI getSovereign() {
+	final public URI getSovereign() {
 		return _sovereign;
 	}
+
+	
+	/**
+	* "The \'owner\', i.e. sovereign of the data."@en
+	* @param _sovereign_ desired value for the property sovereign.
+	* More information under https://w3id.org/idsa/core/sovereign
+	*/
 	final public void setSovereign (URI _sovereign_) {
 		this._sovereign = _sovereign_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "(Equivalent) variant of given Resource, e.g. a translation."@en
+	* @return Returns the Resource for the property variant.
+	* More information under https://w3id.org/idsa/core/variant
+	*/
 	@JsonProperty("ids:variant")
-	Resource getVariant() {
+	final public Resource getVariant() {
 		return _variant;
 	}
+
+	
+	/**
+	* "(Equivalent) variant of given Resource, e.g. a translation."@en
+	* @param _variant_ desired value for the property variant.
+	* More information under https://w3id.org/idsa/core/variant
+	*/
 	final public void setVariant (Resource _variant_) {
 		this._variant = _variant_;
 	}
 
 
 
-	final public 
-	
-	
+	/**
+	* "Reference to a Digital Content (physically or logically) included, definition of part-whole hierarchies."@en
+	* @return Returns the ArrayList of DigitalContent for the property contentPart.
+	* More information under https://w3id.org/idsa/core/contentPart
+	*/
 	@JsonProperty("ids:contentPart")
-	java.util.ArrayList<? extends DigitalContent> getContentPart() {
+	final public ArrayList<? extends DigitalContent> getContentPart() {
 		return _contentPart;
 	}
-	final public void setContentPart (java.util.ArrayList<? extends DigitalContent> _contentPart_) {
+
+	
+	/**
+	* "Reference to a Digital Content (physically or logically) included, definition of part-whole hierarchies."@en
+	* @param _contentPart_ desired value for the property contentPart.
+	* More information under https://w3id.org/idsa/core/contentPart
+	*/
+	final public void setContentPart (ArrayList<? extends DigitalContent> _contentPart_) {
 		this._contentPart = _contentPart_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "Named spatial entity covered by the Resource."@en
+	* @return Returns the ArrayList of Location for the property spatialCoverage.
+	* More information under https://w3id.org/idsa/core/spatialCoverage
+	*/
 	@JsonProperty("ids:spatialCoverage")
-	java.util.ArrayList<? extends Location> getSpatialCoverage() {
+	final public ArrayList<? extends Location> getSpatialCoverage() {
 		return _spatialCoverage;
 	}
-	final public void setSpatialCoverage (java.util.ArrayList<? extends Location> _spatialCoverage_) {
+
+	
+	/**
+	* "Named spatial entity covered by the Resource."@en
+	* @param _spatialCoverage_ desired value for the property spatialCoverage.
+	* More information under https://w3id.org/idsa/core/spatialCoverage
+	*/
+	final public void setSpatialCoverage (ArrayList<? extends Location> _spatialCoverage_) {
 		this._spatialCoverage = _spatialCoverage_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "Temporal period or instance covered by the content."@en
+	* @return Returns the ArrayList of TemporalEntity for the property temporalCoverage.
+	* More information under https://w3id.org/idsa/core/temporalCoverage
+	*/
 	@JsonProperty("ids:temporalCoverage")
-	java.util.ArrayList<? extends TemporalEntity> getTemporalCoverage() {
+	final public ArrayList<? extends TemporalEntity> getTemporalCoverage() {
 		return _temporalCoverage;
 	}
-	final public void setTemporalCoverage (java.util.ArrayList<? extends TemporalEntity> _temporalCoverage_) {
+
+	
+	/**
+	* "Temporal period or instance covered by the content."@en
+	* @param _temporalCoverage_ desired value for the property temporalCoverage.
+	* More information under https://w3id.org/idsa/core/temporalCoverage
+	*/
+	final public void setTemporalCoverage (ArrayList<? extends TemporalEntity> _temporalCoverage_) {
 		this._temporalCoverage = _temporalCoverage_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "Abstract or concrete concept related to or referred by the content."@en
+	* @return Returns the ArrayList of URI for the property theme.
+	* More information under https://w3id.org/idsa/core/theme
+	*/
 	@JsonProperty("ids:theme")
-	java.util.ArrayList<? extends URI> getTheme() {
+	final public ArrayList<? extends URI> getTheme() {
 		return _theme;
 	}
-	final public void setTheme (java.util.ArrayList<? extends URI> _theme_) {
+
+	
+	/**
+	* "Abstract or concrete concept related to or referred by the content."@en
+	* @param _theme_ desired value for the property theme.
+	* More information under https://w3id.org/idsa/core/theme
+	*/
+	final public void setTheme (ArrayList<? extends URI> _theme_) {
 		this._theme = _theme_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "Controlled keywords that describe the nature, purpose, or use of the content."@en
+	* @return Returns the ArrayList of TypedLiteral for the property keyword.
+	* More information under https://w3id.org/idsa/core/keyword
+	*/
 	@JsonProperty("ids:keyword")
-	java.util.ArrayList<? extends de.fraunhofer.iais.eis.util.TypedLiteral> getKeyword() {
+	final public ArrayList<? extends TypedLiteral> getKeyword() {
 		return _keyword;
 	}
-	final public void setKeyword (java.util.ArrayList<? extends de.fraunhofer.iais.eis.util.TypedLiteral> _keyword_) {
+
+	
+	/**
+	* "Controlled keywords that describe the nature, purpose, or use of the content."@en
+	* @param _keyword_ desired value for the property keyword.
+	* More information under https://w3id.org/idsa/core/keyword
+	*/
+	final public void setKeyword (ArrayList<? extends TypedLiteral> _keyword_) {
 		this._keyword = _keyword_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "Representation of the content."@en
+	* @return Returns the ArrayList of Representation for the property representation.
+	* More information under https://w3id.org/idsa/core/representation
+	*/
 	@JsonProperty("ids:representation")
-	java.util.ArrayList<? extends Representation> getRepresentation() {
+	final public ArrayList<? extends Representation> getRepresentation() {
 		return _representation;
 	}
-	final public void setRepresentation (java.util.ArrayList<? extends Representation> _representation_) {
+
+	
+	/**
+	* "Representation of the content."@en
+	* @param _representation_ desired value for the property representation.
+	* More information under https://w3id.org/idsa/core/representation
+	*/
+	final public void setRepresentation (ArrayList<? extends Representation> _representation_) {
 		this._representation = _representation_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "Detailed type, genre or interpretation of the Digital Content."@en
+	* @return Returns the ContentType for the property contentType.
+	* More information under https://w3id.org/idsa/core/contentType
+	*/
 	@JsonProperty("ids:contentType")
-	ContentType getContentType() {
+	final public ContentType getContentType() {
 		return _contentType;
 	}
+
+	
+	/**
+	* "Detailed type, genre or interpretation of the Digital Content."@en
+	* @param _contentType_ desired value for the property contentType.
+	* More information under https://w3id.org/idsa/core/contentType
+	*/
 	final public void setContentType (ContentType _contentType_) {
 		this._contentType = _contentType_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "Default representation of the content."@en
+	* @return Returns the ArrayList of Representation for the property defaultRepresentation.
+	* More information under https://w3id.org/idsa/core/defaultRepresentation
+	*/
 	@JsonProperty("ids:defaultRepresentation")
-	java.util.ArrayList<? extends Representation> getDefaultRepresentation() {
+	final public ArrayList<? extends Representation> getDefaultRepresentation() {
 		return _defaultRepresentation;
 	}
-	final public void setDefaultRepresentation (java.util.ArrayList<? extends Representation> _defaultRepresentation_) {
+
+	
+	/**
+	* "Default representation of the content."@en
+	* @param _defaultRepresentation_ desired value for the property defaultRepresentation.
+	* More information under https://w3id.org/idsa/core/defaultRepresentation
+	*/
+	final public void setDefaultRepresentation (ArrayList<? extends Representation> _defaultRepresentation_) {
 		this._defaultRepresentation = _defaultRepresentation_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "Minimum time between collected data points in a time series within this content."@en
+	* @return Returns the Frequency for the property temporalResolution.
+	* More information under https://w3id.org/idsa/core/temporalResolution
+	*/
 	@JsonProperty("ids:temporalResolution")
-	Frequency getTemporalResolution() {
+	final public Frequency getTemporalResolution() {
 		return _temporalResolution;
 	}
+
+	
+	/**
+	* "Minimum time between collected data points in a time series within this content."@en
+	* @param _temporalResolution_ desired value for the property temporalResolution.
+	* More information under https://w3id.org/idsa/core/temporalResolution
+	*/
 	final public void setTemporalResolution (Frequency _temporalResolution_) {
 		this._temporalResolution = _temporalResolution_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "The regular period with which items are added to a collection."@en
+	* @return Returns the Frequency for the property accrualPeriodicity.
+	* More information under https://w3id.org/idsa/core/accrualPeriodicity
+	*/
 	@JsonProperty("ids:accrualPeriodicity")
-	Frequency getAccrualPeriodicity() {
+	final public Frequency getAccrualPeriodicity() {
 		return _accrualPeriodicity;
 	}
+
+	
+	/**
+	* "The regular period with which items are added to a collection."@en
+	* @param _accrualPeriodicity_ desired value for the property accrualPeriodicity.
+	* More information under https://w3id.org/idsa/core/accrualPeriodicity
+	*/
 	final public void setAccrualPeriodicity (Frequency _accrualPeriodicity_) {
 		this._accrualPeriodicity = _accrualPeriodicity_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "IRI containing document, which defines the standard for the given Digital Content. The content is assumed to conform to that Standard."@en
+	* @return Returns the URI for the property contentStandard.
+	* More information under https://w3id.org/idsa/core/contentStandard
+	*/
 	@JsonProperty("ids:contentStandard")
-	URI getContentStandard() {
+	final public URI getContentStandard() {
 		return _contentStandard;
 	}
+
+	
+	/**
+	* "IRI containing document, which defines the standard for the given Digital Content. The content is assumed to conform to that Standard."@en
+	* @param _contentStandard_ desired value for the property contentStandard.
+	* More information under https://w3id.org/idsa/core/contentStandard
+	*/
 	final public void setContentStandard (URI _contentStandard_) {
 		this._contentStandard = _contentStandard_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "Natural language(s) used within the content."@en
+	* @return Returns the ArrayList of Language for the property language.
+	* More information under https://w3id.org/idsa/core/language
+	*/
 	@JsonProperty("ids:language")
-	java.util.ArrayList<? extends Language> getLanguage() {
+	final public ArrayList<? extends Language> getLanguage() {
 		return _language;
 	}
-	final public void setLanguage (java.util.ArrayList<? extends Language> _language_) {
+
+	
+	/**
+	* "Natural language(s) used within the content."@en
+	* @param _language_ desired value for the property language.
+	* More information under https://w3id.org/idsa/core/language
+	*/
+	final public void setLanguage (ArrayList<? extends Language> _language_) {
 		this._language = _language_;
 	}
 
-	final public 
+	/**
+	* "The date of the creation of the Digital Content. In contrast to the ids:temporalCoverage, creation dates of ids:Representation, ids:Artifacts or any other form of meta-data, this property describes the creation date of referenced Digital Content itself."@en
+	* @return Returns the XMLGregorianCalendar for the property created.
+	* More information under https://w3id.org/idsa/core/created
+	*/
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
-	
 	@JsonProperty("ids:created")
-	XMLGregorianCalendar getCreated() {
+	final public XMLGregorianCalendar getCreated() {
 		return _created;
 	}
+
+	
+	/**
+	* "The date of the creation of the Digital Content. In contrast to the ids:temporalCoverage, creation dates of ids:Representation, ids:Artifacts or any other form of meta-data, this property describes the creation date of referenced Digital Content itself."@en
+	* @param _created_ desired value for the property created.
+	* More information under https://w3id.org/idsa/core/created
+	*/
 	final public void setCreated (XMLGregorianCalendar _created_) {
 		this._created = _created_;
 	}
 
-	final public 
+	/**
+	* "The date/time this Digital Content has been changed the last time. Only one \'modified\' attribute is usually needed."@en
+	* @return Returns the XMLGregorianCalendar for the property modified.
+	* More information under https://w3id.org/idsa/core/modified
+	*/
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
-	
 	@JsonProperty("ids:modified")
-	XMLGregorianCalendar getModified() {
+	final public XMLGregorianCalendar getModified() {
 		return _modified;
 	}
+
+	
+	/**
+	* "The date/time this Digital Content has been changed the last time. Only one \'modified\' attribute is usually needed."@en
+	* @param _modified_ desired value for the property modified.
+	* More information under https://w3id.org/idsa/core/modified
+	*/
 	final public void setModified (XMLGregorianCalendar _modified_) {
 		this._modified = _modified_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "(Localized) name of the entity."@en
+	* @return Returns the ArrayList of TypedLiteral for the property title.
+	* More information under https://w3id.org/idsa/core/title
+	*/
 	@JsonProperty("ids:title")
-	java.util.ArrayList<? extends de.fraunhofer.iais.eis.util.TypedLiteral> getTitle() {
+	final public ArrayList<? extends TypedLiteral> getTitle() {
 		return _title;
 	}
-	final public void setTitle (java.util.ArrayList<? extends de.fraunhofer.iais.eis.util.TypedLiteral> _title_) {
+
+	
+	/**
+	* "(Localized) name of the entity."@en
+	* @param _title_ desired value for the property title.
+	* More information under https://w3id.org/idsa/core/title
+	*/
+	final public void setTitle (ArrayList<? extends TypedLiteral> _title_) {
 		this._title = _title_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "Explanation of the resource in a natural language text."@en
+	* @return Returns the ArrayList of TypedLiteral for the property description.
+	* More information under https://w3id.org/idsa/core/description
+	*/
 	@JsonProperty("ids:description")
-	java.util.ArrayList<? extends de.fraunhofer.iais.eis.util.TypedLiteral> getDescription() {
+	final public ArrayList<? extends TypedLiteral> getDescription() {
 		return _description;
 	}
-	final public void setDescription (java.util.ArrayList<? extends de.fraunhofer.iais.eis.util.TypedLiteral> _description_) {
+
+	
+	/**
+	* "Explanation of the resource in a natural language text."@en
+	* @param _description_ desired value for the property description.
+	* More information under https://w3id.org/idsa/core/description
+	*/
+	final public void setDescription (ArrayList<? extends TypedLiteral> _description_) {
 		this._description = _description_;
 	}
 
 
-	final public 
-	
-	
+	/**
+	* "Reference to SHACL shape graph, which describes domain-specific knowledge."@en
+	* @return Returns the URI for the property shapesGraph.
+	* More information under https://w3id.org/idsa/core/shapesGraph
+	*/
 	@JsonProperty("ids:shapesGraph")
-	URI getShapesGraph() {
+	final public URI getShapesGraph() {
 		return _shapesGraph;
 	}
+
+	
+	/**
+	* "Reference to SHACL shape graph, which describes domain-specific knowledge."@en
+	* @param _shapesGraph_ desired value for the property shapesGraph.
+	* More information under https://w3id.org/idsa/core/shapesGraph
+	*/
 	final public void setShapesGraph (URI _shapesGraph_) {
 		this._shapesGraph = _shapesGraph_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "Version identifier of the Managed Entity"@en
+	* @return Returns the String for the property version.
+	* More information under https://w3id.org/idsa/core/version
+	*/
 	@JsonProperty("ids:version")
-	String getVersion() {
+	final public String getVersion() {
 		return _version;
 	}
+
+	
+	/**
+	* "Version identifier of the Managed Entity"@en
+	* @param _version_ desired value for the property version.
+	* More information under https://w3id.org/idsa/core/version
+	*/
 	final public void setVersion (String _version_) {
 		this._version = _version_;
 	}

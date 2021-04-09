@@ -8,128 +8,156 @@ import java.lang.String;
 import java.math.BigInteger;
 import java.net.URL;
 import java.net.URI;
-import java.util.*;
-import javax.validation.constraints.*;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
-import javax.validation.constraints.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
-	"Contract"@en
-
-	"Abstract set of rules governing the usage of a Resource."@en*/
+* "Contract"@en
+* "Abstract set of rules governing the usage of a Resource."@en
+*/
 @JsonTypeInfo(use=JsonTypeInfo.Id.NAME, property="@type")
 @JsonSubTypes({
-@JsonSubTypes.Type(value = ContractAgreement.class),
-
-@JsonSubTypes.Type(value = ContractOffer.class),
-
-@JsonSubTypes.Type(value = ContractRequest.class),})
+	@JsonSubTypes.Type(value = ContractOffer.class),
+	@JsonSubTypes.Type(value = ContractAgreement.class),
+	@JsonSubTypes.Type(value = ContractRequest.class)
+})
 public interface Contract {
 
 	// standard methods
 
+	/**
+	* This function retrieves the ID of the current object (can be set via the constructor of the builder class)
+	* @return ID of current object as URI
+	*/
 	@JsonProperty("@id")
-	@javax.validation.constraints.NotNull URI getId();
-	java.util.List<TypedLiteral> getLabel();
-	java.util.List<TypedLiteral> getComment();
-	String toRdf();
+	@NotNull
+	public URI getId();
+
+	/**
+	* This function retrieves a human readable label about the current class, as defined in the ontology.
+	* This label could, for example, be used as a field heading in a user interface
+	* @return Human readable label
+	*/
+	public List<TypedLiteral> getLabel();
+
+	/**
+	* This function retrieves a human readable explanatory comment about the current class, as defined in the ontology.
+	* This comment could, for example, be used as a tooltip in a user interface
+	* @return Human readable explanatory comment
+	*/
+	public List<TypedLiteral> getComment();
+
+	public String toRdf();
 
 	// getter and setter for generic property map
-	public java.util.Map<String,Object> getProperties();
+	public Map<String,Object> getProperties();
 	public void setProperty(String property, Object value);
 
-	// accessor methods as derived from information model
-	/**
-	"permission"@en
+	// accessor methods as derived from the IDSA Information Model ontology
 
-	"A Permission granted by the Contract."@en
+
+	/**
+	* "A Permission granted by the Contract."@en
+	* @return Returns the ArrayList of Permission for the property permission.
+	* More information under https://w3id.org/idsa/core/permission
 	*/
-	
-	
 	@JsonProperty("ids:permission")
-	java.util.ArrayList<? extends Permission> getPermission();
-	/**
-	"prohibition"@en
+	public ArrayList<? extends Permission> getPermission();
 
-	"A Prohibition imposed by the Contract."@en
+	/**
+	* "A Prohibition imposed by the Contract."@en
+	* @return Returns the ArrayList of Prohibition for the property prohibition.
+	* More information under https://w3id.org/idsa/core/prohibition
 	*/
-	
-	
 	@JsonProperty("ids:prohibition")
-	java.util.ArrayList<? extends Prohibition> getProhibition();
-	/**
-	"obligation"@en
+	public ArrayList<? extends Prohibition> getProhibition();
 
-	"A Duty imposed by the Contract."@en
+	/**
+	* "A Duty imposed by the Contract."@en
+	* @return Returns the ArrayList of Duty for the property obligation.
+	* More information under https://w3id.org/idsa/core/obligation
 	*/
-	
-	
 	@JsonProperty("ids:obligation")
-	java.util.ArrayList<? extends Duty> getObligation();
-	/**
-	"Contract start"@en
+	public ArrayList<? extends Duty> getObligation();
 
-	"Absolute datetime the Contract is requested, offered or expected to start, depending on the type of Contract."@en
+	/**
+	* "Absolute datetime the Contract is requested, offered or expected to start, depending on the type of Contract."@en
+	* @return Returns the XMLGregorianCalendar for the property contractStart.
+	* More information under https://w3id.org/idsa/core/contractStart
 	*/
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
-	
 	@JsonProperty("ids:contractStart")
-	XMLGregorianCalendar getContractStart();
-	/**
-	"Contract end"@en
+	public XMLGregorianCalendar getContractStart();
 
-	"Absolute datetime the Contract is requested, offered or expected to end. If omitted, the contract has to be explicitly terminated by any of the parties."@en
+	/**
+	* "Absolute datetime the Contract is requested, offered or expected to end. If omitted, the contract has to be explicitly terminated by any of the parties."@en
+	* @return Returns the XMLGregorianCalendar for the property contractEnd.
+	* More information under https://w3id.org/idsa/core/contractEnd
 	*/
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
-	
 	@JsonProperty("ids:contractEnd")
-	XMLGregorianCalendar getContractEnd();
-	/**
-	"Contract date"@en
+	public XMLGregorianCalendar getContractEnd();
 
-	"Absolute datetime of singing the Contract."@en
+	/**
+	* "Absolute datetime of singing the Contract."@en
+	* @return Returns the XMLGregorianCalendar for the property contractDate.
+	* More information under https://w3id.org/idsa/core/contractDate
 	*/
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
-	
 	@JsonProperty("ids:contractDate")
-	XMLGregorianCalendar getContractDate();
-	/**
-	"Provider"@en
+	public XMLGregorianCalendar getContractDate();
 
-	"Provider of a Resource or Service that is the subject matter of the contract. This party may differ from the Assigner specified by the Contract rules."@en
+	/**
+	* "Provider of a Resource or Service that is the subject matter of the contract. This party may differ from the Assigner specified by the Contract rules."@en
+	* @return Returns the URI for the property provider.
+	* More information under https://w3id.org/idsa/core/provider
 	*/
-	
-	
 	@JsonProperty("ids:provider")
-	URI getProvider();
-	/**
-	"Consumer"@en
+	public URI getProvider();
 
-	"Consumer of a Resource or Service that is the subject matter of the Contract. This party may differ from the Assignee specified by the Contract rules."@en
+	/**
+	* "Consumer of a Resource or Service that is the subject matter of the Contract. This party may differ from the Assignee specified by the Contract rules."@en
+	* @return Returns the URI for the property consumer.
+	* More information under https://w3id.org/idsa/core/consumer
 	*/
-	
-	
 	@JsonProperty("ids:consumer")
-	URI getConsumer();
-	/**
-	"Contract document"@en
+	public URI getConsumer();
 
-	"Equivalent human-readable encoding of this machine-interpretable Contract."@en
+	/**
+	* "Equivalent human-readable encoding of this machine-interpretable Contract."@en
+	* @return Returns the TextResource for the property contractDocument.
+	* More information under https://w3id.org/idsa/core/contractDocument
 	*/
-	
-	
 	@JsonProperty("ids:contractDocument")
-	TextResource getContractDocument();
-	/**
-	"Annex to contract"@en
+	public TextResource getContractDocument();
 
-	"Any type of resource related to the Contract."@en
+	/**
+	* "Any type of resource related to the Contract."@en
+	* @return Returns the Resource for the property contractAnnex.
+	* More information under https://w3id.org/idsa/core/contractAnnex
 	*/
-	
-	
 	@JsonProperty("ids:contractAnnex")
-	Resource getContractAnnex();
+	public Resource getContractAnnex();
+
 }

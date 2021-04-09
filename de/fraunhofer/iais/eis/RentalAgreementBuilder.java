@@ -8,13 +8,29 @@ import java.lang.String;
 import java.math.BigInteger;
 import java.net.URL;
 import java.net.URI;
-import java.util.*;
-import javax.validation.constraints.*;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
-import javax.validation.constraints.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 public class RentalAgreementBuilder {
 
@@ -24,75 +40,130 @@ public class RentalAgreementBuilder {
 		rentalAgreementImpl = new RentalAgreementImpl();
 	}
 
-	public RentalAgreementBuilder(@javax.validation.constraints.NotNull URI id) {
+	public RentalAgreementBuilder(URI id) {
 		this();
 		rentalAgreementImpl.id = id;
 	}
 
 
 
-	final public RentalAgreementBuilder _permission_(java.util.ArrayList<? extends Permission> _permission_) {
+	/**
+	* This function allows setting a value for permission
+	* @param _permission_ desired value to be set
+	* @return Builder object with new value for permission
+	*/
+	final public RentalAgreementBuilder _permission_(ArrayList<? extends Permission> _permission_) {
 		this.rentalAgreementImpl._permission = _permission_;
 		return this;
 	}
 
 
-	final public RentalAgreementBuilder _prohibition_(java.util.ArrayList<? extends Prohibition> _prohibition_) {
+	/**
+	* This function allows setting a value for prohibition
+	* @param _prohibition_ desired value to be set
+	* @return Builder object with new value for prohibition
+	*/
+	final public RentalAgreementBuilder _prohibition_(ArrayList<? extends Prohibition> _prohibition_) {
 		this.rentalAgreementImpl._prohibition = _prohibition_;
 		return this;
 	}
 
 
-	final public RentalAgreementBuilder _obligation_(java.util.ArrayList<? extends Duty> _obligation_) {
+	/**
+	* This function allows setting a value for obligation
+	* @param _obligation_ desired value to be set
+	* @return Builder object with new value for obligation
+	*/
+	final public RentalAgreementBuilder _obligation_(ArrayList<? extends Duty> _obligation_) {
 		this.rentalAgreementImpl._obligation = _obligation_;
 		return this;
 	}
 
 
+	/**
+	* This function allows setting a value for contractStart
+	* @param _contractStart_ desired value to be set
+	* @return Builder object with new value for contractStart
+	*/
 	final public RentalAgreementBuilder _contractStart_(XMLGregorianCalendar _contractStart_) {
 		this.rentalAgreementImpl._contractStart = _contractStart_;
 		return this;
 	}
 
 
+	/**
+	* This function allows setting a value for contractEnd
+	* @param _contractEnd_ desired value to be set
+	* @return Builder object with new value for contractEnd
+	*/
 	final public RentalAgreementBuilder _contractEnd_(XMLGregorianCalendar _contractEnd_) {
 		this.rentalAgreementImpl._contractEnd = _contractEnd_;
 		return this;
 	}
 
 
+	/**
+	* This function allows setting a value for contractDate
+	* @param _contractDate_ desired value to be set
+	* @return Builder object with new value for contractDate
+	*/
 	final public RentalAgreementBuilder _contractDate_(XMLGregorianCalendar _contractDate_) {
 		this.rentalAgreementImpl._contractDate = _contractDate_;
 		return this;
 	}
 
 
+	/**
+	* This function allows setting a value for provider
+	* @param _provider_ desired value to be set
+	* @return Builder object with new value for provider
+	*/
 	final public RentalAgreementBuilder _provider_(URI _provider_) {
 		this.rentalAgreementImpl._provider = _provider_;
 		return this;
 	}
 
 
+	/**
+	* This function allows setting a value for consumer
+	* @param _consumer_ desired value to be set
+	* @return Builder object with new value for consumer
+	*/
 	final public RentalAgreementBuilder _consumer_(URI _consumer_) {
 		this.rentalAgreementImpl._consumer = _consumer_;
 		return this;
 	}
 
 
+	/**
+	* This function allows setting a value for contractDocument
+	* @param _contractDocument_ desired value to be set
+	* @return Builder object with new value for contractDocument
+	*/
 	final public RentalAgreementBuilder _contractDocument_(TextResource _contractDocument_) {
 		this.rentalAgreementImpl._contractDocument = _contractDocument_;
 		return this;
 	}
 
 
+	/**
+	* This function allows setting a value for contractAnnex
+	* @param _contractAnnex_ desired value to be set
+	* @return Builder object with new value for contractAnnex
+	*/
 	final public RentalAgreementBuilder _contractAnnex_(Resource _contractAnnex_) {
 		this.rentalAgreementImpl._contractAnnex = _contractAnnex_;
 		return this;
 	}
 
 
+	/**
+	* This function takes the values that were set previously via the other functions of this class and turns them into a Java bean.
+	* @return Bean with specified values
+	* @throws ConstraintViolationException This exception is thrown, if a validator is used and a violation is found.
+	*/
 
-	public final RentalAgreement build() throws ConstraintViolationException {
+	final public RentalAgreement build() throws ConstraintViolationException {
 		VocabUtil.getInstance().validate(rentalAgreementImpl);
 		return rentalAgreementImpl;
 	}

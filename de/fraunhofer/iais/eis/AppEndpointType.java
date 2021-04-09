@@ -8,61 +8,82 @@ import java.lang.String;
 import java.math.BigInteger;
 import java.net.URL;
 import java.net.URI;
-import java.util.*;
-import javax.validation.constraints.*;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
-import javax.validation.constraints.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.databind.JsonNode;
-import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-	/** 
-	"App endpoint type"@en
-
-	"Class of endpoint types a data app offers."@en */
-
+/** 
+* "App endpoint type"@en
+* "Class of endpoint types a data app offers."@en 
+*/
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 @JsonTypeName("ids:AppEndpointType")
 public enum AppEndpointType {
-	/** 
-	"Input endpoint"@en
 
-	"Endpoint is used for data input."@en */
-	INPUT_ENDPOINT("https://w3id.org/idsa/code/INPUT_ENDPOINT", Arrays.asList(new TypedLiteral("Input endpoint", "en")), Arrays.asList(new TypedLiteral("Endpoint is used for data input.", "en"))),
 	/** 
-	"Output endpoint"@en
-
-	"Endpoint is used for data output."@en */
-	OUTPUT_ENDPOINT("https://w3id.org/idsa/code/OUTPUT_ENDPOINT", Arrays.asList(new TypedLiteral("Output endpoint", "en")), Arrays.asList(new TypedLiteral("Endpoint is used for data output.", "en"))),
-	/** 
-	"Status endpoint"@en
-
-	"Endpoint is used to get app health / lifecycle status."@en */
-	STATUS_ENDPOINT("https://w3id.org/idsa/code/STATUS_ENDPOINT", Arrays.asList(new TypedLiteral("Status endpoint", "en")), Arrays.asList(new TypedLiteral("Endpoint is used to get app health / lifecycle status.", "en"))),
-	/** 
-	"Config endpoint"@en
-
-	"Endpoint is used for runtime-related app configurations and app parameters."@en */
+	* "Config endpoint"@en
+	* "Endpoint is used for runtime-related app configurations and app parameters."@en
+	*/
 	CONFIG_ENDPOINT("https://w3id.org/idsa/code/CONFIG_ENDPOINT", Arrays.asList(new TypedLiteral("Config endpoint", "en")), Arrays.asList(new TypedLiteral("Endpoint is used for runtime-related app configurations and app parameters.", "en"))),
-	/** 
-	"Process endpoint"@en
 
-	"Endpoint is used to start (or control) app processing."@en */
+	/** 
+	* "Input endpoint"@en
+	* "Endpoint is used for data input."@en
+	*/
+	INPUT_ENDPOINT("https://w3id.org/idsa/code/INPUT_ENDPOINT", Arrays.asList(new TypedLiteral("Input endpoint", "en")), Arrays.asList(new TypedLiteral("Endpoint is used for data input.", "en"))),
+
+	/** 
+	* "Output endpoint"@en
+	* "Endpoint is used for data output."@en
+	*/
+	OUTPUT_ENDPOINT("https://w3id.org/idsa/code/OUTPUT_ENDPOINT", Arrays.asList(new TypedLiteral("Output endpoint", "en")), Arrays.asList(new TypedLiteral("Endpoint is used for data output.", "en"))),
+
+	/** 
+	* "Process endpoint"@en
+	* "Endpoint is used to start (or control) app processing."@en
+	*/
 	PROCESS_ENDPOINT("https://w3id.org/idsa/code/PROCESS_ENDPOINT", Arrays.asList(new TypedLiteral("Process endpoint", "en")), Arrays.asList(new TypedLiteral("Endpoint is used to start (or control) app processing.", "en"))),
-	/** 
-	"Usage policy endpoint"@en
 
-	"Endpoint is used for usage policy / usage control related scenarios."@en */
-	USAGE_POLICY_ENDPOINT("https://w3id.org/idsa/code/USAGE_POLICY_ENDPOINT", Arrays.asList(new TypedLiteral("Usage policy endpoint", "en")), Arrays.asList(new TypedLiteral("Endpoint is used for usage policy / usage control related scenarios.", "en"))),
 	/** 
-	"Self-description endpoint"@en
+	* "Self-description endpoint"@en
+	* "Pre-defined endpoint used to return the corresponding self-description of the data app."@en
+	*/
+	SELF_DESCRIPTION_ENDPOINT("https://w3id.org/idsa/code/SELF_DESCRIPTION_ENDPOINT", Arrays.asList(new TypedLiteral("Self-description endpoint", "en")), Arrays.asList(new TypedLiteral("Pre-defined endpoint used to return the corresponding self-description of the data app.", "en"))),
 
-	"Pre-defined endpoint used to return the corresponding self-description of the data app."@en */
-	SELF_DESCRIPTION_ENDPOINT("https://w3id.org/idsa/code/SELF_DESCRIPTION_ENDPOINT", Arrays.asList(new TypedLiteral("Self-description endpoint", "en")), Arrays.asList(new TypedLiteral("Pre-defined endpoint used to return the corresponding self-description of the data app.", "en")));
+	/** 
+	* "Status endpoint"@en
+	* "Endpoint is used to get app health / lifecycle status."@en
+	*/
+	STATUS_ENDPOINT("https://w3id.org/idsa/code/STATUS_ENDPOINT", Arrays.asList(new TypedLiteral("Status endpoint", "en")), Arrays.asList(new TypedLiteral("Endpoint is used to get app health / lifecycle status.", "en"))),
+
+	/** 
+	* "Usage policy endpoint"@en
+	* "Endpoint is used for usage policy / usage control related scenarios."@en
+	*/
+	USAGE_POLICY_ENDPOINT("https://w3id.org/idsa/code/USAGE_POLICY_ENDPOINT", Arrays.asList(new TypedLiteral("Usage policy endpoint", "en")), Arrays.asList(new TypedLiteral("Endpoint is used for usage policy / usage control related scenarios.", "en")));
 
 	private static final Map<String,AppEndpointType> uriInstanceMapping;
 	static {
@@ -72,18 +93,11 @@ public enum AppEndpointType {
 	}
 
 	private URI id;
-	private java.util.List<TypedLiteral> label;
-	private java.util.List<TypedLiteral> comment;
+	private List<TypedLiteral> label;
+	private List<TypedLiteral> comment;
 
-	//TODO dummy method for generic properties, should be deleted in future versions
-	public java.util.Map<String,Object> getProperties() {
-		return null ;
-	}
-	public void setProperty(String property, Object value) {
-		//do nothing
-	}
 
-	AppEndpointType(String id, java.util.List<TypedLiteral> label, java.util.List<TypedLiteral> comment) {
+	AppEndpointType(String id, List<TypedLiteral> label, List<TypedLiteral> comment) {
 		try {
 			this.id = new URI(id);
 			this.label = label;
@@ -93,19 +107,40 @@ public enum AppEndpointType {
 			throw new IllegalArgumentException(e);
 		}
 	}
+	//TODO dummy method for generic properties, should be deleted in future versions
+	public Map<String,Object> getProperties() {
+		return null ;
+	}
+	public void setProperty(String property, Object value) {
+		//do nothing
+	}
+	/**
+	* This function retrieves the ID of the current object (can be set via the constructor of the builder class)
+	* @return ID of current object as URI
+	*/
 
 	@JsonIgnore
 	final public URI getId() {
 		return id;
 	}
 
+	/**
+	* This function retrieves a human readable label about the current class, as defined in the ontology.
+	* This label could, for example, be used as a field heading in a user interface
+	* @return Human readable label
+	*/
 	@JsonIgnore
-	final public java.util.List<TypedLiteral> getLabel() {
+	final public List<TypedLiteral> getLabel() {
 		return label;
 	}
 
+	/**
+	* This function retrieves a human readable explanatory comment about the current class, as defined in the ontology.
+	* This comment could, for example, be used as a tooltip in a user interface
+	* @return Human readable explanatory comment
+	*/
 	@JsonIgnore
-	final public java.util.List<TypedLiteral> getComment() {
+	final public List<TypedLiteral> getComment() {
 		return comment;
 	}
 
@@ -115,10 +150,7 @@ public enum AppEndpointType {
 
 	@JsonProperty("@id")
 	final public URI getSerializedId() {
-		try {
-			 return new URI("idsc:" + id.toString().substring(id.toString().lastIndexOf("/") + 1));
-		} catch (Exception e) {}
-		return null;
+		return id;
 	}
 	
 

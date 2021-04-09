@@ -8,13 +8,29 @@ import java.lang.String;
 import java.math.BigInteger;
 import java.net.URL;
 import java.net.URI;
-import java.util.*;
-import javax.validation.constraints.*;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
-import javax.validation.constraints.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 public class LogicalConstraintBuilder {
 
@@ -24,32 +40,52 @@ public class LogicalConstraintBuilder {
 		logicalConstraintImpl = new LogicalConstraintImpl();
 	}
 
-	public LogicalConstraintBuilder(@javax.validation.constraints.NotNull URI id) {
+	public LogicalConstraintBuilder(URI id) {
 		this();
 		logicalConstraintImpl.id = id;
 	}
 
-	final public LogicalConstraintBuilder _and_(java.util.ArrayList<? extends Constraint> _and_) {
+	/**
+	* This function allows setting a value for and
+	* @param _and_ desired value to be set
+	* @return Builder object with new value for and
+	*/
+	final public LogicalConstraintBuilder _and_(ArrayList<? extends Constraint> _and_) {
 		this.logicalConstraintImpl._and = _and_;
 		return this;
 	}
 
 
-	final public LogicalConstraintBuilder _or_(java.util.ArrayList<? extends Constraint> _or_) {
+	/**
+	* This function allows setting a value for or
+	* @param _or_ desired value to be set
+	* @return Builder object with new value for or
+	*/
+	final public LogicalConstraintBuilder _or_(ArrayList<? extends Constraint> _or_) {
 		this.logicalConstraintImpl._or = _or_;
 		return this;
 	}
 
 
-	final public LogicalConstraintBuilder _xone_(java.util.ArrayList<? extends Constraint> _xone_) {
+	/**
+	* This function allows setting a value for xone
+	* @param _xone_ desired value to be set
+	* @return Builder object with new value for xone
+	*/
+	final public LogicalConstraintBuilder _xone_(ArrayList<? extends Constraint> _xone_) {
 		this.logicalConstraintImpl._xone = _xone_;
 		return this;
 	}
 
 
 
+	/**
+	* This function takes the values that were set previously via the other functions of this class and turns them into a Java bean.
+	* @return Bean with specified values
+	* @throws ConstraintViolationException This exception is thrown, if a validator is used and a violation is found.
+	*/
 
-	public final LogicalConstraint build() throws ConstraintViolationException {
+	final public LogicalConstraint build() throws ConstraintViolationException {
 		VocabUtil.getInstance().validate(logicalConstraintImpl);
 		return logicalConstraintImpl;
 	}

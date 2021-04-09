@@ -8,103 +8,134 @@ import java.lang.String;
 import java.math.BigInteger;
 import java.net.URL;
 import java.net.URI;
-import java.util.*;
-import javax.validation.constraints.*;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
-import javax.validation.constraints.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
-	"InfrastructureComponent"@en
-
-	"The class of all infrastructure components of the IDS."@en*/
+* "InfrastructureComponent"@en
+* "The class of all infrastructure components of the IDS."@en
+*/
 @JsonTypeInfo(use=JsonTypeInfo.Id.NAME, property="@type")
 @JsonSubTypes({
-@JsonSubTypes.Type(value = ClearingHouse.class),
-
-@JsonSubTypes.Type(value = Connector.class),
-
-@JsonSubTypes.Type(value = DAPS.class),
-
-@JsonSubTypes.Type(value = IdentityProvider.class),})
+	@JsonSubTypes.Type(value = ClearingHouse.class),
+	@JsonSubTypes.Type(value = Connector.class),
+	@JsonSubTypes.Type(value = DAPS.class),
+	@JsonSubTypes.Type(value = IdentityProvider.class)
+})
 public interface InfrastructureComponent extends ManagedEntity {
 
 	// standard methods
 
+	/**
+	* This function retrieves the ID of the current object (can be set via the constructor of the builder class)
+	* @return ID of current object as URI
+	*/
 	@JsonProperty("@id")
-	@javax.validation.constraints.NotNull URI getId();
-	java.util.List<TypedLiteral> getLabel();
-	java.util.List<TypedLiteral> getComment();
-	String toRdf();
+	@NotNull
+	public URI getId();
+
+	/**
+	* This function retrieves a human readable label about the current class, as defined in the ontology.
+	* This label could, for example, be used as a field heading in a user interface
+	* @return Human readable label
+	*/
+	public List<TypedLiteral> getLabel();
+
+	/**
+	* This function retrieves a human readable explanatory comment about the current class, as defined in the ontology.
+	* This comment could, for example, be used as a tooltip in a user interface
+	* @return Human readable explanatory comment
+	*/
+	public List<TypedLiteral> getComment();
+
+	public String toRdf();
 
 	// getter and setter for generic property map
-	public java.util.Map<String,Object> getProperties();
+	public Map<String,Object> getProperties();
 	public void setProperty(String property, Object value);
 
-	// accessor methods as derived from information model
-	/**
-	"maintainer"@en
+	// accessor methods as derived from the IDSA Information Model ontology
 
-	"Participant responsible for technical maintenance of the InfrastructureComponent."@en
+
+	/**
+	* "Participant responsible for technical maintenance of the InfrastructureComponent."@en
+	* @return Returns the URI for the property maintainer.
+	* More information under https://w3id.org/idsa/core/maintainer
 	*/
-	
 	@NotNull
 	@JsonProperty("ids:maintainer")
-	URI getMaintainer();
-	/**
-	"curator"@en
+	public URI getMaintainer();
 
-	"Participant responsible for the correctness of the content offered by the InfrastructureComponent."@en
+	/**
+	* "Participant responsible for the correctness of the content offered by the InfrastructureComponent."@en
+	* @return Returns the URI for the property curator.
+	* More information under https://w3id.org/idsa/core/curator
 	*/
-	
 	@NotNull
 	@JsonProperty("ids:curator")
-	URI getCurator();
-	/**
-	"inboundModelVersion"@en
+	public URI getCurator();
 
-	"Information Model version that the InfrastructureComponent is capable of reading/processing."@en
+	/**
+	* "Information Model version that the InfrastructureComponent is capable of reading/processing."@en
+	* @return Returns the ArrayList of String for the property inboundModelVersion.
+	* More information under https://w3id.org/idsa/core/inboundModelVersion
 	*/
-	
 	@NotEmpty
 	@JsonProperty("ids:inboundModelVersion")
-	java.util.ArrayList<? extends String> getInboundModelVersion();
-	/**
-	"outbound model version"@en
+	public ArrayList<? extends String> getInboundModelVersion();
 
-	"Information Model version being produced by the InfrastructureComponent."@en
+	/**
+	* "Information Model version being produced by the InfrastructureComponent."@en
+	* @return Returns the String for the property outboundModelVersion.
+	* More information under https://w3id.org/idsa/core/outboundModelVersion
 	*/
-	
 	@NotNull
 	@JsonProperty("ids:outboundModelVersion")
-	String getOutboundModelVersion();
-	/**
-	"physicalLocation"@en
+	public String getOutboundModelVersion();
 
-	"The location where the Connector is physically deployed."@en
+	/**
+	* "The location where the Connector is physically deployed."@en
+	* @return Returns the Location for the property physicalLocation.
+	* More information under https://w3id.org/idsa/core/physicalLocation
 	*/
-	
-	
 	@JsonProperty("ids:physicalLocation")
-	Location getPhysicalLocation();
-	/**
-	"component certification"@en
+	public Location getPhysicalLocation();
 
-	"Certification issued for the given Infrastructure Component."@en
+	/**
+	* "Certification issued for the given Infrastructure Component."@en
+	* @return Returns the ComponentCertification for the property componentCertification.
+	* More information under https://w3id.org/idsa/core/componentCertification
 	*/
-	
-	
 	@JsonProperty("ids:componentCertification")
-	ComponentCertification getComponentCertification();
-	/**
-	"Public Key"@en
+	public ComponentCertification getComponentCertification();
 
-	"Public Key that has been created for the Component."@en
+	/**
+	* "Public Key that has been created for the Component."@en
+	* @return Returns the PublicKey for the property publicKey.
+	* More information under https://w3id.org/idsa/core/publicKey
 	*/
-	
-	
 	@JsonProperty("ids:publicKey")
-	PublicKey getPublicKey();
+	public PublicKey getPublicKey();
+
 }

@@ -8,124 +8,150 @@ import java.lang.String;
 import java.math.BigInteger;
 import java.net.URL;
 import java.net.URI;
-import java.util.*;
-import javax.validation.constraints.*;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
-import javax.validation.constraints.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /** 
-	"Clearing House"@en
-
-	"The Clearing House provides clearing and settlement services B2B interactions within the International Data Spaces."@en */
+* "Clearing House"@en
+* "The Clearing House provides clearing and settlement services B2B interactions within the International Data Spaces."@en 
+*/
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeName("ids:ClearingHouse")
 public class ClearingHouseImpl implements Serializable, ClearingHouse {
 
 	@JsonProperty("@id")
 	@JsonAlias({"@id", "id"})
-	@javax.validation.constraints.NotNull URI id;
+	@NotNull
+	protected URI id;
 
 	//List of all labels of this class
 	@JsonIgnore
-	java.util.List<TypedLiteral> label = Arrays.asList(new TypedLiteral("Clearing House", "en"));
+	protected List<TypedLiteral> label = Arrays.asList(new TypedLiteral("Clearing House", "en"));
+
 	//List of all comments of this class
 	@JsonIgnore
-	java.util.List<TypedLiteral> comment = Arrays.asList(new TypedLiteral("The Clearing House provides clearing and settlement services B2B interactions within the International Data Spaces.", "en"));
+	protected List<TypedLiteral> comment = Arrays.asList(new TypedLiteral("The Clearing House provides clearing and settlement services B2B interactions within the International Data Spaces.", "en"));
 
 	// all classes have a generic property array
 	@JsonIgnore
-	java.util.Map<String,Object> properties;
+	protected Map<String,Object> properties;
 
-	// instance fields as derived from information model
+	// instance fields as derived from the IDSA Information Model ontology
 
 	/**
-	"component certification"@en
-
-	"Certification issued for the given Infrastructure Component."@en
+	* "component certification"@en
+	* "Certification issued for the given Infrastructure Component."@en
 	*/
 	@JsonAlias({"ids:componentCertification", "componentCertification"})
-	 ComponentCertification _componentCertification;
+	protected ComponentCertification _componentCertification;
+
 
 	/**
-	"curator"@en
-
-	"Participant responsible for the correctness of the content offered by the InfrastructureComponent."@en
+	* "curator"@en
+	* "Participant responsible for the correctness of the content offered by the InfrastructureComponent."@en
 	*/
-	@NotNull@JsonAlias({"ids:curator", "curator"})
-	 URI _curator;
+	@NotNull
+	@JsonAlias({"ids:curator", "curator"})
+	protected URI _curator;
+
 
 	/**
-	"description"@en
-
-	"Explanation of the resource in a natural language text."@en
+	* "description"@en
+	* "Explanation of the resource in a natural language text."@en
 	*/
 	@JsonAlias({"ids:description", "description"})
-	 java.util.ArrayList<? extends de.fraunhofer.iais.eis.util.TypedLiteral> _description;
+	protected ArrayList<? extends TypedLiteral> _description;
+
 
 	/**
-	"inboundModelVersion"@en
-
-	"Information Model version that the InfrastructureComponent is capable of reading/processing."@en
+	* "inboundModelVersion"@en
+	* "Information Model version that the InfrastructureComponent is capable of reading/processing."@en
 	*/
-	@NotEmpty@JsonAlias({"ids:inboundModelVersion", "inboundModelVersion"})
-	 java.util.ArrayList<? extends String> _inboundModelVersion;
+	@NotEmpty
+	@JsonAlias({"ids:inboundModelVersion", "inboundModelVersion"})
+	protected ArrayList<? extends String> _inboundModelVersion;
+
 
 	/**
-	"maintainer"@en
-
-	"Participant responsible for technical maintenance of the InfrastructureComponent."@en
+	* "maintainer"@en
+	* "Participant responsible for technical maintenance of the InfrastructureComponent."@en
 	*/
-	@NotNull@JsonAlias({"ids:maintainer", "maintainer"})
-	 URI _maintainer;
+	@NotNull
+	@JsonAlias({"ids:maintainer", "maintainer"})
+	protected URI _maintainer;
+
 
 	/**
-	"outbound model version"@en
-
-	"Information Model version being produced by the InfrastructureComponent."@en
+	* "outbound model version"@en
+	* "Information Model version being produced by the InfrastructureComponent."@en
 	*/
-	@NotNull@JsonAlias({"ids:outboundModelVersion", "outboundModelVersion"})
-	 String _outboundModelVersion;
+	@NotNull
+	@JsonAlias({"ids:outboundModelVersion", "outboundModelVersion"})
+	protected String _outboundModelVersion;
+
 
 	/**
-	"physicalLocation"@en
-
-	"The location where the Connector is physically deployed."@en
+	* "physicalLocation"@en
+	* "The location where the Connector is physically deployed."@en
 	*/
 	@JsonAlias({"ids:physicalLocation", "physicalLocation"})
-	 Location _physicalLocation;
+	protected Location _physicalLocation;
+
 
 	/**
-	"Public Key"@en
-
-	"Public Key that has been created for the Component."@en
+	* "Public Key"@en
+	* "Public Key that has been created for the Component."@en
 	*/
 	@JsonAlias({"ids:publicKey", "publicKey"})
-	 PublicKey _publicKey;
+	protected PublicKey _publicKey;
+
 
 	/**
-	"title"@en
-
-	"(Localized) name of the entity."@en
+	* "title"@en
+	* "(Localized) name of the entity."@en
 	*/
 	@JsonAlias({"ids:title", "title"})
-	 java.util.ArrayList<? extends de.fraunhofer.iais.eis.util.TypedLiteral> _title;
+	protected ArrayList<? extends TypedLiteral> _title;
+
 
 	/**
-	"version"@en
-
-	"Version identifier of the Managed Entity"@en
+	* "version"@en
+	* "Version identifier of the Managed Entity"@en
 	*/
 	@JsonAlias({"ids:version", "version"})
-	 String _version;
+	protected String _version;
+
 
 	// no manual construction
-	ClearingHouseImpl() {
+	protected ClearingHouseImpl() {
 		id = VocabUtil.getInstance().createRandomUrl("clearingHouse");
 	}
 
+	/**
+	* This function retrieves the ID of the current object (can be set via the constructor of the builder class)
+	* @return ID of current object as URI
+	*/
 	@JsonProperty("@id")
 	final public URI getId() {
 		return id;
@@ -135,20 +161,30 @@ public class ClearingHouseImpl implements Serializable, ClearingHouse {
 		return VocabUtil.getInstance().toRdf(this);
 	}
 
-	public java.util.List<TypedLiteral> getLabel() {
+	/**
+	* This function retrieves a human readable label about the current class, as defined in the ontology.
+	* This label could, for example, be used as a field heading in a user interface
+	* @return Human readable label
+	*/
+	public List<TypedLiteral> getLabel() {
 		return this.label;
 	}
 
-	public java.util.List<TypedLiteral> getComment() {
+	/**
+	* This function retrieves a human readable explanatory comment about the current class, as defined in the ontology.
+	* This comment could, for example, be used as a tooltip in a user interface
+	* @return Human readable explanatory comment
+	*/
+	public List<TypedLiteral> getComment() {
 		return this.comment;
 	}
 
 	// getter and setter for generic property map
 	@JsonAnyGetter
-	public java.util.Map<String,Object> getProperties() {
+	public Map<String,Object> getProperties() {
 		if (this.properties == null) return null;
 		Iterator<String> iter = this.properties.keySet().iterator();
-		java.util.Map<String,Object> resultset = new HashMap<String, Object>();
+		Map<String,Object> resultset = new HashMap<String, Object>();
 		while (iter.hasNext()) {
 			String key = iter.next();
 			resultset.put(key,urifyObjects(this.properties.get(key)));
@@ -165,9 +201,9 @@ public class ClearingHouseImpl implements Serializable, ClearingHouse {
 			ArrayList<Object> result_array = new ArrayList<Object>();
 			((ArrayList) value).forEach(x -> result_array.add(urifyObjects(x)));
 			return result_array;
-		} else if (value instanceof java.util.Map) {
-			java.util.Map<String, Object> result_map = new HashMap<String, Object>();
-			((java.util.Map) value).forEach((k,v) -> result_map.put(k.toString(), urifyObjects(v)));
+		} else if (value instanceof Map) {
+			Map<String, Object> result_map = new HashMap<String, Object>();
+			((Map) value).forEach((k,v) -> result_map.put(k.toString(), urifyObjects(v)));
 			return result_map;
 		}
 		return value;
@@ -175,120 +211,216 @@ public class ClearingHouseImpl implements Serializable, ClearingHouse {
 
 	@JsonAnySetter
 	public void setProperty(String property, Object value) {
-	if (this.properties == null) this.properties = new java.util.HashMap<String,Object>();
-	if (property.startsWith("@")) {return ;};
-	this.properties.put(property, value) ;
+		if (this.properties == null) this.properties = new HashMap<String,Object>();
+		if (property.startsWith("@")) {return ;};
+		this.properties.put(property, value) ;
 	}
-	// accessor method implementations as derived from information model
+
+	// accessor method implementations as derived from the IDSA Information Model ontology
 
 
-	final public 
-	
+
+	/**
+	* "Participant responsible for technical maintenance of the InfrastructureComponent."@en
+	* @return Returns the URI for the property maintainer.
+	* More information under https://w3id.org/idsa/core/maintainer
+	*/
 	@NotNull
 	@JsonProperty("ids:maintainer")
-	URI getMaintainer() {
+	final public URI getMaintainer() {
 		return _maintainer;
 	}
+
+	
+	/**
+	* "Participant responsible for technical maintenance of the InfrastructureComponent."@en
+	* @param _maintainer_ desired value for the property maintainer.
+	* More information under https://w3id.org/idsa/core/maintainer
+	*/
 	final public void setMaintainer (URI _maintainer_) {
 		this._maintainer = _maintainer_;
 	}
 
-	final public 
-	
+	/**
+	* "Participant responsible for the correctness of the content offered by the InfrastructureComponent."@en
+	* @return Returns the URI for the property curator.
+	* More information under https://w3id.org/idsa/core/curator
+	*/
 	@NotNull
 	@JsonProperty("ids:curator")
-	URI getCurator() {
+	final public URI getCurator() {
 		return _curator;
 	}
+
+	
+	/**
+	* "Participant responsible for the correctness of the content offered by the InfrastructureComponent."@en
+	* @param _curator_ desired value for the property curator.
+	* More information under https://w3id.org/idsa/core/curator
+	*/
 	final public void setCurator (URI _curator_) {
 		this._curator = _curator_;
 	}
 
-	final public 
-	
+	/**
+	* "Information Model version that the InfrastructureComponent is capable of reading/processing."@en
+	* @return Returns the ArrayList of String for the property inboundModelVersion.
+	* More information under https://w3id.org/idsa/core/inboundModelVersion
+	*/
 	@NotEmpty
 	@JsonProperty("ids:inboundModelVersion")
-	java.util.ArrayList<? extends String> getInboundModelVersion() {
+	final public ArrayList<? extends String> getInboundModelVersion() {
 		return _inboundModelVersion;
 	}
-	final public void setInboundModelVersion (java.util.ArrayList<? extends String> _inboundModelVersion_) {
+
+	
+	/**
+	* "Information Model version that the InfrastructureComponent is capable of reading/processing."@en
+	* @param _inboundModelVersion_ desired value for the property inboundModelVersion.
+	* More information under https://w3id.org/idsa/core/inboundModelVersion
+	*/
+	final public void setInboundModelVersion (ArrayList<? extends String> _inboundModelVersion_) {
 		this._inboundModelVersion = _inboundModelVersion_;
 	}
 
-	final public 
-	
+	/**
+	* "Information Model version being produced by the InfrastructureComponent."@en
+	* @return Returns the String for the property outboundModelVersion.
+	* More information under https://w3id.org/idsa/core/outboundModelVersion
+	*/
 	@NotNull
 	@JsonProperty("ids:outboundModelVersion")
-	String getOutboundModelVersion() {
+	final public String getOutboundModelVersion() {
 		return _outboundModelVersion;
 	}
+
+	
+	/**
+	* "Information Model version being produced by the InfrastructureComponent."@en
+	* @param _outboundModelVersion_ desired value for the property outboundModelVersion.
+	* More information under https://w3id.org/idsa/core/outboundModelVersion
+	*/
 	final public void setOutboundModelVersion (String _outboundModelVersion_) {
 		this._outboundModelVersion = _outboundModelVersion_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "The location where the Connector is physically deployed."@en
+	* @return Returns the Location for the property physicalLocation.
+	* More information under https://w3id.org/idsa/core/physicalLocation
+	*/
 	@JsonProperty("ids:physicalLocation")
-	Location getPhysicalLocation() {
+	final public Location getPhysicalLocation() {
 		return _physicalLocation;
 	}
+
+	
+	/**
+	* "The location where the Connector is physically deployed."@en
+	* @param _physicalLocation_ desired value for the property physicalLocation.
+	* More information under https://w3id.org/idsa/core/physicalLocation
+	*/
 	final public void setPhysicalLocation (Location _physicalLocation_) {
 		this._physicalLocation = _physicalLocation_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "Certification issued for the given Infrastructure Component."@en
+	* @return Returns the ComponentCertification for the property componentCertification.
+	* More information under https://w3id.org/idsa/core/componentCertification
+	*/
 	@JsonProperty("ids:componentCertification")
-	ComponentCertification getComponentCertification() {
+	final public ComponentCertification getComponentCertification() {
 		return _componentCertification;
 	}
+
+	
+	/**
+	* "Certification issued for the given Infrastructure Component."@en
+	* @param _componentCertification_ desired value for the property componentCertification.
+	* More information under https://w3id.org/idsa/core/componentCertification
+	*/
 	final public void setComponentCertification (ComponentCertification _componentCertification_) {
 		this._componentCertification = _componentCertification_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "Public Key that has been created for the Component."@en
+	* @return Returns the PublicKey for the property publicKey.
+	* More information under https://w3id.org/idsa/core/publicKey
+	*/
 	@JsonProperty("ids:publicKey")
-	PublicKey getPublicKey() {
+	final public PublicKey getPublicKey() {
 		return _publicKey;
 	}
+
+	
+	/**
+	* "Public Key that has been created for the Component."@en
+	* @param _publicKey_ desired value for the property publicKey.
+	* More information under https://w3id.org/idsa/core/publicKey
+	*/
 	final public void setPublicKey (PublicKey _publicKey_) {
 		this._publicKey = _publicKey_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "Version identifier of the Managed Entity"@en
+	* @return Returns the String for the property version.
+	* More information under https://w3id.org/idsa/core/version
+	*/
 	@JsonProperty("ids:version")
-	String getVersion() {
+	final public String getVersion() {
 		return _version;
 	}
+
+	
+	/**
+	* "Version identifier of the Managed Entity"@en
+	* @param _version_ desired value for the property version.
+	* More information under https://w3id.org/idsa/core/version
+	*/
 	final public void setVersion (String _version_) {
 		this._version = _version_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "(Localized) name of the entity."@en
+	* @return Returns the ArrayList of TypedLiteral for the property title.
+	* More information under https://w3id.org/idsa/core/title
+	*/
 	@JsonProperty("ids:title")
-	java.util.ArrayList<? extends de.fraunhofer.iais.eis.util.TypedLiteral> getTitle() {
+	final public ArrayList<? extends TypedLiteral> getTitle() {
 		return _title;
 	}
-	final public void setTitle (java.util.ArrayList<? extends de.fraunhofer.iais.eis.util.TypedLiteral> _title_) {
+
+	
+	/**
+	* "(Localized) name of the entity."@en
+	* @param _title_ desired value for the property title.
+	* More information under https://w3id.org/idsa/core/title
+	*/
+	final public void setTitle (ArrayList<? extends TypedLiteral> _title_) {
 		this._title = _title_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "Explanation of the resource in a natural language text."@en
+	* @return Returns the ArrayList of TypedLiteral for the property description.
+	* More information under https://w3id.org/idsa/core/description
+	*/
 	@JsonProperty("ids:description")
-	java.util.ArrayList<? extends de.fraunhofer.iais.eis.util.TypedLiteral> getDescription() {
+	final public ArrayList<? extends TypedLiteral> getDescription() {
 		return _description;
 	}
-	final public void setDescription (java.util.ArrayList<? extends de.fraunhofer.iais.eis.util.TypedLiteral> _description_) {
+
+	
+	/**
+	* "Explanation of the resource in a natural language text."@en
+	* @param _description_ desired value for the property description.
+	* More information under https://w3id.org/idsa/core/description
+	*/
+	final public void setDescription (ArrayList<? extends TypedLiteral> _description_) {
 		this._description = _description_;
 	}
 }

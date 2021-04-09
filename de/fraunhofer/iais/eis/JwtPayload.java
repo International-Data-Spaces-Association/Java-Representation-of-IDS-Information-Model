@@ -8,126 +8,160 @@ import java.lang.String;
 import java.math.BigInteger;
 import java.net.URL;
 import java.net.URI;
-import java.util.*;
-import javax.validation.constraints.*;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
-import javax.validation.constraints.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
-	"JWT Payload"@en
-
-	"The payload of an JSON Web Token as a RDF class. Is used as the common parent of e.g. DatPayload and DatRequestPayload."@en*/
+* "JWT Payload"@en
+* "The payload of an JSON Web Token as a RDF class. Is used as the common parent of e.g. DatPayload and DatRequestPayload."@en
+*/
 @JsonTypeInfo(use=JsonTypeInfo.Id.NAME, property="@type")
 @JsonSubTypes({
-@JsonSubTypes.Type(value = DatPayload.class),
-
-@JsonSubTypes.Type(value = DatRequestPayload.class),})
+	@JsonSubTypes.Type(value = DatPayload.class),
+	@JsonSubTypes.Type(value = DatRequestPayload.class)
+})
 public interface JwtPayload {
 
 	// standard methods
 
+	/**
+	* This function retrieves the ID of the current object (can be set via the constructor of the builder class)
+	* @return ID of current object as URI
+	*/
 	@JsonProperty("@id")
-	@javax.validation.constraints.NotNull URI getId();
-	java.util.List<TypedLiteral> getLabel();
-	java.util.List<TypedLiteral> getComment();
-	String toRdf();
+	@NotNull
+	public URI getId();
+
+	/**
+	* This function retrieves a human readable label about the current class, as defined in the ontology.
+	* This label could, for example, be used as a field heading in a user interface
+	* @return Human readable label
+	*/
+	public List<TypedLiteral> getLabel();
+
+	/**
+	* This function retrieves a human readable explanatory comment about the current class, as defined in the ontology.
+	* This comment could, for example, be used as a tooltip in a user interface
+	* @return Human readable explanatory comment
+	*/
+	public List<TypedLiteral> getComment();
+
+	public String toRdf();
 
 	// getter and setter for generic property map
-	public java.util.Map<String,Object> getProperties();
+	public Map<String,Object> getProperties();
 	public void setProperty(String property, Object value);
 
-	// accessor methods as derived from information model
-	/**
-	"aud"@en
+	// accessor methods as derived from the IDSA Information Model ontology
 
-	"The \'aud\' (audience) claim identifies the recipients that the JWT is intended for."@en
+
+	/**
+	* "The \'aud\' (audience) claim identifies the recipients that the JWT is intended for."@en
+	* @return Returns the Audience for the property aud.
+	* More information under https://w3id.org/idsa/core/aud
 	*/
-	
 	@NotNull
 	@JsonProperty("ids:aud")
-	Audience getAud();
-	/**
-	"sub"@en
+	public Audience getAud();
 
-	"The \'sub\' (subject) claim identifies the principal that is the subject of the JWT."@en
+	/**
+	* "The \'sub\' (subject) claim identifies the principal that is the subject of the JWT."@en
+	* @return Returns the String for the property sub.
+	* More information under https://w3id.org/idsa/core/sub
 	*/
-	
 	@NotNull
 	@JsonProperty("ids:sub")
-	String getSub();
-	/**
-	"nbf"@en
+	public String getSub();
 
-	"The \'aud\' (audience) claim identifies the recipients that the JWT is intended for."@en
+	/**
+	* "The \'aud\' (audience) claim identifies the recipients that the JWT is intended for."@en
+	* @return Returns the BigInteger for the property nbf.
+	* More information under https://w3id.org/idsa/core/nbf
 	*/
-	
 	@NotNull
 	@JsonProperty("ids:nbf")
-	BigInteger getNbf();
-	/**
-	"exp"@en
+	public BigInteger getNbf();
 
-	"The \'exp\' (expiration time) claim identifies the expiration time on or after which the JWT MUST NOT be accepted for processing."@en
+	/**
+	* "The \'exp\' (expiration time) claim identifies the expiration time on or after which the JWT MUST NOT be accepted for processing."@en
+	* @return Returns the BigInteger for the property exp.
+	* More information under https://w3id.org/idsa/core/exp
 	*/
-	
 	@NotNull
 	@JsonProperty("ids:exp")
-	BigInteger getExp();
-	/**
-	"iat"@en
+	public BigInteger getExp();
 
-	"The \'iat\' (issued at) claim contains the point in time when the JWT was created."@en
+	/**
+	* "The \'iat\' (issued at) claim contains the point in time when the JWT was created."@en
+	* @return Returns the BigInteger for the property iat.
+	* More information under https://w3id.org/idsa/core/iat
 	*/
-	
 	@NotNull
 	@JsonProperty("ids:iat")
-	BigInteger getIat();
-	/**
-	"scope"@en
+	public BigInteger getIat();
 
-	"Currently, the scope is limited to \'Connector\' but can be used for scoping purposes in the future. Scope is currently fixed to \'https://w3id.org/idsa/core/Connector\'."@en
+	/**
+	* "Currently, the scope is limited to \'Connector\' but can be used for scoping purposes in the future. Scope is currently fixed to \'https://w3id.org/idsa/core/Connector\'."@en
+	* @return Returns the String for the property scope.
+	* More information under https://w3id.org/idsa/core/scope
 	*/
-	
 	@NotNull
 	@JsonProperty("ids:scope")
-	String getScope();
-	/**
-	"transportCertsSha256"@en
+	public String getScope();
 
-	"Separate certificates for IDS identification and transport encryption opens an attack vector for relay attacks. In order to prevent these attacks, a binding of this transport certificates to the connector is required. The inclusion of SHA256 fingerprints of currently valid transport certificates, mainly into the DAT, enables the client to relate the transport layer security with the IDS interactions."@en
+	/**
+	* "Separate certificates for IDS identification and transport encryption opens an attack vector for relay attacks. In order to prevent these attacks, a binding of this transport certificates to the connector is required. The inclusion of SHA256 fingerprints of currently valid transport certificates, mainly into the DAT, enables the client to relate the transport layer security with the IDS interactions."@en
+	* @return Returns the ArrayList of String for the property transportCertsSha256.
+	* More information under https://w3id.org/idsa/core/transportCertsSha256
 	*/
-	
 	@NotEmpty
 	@JsonProperty("ids:transportCertsSha256")
-	java.util.ArrayList<? extends String> getTransportCertsSha256();
-	/**
-	"referringConnector"@en
+	public ArrayList<? extends String> getTransportCertsSha256();
 
-	"The RDF connector entity as referred to by the DAT, with its URI included as the value. The value MUST be its accessible URI."@en
+	/**
+	* "The RDF connector entity as referred to by the DAT, with its URI included as the value. The value MUST be its accessible URI."@en
+	* @return Returns the URI for the property referringConnector.
+	* More information under https://w3id.org/idsa/core/referringConnector
 	*/
-	
-	
 	@JsonProperty("ids:referringConnector")
-	URI getReferringConnector();
-	/**
-	"iss"@en
+	public URI getReferringConnector();
 
-	"The \'iss\' (issuer) claim identifies the principal that issued the JWT."@en
+	/**
+	* "The \'iss\' (issuer) claim identifies the principal that issued the JWT."@en
+	* @return Returns the String for the property iss.
+	* More information under https://w3id.org/idsa/core/iss
 	*/
-	
-	
 	@JsonProperty("ids:iss")
-	String getIss();
-	/**
-	"securityProfile"@en
+	public String getIss();
 
-	"The SecurityProfile supported by the Connector."@en
+	/**
+	* "The SecurityProfile supported by the Connector."@en
+	* @return Returns the SecurityProfile for the property securityProfile.
+	* More information under https://w3id.org/idsa/core/securityProfile
 	*/
-	
 	@NotNull
 	@JsonProperty("ids:securityProfile")
-	SecurityProfile getSecurityProfile();
+	public SecurityProfile getSecurityProfile();
+
 }

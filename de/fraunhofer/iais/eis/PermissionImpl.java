@@ -8,124 +8,147 @@ import java.lang.String;
 import java.math.BigInteger;
 import java.net.URL;
 import java.net.URI;
-import java.util.*;
-import javax.validation.constraints.*;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
-import javax.validation.constraints.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /** 
-	"Permission"@en
-
-	"The class of Permissions as defined in the ODRL ontology."@en */
+* "Permission"@en
+* "The class of Permissions as defined in the ODRL ontology."@en 
+*/
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeName("ids:Permission")
 public class PermissionImpl implements Serializable, Permission {
 
 	@JsonProperty("@id")
 	@JsonAlias({"@id", "id"})
-	@javax.validation.constraints.NotNull URI id;
+	@NotNull
+	protected URI id;
 
 	//List of all labels of this class
 	@JsonIgnore
-	java.util.List<TypedLiteral> label = Arrays.asList(new TypedLiteral("Permission", "en"));
+	protected List<TypedLiteral> label = Arrays.asList(new TypedLiteral("Permission", "en"));
+
 	//List of all comments of this class
 	@JsonIgnore
-	java.util.List<TypedLiteral> comment = Arrays.asList(new TypedLiteral("The class of Permissions as defined in the ODRL ontology.", "en"));
+	protected List<TypedLiteral> comment = Arrays.asList(new TypedLiteral("The class of Permissions as defined in the ODRL ontology.", "en"));
 
 	// all classes have a generic property array
 	@JsonIgnore
-	java.util.Map<String,Object> properties;
+	protected Map<String,Object> properties;
 
-	// instance fields as derived from information model
+	// instance fields as derived from the IDSA Information Model ontology
 
 	/**
-	"action"@en
-
-	"The operation relating to the asset /  data object. "@en
+	* "action"@en
+	* "The operation relating to the asset /  data object. "@en
 	*/
-	@NotEmpty@JsonAlias({"ids:action", "action"})
-	 java.util.ArrayList<? extends Action> _action;
+	@NotEmpty
+	@JsonAlias({"ids:action", "action"})
+	protected ArrayList<? extends Action> _action;
+
 
 	/**
-	"content refinement"@en
-
-	"AssetRefinement define constraints that refines a (composite) Digital Content in an ids:Rule respectively the ids:AssetCollection."@en
+	* "content refinement"@en
+	* "AssetRefinement define constraints that refines a (composite) Digital Content in an ids:Rule respectively the ids:AssetCollection."@en
 	*/
 	@JsonAlias({"ids:assetRefinement", "assetRefinement"})
-	 AbstractConstraint _assetRefinement;
+	protected AbstractConstraint _assetRefinement;
+
 
 	/**
-	"assignee"@en
-
-	"The recipient of the policy statement."@en
+	* "assignee"@en
+	* "The recipient of the policy statement."@en
 	*/
 	@JsonAlias({"ids:assignee", "assignee"})
-	 java.util.ArrayList<? extends URI> _assignee;
+	protected ArrayList<? extends URI> _assignee;
+
 
 	/**
-	"assigner"@en
-
-	"The issuer of the policy statement."@en
+	* "assigner"@en
+	* "The issuer of the policy statement."@en
 	*/
 	@JsonAlias({"ids:assigner", "assigner"})
-	 java.util.ArrayList<? extends URI> _assigner;
+	protected ArrayList<? extends URI> _assigner;
+
 
 	/**
-	"constraint"@en
-
-	"The constraint to be used for a specific rule."@en
+	* "constraint"@en
+	* "The constraint to be used for a specific rule."@en
 	*/
 	@JsonAlias({"ids:constraint", "constraint"})
-	 java.util.ArrayList<? extends AbstractConstraint> _constraint;
+	protected ArrayList<? extends AbstractConstraint> _constraint;
+
 
 	/**
-	"description"@en
-
-	"Explanation of the resource in a natural language text."@en
+	* "description"@en
+	* "Explanation of the resource in a natural language text."@en
 	*/
 	@JsonAlias({"ids:description", "description"})
-	 java.util.ArrayList<? extends de.fraunhofer.iais.eis.util.TypedLiteral> _description;
+	protected ArrayList<? extends TypedLiteral> _description;
+
 
 	/**
-	"post-duty"@en
-
-	"A Duty imposed by the Rule, which must be executed after the Rule."@en
+	* "post-duty"@en
+	* "A Duty imposed by the Rule, which must be executed after the Rule."@en
 	*/
 	@JsonAlias({"ids:postDuty", "postDuty"})
-	 java.util.ArrayList<? extends Duty> _postDuty;
+	protected ArrayList<? extends Duty> _postDuty;
+
 
 	/**
-	"pre-duty"@en
-
-	"A Duty imposed by the Rule, which must be executed before the Rule."@en
+	* "pre-duty"@en
+	* "A Duty imposed by the Rule, which must be executed before the Rule."@en
 	*/
 	@JsonAlias({"ids:preDuty", "preDuty"})
-	 java.util.ArrayList<? extends Duty> _preDuty;
+	protected ArrayList<? extends Duty> _preDuty;
+
 
 	/**
-	"target"@en
-
-	"The subject of the policy statement (ids:Rule)."@en
+	* "target"@en
+	* "The subject of the policy statement (ids:Rule)."@en
 	*/
 	@JsonAlias({"ids:target", "target"})
-	 URI _target;
+	protected URI _target;
+
 
 	/**
-	"title"@en
-
-	"(Localized) name of the entity."@en
+	* "title"@en
+	* "(Localized) name of the entity."@en
 	*/
 	@JsonAlias({"ids:title", "title"})
-	 java.util.ArrayList<? extends de.fraunhofer.iais.eis.util.TypedLiteral> _title;
+	protected ArrayList<? extends TypedLiteral> _title;
+
 
 	// no manual construction
-	PermissionImpl() {
+	protected PermissionImpl() {
 		id = VocabUtil.getInstance().createRandomUrl("permission");
 	}
 
+	/**
+	* This function retrieves the ID of the current object (can be set via the constructor of the builder class)
+	* @return ID of current object as URI
+	*/
 	@JsonProperty("@id")
 	final public URI getId() {
 		return id;
@@ -135,20 +158,30 @@ public class PermissionImpl implements Serializable, Permission {
 		return VocabUtil.getInstance().toRdf(this);
 	}
 
-	public java.util.List<TypedLiteral> getLabel() {
+	/**
+	* This function retrieves a human readable label about the current class, as defined in the ontology.
+	* This label could, for example, be used as a field heading in a user interface
+	* @return Human readable label
+	*/
+	public List<TypedLiteral> getLabel() {
 		return this.label;
 	}
 
-	public java.util.List<TypedLiteral> getComment() {
+	/**
+	* This function retrieves a human readable explanatory comment about the current class, as defined in the ontology.
+	* This comment could, for example, be used as a tooltip in a user interface
+	* @return Human readable explanatory comment
+	*/
+	public List<TypedLiteral> getComment() {
 		return this.comment;
 	}
 
 	// getter and setter for generic property map
 	@JsonAnyGetter
-	public java.util.Map<String,Object> getProperties() {
+	public Map<String,Object> getProperties() {
 		if (this.properties == null) return null;
 		Iterator<String> iter = this.properties.keySet().iterator();
-		java.util.Map<String,Object> resultset = new HashMap<String, Object>();
+		Map<String,Object> resultset = new HashMap<String, Object>();
 		while (iter.hasNext()) {
 			String key = iter.next();
 			resultset.put(key,urifyObjects(this.properties.get(key)));
@@ -165,9 +198,9 @@ public class PermissionImpl implements Serializable, Permission {
 			ArrayList<Object> result_array = new ArrayList<Object>();
 			((ArrayList) value).forEach(x -> result_array.add(urifyObjects(x)));
 			return result_array;
-		} else if (value instanceof java.util.Map) {
-			java.util.Map<String, Object> result_map = new HashMap<String, Object>();
-			((java.util.Map) value).forEach((k,v) -> result_map.put(k.toString(), urifyObjects(v)));
+		} else if (value instanceof Map) {
+			Map<String, Object> result_map = new HashMap<String, Object>();
+			((Map) value).forEach((k,v) -> result_map.put(k.toString(), urifyObjects(v)));
 			return result_map;
 		}
 		return value;
@@ -175,119 +208,212 @@ public class PermissionImpl implements Serializable, Permission {
 
 	@JsonAnySetter
 	public void setProperty(String property, Object value) {
-	if (this.properties == null) this.properties = new java.util.HashMap<String,Object>();
-	if (property.startsWith("@")) {return ;};
-	this.properties.put(property, value) ;
+		if (this.properties == null) this.properties = new HashMap<String,Object>();
+		if (property.startsWith("@")) {return ;};
+		this.properties.put(property, value) ;
 	}
-	// accessor method implementations as derived from information model
 
-	final public 
-	
-	
+	// accessor method implementations as derived from the IDSA Information Model ontology
+
+
+	/**
+	* "A Duty imposed by the Rule, which must be executed before the Rule."@en
+	* @return Returns the ArrayList of Duty for the property preDuty.
+	* More information under https://w3id.org/idsa/core/preDuty
+	*/
 	@JsonProperty("ids:preDuty")
-	java.util.ArrayList<? extends Duty> getPreDuty() {
+	final public ArrayList<? extends Duty> getPreDuty() {
 		return _preDuty;
 	}
-	final public void setPreDuty (java.util.ArrayList<? extends Duty> _preDuty_) {
+
+	
+	/**
+	* "A Duty imposed by the Rule, which must be executed before the Rule."@en
+	* @param _preDuty_ desired value for the property preDuty.
+	* More information under https://w3id.org/idsa/core/preDuty
+	*/
+	final public void setPreDuty (ArrayList<? extends Duty> _preDuty_) {
 		this._preDuty = _preDuty_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "A Duty imposed by the Rule, which must be executed after the Rule."@en
+	* @return Returns the ArrayList of Duty for the property postDuty.
+	* More information under https://w3id.org/idsa/core/postDuty
+	*/
 	@JsonProperty("ids:postDuty")
-	java.util.ArrayList<? extends Duty> getPostDuty() {
+	final public ArrayList<? extends Duty> getPostDuty() {
 		return _postDuty;
 	}
-	final public void setPostDuty (java.util.ArrayList<? extends Duty> _postDuty_) {
+
+	
+	/**
+	* "A Duty imposed by the Rule, which must be executed after the Rule."@en
+	* @param _postDuty_ desired value for the property postDuty.
+	* More information under https://w3id.org/idsa/core/postDuty
+	*/
+	final public void setPostDuty (ArrayList<? extends Duty> _postDuty_) {
 		this._postDuty = _postDuty_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "The constraint to be used for a specific rule."@en
+	* @return Returns the ArrayList of AbstractConstraint for the property constraint.
+	* More information under https://w3id.org/idsa/core/constraint
+	*/
 	@JsonProperty("ids:constraint")
-	java.util.ArrayList<? extends AbstractConstraint> getConstraint() {
+	final public ArrayList<? extends AbstractConstraint> getConstraint() {
 		return _constraint;
 	}
-	final public void setConstraint (java.util.ArrayList<? extends AbstractConstraint> _constraint_) {
+
+	
+	/**
+	* "The constraint to be used for a specific rule."@en
+	* @param _constraint_ desired value for the property constraint.
+	* More information under https://w3id.org/idsa/core/constraint
+	*/
+	final public void setConstraint (ArrayList<? extends AbstractConstraint> _constraint_) {
 		this._constraint = _constraint_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "The issuer of the policy statement."@en
+	* @return Returns the ArrayList of URI for the property assigner.
+	* More information under https://w3id.org/idsa/core/assigner
+	*/
 	@JsonProperty("ids:assigner")
-	java.util.ArrayList<? extends URI> getAssigner() {
+	final public ArrayList<? extends URI> getAssigner() {
 		return _assigner;
 	}
-	final public void setAssigner (java.util.ArrayList<? extends URI> _assigner_) {
+
+	
+	/**
+	* "The issuer of the policy statement."@en
+	* @param _assigner_ desired value for the property assigner.
+	* More information under https://w3id.org/idsa/core/assigner
+	*/
+	final public void setAssigner (ArrayList<? extends URI> _assigner_) {
 		this._assigner = _assigner_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "The recipient of the policy statement."@en
+	* @return Returns the ArrayList of URI for the property assignee.
+	* More information under https://w3id.org/idsa/core/assignee
+	*/
 	@JsonProperty("ids:assignee")
-	java.util.ArrayList<? extends URI> getAssignee() {
+	final public ArrayList<? extends URI> getAssignee() {
 		return _assignee;
 	}
-	final public void setAssignee (java.util.ArrayList<? extends URI> _assignee_) {
+
+	
+	/**
+	* "The recipient of the policy statement."@en
+	* @param _assignee_ desired value for the property assignee.
+	* More information under https://w3id.org/idsa/core/assignee
+	*/
+	final public void setAssignee (ArrayList<? extends URI> _assignee_) {
 		this._assignee = _assignee_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "The subject of the policy statement (ids:Rule)."@en
+	* @return Returns the URI for the property target.
+	* More information under https://w3id.org/idsa/core/target
+	*/
 	@JsonProperty("ids:target")
-	URI getTarget() {
+	final public URI getTarget() {
 		return _target;
 	}
+
+	
+	/**
+	* "The subject of the policy statement (ids:Rule)."@en
+	* @param _target_ desired value for the property target.
+	* More information under https://w3id.org/idsa/core/target
+	*/
 	final public void setTarget (URI _target_) {
 		this._target = _target_;
 	}
 
-	final public 
-	
+	/**
+	* "The operation relating to the asset /  data object. "@en
+	* @return Returns the ArrayList of Action for the property action.
+	* More information under https://w3id.org/idsa/core/action
+	*/
 	@NotEmpty
 	@JsonProperty("ids:action")
-	java.util.ArrayList<? extends Action> getAction() {
+	final public ArrayList<? extends Action> getAction() {
 		return _action;
 	}
-	final public void setAction (java.util.ArrayList<? extends Action> _action_) {
+
+	
+	/**
+	* "The operation relating to the asset /  data object. "@en
+	* @param _action_ desired value for the property action.
+	* More information under https://w3id.org/idsa/core/action
+	*/
+	final public void setAction (ArrayList<? extends Action> _action_) {
 		this._action = _action_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "AssetRefinement define constraints that refines a (composite) Digital Content in an ids:Rule respectively the ids:AssetCollection."@en
+	* @return Returns the AbstractConstraint for the property assetRefinement.
+	* More information under https://w3id.org/idsa/core/assetRefinement
+	*/
 	@JsonProperty("ids:assetRefinement")
-	AbstractConstraint getAssetRefinement() {
+	final public AbstractConstraint getAssetRefinement() {
 		return _assetRefinement;
 	}
+
+	
+	/**
+	* "AssetRefinement define constraints that refines a (composite) Digital Content in an ids:Rule respectively the ids:AssetCollection."@en
+	* @param _assetRefinement_ desired value for the property assetRefinement.
+	* More information under https://w3id.org/idsa/core/assetRefinement
+	*/
 	final public void setAssetRefinement (AbstractConstraint _assetRefinement_) {
 		this._assetRefinement = _assetRefinement_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "(Localized) name of the entity."@en
+	* @return Returns the ArrayList of TypedLiteral for the property title.
+	* More information under https://w3id.org/idsa/core/title
+	*/
 	@JsonProperty("ids:title")
-	java.util.ArrayList<? extends de.fraunhofer.iais.eis.util.TypedLiteral> getTitle() {
+	final public ArrayList<? extends TypedLiteral> getTitle() {
 		return _title;
 	}
-	final public void setTitle (java.util.ArrayList<? extends de.fraunhofer.iais.eis.util.TypedLiteral> _title_) {
+
+	
+	/**
+	* "(Localized) name of the entity."@en
+	* @param _title_ desired value for the property title.
+	* More information under https://w3id.org/idsa/core/title
+	*/
+	final public void setTitle (ArrayList<? extends TypedLiteral> _title_) {
 		this._title = _title_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "Explanation of the resource in a natural language text."@en
+	* @return Returns the ArrayList of TypedLiteral for the property description.
+	* More information under https://w3id.org/idsa/core/description
+	*/
 	@JsonProperty("ids:description")
-	java.util.ArrayList<? extends de.fraunhofer.iais.eis.util.TypedLiteral> getDescription() {
+	final public ArrayList<? extends TypedLiteral> getDescription() {
 		return _description;
 	}
-	final public void setDescription (java.util.ArrayList<? extends de.fraunhofer.iais.eis.util.TypedLiteral> _description_) {
+
+	
+	/**
+	* "Explanation of the resource in a natural language text."@en
+	* @param _description_ desired value for the property description.
+	* More information under https://w3id.org/idsa/core/description
+	*/
+	final public void setDescription (ArrayList<? extends TypedLiteral> _description_) {
 		this._description = _description_;
 	}
 

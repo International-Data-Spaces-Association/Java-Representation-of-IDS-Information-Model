@@ -8,148 +8,176 @@ import java.lang.String;
 import java.math.BigInteger;
 import java.net.URL;
 import java.net.URI;
-import java.util.*;
-import javax.validation.constraints.*;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
-import javax.validation.constraints.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /** 
-	"Contract Rejection Message"@en
-
-	"Message indicating rejection of a contract."@en */
+* "Contract Rejection Message"@en
+* "Message indicating rejection of a contract."@en 
+*/
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeName("ids:ContractRejectionMessage")
 public class ContractRejectionMessageImpl implements Serializable, ContractRejectionMessage {
 
 	@JsonProperty("@id")
 	@JsonAlias({"@id", "id"})
-	@javax.validation.constraints.NotNull URI id;
+	@NotNull
+	protected URI id;
 
 	//List of all labels of this class
 	@JsonIgnore
-	java.util.List<TypedLiteral> label = Arrays.asList(new TypedLiteral("Contract Rejection Message", "en"));
+	protected List<TypedLiteral> label = Arrays.asList(new TypedLiteral("Contract Rejection Message", "en"));
+
 	//List of all comments of this class
 	@JsonIgnore
-	java.util.List<TypedLiteral> comment = Arrays.asList(new TypedLiteral("Message indicating rejection of a contract.", "en"));
+	protected List<TypedLiteral> comment = Arrays.asList(new TypedLiteral("Message indicating rejection of a contract.", "en"));
 
 	// all classes have a generic property array
 	@JsonIgnore
-	java.util.Map<String,Object> properties;
+	protected Map<String,Object> properties;
 
-	// instance fields as derived from information model
+	// instance fields as derived from the IDSA Information Model ontology
 
 	/**
-	"Authorization token"@en
-
-	"An authorization token like JSON Web Token."@en
+	* "Authorization token"@en
+	* "An authorization token like JSON Web Token."@en
 	*/
 	@JsonAlias({"ids:authorizationToken", "authorizationToken"})
-	 Token _authorizationToken;
+	protected Token _authorizationToken;
+
 
 	/**
-	"contentVersion"@en
-
-	"Version of the content in the payload. Use digits and semantic versioning pattern like MAJOR.MINOR.PATCH."@en
+	* "contentVersion"@en
+	* "Version of the content in the payload. Use digits and semantic versioning pattern like MAJOR.MINOR.PATCH."@en
 	*/
 	@JsonAlias({"ids:contentVersion", "contentVersion"})
-	 String _contentVersion;
+	protected String _contentVersion;
+
 
 	/**
-	"Contract Rejection Reason"@en
-
-	"Human-readable text describing the reason for contract rejection."@en
+	* "Contract Rejection Reason"@en
+	* "Human-readable text describing the reason for contract rejection."@en
 	*/
 	@JsonAlias({"ids:contractRejectionReason", "contractRejectionReason"})
-	 de.fraunhofer.iais.eis.util.TypedLiteral _contractRejectionReason;
+	protected TypedLiteral _contractRejectionReason;
+
 
 	/**
-	"consumer connector"@en
-
-	"Correlated message, e.g. a response to a previous request."@en
+	* "consumer connector"@en
+	* "Correlated message, e.g. a response to a previous request."@en
 	*/
-	@NotNull@JsonAlias({"ids:correlationMessage", "correlationMessage"})
-	 URI _correlationMessage;
+	@NotNull
+	@JsonAlias({"ids:correlationMessage", "correlationMessage"})
+	protected URI _correlationMessage;
+
 
 	/**
-	"issued"@en
-
-	"Date (as xsd:dateTimeStamp) of issuing the Message."@en
+	* "issued"@en
+	* "Date (as xsd:dateTimeStamp) of issuing the Message."@en
 	*/
-	@NotNull@JsonAlias({"ids:issued", "issued"})
-	 XMLGregorianCalendar _issued;
+	@NotNull
+	@JsonAlias({"ids:issued", "issued"})
+	protected XMLGregorianCalendar _issued;
+
 
 	/**
-	"issuer connector"@en
-
-	"The Connector which is the origin of the message."@en
+	* "issuer connector"@en
+	* "The Connector which is the origin of the message."@en
 	*/
-	@NotNull@JsonAlias({"ids:issuerConnector", "issuerConnector"})
-	 URI _issuerConnector;
+	@NotNull
+	@JsonAlias({"ids:issuerConnector", "issuerConnector"})
+	protected URI _issuerConnector;
+
 
 	/**
-	"model version"@en
-
-	"Version of the Information Model against which the Message should be interpreted."@en
+	* "model version"@en
+	* "Version of the Information Model against which the Message should be interpreted."@en
 	*/
-	@NotNull@JsonAlias({"ids:modelVersion", "modelVersion"})
-	 String _modelVersion;
+	@NotNull
+	@JsonAlias({"ids:modelVersion", "modelVersion"})
+	protected String _modelVersion;
+
 
 	/**
-	"recipient agent"@en
-
-	"The Agent for which the Mesaage is intended."@en
+	* "recipient agent"@en
+	* "The Agent for which the Mesaage is intended."@en
 	*/
 	@JsonAlias({"ids:recipientAgent", "recipientAgent"})
-	 java.util.ArrayList<? extends URI> _recipientAgent;
+	protected ArrayList<? extends URI> _recipientAgent;
+
 
 	/**
-	"recipient connector"@en
-
-	"The Connector which is the recipient of the message."@en
+	* "recipient connector"@en
+	* "The Connector which is the recipient of the message."@en
 	*/
 	@JsonAlias({"ids:recipientConnector", "recipientConnector"})
-	 java.util.ArrayList<? extends URI> _recipientConnector;
+	protected ArrayList<? extends URI> _recipientConnector;
+
 
 	/**
-	"rejectionReason"@en
-
-	"Specifies the reason of the rejection."@en
+	* "rejectionReason"@en
+	* "Specifies the reason of the rejection."@en
 	*/
 	@JsonAlias({"ids:rejectionReason", "rejectionReason"})
-	 RejectionReason _rejectionReason;
+	protected RejectionReason _rejectionReason;
+
 
 	/**
-	"Security token"@en
-
-	"A token representing a claim that the message sender supports a certain security profile."@en
+	* "Security token"@en
+	* "A token representing a claim that the message sender supports a certain security profile."@en
 	*/
-	@NotNull@JsonAlias({"ids:securityToken", "securityToken"})
-	 DynamicAttributeToken _securityToken;
+	@NotNull
+	@JsonAlias({"ids:securityToken", "securityToken"})
+	protected DynamicAttributeToken _securityToken;
+
 
 	/**
-	"sender agent"@en
-
-	"The Agent which initiated the Message."@en
+	* "sender agent"@en
+	* "The Agent which initiated the Message."@en
 	*/
-	@NotNull@JsonAlias({"ids:senderAgent", "senderAgent"})
-	 URI _senderAgent;
+	@NotNull
+	@JsonAlias({"ids:senderAgent", "senderAgent"})
+	protected URI _senderAgent;
+
 
 	/**
-	"transferContract"@en
-
-	"The contract which is (or will be) the legal basis of the data transfer."@en
+	* "transferContract"@en
+	* "The contract which is (or will be) the legal basis of the data transfer."@en
 	*/
 	@JsonAlias({"ids:transferContract", "transferContract"})
-	 URI _transferContract;
+	protected URI _transferContract;
+
 
 	// no manual construction
-	ContractRejectionMessageImpl() {
+	protected ContractRejectionMessageImpl() {
 		id = VocabUtil.getInstance().createRandomUrl("contractRejectionMessage");
 	}
 
+	/**
+	* This function retrieves the ID of the current object (can be set via the constructor of the builder class)
+	* @return ID of current object as URI
+	*/
 	@JsonProperty("@id")
 	final public URI getId() {
 		return id;
@@ -159,20 +187,30 @@ public class ContractRejectionMessageImpl implements Serializable, ContractRejec
 		return VocabUtil.getInstance().toRdf(this);
 	}
 
-	public java.util.List<TypedLiteral> getLabel() {
+	/**
+	* This function retrieves a human readable label about the current class, as defined in the ontology.
+	* This label could, for example, be used as a field heading in a user interface
+	* @return Human readable label
+	*/
+	public List<TypedLiteral> getLabel() {
 		return this.label;
 	}
 
-	public java.util.List<TypedLiteral> getComment() {
+	/**
+	* This function retrieves a human readable explanatory comment about the current class, as defined in the ontology.
+	* This comment could, for example, be used as a tooltip in a user interface
+	* @return Human readable explanatory comment
+	*/
+	public List<TypedLiteral> getComment() {
 		return this.comment;
 	}
 
 	// getter and setter for generic property map
 	@JsonAnyGetter
-	public java.util.Map<String,Object> getProperties() {
+	public Map<String,Object> getProperties() {
 		if (this.properties == null) return null;
 		Iterator<String> iter = this.properties.keySet().iterator();
-		java.util.Map<String,Object> resultset = new HashMap<String, Object>();
+		Map<String,Object> resultset = new HashMap<String, Object>();
 		while (iter.hasNext()) {
 			String key = iter.next();
 			resultset.put(key,urifyObjects(this.properties.get(key)));
@@ -189,9 +227,9 @@ public class ContractRejectionMessageImpl implements Serializable, ContractRejec
 			ArrayList<Object> result_array = new ArrayList<Object>();
 			((ArrayList) value).forEach(x -> result_array.add(urifyObjects(x)));
 			return result_array;
-		} else if (value instanceof java.util.Map) {
-			java.util.Map<String, Object> result_map = new HashMap<String, Object>();
-			((java.util.Map) value).forEach((k,v) -> result_map.put(k.toString(), urifyObjects(v)));
+		} else if (value instanceof Map) {
+			Map<String, Object> result_map = new HashMap<String, Object>();
+			((Map) value).forEach((k,v) -> result_map.put(k.toString(), urifyObjects(v)));
 			return result_map;
 		}
 		return value;
@@ -199,152 +237,278 @@ public class ContractRejectionMessageImpl implements Serializable, ContractRejec
 
 	@JsonAnySetter
 	public void setProperty(String property, Object value) {
-	if (this.properties == null) this.properties = new java.util.HashMap<String,Object>();
-	if (property.startsWith("@")) {return ;};
-	this.properties.put(property, value) ;
+		if (this.properties == null) this.properties = new HashMap<String,Object>();
+		if (property.startsWith("@")) {return ;};
+		this.properties.put(property, value) ;
 	}
-	// accessor method implementations as derived from information model
 
-	final public 
-	
-	
+	// accessor method implementations as derived from the IDSA Information Model ontology
+
+
+	/**
+	* "Human-readable text describing the reason for contract rejection."@en
+	* @return Returns the TypedLiteral for the property contractRejectionReason.
+	* More information under https://w3id.org/idsa/core/contractRejectionReason
+	*/
 	@JsonProperty("ids:contractRejectionReason")
-	de.fraunhofer.iais.eis.util.TypedLiteral getContractRejectionReason() {
+	final public TypedLiteral getContractRejectionReason() {
 		return _contractRejectionReason;
 	}
-	final public void setContractRejectionReason (de.fraunhofer.iais.eis.util.TypedLiteral _contractRejectionReason_) {
+
+	
+	/**
+	* "Human-readable text describing the reason for contract rejection."@en
+	* @param _contractRejectionReason_ desired value for the property contractRejectionReason.
+	* More information under https://w3id.org/idsa/core/contractRejectionReason
+	*/
+	final public void setContractRejectionReason (TypedLiteral _contractRejectionReason_) {
 		this._contractRejectionReason = _contractRejectionReason_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "Specifies the reason of the rejection."@en
+	* @return Returns the RejectionReason for the property rejectionReason.
+	* More information under https://w3id.org/idsa/core/rejectionReason
+	*/
 	@JsonProperty("ids:rejectionReason")
-	RejectionReason getRejectionReason() {
+	final public RejectionReason getRejectionReason() {
 		return _rejectionReason;
 	}
+
+	
+	/**
+	* "Specifies the reason of the rejection."@en
+	* @param _rejectionReason_ desired value for the property rejectionReason.
+	* More information under https://w3id.org/idsa/core/rejectionReason
+	*/
 	final public void setRejectionReason (RejectionReason _rejectionReason_) {
 		this._rejectionReason = _rejectionReason_;
 	}
 
 
-	final public 
-	
+	/**
+	* "Version of the Information Model against which the Message should be interpreted."@en
+	* @return Returns the String for the property modelVersion.
+	* More information under https://w3id.org/idsa/core/modelVersion
+	*/
 	@NotNull
 	@JsonProperty("ids:modelVersion")
-	String getModelVersion() {
+	final public String getModelVersion() {
 		return _modelVersion;
 	}
+
+	
+	/**
+	* "Version of the Information Model against which the Message should be interpreted."@en
+	* @param _modelVersion_ desired value for the property modelVersion.
+	* More information under https://w3id.org/idsa/core/modelVersion
+	*/
 	final public void setModelVersion (String _modelVersion_) {
 		this._modelVersion = _modelVersion_;
 	}
 
-	final public 
+	/**
+	* "Date (as xsd:dateTimeStamp) of issuing the Message."@en
+	* @return Returns the XMLGregorianCalendar for the property issued.
+	* More information under https://w3id.org/idsa/core/issued
+	*/
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
 	@NotNull
 	@JsonProperty("ids:issued")
-	XMLGregorianCalendar getIssued() {
+	final public XMLGregorianCalendar getIssued() {
 		return _issued;
 	}
+
+	
+	/**
+	* "Date (as xsd:dateTimeStamp) of issuing the Message."@en
+	* @param _issued_ desired value for the property issued.
+	* More information under https://w3id.org/idsa/core/issued
+	*/
 	final public void setIssued (XMLGregorianCalendar _issued_) {
 		this._issued = _issued_;
 	}
 
-	final public 
-	
+	/**
+	* "The Connector which is the origin of the message."@en
+	* @return Returns the URI for the property issuerConnector.
+	* More information under https://w3id.org/idsa/core/issuerConnector
+	*/
 	@NotNull
 	@JsonProperty("ids:issuerConnector")
-	URI getIssuerConnector() {
+	final public URI getIssuerConnector() {
 		return _issuerConnector;
 	}
+
+	
+	/**
+	* "The Connector which is the origin of the message."@en
+	* @param _issuerConnector_ desired value for the property issuerConnector.
+	* More information under https://w3id.org/idsa/core/issuerConnector
+	*/
 	final public void setIssuerConnector (URI _issuerConnector_) {
 		this._issuerConnector = _issuerConnector_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "The Connector which is the recipient of the message."@en
+	* @return Returns the ArrayList of URI for the property recipientConnector.
+	* More information under https://w3id.org/idsa/core/recipientConnector
+	*/
 	@JsonProperty("ids:recipientConnector")
-	java.util.ArrayList<? extends URI> getRecipientConnector() {
+	final public ArrayList<? extends URI> getRecipientConnector() {
 		return _recipientConnector;
 	}
-	final public void setRecipientConnector (java.util.ArrayList<? extends URI> _recipientConnector_) {
+
+	
+	/**
+	* "The Connector which is the recipient of the message."@en
+	* @param _recipientConnector_ desired value for the property recipientConnector.
+	* More information under https://w3id.org/idsa/core/recipientConnector
+	*/
+	final public void setRecipientConnector (ArrayList<? extends URI> _recipientConnector_) {
 		this._recipientConnector = _recipientConnector_;
 	}
 
-	final public 
-	
+	/**
+	* "A token representing a claim that the message sender supports a certain security profile."@en
+	* @return Returns the DynamicAttributeToken for the property securityToken.
+	* More information under https://w3id.org/idsa/core/securityToken
+	*/
 	@NotNull
 	@JsonProperty("ids:securityToken")
-	DynamicAttributeToken getSecurityToken() {
+	final public DynamicAttributeToken getSecurityToken() {
 		return _securityToken;
 	}
+
+	
+	/**
+	* "A token representing a claim that the message sender supports a certain security profile."@en
+	* @param _securityToken_ desired value for the property securityToken.
+	* More information under https://w3id.org/idsa/core/securityToken
+	*/
 	final public void setSecurityToken (DynamicAttributeToken _securityToken_) {
 		this._securityToken = _securityToken_;
 	}
 
-	final public 
-	
+	/**
+	* "The Agent which initiated the Message."@en
+	* @return Returns the URI for the property senderAgent.
+	* More information under https://w3id.org/idsa/core/senderAgent
+	*/
 	@NotNull
 	@JsonProperty("ids:senderAgent")
-	URI getSenderAgent() {
+	final public URI getSenderAgent() {
 		return _senderAgent;
 	}
+
+	
+	/**
+	* "The Agent which initiated the Message."@en
+	* @param _senderAgent_ desired value for the property senderAgent.
+	* More information under https://w3id.org/idsa/core/senderAgent
+	*/
 	final public void setSenderAgent (URI _senderAgent_) {
 		this._senderAgent = _senderAgent_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "The Agent for which the Mesaage is intended."@en
+	* @return Returns the ArrayList of URI for the property recipientAgent.
+	* More information under https://w3id.org/idsa/core/recipientAgent
+	*/
 	@JsonProperty("ids:recipientAgent")
-	java.util.ArrayList<? extends URI> getRecipientAgent() {
+	final public ArrayList<? extends URI> getRecipientAgent() {
 		return _recipientAgent;
 	}
-	final public void setRecipientAgent (java.util.ArrayList<? extends URI> _recipientAgent_) {
+
+	
+	/**
+	* "The Agent for which the Mesaage is intended."@en
+	* @param _recipientAgent_ desired value for the property recipientAgent.
+	* More information under https://w3id.org/idsa/core/recipientAgent
+	*/
+	final public void setRecipientAgent (ArrayList<? extends URI> _recipientAgent_) {
 		this._recipientAgent = _recipientAgent_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "Correlated message, e.g. a response to a previous request."@en
+	* @return Returns the URI for the property correlationMessage.
+	* More information under https://w3id.org/idsa/core/correlationMessage
+	*/
+	@NotNull
 	@JsonProperty("ids:correlationMessage")
-	URI getCorrelationMessage() {
+	final public URI getCorrelationMessage() {
 		return _correlationMessage;
 	}
+
+	
+	/**
+	* "Correlated message, e.g. a response to a previous request."@en
+	* @param _correlationMessage_ desired value for the property correlationMessage.
+	* More information under https://w3id.org/idsa/core/correlationMessage
+	*/
 	final public void setCorrelationMessage (URI _correlationMessage_) {
 		this._correlationMessage = _correlationMessage_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "An authorization token like JSON Web Token."@en
+	* @return Returns the Token for the property authorizationToken.
+	* More information under https://w3id.org/idsa/core/authorizationToken
+	*/
 	@JsonProperty("ids:authorizationToken")
-	Token getAuthorizationToken() {
+	final public Token getAuthorizationToken() {
 		return _authorizationToken;
 	}
+
+	
+	/**
+	* "An authorization token like JSON Web Token."@en
+	* @param _authorizationToken_ desired value for the property authorizationToken.
+	* More information under https://w3id.org/idsa/core/authorizationToken
+	*/
 	final public void setAuthorizationToken (Token _authorizationToken_) {
 		this._authorizationToken = _authorizationToken_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "The contract which is (or will be) the legal basis of the data transfer."@en
+	* @return Returns the URI for the property transferContract.
+	* More information under https://w3id.org/idsa/core/transferContract
+	*/
 	@JsonProperty("ids:transferContract")
-	URI getTransferContract() {
+	final public URI getTransferContract() {
 		return _transferContract;
 	}
+
+	
+	/**
+	* "The contract which is (or will be) the legal basis of the data transfer."@en
+	* @param _transferContract_ desired value for the property transferContract.
+	* More information under https://w3id.org/idsa/core/transferContract
+	*/
 	final public void setTransferContract (URI _transferContract_) {
 		this._transferContract = _transferContract_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "Version of the content in the payload. Use digits and semantic versioning pattern like MAJOR.MINOR.PATCH."@en
+	* @return Returns the String for the property contentVersion.
+	* More information under https://w3id.org/idsa/core/contentVersion
+	*/
 	@JsonProperty("ids:contentVersion")
-	String getContentVersion() {
+	final public String getContentVersion() {
 		return _contentVersion;
 	}
+
+	
+	/**
+	* "Version of the content in the payload. Use digits and semantic versioning pattern like MAJOR.MINOR.PATCH."@en
+	* @param _contentVersion_ desired value for the property contentVersion.
+	* More information under https://w3id.org/idsa/core/contentVersion
+	*/
 	final public void setContentVersion (String _contentVersion_) {
 		this._contentVersion = _contentVersion_;
 	}

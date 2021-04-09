@@ -8,100 +8,122 @@ import java.lang.String;
 import java.math.BigInteger;
 import java.net.URL;
 import java.net.URI;
-import java.util.*;
-import javax.validation.constraints.*;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
-import javax.validation.constraints.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /** 
-	"Participant Certification"@en
-
-	"Process and result of certifying an interested party in order to become a certified member of the International Data Space."@en */
+* "Participant Certification"@en
+* "Process and result of certifying an interested party in order to become a certified member of the International Data Space."@en 
+*/
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeName("ids:ParticipantCertification")
 public class ParticipantCertificationImpl implements Serializable, ParticipantCertification {
 
 	@JsonProperty("@id")
 	@JsonAlias({"@id", "id"})
-	@javax.validation.constraints.NotNull URI id;
+	@NotNull
+	protected URI id;
 
 	//List of all labels of this class
 	@JsonIgnore
-	java.util.List<TypedLiteral> label = Arrays.asList(new TypedLiteral("Participant Certification", "en"));
+	protected List<TypedLiteral> label = Arrays.asList(new TypedLiteral("Participant Certification", "en"));
+
 	//List of all comments of this class
 	@JsonIgnore
-	java.util.List<TypedLiteral> comment = Arrays.asList(new TypedLiteral("Process and result of certifying an interested party in order to become a certified member of the International Data Space.", "en"));
+	protected List<TypedLiteral> comment = Arrays.asList(new TypedLiteral("Process and result of certifying an interested party in order to become a certified member of the International Data Space.", "en"));
 
 	// all classes have a generic property array
 	@JsonIgnore
-	java.util.Map<String,Object> properties;
+	protected Map<String,Object> properties;
 
-	// instance fields as derived from information model
+	// instance fields as derived from the IDSA Information Model ontology
 
 	/**
-	"certification level"@en
-
-	"Level of certification (based on a combination of requierements, evaluation method etc.)"@en
+	* "certification level"@en
+	* "Level of certification (based on a combination of requierements, evaluation method etc.)"@en
 	*/
 	@JsonAlias({"ids:certificationLevel", "certificationLevel"})
-	 CertificationLevel _certificationLevel;
+	protected CertificationLevel _certificationLevel;
+
 
 	/**
-	"description"@en
-
-	"Explanation of the resource in a natural language text."@en
+	* "description"@en
+	* "Explanation of the resource in a natural language text."@en
 	*/
 	@JsonAlias({"ids:description", "description"})
-	 java.util.ArrayList<? extends de.fraunhofer.iais.eis.util.TypedLiteral> _description;
+	protected ArrayList<? extends TypedLiteral> _description;
+
 
 	/**
-	"evaluation facility"@en
-
-	"Evaluation Facility that performed and issued given Certification"@en
+	* "evaluation facility"@en
+	* "Evaluation Facility that performed and issued given Certification"@en
 	*/
 	@JsonAlias({"ids:evaluationFacility", "evaluationFacility"})
-	 EvaluationFacility _evaluationFacility;
+	protected EvaluationFacility _evaluationFacility;
+
 
 	/**
-	"last valid date"@en
-
-	"Last date (as xsd:dateTimeStamp) the given Certification is considered valid."@en
+	* "last valid date"@en
+	* "Last date (as xsd:dateTimeStamp) the given Certification is considered valid."@en
 	*/
 	@JsonAlias({"ids:lastValidDate", "lastValidDate"})
-	 XMLGregorianCalendar _lastValidDate;
+	protected XMLGregorianCalendar _lastValidDate;
+
 
 	/**
-	"membership end"@en
-
-	"End of the participant\'s IDS membership."@en
+	* "membership end"@en
+	* "End of the participant\'s IDS membership."@en
 	*/
 	@JsonAlias({"ids:membershipEnd", "membershipEnd"})
-	 XMLGregorianCalendar _membershipEnd;
+	protected XMLGregorianCalendar _membershipEnd;
+
 
 	/**
-	"title"@en
-
-	"(Localized) name of the entity."@en
+	* "title"@en
+	* "(Localized) name of the entity."@en
 	*/
 	@JsonAlias({"ids:title", "title"})
-	 java.util.ArrayList<? extends de.fraunhofer.iais.eis.util.TypedLiteral> _title;
+	protected ArrayList<? extends TypedLiteral> _title;
+
 
 	/**
-	"version"@en
-
-	"Version identifier of the Managed Entity"@en
+	* "version"@en
+	* "Version identifier of the Managed Entity"@en
 	*/
 	@JsonAlias({"ids:version", "version"})
-	 String _version;
+	protected String _version;
+
 
 	// no manual construction
-	ParticipantCertificationImpl() {
+	protected ParticipantCertificationImpl() {
 		id = VocabUtil.getInstance().createRandomUrl("participantCertification");
 	}
 
+	/**
+	* This function retrieves the ID of the current object (can be set via the constructor of the builder class)
+	* @return ID of current object as URI
+	*/
 	@JsonProperty("@id")
 	final public URI getId() {
 		return id;
@@ -111,20 +133,30 @@ public class ParticipantCertificationImpl implements Serializable, ParticipantCe
 		return VocabUtil.getInstance().toRdf(this);
 	}
 
-	public java.util.List<TypedLiteral> getLabel() {
+	/**
+	* This function retrieves a human readable label about the current class, as defined in the ontology.
+	* This label could, for example, be used as a field heading in a user interface
+	* @return Human readable label
+	*/
+	public List<TypedLiteral> getLabel() {
 		return this.label;
 	}
 
-	public java.util.List<TypedLiteral> getComment() {
+	/**
+	* This function retrieves a human readable explanatory comment about the current class, as defined in the ontology.
+	* This comment could, for example, be used as a tooltip in a user interface
+	* @return Human readable explanatory comment
+	*/
+	public List<TypedLiteral> getComment() {
 		return this.comment;
 	}
 
 	// getter and setter for generic property map
 	@JsonAnyGetter
-	public java.util.Map<String,Object> getProperties() {
+	public Map<String,Object> getProperties() {
 		if (this.properties == null) return null;
 		Iterator<String> iter = this.properties.keySet().iterator();
-		java.util.Map<String,Object> resultset = new HashMap<String, Object>();
+		Map<String,Object> resultset = new HashMap<String, Object>();
 		while (iter.hasNext()) {
 			String key = iter.next();
 			resultset.put(key,urifyObjects(this.properties.get(key)));
@@ -141,9 +173,9 @@ public class ParticipantCertificationImpl implements Serializable, ParticipantCe
 			ArrayList<Object> result_array = new ArrayList<Object>();
 			((ArrayList) value).forEach(x -> result_array.add(urifyObjects(x)));
 			return result_array;
-		} else if (value instanceof java.util.Map) {
-			java.util.Map<String, Object> result_map = new HashMap<String, Object>();
-			((java.util.Map) value).forEach((k,v) -> result_map.put(k.toString(), urifyObjects(v)));
+		} else if (value instanceof Map) {
+			Map<String, Object> result_map = new HashMap<String, Object>();
+			((Map) value).forEach((k,v) -> result_map.put(k.toString(), urifyObjects(v)));
 			return result_map;
 		}
 		return value;
@@ -151,86 +183,153 @@ public class ParticipantCertificationImpl implements Serializable, ParticipantCe
 
 	@JsonAnySetter
 	public void setProperty(String property, Object value) {
-	if (this.properties == null) this.properties = new java.util.HashMap<String,Object>();
-	if (property.startsWith("@")) {return ;};
-	this.properties.put(property, value) ;
+		if (this.properties == null) this.properties = new HashMap<String,Object>();
+		if (property.startsWith("@")) {return ;};
+		this.properties.put(property, value) ;
 	}
-	// accessor method implementations as derived from information model
 
-	final public 
+	// accessor method implementations as derived from the IDSA Information Model ontology
+
+
+	/**
+	* "End of the participant\'s IDS membership."@en
+	* @return Returns the XMLGregorianCalendar for the property membershipEnd.
+	* More information under https://w3id.org/idsa/core/membershipEnd
+	*/
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
-	
 	@JsonProperty("ids:membershipEnd")
-	XMLGregorianCalendar getMembershipEnd() {
+	final public XMLGregorianCalendar getMembershipEnd() {
 		return _membershipEnd;
 	}
+
+	
+	/**
+	* "End of the participant\'s IDS membership."@en
+	* @param _membershipEnd_ desired value for the property membershipEnd.
+	* More information under https://w3id.org/idsa/core/membershipEnd
+	*/
 	final public void setMembershipEnd (XMLGregorianCalendar _membershipEnd_) {
 		this._membershipEnd = _membershipEnd_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "Level of certification (based on a combination of requierements, evaluation method etc.)"@en
+	* @return Returns the CertificationLevel for the property certificationLevel.
+	* More information under https://w3id.org/idsa/core/certificationLevel
+	*/
 	@JsonProperty("ids:certificationLevel")
-	CertificationLevel getCertificationLevel() {
+	final public CertificationLevel getCertificationLevel() {
 		return _certificationLevel;
 	}
+
+	
+	/**
+	* "Level of certification (based on a combination of requierements, evaluation method etc.)"@en
+	* @param _certificationLevel_ desired value for the property certificationLevel.
+	* More information under https://w3id.org/idsa/core/certificationLevel
+	*/
 	final public void setCertificationLevel (CertificationLevel _certificationLevel_) {
 		this._certificationLevel = _certificationLevel_;
 	}
 
-	final public 
+	/**
+	* "Last date (as xsd:dateTimeStamp) the given Certification is considered valid."@en
+	* @return Returns the XMLGregorianCalendar for the property lastValidDate.
+	* More information under https://w3id.org/idsa/core/lastValidDate
+	*/
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
-	
 	@JsonProperty("ids:lastValidDate")
-	XMLGregorianCalendar getLastValidDate() {
+	final public XMLGregorianCalendar getLastValidDate() {
 		return _lastValidDate;
 	}
+
+	
+	/**
+	* "Last date (as xsd:dateTimeStamp) the given Certification is considered valid."@en
+	* @param _lastValidDate_ desired value for the property lastValidDate.
+	* More information under https://w3id.org/idsa/core/lastValidDate
+	*/
 	final public void setLastValidDate (XMLGregorianCalendar _lastValidDate_) {
 		this._lastValidDate = _lastValidDate_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "Evaluation Facility that performed and issued given Certification"@en
+	* @return Returns the EvaluationFacility for the property evaluationFacility.
+	* More information under https://w3id.org/idsa/core/evaluationFacility
+	*/
 	@JsonProperty("ids:evaluationFacility")
-	EvaluationFacility getEvaluationFacility() {
+	final public EvaluationFacility getEvaluationFacility() {
 		return _evaluationFacility;
 	}
+
+	
+	/**
+	* "Evaluation Facility that performed and issued given Certification"@en
+	* @param _evaluationFacility_ desired value for the property evaluationFacility.
+	* More information under https://w3id.org/idsa/core/evaluationFacility
+	*/
 	final public void setEvaluationFacility (EvaluationFacility _evaluationFacility_) {
 		this._evaluationFacility = _evaluationFacility_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "Version identifier of the Managed Entity"@en
+	* @return Returns the String for the property version.
+	* More information under https://w3id.org/idsa/core/version
+	*/
 	@JsonProperty("ids:version")
-	String getVersion() {
+	final public String getVersion() {
 		return _version;
 	}
+
+	
+	/**
+	* "Version identifier of the Managed Entity"@en
+	* @param _version_ desired value for the property version.
+	* More information under https://w3id.org/idsa/core/version
+	*/
 	final public void setVersion (String _version_) {
 		this._version = _version_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "(Localized) name of the entity."@en
+	* @return Returns the ArrayList of TypedLiteral for the property title.
+	* More information under https://w3id.org/idsa/core/title
+	*/
 	@JsonProperty("ids:title")
-	java.util.ArrayList<? extends de.fraunhofer.iais.eis.util.TypedLiteral> getTitle() {
+	final public ArrayList<? extends TypedLiteral> getTitle() {
 		return _title;
 	}
-	final public void setTitle (java.util.ArrayList<? extends de.fraunhofer.iais.eis.util.TypedLiteral> _title_) {
+
+	
+	/**
+	* "(Localized) name of the entity."@en
+	* @param _title_ desired value for the property title.
+	* More information under https://w3id.org/idsa/core/title
+	*/
+	final public void setTitle (ArrayList<? extends TypedLiteral> _title_) {
 		this._title = _title_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "Explanation of the resource in a natural language text."@en
+	* @return Returns the ArrayList of TypedLiteral for the property description.
+	* More information under https://w3id.org/idsa/core/description
+	*/
 	@JsonProperty("ids:description")
-	java.util.ArrayList<? extends de.fraunhofer.iais.eis.util.TypedLiteral> getDescription() {
+	final public ArrayList<? extends TypedLiteral> getDescription() {
 		return _description;
 	}
-	final public void setDescription (java.util.ArrayList<? extends de.fraunhofer.iais.eis.util.TypedLiteral> _description_) {
+
+	
+	/**
+	* "Explanation of the resource in a natural language text."@en
+	* @param _description_ desired value for the property description.
+	* More information under https://w3id.org/idsa/core/description
+	*/
+	final public void setDescription (ArrayList<? extends TypedLiteral> _description_) {
 		this._description = _description_;
 	}
 

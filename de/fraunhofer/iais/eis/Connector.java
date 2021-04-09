@@ -8,105 +8,133 @@ import java.lang.String;
 import java.math.BigInteger;
 import java.net.URL;
 import java.net.URI;
-import java.util.*;
-import javax.validation.constraints.*;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
-import javax.validation.constraints.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
-	"Connector"@en
-
-	"Dedicated communication server for sending and receiving data in compliance with the Connector specification. There are different types of Connectors according to provided capabilities."@en*/
+* "Connector"@en
+* "Dedicated communication server for sending and receiving data in compliance with the Connector specification. There are different types of Connectors according to provided capabilities."@en
+*/
 @JsonTypeInfo(use=JsonTypeInfo.Id.NAME, property="@type")
 @JsonSubTypes({
-@JsonSubTypes.Type(value = AppStore.class),
-
-@JsonSubTypes.Type(value = BaseConnector.class),
-
-@JsonSubTypes.Type(value = Broker.class),
-
-@JsonSubTypes.Type(value = ParIS.class),
-
-@JsonSubTypes.Type(value = TrustedConnector.class),})
+	@JsonSubTypes.Type(value = Broker.class),
+	@JsonSubTypes.Type(value = AppStore.class),
+	@JsonSubTypes.Type(value = BaseConnector.class),
+	@JsonSubTypes.Type(value = TrustedConnector.class),
+	@JsonSubTypes.Type(value = ParIS.class)
+})
 public interface Connector extends InfrastructureComponent {
 
 	// standard methods
 
+	/**
+	* This function retrieves the ID of the current object (can be set via the constructor of the builder class)
+	* @return ID of current object as URI
+	*/
 	@JsonProperty("@id")
-	@javax.validation.constraints.NotNull URI getId();
-	java.util.List<TypedLiteral> getLabel();
-	java.util.List<TypedLiteral> getComment();
-	String toRdf();
+	@NotNull
+	public URI getId();
+
+	/**
+	* This function retrieves a human readable label about the current class, as defined in the ontology.
+	* This label could, for example, be used as a field heading in a user interface
+	* @return Human readable label
+	*/
+	public List<TypedLiteral> getLabel();
+
+	/**
+	* This function retrieves a human readable explanatory comment about the current class, as defined in the ontology.
+	* This comment could, for example, be used as a tooltip in a user interface
+	* @return Human readable explanatory comment
+	*/
+	public List<TypedLiteral> getComment();
+
+	public String toRdf();
 
 	// getter and setter for generic property map
-	public java.util.Map<String,Object> getProperties();
+	public Map<String,Object> getProperties();
 	public void setProperty(String property, Object value);
 
-	// accessor methods as derived from information model
-	/**
-	"has endpoint"@en
+	// accessor methods as derived from the IDSA Information Model ontology
 
-	"Reference to the Endpoints serving the resource\'s content or let you exchange messages with an IDS Connector."@en
+
+	/**
+	* "Reference to the Endpoints serving the resource\'s content or let you exchange messages with an IDS Connector."@en
+	* @return Returns the ArrayList of ConnectorEndpoint for the property hasEndpoint.
+	* More information under https://w3id.org/idsa/core/hasEndpoint
 	*/
-	
-	
 	@JsonProperty("ids:hasEndpoint")
-	java.util.ArrayList<? extends ConnectorEndpoint> getHasEndpoint();
-	/**
-	"has Agent"@en
+	public ArrayList<? extends ConnectorEndpoint> getHasEndpoint();
 
-	"The Agents for which this Connector may initiate and receive Messages."@en
+	/**
+	* "The Agents for which this Connector may initiate and receive Messages."@en
+	* @return Returns the ArrayList of URI for the property hasAgent.
+	* More information under https://w3id.org/idsa/core/hasAgent
 	*/
-	
-	
 	@JsonProperty("ids:hasAgent")
-	java.util.ArrayList<? extends URI> getHasAgent();
-	/**
-	"resource catalog"@en
+	public ArrayList<? extends URI> getHasAgent();
 
-	"References the Catalog of published or requested resource by this Connector."@en
+	/**
+	* "References the Catalog of published or requested resource by this Connector."@en
+	* @return Returns the ArrayList of ResourceCatalog for the property resourceCatalog.
+	* More information under https://w3id.org/idsa/core/resourceCatalog
 	*/
-	
-	
 	@JsonProperty("ids:resourceCatalog")
-	java.util.ArrayList<? extends ResourceCatalog> getResourceCatalog();
-	/**
-	"has default endpoint"@en
+	public ArrayList<? extends ResourceCatalog> getResourceCatalog();
 
-	"Indicates the default endpoint that should be used for basic infrastructure interactions, e.g., providing the self description."@en
+	/**
+	* "Indicates the default endpoint that should be used for basic infrastructure interactions, e.g., providing the self description."@en
+	* @return Returns the ConnectorEndpoint for the property hasDefaultEndpoint.
+	* More information under https://w3id.org/idsa/core/hasDefaultEndpoint
 	*/
-	
-	
+	@NotNull
 	@JsonProperty("ids:hasDefaultEndpoint")
-	ConnectorEndpoint getHasDefaultEndpoint();
-	/**
-	"authInfo"@en
+	public ConnectorEndpoint getHasDefaultEndpoint();
 
-	"Information of the authentication service used by the Connector."@en
+	/**
+	* "Information of the authentication service used by the Connector."@en
+	* @return Returns the AuthInfo for the property authInfo.
+	* More information under https://w3id.org/idsa/core/authInfo
 	*/
-	
-	
 	@JsonProperty("ids:authInfo")
-	AuthInfo getAuthInfo();
-	/**
-	"securityProfile"@en
+	public AuthInfo getAuthInfo();
 
-	"The SecurityProfile supported by the Connector."@en
+	/**
+	* "The SecurityProfile supported by the Connector."@en
+	* @return Returns the SecurityProfile for the property securityProfile.
+	* More information under https://w3id.org/idsa/core/securityProfile
 	*/
-	
 	@NotNull
 	@JsonProperty("ids:securityProfile")
-	SecurityProfile getSecurityProfile();
-	/**
-	"extended guarantee"@en
+	public SecurityProfile getSecurityProfile();
 
-	"Reference to a security guarantee that, if used in combination with a security profile instance, overrides the respective guarantee of the given predefined instance."@en
+	/**
+	* "Reference to a security guarantee that, if used in combination with a security profile instance, overrides the respective guarantee of the given predefined instance."@en
+	* @return Returns the ArrayList of SecurityGuarantee for the property extendedGuarantee.
+	* More information under https://w3id.org/idsa/core/extendedGuarantee
 	*/
-	
-	
 	@JsonProperty("ids:extendedGuarantee")
-	java.util.ArrayList<? extends SecurityGuarantee> getExtendedGuarantee();
+	public ArrayList<? extends SecurityGuarantee> getExtendedGuarantee();
+
 }

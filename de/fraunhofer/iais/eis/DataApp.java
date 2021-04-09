@@ -8,83 +8,114 @@ import java.lang.String;
 import java.math.BigInteger;
 import java.net.URL;
 import java.net.URI;
-import java.util.*;
-import javax.validation.constraints.*;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
-import javax.validation.constraints.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
-	"DataApp"@en
-
-	"Self-contained, self-descriptive software package that is distributed via the App Store and deployed inside a Connector; provides access to data and data processing capa­bilities; the interface of a Data App is semantically described by the IDS Information Model."@en*/
+* "DataApp"@en
+* "Self-contained, self-descriptive software package that is distributed via the App Store and deployed inside a Connector; provides access to data and data processing capa­bilities; the interface of a Data App is semantically described by the IDS Information Model."@en
+*/
 @JsonTypeInfo(use=JsonTypeInfo.Id.NAME, property="@type")
 @JsonSubTypes({
-@JsonSubTypes.Type(value = OrchestrationApp.class),
-
-@JsonSubTypes.Type(value = SmartDataApp.class),
-
-@JsonSubTypes.Type(value = SystemAdapter.class),})
+	@JsonSubTypes.Type(value = SystemAdapter.class),
+	@JsonSubTypes.Type(value = OrchestrationApp.class),
+	@JsonSubTypes.Type(value = SmartDataApp.class)
+})
 public interface DataApp {
 
 	// standard methods
 
+	/**
+	* This function retrieves the ID of the current object (can be set via the constructor of the builder class)
+	* @return ID of current object as URI
+	*/
 	@JsonProperty("@id")
-	@javax.validation.constraints.NotNull URI getId();
-	java.util.List<TypedLiteral> getLabel();
-	java.util.List<TypedLiteral> getComment();
-	String toRdf();
+	@NotNull
+	public URI getId();
+
+	/**
+	* This function retrieves a human readable label about the current class, as defined in the ontology.
+	* This label could, for example, be used as a field heading in a user interface
+	* @return Human readable label
+	*/
+	public List<TypedLiteral> getLabel();
+
+	/**
+	* This function retrieves a human readable explanatory comment about the current class, as defined in the ontology.
+	* This comment could, for example, be used as a tooltip in a user interface
+	* @return Human readable explanatory comment
+	*/
+	public List<TypedLiteral> getComment();
+
+	public String toRdf();
 
 	// getter and setter for generic property map
-	public java.util.Map<String,Object> getProperties();
+	public Map<String,Object> getProperties();
 	public void setProperty(String property, Object value);
 
-	// accessor methods as derived from information model
-	/**
-	"app endpoint"@en
+	// accessor methods as derived from the IDSA Information Model ontology
 
-	"Endpoints of a data app"@en
+
+	/**
+	* "Endpoints of a data app"@en
+	* @return Returns the ArrayList of AppEndpoint for the property appEndpoint.
+	* More information under https://w3id.org/idsa/core/appEndpoint
 	*/
-	
 	@NotEmpty
 	@JsonProperty("ids:appEndpoint")
-	java.util.ArrayList<? extends AppEndpoint> getAppEndpoint();
-	/**
-	"supported usage policies"@en
+	public ArrayList<? extends AppEndpoint> getAppEndpoint();
 
-	"IDS Usage Policies a DataApp supports"@en
+	/**
+	* "IDS Usage Policies a DataApp supports"@en
+	* @return Returns the ArrayList of UsagePolicyClass for the property supportedUsagePolicies.
+	* More information under https://w3id.org/idsa/core/supportedUsagePolicies
 	*/
-	
-	
 	@JsonProperty("ids:supportedUsagePolicies")
-	java.util.ArrayList<? extends UsagePolicyClass> getSupportedUsagePolicies();
-	/**
-	"app documentation"@en
+	public ArrayList<? extends UsagePolicyClass> getSupportedUsagePolicies();
 
-	"text documentation of the data app"@en
+	/**
+	* "text documentation of the data app"@en
+	* @return Returns the String for the property appDocumentation.
+	* More information under https://w3id.org/idsa/core/appDocumentation
 	*/
-	
-	
 	@JsonProperty("ids:appDocumentation")
-	String getAppDocumentation();
-	/**
-	"app environment variables"@en
+	public String getAppDocumentation();
 
-	"Necessary or optional environment variables of a data app."@en
+	/**
+	* "Necessary or optional environment variables of a data app."@en
+	* @return Returns the String for the property appEnvironmentVariables.
+	* More information under https://w3id.org/idsa/core/appEnvironmentVariables
 	*/
-	
-	
 	@JsonProperty("ids:appEnvironmentVariables")
-	String getAppEnvironmentVariables();
-	/**
-	"app storage configuration"@en
+	public String getAppEnvironmentVariables();
 
-	"Storage configuration of a data app. Value may differ based on the app ecosystem, e.g. a writeable path in the file system or a volume name (e.g. for containerized apps)"@en
+	/**
+	* "Storage configuration of a data app. Value may differ based on the app ecosystem, e.g. a writeable path in the file system or a volume name (e.g. for containerized apps)"@en
+	* @return Returns the String for the property appStorageConfiguration.
+	* More information under https://w3id.org/idsa/core/appStorageConfiguration
 	*/
-	
-	
 	@JsonProperty("ids:appStorageConfiguration")
-	String getAppStorageConfiguration();
+	public String getAppStorageConfiguration();
+
 }

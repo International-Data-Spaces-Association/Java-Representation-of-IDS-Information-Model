@@ -8,108 +8,130 @@ import java.lang.String;
 import java.math.BigInteger;
 import java.net.URL;
 import java.net.URI;
-import java.util.*;
-import javax.validation.constraints.*;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
-import javax.validation.constraints.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /** 
-	"Generic Endpoint"@en
-
-	"Generic endpoints describe non-IDS-specific endpoints, e.g., to integrate external services."@en */
+* "Generic Endpoint"@en
+* "Generic endpoints describe non-IDS-specific endpoints, e.g., to integrate external services."@en 
+*/
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeName("ids:GenericEndpoint")
 public class GenericEndpointImpl implements Serializable, GenericEndpoint {
 
 	@JsonProperty("@id")
 	@JsonAlias({"@id", "id"})
-	@javax.validation.constraints.NotNull URI id;
+	@NotNull
+	protected URI id;
 
 	//List of all labels of this class
 	@JsonIgnore
-	java.util.List<TypedLiteral> label = Arrays.asList(new TypedLiteral("Generic Endpoint", "en"));
+	protected List<TypedLiteral> label = Arrays.asList(new TypedLiteral("Generic Endpoint", "en"));
+
 	//List of all comments of this class
 	@JsonIgnore
-	java.util.List<TypedLiteral> comment = Arrays.asList(new TypedLiteral("Generic endpoints describe non-IDS-specific endpoints, e.g., to integrate external services.", "en"));
+	protected List<TypedLiteral> comment = Arrays.asList(new TypedLiteral("Generic endpoints describe non-IDS-specific endpoints, e.g., to integrate external services.", "en"));
 
 	// all classes have a generic property array
 	@JsonIgnore
-	java.util.Map<String,Object> properties;
+	protected Map<String,Object> properties;
 
-	// instance fields as derived from information model
+	// instance fields as derived from the IDSA Information Model ontology
 
 	/**
-	"access URL"@en
-
-	"Access URL of an endpoint."@en
+	* "access URL"@en
+	* "Access URL of an endpoint."@en
 	*/
 	@JsonAlias({"ids:accessURL", "accessURL"})
-	 URI _accessURL;
+	protected URI _accessURL;
+
 
 	/**
-	"endpoint documentation"@en
-
-	"IRI reference to a documentation of the endpoint, e.g., reference to an OpenAPI-based documentation."@en
+	* "endpoint documentation"@en
+	* "IRI reference to a documentation of the endpoint, e.g., reference to an OpenAPI-based documentation."@en
 	*/
 	@JsonAlias({"ids:endpointDocumentation", "endpointDocumentation"})
-	 java.util.ArrayList<? extends URI> _endpointDocumentation;
+	protected ArrayList<? extends URI> _endpointDocumentation;
+
 
 	/**
-	"endpoint information"@en
-
-	"Human-readable information and description of the endpoint."@en
+	* "endpoint information"@en
+	* "Human-readable information and description of the endpoint."@en
 	*/
 	@JsonAlias({"ids:endpointInformation", "endpointInformation"})
-	 java.util.ArrayList<? extends de.fraunhofer.iais.eis.util.TypedLiteral> _endpointInformation;
+	protected ArrayList<? extends TypedLiteral> _endpointInformation;
+
 
 	/**
-	"generic endpoint authentication"@en
-
-	"Authentication credentials for generic endpoints. "@en
+	* "generic endpoint authentication"@en
+	* "Authentication credentials for generic endpoints. "@en
 	*/
 	@JsonAlias({"ids:genericEndpointAuthentication", "genericEndpointAuthentication"})
-	 BasicAuthentication _genericEndpointAuthentication;
+	protected BasicAuthentication _genericEndpointAuthentication;
+
 
 	/**
-	"generic endpoint configuration"@en
-
-	"Endpoint-specific configuration details (e.g., contents of a config file) used for the endpoint."@en
+	* "generic endpoint configuration"@en
+	* "Endpoint-specific configuration details (e.g., contents of a config file) used for the endpoint."@en
 	*/
 	@JsonAlias({"ids:genericEndpointConfiguration", "genericEndpointConfiguration"})
-	 String _genericEndpointConfiguration;
+	protected String _genericEndpointConfiguration;
+
 
 	/**
-	"inbound topic"@en
-
-	"Relative path used for inbound communication via this endpoint, i.e., input messages and faults only."@en
+	* "inbound topic"@en
+	* "Relative path used for inbound communication via this endpoint, i.e., input messages and faults only."@en
 	*/
 	@JsonAlias({"ids:inboundPath", "inboundPath"})
-	 String _inboundPath;
+	protected String _inboundPath;
+
 
 	/**
-	"outbound topic"@en
-
-	"Relative path used for outbound communication via this endpoint, i.e., output messages and faults only."@en
+	* "outbound topic"@en
+	* "Relative path used for outbound communication via this endpoint, i.e., output messages and faults only."@en
 	*/
 	@JsonAlias({"ids:outboundPath", "outboundPath"})
-	 String _outboundPath;
+	protected String _outboundPath;
+
 
 	/**
-	"path"@en
-
-	"Relative path, topic or queue at which the content is published by the related host."@en
+	* "path"@en
+	* "Relative path, topic or queue at which the content is published by the related host."@en
 	*/
 	@JsonAlias({"ids:path", "path"})
-	 String _path;
+	protected String _path;
+
 
 	// no manual construction
-	GenericEndpointImpl() {
+	protected GenericEndpointImpl() {
 		id = VocabUtil.getInstance().createRandomUrl("genericEndpoint");
 	}
 
+	/**
+	* This function retrieves the ID of the current object (can be set via the constructor of the builder class)
+	* @return ID of current object as URI
+	*/
 	@JsonProperty("@id")
 	final public URI getId() {
 		return id;
@@ -119,20 +141,30 @@ public class GenericEndpointImpl implements Serializable, GenericEndpoint {
 		return VocabUtil.getInstance().toRdf(this);
 	}
 
-	public java.util.List<TypedLiteral> getLabel() {
+	/**
+	* This function retrieves a human readable label about the current class, as defined in the ontology.
+	* This label could, for example, be used as a field heading in a user interface
+	* @return Human readable label
+	*/
+	public List<TypedLiteral> getLabel() {
 		return this.label;
 	}
 
-	public java.util.List<TypedLiteral> getComment() {
+	/**
+	* This function retrieves a human readable explanatory comment about the current class, as defined in the ontology.
+	* This comment could, for example, be used as a tooltip in a user interface
+	* @return Human readable explanatory comment
+	*/
+	public List<TypedLiteral> getComment() {
 		return this.comment;
 	}
 
 	// getter and setter for generic property map
 	@JsonAnyGetter
-	public java.util.Map<String,Object> getProperties() {
+	public Map<String,Object> getProperties() {
 		if (this.properties == null) return null;
 		Iterator<String> iter = this.properties.keySet().iterator();
-		java.util.Map<String,Object> resultset = new HashMap<String, Object>();
+		Map<String,Object> resultset = new HashMap<String, Object>();
 		while (iter.hasNext()) {
 			String key = iter.next();
 			resultset.put(key,urifyObjects(this.properties.get(key)));
@@ -149,9 +181,9 @@ public class GenericEndpointImpl implements Serializable, GenericEndpoint {
 			ArrayList<Object> result_array = new ArrayList<Object>();
 			((ArrayList) value).forEach(x -> result_array.add(urifyObjects(x)));
 			return result_array;
-		} else if (value instanceof java.util.Map) {
-			java.util.Map<String, Object> result_map = new HashMap<String, Object>();
-			((java.util.Map) value).forEach((k,v) -> result_map.put(k.toString(), urifyObjects(v)));
+		} else if (value instanceof Map) {
+			Map<String, Object> result_map = new HashMap<String, Object>();
+			((Map) value).forEach((k,v) -> result_map.put(k.toString(), urifyObjects(v)));
 			return result_map;
 		}
 		return value;
@@ -159,96 +191,170 @@ public class GenericEndpointImpl implements Serializable, GenericEndpoint {
 
 	@JsonAnySetter
 	public void setProperty(String property, Object value) {
-	if (this.properties == null) this.properties = new java.util.HashMap<String,Object>();
-	if (property.startsWith("@")) {return ;};
-	this.properties.put(property, value) ;
+		if (this.properties == null) this.properties = new HashMap<String,Object>();
+		if (property.startsWith("@")) {return ;};
+		this.properties.put(property, value) ;
 	}
-	// accessor method implementations as derived from information model
 
-	final public 
-	
-	
+	// accessor method implementations as derived from the IDSA Information Model ontology
+
+
+	/**
+	* "Authentication credentials for generic endpoints. "@en
+	* @return Returns the BasicAuthentication for the property genericEndpointAuthentication.
+	* More information under https://w3id.org/idsa/core/genericEndpointAuthentication
+	*/
 	@JsonProperty("ids:genericEndpointAuthentication")
-	BasicAuthentication getGenericEndpointAuthentication() {
+	final public BasicAuthentication getGenericEndpointAuthentication() {
 		return _genericEndpointAuthentication;
 	}
+
+	
+	/**
+	* "Authentication credentials for generic endpoints. "@en
+	* @param _genericEndpointAuthentication_ desired value for the property genericEndpointAuthentication.
+	* More information under https://w3id.org/idsa/core/genericEndpointAuthentication
+	*/
 	final public void setGenericEndpointAuthentication (BasicAuthentication _genericEndpointAuthentication_) {
 		this._genericEndpointAuthentication = _genericEndpointAuthentication_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "Endpoint-specific configuration details (e.g., contents of a config file) used for the endpoint."@en
+	* @return Returns the String for the property genericEndpointConfiguration.
+	* More information under https://w3id.org/idsa/core/genericEndpointConfiguration
+	*/
 	@JsonProperty("ids:genericEndpointConfiguration")
-	String getGenericEndpointConfiguration() {
+	final public String getGenericEndpointConfiguration() {
 		return _genericEndpointConfiguration;
 	}
+
+	
+	/**
+	* "Endpoint-specific configuration details (e.g., contents of a config file) used for the endpoint."@en
+	* @param _genericEndpointConfiguration_ desired value for the property genericEndpointConfiguration.
+	* More information under https://w3id.org/idsa/core/genericEndpointConfiguration
+	*/
 	final public void setGenericEndpointConfiguration (String _genericEndpointConfiguration_) {
 		this._genericEndpointConfiguration = _genericEndpointConfiguration_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "Human-readable information and description of the endpoint."@en
+	* @return Returns the ArrayList of TypedLiteral for the property endpointInformation.
+	* More information under https://w3id.org/idsa/core/endpointInformation
+	*/
 	@JsonProperty("ids:endpointInformation")
-	java.util.ArrayList<? extends de.fraunhofer.iais.eis.util.TypedLiteral> getEndpointInformation() {
+	final public ArrayList<? extends TypedLiteral> getEndpointInformation() {
 		return _endpointInformation;
 	}
-	final public void setEndpointInformation (java.util.ArrayList<? extends de.fraunhofer.iais.eis.util.TypedLiteral> _endpointInformation_) {
+
+	
+	/**
+	* "Human-readable information and description of the endpoint."@en
+	* @param _endpointInformation_ desired value for the property endpointInformation.
+	* More information under https://w3id.org/idsa/core/endpointInformation
+	*/
+	final public void setEndpointInformation (ArrayList<? extends TypedLiteral> _endpointInformation_) {
 		this._endpointInformation = _endpointInformation_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "IRI reference to a documentation of the endpoint, e.g., reference to an OpenAPI-based documentation."@en
+	* @return Returns the ArrayList of URI for the property endpointDocumentation.
+	* More information under https://w3id.org/idsa/core/endpointDocumentation
+	*/
 	@JsonProperty("ids:endpointDocumentation")
-	java.util.ArrayList<? extends URI> getEndpointDocumentation() {
+	final public ArrayList<? extends URI> getEndpointDocumentation() {
 		return _endpointDocumentation;
 	}
-	final public void setEndpointDocumentation (java.util.ArrayList<? extends URI> _endpointDocumentation_) {
+
+	
+	/**
+	* "IRI reference to a documentation of the endpoint, e.g., reference to an OpenAPI-based documentation."@en
+	* @param _endpointDocumentation_ desired value for the property endpointDocumentation.
+	* More information under https://w3id.org/idsa/core/endpointDocumentation
+	*/
+	final public void setEndpointDocumentation (ArrayList<? extends URI> _endpointDocumentation_) {
 		this._endpointDocumentation = _endpointDocumentation_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "Access URL of an endpoint."@en
+	* @return Returns the URI for the property accessURL.
+	* More information under https://w3id.org/idsa/core/accessURL
+	*/
 	@JsonProperty("ids:accessURL")
-	URI getAccessURL() {
+	final public URI getAccessURL() {
 		return _accessURL;
 	}
+
+	
+	/**
+	* "Access URL of an endpoint."@en
+	* @param _accessURL_ desired value for the property accessURL.
+	* More information under https://w3id.org/idsa/core/accessURL
+	*/
 	final public void setAccessURL (URI _accessURL_) {
 		this._accessURL = _accessURL_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "Relative path, topic or queue at which the content is published by the related host."@en
+	* @return Returns the String for the property path.
+	* More information under https://w3id.org/idsa/core/path
+	*/
 	@JsonProperty("ids:path")
-	String getPath() {
+	final public String getPath() {
 		return _path;
 	}
+
+	
+	/**
+	* "Relative path, topic or queue at which the content is published by the related host."@en
+	* @param _path_ desired value for the property path.
+	* More information under https://w3id.org/idsa/core/path
+	*/
 	final public void setPath (String _path_) {
 		this._path = _path_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "Relative path used for inbound communication via this endpoint, i.e., input messages and faults only."@en
+	* @return Returns the String for the property inboundPath.
+	* More information under https://w3id.org/idsa/core/inboundPath
+	*/
 	@JsonProperty("ids:inboundPath")
-	String getInboundPath() {
+	final public String getInboundPath() {
 		return _inboundPath;
 	}
+
+	
+	/**
+	* "Relative path used for inbound communication via this endpoint, i.e., input messages and faults only."@en
+	* @param _inboundPath_ desired value for the property inboundPath.
+	* More information under https://w3id.org/idsa/core/inboundPath
+	*/
 	final public void setInboundPath (String _inboundPath_) {
 		this._inboundPath = _inboundPath_;
 	}
 
-	final public 
-	
-	
+	/**
+	* "Relative path used for outbound communication via this endpoint, i.e., output messages and faults only."@en
+	* @return Returns the String for the property outboundPath.
+	* More information under https://w3id.org/idsa/core/outboundPath
+	*/
 	@JsonProperty("ids:outboundPath")
-	String getOutboundPath() {
+	final public String getOutboundPath() {
 		return _outboundPath;
 	}
+
+	
+	/**
+	* "Relative path used for outbound communication via this endpoint, i.e., output messages and faults only."@en
+	* @param _outboundPath_ desired value for the property outboundPath.
+	* More information under https://w3id.org/idsa/core/outboundPath
+	*/
 	final public void setOutboundPath (String _outboundPath_) {
 		this._outboundPath = _outboundPath_;
 	}
