@@ -100,6 +100,22 @@ public interface Participant extends Agent, ManagedEntity {
 	public ArrayList<? extends String> getCorporateEmailAddress();
 
 	/**
+	* "Company identifiers, described via ids:BusinessIdentifier."@en
+	* @return Returns the ArrayList of BusinessIdentifier for the property businessIdentifier.
+	* More information under https://w3id.org/idsa/core/businessIdentifier
+	*/
+	@JsonProperty("ids:businessIdentifier")
+	public ArrayList<? extends BusinessIdentifier> getBusinessIdentifier();
+
+	/**
+	* "The complete legal name of a Participant. Unlike the title property for the participant which refers to the commonly used name or term for the Participant, a legal name identifies a participant for legal, administrative and other official purposes."@en
+	* @return Returns the ArrayList of String for the property legalName.
+	* More information under https://w3id.org/idsa/core/legalName
+	*/
+	@JsonProperty("ids:legalName")
+	public ArrayList<? extends String> getLegalName();
+
+	/**
 	* "Indicates a primary site for the Organization, this is the default means by which an Organization can be contacted and is not necessarily the formal headquarters."@en
 	* @return Returns the Site for the property primarySite.
 	* More information under https://w3id.org/idsa/core/primarySite
@@ -130,5 +146,30 @@ public interface Participant extends Agent, ManagedEntity {
 	*/
 	@JsonProperty("ids:participantRefinement")
 	public AbstractConstraint getParticipantRefinement();
+
+	/**
+	* "The Value Added Tax ID (VAT ID) is used in the EU to clearly identify a company or entity which is liable for Value Added Tax."@en
+	* @return Returns the String for the property vatID.
+	* More information under https://w3id.org/idsa/core/vatID
+	*/
+	@JsonProperty("ids:vatID")
+	public String getVatID();
+
+	/**
+	* "Legal form of the participant. It is advisable to use an existing standard such as ISO-20275."@en
+	* @return Returns the String for the property legalForm.
+	* More information under https://w3id.org/idsa/core/legalForm
+	*/
+	@NotNull
+	@JsonProperty("ids:legalForm")
+	public String getLegalForm();
+
+	/**
+	* "jurisdiction / court which is responsible for the entity. The use of existing standards such as ISO 3166-2 is recommended."@en
+	* @return Returns the String for the property jurisdiction.
+	* More information under https://w3id.org/idsa/core/jurisdiction
+	*/
+	@JsonProperty("ids:jurisdiction")
+	public String getJurisdiction();
 
 }

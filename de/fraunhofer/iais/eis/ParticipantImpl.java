@@ -60,6 +60,14 @@ public class ParticipantImpl implements Serializable, Participant {
 	// instance fields as derived from the IDSA Information Model ontology
 
 	/**
+	* "has business identifier"@en
+	* "Company identifiers, described via ids:BusinessIdentifier."@en
+	*/
+	@JsonAlias({"ids:businessIdentifier", "businessIdentifier"})
+	protected ArrayList<? extends BusinessIdentifier> _businessIdentifier;
+
+
+	/**
 	* "corporateEmailAddress"@en
 	* "Email address for contacting the participant on a general level."@en
 	*/
@@ -81,6 +89,31 @@ public class ParticipantImpl implements Serializable, Participant {
 	*/
 	@JsonAlias({"ids:description", "description"})
 	protected ArrayList<? extends TypedLiteral> _description;
+
+
+	/**
+	* "legal form"@en
+	* "jurisdiction / court which is responsible for the entity. The use of existing standards such as ISO 3166-2 is recommended."@en
+	*/
+	@JsonAlias({"ids:jurisdiction", "jurisdiction"})
+	protected String _jurisdiction;
+
+
+	/**
+	* "legal form"@en
+	* "Legal form of the participant. It is advisable to use an existing standard such as ISO-20275."@en
+	*/
+	@NotNull
+	@JsonAlias({"ids:legalForm", "legalForm"})
+	protected String _legalForm;
+
+
+	/**
+	* "legal name"@en
+	* "The complete legal name of a Participant. Unlike the title property for the participant which refers to the commonly used name or term for the Participant, a legal name identifies a participant for legal, administrative and other official purposes."@en
+	*/
+	@JsonAlias({"ids:legalName", "legalName"})
+	protected ArrayList<? extends String> _legalName;
 
 
 	/**
@@ -129,6 +162,14 @@ public class ParticipantImpl implements Serializable, Participant {
 	*/
 	@JsonAlias({"ids:title", "title"})
 	protected ArrayList<? extends TypedLiteral> _title;
+
+
+	/**
+	* "vat ID"@en
+	* "The Value Added Tax ID (VAT ID) is used in the EU to clearly identify a company or entity which is liable for Value Added Tax."@en
+	*/
+	@JsonAlias({"ids:vatID", "vatID"})
+	protected String _vatID;
 
 
 	/**
@@ -276,6 +317,46 @@ public class ParticipantImpl implements Serializable, Participant {
 	}
 
 	/**
+	* "Company identifiers, described via ids:BusinessIdentifier."@en
+	* @return Returns the ArrayList of BusinessIdentifier for the property businessIdentifier.
+	* More information under https://w3id.org/idsa/core/businessIdentifier
+	*/
+	@JsonProperty("ids:businessIdentifier")
+	final public ArrayList<? extends BusinessIdentifier> getBusinessIdentifier() {
+		return _businessIdentifier;
+	}
+
+	
+	/**
+	* "Company identifiers, described via ids:BusinessIdentifier."@en
+	* @param _businessIdentifier_ desired value for the property businessIdentifier.
+	* More information under https://w3id.org/idsa/core/businessIdentifier
+	*/
+	final public void setBusinessIdentifier (ArrayList<? extends BusinessIdentifier> _businessIdentifier_) {
+		this._businessIdentifier = _businessIdentifier_;
+	}
+
+	/**
+	* "The complete legal name of a Participant. Unlike the title property for the participant which refers to the commonly used name or term for the Participant, a legal name identifies a participant for legal, administrative and other official purposes."@en
+	* @return Returns the ArrayList of String for the property legalName.
+	* More information under https://w3id.org/idsa/core/legalName
+	*/
+	@JsonProperty("ids:legalName")
+	final public ArrayList<? extends String> getLegalName() {
+		return _legalName;
+	}
+
+	
+	/**
+	* "The complete legal name of a Participant. Unlike the title property for the participant which refers to the commonly used name or term for the Participant, a legal name identifies a participant for legal, administrative and other official purposes."@en
+	* @param _legalName_ desired value for the property legalName.
+	* More information under https://w3id.org/idsa/core/legalName
+	*/
+	final public void setLegalName (ArrayList<? extends String> _legalName_) {
+		this._legalName = _legalName_;
+	}
+
+	/**
 	* "Indicates a primary site for the Organization, this is the default means by which an Organization can be contacted and is not necessarily the formal headquarters."@en
 	* @return Returns the Site for the property primarySite.
 	* More information under https://w3id.org/idsa/core/primarySite
@@ -353,6 +434,67 @@ public class ParticipantImpl implements Serializable, Participant {
 	*/
 	final public void setParticipantRefinement (AbstractConstraint _participantRefinement_) {
 		this._participantRefinement = _participantRefinement_;
+	}
+
+	/**
+	* "The Value Added Tax ID (VAT ID) is used in the EU to clearly identify a company or entity which is liable for Value Added Tax."@en
+	* @return Returns the String for the property vatID.
+	* More information under https://w3id.org/idsa/core/vatID
+	*/
+	@JsonProperty("ids:vatID")
+	final public String getVatID() {
+		return _vatID;
+	}
+
+	
+	/**
+	* "The Value Added Tax ID (VAT ID) is used in the EU to clearly identify a company or entity which is liable for Value Added Tax."@en
+	* @param _vatID_ desired value for the property vatID.
+	* More information under https://w3id.org/idsa/core/vatID
+	*/
+	final public void setVatID (String _vatID_) {
+		this._vatID = _vatID_;
+	}
+
+	/**
+	* "Legal form of the participant. It is advisable to use an existing standard such as ISO-20275."@en
+	* @return Returns the String for the property legalForm.
+	* More information under https://w3id.org/idsa/core/legalForm
+	*/
+	@NotNull
+	@JsonProperty("ids:legalForm")
+	final public String getLegalForm() {
+		return _legalForm;
+	}
+
+	
+	/**
+	* "Legal form of the participant. It is advisable to use an existing standard such as ISO-20275."@en
+	* @param _legalForm_ desired value for the property legalForm.
+	* More information under https://w3id.org/idsa/core/legalForm
+	*/
+	final public void setLegalForm (String _legalForm_) {
+		this._legalForm = _legalForm_;
+	}
+
+	/**
+	* "jurisdiction / court which is responsible for the entity. The use of existing standards such as ISO 3166-2 is recommended."@en
+	* @return Returns the String for the property jurisdiction.
+	* More information under https://w3id.org/idsa/core/jurisdiction
+	*/
+	@JsonProperty("ids:jurisdiction")
+	final public String getJurisdiction() {
+		return _jurisdiction;
+	}
+
+	
+	/**
+	* "jurisdiction / court which is responsible for the entity. The use of existing standards such as ISO 3166-2 is recommended."@en
+	* @param _jurisdiction_ desired value for the property jurisdiction.
+	* More information under https://w3id.org/idsa/core/jurisdiction
+	*/
+	final public void setJurisdiction (String _jurisdiction_) {
+		this._jurisdiction = _jurisdiction_;
 	}
 
 

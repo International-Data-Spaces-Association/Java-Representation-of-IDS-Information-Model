@@ -79,6 +79,28 @@ public class ParticipantBuilder {
 
 
 	/**
+	* This function allows setting a value for businessIdentifier
+	* @param _businessIdentifier_ desired value to be set
+	* @return Builder object with new value for businessIdentifier
+	*/
+	final public ParticipantBuilder _businessIdentifier_(ArrayList<? extends BusinessIdentifier> _businessIdentifier_) {
+		this.participantImpl._businessIdentifier = _businessIdentifier_;
+		return this;
+	}
+
+
+	/**
+	* This function allows setting a value for legalName
+	* @param _legalName_ desired value to be set
+	* @return Builder object with new value for legalName
+	*/
+	final public ParticipantBuilder _legalName_(ArrayList<? extends String> _legalName_) {
+		this.participantImpl._legalName = _legalName_;
+		return this;
+	}
+
+
+	/**
 	* This function allows setting a value for primarySite
 	* @param _primarySite_ desired value to be set
 	* @return Builder object with new value for primarySite
@@ -118,6 +140,39 @@ public class ParticipantBuilder {
 	*/
 	final public ParticipantBuilder _participantRefinement_(AbstractConstraint _participantRefinement_) {
 		this.participantImpl._participantRefinement = _participantRefinement_;
+		return this;
+	}
+
+
+	/**
+	* This function allows setting a value for vatID
+	* @param _vatID_ desired value to be set
+	* @return Builder object with new value for vatID
+	*/
+	final public ParticipantBuilder _vatID_(String _vatID_) {
+		this.participantImpl._vatID = _vatID_;
+		return this;
+	}
+
+
+	/**
+	* This function allows setting a value for legalForm
+	* @param _legalForm_ desired value to be set
+	* @return Builder object with new value for legalForm
+	*/
+	final public ParticipantBuilder _legalForm_(String _legalForm_) {
+		this.participantImpl._legalForm = _legalForm_;
+		return this;
+	}
+
+
+	/**
+	* This function allows setting a value for jurisdiction
+	* @param _jurisdiction_ desired value to be set
+	* @return Builder object with new value for jurisdiction
+	*/
+	final public ParticipantBuilder _jurisdiction_(String _jurisdiction_) {
+		this.participantImpl._jurisdiction = _jurisdiction_;
 		return this;
 	}
 
