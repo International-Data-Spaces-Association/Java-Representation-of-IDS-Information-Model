@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
 * "Participant"@en
-* "Stakeholder in the Industrial Data Space, assuming one or more of the predefined roles; every participant is given a unique identity by the Identity Provider."@en
+* "Stakeholder in the International Data Spaces, assuming one or more of the predefined roles; every participant is given a unique identity by the Identity Provider."@en
 */
 @JsonTypeInfo(use=JsonTypeInfo.Id.NAME, property="@type")
 @JsonSubTypes({

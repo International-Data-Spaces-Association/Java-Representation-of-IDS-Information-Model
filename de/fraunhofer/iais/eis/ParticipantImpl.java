@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /** 
 * "Participant"@en
-* "Stakeholder in the Industrial Data Space, assuming one or more of the predefined roles; every participant is given a unique identity by the Identity Provider."@en 
+* "Stakeholder in the International Data Spaces, assuming one or more of the predefined roles; every participant is given a unique identity by the Identity Provider."@en 
 */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeName("ids:Participant")
@@ -51,7 +51,7 @@ public class ParticipantImpl implements Serializable, Participant {
 
 	//List of all comments of this class
 	@JsonIgnore
-	protected List<TypedLiteral> comment = Arrays.asList(new TypedLiteral("Stakeholder in the Industrial Data Space, assuming one or more of the predefined roles; every participant is given a unique identity by the Identity Provider.", "en"));
+	protected List<TypedLiteral> comment = Arrays.asList(new TypedLiteral("Stakeholder in the International Data Spaces, assuming one or more of the predefined roles; every participant is given a unique identity by the Identity Provider.", "en"));
 
 	// all classes have a generic property array
 	@JsonIgnore

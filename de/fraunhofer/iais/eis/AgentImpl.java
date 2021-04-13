@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /** 
 * "Agent"@en
-* "Internal or external Agent interacting with the Industrial Data Space, not necessarily an IDS Participant."@en 
+* "Internal or external Agent interacting with the International Data Spaces, not necessarily an IDS Participant."@en 
 */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeName("ids:Agent")
@@ -51,7 +51,7 @@ public class AgentImpl implements Serializable, Agent {
 
 	//List of all comments of this class
 	@JsonIgnore
-	protected List<TypedLiteral> comment = Arrays.asList(new TypedLiteral("Internal or external Agent interacting with the Industrial Data Space, not necessarily an IDS Participant.", "en"));
+	protected List<TypedLiteral> comment = Arrays.asList(new TypedLiteral("Internal or external Agent interacting with the International Data Spaces, not necessarily an IDS Participant.", "en"));
 
 	// all classes have a generic property array
 	@JsonIgnore

@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
 * "Agent"@en
-* "Internal or external Agent interacting with the Industrial Data Space, not necessarily an IDS Participant."@en
+* "Internal or external Agent interacting with the International Data Spaces, not necessarily an IDS Participant."@en
 */
 @JsonTypeInfo(use=JsonTypeInfo.Id.NAME, property="@type")
 @JsonSubTypes({

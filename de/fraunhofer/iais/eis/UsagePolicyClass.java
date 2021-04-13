@@ -44,8 +44,10 @@ import java.util.stream.Stream;
 public enum UsagePolicyClass {
 
 	/** 
+	* "Allow data usage"@en
+	* "This policy restricts the usage of the data to a specific Data Consumer, regardless of how many connectors they have and without any further usage restriction."@en
 	*/
-	ALLOW_DATA_USAGE("https://w3id.org/idsa/code/ALLOW_DATA_USAGE", Collections.emptyList(), Collections.emptyList()),
+	ALLOW_DATA_USAGE("https://w3id.org/idsa/code/ALLOW_DATA_USAGE", Arrays.asList(new TypedLiteral("Allow data usage", "en")), Arrays.asList(new TypedLiteral("This policy restricts the usage of the data to a specific Data Consumer, regardless of how many connectors they have and without any further usage restriction.", "en"))),
 
 	/** 
 	* "System restricted data usage"@en
