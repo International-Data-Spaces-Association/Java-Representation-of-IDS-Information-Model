@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -104,10 +105,6 @@ public class ArtifactImpl implements Serializable, Artifact {
 		id = VocabUtil.getInstance().createRandomUrl("artifact");
 	}
 
-	/**
-	* This function retrieves the ID of the current object (can be set via the constructor of the builder class)
-	* @return ID of current object as URI
-	*/
 	@JsonProperty("@id")
 	final public URI getId() {
 		return id;
@@ -117,20 +114,10 @@ public class ArtifactImpl implements Serializable, Artifact {
 		return VocabUtil.getInstance().toRdf(this);
 	}
 
-	/**
-	* This function retrieves a human readable label about the current class, as defined in the ontology.
-	* This label could, for example, be used as a field heading in a user interface
-	* @return Human readable label
-	*/
 	public List<TypedLiteral> getLabel() {
 		return this.label;
 	}
 
-	/**
-	* This function retrieves a human readable explanatory comment about the current class, as defined in the ontology.
-	* This comment could, for example, be used as a tooltip in a user interface
-	* @return Human readable explanatory comment
-	*/
 	public List<TypedLiteral> getComment() {
 		return this.comment;
 	}
@@ -171,107 +158,77 @@ public class ArtifactImpl implements Serializable, Artifact {
 		if (property.startsWith("@")) {return ;};
 		this.properties.put(property, value) ;
 	}
+	public int hashCode() {
+		return Objects.hash(new Object[]{this._byteSize,
+			this._fileName,
+			this._creationDate,
+			this._checkSum,
+			this._duration});
+	}
+
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		} else if (obj == null) {
+			return false;
+		} else if (this.getClass() != obj.getClass()) {
+			return false;
+		} else {
+			ArtifactImpl other = (ArtifactImpl) obj;
+			return Objects.equals(this._byteSize, other._byteSize) &&
+				Objects.equals(this._fileName, other._fileName) &&
+				Objects.equals(this._creationDate, other._creationDate) &&
+				Objects.equals(this._checkSum, other._checkSum) &&
+				Objects.equals(this._duration, other._duration);
+		}
+	}
+
 
 	// accessor method implementations as derived from the IDSA Information Model ontology
 
 
-	/**
-	* "Size of the Artifact in bytes."@en
-	* @return Returns the BigInteger for the property byteSize.
-	* More information under https://w3id.org/idsa/core/byteSize
-	*/
 	@JsonProperty("ids:byteSize")
 	final public BigInteger getByteSize() {
 		return _byteSize;
 	}
-
 	
-	/**
-	* "Size of the Artifact in bytes."@en
-	* @param _byteSize_ desired value for the property byteSize.
-	* More information under https://w3id.org/idsa/core/byteSize
-	*/
 	final public void setByteSize (BigInteger _byteSize_) {
 		this._byteSize = _byteSize_;
 	}
 
-	/**
-	* "Name of the Artifcat file."@en
-	* @return Returns the String for the property fileName.
-	* More information under https://w3id.org/idsa/core/fileName
-	*/
 	@JsonProperty("ids:fileName")
 	final public String getFileName() {
 		return _fileName;
 	}
-
 	
-	/**
-	* "Name of the Artifcat file."@en
-	* @param _fileName_ desired value for the property fileName.
-	* More information under https://w3id.org/idsa/core/fileName
-	*/
 	final public void setFileName (String _fileName_) {
 		this._fileName = _fileName_;
 	}
 
-	/**
-	* "Date (as xsd:dateTimeStamp) when the artifact was created, i.e. persisted."@en
-	* @return Returns the XMLGregorianCalendar for the property creationDate.
-	* More information under https://w3id.org/idsa/core/creationDate
-	*/
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
 	@JsonProperty("ids:creationDate")
 	final public XMLGregorianCalendar getCreationDate() {
 		return _creationDate;
 	}
-
 	
-	/**
-	* "Date (as xsd:dateTimeStamp) when the artifact was created, i.e. persisted."@en
-	* @param _creationDate_ desired value for the property creationDate.
-	* More information under https://w3id.org/idsa/core/creationDate
-	*/
 	final public void setCreationDate (XMLGregorianCalendar _creationDate_) {
 		this._creationDate = _creationDate_;
 	}
 
-	/**
-	* "Checksum of the artifact"@en
-	* @return Returns the String for the property checkSum.
-	* More information under https://w3id.org/idsa/core/checkSum
-	*/
 	@JsonProperty("ids:checkSum")
 	final public String getCheckSum() {
 		return _checkSum;
 	}
-
 	
-	/**
-	* "Checksum of the artifact"@en
-	* @param _checkSum_ desired value for the property checkSum.
-	* More information under https://w3id.org/idsa/core/checkSum
-	*/
 	final public void setCheckSum (String _checkSum_) {
 		this._checkSum = _checkSum_;
 	}
 
-	/**
-	* "Duration of the media resource in seconds."@en
-	* @return Returns the java.math.BigDecimal for the property duration.
-	* More information under https://w3id.org/idsa/core/duration
-	*/
 	@JsonProperty("ids:duration")
 	final public java.math.BigDecimal getDuration() {
 		return _duration;
 	}
-
 	
-	/**
-	* "Duration of the media resource in seconds."@en
-	* @param _duration_ desired value for the property duration.
-	* More information under https://w3id.org/idsa/core/duration
-	*/
 	final public void setDuration (java.math.BigDecimal _duration_) {
 		this._duration = _duration_;
 	}

@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -82,10 +83,6 @@ public class DynamicAttributeTokenImpl implements Serializable, DynamicAttribute
 		id = VocabUtil.getInstance().createRandomUrl("dynamicAttributeToken");
 	}
 
-	/**
-	* This function retrieves the ID of the current object (can be set via the constructor of the builder class)
-	* @return ID of current object as URI
-	*/
 	@JsonProperty("@id")
 	final public URI getId() {
 		return id;
@@ -95,20 +92,10 @@ public class DynamicAttributeTokenImpl implements Serializable, DynamicAttribute
 		return VocabUtil.getInstance().toRdf(this);
 	}
 
-	/**
-	* This function retrieves a human readable label about the current class, as defined in the ontology.
-	* This label could, for example, be used as a field heading in a user interface
-	* @return Human readable label
-	*/
 	public List<TypedLiteral> getLabel() {
 		return this.label;
 	}
 
-	/**
-	* This function retrieves a human readable explanatory comment about the current class, as defined in the ontology.
-	* This comment could, for example, be used as a tooltip in a user interface
-	* @return Human readable explanatory comment
-	*/
 	public List<TypedLiteral> getComment() {
 		return this.comment;
 	}
@@ -149,49 +136,46 @@ public class DynamicAttributeTokenImpl implements Serializable, DynamicAttribute
 		if (property.startsWith("@")) {return ;};
 		this.properties.put(property, value) ;
 	}
+	public int hashCode() {
+		return Objects.hash(new Object[]{this._tokenValue,
+			this._tokenFormat});
+	}
+
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		} else if (obj == null) {
+			return false;
+		} else if (this.getClass() != obj.getClass()) {
+			return false;
+		} else {
+			DynamicAttributeTokenImpl other = (DynamicAttributeTokenImpl) obj;
+			return Objects.equals(this._tokenValue, other._tokenValue) &&
+				Objects.equals(this._tokenFormat, other._tokenFormat);
+		}
+	}
+
 
 	// accessor method implementations as derived from the IDSA Information Model ontology
 
 
 
-	/**
-	* "An authentication token value like JSON Web Token."@en
-	* @return Returns the String for the property tokenValue.
-	* More information under https://w3id.org/idsa/core/tokenValue
-	*/
 	@NotNull
 	@JsonProperty("ids:tokenValue")
 	final public String getTokenValue() {
 		return _tokenValue;
 	}
-
 	
-	/**
-	* "An authentication token value like JSON Web Token."@en
-	* @param _tokenValue_ desired value for the property tokenValue.
-	* More information under https://w3id.org/idsa/core/tokenValue
-	*/
 	final public void setTokenValue (String _tokenValue_) {
 		this._tokenValue = _tokenValue_;
 	}
 
-	/**
-	* "Describes the format of the authentication token."@en
-	* @return Returns the TokenFormat for the property tokenFormat.
-	* More information under https://w3id.org/idsa/core/tokenFormat
-	*/
 	@NotNull
 	@JsonProperty("ids:tokenFormat")
 	final public TokenFormat getTokenFormat() {
 		return _tokenFormat;
 	}
-
 	
-	/**
-	* "Describes the format of the authentication token."@en
-	* @param _tokenFormat_ desired value for the property tokenFormat.
-	* More information under https://w3id.org/idsa/core/tokenFormat
-	*/
 	final public void setTokenFormat (TokenFormat _tokenFormat_) {
 		this._tokenFormat = _tokenFormat_;
 	}

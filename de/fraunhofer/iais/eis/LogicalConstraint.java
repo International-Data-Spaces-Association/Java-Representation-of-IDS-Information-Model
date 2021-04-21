@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -72,31 +73,44 @@ public interface LogicalConstraint extends AbstractConstraint {
 	public Map<String,Object> getProperties();
 	public void setProperty(String property, Object value);
 
+	/**
+	* This function returns a hash code value for the LogicalConstraint for the benefit of e.g. hash tables.
+	* @return a hash code value for the LogicalConstraint
+	*/
+	public int hashCode();
+
+	/**
+	* This function indicates whether some other object is equal to this one.
+	* @param obj the reference object with which to compare.
+	* @return true if this LogicalConstraint is the same as the obj argument; false otherwise.
+	*/
+	public boolean equals(Object obj);
+
 	// accessor methods as derived from the IDSA Information Model ontology
 
 
 	/**
 	* "The \'and\' operand connects a rdf:List of Constraints with the Boolean operator \'AND\'. All Constraints of an \'and\' relation must be satisfied at the same time. Only one of ids:and, ids:or, or ids:xone can be used for a specific ids:LogicalConstraint!"@en
-	* @return Returns the ArrayList of Constraint for the property and.
+	* @return Returns the List of Constraints for the property _and.
 	* More information under https://w3id.org/idsa/core/and
 	*/
 	@JsonProperty("ids:and")
-	public ArrayList<? extends Constraint> getAnd();
+	public List<Constraint> getAnd();
 
 	/**
 	* "The \'or\' operand connects a rdf:List of Constraints with the Boolean operator \'OR\'. At least one Constraint of an \'or\' relation must be satisfied. Only one of ids:and, ids:or, or ids:xone can be used for a specific ids:LogicalConstraint!"@en
-	* @return Returns the ArrayList of Constraint for the property or.
+	* @return Returns the List of Constraints for the property _or.
 	* More information under https://w3id.org/idsa/core/or
 	*/
 	@JsonProperty("ids:or")
-	public ArrayList<? extends Constraint> getOr();
+	public List<Constraint> getOr();
 
 	/**
 	* "The \'xone\' operand connects a rdf:List of Constraints. Only one Constraint, not more, of an \'xone\' relation must be satisfied. Only one of ids:and, ids:or, or ids:xone can be used for a specific ids:LogicalConstraint!"@en
-	* @return Returns the ArrayList of Constraint for the property xone.
+	* @return Returns the List of Constraints for the property _xone.
 	* More information under https://w3id.org/idsa/core/xone
 	*/
 	@JsonProperty("ids:xone")
-	public ArrayList<? extends Constraint> getXone();
+	public List<Constraint> getXone();
 
 }

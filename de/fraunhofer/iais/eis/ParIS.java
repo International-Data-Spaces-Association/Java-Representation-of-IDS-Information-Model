@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -72,15 +73,28 @@ public interface ParIS extends Connector {
 	public Map<String,Object> getProperties();
 	public void setProperty(String property, Object value);
 
+	/**
+	* This function returns a hash code value for the ParIS for the benefit of e.g. hash tables.
+	* @return a hash code value for the ParIS
+	*/
+	public int hashCode();
+
+	/**
+	* This function indicates whether some other object is equal to this one.
+	* @param obj the reference object with which to compare.
+	* @return true if this ParIS is the same as the obj argument; false otherwise.
+	*/
+	public boolean equals(Object obj);
+
 	// accessor methods as derived from the IDSA Information Model ontology
 
 
 	/**
 	* "List of participants a ParIS may expose."@en
-	* @return Returns the ArrayList of ParticipantCatalog for the property participantCatalog.
+	* @return Returns the List of ParticipantCatalogs for the property _participantCatalog.
 	* More information under https://w3id.org/idsa/core/participantCatalog
 	*/
 	@JsonProperty("ids:participantCatalog")
-	public ArrayList<? extends ParticipantCatalog> getParticipantCatalog();
+	public List<ParticipantCatalog> getParticipantCatalog();
 
 }

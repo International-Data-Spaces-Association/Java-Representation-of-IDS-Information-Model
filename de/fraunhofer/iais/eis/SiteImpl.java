@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -72,10 +73,6 @@ public class SiteImpl implements Serializable, Site {
 		id = VocabUtil.getInstance().createRandomUrl("site");
 	}
 
-	/**
-	* This function retrieves the ID of the current object (can be set via the constructor of the builder class)
-	* @return ID of current object as URI
-	*/
 	@JsonProperty("@id")
 	final public URI getId() {
 		return id;
@@ -85,20 +82,10 @@ public class SiteImpl implements Serializable, Site {
 		return VocabUtil.getInstance().toRdf(this);
 	}
 
-	/**
-	* This function retrieves a human readable label about the current class, as defined in the ontology.
-	* This label could, for example, be used as a field heading in a user interface
-	* @return Human readable label
-	*/
 	public List<TypedLiteral> getLabel() {
 		return this.label;
 	}
 
-	/**
-	* This function retrieves a human readable explanatory comment about the current class, as defined in the ontology.
-	* This comment could, for example, be used as a tooltip in a user interface
-	* @return Human readable explanatory comment
-	*/
 	public List<TypedLiteral> getComment() {
 		return this.comment;
 	}
@@ -139,26 +126,32 @@ public class SiteImpl implements Serializable, Site {
 		if (property.startsWith("@")) {return ;};
 		this.properties.put(property, value) ;
 	}
+	public int hashCode() {
+		return Objects.hash(new Object[]{this._siteAddress});
+	}
+
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		} else if (obj == null) {
+			return false;
+		} else if (this.getClass() != obj.getClass()) {
+			return false;
+		} else {
+			SiteImpl other = (SiteImpl) obj;
+			return Objects.equals(this._siteAddress, other._siteAddress);
+		}
+	}
+
 
 	// accessor method implementations as derived from the IDSA Information Model ontology
 
 
-	/**
-	* "Indicates an address for the site."@en
-	* @return Returns the String for the property siteAddress.
-	* More information under https://w3id.org/idsa/core/siteAddress
-	*/
 	@JsonProperty("ids:siteAddress")
 	final public String getSiteAddress() {
 		return _siteAddress;
 	}
-
 	
-	/**
-	* "Indicates an address for the site."@en
-	* @param _siteAddress_ desired value for the property siteAddress.
-	* More information under https://w3id.org/idsa/core/siteAddress
-	*/
 	final public void setSiteAddress (String _siteAddress_) {
 		this._siteAddress = _siteAddress_;
 	}

@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -46,11 +47,11 @@ public class AppResourceCatalogBuilder {
 	}
 
 	/**
-	* This function allows setting a value for listedAppResource
+	* This function allows setting a value for _listedAppResource
 	* @param _listedAppResource_ desired value to be set
-	* @return Builder object with new value for listedAppResource
+	* @return Builder object with new value for _listedAppResource
 	*/
-	final public AppResourceCatalogBuilder _listedAppResource_(ArrayList<? extends AppResource> _listedAppResource_) {
+	final public AppResourceCatalogBuilder _listedAppResource_(List<AppResource> _listedAppResource_) {
 		this.appResourceCatalogImpl._listedAppResource = _listedAppResource_;
 		return this;
 	}

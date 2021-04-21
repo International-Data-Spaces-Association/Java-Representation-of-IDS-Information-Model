@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -46,9 +47,9 @@ public class IntervalBuilder {
 	}
 
 	/**
-	* This function allows setting a value for begin
+	* This function allows setting a value for _begin
 	* @param _begin_ desired value to be set
-	* @return Builder object with new value for begin
+	* @return Builder object with new value for _begin
 	*/
 	final public IntervalBuilder _begin_(Instant _begin_) {
 		this.intervalImpl._begin = _begin_;
@@ -57,9 +58,9 @@ public class IntervalBuilder {
 
 
 	/**
-	* This function allows setting a value for end
+	* This function allows setting a value for _end
 	* @param _end_ desired value to be set
-	* @return Builder object with new value for end
+	* @return Builder object with new value for _end
 	*/
 	final public IntervalBuilder _end_(Instant _end_) {
 		this.intervalImpl._end = _end_;
@@ -68,9 +69,9 @@ public class IntervalBuilder {
 
 
 	/**
-	* This function allows setting a value for hasDuration
+	* This function allows setting a value for _hasDuration
 	* @param _hasDuration_ desired value to be set
-	* @return Builder object with new value for hasDuration
+	* @return Builder object with new value for _hasDuration
 	*/
 	final public IntervalBuilder _hasDuration_(javax.xml.datatype.Duration _hasDuration_) {
 		this.intervalImpl._hasDuration = _hasDuration_;

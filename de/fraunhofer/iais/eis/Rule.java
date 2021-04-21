@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -74,36 +75,49 @@ public interface Rule extends Described {
 	public Map<String,Object> getProperties();
 	public void setProperty(String property, Object value);
 
+	/**
+	* This function returns a hash code value for the Rule for the benefit of e.g. hash tables.
+	* @return a hash code value for the Rule
+	*/
+	public int hashCode();
+
+	/**
+	* This function indicates whether some other object is equal to this one.
+	* @param obj the reference object with which to compare.
+	* @return true if this Rule is the same as the obj argument; false otherwise.
+	*/
+	public boolean equals(Object obj);
+
 	// accessor methods as derived from the IDSA Information Model ontology
 
 
 	/**
 	* "The constraint to be used for a specific rule."@en
-	* @return Returns the ArrayList of AbstractConstraint for the property constraint.
+	* @return Returns the List of AbstractConstraints for the property _constraint.
 	* More information under https://w3id.org/idsa/core/constraint
 	*/
 	@JsonProperty("ids:constraint")
-	public ArrayList<? extends AbstractConstraint> getConstraint();
+	public List<AbstractConstraint> getConstraint();
 
 	/**
 	* "The issuer of the policy statement."@en
-	* @return Returns the ArrayList of URI for the property assigner.
+	* @return Returns the List of URIs for the property _assigner.
 	* More information under https://w3id.org/idsa/core/assigner
 	*/
 	@JsonProperty("ids:assigner")
-	public ArrayList<? extends URI> getAssigner();
+	public List<URI> getAssigner();
 
 	/**
 	* "The recipient of the policy statement."@en
-	* @return Returns the ArrayList of URI for the property assignee.
+	* @return Returns the List of URIs for the property _assignee.
 	* More information under https://w3id.org/idsa/core/assignee
 	*/
 	@JsonProperty("ids:assignee")
-	public ArrayList<? extends URI> getAssignee();
+	public List<URI> getAssignee();
 
 	/**
 	* "The subject of the policy statement (ids:Rule)."@en
-	* @return Returns the URI for the property target.
+	* @return Returns the URI for the property _target.
 	* More information under https://w3id.org/idsa/core/target
 	*/
 	@JsonProperty("ids:target")
@@ -111,16 +125,16 @@ public interface Rule extends Described {
 
 	/**
 	* "The operation relating to the asset /  data object. "@en
-	* @return Returns the ArrayList of Action for the property action.
+	* @return Returns the List of Actions for the property _action.
 	* More information under https://w3id.org/idsa/core/action
 	*/
 	@NotEmpty
 	@JsonProperty("ids:action")
-	public ArrayList<? extends Action> getAction();
+	public List<Action> getAction();
 
 	/**
 	* "AssetRefinement define constraints that refines a (composite) Digital Content in an ids:Rule respectively the ids:AssetCollection."@en
-	* @return Returns the AbstractConstraint for the property assetRefinement.
+	* @return Returns the AbstractConstraint for the property _assetRefinement.
 	* More information under https://w3id.org/idsa/core/assetRefinement
 	*/
 	@JsonProperty("ids:assetRefinement")

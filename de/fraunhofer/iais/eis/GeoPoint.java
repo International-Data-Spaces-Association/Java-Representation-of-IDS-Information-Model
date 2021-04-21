@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -72,12 +73,25 @@ public interface GeoPoint extends Location {
 	public Map<String,Object> getProperties();
 	public void setProperty(String property, Object value);
 
+	/**
+	* This function returns a hash code value for the GeoPoint for the benefit of e.g. hash tables.
+	* @return a hash code value for the GeoPoint
+	*/
+	public int hashCode();
+
+	/**
+	* This function indicates whether some other object is equal to this one.
+	* @param obj the reference object with which to compare.
+	* @return true if this GeoPoint is the same as the obj argument; false otherwise.
+	*/
+	public boolean equals(Object obj);
+
 	// accessor methods as derived from the IDSA Information Model ontology
 
 
 	/**
 	* "Latitude of a GeoPoint (decimal degrees)."@en
-	* @return Returns the float for the property latitude.
+	* @return Returns the float for the property _latitude.
 	* More information under https://w3id.org/idsa/core/latitude
 	*/
 	@NotNull
@@ -86,7 +100,7 @@ public interface GeoPoint extends Location {
 
 	/**
 	* "Longitude of a GeoPoint (decimal degrees)."@en
-	* @return Returns the float for the property longitude.
+	* @return Returns the float for the property _longitude.
 	* More information under https://w3id.org/idsa/core/longitude
 	*/
 	@NotNull

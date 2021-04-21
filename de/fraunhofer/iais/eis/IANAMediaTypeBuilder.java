@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -47,9 +48,9 @@ public class IANAMediaTypeBuilder {
 
 
 	/**
-	* This function allows setting a value for filenameExtension
+	* This function allows setting a value for _filenameExtension
 	* @param _filenameExtension_ desired value to be set
-	* @return Builder object with new value for filenameExtension
+	* @return Builder object with new value for _filenameExtension
 	*/
 	final public IANAMediaTypeBuilder _filenameExtension_(String _filenameExtension_) {
 		this.iANAMediaTypeImpl._filenameExtension = _filenameExtension_;

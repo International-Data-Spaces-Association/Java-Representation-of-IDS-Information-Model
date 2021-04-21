@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -75,12 +76,25 @@ public interface TemporalEntity {
 	public Map<String,Object> getProperties();
 	public void setProperty(String property, Object value);
 
+	/**
+	* This function returns a hash code value for the TemporalEntity for the benefit of e.g. hash tables.
+	* @return a hash code value for the TemporalEntity
+	*/
+	public int hashCode();
+
+	/**
+	* This function indicates whether some other object is equal to this one.
+	* @param obj the reference object with which to compare.
+	* @return true if this TemporalEntity is the same as the obj argument; false otherwise.
+	*/
+	public boolean equals(Object obj);
+
 	// accessor methods as derived from the IDSA Information Model ontology
 
 
 	/**
 	* "Duration (relative time interval) of a temporal specification. Different to the TIME Ontology, durations are expressed using the xsd:duration datatype. In case it is used with a instance of ids:Instant, the value must be \'P0Y0M0DT0H0M0S\'^^xsd:duration."@en
-	* @return Returns the javax.xml.datatype.Duration for the property hasDuration.
+	* @return Returns the javax.xml.datatype.Duration for the property _hasDuration.
 	* More information under https://w3id.org/idsa/core/hasDuration
 	*/
 	@JsonProperty("ids:hasDuration")

@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -46,11 +47,11 @@ public class ParticipantCatalogBuilder {
 	}
 
 	/**
-	* This function allows setting a value for member
+	* This function allows setting a value for _member
 	* @param _member_ desired value to be set
-	* @return Builder object with new value for member
+	* @return Builder object with new value for _member
 	*/
-	final public ParticipantCatalogBuilder _member_(ArrayList<? extends Participant> _member_) {
+	final public ParticipantCatalogBuilder _member_(List<Participant> _member_) {
 		this.participantCatalogImpl._member = _member_;
 		return this;
 	}

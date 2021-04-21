@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -72,10 +73,6 @@ public class CustomMediaTypeImpl implements Serializable, CustomMediaType {
 		id = VocabUtil.getInstance().createRandomUrl("customMediaType");
 	}
 
-	/**
-	* This function retrieves the ID of the current object (can be set via the constructor of the builder class)
-	* @return ID of current object as URI
-	*/
 	@JsonProperty("@id")
 	final public URI getId() {
 		return id;
@@ -85,20 +82,10 @@ public class CustomMediaTypeImpl implements Serializable, CustomMediaType {
 		return VocabUtil.getInstance().toRdf(this);
 	}
 
-	/**
-	* This function retrieves a human readable label about the current class, as defined in the ontology.
-	* This label could, for example, be used as a field heading in a user interface
-	* @return Human readable label
-	*/
 	public List<TypedLiteral> getLabel() {
 		return this.label;
 	}
 
-	/**
-	* This function retrieves a human readable explanatory comment about the current class, as defined in the ontology.
-	* This comment could, for example, be used as a tooltip in a user interface
-	* @return Human readable explanatory comment
-	*/
 	public List<TypedLiteral> getComment() {
 		return this.comment;
 	}
@@ -139,27 +126,33 @@ public class CustomMediaTypeImpl implements Serializable, CustomMediaType {
 		if (property.startsWith("@")) {return ;};
 		this.properties.put(property, value) ;
 	}
+	public int hashCode() {
+		return Objects.hash(new Object[]{this._filenameExtension});
+	}
+
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		} else if (obj == null) {
+			return false;
+		} else if (this.getClass() != obj.getClass()) {
+			return false;
+		} else {
+			CustomMediaTypeImpl other = (CustomMediaTypeImpl) obj;
+			return Objects.equals(this._filenameExtension, other._filenameExtension);
+		}
+	}
+
 
 	// accessor method implementations as derived from the IDSA Information Model ontology
 
 
 
-	/**
-	* "Suffix of a file name, typically separated by a period, indicating the nature and intended processing of the file."@en
-	* @return Returns the String for the property filenameExtension.
-	* More information under https://w3id.org/idsa/core/filenameExtension
-	*/
 	@JsonProperty("ids:filenameExtension")
 	final public String getFilenameExtension() {
 		return _filenameExtension;
 	}
-
 	
-	/**
-	* "Suffix of a file name, typically separated by a period, indicating the nature and intended processing of the file."@en
-	* @param _filenameExtension_ desired value for the property filenameExtension.
-	* More information under https://w3id.org/idsa/core/filenameExtension
-	*/
 	final public void setFilenameExtension (String _filenameExtension_) {
 		this._filenameExtension = _filenameExtension_;
 	}

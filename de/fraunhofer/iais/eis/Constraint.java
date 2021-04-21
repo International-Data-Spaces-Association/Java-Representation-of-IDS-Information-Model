@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -72,12 +73,25 @@ public interface Constraint extends AbstractConstraint {
 	public Map<String,Object> getProperties();
 	public void setProperty(String property, Object value);
 
+	/**
+	* This function returns a hash code value for the Constraint for the benefit of e.g. hash tables.
+	* @return a hash code value for the Constraint
+	*/
+	public int hashCode();
+
+	/**
+	* This function indicates whether some other object is equal to this one.
+	* @param obj the reference object with which to compare.
+	* @return true if this Constraint is the same as the obj argument; false otherwise.
+	*/
+	public boolean equals(Object obj);
+
 	// accessor methods as derived from the IDSA Information Model ontology
 
 
 	/**
 	* "The left operand in a constraint expression."@en
-	* @return Returns the LeftOperand for the property leftOperand.
+	* @return Returns the LeftOperand for the property _leftOperand.
 	* More information under https://w3id.org/idsa/core/leftOperand
 	*/
 	@NotNull
@@ -86,7 +100,7 @@ public interface Constraint extends AbstractConstraint {
 
 	/**
 	* "The operator function applied to operands of a Constraint"@en
-	* @return Returns the BinaryOperator for the property operator.
+	* @return Returns the BinaryOperator for the property _operator.
 	* More information under https://w3id.org/idsa/core/operator
 	*/
 	@NotNull
@@ -95,7 +109,7 @@ public interface Constraint extends AbstractConstraint {
 
 	/**
 	* "The value of the right operand in a constraint expression. Value should be a rdfs:Resource or literal values. Either ids:rightOperand or ids:rightOperandReference should be used in an ids:Constraint."@en
-	* @return Returns the RdfResource for the property rightOperand.
+	* @return Returns the RdfResource for the property _rightOperand.
 	* More information under https://w3id.org/idsa/core/rightOperand
 	*/
 	@JsonProperty("ids:rightOperand")
@@ -103,7 +117,7 @@ public interface Constraint extends AbstractConstraint {
 
 	/**
 	* "The reference IRI of the right operand in a constraint expression. Has to be dereferenced in order to receive the actual value. Either ids:rightOperand or ids:rightOperandReference should be used in an ids:Constraint."@en
-	* @return Returns the URI for the property rightOperandReference.
+	* @return Returns the URI for the property _rightOperandReference.
 	* More information under https://w3id.org/idsa/core/rightOperandReference
 	*/
 	@JsonProperty("ids:rightOperandReference")
@@ -111,7 +125,7 @@ public interface Constraint extends AbstractConstraint {
 
 	/**
 	* "The unit of measurement of a Constraint."@en
-	* @return Returns the URI for the property unit.
+	* @return Returns the URI for the property _unit.
 	* More information under https://w3id.org/idsa/core/unit
 	*/
 	@JsonProperty("ids:unit")
@@ -119,7 +133,7 @@ public interface Constraint extends AbstractConstraint {
 
 	/**
 	* "The reference to the endpoint which provides the current state of the feature of interest (as referrenced by the leftOperand) can be retrieved."@en
-	* @return Returns the URI for the property pipEndpoint.
+	* @return Returns the URI for the property _pipEndpoint.
 	* More information under https://w3id.org/idsa/core/pipEndpoint
 	*/
 	@JsonProperty("ids:pipEndpoint")

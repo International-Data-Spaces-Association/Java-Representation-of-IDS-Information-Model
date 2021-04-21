@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -73,12 +74,25 @@ public interface Certification extends ManagedEntity {
 	public Map<String,Object> getProperties();
 	public void setProperty(String property, Object value);
 
+	/**
+	* This function returns a hash code value for the Certification for the benefit of e.g. hash tables.
+	* @return a hash code value for the Certification
+	*/
+	public int hashCode();
+
+	/**
+	* This function indicates whether some other object is equal to this one.
+	* @param obj the reference object with which to compare.
+	* @return true if this Certification is the same as the obj argument; false otherwise.
+	*/
+	public boolean equals(Object obj);
+
 	// accessor methods as derived from the IDSA Information Model ontology
 
 
 	/**
 	* "Level of certification (based on a combination of requierements, evaluation method etc.)"@en
-	* @return Returns the CertificationLevel for the property certificationLevel.
+	* @return Returns the CertificationLevel for the property _certificationLevel.
 	* More information under https://w3id.org/idsa/core/certificationLevel
 	*/
 	@JsonProperty("ids:certificationLevel")
@@ -86,7 +100,7 @@ public interface Certification extends ManagedEntity {
 
 	/**
 	* "Last date (as xsd:dateTimeStamp) the given Certification is considered valid."@en
-	* @return Returns the XMLGregorianCalendar for the property lastValidDate.
+	* @return Returns the XMLGregorianCalendar for the property _lastValidDate.
 	* More information under https://w3id.org/idsa/core/lastValidDate
 	*/
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
@@ -95,7 +109,7 @@ public interface Certification extends ManagedEntity {
 
 	/**
 	* "Evaluation Facility that performed and issued given Certification"@en
-	* @return Returns the EvaluationFacility for the property evaluationFacility.
+	* @return Returns the EvaluationFacility for the property _evaluationFacility.
 	* More information under https://w3id.org/idsa/core/evaluationFacility
 	*/
 	@JsonProperty("ids:evaluationFacility")

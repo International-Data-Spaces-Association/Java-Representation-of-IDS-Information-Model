@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -46,9 +47,9 @@ public class AuthInfoBuilder {
 	}
 
 	/**
-	* This function allows setting a value for authService
+	* This function allows setting a value for _authService
 	* @param _authService_ desired value to be set
-	* @return Builder object with new value for authService
+	* @return Builder object with new value for _authService
 	*/
 	final public AuthInfoBuilder _authService_(URI _authService_) {
 		this.authInfoImpl._authService = _authService_;
@@ -57,9 +58,9 @@ public class AuthInfoBuilder {
 
 
 	/**
-	* This function allows setting a value for authStandard
+	* This function allows setting a value for _authStandard
 	* @param _authStandard_ desired value to be set
-	* @return Builder object with new value for authStandard
+	* @return Builder object with new value for _authStandard
 	*/
 	final public AuthInfoBuilder _authStandard_(AuthStandard _authStandard_) {
 		this.authInfoImpl._authStandard = _authStandard_;

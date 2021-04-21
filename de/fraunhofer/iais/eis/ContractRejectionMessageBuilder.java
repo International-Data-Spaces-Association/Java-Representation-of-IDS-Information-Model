@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -46,9 +47,9 @@ public class ContractRejectionMessageBuilder {
 	}
 
 	/**
-	* This function allows setting a value for contractRejectionReason
+	* This function allows setting a value for _contractRejectionReason
 	* @param _contractRejectionReason_ desired value to be set
-	* @return Builder object with new value for contractRejectionReason
+	* @return Builder object with new value for _contractRejectionReason
 	*/
 	final public ContractRejectionMessageBuilder _contractRejectionReason_(TypedLiteral _contractRejectionReason_) {
 		this.contractRejectionMessageImpl._contractRejectionReason = _contractRejectionReason_;
@@ -57,9 +58,9 @@ public class ContractRejectionMessageBuilder {
 
 
 	/**
-	* This function allows setting a value for rejectionReason
+	* This function allows setting a value for _rejectionReason
 	* @param _rejectionReason_ desired value to be set
-	* @return Builder object with new value for rejectionReason
+	* @return Builder object with new value for _rejectionReason
 	*/
 	final public ContractRejectionMessageBuilder _rejectionReason_(RejectionReason _rejectionReason_) {
 		this.contractRejectionMessageImpl._rejectionReason = _rejectionReason_;
@@ -69,9 +70,9 @@ public class ContractRejectionMessageBuilder {
 
 
 	/**
-	* This function allows setting a value for modelVersion
+	* This function allows setting a value for _modelVersion
 	* @param _modelVersion_ desired value to be set
-	* @return Builder object with new value for modelVersion
+	* @return Builder object with new value for _modelVersion
 	*/
 	final public ContractRejectionMessageBuilder _modelVersion_(String _modelVersion_) {
 		this.contractRejectionMessageImpl._modelVersion = _modelVersion_;
@@ -80,9 +81,9 @@ public class ContractRejectionMessageBuilder {
 
 
 	/**
-	* This function allows setting a value for issued
+	* This function allows setting a value for _issued
 	* @param _issued_ desired value to be set
-	* @return Builder object with new value for issued
+	* @return Builder object with new value for _issued
 	*/
 	final public ContractRejectionMessageBuilder _issued_(XMLGregorianCalendar _issued_) {
 		this.contractRejectionMessageImpl._issued = _issued_;
@@ -91,9 +92,9 @@ public class ContractRejectionMessageBuilder {
 
 
 	/**
-	* This function allows setting a value for issuerConnector
+	* This function allows setting a value for _issuerConnector
 	* @param _issuerConnector_ desired value to be set
-	* @return Builder object with new value for issuerConnector
+	* @return Builder object with new value for _issuerConnector
 	*/
 	final public ContractRejectionMessageBuilder _issuerConnector_(URI _issuerConnector_) {
 		this.contractRejectionMessageImpl._issuerConnector = _issuerConnector_;
@@ -102,20 +103,20 @@ public class ContractRejectionMessageBuilder {
 
 
 	/**
-	* This function allows setting a value for recipientConnector
+	* This function allows setting a value for _recipientConnector
 	* @param _recipientConnector_ desired value to be set
-	* @return Builder object with new value for recipientConnector
+	* @return Builder object with new value for _recipientConnector
 	*/
-	final public ContractRejectionMessageBuilder _recipientConnector_(ArrayList<? extends URI> _recipientConnector_) {
+	final public ContractRejectionMessageBuilder _recipientConnector_(List<URI> _recipientConnector_) {
 		this.contractRejectionMessageImpl._recipientConnector = _recipientConnector_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for securityToken
+	* This function allows setting a value for _securityToken
 	* @param _securityToken_ desired value to be set
-	* @return Builder object with new value for securityToken
+	* @return Builder object with new value for _securityToken
 	*/
 	final public ContractRejectionMessageBuilder _securityToken_(DynamicAttributeToken _securityToken_) {
 		this.contractRejectionMessageImpl._securityToken = _securityToken_;
@@ -124,9 +125,9 @@ public class ContractRejectionMessageBuilder {
 
 
 	/**
-	* This function allows setting a value for senderAgent
+	* This function allows setting a value for _senderAgent
 	* @param _senderAgent_ desired value to be set
-	* @return Builder object with new value for senderAgent
+	* @return Builder object with new value for _senderAgent
 	*/
 	final public ContractRejectionMessageBuilder _senderAgent_(URI _senderAgent_) {
 		this.contractRejectionMessageImpl._senderAgent = _senderAgent_;
@@ -135,20 +136,20 @@ public class ContractRejectionMessageBuilder {
 
 
 	/**
-	* This function allows setting a value for recipientAgent
+	* This function allows setting a value for _recipientAgent
 	* @param _recipientAgent_ desired value to be set
-	* @return Builder object with new value for recipientAgent
+	* @return Builder object with new value for _recipientAgent
 	*/
-	final public ContractRejectionMessageBuilder _recipientAgent_(ArrayList<? extends URI> _recipientAgent_) {
+	final public ContractRejectionMessageBuilder _recipientAgent_(List<URI> _recipientAgent_) {
 		this.contractRejectionMessageImpl._recipientAgent = _recipientAgent_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for correlationMessage
+	* This function allows setting a value for _correlationMessage
 	* @param _correlationMessage_ desired value to be set
-	* @return Builder object with new value for correlationMessage
+	* @return Builder object with new value for _correlationMessage
 	*/
 	final public ContractRejectionMessageBuilder _correlationMessage_(URI _correlationMessage_) {
 		this.contractRejectionMessageImpl._correlationMessage = _correlationMessage_;
@@ -157,9 +158,9 @@ public class ContractRejectionMessageBuilder {
 
 
 	/**
-	* This function allows setting a value for authorizationToken
+	* This function allows setting a value for _authorizationToken
 	* @param _authorizationToken_ desired value to be set
-	* @return Builder object with new value for authorizationToken
+	* @return Builder object with new value for _authorizationToken
 	*/
 	final public ContractRejectionMessageBuilder _authorizationToken_(Token _authorizationToken_) {
 		this.contractRejectionMessageImpl._authorizationToken = _authorizationToken_;
@@ -168,9 +169,9 @@ public class ContractRejectionMessageBuilder {
 
 
 	/**
-	* This function allows setting a value for transferContract
+	* This function allows setting a value for _transferContract
 	* @param _transferContract_ desired value to be set
-	* @return Builder object with new value for transferContract
+	* @return Builder object with new value for _transferContract
 	*/
 	final public ContractRejectionMessageBuilder _transferContract_(URI _transferContract_) {
 		this.contractRejectionMessageImpl._transferContract = _transferContract_;
@@ -179,9 +180,9 @@ public class ContractRejectionMessageBuilder {
 
 
 	/**
-	* This function allows setting a value for contentVersion
+	* This function allows setting a value for _contentVersion
 	* @param _contentVersion_ desired value to be set
-	* @return Builder object with new value for contentVersion
+	* @return Builder object with new value for _contentVersion
 	*/
 	final public ContractRejectionMessageBuilder _contentVersion_(String _contentVersion_) {
 		this.contractRejectionMessageImpl._contentVersion = _contentVersion_;

@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -79,12 +80,25 @@ public interface Resource extends Asset, DigitalContent, DescribedSemantically, 
 	public Map<String,Object> getProperties();
 	public void setProperty(String property, Object value);
 
+	/**
+	* This function returns a hash code value for the Resource for the benefit of e.g. hash tables.
+	* @return a hash code value for the Resource
+	*/
+	public int hashCode();
+
+	/**
+	* This function indicates whether some other object is equal to this one.
+	* @param obj the reference object with which to compare.
+	* @return true if this Resource is the same as the obj argument; false otherwise.
+	*/
+	public boolean equals(Object obj);
+
 	// accessor methods as derived from the IDSA Information Model ontology
 
 
 	/**
 	* "\n    Reference to a well-known License regulating the general usage of the Resource.\n    Check wikidata license documentation for an extensive list of licenses.\n    License IRI should refer to the direct of link for a given standard license,\n    e.g., MIT license (https://www.wikidata.org/wiki/Q334661). The label of the resolved wikidata license IRI can be used to\n    present the license in human-readable form.\n    "@en
-	* @return Returns the URI for the property standardLicense.
+	* @return Returns the URI for the property _standardLicense.
 	* More information under https://w3id.org/idsa/core/standardLicense
 	*/
 	@JsonProperty("ids:standardLicense")
@@ -92,7 +106,7 @@ public interface Resource extends Asset, DigitalContent, DescribedSemantically, 
 
 	/**
 	* "URL reference to a custom license regulating the general usage of the Resource."@en
-	* @return Returns the URI for the property customLicense.
+	* @return Returns the URI for the property _customLicense.
 	* More information under https://w3id.org/idsa/core/customLicense
 	*/
 	@JsonProperty("ids:customLicense")
@@ -100,39 +114,39 @@ public interface Resource extends Asset, DigitalContent, DescribedSemantically, 
 
 	/**
 	* "Reference to the Endpoints serving the resource\'s content or let you exchange messages with an IDS Connector."@en
-	* @return Returns the ArrayList of ConnectorEndpoint for the property resourceEndpoint.
+	* @return Returns the List of ConnectorEndpoints for the property _resourceEndpoint.
 	* More information under https://w3id.org/idsa/core/resourceEndpoint
 	*/
 	@JsonProperty("ids:resourceEndpoint")
-	public ArrayList<? extends ConnectorEndpoint> getResourceEndpoint();
+	public List<ConnectorEndpoint> getResourceEndpoint();
 
 	/**
 	* "Reference to a Resource (physically or logically) included, definition of part-whole hierarchies."@en
-	* @return Returns the ArrayList of Resource for the property resourcePart.
+	* @return Returns the List of Resources for the property _resourcePart.
 	* More information under https://w3id.org/idsa/core/resourcePart
 	*/
 	@JsonProperty("ids:resourcePart")
-	public ArrayList<? extends Resource> getResourcePart();
+	public List<Resource> getResourcePart();
 
 	/**
 	* "Reference to a Contract Offer defining the authorized use of the Resource."@en
-	* @return Returns the ArrayList of ContractOffer for the property contractOffer.
+	* @return Returns the List of ContractOffers for the property _contractOffer.
 	* More information under https://w3id.org/idsa/core/contractOffer
 	*/
 	@JsonProperty("ids:contractOffer")
-	public ArrayList<? extends ContractOffer> getContractOffer();
+	public List<ContractOffer> getContractOffer();
 
 	/**
 	* "Sample Resource instance."@en
-	* @return Returns the ArrayList of Resource for the property sample.
+	* @return Returns the List of Resources for the property _sample.
 	* More information under https://w3id.org/idsa/core/sample
 	*/
 	@JsonProperty("ids:sample")
-	public ArrayList<? extends Resource> getSample();
+	public List<Resource> getSample();
 
 	/**
 	* "The publisher of the resource (which may differ from the sovereign)."@en
-	* @return Returns the URI for the property publisher.
+	* @return Returns the URI for the property _publisher.
 	* More information under https://w3id.org/idsa/core/publisher
 	*/
 	@JsonProperty("ids:publisher")
@@ -140,7 +154,7 @@ public interface Resource extends Asset, DigitalContent, DescribedSemantically, 
 
 	/**
 	* "The \'owner\', i.e. sovereign of the data."@en
-	* @return Returns the URI for the property sovereign.
+	* @return Returns the URI for the property _sovereign.
 	* More information under https://w3id.org/idsa/core/sovereign
 	*/
 	@JsonProperty("ids:sovereign")
@@ -148,7 +162,7 @@ public interface Resource extends Asset, DigitalContent, DescribedSemantically, 
 
 	/**
 	* "(Equivalent) variant of given Resource, e.g. a translation."@en
-	* @return Returns the Resource for the property variant.
+	* @return Returns the Resource for the property _variant.
 	* More information under https://w3id.org/idsa/core/variant
 	*/
 	@JsonProperty("ids:variant")

@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -80,10 +81,6 @@ public class AssetCollectionImpl implements Serializable, AssetCollection {
 		id = VocabUtil.getInstance().createRandomUrl("assetCollection");
 	}
 
-	/**
-	* This function retrieves the ID of the current object (can be set via the constructor of the builder class)
-	* @return ID of current object as URI
-	*/
 	@JsonProperty("@id")
 	final public URI getId() {
 		return id;
@@ -93,20 +90,10 @@ public class AssetCollectionImpl implements Serializable, AssetCollection {
 		return VocabUtil.getInstance().toRdf(this);
 	}
 
-	/**
-	* This function retrieves a human readable label about the current class, as defined in the ontology.
-	* This label could, for example, be used as a field heading in a user interface
-	* @return Human readable label
-	*/
 	public List<TypedLiteral> getLabel() {
 		return this.label;
 	}
 
-	/**
-	* This function retrieves a human readable explanatory comment about the current class, as defined in the ontology.
-	* This comment could, for example, be used as a tooltip in a user interface
-	* @return Human readable explanatory comment
-	*/
 	public List<TypedLiteral> getComment() {
 		return this.comment;
 	}
@@ -147,46 +134,43 @@ public class AssetCollectionImpl implements Serializable, AssetCollection {
 		if (property.startsWith("@")) {return ;};
 		this.properties.put(property, value) ;
 	}
+	public int hashCode() {
+		return Objects.hash(new Object[]{this._assetSource,
+			this._assetRefinement});
+	}
+
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		} else if (obj == null) {
+			return false;
+		} else if (this.getClass() != obj.getClass()) {
+			return false;
+		} else {
+			AssetCollectionImpl other = (AssetCollectionImpl) obj;
+			return Objects.equals(this._assetSource, other._assetSource) &&
+				Objects.equals(this._assetRefinement, other._assetRefinement);
+		}
+	}
+
 
 	// accessor method implementations as derived from the IDSA Information Model ontology
 
 
-	/**
-	* "A remote link to the location (PIP) where this AssetCollection and its members are maintained."@en
-	* @return Returns the URI for the property assetSource.
-	* More information under https://w3id.org/idsa/core/assetSource
-	*/
 	@JsonProperty("ids:assetSource")
 	final public URI getAssetSource() {
 		return _assetSource;
 	}
-
 	
-	/**
-	* "A remote link to the location (PIP) where this AssetCollection and its members are maintained."@en
-	* @param _assetSource_ desired value for the property assetSource.
-	* More information under https://w3id.org/idsa/core/assetSource
-	*/
 	final public void setAssetSource (URI _assetSource_) {
 		this._assetSource = _assetSource_;
 	}
 
-	/**
-	* "AssetRefinement define constraints that refines a (composite) Digital Content in an ids:Rule respectively the ids:AssetCollection."@en
-	* @return Returns the AbstractConstraint for the property assetRefinement.
-	* More information under https://w3id.org/idsa/core/assetRefinement
-	*/
 	@JsonProperty("ids:assetRefinement")
 	final public AbstractConstraint getAssetRefinement() {
 		return _assetRefinement;
 	}
-
 	
-	/**
-	* "AssetRefinement define constraints that refines a (composite) Digital Content in an ids:Rule respectively the ids:AssetCollection."@en
-	* @param _assetRefinement_ desired value for the property assetRefinement.
-	* More information under https://w3id.org/idsa/core/assetRefinement
-	*/
 	final public void setAssetRefinement (AbstractConstraint _assetRefinement_) {
 		this._assetRefinement = _assetRefinement_;
 	}

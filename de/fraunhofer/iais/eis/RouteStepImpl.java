@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -64,7 +65,7 @@ public class RouteStepImpl implements Serializable, RouteStep {
 	* "One or more ids:Broker(s) to which changes/updates of this route\'s ids:appRouteOutput ids:Resource are announced.\nThis should be a subset of those Brokers that have been configured as ids:configuredBrokers in the ids:ConfigurationModel of which this is an ids:appRoute.\n"@en
 	*/
 	@JsonAlias({"ids:appRouteBroker", "appRouteBroker"})
-	protected ArrayList<? extends Broker> _appRouteBroker;
+	protected List<Broker> _appRouteBroker;
 
 
 	/**
@@ -72,7 +73,7 @@ public class RouteStepImpl implements Serializable, RouteStep {
 	* "One or more ids:ClearingHouse(s) to which information of this route\'s  data exchange are notified.\nThis should be a subset of clearing houses listed in the corresponding ids:ClearingHouseCatalog for a given configuration model. The Configuration Model ids:configuredClearingHouse in the ids:ConfigurationModel of which this is an ids:appRoute.\n"@en
 	*/
 	@JsonAlias({"ids:appRouteClearingHouse", "appRouteClearingHouse"})
-	protected ArrayList<? extends ClearingHouse> _appRouteClearingHouse;
+	protected List<ClearingHouse> _appRouteClearingHouse;
 
 
 	/**
@@ -80,7 +81,7 @@ public class RouteStepImpl implements Serializable, RouteStep {
 	* "End of a route."@en
 	*/
 	@JsonAlias({"ids:appRouteEnd", "appRouteEnd"})
-	protected ArrayList<? extends Endpoint> _appRouteEnd;
+	protected List<Endpoint> _appRouteEnd;
 
 
 	/**
@@ -88,7 +89,7 @@ public class RouteStepImpl implements Serializable, RouteStep {
 	* "ids:Resource that corresponds to the output of an app route.\nRationale: whereas an ids:Endpoint can have an ids:endpointArtifact, it is additionally important that the data flow inside the ids:Connector / ids:ConfigurationModel is aware of the ids:ContractOffer (a property of ids:Resource!) associated with the data coming into the Connector or going out of the Connector.\nUse: Whenever properties of this Resource change, it may make sense to notify the ids:broker(s) configured for this AppRoute.\nNote: In an ids:AppRoute that is the sequence of multiple ids:RouteSteps, the output resource of one step serves immediately as the input that is processed by the subsequent step(s).  An ids:SystemAdapter typically does not change the ids:Resource, but might rather make it available in a different ids:Representation.  An ids:SmartDataApp might replate its input(s) by an entirely different (e.g., fused) resource.\n"@en
 	*/
 	@JsonAlias({"ids:appRouteOutput", "appRouteOutput"})
-	protected ArrayList<? extends Resource> _appRouteOutput;
+	protected List<Resource> _appRouteOutput;
 
 
 	/**
@@ -96,7 +97,7 @@ public class RouteStepImpl implements Serializable, RouteStep {
 	* "Start of a route."@en
 	*/
 	@JsonAlias({"ids:appRouteStart", "appRouteStart"})
-	protected ArrayList<? extends Endpoint> _appRouteStart;
+	protected List<Endpoint> _appRouteStart;
 
 
 	/**
@@ -104,7 +105,7 @@ public class RouteStepImpl implements Serializable, RouteStep {
 	* "Route between two or more app endpoints inside a app routing pipeline."@en
 	*/
 	@JsonAlias({"ids:hasSubRoute", "hasSubRoute"})
-	protected ArrayList<? extends RouteStep> _hasSubRoute;
+	protected List<RouteStep> _hasSubRoute;
 
 
 	/**
@@ -145,10 +146,6 @@ public class RouteStepImpl implements Serializable, RouteStep {
 		id = VocabUtil.getInstance().createRandomUrl("routeStep");
 	}
 
-	/**
-	* This function retrieves the ID of the current object (can be set via the constructor of the builder class)
-	* @return ID of current object as URI
-	*/
 	@JsonProperty("@id")
 	final public URI getId() {
 		return id;
@@ -158,20 +155,10 @@ public class RouteStepImpl implements Serializable, RouteStep {
 		return VocabUtil.getInstance().toRdf(this);
 	}
 
-	/**
-	* This function retrieves a human readable label about the current class, as defined in the ontology.
-	* This label could, for example, be used as a field heading in a user interface
-	* @return Human readable label
-	*/
 	public List<TypedLiteral> getLabel() {
 		return this.label;
 	}
 
-	/**
-	* This function retrieves a human readable explanatory comment about the current class, as defined in the ontology.
-	* This comment could, for example, be used as a tooltip in a user interface
-	* @return Human readable explanatory comment
-	*/
 	public List<TypedLiteral> getComment() {
 		return this.comment;
 	}
@@ -212,207 +199,132 @@ public class RouteStepImpl implements Serializable, RouteStep {
 		if (property.startsWith("@")) {return ;};
 		this.properties.put(property, value) ;
 	}
+	public int hashCode() {
+		return Objects.hash(new Object[]{this._requiredDataApp,
+			this._routeDeployMethod,
+			this._hasSubRoute,
+			this._appRouteStart,
+			this._appRouteEnd,
+			this._appRouteOutput,
+			this._appRouteBroker,
+			this._appRouteClearingHouse,
+			this._routeDescription,
+			this._routeConfiguration});
+	}
+
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		} else if (obj == null) {
+			return false;
+		} else if (this.getClass() != obj.getClass()) {
+			return false;
+		} else {
+			RouteStepImpl other = (RouteStepImpl) obj;
+			return Objects.equals(this._requiredDataApp, other._requiredDataApp) &&
+				Objects.equals(this._routeDeployMethod, other._routeDeployMethod) &&
+				Objects.equals(this._hasSubRoute, other._hasSubRoute) &&
+				Objects.equals(this._appRouteStart, other._appRouteStart) &&
+				Objects.equals(this._appRouteEnd, other._appRouteEnd) &&
+				Objects.equals(this._appRouteOutput, other._appRouteOutput) &&
+				Objects.equals(this._appRouteBroker, other._appRouteBroker) &&
+				Objects.equals(this._appRouteClearingHouse, other._appRouteClearingHouse) &&
+				Objects.equals(this._routeDescription, other._routeDescription) &&
+				Objects.equals(this._routeConfiguration, other._routeConfiguration);
+		}
+	}
+
 
 	// accessor method implementations as derived from the IDSA Information Model ontology
 
 
-	/**
-	* "Refers to the concrete app representation (ids:AppRepresentation) for a data app (ids:DataApp) which is deployed in the Connector maintained by the Configuration Model and\n    whoose endpoint (ids:AppEndpoint) is used in this ids:RouteStep. The referred app representation should be part of the catalog of AppResources in the\n    corresponding Configuration Model (cf. ids:configuredAppResource property in class ids:ConfigurationModel).\n    "@en
-	* @return Returns the AppRepresentation for the property requiredDataApp.
-	* More information under https://w3id.org/idsa/core/requiredDataApp
-	*/
 	@JsonProperty("ids:requiredDataApp")
 	final public AppRepresentation getRequiredDataApp() {
 		return _requiredDataApp;
 	}
-
 	
-	/**
-	* "Refers to the concrete app representation (ids:AppRepresentation) for a data app (ids:DataApp) which is deployed in the Connector maintained by the Configuration Model and\n    whoose endpoint (ids:AppEndpoint) is used in this ids:RouteStep. The referred app representation should be part of the catalog of AppResources in the\n    corresponding Configuration Model (cf. ids:configuredAppResource property in class ids:ConfigurationModel).\n    "@en
-	* @param _requiredDataApp_ desired value for the property requiredDataApp.
-	* More information under https://w3id.org/idsa/core/requiredDataApp
-	*/
 	final public void setRequiredDataApp (AppRepresentation _requiredDataApp_) {
 		this._requiredDataApp = _requiredDataApp_;
 	}
 
-	/**
-	* "Supplementary information about, e.g., the technology used, for routes."
-	* @return Returns the String for the property routeDeployMethod.
-	* More information under https://w3id.org/idsa/core/routeDeployMethod
-	*/
 	@NotNull
 	@JsonProperty("ids:routeDeployMethod")
 	final public String getRouteDeployMethod() {
 		return _routeDeployMethod;
 	}
-
 	
-	/**
-	* "Supplementary information about, e.g., the technology used, for routes."
-	* @param _routeDeployMethod_ desired value for the property routeDeployMethod.
-	* More information under https://w3id.org/idsa/core/routeDeployMethod
-	*/
 	final public void setRouteDeployMethod (String _routeDeployMethod_) {
 		this._routeDeployMethod = _routeDeployMethod_;
 	}
 
-	/**
-	* "Route between two or more app endpoints inside a app routing pipeline."@en
-	* @return Returns the ArrayList of RouteStep for the property hasSubRoute.
-	* More information under https://w3id.org/idsa/core/hasSubRoute
-	*/
 	@JsonProperty("ids:hasSubRoute")
-	final public ArrayList<? extends RouteStep> getHasSubRoute() {
+	final public List<RouteStep> getHasSubRoute() {
 		return _hasSubRoute;
 	}
-
 	
-	/**
-	* "Route between two or more app endpoints inside a app routing pipeline."@en
-	* @param _hasSubRoute_ desired value for the property hasSubRoute.
-	* More information under https://w3id.org/idsa/core/hasSubRoute
-	*/
-	final public void setHasSubRoute (ArrayList<? extends RouteStep> _hasSubRoute_) {
+	final public void setHasSubRoute (List<RouteStep> _hasSubRoute_) {
 		this._hasSubRoute = _hasSubRoute_;
 	}
 
-	/**
-	* "Start of a route."@en
-	* @return Returns the ArrayList of Endpoint for the property appRouteStart.
-	* More information under https://w3id.org/idsa/core/appRouteStart
-	*/
 	@JsonProperty("ids:appRouteStart")
-	final public ArrayList<? extends Endpoint> getAppRouteStart() {
+	final public List<Endpoint> getAppRouteStart() {
 		return _appRouteStart;
 	}
-
 	
-	/**
-	* "Start of a route."@en
-	* @param _appRouteStart_ desired value for the property appRouteStart.
-	* More information under https://w3id.org/idsa/core/appRouteStart
-	*/
-	final public void setAppRouteStart (ArrayList<? extends Endpoint> _appRouteStart_) {
+	final public void setAppRouteStart (List<Endpoint> _appRouteStart_) {
 		this._appRouteStart = _appRouteStart_;
 	}
 
-	/**
-	* "End of a route."@en
-	* @return Returns the ArrayList of Endpoint for the property appRouteEnd.
-	* More information under https://w3id.org/idsa/core/appRouteEnd
-	*/
 	@JsonProperty("ids:appRouteEnd")
-	final public ArrayList<? extends Endpoint> getAppRouteEnd() {
+	final public List<Endpoint> getAppRouteEnd() {
 		return _appRouteEnd;
 	}
-
 	
-	/**
-	* "End of a route."@en
-	* @param _appRouteEnd_ desired value for the property appRouteEnd.
-	* More information under https://w3id.org/idsa/core/appRouteEnd
-	*/
-	final public void setAppRouteEnd (ArrayList<? extends Endpoint> _appRouteEnd_) {
+	final public void setAppRouteEnd (List<Endpoint> _appRouteEnd_) {
 		this._appRouteEnd = _appRouteEnd_;
 	}
 
-	/**
-	* "ids:Resource that corresponds to the output of an app route.\nRationale: whereas an ids:Endpoint can have an ids:endpointArtifact, it is additionally important that the data flow inside the ids:Connector / ids:ConfigurationModel is aware of the ids:ContractOffer (a property of ids:Resource!) associated with the data coming into the Connector or going out of the Connector.\nUse: Whenever properties of this Resource change, it may make sense to notify the ids:broker(s) configured for this AppRoute.\nNote: In an ids:AppRoute that is the sequence of multiple ids:RouteSteps, the output resource of one step serves immediately as the input that is processed by the subsequent step(s).  An ids:SystemAdapter typically does not change the ids:Resource, but might rather make it available in a different ids:Representation.  An ids:SmartDataApp might replate its input(s) by an entirely different (e.g., fused) resource.\n"@en
-	* @return Returns the ArrayList of Resource for the property appRouteOutput.
-	* More information under https://w3id.org/idsa/core/appRouteOutput
-	*/
 	@JsonProperty("ids:appRouteOutput")
-	final public ArrayList<? extends Resource> getAppRouteOutput() {
+	final public List<Resource> getAppRouteOutput() {
 		return _appRouteOutput;
 	}
-
 	
-	/**
-	* "ids:Resource that corresponds to the output of an app route.\nRationale: whereas an ids:Endpoint can have an ids:endpointArtifact, it is additionally important that the data flow inside the ids:Connector / ids:ConfigurationModel is aware of the ids:ContractOffer (a property of ids:Resource!) associated with the data coming into the Connector or going out of the Connector.\nUse: Whenever properties of this Resource change, it may make sense to notify the ids:broker(s) configured for this AppRoute.\nNote: In an ids:AppRoute that is the sequence of multiple ids:RouteSteps, the output resource of one step serves immediately as the input that is processed by the subsequent step(s).  An ids:SystemAdapter typically does not change the ids:Resource, but might rather make it available in a different ids:Representation.  An ids:SmartDataApp might replate its input(s) by an entirely different (e.g., fused) resource.\n"@en
-	* @param _appRouteOutput_ desired value for the property appRouteOutput.
-	* More information under https://w3id.org/idsa/core/appRouteOutput
-	*/
-	final public void setAppRouteOutput (ArrayList<? extends Resource> _appRouteOutput_) {
+	final public void setAppRouteOutput (List<Resource> _appRouteOutput_) {
 		this._appRouteOutput = _appRouteOutput_;
 	}
 
-	/**
-	* "One or more ids:Broker(s) to which changes/updates of this route\'s ids:appRouteOutput ids:Resource are announced.\nThis should be a subset of those Brokers that have been configured as ids:configuredBrokers in the ids:ConfigurationModel of which this is an ids:appRoute.\n"@en
-	* @return Returns the ArrayList of Broker for the property appRouteBroker.
-	* More information under https://w3id.org/idsa/core/appRouteBroker
-	*/
 	@JsonProperty("ids:appRouteBroker")
-	final public ArrayList<? extends Broker> getAppRouteBroker() {
+	final public List<Broker> getAppRouteBroker() {
 		return _appRouteBroker;
 	}
-
 	
-	/**
-	* "One or more ids:Broker(s) to which changes/updates of this route\'s ids:appRouteOutput ids:Resource are announced.\nThis should be a subset of those Brokers that have been configured as ids:configuredBrokers in the ids:ConfigurationModel of which this is an ids:appRoute.\n"@en
-	* @param _appRouteBroker_ desired value for the property appRouteBroker.
-	* More information under https://w3id.org/idsa/core/appRouteBroker
-	*/
-	final public void setAppRouteBroker (ArrayList<? extends Broker> _appRouteBroker_) {
+	final public void setAppRouteBroker (List<Broker> _appRouteBroker_) {
 		this._appRouteBroker = _appRouteBroker_;
 	}
 
-	/**
-	* "One or more ids:ClearingHouse(s) to which information of this route\'s  data exchange are notified.\nThis should be a subset of clearing houses listed in the corresponding ids:ClearingHouseCatalog for a given configuration model. The Configuration Model ids:configuredClearingHouse in the ids:ConfigurationModel of which this is an ids:appRoute.\n"@en
-	* @return Returns the ArrayList of ClearingHouse for the property appRouteClearingHouse.
-	* More information under https://w3id.org/idsa/core/appRouteClearingHouse
-	*/
 	@JsonProperty("ids:appRouteClearingHouse")
-	final public ArrayList<? extends ClearingHouse> getAppRouteClearingHouse() {
+	final public List<ClearingHouse> getAppRouteClearingHouse() {
 		return _appRouteClearingHouse;
 	}
-
 	
-	/**
-	* "One or more ids:ClearingHouse(s) to which information of this route\'s  data exchange are notified.\nThis should be a subset of clearing houses listed in the corresponding ids:ClearingHouseCatalog for a given configuration model. The Configuration Model ids:configuredClearingHouse in the ids:ConfigurationModel of which this is an ids:appRoute.\n"@en
-	* @param _appRouteClearingHouse_ desired value for the property appRouteClearingHouse.
-	* More information under https://w3id.org/idsa/core/appRouteClearingHouse
-	*/
-	final public void setAppRouteClearingHouse (ArrayList<? extends ClearingHouse> _appRouteClearingHouse_) {
+	final public void setAppRouteClearingHouse (List<ClearingHouse> _appRouteClearingHouse_) {
 		this._appRouteClearingHouse = _appRouteClearingHouse_;
 	}
 
-	/**
-	* "Route description."@en
-	* @return Returns the String for the property routeDescription.
-	* More information under https://w3id.org/idsa/core/routeDescription
-	*/
 	@JsonProperty("ids:routeDescription")
 	final public String getRouteDescription() {
 		return _routeDescription;
 	}
-
 	
-	/**
-	* "Route description."@en
-	* @param _routeDescription_ desired value for the property routeDescription.
-	* More information under https://w3id.org/idsa/core/routeDescription
-	*/
 	final public void setRouteDescription (String _routeDescription_) {
 		this._routeDescription = _routeDescription_;
 	}
 
-	/**
-	* "Configuration details (e.g. contents of a config file) used to configure the route. Should be Base64 encoded."@en
-	* @return Returns the String for the property routeConfiguration.
-	* More information under https://w3id.org/idsa/core/routeConfiguration
-	*/
 	@JsonProperty("ids:routeConfiguration")
 	final public String getRouteConfiguration() {
 		return _routeConfiguration;
 	}
-
 	
-	/**
-	* "Configuration details (e.g. contents of a config file) used to configure the route. Should be Base64 encoded."@en
-	* @param _routeConfiguration_ desired value for the property routeConfiguration.
-	* More information under https://w3id.org/idsa/core/routeConfiguration
-	*/
 	final public void setRouteConfiguration (String _routeConfiguration_) {
 		this._routeConfiguration = _routeConfiguration_;
 	}

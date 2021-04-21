@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -89,7 +90,7 @@ public class BaseConnectorImpl implements Serializable, BaseConnector {
 	* "Explanation of the resource in a natural language text."@en
 	*/
 	@JsonAlias({"ids:description", "description"})
-	protected ArrayList<? extends TypedLiteral> _description;
+	protected List<TypedLiteral> _description;
 
 
 	/**
@@ -97,7 +98,7 @@ public class BaseConnectorImpl implements Serializable, BaseConnector {
 	* "Reference to a security guarantee that, if used in combination with a security profile instance, overrides the respective guarantee of the given predefined instance."@en
 	*/
 	@JsonAlias({"ids:extendedGuarantee", "extendedGuarantee"})
-	protected ArrayList<? extends SecurityGuarantee> _extendedGuarantee;
+	protected List<SecurityGuarantee> _extendedGuarantee;
 
 
 	/**
@@ -105,7 +106,7 @@ public class BaseConnectorImpl implements Serializable, BaseConnector {
 	* "The Agents for which this Connector may initiate and receive Messages."@en
 	*/
 	@JsonAlias({"ids:hasAgent", "hasAgent"})
-	protected ArrayList<? extends URI> _hasAgent;
+	protected List<URI> _hasAgent;
 
 
 	/**
@@ -122,7 +123,7 @@ public class BaseConnectorImpl implements Serializable, BaseConnector {
 	* "Reference to the Endpoints serving the resource\'s content or let you exchange messages with an IDS Connector."@en
 	*/
 	@JsonAlias({"ids:hasEndpoint", "hasEndpoint"})
-	protected ArrayList<? extends ConnectorEndpoint> _hasEndpoint;
+	protected List<ConnectorEndpoint> _hasEndpoint;
 
 
 	/**
@@ -131,7 +132,7 @@ public class BaseConnectorImpl implements Serializable, BaseConnector {
 	*/
 	@NotEmpty
 	@JsonAlias({"ids:inboundModelVersion", "inboundModelVersion"})
-	protected ArrayList<? extends String> _inboundModelVersion;
+	protected List<String> _inboundModelVersion;
 
 
 	/**
@@ -173,7 +174,7 @@ public class BaseConnectorImpl implements Serializable, BaseConnector {
 	* "References the Catalog of published or requested resource by this Connector."@en
 	*/
 	@JsonAlias({"ids:resourceCatalog", "resourceCatalog"})
-	protected ArrayList<? extends ResourceCatalog> _resourceCatalog;
+	protected List<ResourceCatalog> _resourceCatalog;
 
 
 	/**
@@ -190,7 +191,7 @@ public class BaseConnectorImpl implements Serializable, BaseConnector {
 	* "(Localized) name of the entity."@en
 	*/
 	@JsonAlias({"ids:title", "title"})
-	protected ArrayList<? extends TypedLiteral> _title;
+	protected List<TypedLiteral> _title;
 
 
 	/**
@@ -206,10 +207,6 @@ public class BaseConnectorImpl implements Serializable, BaseConnector {
 		id = VocabUtil.getInstance().createRandomUrl("baseConnector");
 	}
 
-	/**
-	* This function retrieves the ID of the current object (can be set via the constructor of the builder class)
-	* @return ID of current object as URI
-	*/
 	@JsonProperty("@id")
 	final public URI getId() {
 		return id;
@@ -219,20 +216,10 @@ public class BaseConnectorImpl implements Serializable, BaseConnector {
 		return VocabUtil.getInstance().toRdf(this);
 	}
 
-	/**
-	* This function retrieves a human readable label about the current class, as defined in the ontology.
-	* This label could, for example, be used as a field heading in a user interface
-	* @return Human readable label
-	*/
 	public List<TypedLiteral> getLabel() {
 		return this.label;
 	}
 
-	/**
-	* This function retrieves a human readable explanatory comment about the current class, as defined in the ontology.
-	* This comment could, for example, be used as a tooltip in a user interface
-	* @return Human readable explanatory comment
-	*/
 	public List<TypedLiteral> getComment() {
 		return this.comment;
 	}
@@ -273,354 +260,216 @@ public class BaseConnectorImpl implements Serializable, BaseConnector {
 		if (property.startsWith("@")) {return ;};
 		this.properties.put(property, value) ;
 	}
+	public int hashCode() {
+		return Objects.hash(new Object[]{this._hasEndpoint,
+			this._hasAgent,
+			this._resourceCatalog,
+			this._hasDefaultEndpoint,
+			this._authInfo,
+			this._securityProfile,
+			this._extendedGuarantee,
+			this._maintainer,
+			this._curator,
+			this._inboundModelVersion,
+			this._outboundModelVersion,
+			this._physicalLocation,
+			this._componentCertification,
+			this._publicKey,
+			this._version,
+			this._title,
+			this._description});
+	}
+
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		} else if (obj == null) {
+			return false;
+		} else if (this.getClass() != obj.getClass()) {
+			return false;
+		} else {
+			BaseConnectorImpl other = (BaseConnectorImpl) obj;
+			return Objects.equals(this._hasEndpoint, other._hasEndpoint) &&
+				Objects.equals(this._hasAgent, other._hasAgent) &&
+				Objects.equals(this._resourceCatalog, other._resourceCatalog) &&
+				Objects.equals(this._hasDefaultEndpoint, other._hasDefaultEndpoint) &&
+				Objects.equals(this._authInfo, other._authInfo) &&
+				Objects.equals(this._securityProfile, other._securityProfile) &&
+				Objects.equals(this._extendedGuarantee, other._extendedGuarantee) &&
+				Objects.equals(this._maintainer, other._maintainer) &&
+				Objects.equals(this._curator, other._curator) &&
+				Objects.equals(this._inboundModelVersion, other._inboundModelVersion) &&
+				Objects.equals(this._outboundModelVersion, other._outboundModelVersion) &&
+				Objects.equals(this._physicalLocation, other._physicalLocation) &&
+				Objects.equals(this._componentCertification, other._componentCertification) &&
+				Objects.equals(this._publicKey, other._publicKey) &&
+				Objects.equals(this._version, other._version) &&
+				Objects.equals(this._title, other._title) &&
+				Objects.equals(this._description, other._description);
+		}
+	}
+
 
 	// accessor method implementations as derived from the IDSA Information Model ontology
 
 
 
-	/**
-	* "Reference to the Endpoints serving the resource\'s content or let you exchange messages with an IDS Connector."@en
-	* @return Returns the ArrayList of ConnectorEndpoint for the property hasEndpoint.
-	* More information under https://w3id.org/idsa/core/hasEndpoint
-	*/
 	@JsonProperty("ids:hasEndpoint")
-	final public ArrayList<? extends ConnectorEndpoint> getHasEndpoint() {
+	final public List<ConnectorEndpoint> getHasEndpoint() {
 		return _hasEndpoint;
 	}
-
 	
-	/**
-	* "Reference to the Endpoints serving the resource\'s content or let you exchange messages with an IDS Connector."@en
-	* @param _hasEndpoint_ desired value for the property hasEndpoint.
-	* More information under https://w3id.org/idsa/core/hasEndpoint
-	*/
-	final public void setHasEndpoint (ArrayList<? extends ConnectorEndpoint> _hasEndpoint_) {
+	final public void setHasEndpoint (List<ConnectorEndpoint> _hasEndpoint_) {
 		this._hasEndpoint = _hasEndpoint_;
 	}
 
-	/**
-	* "The Agents for which this Connector may initiate and receive Messages."@en
-	* @return Returns the ArrayList of URI for the property hasAgent.
-	* More information under https://w3id.org/idsa/core/hasAgent
-	*/
 	@JsonProperty("ids:hasAgent")
-	final public ArrayList<? extends URI> getHasAgent() {
+	final public List<URI> getHasAgent() {
 		return _hasAgent;
 	}
-
 	
-	/**
-	* "The Agents for which this Connector may initiate and receive Messages."@en
-	* @param _hasAgent_ desired value for the property hasAgent.
-	* More information under https://w3id.org/idsa/core/hasAgent
-	*/
-	final public void setHasAgent (ArrayList<? extends URI> _hasAgent_) {
+	final public void setHasAgent (List<URI> _hasAgent_) {
 		this._hasAgent = _hasAgent_;
 	}
 
-	/**
-	* "References the Catalog of published or requested resource by this Connector."@en
-	* @return Returns the ArrayList of ResourceCatalog for the property resourceCatalog.
-	* More information under https://w3id.org/idsa/core/resourceCatalog
-	*/
 	@JsonProperty("ids:resourceCatalog")
-	final public ArrayList<? extends ResourceCatalog> getResourceCatalog() {
+	final public List<ResourceCatalog> getResourceCatalog() {
 		return _resourceCatalog;
 	}
-
 	
-	/**
-	* "References the Catalog of published or requested resource by this Connector."@en
-	* @param _resourceCatalog_ desired value for the property resourceCatalog.
-	* More information under https://w3id.org/idsa/core/resourceCatalog
-	*/
-	final public void setResourceCatalog (ArrayList<? extends ResourceCatalog> _resourceCatalog_) {
+	final public void setResourceCatalog (List<ResourceCatalog> _resourceCatalog_) {
 		this._resourceCatalog = _resourceCatalog_;
 	}
 
-	/**
-	* "Indicates the default endpoint that should be used for basic infrastructure interactions, e.g., providing the self description."@en
-	* @return Returns the ConnectorEndpoint for the property hasDefaultEndpoint.
-	* More information under https://w3id.org/idsa/core/hasDefaultEndpoint
-	*/
 	@NotNull
 	@JsonProperty("ids:hasDefaultEndpoint")
 	final public ConnectorEndpoint getHasDefaultEndpoint() {
 		return _hasDefaultEndpoint;
 	}
-
 	
-	/**
-	* "Indicates the default endpoint that should be used for basic infrastructure interactions, e.g., providing the self description."@en
-	* @param _hasDefaultEndpoint_ desired value for the property hasDefaultEndpoint.
-	* More information under https://w3id.org/idsa/core/hasDefaultEndpoint
-	*/
 	final public void setHasDefaultEndpoint (ConnectorEndpoint _hasDefaultEndpoint_) {
 		this._hasDefaultEndpoint = _hasDefaultEndpoint_;
 	}
 
-	/**
-	* "Information of the authentication service used by the Connector."@en
-	* @return Returns the AuthInfo for the property authInfo.
-	* More information under https://w3id.org/idsa/core/authInfo
-	*/
 	@JsonProperty("ids:authInfo")
 	final public AuthInfo getAuthInfo() {
 		return _authInfo;
 	}
-
 	
-	/**
-	* "Information of the authentication service used by the Connector."@en
-	* @param _authInfo_ desired value for the property authInfo.
-	* More information under https://w3id.org/idsa/core/authInfo
-	*/
 	final public void setAuthInfo (AuthInfo _authInfo_) {
 		this._authInfo = _authInfo_;
 	}
 
-	/**
-	* "The SecurityProfile supported by the Connector."@en
-	* @return Returns the SecurityProfile for the property securityProfile.
-	* More information under https://w3id.org/idsa/core/securityProfile
-	*/
 	@NotNull
 	@JsonProperty("ids:securityProfile")
 	final public SecurityProfile getSecurityProfile() {
 		return _securityProfile;
 	}
-
 	
-	/**
-	* "The SecurityProfile supported by the Connector."@en
-	* @param _securityProfile_ desired value for the property securityProfile.
-	* More information under https://w3id.org/idsa/core/securityProfile
-	*/
 	final public void setSecurityProfile (SecurityProfile _securityProfile_) {
 		this._securityProfile = _securityProfile_;
 	}
 
-	/**
-	* "Reference to a security guarantee that, if used in combination with a security profile instance, overrides the respective guarantee of the given predefined instance."@en
-	* @return Returns the ArrayList of SecurityGuarantee for the property extendedGuarantee.
-	* More information under https://w3id.org/idsa/core/extendedGuarantee
-	*/
 	@JsonProperty("ids:extendedGuarantee")
-	final public ArrayList<? extends SecurityGuarantee> getExtendedGuarantee() {
+	final public List<SecurityGuarantee> getExtendedGuarantee() {
 		return _extendedGuarantee;
 	}
-
 	
-	/**
-	* "Reference to a security guarantee that, if used in combination with a security profile instance, overrides the respective guarantee of the given predefined instance."@en
-	* @param _extendedGuarantee_ desired value for the property extendedGuarantee.
-	* More information under https://w3id.org/idsa/core/extendedGuarantee
-	*/
-	final public void setExtendedGuarantee (ArrayList<? extends SecurityGuarantee> _extendedGuarantee_) {
+	final public void setExtendedGuarantee (List<SecurityGuarantee> _extendedGuarantee_) {
 		this._extendedGuarantee = _extendedGuarantee_;
 	}
 
-	/**
-	* "Participant responsible for technical maintenance of the InfrastructureComponent."@en
-	* @return Returns the URI for the property maintainer.
-	* More information under https://w3id.org/idsa/core/maintainer
-	*/
 	@NotNull
 	@JsonProperty("ids:maintainer")
 	final public URI getMaintainer() {
 		return _maintainer;
 	}
-
 	
-	/**
-	* "Participant responsible for technical maintenance of the InfrastructureComponent."@en
-	* @param _maintainer_ desired value for the property maintainer.
-	* More information under https://w3id.org/idsa/core/maintainer
-	*/
 	final public void setMaintainer (URI _maintainer_) {
 		this._maintainer = _maintainer_;
 	}
 
-	/**
-	* "Participant responsible for the correctness of the content offered by the InfrastructureComponent."@en
-	* @return Returns the URI for the property curator.
-	* More information under https://w3id.org/idsa/core/curator
-	*/
 	@NotNull
 	@JsonProperty("ids:curator")
 	final public URI getCurator() {
 		return _curator;
 	}
-
 	
-	/**
-	* "Participant responsible for the correctness of the content offered by the InfrastructureComponent."@en
-	* @param _curator_ desired value for the property curator.
-	* More information under https://w3id.org/idsa/core/curator
-	*/
 	final public void setCurator (URI _curator_) {
 		this._curator = _curator_;
 	}
 
-	/**
-	* "Information Model version that the InfrastructureComponent is capable of reading/processing."@en
-	* @return Returns the ArrayList of String for the property inboundModelVersion.
-	* More information under https://w3id.org/idsa/core/inboundModelVersion
-	*/
 	@NotEmpty
 	@JsonProperty("ids:inboundModelVersion")
-	final public ArrayList<? extends String> getInboundModelVersion() {
+	final public List<String> getInboundModelVersion() {
 		return _inboundModelVersion;
 	}
-
 	
-	/**
-	* "Information Model version that the InfrastructureComponent is capable of reading/processing."@en
-	* @param _inboundModelVersion_ desired value for the property inboundModelVersion.
-	* More information under https://w3id.org/idsa/core/inboundModelVersion
-	*/
-	final public void setInboundModelVersion (ArrayList<? extends String> _inboundModelVersion_) {
+	final public void setInboundModelVersion (List<String> _inboundModelVersion_) {
 		this._inboundModelVersion = _inboundModelVersion_;
 	}
 
-	/**
-	* "Information Model version being produced by the InfrastructureComponent."@en
-	* @return Returns the String for the property outboundModelVersion.
-	* More information under https://w3id.org/idsa/core/outboundModelVersion
-	*/
 	@NotNull
 	@JsonProperty("ids:outboundModelVersion")
 	final public String getOutboundModelVersion() {
 		return _outboundModelVersion;
 	}
-
 	
-	/**
-	* "Information Model version being produced by the InfrastructureComponent."@en
-	* @param _outboundModelVersion_ desired value for the property outboundModelVersion.
-	* More information under https://w3id.org/idsa/core/outboundModelVersion
-	*/
 	final public void setOutboundModelVersion (String _outboundModelVersion_) {
 		this._outboundModelVersion = _outboundModelVersion_;
 	}
 
-	/**
-	* "The location where the Connector is physically deployed."@en
-	* @return Returns the Location for the property physicalLocation.
-	* More information under https://w3id.org/idsa/core/physicalLocation
-	*/
 	@JsonProperty("ids:physicalLocation")
 	final public Location getPhysicalLocation() {
 		return _physicalLocation;
 	}
-
 	
-	/**
-	* "The location where the Connector is physically deployed."@en
-	* @param _physicalLocation_ desired value for the property physicalLocation.
-	* More information under https://w3id.org/idsa/core/physicalLocation
-	*/
 	final public void setPhysicalLocation (Location _physicalLocation_) {
 		this._physicalLocation = _physicalLocation_;
 	}
 
-	/**
-	* "Certification issued for the given Infrastructure Component."@en
-	* @return Returns the ComponentCertification for the property componentCertification.
-	* More information under https://w3id.org/idsa/core/componentCertification
-	*/
 	@JsonProperty("ids:componentCertification")
 	final public ComponentCertification getComponentCertification() {
 		return _componentCertification;
 	}
-
 	
-	/**
-	* "Certification issued for the given Infrastructure Component."@en
-	* @param _componentCertification_ desired value for the property componentCertification.
-	* More information under https://w3id.org/idsa/core/componentCertification
-	*/
 	final public void setComponentCertification (ComponentCertification _componentCertification_) {
 		this._componentCertification = _componentCertification_;
 	}
 
-	/**
-	* "Public Key that has been created for the Component."@en
-	* @return Returns the PublicKey for the property publicKey.
-	* More information under https://w3id.org/idsa/core/publicKey
-	*/
 	@JsonProperty("ids:publicKey")
 	final public PublicKey getPublicKey() {
 		return _publicKey;
 	}
-
 	
-	/**
-	* "Public Key that has been created for the Component."@en
-	* @param _publicKey_ desired value for the property publicKey.
-	* More information under https://w3id.org/idsa/core/publicKey
-	*/
 	final public void setPublicKey (PublicKey _publicKey_) {
 		this._publicKey = _publicKey_;
 	}
 
-	/**
-	* "Version identifier of the Managed Entity"@en
-	* @return Returns the String for the property version.
-	* More information under https://w3id.org/idsa/core/version
-	*/
 	@JsonProperty("ids:version")
 	final public String getVersion() {
 		return _version;
 	}
-
 	
-	/**
-	* "Version identifier of the Managed Entity"@en
-	* @param _version_ desired value for the property version.
-	* More information under https://w3id.org/idsa/core/version
-	*/
 	final public void setVersion (String _version_) {
 		this._version = _version_;
 	}
 
-	/**
-	* "(Localized) name of the entity."@en
-	* @return Returns the ArrayList of TypedLiteral for the property title.
-	* More information under https://w3id.org/idsa/core/title
-	*/
 	@JsonProperty("ids:title")
-	final public ArrayList<? extends TypedLiteral> getTitle() {
+	final public List<TypedLiteral> getTitle() {
 		return _title;
 	}
-
 	
-	/**
-	* "(Localized) name of the entity."@en
-	* @param _title_ desired value for the property title.
-	* More information under https://w3id.org/idsa/core/title
-	*/
-	final public void setTitle (ArrayList<? extends TypedLiteral> _title_) {
+	final public void setTitle (List<TypedLiteral> _title_) {
 		this._title = _title_;
 	}
 
-	/**
-	* "Explanation of the resource in a natural language text."@en
-	* @return Returns the ArrayList of TypedLiteral for the property description.
-	* More information under https://w3id.org/idsa/core/description
-	*/
 	@JsonProperty("ids:description")
-	final public ArrayList<? extends TypedLiteral> getDescription() {
+	final public List<TypedLiteral> getDescription() {
 		return _description;
 	}
-
 	
-	/**
-	* "Explanation of the resource in a natural language text."@en
-	* @param _description_ desired value for the property description.
-	* More information under https://w3id.org/idsa/core/description
-	*/
-	final public void setDescription (ArrayList<? extends TypedLiteral> _description_) {
+	final public void setDescription (List<TypedLiteral> _description_) {
 		this._description = _description_;
 	}
 }

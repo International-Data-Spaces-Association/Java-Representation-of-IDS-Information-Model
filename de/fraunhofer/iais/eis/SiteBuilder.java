@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -46,9 +47,9 @@ public class SiteBuilder {
 	}
 
 	/**
-	* This function allows setting a value for siteAddress
+	* This function allows setting a value for _siteAddress
 	* @param _siteAddress_ desired value to be set
-	* @return Builder object with new value for siteAddress
+	* @return Builder object with new value for _siteAddress
 	*/
 	final public SiteBuilder _siteAddress_(String _siteAddress_) {
 		this.siteImpl._siteAddress = _siteAddress_;

@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -46,9 +47,9 @@ public class BusinessIdentifierBuilder {
 	}
 
 	/**
-	* This function allows setting a value for identifierSystem
+	* This function allows setting a value for _identifierSystem
 	* @param _identifierSystem_ desired value to be set
-	* @return Builder object with new value for identifierSystem
+	* @return Builder object with new value for _identifierSystem
 	*/
 	final public BusinessIdentifierBuilder _identifierSystem_(String _identifierSystem_) {
 		this.businessIdentifierImpl._identifierSystem = _identifierSystem_;
@@ -57,9 +58,9 @@ public class BusinessIdentifierBuilder {
 
 
 	/**
-	* This function allows setting a value for identifierNumber
+	* This function allows setting a value for _identifierNumber
 	* @param _identifierNumber_ desired value to be set
-	* @return Builder object with new value for identifierNumber
+	* @return Builder object with new value for _identifierNumber
 	*/
 	final public BusinessIdentifierBuilder _identifierNumber_(String _identifierNumber_) {
 		this.businessIdentifierImpl._identifierNumber = _identifierNumber_;

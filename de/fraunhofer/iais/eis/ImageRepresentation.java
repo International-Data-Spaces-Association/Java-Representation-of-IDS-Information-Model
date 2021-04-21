@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -72,12 +73,25 @@ public interface ImageRepresentation extends Representation {
 	public Map<String,Object> getProperties();
 	public void setProperty(String property, Object value);
 
+	/**
+	* This function returns a hash code value for the ImageRepresentation for the benefit of e.g. hash tables.
+	* @return a hash code value for the ImageRepresentation
+	*/
+	public int hashCode();
+
+	/**
+	* This function indicates whether some other object is equal to this one.
+	* @param obj the reference object with which to compare.
+	* @return true if this ImageRepresentation is the same as the obj argument; false otherwise.
+	*/
+	public boolean equals(Object obj);
+
 	// accessor methods as derived from the IDSA Information Model ontology
 
 
 	/**
 	* "Width of the visible frame."@en
-	* @return Returns the java.math.BigDecimal for the property width.
+	* @return Returns the java.math.BigDecimal for the property _width.
 	* More information under https://w3id.org/idsa/core/width
 	*/
 	@JsonProperty("ids:width")
@@ -85,7 +99,7 @@ public interface ImageRepresentation extends Representation {
 
 	/**
 	* "Height of the visible frame."@en
-	* @return Returns the java.math.BigDecimal for the property height.
+	* @return Returns the java.math.BigDecimal for the property _height.
 	* More information under https://w3id.org/idsa/core/height
 	*/
 	@JsonProperty("ids:height")

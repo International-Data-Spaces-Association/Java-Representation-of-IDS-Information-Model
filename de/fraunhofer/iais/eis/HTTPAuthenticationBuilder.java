@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -46,9 +47,9 @@ public class HTTPAuthenticationBuilder {
 	}
 
 	/**
-	* This function allows setting a value for httpAuthURI
+	* This function allows setting a value for _httpAuthURI
 	* @param _httpAuthURI_ desired value to be set
-	* @return Builder object with new value for httpAuthURI
+	* @return Builder object with new value for _httpAuthURI
 	*/
 	final public HTTPAuthenticationBuilder _httpAuthURI_(URI _httpAuthURI_) {
 		this.hTTPAuthenticationImpl._httpAuthURI = _httpAuthURI_;
@@ -57,9 +58,9 @@ public class HTTPAuthenticationBuilder {
 
 
 	/**
-	* This function allows setting a value for authPassword
+	* This function allows setting a value for _authPassword
 	* @param _authPassword_ desired value to be set
-	* @return Builder object with new value for authPassword
+	* @return Builder object with new value for _authPassword
 	*/
 	final public HTTPAuthenticationBuilder _authPassword_(String _authPassword_) {
 		this.hTTPAuthenticationImpl._authPassword = _authPassword_;
@@ -68,9 +69,9 @@ public class HTTPAuthenticationBuilder {
 
 
 	/**
-	* This function allows setting a value for authUsername
+	* This function allows setting a value for _authUsername
 	* @param _authUsername_ desired value to be set
-	* @return Builder object with new value for authUsername
+	* @return Builder object with new value for _authUsername
 	*/
 	final public HTTPAuthenticationBuilder _authUsername_(String _authUsername_) {
 		this.hTTPAuthenticationImpl._authUsername = _authUsername_;

@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -46,31 +47,31 @@ public class EndpointBuilder {
 	}
 
 	/**
-	* This function allows setting a value for endpointInformation
+	* This function allows setting a value for _endpointInformation
 	* @param _endpointInformation_ desired value to be set
-	* @return Builder object with new value for endpointInformation
+	* @return Builder object with new value for _endpointInformation
 	*/
-	final public EndpointBuilder _endpointInformation_(ArrayList<? extends TypedLiteral> _endpointInformation_) {
+	final public EndpointBuilder _endpointInformation_(List<TypedLiteral> _endpointInformation_) {
 		this.endpointImpl._endpointInformation = _endpointInformation_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for endpointDocumentation
+	* This function allows setting a value for _endpointDocumentation
 	* @param _endpointDocumentation_ desired value to be set
-	* @return Builder object with new value for endpointDocumentation
+	* @return Builder object with new value for _endpointDocumentation
 	*/
-	final public EndpointBuilder _endpointDocumentation_(ArrayList<? extends URI> _endpointDocumentation_) {
+	final public EndpointBuilder _endpointDocumentation_(List<URI> _endpointDocumentation_) {
 		this.endpointImpl._endpointDocumentation = _endpointDocumentation_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for accessURL
+	* This function allows setting a value for _accessURL
 	* @param _accessURL_ desired value to be set
-	* @return Builder object with new value for accessURL
+	* @return Builder object with new value for _accessURL
 	*/
 	final public EndpointBuilder _accessURL_(URI _accessURL_) {
 		this.endpointImpl._accessURL = _accessURL_;
@@ -79,9 +80,9 @@ public class EndpointBuilder {
 
 
 	/**
-	* This function allows setting a value for path
+	* This function allows setting a value for _path
 	* @param _path_ desired value to be set
-	* @return Builder object with new value for path
+	* @return Builder object with new value for _path
 	*/
 	final public EndpointBuilder _path_(String _path_) {
 		this.endpointImpl._path = _path_;
@@ -90,9 +91,9 @@ public class EndpointBuilder {
 
 
 	/**
-	* This function allows setting a value for inboundPath
+	* This function allows setting a value for _inboundPath
 	* @param _inboundPath_ desired value to be set
-	* @return Builder object with new value for inboundPath
+	* @return Builder object with new value for _inboundPath
 	*/
 	final public EndpointBuilder _inboundPath_(String _inboundPath_) {
 		this.endpointImpl._inboundPath = _inboundPath_;
@@ -101,9 +102,9 @@ public class EndpointBuilder {
 
 
 	/**
-	* This function allows setting a value for outboundPath
+	* This function allows setting a value for _outboundPath
 	* @param _outboundPath_ desired value to be set
-	* @return Builder object with new value for outboundPath
+	* @return Builder object with new value for _outboundPath
 	*/
 	final public EndpointBuilder _outboundPath_(String _outboundPath_) {
 		this.endpointImpl._outboundPath = _outboundPath_;

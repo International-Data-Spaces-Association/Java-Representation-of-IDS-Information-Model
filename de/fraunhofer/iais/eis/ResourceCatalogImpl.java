@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -64,7 +65,7 @@ public class ResourceCatalogImpl implements Serializable, ResourceCatalog {
 	* "A Resource that is part of a resource catalog, indicating an offering (of, e.g., data)."@en
 	*/
 	@JsonAlias({"ids:offeredResource", "offeredResource"})
-	protected ArrayList<? extends Resource> _offeredResource;
+	protected List<Resource> _offeredResource;
 
 
 	/**
@@ -72,7 +73,7 @@ public class ResourceCatalogImpl implements Serializable, ResourceCatalog {
 	* "A Resource that is part of a resource catalog, indicating a request (of, e.g., data, software,...)."@en
 	*/
 	@JsonAlias({"ids:requestedResource", "requestedResource"})
-	protected ArrayList<? extends Resource> _requestedResource;
+	protected List<Resource> _requestedResource;
 
 
 	// no manual construction
@@ -80,10 +81,6 @@ public class ResourceCatalogImpl implements Serializable, ResourceCatalog {
 		id = VocabUtil.getInstance().createRandomUrl("resourceCatalog");
 	}
 
-	/**
-	* This function retrieves the ID of the current object (can be set via the constructor of the builder class)
-	* @return ID of current object as URI
-	*/
 	@JsonProperty("@id")
 	final public URI getId() {
 		return id;
@@ -93,20 +90,10 @@ public class ResourceCatalogImpl implements Serializable, ResourceCatalog {
 		return VocabUtil.getInstance().toRdf(this);
 	}
 
-	/**
-	* This function retrieves a human readable label about the current class, as defined in the ontology.
-	* This label could, for example, be used as a field heading in a user interface
-	* @return Human readable label
-	*/
 	public List<TypedLiteral> getLabel() {
 		return this.label;
 	}
 
-	/**
-	* This function retrieves a human readable explanatory comment about the current class, as defined in the ontology.
-	* This comment could, for example, be used as a tooltip in a user interface
-	* @return Human readable explanatory comment
-	*/
 	public List<TypedLiteral> getComment() {
 		return this.comment;
 	}
@@ -147,47 +134,44 @@ public class ResourceCatalogImpl implements Serializable, ResourceCatalog {
 		if (property.startsWith("@")) {return ;};
 		this.properties.put(property, value) ;
 	}
+	public int hashCode() {
+		return Objects.hash(new Object[]{this._requestedResource,
+			this._offeredResource});
+	}
+
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		} else if (obj == null) {
+			return false;
+		} else if (this.getClass() != obj.getClass()) {
+			return false;
+		} else {
+			ResourceCatalogImpl other = (ResourceCatalogImpl) obj;
+			return Objects.equals(this._requestedResource, other._requestedResource) &&
+				Objects.equals(this._offeredResource, other._offeredResource);
+		}
+	}
+
 
 	// accessor method implementations as derived from the IDSA Information Model ontology
 
 
-	/**
-	* "A Resource that is part of a resource catalog, indicating a request (of, e.g., data, software,...)."@en
-	* @return Returns the ArrayList of Resource for the property requestedResource.
-	* More information under https://w3id.org/idsa/core/requestedResource
-	*/
 	@JsonProperty("ids:requestedResource")
-	final public ArrayList<? extends Resource> getRequestedResource() {
+	final public List<Resource> getRequestedResource() {
 		return _requestedResource;
 	}
-
 	
-	/**
-	* "A Resource that is part of a resource catalog, indicating a request (of, e.g., data, software,...)."@en
-	* @param _requestedResource_ desired value for the property requestedResource.
-	* More information under https://w3id.org/idsa/core/requestedResource
-	*/
-	final public void setRequestedResource (ArrayList<? extends Resource> _requestedResource_) {
+	final public void setRequestedResource (List<Resource> _requestedResource_) {
 		this._requestedResource = _requestedResource_;
 	}
 
-	/**
-	* "A Resource that is part of a resource catalog, indicating an offering (of, e.g., data)."@en
-	* @return Returns the ArrayList of Resource for the property offeredResource.
-	* More information under https://w3id.org/idsa/core/offeredResource
-	*/
 	@JsonProperty("ids:offeredResource")
-	final public ArrayList<? extends Resource> getOfferedResource() {
+	final public List<Resource> getOfferedResource() {
 		return _offeredResource;
 	}
-
 	
-	/**
-	* "A Resource that is part of a resource catalog, indicating an offering (of, e.g., data)."@en
-	* @param _offeredResource_ desired value for the property offeredResource.
-	* More information under https://w3id.org/idsa/core/offeredResource
-	*/
-	final public void setOfferedResource (ArrayList<? extends Resource> _offeredResource_) {
+	final public void setOfferedResource (List<Resource> _offeredResource_) {
 		this._offeredResource = _offeredResource_;
 	}
 

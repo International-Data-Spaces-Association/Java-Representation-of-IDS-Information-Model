@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -46,9 +47,9 @@ public class AppRepresentationBuilder {
 	}
 
 	/**
-	* This function allows setting a value for dataAppInformation
+	* This function allows setting a value for _dataAppInformation
 	* @param _dataAppInformation_ desired value to be set
-	* @return Builder object with new value for dataAppInformation
+	* @return Builder object with new value for _dataAppInformation
 	*/
 	final public AppRepresentationBuilder _dataAppInformation_(DataApp _dataAppInformation_) {
 		this.appRepresentationImpl._dataAppInformation = _dataAppInformation_;
@@ -57,9 +58,9 @@ public class AppRepresentationBuilder {
 
 
 	/**
-	* This function allows setting a value for dataAppDistributionService
+	* This function allows setting a value for _dataAppDistributionService
 	* @param _dataAppDistributionService_ desired value to be set
-	* @return Builder object with new value for dataAppDistributionService
+	* @return Builder object with new value for _dataAppDistributionService
 	*/
 	final public AppRepresentationBuilder _dataAppDistributionService_(URI _dataAppDistributionService_) {
 		this.appRepresentationImpl._dataAppDistributionService = _dataAppDistributionService_;
@@ -68,9 +69,9 @@ public class AppRepresentationBuilder {
 
 
 	/**
-	* This function allows setting a value for dataAppRuntimeEnvironment
+	* This function allows setting a value for _dataAppRuntimeEnvironment
 	* @param _dataAppRuntimeEnvironment_ desired value to be set
-	* @return Builder object with new value for dataAppRuntimeEnvironment
+	* @return Builder object with new value for _dataAppRuntimeEnvironment
 	*/
 	final public AppRepresentationBuilder _dataAppRuntimeEnvironment_(String _dataAppRuntimeEnvironment_) {
 		this.appRepresentationImpl._dataAppRuntimeEnvironment = _dataAppRuntimeEnvironment_;
@@ -80,20 +81,20 @@ public class AppRepresentationBuilder {
 
 
 	/**
-	* This function allows setting a value for instance
+	* This function allows setting a value for _instance
 	* @param _instance_ desired value to be set
-	* @return Builder object with new value for instance
+	* @return Builder object with new value for _instance
 	*/
-	final public AppRepresentationBuilder _instance_(ArrayList<? extends RepresentationInstance> _instance_) {
+	final public AppRepresentationBuilder _instance_(List<RepresentationInstance> _instance_) {
 		this.appRepresentationImpl._instance = _instance_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for mediaType
+	* This function allows setting a value for _mediaType
 	* @param _mediaType_ desired value to be set
-	* @return Builder object with new value for mediaType
+	* @return Builder object with new value for _mediaType
 	*/
 	final public AppRepresentationBuilder _mediaType_(MediaType _mediaType_) {
 		this.appRepresentationImpl._mediaType = _mediaType_;
@@ -102,9 +103,9 @@ public class AppRepresentationBuilder {
 
 
 	/**
-	* This function allows setting a value for representationStandard
+	* This function allows setting a value for _representationStandard
 	* @param _representationStandard_ desired value to be set
-	* @return Builder object with new value for representationStandard
+	* @return Builder object with new value for _representationStandard
 	*/
 	final public AppRepresentationBuilder _representationStandard_(URI _representationStandard_) {
 		this.appRepresentationImpl._representationStandard = _representationStandard_;
@@ -113,9 +114,9 @@ public class AppRepresentationBuilder {
 
 
 	/**
-	* This function allows setting a value for language
+	* This function allows setting a value for _language
 	* @param _language_ desired value to be set
-	* @return Builder object with new value for language
+	* @return Builder object with new value for _language
 	*/
 	final public AppRepresentationBuilder _language_(Language _language_) {
 		this.appRepresentationImpl._language = _language_;
@@ -124,9 +125,9 @@ public class AppRepresentationBuilder {
 
 
 	/**
-	* This function allows setting a value for created
+	* This function allows setting a value for _created
 	* @param _created_ desired value to be set
-	* @return Builder object with new value for created
+	* @return Builder object with new value for _created
 	*/
 	final public AppRepresentationBuilder _created_(XMLGregorianCalendar _created_) {
 		this.appRepresentationImpl._created = _created_;
@@ -135,9 +136,9 @@ public class AppRepresentationBuilder {
 
 
 	/**
-	* This function allows setting a value for modified
+	* This function allows setting a value for _modified
 	* @param _modified_ desired value to be set
-	* @return Builder object with new value for modified
+	* @return Builder object with new value for _modified
 	*/
 	final public AppRepresentationBuilder _modified_(XMLGregorianCalendar _modified_) {
 		this.appRepresentationImpl._modified = _modified_;
@@ -148,9 +149,9 @@ public class AppRepresentationBuilder {
 
 
 	/**
-	* This function allows setting a value for shapesGraph
+	* This function allows setting a value for _shapesGraph
 	* @param _shapesGraph_ desired value to be set
-	* @return Builder object with new value for shapesGraph
+	* @return Builder object with new value for _shapesGraph
 	*/
 	final public AppRepresentationBuilder _shapesGraph_(URI _shapesGraph_) {
 		this.appRepresentationImpl._shapesGraph = _shapesGraph_;

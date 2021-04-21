@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -75,12 +76,25 @@ public interface InfrastructureComponent extends ManagedEntity {
 	public Map<String,Object> getProperties();
 	public void setProperty(String property, Object value);
 
+	/**
+	* This function returns a hash code value for the InfrastructureComponent for the benefit of e.g. hash tables.
+	* @return a hash code value for the InfrastructureComponent
+	*/
+	public int hashCode();
+
+	/**
+	* This function indicates whether some other object is equal to this one.
+	* @param obj the reference object with which to compare.
+	* @return true if this InfrastructureComponent is the same as the obj argument; false otherwise.
+	*/
+	public boolean equals(Object obj);
+
 	// accessor methods as derived from the IDSA Information Model ontology
 
 
 	/**
 	* "Participant responsible for technical maintenance of the InfrastructureComponent."@en
-	* @return Returns the URI for the property maintainer.
+	* @return Returns the URI for the property _maintainer.
 	* More information under https://w3id.org/idsa/core/maintainer
 	*/
 	@NotNull
@@ -89,7 +103,7 @@ public interface InfrastructureComponent extends ManagedEntity {
 
 	/**
 	* "Participant responsible for the correctness of the content offered by the InfrastructureComponent."@en
-	* @return Returns the URI for the property curator.
+	* @return Returns the URI for the property _curator.
 	* More information under https://w3id.org/idsa/core/curator
 	*/
 	@NotNull
@@ -98,16 +112,16 @@ public interface InfrastructureComponent extends ManagedEntity {
 
 	/**
 	* "Information Model version that the InfrastructureComponent is capable of reading/processing."@en
-	* @return Returns the ArrayList of String for the property inboundModelVersion.
+	* @return Returns the List of Strings for the property _inboundModelVersion.
 	* More information under https://w3id.org/idsa/core/inboundModelVersion
 	*/
 	@NotEmpty
 	@JsonProperty("ids:inboundModelVersion")
-	public ArrayList<? extends String> getInboundModelVersion();
+	public List<String> getInboundModelVersion();
 
 	/**
 	* "Information Model version being produced by the InfrastructureComponent."@en
-	* @return Returns the String for the property outboundModelVersion.
+	* @return Returns the String for the property _outboundModelVersion.
 	* More information under https://w3id.org/idsa/core/outboundModelVersion
 	*/
 	@NotNull
@@ -116,7 +130,7 @@ public interface InfrastructureComponent extends ManagedEntity {
 
 	/**
 	* "The location where the Connector is physically deployed."@en
-	* @return Returns the Location for the property physicalLocation.
+	* @return Returns the Location for the property _physicalLocation.
 	* More information under https://w3id.org/idsa/core/physicalLocation
 	*/
 	@JsonProperty("ids:physicalLocation")
@@ -124,7 +138,7 @@ public interface InfrastructureComponent extends ManagedEntity {
 
 	/**
 	* "Certification issued for the given Infrastructure Component."@en
-	* @return Returns the ComponentCertification for the property componentCertification.
+	* @return Returns the ComponentCertification for the property _componentCertification.
 	* More information under https://w3id.org/idsa/core/componentCertification
 	*/
 	@JsonProperty("ids:componentCertification")
@@ -132,7 +146,7 @@ public interface InfrastructureComponent extends ManagedEntity {
 
 	/**
 	* "Public Key that has been created for the Component."@en
-	* @return Returns the PublicKey for the property publicKey.
+	* @return Returns the PublicKey for the property _publicKey.
 	* More information under https://w3id.org/idsa/core/publicKey
 	*/
 	@JsonProperty("ids:publicKey")

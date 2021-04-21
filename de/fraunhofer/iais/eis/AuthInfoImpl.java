@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -81,10 +82,6 @@ public class AuthInfoImpl implements Serializable, AuthInfo {
 		id = VocabUtil.getInstance().createRandomUrl("authInfo");
 	}
 
-	/**
-	* This function retrieves the ID of the current object (can be set via the constructor of the builder class)
-	* @return ID of current object as URI
-	*/
 	@JsonProperty("@id")
 	final public URI getId() {
 		return id;
@@ -94,20 +91,10 @@ public class AuthInfoImpl implements Serializable, AuthInfo {
 		return VocabUtil.getInstance().toRdf(this);
 	}
 
-	/**
-	* This function retrieves a human readable label about the current class, as defined in the ontology.
-	* This label could, for example, be used as a field heading in a user interface
-	* @return Human readable label
-	*/
 	public List<TypedLiteral> getLabel() {
 		return this.label;
 	}
 
-	/**
-	* This function retrieves a human readable explanatory comment about the current class, as defined in the ontology.
-	* This comment could, for example, be used as a tooltip in a user interface
-	* @return Human readable explanatory comment
-	*/
 	public List<TypedLiteral> getComment() {
 		return this.comment;
 	}
@@ -148,47 +135,44 @@ public class AuthInfoImpl implements Serializable, AuthInfo {
 		if (property.startsWith("@")) {return ;};
 		this.properties.put(property, value) ;
 	}
+	public int hashCode() {
+		return Objects.hash(new Object[]{this._authService,
+			this._authStandard});
+	}
+
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		} else if (obj == null) {
+			return false;
+		} else if (this.getClass() != obj.getClass()) {
+			return false;
+		} else {
+			AuthInfoImpl other = (AuthInfoImpl) obj;
+			return Objects.equals(this._authService, other._authService) &&
+				Objects.equals(this._authStandard, other._authStandard);
+		}
+	}
+
 
 	// accessor method implementations as derived from the IDSA Information Model ontology
 
 
-	/**
-	* "The URL of the authentication service that is provided by the Connector."@en
-	* @return Returns the URI for the property authService.
-	* More information under https://w3id.org/idsa/core/authService
-	*/
 	@NotNull
 	@JsonProperty("ids:authService")
 	final public URI getAuthService() {
 		return _authService;
 	}
-
 	
-	/**
-	* "The URL of the authentication service that is provided by the Connector."@en
-	* @param _authService_ desired value for the property authService.
-	* More information under https://w3id.org/idsa/core/authService
-	*/
 	final public void setAuthService (URI _authService_) {
 		this._authService = _authService_;
 	}
 
-	/**
-	* "The standard used by the authentication service that is provided by the Connector."@en
-	* @return Returns the AuthStandard for the property authStandard.
-	* More information under https://w3id.org/idsa/core/authStandard
-	*/
 	@JsonProperty("ids:authStandard")
 	final public AuthStandard getAuthStandard() {
 		return _authStandard;
 	}
-
 	
-	/**
-	* "The standard used by the authentication service that is provided by the Connector."@en
-	* @param _authStandard_ desired value for the property authStandard.
-	* More information under https://w3id.org/idsa/core/authStandard
-	*/
 	final public void setAuthStandard (AuthStandard _authStandard_) {
 		this._authStandard = _authStandard_;
 	}

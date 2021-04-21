@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -64,7 +65,7 @@ public class AppResourceCatalogImpl implements Serializable, AppResourceCatalog 
 	* "An AppResource that is part of an AppResourceCatalog."@en
 	*/
 	@JsonAlias({"ids:listedAppResource", "listedAppResource"})
-	protected ArrayList<? extends AppResource> _listedAppResource;
+	protected List<AppResource> _listedAppResource;
 
 
 	// no manual construction
@@ -72,10 +73,6 @@ public class AppResourceCatalogImpl implements Serializable, AppResourceCatalog 
 		id = VocabUtil.getInstance().createRandomUrl("appResourceCatalog");
 	}
 
-	/**
-	* This function retrieves the ID of the current object (can be set via the constructor of the builder class)
-	* @return ID of current object as URI
-	*/
 	@JsonProperty("@id")
 	final public URI getId() {
 		return id;
@@ -85,20 +82,10 @@ public class AppResourceCatalogImpl implements Serializable, AppResourceCatalog 
 		return VocabUtil.getInstance().toRdf(this);
 	}
 
-	/**
-	* This function retrieves a human readable label about the current class, as defined in the ontology.
-	* This label could, for example, be used as a field heading in a user interface
-	* @return Human readable label
-	*/
 	public List<TypedLiteral> getLabel() {
 		return this.label;
 	}
 
-	/**
-	* This function retrieves a human readable explanatory comment about the current class, as defined in the ontology.
-	* This comment could, for example, be used as a tooltip in a user interface
-	* @return Human readable explanatory comment
-	*/
 	public List<TypedLiteral> getComment() {
 		return this.comment;
 	}
@@ -139,27 +126,33 @@ public class AppResourceCatalogImpl implements Serializable, AppResourceCatalog 
 		if (property.startsWith("@")) {return ;};
 		this.properties.put(property, value) ;
 	}
+	public int hashCode() {
+		return Objects.hash(new Object[]{this._listedAppResource});
+	}
+
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		} else if (obj == null) {
+			return false;
+		} else if (this.getClass() != obj.getClass()) {
+			return false;
+		} else {
+			AppResourceCatalogImpl other = (AppResourceCatalogImpl) obj;
+			return Objects.equals(this._listedAppResource, other._listedAppResource);
+		}
+	}
+
 
 	// accessor method implementations as derived from the IDSA Information Model ontology
 
 
-	/**
-	* "An AppResource that is part of an AppResourceCatalog."@en
-	* @return Returns the ArrayList of AppResource for the property listedAppResource.
-	* More information under https://w3id.org/idsa/core/listedAppResource
-	*/
 	@JsonProperty("ids:listedAppResource")
-	final public ArrayList<? extends AppResource> getListedAppResource() {
+	final public List<AppResource> getListedAppResource() {
 		return _listedAppResource;
 	}
-
 	
-	/**
-	* "An AppResource that is part of an AppResourceCatalog."@en
-	* @param _listedAppResource_ desired value for the property listedAppResource.
-	* More information under https://w3id.org/idsa/core/listedAppResource
-	*/
-	final public void setListedAppResource (ArrayList<? extends AppResource> _listedAppResource_) {
+	final public void setListedAppResource (List<AppResource> _listedAppResource_) {
 		this._listedAppResource = _listedAppResource_;
 	}
 

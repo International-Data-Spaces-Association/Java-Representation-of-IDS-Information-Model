@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -64,7 +65,7 @@ public class ProxyImpl implements Serializable, Proxy {
 	* "URLs that should be excluded from proxying.GNU emcs documentation contains a good explanation for the usage of noProxy."@en
 	*/
 	@JsonAlias({"ids:noProxy", "noProxy"})
-	protected ArrayList<? extends URI> _noProxy;
+	protected List<URI> _noProxy;
 
 
 	/**
@@ -89,10 +90,6 @@ public class ProxyImpl implements Serializable, Proxy {
 		id = VocabUtil.getInstance().createRandomUrl("proxy");
 	}
 
-	/**
-	* This function retrieves the ID of the current object (can be set via the constructor of the builder class)
-	* @return ID of current object as URI
-	*/
 	@JsonProperty("@id")
 	final public URI getId() {
 		return id;
@@ -102,20 +99,10 @@ public class ProxyImpl implements Serializable, Proxy {
 		return VocabUtil.getInstance().toRdf(this);
 	}
 
-	/**
-	* This function retrieves a human readable label about the current class, as defined in the ontology.
-	* This label could, for example, be used as a field heading in a user interface
-	* @return Human readable label
-	*/
 	public List<TypedLiteral> getLabel() {
 		return this.label;
 	}
 
-	/**
-	* This function retrieves a human readable explanatory comment about the current class, as defined in the ontology.
-	* This comment could, for example, be used as a tooltip in a user interface
-	* @return Human readable explanatory comment
-	*/
 	public List<TypedLiteral> getComment() {
 		return this.comment;
 	}
@@ -156,67 +143,55 @@ public class ProxyImpl implements Serializable, Proxy {
 		if (property.startsWith("@")) {return ;};
 		this.properties.put(property, value) ;
 	}
+	public int hashCode() {
+		return Objects.hash(new Object[]{this._noProxy,
+			this._proxyURI,
+			this._proxyAuthentication});
+	}
+
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		} else if (obj == null) {
+			return false;
+		} else if (this.getClass() != obj.getClass()) {
+			return false;
+		} else {
+			ProxyImpl other = (ProxyImpl) obj;
+			return Objects.equals(this._noProxy, other._noProxy) &&
+				Objects.equals(this._proxyURI, other._proxyURI) &&
+				Objects.equals(this._proxyAuthentication, other._proxyAuthentication);
+		}
+	}
+
 
 	// accessor method implementations as derived from the IDSA Information Model ontology
 
 
-	/**
-	* "URLs that should be excluded from proxying.GNU emcs documentation contains a good explanation for the usage of noProxy."@en
-	* @return Returns the ArrayList of URI for the property noProxy.
-	* More information under https://w3id.org/idsa/core/noProxy
-	*/
 	@JsonProperty("ids:noProxy")
-	final public ArrayList<? extends URI> getNoProxy() {
+	final public List<URI> getNoProxy() {
 		return _noProxy;
 	}
-
 	
-	/**
-	* "URLs that should be excluded from proxying.GNU emcs documentation contains a good explanation for the usage of noProxy."@en
-	* @param _noProxy_ desired value for the property noProxy.
-	* More information under https://w3id.org/idsa/core/noProxy
-	*/
-	final public void setNoProxy (ArrayList<? extends URI> _noProxy_) {
+	final public void setNoProxy (List<URI> _noProxy_) {
 		this._noProxy = _noProxy_;
 	}
 
-	/**
-	* "URI of the proxy server."@en
-	* @return Returns the URI for the property proxyURI.
-	* More information under https://w3id.org/idsa/core/proxyURI
-	*/
 	@NotNull
 	@JsonProperty("ids:proxyURI")
 	final public URI getProxyURI() {
 		return _proxyURI;
 	}
-
 	
-	/**
-	* "URI of the proxy server."@en
-	* @param _proxyURI_ desired value for the property proxyURI.
-	* More information under https://w3id.org/idsa/core/proxyURI
-	*/
 	final public void setProxyURI (URI _proxyURI_) {
 		this._proxyURI = _proxyURI_;
 	}
 
-	/**
-	* "authentication information for the proxy"@en
-	* @return Returns the BasicAuthentication for the property proxyAuthentication.
-	* More information under https://w3id.org/idsa/core/proxyAuthentication
-	*/
 	@JsonProperty("ids:proxyAuthentication")
 	final public BasicAuthentication getProxyAuthentication() {
 		return _proxyAuthentication;
 	}
-
 	
-	/**
-	* "authentication information for the proxy"@en
-	* @param _proxyAuthentication_ desired value for the property proxyAuthentication.
-	* More information under https://w3id.org/idsa/core/proxyAuthentication
-	*/
 	final public void setProxyAuthentication (BasicAuthentication _proxyAuthentication_) {
 		this._proxyAuthentication = _proxyAuthentication_;
 	}

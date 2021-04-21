@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -73,12 +74,25 @@ public interface JwtPayload {
 	public Map<String,Object> getProperties();
 	public void setProperty(String property, Object value);
 
+	/**
+	* This function returns a hash code value for the JwtPayload for the benefit of e.g. hash tables.
+	* @return a hash code value for the JwtPayload
+	*/
+	public int hashCode();
+
+	/**
+	* This function indicates whether some other object is equal to this one.
+	* @param obj the reference object with which to compare.
+	* @return true if this JwtPayload is the same as the obj argument; false otherwise.
+	*/
+	public boolean equals(Object obj);
+
 	// accessor methods as derived from the IDSA Information Model ontology
 
 
 	/**
 	* "The \'aud\' (audience) claim identifies the recipients that the JWT is intended for."@en
-	* @return Returns the Audience for the property aud.
+	* @return Returns the Audience for the property _aud.
 	* More information under https://w3id.org/idsa/core/aud
 	*/
 	@NotNull
@@ -87,7 +101,7 @@ public interface JwtPayload {
 
 	/**
 	* "The \'sub\' (subject) claim identifies the principal that is the subject of the JWT."@en
-	* @return Returns the String for the property sub.
+	* @return Returns the String for the property _sub.
 	* More information under https://w3id.org/idsa/core/sub
 	*/
 	@NotNull
@@ -96,7 +110,7 @@ public interface JwtPayload {
 
 	/**
 	* "The \'aud\' (audience) claim identifies the recipients that the JWT is intended for."@en
-	* @return Returns the BigInteger for the property nbf.
+	* @return Returns the BigInteger for the property _nbf.
 	* More information under https://w3id.org/idsa/core/nbf
 	*/
 	@NotNull
@@ -105,7 +119,7 @@ public interface JwtPayload {
 
 	/**
 	* "The \'exp\' (expiration time) claim identifies the expiration time on or after which the JWT MUST NOT be accepted for processing."@en
-	* @return Returns the BigInteger for the property exp.
+	* @return Returns the BigInteger for the property _exp.
 	* More information under https://w3id.org/idsa/core/exp
 	*/
 	@NotNull
@@ -114,7 +128,7 @@ public interface JwtPayload {
 
 	/**
 	* "The \'iat\' (issued at) claim contains the point in time when the JWT was created."@en
-	* @return Returns the BigInteger for the property iat.
+	* @return Returns the BigInteger for the property _iat.
 	* More information under https://w3id.org/idsa/core/iat
 	*/
 	@NotNull
@@ -123,7 +137,7 @@ public interface JwtPayload {
 
 	/**
 	* "Currently, the scope is limited to \'Connector\' but can be used for scoping purposes in the future. Scope is currently fixed to \'https://w3id.org/idsa/core/Connector\'."@en
-	* @return Returns the String for the property scope.
+	* @return Returns the String for the property _scope.
 	* More information under https://w3id.org/idsa/core/scope
 	*/
 	@NotNull
@@ -132,16 +146,16 @@ public interface JwtPayload {
 
 	/**
 	* "Separate certificates for IDS identification and transport encryption opens an attack vector for relay attacks. In order to prevent these attacks, a binding of this transport certificates to the connector is required. The inclusion of SHA256 fingerprints of currently valid transport certificates, mainly into the DAT, enables the client to relate the transport layer security with the IDS interactions."@en
-	* @return Returns the ArrayList of String for the property transportCertsSha256.
+	* @return Returns the List of Strings for the property _transportCertsSha256.
 	* More information under https://w3id.org/idsa/core/transportCertsSha256
 	*/
 	@NotEmpty
 	@JsonProperty("ids:transportCertsSha256")
-	public ArrayList<? extends String> getTransportCertsSha256();
+	public List<String> getTransportCertsSha256();
 
 	/**
 	* "The RDF connector entity as referred to by the DAT, with its URI included as the value. The value MUST be its accessible URI."@en
-	* @return Returns the URI for the property referringConnector.
+	* @return Returns the URI for the property _referringConnector.
 	* More information under https://w3id.org/idsa/core/referringConnector
 	*/
 	@JsonProperty("ids:referringConnector")
@@ -149,7 +163,7 @@ public interface JwtPayload {
 
 	/**
 	* "The \'iss\' (issuer) claim identifies the principal that issued the JWT."@en
-	* @return Returns the String for the property iss.
+	* @return Returns the String for the property _iss.
 	* More information under https://w3id.org/idsa/core/iss
 	*/
 	@JsonProperty("ids:iss")
@@ -157,7 +171,7 @@ public interface JwtPayload {
 
 	/**
 	* "The SecurityProfile supported by the Connector."@en
-	* @return Returns the SecurityProfile for the property securityProfile.
+	* @return Returns the SecurityProfile for the property _securityProfile.
 	* More information under https://w3id.org/idsa/core/securityProfile
 	*/
 	@NotNull

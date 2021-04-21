@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -76,36 +77,49 @@ public interface Connector extends InfrastructureComponent {
 	public Map<String,Object> getProperties();
 	public void setProperty(String property, Object value);
 
+	/**
+	* This function returns a hash code value for the Connector for the benefit of e.g. hash tables.
+	* @return a hash code value for the Connector
+	*/
+	public int hashCode();
+
+	/**
+	* This function indicates whether some other object is equal to this one.
+	* @param obj the reference object with which to compare.
+	* @return true if this Connector is the same as the obj argument; false otherwise.
+	*/
+	public boolean equals(Object obj);
+
 	// accessor methods as derived from the IDSA Information Model ontology
 
 
 	/**
 	* "Reference to the Endpoints serving the resource\'s content or let you exchange messages with an IDS Connector."@en
-	* @return Returns the ArrayList of ConnectorEndpoint for the property hasEndpoint.
+	* @return Returns the List of ConnectorEndpoints for the property _hasEndpoint.
 	* More information under https://w3id.org/idsa/core/hasEndpoint
 	*/
 	@JsonProperty("ids:hasEndpoint")
-	public ArrayList<? extends ConnectorEndpoint> getHasEndpoint();
+	public List<ConnectorEndpoint> getHasEndpoint();
 
 	/**
 	* "The Agents for which this Connector may initiate and receive Messages."@en
-	* @return Returns the ArrayList of URI for the property hasAgent.
+	* @return Returns the List of URIs for the property _hasAgent.
 	* More information under https://w3id.org/idsa/core/hasAgent
 	*/
 	@JsonProperty("ids:hasAgent")
-	public ArrayList<? extends URI> getHasAgent();
+	public List<URI> getHasAgent();
 
 	/**
 	* "References the Catalog of published or requested resource by this Connector."@en
-	* @return Returns the ArrayList of ResourceCatalog for the property resourceCatalog.
+	* @return Returns the List of ResourceCatalogs for the property _resourceCatalog.
 	* More information under https://w3id.org/idsa/core/resourceCatalog
 	*/
 	@JsonProperty("ids:resourceCatalog")
-	public ArrayList<? extends ResourceCatalog> getResourceCatalog();
+	public List<ResourceCatalog> getResourceCatalog();
 
 	/**
 	* "Indicates the default endpoint that should be used for basic infrastructure interactions, e.g., providing the self description."@en
-	* @return Returns the ConnectorEndpoint for the property hasDefaultEndpoint.
+	* @return Returns the ConnectorEndpoint for the property _hasDefaultEndpoint.
 	* More information under https://w3id.org/idsa/core/hasDefaultEndpoint
 	*/
 	@NotNull
@@ -114,7 +128,7 @@ public interface Connector extends InfrastructureComponent {
 
 	/**
 	* "Information of the authentication service used by the Connector."@en
-	* @return Returns the AuthInfo for the property authInfo.
+	* @return Returns the AuthInfo for the property _authInfo.
 	* More information under https://w3id.org/idsa/core/authInfo
 	*/
 	@JsonProperty("ids:authInfo")
@@ -122,7 +136,7 @@ public interface Connector extends InfrastructureComponent {
 
 	/**
 	* "The SecurityProfile supported by the Connector."@en
-	* @return Returns the SecurityProfile for the property securityProfile.
+	* @return Returns the SecurityProfile for the property _securityProfile.
 	* More information under https://w3id.org/idsa/core/securityProfile
 	*/
 	@NotNull
@@ -131,10 +145,10 @@ public interface Connector extends InfrastructureComponent {
 
 	/**
 	* "Reference to a security guarantee that, if used in combination with a security profile instance, overrides the respective guarantee of the given predefined instance."@en
-	* @return Returns the ArrayList of SecurityGuarantee for the property extendedGuarantee.
+	* @return Returns the List of SecurityGuarantees for the property _extendedGuarantee.
 	* More information under https://w3id.org/idsa/core/extendedGuarantee
 	*/
 	@JsonProperty("ids:extendedGuarantee")
-	public ArrayList<? extends SecurityGuarantee> getExtendedGuarantee();
+	public List<SecurityGuarantee> getExtendedGuarantee();
 
 }

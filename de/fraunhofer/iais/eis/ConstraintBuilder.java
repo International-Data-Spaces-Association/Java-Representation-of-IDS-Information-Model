@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -46,9 +47,9 @@ public class ConstraintBuilder {
 	}
 
 	/**
-	* This function allows setting a value for leftOperand
+	* This function allows setting a value for _leftOperand
 	* @param _leftOperand_ desired value to be set
-	* @return Builder object with new value for leftOperand
+	* @return Builder object with new value for _leftOperand
 	*/
 	final public ConstraintBuilder _leftOperand_(LeftOperand _leftOperand_) {
 		this.constraintImpl._leftOperand = _leftOperand_;
@@ -57,9 +58,9 @@ public class ConstraintBuilder {
 
 
 	/**
-	* This function allows setting a value for operator
+	* This function allows setting a value for _operator
 	* @param _operator_ desired value to be set
-	* @return Builder object with new value for operator
+	* @return Builder object with new value for _operator
 	*/
 	final public ConstraintBuilder _operator_(BinaryOperator _operator_) {
 		this.constraintImpl._operator = _operator_;
@@ -68,9 +69,9 @@ public class ConstraintBuilder {
 
 
 	/**
-	* This function allows setting a value for rightOperand
+	* This function allows setting a value for _rightOperand
 	* @param _rightOperand_ desired value to be set
-	* @return Builder object with new value for rightOperand
+	* @return Builder object with new value for _rightOperand
 	*/
 	final public ConstraintBuilder _rightOperand_(RdfResource _rightOperand_) {
 		this.constraintImpl._rightOperand = _rightOperand_;
@@ -79,9 +80,9 @@ public class ConstraintBuilder {
 
 
 	/**
-	* This function allows setting a value for rightOperandReference
+	* This function allows setting a value for _rightOperandReference
 	* @param _rightOperandReference_ desired value to be set
-	* @return Builder object with new value for rightOperandReference
+	* @return Builder object with new value for _rightOperandReference
 	*/
 	final public ConstraintBuilder _rightOperandReference_(URI _rightOperandReference_) {
 		this.constraintImpl._rightOperandReference = _rightOperandReference_;
@@ -90,9 +91,9 @@ public class ConstraintBuilder {
 
 
 	/**
-	* This function allows setting a value for unit
+	* This function allows setting a value for _unit
 	* @param _unit_ desired value to be set
-	* @return Builder object with new value for unit
+	* @return Builder object with new value for _unit
 	*/
 	final public ConstraintBuilder _unit_(URI _unit_) {
 		this.constraintImpl._unit = _unit_;
@@ -101,9 +102,9 @@ public class ConstraintBuilder {
 
 
 	/**
-	* This function allows setting a value for pipEndpoint
+	* This function allows setting a value for _pipEndpoint
 	* @param _pipEndpoint_ desired value to be set
-	* @return Builder object with new value for pipEndpoint
+	* @return Builder object with new value for _pipEndpoint
 	*/
 	final public ConstraintBuilder _pipEndpoint_(URI _pipEndpoint_) {
 		this.constraintImpl._pipEndpoint = _pipEndpoint_;

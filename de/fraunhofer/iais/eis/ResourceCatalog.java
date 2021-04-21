@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -72,23 +73,36 @@ public interface ResourceCatalog extends Catalog {
 	public Map<String,Object> getProperties();
 	public void setProperty(String property, Object value);
 
+	/**
+	* This function returns a hash code value for the ResourceCatalog for the benefit of e.g. hash tables.
+	* @return a hash code value for the ResourceCatalog
+	*/
+	public int hashCode();
+
+	/**
+	* This function indicates whether some other object is equal to this one.
+	* @param obj the reference object with which to compare.
+	* @return true if this ResourceCatalog is the same as the obj argument; false otherwise.
+	*/
+	public boolean equals(Object obj);
+
 	// accessor methods as derived from the IDSA Information Model ontology
 
 
 	/**
 	* "A Resource that is part of a resource catalog, indicating a request (of, e.g., data, software,...)."@en
-	* @return Returns the ArrayList of Resource for the property requestedResource.
+	* @return Returns the List of Resources for the property _requestedResource.
 	* More information under https://w3id.org/idsa/core/requestedResource
 	*/
 	@JsonProperty("ids:requestedResource")
-	public ArrayList<? extends Resource> getRequestedResource();
+	public List<Resource> getRequestedResource();
 
 	/**
 	* "A Resource that is part of a resource catalog, indicating an offering (of, e.g., data)."@en
-	* @return Returns the ArrayList of Resource for the property offeredResource.
+	* @return Returns the List of Resources for the property _offeredResource.
 	* More information under https://w3id.org/idsa/core/offeredResource
 	*/
 	@JsonProperty("ids:offeredResource")
-	public ArrayList<? extends Resource> getOfferedResource();
+	public List<Resource> getOfferedResource();
 
 }

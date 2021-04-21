@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -46,64 +47,64 @@ public class ParticipantBuilder {
 	}
 
 	/**
-	* This function allows setting a value for memberPerson
+	* This function allows setting a value for _memberPerson
 	* @param _memberPerson_ desired value to be set
-	* @return Builder object with new value for memberPerson
+	* @return Builder object with new value for _memberPerson
 	*/
-	final public ParticipantBuilder _memberPerson_(ArrayList<? extends Person> _memberPerson_) {
+	final public ParticipantBuilder _memberPerson_(List<Person> _memberPerson_) {
 		this.participantImpl._memberPerson = _memberPerson_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for memberParticipant
+	* This function allows setting a value for _memberParticipant
 	* @param _memberParticipant_ desired value to be set
-	* @return Builder object with new value for memberParticipant
+	* @return Builder object with new value for _memberParticipant
 	*/
-	final public ParticipantBuilder _memberParticipant_(ArrayList<? extends Participant> _memberParticipant_) {
+	final public ParticipantBuilder _memberParticipant_(List<Participant> _memberParticipant_) {
 		this.participantImpl._memberParticipant = _memberParticipant_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for corporateEmailAddress
+	* This function allows setting a value for _corporateEmailAddress
 	* @param _corporateEmailAddress_ desired value to be set
-	* @return Builder object with new value for corporateEmailAddress
+	* @return Builder object with new value for _corporateEmailAddress
 	*/
-	final public ParticipantBuilder _corporateEmailAddress_(ArrayList<? extends String> _corporateEmailAddress_) {
+	final public ParticipantBuilder _corporateEmailAddress_(List<String> _corporateEmailAddress_) {
 		this.participantImpl._corporateEmailAddress = _corporateEmailAddress_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for businessIdentifier
+	* This function allows setting a value for _businessIdentifier
 	* @param _businessIdentifier_ desired value to be set
-	* @return Builder object with new value for businessIdentifier
+	* @return Builder object with new value for _businessIdentifier
 	*/
-	final public ParticipantBuilder _businessIdentifier_(ArrayList<? extends BusinessIdentifier> _businessIdentifier_) {
+	final public ParticipantBuilder _businessIdentifier_(List<BusinessIdentifier> _businessIdentifier_) {
 		this.participantImpl._businessIdentifier = _businessIdentifier_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for legalName
+	* This function allows setting a value for _legalName
 	* @param _legalName_ desired value to be set
-	* @return Builder object with new value for legalName
+	* @return Builder object with new value for _legalName
 	*/
-	final public ParticipantBuilder _legalName_(ArrayList<? extends String> _legalName_) {
+	final public ParticipantBuilder _legalName_(List<String> _legalName_) {
 		this.participantImpl._legalName = _legalName_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for primarySite
+	* This function allows setting a value for _primarySite
 	* @param _primarySite_ desired value to be set
-	* @return Builder object with new value for primarySite
+	* @return Builder object with new value for _primarySite
 	*/
 	final public ParticipantBuilder _primarySite_(Site _primarySite_) {
 		this.participantImpl._primarySite = _primarySite_;
@@ -112,9 +113,9 @@ public class ParticipantBuilder {
 
 
 	/**
-	* This function allows setting a value for corporateHomepage
+	* This function allows setting a value for _corporateHomepage
 	* @param _corporateHomepage_ desired value to be set
-	* @return Builder object with new value for corporateHomepage
+	* @return Builder object with new value for _corporateHomepage
 	*/
 	final public ParticipantBuilder _corporateHomepage_(URI _corporateHomepage_) {
 		this.participantImpl._corporateHomepage = _corporateHomepage_;
@@ -123,9 +124,9 @@ public class ParticipantBuilder {
 
 
 	/**
-	* This function allows setting a value for participantCertification
+	* This function allows setting a value for _participantCertification
 	* @param _participantCertification_ desired value to be set
-	* @return Builder object with new value for participantCertification
+	* @return Builder object with new value for _participantCertification
 	*/
 	final public ParticipantBuilder _participantCertification_(ParticipantCertification _participantCertification_) {
 		this.participantImpl._participantCertification = _participantCertification_;
@@ -134,9 +135,9 @@ public class ParticipantBuilder {
 
 
 	/**
-	* This function allows setting a value for participantRefinement
+	* This function allows setting a value for _participantRefinement
 	* @param _participantRefinement_ desired value to be set
-	* @return Builder object with new value for participantRefinement
+	* @return Builder object with new value for _participantRefinement
 	*/
 	final public ParticipantBuilder _participantRefinement_(AbstractConstraint _participantRefinement_) {
 		this.participantImpl._participantRefinement = _participantRefinement_;
@@ -145,9 +146,9 @@ public class ParticipantBuilder {
 
 
 	/**
-	* This function allows setting a value for vatID
+	* This function allows setting a value for _vatID
 	* @param _vatID_ desired value to be set
-	* @return Builder object with new value for vatID
+	* @return Builder object with new value for _vatID
 	*/
 	final public ParticipantBuilder _vatID_(String _vatID_) {
 		this.participantImpl._vatID = _vatID_;
@@ -156,9 +157,9 @@ public class ParticipantBuilder {
 
 
 	/**
-	* This function allows setting a value for legalForm
+	* This function allows setting a value for _legalForm
 	* @param _legalForm_ desired value to be set
-	* @return Builder object with new value for legalForm
+	* @return Builder object with new value for _legalForm
 	*/
 	final public ParticipantBuilder _legalForm_(String _legalForm_) {
 		this.participantImpl._legalForm = _legalForm_;
@@ -167,9 +168,9 @@ public class ParticipantBuilder {
 
 
 	/**
-	* This function allows setting a value for jurisdiction
+	* This function allows setting a value for _jurisdiction
 	* @param _jurisdiction_ desired value to be set
-	* @return Builder object with new value for jurisdiction
+	* @return Builder object with new value for _jurisdiction
 	*/
 	final public ParticipantBuilder _jurisdiction_(String _jurisdiction_) {
 		this.participantImpl._jurisdiction = _jurisdiction_;
@@ -179,22 +180,22 @@ public class ParticipantBuilder {
 
 
 	/**
-	* This function allows setting a value for title
+	* This function allows setting a value for _title
 	* @param _title_ desired value to be set
-	* @return Builder object with new value for title
+	* @return Builder object with new value for _title
 	*/
-	final public ParticipantBuilder _title_(ArrayList<? extends TypedLiteral> _title_) {
+	final public ParticipantBuilder _title_(List<TypedLiteral> _title_) {
 		this.participantImpl._title = _title_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for description
+	* This function allows setting a value for _description
 	* @param _description_ desired value to be set
-	* @return Builder object with new value for description
+	* @return Builder object with new value for _description
 	*/
-	final public ParticipantBuilder _description_(ArrayList<? extends TypedLiteral> _description_) {
+	final public ParticipantBuilder _description_(List<TypedLiteral> _description_) {
 		this.participantImpl._description = _description_;
 		return this;
 	}
@@ -203,9 +204,9 @@ public class ParticipantBuilder {
 
 
 	/**
-	* This function allows setting a value for version
+	* This function allows setting a value for _version
 	* @param _version_ desired value to be set
-	* @return Builder object with new value for version
+	* @return Builder object with new value for _version
 	*/
 	final public ParticipantBuilder _version_(String _version_) {
 		this.participantImpl._version = _version_;

@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -82,10 +83,6 @@ public class BusinessIdentifierImpl implements Serializable, BusinessIdentifier 
 		id = VocabUtil.getInstance().createRandomUrl("businessIdentifier");
 	}
 
-	/**
-	* This function retrieves the ID of the current object (can be set via the constructor of the builder class)
-	* @return ID of current object as URI
-	*/
 	@JsonProperty("@id")
 	final public URI getId() {
 		return id;
@@ -95,20 +92,10 @@ public class BusinessIdentifierImpl implements Serializable, BusinessIdentifier 
 		return VocabUtil.getInstance().toRdf(this);
 	}
 
-	/**
-	* This function retrieves a human readable label about the current class, as defined in the ontology.
-	* This label could, for example, be used as a field heading in a user interface
-	* @return Human readable label
-	*/
 	public List<TypedLiteral> getLabel() {
 		return this.label;
 	}
 
-	/**
-	* This function retrieves a human readable explanatory comment about the current class, as defined in the ontology.
-	* This comment could, for example, be used as a tooltip in a user interface
-	* @return Human readable explanatory comment
-	*/
 	public List<TypedLiteral> getComment() {
 		return this.comment;
 	}
@@ -149,48 +136,45 @@ public class BusinessIdentifierImpl implements Serializable, BusinessIdentifier 
 		if (property.startsWith("@")) {return ;};
 		this.properties.put(property, value) ;
 	}
+	public int hashCode() {
+		return Objects.hash(new Object[]{this._identifierSystem,
+			this._identifierNumber});
+	}
+
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		} else if (obj == null) {
+			return false;
+		} else if (this.getClass() != obj.getClass()) {
+			return false;
+		} else {
+			BusinessIdentifierImpl other = (BusinessIdentifierImpl) obj;
+			return Objects.equals(this._identifierSystem, other._identifierSystem) &&
+				Objects.equals(this._identifierNumber, other._identifierNumber);
+		}
+	}
+
 
 	// accessor method implementations as derived from the IDSA Information Model ontology
 
 
-	/**
-	* "This property is used to define the system used as an business identifier. E.g., DUNS or SIRET."@en
-	* @return Returns the String for the property identifierSystem.
-	* More information under https://w3id.org/idsa/core/identifierSystem
-	*/
 	@NotNull
 	@JsonProperty("ids:identifierSystem")
 	final public String getIdentifierSystem() {
 		return _identifierSystem;
 	}
-
 	
-	/**
-	* "This property is used to define the system used as an business identifier. E.g., DUNS or SIRET."@en
-	* @param _identifierSystem_ desired value for the property identifierSystem.
-	* More information under https://w3id.org/idsa/core/identifierSystem
-	*/
 	final public void setIdentifierSystem (String _identifierSystem_) {
 		this._identifierSystem = _identifierSystem_;
 	}
 
-	/**
-	* "This property is used to define the value used as an business identifier."@en
-	* @return Returns the String for the property identifierNumber.
-	* More information under https://w3id.org/idsa/core/identifierNumber
-	*/
 	@NotNull
 	@JsonProperty("ids:identifierNumber")
 	final public String getIdentifierNumber() {
 		return _identifierNumber;
 	}
-
 	
-	/**
-	* "This property is used to define the value used as an business identifier."@en
-	* @param _identifierNumber_ desired value for the property identifierNumber.
-	* More information under https://w3id.org/idsa/core/identifierNumber
-	*/
 	final public void setIdentifierNumber (String _identifierNumber_) {
 		this._identifierNumber = _identifierNumber_;
 	}

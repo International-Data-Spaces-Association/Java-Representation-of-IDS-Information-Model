@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -65,7 +66,7 @@ public class DutyImpl implements Serializable, Duty {
 	*/
 	@NotEmpty
 	@JsonAlias({"ids:action", "action"})
-	protected ArrayList<? extends Action> _action;
+	protected List<Action> _action;
 
 
 	/**
@@ -81,7 +82,7 @@ public class DutyImpl implements Serializable, Duty {
 	* "The recipient of the policy statement."@en
 	*/
 	@JsonAlias({"ids:assignee", "assignee"})
-	protected ArrayList<? extends URI> _assignee;
+	protected List<URI> _assignee;
 
 
 	/**
@@ -89,7 +90,7 @@ public class DutyImpl implements Serializable, Duty {
 	* "The issuer of the policy statement."@en
 	*/
 	@JsonAlias({"ids:assigner", "assigner"})
-	protected ArrayList<? extends URI> _assigner;
+	protected List<URI> _assigner;
 
 
 	/**
@@ -97,7 +98,7 @@ public class DutyImpl implements Serializable, Duty {
 	* "The constraint to be used for a specific rule."@en
 	*/
 	@JsonAlias({"ids:constraint", "constraint"})
-	protected ArrayList<? extends AbstractConstraint> _constraint;
+	protected List<AbstractConstraint> _constraint;
 
 
 	/**
@@ -105,7 +106,7 @@ public class DutyImpl implements Serializable, Duty {
 	* "Explanation of the resource in a natural language text."@en
 	*/
 	@JsonAlias({"ids:description", "description"})
-	protected ArrayList<? extends TypedLiteral> _description;
+	protected List<TypedLiteral> _description;
 
 
 	/**
@@ -121,7 +122,7 @@ public class DutyImpl implements Serializable, Duty {
 	* "(Localized) name of the entity."@en
 	*/
 	@JsonAlias({"ids:title", "title"})
-	protected ArrayList<? extends TypedLiteral> _title;
+	protected List<TypedLiteral> _title;
 
 
 	// no manual construction
@@ -129,10 +130,6 @@ public class DutyImpl implements Serializable, Duty {
 		id = VocabUtil.getInstance().createRandomUrl("duty");
 	}
 
-	/**
-	* This function retrieves the ID of the current object (can be set via the constructor of the builder class)
-	* @return ID of current object as URI
-	*/
 	@JsonProperty("@id")
 	final public URI getId() {
 		return id;
@@ -142,20 +139,10 @@ public class DutyImpl implements Serializable, Duty {
 		return VocabUtil.getInstance().toRdf(this);
 	}
 
-	/**
-	* This function retrieves a human readable label about the current class, as defined in the ontology.
-	* This label could, for example, be used as a field heading in a user interface
-	* @return Human readable label
-	*/
 	public List<TypedLiteral> getLabel() {
 		return this.label;
 	}
 
-	/**
-	* This function retrieves a human readable explanatory comment about the current class, as defined in the ontology.
-	* This comment could, for example, be used as a tooltip in a user interface
-	* @return Human readable explanatory comment
-	*/
 	public List<TypedLiteral> getComment() {
 		return this.comment;
 	}
@@ -196,169 +183,112 @@ public class DutyImpl implements Serializable, Duty {
 		if (property.startsWith("@")) {return ;};
 		this.properties.put(property, value) ;
 	}
+	public int hashCode() {
+		return Objects.hash(new Object[]{this._constraint,
+			this._assigner,
+			this._assignee,
+			this._target,
+			this._action,
+			this._assetRefinement,
+			this._title,
+			this._description});
+	}
+
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		} else if (obj == null) {
+			return false;
+		} else if (this.getClass() != obj.getClass()) {
+			return false;
+		} else {
+			DutyImpl other = (DutyImpl) obj;
+			return Objects.equals(this._constraint, other._constraint) &&
+				Objects.equals(this._assigner, other._assigner) &&
+				Objects.equals(this._assignee, other._assignee) &&
+				Objects.equals(this._target, other._target) &&
+				Objects.equals(this._action, other._action) &&
+				Objects.equals(this._assetRefinement, other._assetRefinement) &&
+				Objects.equals(this._title, other._title) &&
+				Objects.equals(this._description, other._description);
+		}
+	}
+
 
 	// accessor method implementations as derived from the IDSA Information Model ontology
 
 
 
-	/**
-	* "The constraint to be used for a specific rule."@en
-	* @return Returns the ArrayList of AbstractConstraint for the property constraint.
-	* More information under https://w3id.org/idsa/core/constraint
-	*/
 	@JsonProperty("ids:constraint")
-	final public ArrayList<? extends AbstractConstraint> getConstraint() {
+	final public List<AbstractConstraint> getConstraint() {
 		return _constraint;
 	}
-
 	
-	/**
-	* "The constraint to be used for a specific rule."@en
-	* @param _constraint_ desired value for the property constraint.
-	* More information under https://w3id.org/idsa/core/constraint
-	*/
-	final public void setConstraint (ArrayList<? extends AbstractConstraint> _constraint_) {
+	final public void setConstraint (List<AbstractConstraint> _constraint_) {
 		this._constraint = _constraint_;
 	}
 
-	/**
-	* "The issuer of the policy statement."@en
-	* @return Returns the ArrayList of URI for the property assigner.
-	* More information under https://w3id.org/idsa/core/assigner
-	*/
 	@JsonProperty("ids:assigner")
-	final public ArrayList<? extends URI> getAssigner() {
+	final public List<URI> getAssigner() {
 		return _assigner;
 	}
-
 	
-	/**
-	* "The issuer of the policy statement."@en
-	* @param _assigner_ desired value for the property assigner.
-	* More information under https://w3id.org/idsa/core/assigner
-	*/
-	final public void setAssigner (ArrayList<? extends URI> _assigner_) {
+	final public void setAssigner (List<URI> _assigner_) {
 		this._assigner = _assigner_;
 	}
 
-	/**
-	* "The recipient of the policy statement."@en
-	* @return Returns the ArrayList of URI for the property assignee.
-	* More information under https://w3id.org/idsa/core/assignee
-	*/
 	@JsonProperty("ids:assignee")
-	final public ArrayList<? extends URI> getAssignee() {
+	final public List<URI> getAssignee() {
 		return _assignee;
 	}
-
 	
-	/**
-	* "The recipient of the policy statement."@en
-	* @param _assignee_ desired value for the property assignee.
-	* More information under https://w3id.org/idsa/core/assignee
-	*/
-	final public void setAssignee (ArrayList<? extends URI> _assignee_) {
+	final public void setAssignee (List<URI> _assignee_) {
 		this._assignee = _assignee_;
 	}
 
-	/**
-	* "The subject of the policy statement (ids:Rule)."@en
-	* @return Returns the URI for the property target.
-	* More information under https://w3id.org/idsa/core/target
-	*/
 	@JsonProperty("ids:target")
 	final public URI getTarget() {
 		return _target;
 	}
-
 	
-	/**
-	* "The subject of the policy statement (ids:Rule)."@en
-	* @param _target_ desired value for the property target.
-	* More information under https://w3id.org/idsa/core/target
-	*/
 	final public void setTarget (URI _target_) {
 		this._target = _target_;
 	}
 
-	/**
-	* "The operation relating to the asset /  data object. "@en
-	* @return Returns the ArrayList of Action for the property action.
-	* More information under https://w3id.org/idsa/core/action
-	*/
 	@NotEmpty
 	@JsonProperty("ids:action")
-	final public ArrayList<? extends Action> getAction() {
+	final public List<Action> getAction() {
 		return _action;
 	}
-
 	
-	/**
-	* "The operation relating to the asset /  data object. "@en
-	* @param _action_ desired value for the property action.
-	* More information under https://w3id.org/idsa/core/action
-	*/
-	final public void setAction (ArrayList<? extends Action> _action_) {
+	final public void setAction (List<Action> _action_) {
 		this._action = _action_;
 	}
 
-	/**
-	* "AssetRefinement define constraints that refines a (composite) Digital Content in an ids:Rule respectively the ids:AssetCollection."@en
-	* @return Returns the AbstractConstraint for the property assetRefinement.
-	* More information under https://w3id.org/idsa/core/assetRefinement
-	*/
 	@JsonProperty("ids:assetRefinement")
 	final public AbstractConstraint getAssetRefinement() {
 		return _assetRefinement;
 	}
-
 	
-	/**
-	* "AssetRefinement define constraints that refines a (composite) Digital Content in an ids:Rule respectively the ids:AssetCollection."@en
-	* @param _assetRefinement_ desired value for the property assetRefinement.
-	* More information under https://w3id.org/idsa/core/assetRefinement
-	*/
 	final public void setAssetRefinement (AbstractConstraint _assetRefinement_) {
 		this._assetRefinement = _assetRefinement_;
 	}
 
-	/**
-	* "(Localized) name of the entity."@en
-	* @return Returns the ArrayList of TypedLiteral for the property title.
-	* More information under https://w3id.org/idsa/core/title
-	*/
 	@JsonProperty("ids:title")
-	final public ArrayList<? extends TypedLiteral> getTitle() {
+	final public List<TypedLiteral> getTitle() {
 		return _title;
 	}
-
 	
-	/**
-	* "(Localized) name of the entity."@en
-	* @param _title_ desired value for the property title.
-	* More information under https://w3id.org/idsa/core/title
-	*/
-	final public void setTitle (ArrayList<? extends TypedLiteral> _title_) {
+	final public void setTitle (List<TypedLiteral> _title_) {
 		this._title = _title_;
 	}
 
-	/**
-	* "Explanation of the resource in a natural language text."@en
-	* @return Returns the ArrayList of TypedLiteral for the property description.
-	* More information under https://w3id.org/idsa/core/description
-	*/
 	@JsonProperty("ids:description")
-	final public ArrayList<? extends TypedLiteral> getDescription() {
+	final public List<TypedLiteral> getDescription() {
 		return _description;
 	}
-
 	
-	/**
-	* "Explanation of the resource in a natural language text."@en
-	* @param _description_ desired value for the property description.
-	* More information under https://w3id.org/idsa/core/description
-	*/
-	final public void setDescription (ArrayList<? extends TypedLiteral> _description_) {
+	final public void setDescription (List<TypedLiteral> _description_) {
 		this._description = _description_;
 	}
 

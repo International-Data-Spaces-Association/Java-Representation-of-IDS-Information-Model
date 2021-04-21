@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -46,9 +47,9 @@ public class GenericEndpointBuilder {
 	}
 
 	/**
-	* This function allows setting a value for genericEndpointAuthentication
+	* This function allows setting a value for _genericEndpointAuthentication
 	* @param _genericEndpointAuthentication_ desired value to be set
-	* @return Builder object with new value for genericEndpointAuthentication
+	* @return Builder object with new value for _genericEndpointAuthentication
 	*/
 	final public GenericEndpointBuilder _genericEndpointAuthentication_(BasicAuthentication _genericEndpointAuthentication_) {
 		this.genericEndpointImpl._genericEndpointAuthentication = _genericEndpointAuthentication_;
@@ -57,9 +58,9 @@ public class GenericEndpointBuilder {
 
 
 	/**
-	* This function allows setting a value for genericEndpointConfiguration
+	* This function allows setting a value for _genericEndpointConfiguration
 	* @param _genericEndpointConfiguration_ desired value to be set
-	* @return Builder object with new value for genericEndpointConfiguration
+	* @return Builder object with new value for _genericEndpointConfiguration
 	*/
 	final public GenericEndpointBuilder _genericEndpointConfiguration_(String _genericEndpointConfiguration_) {
 		this.genericEndpointImpl._genericEndpointConfiguration = _genericEndpointConfiguration_;
@@ -68,31 +69,31 @@ public class GenericEndpointBuilder {
 
 
 	/**
-	* This function allows setting a value for endpointInformation
+	* This function allows setting a value for _endpointInformation
 	* @param _endpointInformation_ desired value to be set
-	* @return Builder object with new value for endpointInformation
+	* @return Builder object with new value for _endpointInformation
 	*/
-	final public GenericEndpointBuilder _endpointInformation_(ArrayList<? extends TypedLiteral> _endpointInformation_) {
+	final public GenericEndpointBuilder _endpointInformation_(List<TypedLiteral> _endpointInformation_) {
 		this.genericEndpointImpl._endpointInformation = _endpointInformation_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for endpointDocumentation
+	* This function allows setting a value for _endpointDocumentation
 	* @param _endpointDocumentation_ desired value to be set
-	* @return Builder object with new value for endpointDocumentation
+	* @return Builder object with new value for _endpointDocumentation
 	*/
-	final public GenericEndpointBuilder _endpointDocumentation_(ArrayList<? extends URI> _endpointDocumentation_) {
+	final public GenericEndpointBuilder _endpointDocumentation_(List<URI> _endpointDocumentation_) {
 		this.genericEndpointImpl._endpointDocumentation = _endpointDocumentation_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for accessURL
+	* This function allows setting a value for _accessURL
 	* @param _accessURL_ desired value to be set
-	* @return Builder object with new value for accessURL
+	* @return Builder object with new value for _accessURL
 	*/
 	final public GenericEndpointBuilder _accessURL_(URI _accessURL_) {
 		this.genericEndpointImpl._accessURL = _accessURL_;
@@ -101,9 +102,9 @@ public class GenericEndpointBuilder {
 
 
 	/**
-	* This function allows setting a value for path
+	* This function allows setting a value for _path
 	* @param _path_ desired value to be set
-	* @return Builder object with new value for path
+	* @return Builder object with new value for _path
 	*/
 	final public GenericEndpointBuilder _path_(String _path_) {
 		this.genericEndpointImpl._path = _path_;
@@ -112,9 +113,9 @@ public class GenericEndpointBuilder {
 
 
 	/**
-	* This function allows setting a value for inboundPath
+	* This function allows setting a value for _inboundPath
 	* @param _inboundPath_ desired value to be set
-	* @return Builder object with new value for inboundPath
+	* @return Builder object with new value for _inboundPath
 	*/
 	final public GenericEndpointBuilder _inboundPath_(String _inboundPath_) {
 		this.genericEndpointImpl._inboundPath = _inboundPath_;
@@ -123,9 +124,9 @@ public class GenericEndpointBuilder {
 
 
 	/**
-	* This function allows setting a value for outboundPath
+	* This function allows setting a value for _outboundPath
 	* @param _outboundPath_ desired value to be set
-	* @return Builder object with new value for outboundPath
+	* @return Builder object with new value for _outboundPath
 	*/
 	final public GenericEndpointBuilder _outboundPath_(String _outboundPath_) {
 		this.genericEndpointImpl._outboundPath = _outboundPath_;

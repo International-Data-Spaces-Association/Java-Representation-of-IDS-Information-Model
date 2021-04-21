@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -114,10 +115,6 @@ public class ConstraintImpl implements Serializable, Constraint {
 		id = VocabUtil.getInstance().createRandomUrl("constraint");
 	}
 
-	/**
-	* This function retrieves the ID of the current object (can be set via the constructor of the builder class)
-	* @return ID of current object as URI
-	*/
 	@JsonProperty("@id")
 	final public URI getId() {
 		return id;
@@ -127,20 +124,10 @@ public class ConstraintImpl implements Serializable, Constraint {
 		return VocabUtil.getInstance().toRdf(this);
 	}
 
-	/**
-	* This function retrieves a human readable label about the current class, as defined in the ontology.
-	* This label could, for example, be used as a field heading in a user interface
-	* @return Human readable label
-	*/
 	public List<TypedLiteral> getLabel() {
 		return this.label;
 	}
 
-	/**
-	* This function retrieves a human readable explanatory comment about the current class, as defined in the ontology.
-	* This comment could, for example, be used as a tooltip in a user interface
-	* @return Human readable explanatory comment
-	*/
 	public List<TypedLiteral> getComment() {
 		return this.comment;
 	}
@@ -181,128 +168,89 @@ public class ConstraintImpl implements Serializable, Constraint {
 		if (property.startsWith("@")) {return ;};
 		this.properties.put(property, value) ;
 	}
+	public int hashCode() {
+		return Objects.hash(new Object[]{this._leftOperand,
+			this._operator,
+			this._rightOperand,
+			this._rightOperandReference,
+			this._unit,
+			this._pipEndpoint});
+	}
+
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		} else if (obj == null) {
+			return false;
+		} else if (this.getClass() != obj.getClass()) {
+			return false;
+		} else {
+			ConstraintImpl other = (ConstraintImpl) obj;
+			return Objects.equals(this._leftOperand, other._leftOperand) &&
+				Objects.equals(this._operator, other._operator) &&
+				Objects.equals(this._rightOperand, other._rightOperand) &&
+				Objects.equals(this._rightOperandReference, other._rightOperandReference) &&
+				Objects.equals(this._unit, other._unit) &&
+				Objects.equals(this._pipEndpoint, other._pipEndpoint);
+		}
+	}
+
 
 	// accessor method implementations as derived from the IDSA Information Model ontology
 
 
-	/**
-	* "The left operand in a constraint expression."@en
-	* @return Returns the LeftOperand for the property leftOperand.
-	* More information under https://w3id.org/idsa/core/leftOperand
-	*/
 	@NotNull
 	@JsonProperty("ids:leftOperand")
 	final public LeftOperand getLeftOperand() {
 		return _leftOperand;
 	}
-
 	
-	/**
-	* "The left operand in a constraint expression."@en
-	* @param _leftOperand_ desired value for the property leftOperand.
-	* More information under https://w3id.org/idsa/core/leftOperand
-	*/
 	final public void setLeftOperand (LeftOperand _leftOperand_) {
 		this._leftOperand = _leftOperand_;
 	}
 
-	/**
-	* "The operator function applied to operands of a Constraint"@en
-	* @return Returns the BinaryOperator for the property operator.
-	* More information under https://w3id.org/idsa/core/operator
-	*/
 	@NotNull
 	@JsonProperty("ids:operator")
 	final public BinaryOperator getOperator() {
 		return _operator;
 	}
-
 	
-	/**
-	* "The operator function applied to operands of a Constraint"@en
-	* @param _operator_ desired value for the property operator.
-	* More information under https://w3id.org/idsa/core/operator
-	*/
 	final public void setOperator (BinaryOperator _operator_) {
 		this._operator = _operator_;
 	}
 
-	/**
-	* "The value of the right operand in a constraint expression. Value should be a rdfs:Resource or literal values. Either ids:rightOperand or ids:rightOperandReference should be used in an ids:Constraint."@en
-	* @return Returns the RdfResource for the property rightOperand.
-	* More information under https://w3id.org/idsa/core/rightOperand
-	*/
 	@JsonProperty("ids:rightOperand")
 	final public RdfResource getRightOperand() {
 		return _rightOperand;
 	}
-
 	
-	/**
-	* "The value of the right operand in a constraint expression. Value should be a rdfs:Resource or literal values. Either ids:rightOperand or ids:rightOperandReference should be used in an ids:Constraint."@en
-	* @param _rightOperand_ desired value for the property rightOperand.
-	* More information under https://w3id.org/idsa/core/rightOperand
-	*/
 	final public void setRightOperand (RdfResource _rightOperand_) {
 		this._rightOperand = _rightOperand_;
 	}
 
-	/**
-	* "The reference IRI of the right operand in a constraint expression. Has to be dereferenced in order to receive the actual value. Either ids:rightOperand or ids:rightOperandReference should be used in an ids:Constraint."@en
-	* @return Returns the URI for the property rightOperandReference.
-	* More information under https://w3id.org/idsa/core/rightOperandReference
-	*/
 	@JsonProperty("ids:rightOperandReference")
 	final public URI getRightOperandReference() {
 		return _rightOperandReference;
 	}
-
 	
-	/**
-	* "The reference IRI of the right operand in a constraint expression. Has to be dereferenced in order to receive the actual value. Either ids:rightOperand or ids:rightOperandReference should be used in an ids:Constraint."@en
-	* @param _rightOperandReference_ desired value for the property rightOperandReference.
-	* More information under https://w3id.org/idsa/core/rightOperandReference
-	*/
 	final public void setRightOperandReference (URI _rightOperandReference_) {
 		this._rightOperandReference = _rightOperandReference_;
 	}
 
-	/**
-	* "The unit of measurement of a Constraint."@en
-	* @return Returns the URI for the property unit.
-	* More information under https://w3id.org/idsa/core/unit
-	*/
 	@JsonProperty("ids:unit")
 	final public URI getUnit() {
 		return _unit;
 	}
-
 	
-	/**
-	* "The unit of measurement of a Constraint."@en
-	* @param _unit_ desired value for the property unit.
-	* More information under https://w3id.org/idsa/core/unit
-	*/
 	final public void setUnit (URI _unit_) {
 		this._unit = _unit_;
 	}
 
-	/**
-	* "The reference to the endpoint which provides the current state of the feature of interest (as referrenced by the leftOperand) can be retrieved."@en
-	* @return Returns the URI for the property pipEndpoint.
-	* More information under https://w3id.org/idsa/core/pipEndpoint
-	*/
 	@JsonProperty("ids:pipEndpoint")
 	final public URI getPipEndpoint() {
 		return _pipEndpoint;
 	}
-
 	
-	/**
-	* "The reference to the endpoint which provides the current state of the feature of interest (as referrenced by the leftOperand) can be retrieved."@en
-	* @param _pipEndpoint_ desired value for the property pipEndpoint.
-	* More information under https://w3id.org/idsa/core/pipEndpoint
-	*/
 	final public void setPipEndpoint (URI _pipEndpoint_) {
 		this._pipEndpoint = _pipEndpoint_;
 	}

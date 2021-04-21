@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -72,12 +73,25 @@ public interface UsageControlObject {
 	public Map<String,Object> getProperties();
 	public void setProperty(String property, Object value);
 
+	/**
+	* This function returns a hash code value for the UsageControlObject for the benefit of e.g. hash tables.
+	* @return a hash code value for the UsageControlObject
+	*/
+	public int hashCode();
+
+	/**
+	* This function indicates whether some other object is equal to this one.
+	* @param obj the reference object with which to compare.
+	* @return true if this UsageControlObject is the same as the obj argument; false otherwise.
+	*/
+	public boolean equals(Object obj);
+
 	// accessor methods as derived from the IDSA Information Model ontology
 
 
 	/**
 	* "The related data or a pointer/reference to it."@en
-	* @return Returns the URI for the property data.
+	* @return Returns the URI for the property _data.
 	* More information under https://w3id.org/idsa/core/data
 	*/
 	@NotNull
@@ -86,24 +100,24 @@ public interface UsageControlObject {
 
 	/**
 	* "The target contract defining the usage of the data object."@en
-	* @return Returns the ArrayList of ContractAgreement for the property contract.
+	* @return Returns the List of ContractAgreements for the property _contract.
 	* More information under https://w3id.org/idsa/core/contract
 	*/
 	@NotEmpty
 	@JsonProperty("ids:contract")
-	public ArrayList<? extends ContractAgreement> getContract();
+	public List<ContractAgreement> getContract();
 
 	/**
 	* "The list of combined current states of the data object."@en
-	* @return Returns the ArrayList of ArtifactState for the property hasState.
+	* @return Returns the List of ArtifactStates for the property _hasState.
 	* More information under https://w3id.org/idsa/core/hasState
 	*/
 	@JsonProperty("ids:hasState")
-	public ArrayList<? extends ArtifactState> getHasState();
+	public List<ArtifactState> getHasState();
 
 	/**
 	* "The participant intending to use the data."@en
-	* @return Returns the Participant for the property user.
+	* @return Returns the Participant for the property _user.
 	* More information under https://w3id.org/idsa/core/user
 	*/
 	@JsonProperty("ids:user")
@@ -111,7 +125,7 @@ public interface UsageControlObject {
 
 	/**
 	* "The application which provided the data object. Should be a valid URI. Must be unique in the regarded environment."@en
-	* @return Returns the URI for the property source.
+	* @return Returns the URI for the property _source.
 	* More information under https://w3id.org/idsa/core/source
 	*/
 	@JsonProperty("ids:source")
@@ -119,7 +133,7 @@ public interface UsageControlObject {
 
 	/**
 	* "Duration, which this asset is in use by now. Might be calculated on the fly when requested by a Usage Control Engine."@en
-	* @return Returns the javax.xml.datatype.Duration for the property usageDuration.
+	* @return Returns the javax.xml.datatype.Duration for the property _usageDuration.
 	* More information under https://w3id.org/idsa/core/usageDuration
 	*/
 	@JsonProperty("ids:usageDuration")
@@ -127,7 +141,7 @@ public interface UsageControlObject {
 
 	/**
 	* "Last read or write access."@en
-	* @return Returns the XMLGregorianCalendar for the property accessed.
+	* @return Returns the XMLGregorianCalendar for the property _accessed.
 	* More information under https://w3id.org/idsa/core/accessed
 	*/
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
@@ -136,7 +150,7 @@ public interface UsageControlObject {
 
 	/**
 	* "\tThe target application requesting the usage. Should be some locally unique identifiers, preferably URIs."@en
-	* @return Returns the URI for the property requester.
+	* @return Returns the URI for the property _requester.
 	* More information under https://w3id.org/idsa/core/requester
 	*/
 	@JsonProperty("ids:requester")
@@ -144,7 +158,7 @@ public interface UsageControlObject {
 
 	/**
 	* "The date of the creation of the Digital Content. In contrast to the ids:temporalCoverage, creation dates of ids:Representation, ids:Artifacts or any other form of meta-data, this property describes the creation date of referenced Digital Content itself."@en
-	* @return Returns the XMLGregorianCalendar for the property created.
+	* @return Returns the XMLGregorianCalendar for the property _created.
 	* More information under https://w3id.org/idsa/core/created
 	*/
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
@@ -154,7 +168,7 @@ public interface UsageControlObject {
 
 	/**
 	* "The date/time this Digital Content has been changed the last time. Only one \'modified\' attribute is usually needed."@en
-	* @return Returns the XMLGregorianCalendar for the property modified.
+	* @return Returns the XMLGregorianCalendar for the property _modified.
 	* More information under https://w3id.org/idsa/core/modified
 	*/
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
@@ -163,10 +177,10 @@ public interface UsageControlObject {
 
 	/**
 	* "The operation relating to the asset /  data object. "@en
-	* @return Returns the ArrayList of Action for the property action.
+	* @return Returns the List of Actions for the property _action.
 	* More information under https://w3id.org/idsa/core/action
 	*/
 	@JsonProperty("ids:action")
-	public ArrayList<? extends Action> getAction();
+	public List<Action> getAction();
 
 }

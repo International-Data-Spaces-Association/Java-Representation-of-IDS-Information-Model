@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -73,10 +74,6 @@ public class NamedImpl implements Serializable, Named {
 		id = VocabUtil.getInstance().createRandomUrl("named");
 	}
 
-	/**
-	* This function retrieves the ID of the current object (can be set via the constructor of the builder class)
-	* @return ID of current object as URI
-	*/
 	@JsonProperty("@id")
 	final public URI getId() {
 		return id;
@@ -86,20 +83,10 @@ public class NamedImpl implements Serializable, Named {
 		return VocabUtil.getInstance().toRdf(this);
 	}
 
-	/**
-	* This function retrieves a human readable label about the current class, as defined in the ontology.
-	* This label could, for example, be used as a field heading in a user interface
-	* @return Human readable label
-	*/
 	public List<TypedLiteral> getLabel() {
 		return this.label;
 	}
 
-	/**
-	* This function retrieves a human readable explanatory comment about the current class, as defined in the ontology.
-	* This comment could, for example, be used as a tooltip in a user interface
-	* @return Human readable explanatory comment
-	*/
 	public List<TypedLiteral> getComment() {
 		return this.comment;
 	}
@@ -140,27 +127,33 @@ public class NamedImpl implements Serializable, Named {
 		if (property.startsWith("@")) {return ;};
 		this.properties.put(property, value) ;
 	}
+	public int hashCode() {
+		return Objects.hash(new Object[]{this._name});
+	}
+
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		} else if (obj == null) {
+			return false;
+		} else if (this.getClass() != obj.getClass()) {
+			return false;
+		} else {
+			NamedImpl other = (NamedImpl) obj;
+			return Objects.equals(this._name, other._name);
+		}
+	}
+
 
 	// accessor method implementations as derived from the IDSA Information Model ontology
 
 
-	/**
-	* "Entity name unique within a specified context."@en
-	* @return Returns the String for the property name.
-	* More information under https://w3id.org/idsa/core/name
-	*/
 	@NotNull
 	@JsonProperty("ids:name")
 	final public String getName() {
 		return _name;
 	}
-
 	
-	/**
-	* "Entity name unique within a specified context."@en
-	* @param _name_ desired value for the property name.
-	* More information under https://w3id.org/idsa/core/name
-	*/
 	final public void setName (String _name_) {
 		this._name = _name_;
 	}

@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -48,42 +49,42 @@ public class DurationRequestBuilder {
 
 
 	/**
-	* This function allows setting a value for permission
+	* This function allows setting a value for _permission
 	* @param _permission_ desired value to be set
-	* @return Builder object with new value for permission
+	* @return Builder object with new value for _permission
 	*/
-	final public DurationRequestBuilder _permission_(ArrayList<? extends Permission> _permission_) {
+	final public DurationRequestBuilder _permission_(List<Permission> _permission_) {
 		this.durationRequestImpl._permission = _permission_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for prohibition
+	* This function allows setting a value for _prohibition
 	* @param _prohibition_ desired value to be set
-	* @return Builder object with new value for prohibition
+	* @return Builder object with new value for _prohibition
 	*/
-	final public DurationRequestBuilder _prohibition_(ArrayList<? extends Prohibition> _prohibition_) {
+	final public DurationRequestBuilder _prohibition_(List<Prohibition> _prohibition_) {
 		this.durationRequestImpl._prohibition = _prohibition_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for obligation
+	* This function allows setting a value for _obligation
 	* @param _obligation_ desired value to be set
-	* @return Builder object with new value for obligation
+	* @return Builder object with new value for _obligation
 	*/
-	final public DurationRequestBuilder _obligation_(ArrayList<? extends Duty> _obligation_) {
+	final public DurationRequestBuilder _obligation_(List<Duty> _obligation_) {
 		this.durationRequestImpl._obligation = _obligation_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for contractStart
+	* This function allows setting a value for _contractStart
 	* @param _contractStart_ desired value to be set
-	* @return Builder object with new value for contractStart
+	* @return Builder object with new value for _contractStart
 	*/
 	final public DurationRequestBuilder _contractStart_(XMLGregorianCalendar _contractStart_) {
 		this.durationRequestImpl._contractStart = _contractStart_;
@@ -92,9 +93,9 @@ public class DurationRequestBuilder {
 
 
 	/**
-	* This function allows setting a value for contractEnd
+	* This function allows setting a value for _contractEnd
 	* @param _contractEnd_ desired value to be set
-	* @return Builder object with new value for contractEnd
+	* @return Builder object with new value for _contractEnd
 	*/
 	final public DurationRequestBuilder _contractEnd_(XMLGregorianCalendar _contractEnd_) {
 		this.durationRequestImpl._contractEnd = _contractEnd_;
@@ -103,9 +104,9 @@ public class DurationRequestBuilder {
 
 
 	/**
-	* This function allows setting a value for contractDate
+	* This function allows setting a value for _contractDate
 	* @param _contractDate_ desired value to be set
-	* @return Builder object with new value for contractDate
+	* @return Builder object with new value for _contractDate
 	*/
 	final public DurationRequestBuilder _contractDate_(XMLGregorianCalendar _contractDate_) {
 		this.durationRequestImpl._contractDate = _contractDate_;
@@ -114,9 +115,9 @@ public class DurationRequestBuilder {
 
 
 	/**
-	* This function allows setting a value for provider
+	* This function allows setting a value for _provider
 	* @param _provider_ desired value to be set
-	* @return Builder object with new value for provider
+	* @return Builder object with new value for _provider
 	*/
 	final public DurationRequestBuilder _provider_(URI _provider_) {
 		this.durationRequestImpl._provider = _provider_;
@@ -125,9 +126,9 @@ public class DurationRequestBuilder {
 
 
 	/**
-	* This function allows setting a value for consumer
+	* This function allows setting a value for _consumer
 	* @param _consumer_ desired value to be set
-	* @return Builder object with new value for consumer
+	* @return Builder object with new value for _consumer
 	*/
 	final public DurationRequestBuilder _consumer_(URI _consumer_) {
 		this.durationRequestImpl._consumer = _consumer_;
@@ -136,9 +137,9 @@ public class DurationRequestBuilder {
 
 
 	/**
-	* This function allows setting a value for contractDocument
+	* This function allows setting a value for _contractDocument
 	* @param _contractDocument_ desired value to be set
-	* @return Builder object with new value for contractDocument
+	* @return Builder object with new value for _contractDocument
 	*/
 	final public DurationRequestBuilder _contractDocument_(TextResource _contractDocument_) {
 		this.durationRequestImpl._contractDocument = _contractDocument_;
@@ -147,9 +148,9 @@ public class DurationRequestBuilder {
 
 
 	/**
-	* This function allows setting a value for contractAnnex
+	* This function allows setting a value for _contractAnnex
 	* @param _contractAnnex_ desired value to be set
-	* @return Builder object with new value for contractAnnex
+	* @return Builder object with new value for _contractAnnex
 	*/
 	final public DurationRequestBuilder _contractAnnex_(Resource _contractAnnex_) {
 		this.durationRequestImpl._contractAnnex = _contractAnnex_;

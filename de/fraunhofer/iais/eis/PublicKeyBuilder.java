@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -46,9 +47,9 @@ public class PublicKeyBuilder {
 	}
 
 	/**
-	* This function allows setting a value for keyType
+	* This function allows setting a value for _keyType
 	* @param _keyType_ desired value to be set
-	* @return Builder object with new value for keyType
+	* @return Builder object with new value for _keyType
 	*/
 	final public PublicKeyBuilder _keyType_(KeyType _keyType_) {
 		this.publicKeyImpl._keyType = _keyType_;
@@ -57,9 +58,9 @@ public class PublicKeyBuilder {
 
 
 	/**
-	* This function allows setting a value for keyValue
+	* This function allows setting a value for _keyValue
 	* @param _keyValue_ desired value to be set
-	* @return Builder object with new value for keyValue
+	* @return Builder object with new value for _keyValue
 	*/
 	final public PublicKeyBuilder _keyValue_(byte[] _keyValue_) {
 		this.publicKeyImpl._keyValue = _keyValue_;

@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -46,9 +47,9 @@ public class AppEndpointBuilder {
 	}
 
 	/**
-	* This function allows setting a value for appEndpointType
+	* This function allows setting a value for _appEndpointType
 	* @param _appEndpointType_ desired value to be set
-	* @return Builder object with new value for appEndpointType
+	* @return Builder object with new value for _appEndpointType
 	*/
 	final public AppEndpointBuilder _appEndpointType_(AppEndpointType _appEndpointType_) {
 		this.appEndpointImpl._appEndpointType = _appEndpointType_;
@@ -57,9 +58,9 @@ public class AppEndpointBuilder {
 
 
 	/**
-	* This function allows setting a value for appEndpointPort
+	* This function allows setting a value for _appEndpointPort
 	* @param _appEndpointPort_ desired value to be set
-	* @return Builder object with new value for appEndpointPort
+	* @return Builder object with new value for _appEndpointPort
 	*/
 	final public AppEndpointBuilder _appEndpointPort_(BigInteger _appEndpointPort_) {
 		this.appEndpointImpl._appEndpointPort = _appEndpointPort_;
@@ -68,9 +69,9 @@ public class AppEndpointBuilder {
 
 
 	/**
-	* This function allows setting a value for appEndpointMediaType
+	* This function allows setting a value for _appEndpointMediaType
 	* @param _appEndpointMediaType_ desired value to be set
-	* @return Builder object with new value for appEndpointMediaType
+	* @return Builder object with new value for _appEndpointMediaType
 	*/
 	final public AppEndpointBuilder _appEndpointMediaType_(MediaType _appEndpointMediaType_) {
 		this.appEndpointImpl._appEndpointMediaType = _appEndpointMediaType_;
@@ -79,9 +80,9 @@ public class AppEndpointBuilder {
 
 
 	/**
-	* This function allows setting a value for appEndpointProtocol
+	* This function allows setting a value for _appEndpointProtocol
 	* @param _appEndpointProtocol_ desired value to be set
-	* @return Builder object with new value for appEndpointProtocol
+	* @return Builder object with new value for _appEndpointProtocol
 	*/
 	final public AppEndpointBuilder _appEndpointProtocol_(String _appEndpointProtocol_) {
 		this.appEndpointImpl._appEndpointProtocol = _appEndpointProtocol_;
@@ -90,9 +91,9 @@ public class AppEndpointBuilder {
 
 
 	/**
-	* This function allows setting a value for language
+	* This function allows setting a value for _language
 	* @param _language_ desired value to be set
-	* @return Builder object with new value for language
+	* @return Builder object with new value for _language
 	*/
 	final public AppEndpointBuilder _language_(Language _language_) {
 		this.appEndpointImpl._language = _language_;
@@ -101,31 +102,31 @@ public class AppEndpointBuilder {
 
 
 	/**
-	* This function allows setting a value for endpointInformation
+	* This function allows setting a value for _endpointInformation
 	* @param _endpointInformation_ desired value to be set
-	* @return Builder object with new value for endpointInformation
+	* @return Builder object with new value for _endpointInformation
 	*/
-	final public AppEndpointBuilder _endpointInformation_(ArrayList<? extends TypedLiteral> _endpointInformation_) {
+	final public AppEndpointBuilder _endpointInformation_(List<TypedLiteral> _endpointInformation_) {
 		this.appEndpointImpl._endpointInformation = _endpointInformation_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for endpointDocumentation
+	* This function allows setting a value for _endpointDocumentation
 	* @param _endpointDocumentation_ desired value to be set
-	* @return Builder object with new value for endpointDocumentation
+	* @return Builder object with new value for _endpointDocumentation
 	*/
-	final public AppEndpointBuilder _endpointDocumentation_(ArrayList<? extends URI> _endpointDocumentation_) {
+	final public AppEndpointBuilder _endpointDocumentation_(List<URI> _endpointDocumentation_) {
 		this.appEndpointImpl._endpointDocumentation = _endpointDocumentation_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for accessURL
+	* This function allows setting a value for _accessURL
 	* @param _accessURL_ desired value to be set
-	* @return Builder object with new value for accessURL
+	* @return Builder object with new value for _accessURL
 	*/
 	final public AppEndpointBuilder _accessURL_(URI _accessURL_) {
 		this.appEndpointImpl._accessURL = _accessURL_;
@@ -134,9 +135,9 @@ public class AppEndpointBuilder {
 
 
 	/**
-	* This function allows setting a value for path
+	* This function allows setting a value for _path
 	* @param _path_ desired value to be set
-	* @return Builder object with new value for path
+	* @return Builder object with new value for _path
 	*/
 	final public AppEndpointBuilder _path_(String _path_) {
 		this.appEndpointImpl._path = _path_;
@@ -145,9 +146,9 @@ public class AppEndpointBuilder {
 
 
 	/**
-	* This function allows setting a value for inboundPath
+	* This function allows setting a value for _inboundPath
 	* @param _inboundPath_ desired value to be set
-	* @return Builder object with new value for inboundPath
+	* @return Builder object with new value for _inboundPath
 	*/
 	final public AppEndpointBuilder _inboundPath_(String _inboundPath_) {
 		this.appEndpointImpl._inboundPath = _inboundPath_;
@@ -156,9 +157,9 @@ public class AppEndpointBuilder {
 
 
 	/**
-	* This function allows setting a value for outboundPath
+	* This function allows setting a value for _outboundPath
 	* @param _outboundPath_ desired value to be set
-	* @return Builder object with new value for outboundPath
+	* @return Builder object with new value for _outboundPath
 	*/
 	final public AppEndpointBuilder _outboundPath_(String _outboundPath_) {
 		this.appEndpointImpl._outboundPath = _outboundPath_;

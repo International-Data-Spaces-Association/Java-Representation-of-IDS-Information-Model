@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -46,9 +47,9 @@ public class TokenBuilder {
 	}
 
 	/**
-	* This function allows setting a value for tokenValue
+	* This function allows setting a value for _tokenValue
 	* @param _tokenValue_ desired value to be set
-	* @return Builder object with new value for tokenValue
+	* @return Builder object with new value for _tokenValue
 	*/
 	final public TokenBuilder _tokenValue_(String _tokenValue_) {
 		this.tokenImpl._tokenValue = _tokenValue_;
@@ -57,9 +58,9 @@ public class TokenBuilder {
 
 
 	/**
-	* This function allows setting a value for tokenFormat
+	* This function allows setting a value for _tokenFormat
 	* @param _tokenFormat_ desired value to be set
-	* @return Builder object with new value for tokenFormat
+	* @return Builder object with new value for _tokenFormat
 	*/
 	final public TokenBuilder _tokenFormat_(TokenFormat _tokenFormat_) {
 		this.tokenImpl._tokenFormat = _tokenFormat_;

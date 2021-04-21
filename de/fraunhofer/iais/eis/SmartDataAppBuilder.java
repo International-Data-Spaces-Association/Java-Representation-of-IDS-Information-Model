@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -47,31 +48,31 @@ public class SmartDataAppBuilder {
 
 
 	/**
-	* This function allows setting a value for appEndpoint
+	* This function allows setting a value for _appEndpoint
 	* @param _appEndpoint_ desired value to be set
-	* @return Builder object with new value for appEndpoint
+	* @return Builder object with new value for _appEndpoint
 	*/
-	final public SmartDataAppBuilder _appEndpoint_(ArrayList<? extends AppEndpoint> _appEndpoint_) {
+	final public SmartDataAppBuilder _appEndpoint_(List<AppEndpoint> _appEndpoint_) {
 		this.smartDataAppImpl._appEndpoint = _appEndpoint_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for supportedUsagePolicies
+	* This function allows setting a value for _supportedUsagePolicies
 	* @param _supportedUsagePolicies_ desired value to be set
-	* @return Builder object with new value for supportedUsagePolicies
+	* @return Builder object with new value for _supportedUsagePolicies
 	*/
-	final public SmartDataAppBuilder _supportedUsagePolicies_(ArrayList<? extends UsagePolicyClass> _supportedUsagePolicies_) {
+	final public SmartDataAppBuilder _supportedUsagePolicies_(List<UsagePolicyClass> _supportedUsagePolicies_) {
 		this.smartDataAppImpl._supportedUsagePolicies = _supportedUsagePolicies_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for appDocumentation
+	* This function allows setting a value for _appDocumentation
 	* @param _appDocumentation_ desired value to be set
-	* @return Builder object with new value for appDocumentation
+	* @return Builder object with new value for _appDocumentation
 	*/
 	final public SmartDataAppBuilder _appDocumentation_(String _appDocumentation_) {
 		this.smartDataAppImpl._appDocumentation = _appDocumentation_;
@@ -80,9 +81,9 @@ public class SmartDataAppBuilder {
 
 
 	/**
-	* This function allows setting a value for appEnvironmentVariables
+	* This function allows setting a value for _appEnvironmentVariables
 	* @param _appEnvironmentVariables_ desired value to be set
-	* @return Builder object with new value for appEnvironmentVariables
+	* @return Builder object with new value for _appEnvironmentVariables
 	*/
 	final public SmartDataAppBuilder _appEnvironmentVariables_(String _appEnvironmentVariables_) {
 		this.smartDataAppImpl._appEnvironmentVariables = _appEnvironmentVariables_;
@@ -91,9 +92,9 @@ public class SmartDataAppBuilder {
 
 
 	/**
-	* This function allows setting a value for appStorageConfiguration
+	* This function allows setting a value for _appStorageConfiguration
 	* @param _appStorageConfiguration_ desired value to be set
-	* @return Builder object with new value for appStorageConfiguration
+	* @return Builder object with new value for _appStorageConfiguration
 	*/
 	final public SmartDataAppBuilder _appStorageConfiguration_(String _appStorageConfiguration_) {
 		this.smartDataAppImpl._appStorageConfiguration = _appStorageConfiguration_;

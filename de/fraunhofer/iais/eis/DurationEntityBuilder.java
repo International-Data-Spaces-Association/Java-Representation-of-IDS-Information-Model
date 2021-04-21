@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -47,9 +48,9 @@ public class DurationEntityBuilder {
 
 
 	/**
-	* This function allows setting a value for hasDuration
+	* This function allows setting a value for _hasDuration
 	* @param _hasDuration_ desired value to be set
-	* @return Builder object with new value for hasDuration
+	* @return Builder object with new value for _hasDuration
 	*/
 	final public DurationEntityBuilder _hasDuration_(javax.xml.datatype.Duration _hasDuration_) {
 		this.durationEntityImpl._hasDuration = _hasDuration_;

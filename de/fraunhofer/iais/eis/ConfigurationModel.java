@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -72,12 +73,25 @@ public interface ConfigurationModel {
 	public Map<String,Object> getProperties();
 	public void setProperty(String property, Object value);
 
+	/**
+	* This function returns a hash code value for the ConfigurationModel for the benefit of e.g. hash tables.
+	* @return a hash code value for the ConfigurationModel
+	*/
+	public int hashCode();
+
+	/**
+	* This function indicates whether some other object is equal to this one.
+	* @param obj the reference object with which to compare.
+	* @return true if this ConfigurationModel is the same as the obj argument; false otherwise.
+	*/
+	public boolean equals(Object obj);
+
 	// accessor methods as derived from the IDSA Information Model ontology
 
 
 	/**
 	* "Log level configuration for a Connector which is deployed using the Configuration Model"@en
-	* @return Returns the LogLevel for the property configurationModelLogLevel.
+	* @return Returns the LogLevel for the property _configurationModelLogLevel.
 	* More information under https://w3id.org/idsa/core/configurationModelLogLevel
 	*/
 	@NotNull
@@ -86,7 +100,7 @@ public interface ConfigurationModel {
 
 	/**
 	* "Status of a Connector deployed by the Configuration Model"@en
-	* @return Returns the ConnectorStatus for the property connectorStatus.
+	* @return Returns the ConnectorStatus for the property _connectorStatus.
 	* More information under https://w3id.org/idsa/core/connectorStatus
 	*/
 	@NotNull
@@ -95,7 +109,7 @@ public interface ConfigurationModel {
 
 	/**
 	* "Deply mode of a Connector in the Configuration Model"@en
-	* @return Returns the ConnectorDeployMode for the property connectorDeployMode.
+	* @return Returns the ConnectorDeployMode for the property _connectorDeployMode.
 	* More information under https://w3id.org/idsa/core/connectorDeployMode
 	*/
 	@NotNull
@@ -104,30 +118,30 @@ public interface ConfigurationModel {
 
 	/**
 	* "authentication methods allowed in a Configuration Model"@en
-	* @return Returns the ArrayList of UserAuthentication for the property userAuthentication.
+	* @return Returns the List of UserAuthentications for the property _userAuthentication.
 	* More information under https://w3id.org/idsa/core/userAuthentication
 	*/
 	@JsonProperty("ids:userAuthentication")
-	public ArrayList<? extends UserAuthentication> getUserAuthentication();
+	public List<UserAuthentication> getUserAuthentication();
 
 	/**
 	* "Proxies for a Connector which is deployed using the Configuration Model"@en
-	* @return Returns the ArrayList of Proxy for the property connectorProxy.
+	* @return Returns the List of Proxys for the property _connectorProxy.
 	* More information under https://w3id.org/idsa/core/connectorProxy
 	*/
 	@JsonProperty("ids:connectorProxy")
-	public ArrayList<? extends Proxy> getConnectorProxy();
+	public List<Proxy> getConnectorProxy();
 
 	/**
-	* @return Returns the ArrayList of AppRoute for the property appRoute.
+	* @return Returns the List of AppRoutes for the property _appRoute.
 	* More information under https://w3id.org/idsa/core/appRoute
 	*/
 	@JsonProperty("ids:appRoute")
-	public ArrayList<? extends AppRoute> getAppRoute();
+	public List<AppRoute> getAppRoute();
 
 	/**
 	* "References to Connector which is deployed / maintained in the Configuration Model"@en
-	* @return Returns the Connector for the property connectorDescription.
+	* @return Returns the Connector for the property _connectorDescription.
 	* More information under https://w3id.org/idsa/core/connectorDescription
 	*/
 	@JsonProperty("ids:connectorDescription")
@@ -135,7 +149,7 @@ public interface ConfigurationModel {
 
 	/**
 	* "URI of the trust store server."@en
-	* @return Returns the URI for the property trustStore.
+	* @return Returns the URI for the property _trustStore.
 	* More information under https://w3id.org/idsa/core/trustStore
 	*/
 	@JsonProperty("ids:trustStore")
@@ -143,15 +157,15 @@ public interface ConfigurationModel {
 
 	/**
 	* "Password of the trust store server."@en
-	* @return Returns the ArrayList of String for the property trustStorePassword.
+	* @return Returns the List of Strings for the property _trustStorePassword.
 	* More information under https://w3id.org/idsa/core/trustStorePassword
 	*/
 	@JsonProperty("ids:trustStorePassword")
-	public ArrayList<? extends String> getTrustStorePassword();
+	public List<String> getTrustStorePassword();
 
 	/**
 	* "URI of the key store server."@en
-	* @return Returns the URI for the property keyStore.
+	* @return Returns the URI for the property _keyStore.
 	* More information under https://w3id.org/idsa/core/keyStore
 	*/
 	@JsonProperty("ids:keyStore")
@@ -159,15 +173,15 @@ public interface ConfigurationModel {
 
 	/**
 	* "Password of the key store server."@en
-	* @return Returns the ArrayList of String for the property keyStorePassword.
+	* @return Returns the List of Strings for the property _keyStorePassword.
 	* More information under https://w3id.org/idsa/core/keyStorePassword
 	*/
 	@JsonProperty("ids:keyStorePassword")
-	public ArrayList<? extends String> getKeyStorePassword();
+	public List<String> getKeyStorePassword();
 
 	/**
 	* "Catalog of Brokers to which the ids:Connector that we are configuring (cf. ids:connectorDescription) may want to talk."@en
-	* @return Returns the BrokerCatalog for the property configuredBroker.
+	* @return Returns the BrokerCatalog for the property _configuredBroker.
 	* More information under https://w3id.org/idsa/core/configuredBroker
 	*/
 	@JsonProperty("ids:configuredBroker")
@@ -175,7 +189,7 @@ public interface ConfigurationModel {
 
 	/**
 	* "One or more app stores to which the ids:Connector that we are configuring (cf. ids:connectorDescription) may want to talk, e.g. to retrieve apps from them."@en
-	* @return Returns the AppStoreCatalog for the property configuredAppStore.
+	* @return Returns the AppStoreCatalog for the property _configuredAppStore.
 	* More information under https://w3id.org/idsa/core/configuredAppStore
 	*/
 	@JsonProperty("ids:configuredAppStore")
@@ -183,7 +197,7 @@ public interface ConfigurationModel {
 
 	/**
 	* "Catalog of app resources for a given Configuration Model. Used to persist configured / installed apps."@en
-	* @return Returns the AppResourceCatalog for the property configuredAppResource.
+	* @return Returns the AppResourceCatalog for the property _configuredAppResource.
 	* More information under https://w3id.org/idsa/core/configuredAppResource
 	*/
 	@JsonProperty("ids:configuredAppResource")
@@ -191,7 +205,7 @@ public interface ConfigurationModel {
 
 	/**
 	* "Catalog of clearing houses for a given Configuration Model."@en
-	* @return Returns the ClearingHouseCatalog for the property configuredClearingHouse.
+	* @return Returns the ClearingHouseCatalog for the property _configuredClearingHouse.
 	* More information under https://w3id.org/idsa/core/configuredClearingHouse
 	*/
 	@JsonProperty("ids:configuredClearingHouse")

@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -46,9 +47,9 @@ public class RouteStepBuilder {
 	}
 
 	/**
-	* This function allows setting a value for requiredDataApp
+	* This function allows setting a value for _requiredDataApp
 	* @param _requiredDataApp_ desired value to be set
-	* @return Builder object with new value for requiredDataApp
+	* @return Builder object with new value for _requiredDataApp
 	*/
 	final public RouteStepBuilder _requiredDataApp_(AppRepresentation _requiredDataApp_) {
 		this.routeStepImpl._requiredDataApp = _requiredDataApp_;
@@ -57,9 +58,9 @@ public class RouteStepBuilder {
 
 
 	/**
-	* This function allows setting a value for routeDeployMethod
+	* This function allows setting a value for _routeDeployMethod
 	* @param _routeDeployMethod_ desired value to be set
-	* @return Builder object with new value for routeDeployMethod
+	* @return Builder object with new value for _routeDeployMethod
 	*/
 	final public RouteStepBuilder _routeDeployMethod_(String _routeDeployMethod_) {
 		this.routeStepImpl._routeDeployMethod = _routeDeployMethod_;
@@ -68,75 +69,75 @@ public class RouteStepBuilder {
 
 
 	/**
-	* This function allows setting a value for hasSubRoute
+	* This function allows setting a value for _hasSubRoute
 	* @param _hasSubRoute_ desired value to be set
-	* @return Builder object with new value for hasSubRoute
+	* @return Builder object with new value for _hasSubRoute
 	*/
-	final public RouteStepBuilder _hasSubRoute_(ArrayList<? extends RouteStep> _hasSubRoute_) {
+	final public RouteStepBuilder _hasSubRoute_(List<RouteStep> _hasSubRoute_) {
 		this.routeStepImpl._hasSubRoute = _hasSubRoute_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for appRouteStart
+	* This function allows setting a value for _appRouteStart
 	* @param _appRouteStart_ desired value to be set
-	* @return Builder object with new value for appRouteStart
+	* @return Builder object with new value for _appRouteStart
 	*/
-	final public RouteStepBuilder _appRouteStart_(ArrayList<? extends Endpoint> _appRouteStart_) {
+	final public RouteStepBuilder _appRouteStart_(List<Endpoint> _appRouteStart_) {
 		this.routeStepImpl._appRouteStart = _appRouteStart_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for appRouteEnd
+	* This function allows setting a value for _appRouteEnd
 	* @param _appRouteEnd_ desired value to be set
-	* @return Builder object with new value for appRouteEnd
+	* @return Builder object with new value for _appRouteEnd
 	*/
-	final public RouteStepBuilder _appRouteEnd_(ArrayList<? extends Endpoint> _appRouteEnd_) {
+	final public RouteStepBuilder _appRouteEnd_(List<Endpoint> _appRouteEnd_) {
 		this.routeStepImpl._appRouteEnd = _appRouteEnd_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for appRouteOutput
+	* This function allows setting a value for _appRouteOutput
 	* @param _appRouteOutput_ desired value to be set
-	* @return Builder object with new value for appRouteOutput
+	* @return Builder object with new value for _appRouteOutput
 	*/
-	final public RouteStepBuilder _appRouteOutput_(ArrayList<? extends Resource> _appRouteOutput_) {
+	final public RouteStepBuilder _appRouteOutput_(List<Resource> _appRouteOutput_) {
 		this.routeStepImpl._appRouteOutput = _appRouteOutput_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for appRouteBroker
+	* This function allows setting a value for _appRouteBroker
 	* @param _appRouteBroker_ desired value to be set
-	* @return Builder object with new value for appRouteBroker
+	* @return Builder object with new value for _appRouteBroker
 	*/
-	final public RouteStepBuilder _appRouteBroker_(ArrayList<? extends Broker> _appRouteBroker_) {
+	final public RouteStepBuilder _appRouteBroker_(List<Broker> _appRouteBroker_) {
 		this.routeStepImpl._appRouteBroker = _appRouteBroker_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for appRouteClearingHouse
+	* This function allows setting a value for _appRouteClearingHouse
 	* @param _appRouteClearingHouse_ desired value to be set
-	* @return Builder object with new value for appRouteClearingHouse
+	* @return Builder object with new value for _appRouteClearingHouse
 	*/
-	final public RouteStepBuilder _appRouteClearingHouse_(ArrayList<? extends ClearingHouse> _appRouteClearingHouse_) {
+	final public RouteStepBuilder _appRouteClearingHouse_(List<ClearingHouse> _appRouteClearingHouse_) {
 		this.routeStepImpl._appRouteClearingHouse = _appRouteClearingHouse_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for routeDescription
+	* This function allows setting a value for _routeDescription
 	* @param _routeDescription_ desired value to be set
-	* @return Builder object with new value for routeDescription
+	* @return Builder object with new value for _routeDescription
 	*/
 	final public RouteStepBuilder _routeDescription_(String _routeDescription_) {
 		this.routeStepImpl._routeDescription = _routeDescription_;
@@ -145,9 +146,9 @@ public class RouteStepBuilder {
 
 
 	/**
-	* This function allows setting a value for routeConfiguration
+	* This function allows setting a value for _routeConfiguration
 	* @param _routeConfiguration_ desired value to be set
-	* @return Builder object with new value for routeConfiguration
+	* @return Builder object with new value for _routeConfiguration
 	*/
 	final public RouteStepBuilder _routeConfiguration_(String _routeConfiguration_) {
 		this.routeStepImpl._routeConfiguration = _routeConfiguration_;

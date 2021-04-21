@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -72,60 +73,73 @@ public interface DigitalContent extends Described {
 	public Map<String,Object> getProperties();
 	public void setProperty(String property, Object value);
 
+	/**
+	* This function returns a hash code value for the DigitalContent for the benefit of e.g. hash tables.
+	* @return a hash code value for the DigitalContent
+	*/
+	public int hashCode();
+
+	/**
+	* This function indicates whether some other object is equal to this one.
+	* @param obj the reference object with which to compare.
+	* @return true if this DigitalContent is the same as the obj argument; false otherwise.
+	*/
+	public boolean equals(Object obj);
+
 	// accessor methods as derived from the IDSA Information Model ontology
 
 
 	/**
 	* "Reference to a Digital Content (physically or logically) included, definition of part-whole hierarchies."@en
-	* @return Returns the ArrayList of DigitalContent for the property contentPart.
+	* @return Returns the List of DigitalContents for the property _contentPart.
 	* More information under https://w3id.org/idsa/core/contentPart
 	*/
 	@JsonProperty("ids:contentPart")
-	public ArrayList<? extends DigitalContent> getContentPart();
+	public List<DigitalContent> getContentPart();
 
 	/**
 	* "Named spatial entity covered by the Resource."@en
-	* @return Returns the ArrayList of Location for the property spatialCoverage.
+	* @return Returns the List of Locations for the property _spatialCoverage.
 	* More information under https://w3id.org/idsa/core/spatialCoverage
 	*/
 	@JsonProperty("ids:spatialCoverage")
-	public ArrayList<? extends Location> getSpatialCoverage();
+	public List<Location> getSpatialCoverage();
 
 	/**
 	* "Temporal period or instance covered by the content."@en
-	* @return Returns the ArrayList of TemporalEntity for the property temporalCoverage.
+	* @return Returns the List of TemporalEntitys for the property _temporalCoverage.
 	* More information under https://w3id.org/idsa/core/temporalCoverage
 	*/
 	@JsonProperty("ids:temporalCoverage")
-	public ArrayList<? extends TemporalEntity> getTemporalCoverage();
+	public List<TemporalEntity> getTemporalCoverage();
 
 	/**
 	* "Abstract or concrete concept related to or referred by the content."@en
-	* @return Returns the ArrayList of URI for the property theme.
+	* @return Returns the List of URIs for the property _theme.
 	* More information under https://w3id.org/idsa/core/theme
 	*/
 	@JsonProperty("ids:theme")
-	public ArrayList<? extends URI> getTheme();
+	public List<URI> getTheme();
 
 	/**
 	* "Controlled keywords that describe the nature, purpose, or use of the content."@en
-	* @return Returns the ArrayList of TypedLiteral for the property keyword.
+	* @return Returns the List of TypedLiterals for the property _keyword.
 	* More information under https://w3id.org/idsa/core/keyword
 	*/
 	@JsonProperty("ids:keyword")
-	public ArrayList<? extends TypedLiteral> getKeyword();
+	public List<TypedLiteral> getKeyword();
 
 	/**
 	* "Representation of the content."@en
-	* @return Returns the ArrayList of Representation for the property representation.
+	* @return Returns the List of Representations for the property _representation.
 	* More information under https://w3id.org/idsa/core/representation
 	*/
 	@JsonProperty("ids:representation")
-	public ArrayList<? extends Representation> getRepresentation();
+	public List<Representation> getRepresentation();
 
 	/**
 	* "Detailed type, genre or interpretation of the Digital Content."@en
-	* @return Returns the ContentType for the property contentType.
+	* @return Returns the ContentType for the property _contentType.
 	* More information under https://w3id.org/idsa/core/contentType
 	*/
 	@JsonProperty("ids:contentType")
@@ -133,15 +147,15 @@ public interface DigitalContent extends Described {
 
 	/**
 	* "Default representation of the content."@en
-	* @return Returns the ArrayList of Representation for the property defaultRepresentation.
+	* @return Returns the List of Representations for the property _defaultRepresentation.
 	* More information under https://w3id.org/idsa/core/defaultRepresentation
 	*/
 	@JsonProperty("ids:defaultRepresentation")
-	public ArrayList<? extends Representation> getDefaultRepresentation();
+	public List<Representation> getDefaultRepresentation();
 
 	/**
 	* "Minimum time between collected data points in a time series within this content."@en
-	* @return Returns the Frequency for the property temporalResolution.
+	* @return Returns the Frequency for the property _temporalResolution.
 	* More information under https://w3id.org/idsa/core/temporalResolution
 	*/
 	@JsonProperty("ids:temporalResolution")
@@ -149,7 +163,7 @@ public interface DigitalContent extends Described {
 
 	/**
 	* "The regular period with which items are added to a collection."@en
-	* @return Returns the Frequency for the property accrualPeriodicity.
+	* @return Returns the Frequency for the property _accrualPeriodicity.
 	* More information under https://w3id.org/idsa/core/accrualPeriodicity
 	*/
 	@JsonProperty("ids:accrualPeriodicity")
@@ -157,7 +171,7 @@ public interface DigitalContent extends Described {
 
 	/**
 	* "IRI containing document, which defines the standard for the given Digital Content. The content is assumed to conform to that Standard."@en
-	* @return Returns the URI for the property contentStandard.
+	* @return Returns the URI for the property _contentStandard.
 	* More information under https://w3id.org/idsa/core/contentStandard
 	*/
 	@JsonProperty("ids:contentStandard")
@@ -165,15 +179,15 @@ public interface DigitalContent extends Described {
 
 	/**
 	* "Natural language(s) used within the content."@en
-	* @return Returns the ArrayList of Language for the property language.
+	* @return Returns the List of Languages for the property _language.
 	* More information under https://w3id.org/idsa/core/language
 	*/
 	@JsonProperty("ids:language")
-	public ArrayList<? extends Language> getLanguage();
+	public List<Language> getLanguage();
 
 	/**
 	* "The date of the creation of the Digital Content. In contrast to the ids:temporalCoverage, creation dates of ids:Representation, ids:Artifacts or any other form of meta-data, this property describes the creation date of referenced Digital Content itself."@en
-	* @return Returns the XMLGregorianCalendar for the property created.
+	* @return Returns the XMLGregorianCalendar for the property _created.
 	* More information under https://w3id.org/idsa/core/created
 	*/
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
@@ -182,7 +196,7 @@ public interface DigitalContent extends Described {
 
 	/**
 	* "The date/time this Digital Content has been changed the last time. Only one \'modified\' attribute is usually needed."@en
-	* @return Returns the XMLGregorianCalendar for the property modified.
+	* @return Returns the XMLGregorianCalendar for the property _modified.
 	* More information under https://w3id.org/idsa/core/modified
 	*/
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")

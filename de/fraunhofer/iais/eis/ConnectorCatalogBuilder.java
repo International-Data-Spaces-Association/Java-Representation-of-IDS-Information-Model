@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -46,11 +47,11 @@ public class ConnectorCatalogBuilder {
 	}
 
 	/**
-	* This function allows setting a value for listedConnector
+	* This function allows setting a value for _listedConnector
 	* @param _listedConnector_ desired value to be set
-	* @return Builder object with new value for listedConnector
+	* @return Builder object with new value for _listedConnector
 	*/
-	final public ConnectorCatalogBuilder _listedConnector_(ArrayList<? extends Connector> _listedConnector_) {
+	final public ConnectorCatalogBuilder _listedConnector_(List<Connector> _listedConnector_) {
 		this.connectorCatalogImpl._listedConnector = _listedConnector_;
 		return this;
 	}

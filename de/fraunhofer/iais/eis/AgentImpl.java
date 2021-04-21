@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -64,7 +65,7 @@ public class AgentImpl implements Serializable, Agent {
 	* "Explanation of the resource in a natural language text."@en
 	*/
 	@JsonAlias({"ids:description", "description"})
-	protected ArrayList<? extends TypedLiteral> _description;
+	protected List<TypedLiteral> _description;
 
 
 	/**
@@ -72,7 +73,7 @@ public class AgentImpl implements Serializable, Agent {
 	* "(Localized) name of the entity."@en
 	*/
 	@JsonAlias({"ids:title", "title"})
-	protected ArrayList<? extends TypedLiteral> _title;
+	protected List<TypedLiteral> _title;
 
 
 	// no manual construction
@@ -80,10 +81,6 @@ public class AgentImpl implements Serializable, Agent {
 		id = VocabUtil.getInstance().createRandomUrl("agent");
 	}
 
-	/**
-	* This function retrieves the ID of the current object (can be set via the constructor of the builder class)
-	* @return ID of current object as URI
-	*/
 	@JsonProperty("@id")
 	final public URI getId() {
 		return id;
@@ -93,20 +90,10 @@ public class AgentImpl implements Serializable, Agent {
 		return VocabUtil.getInstance().toRdf(this);
 	}
 
-	/**
-	* This function retrieves a human readable label about the current class, as defined in the ontology.
-	* This label could, for example, be used as a field heading in a user interface
-	* @return Human readable label
-	*/
 	public List<TypedLiteral> getLabel() {
 		return this.label;
 	}
 
-	/**
-	* This function retrieves a human readable explanatory comment about the current class, as defined in the ontology.
-	* This comment could, for example, be used as a tooltip in a user interface
-	* @return Human readable explanatory comment
-	*/
 	public List<TypedLiteral> getComment() {
 		return this.comment;
 	}
@@ -147,48 +134,45 @@ public class AgentImpl implements Serializable, Agent {
 		if (property.startsWith("@")) {return ;};
 		this.properties.put(property, value) ;
 	}
+	public int hashCode() {
+		return Objects.hash(new Object[]{this._title,
+			this._description});
+	}
+
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		} else if (obj == null) {
+			return false;
+		} else if (this.getClass() != obj.getClass()) {
+			return false;
+		} else {
+			AgentImpl other = (AgentImpl) obj;
+			return Objects.equals(this._title, other._title) &&
+				Objects.equals(this._description, other._description);
+		}
+	}
+
 
 	// accessor method implementations as derived from the IDSA Information Model ontology
 
 
 
-	/**
-	* "(Localized) name of the entity."@en
-	* @return Returns the ArrayList of TypedLiteral for the property title.
-	* More information under https://w3id.org/idsa/core/title
-	*/
 	@JsonProperty("ids:title")
-	final public ArrayList<? extends TypedLiteral> getTitle() {
+	final public List<TypedLiteral> getTitle() {
 		return _title;
 	}
-
 	
-	/**
-	* "(Localized) name of the entity."@en
-	* @param _title_ desired value for the property title.
-	* More information under https://w3id.org/idsa/core/title
-	*/
-	final public void setTitle (ArrayList<? extends TypedLiteral> _title_) {
+	final public void setTitle (List<TypedLiteral> _title_) {
 		this._title = _title_;
 	}
 
-	/**
-	* "Explanation of the resource in a natural language text."@en
-	* @return Returns the ArrayList of TypedLiteral for the property description.
-	* More information under https://w3id.org/idsa/core/description
-	*/
 	@JsonProperty("ids:description")
-	final public ArrayList<? extends TypedLiteral> getDescription() {
+	final public List<TypedLiteral> getDescription() {
 		return _description;
 	}
-
 	
-	/**
-	* "Explanation of the resource in a natural language text."@en
-	* @param _description_ desired value for the property description.
-	* More information under https://w3id.org/idsa/core/description
-	*/
-	final public void setDescription (ArrayList<? extends TypedLiteral> _description_) {
+	final public void setDescription (List<TypedLiteral> _description_) {
 		this._description = _description_;
 	}
 

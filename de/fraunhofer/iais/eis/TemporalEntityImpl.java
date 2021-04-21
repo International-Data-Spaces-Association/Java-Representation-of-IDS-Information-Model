@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -72,10 +73,6 @@ public class TemporalEntityImpl implements Serializable, TemporalEntity {
 		id = VocabUtil.getInstance().createRandomUrl("temporalEntity");
 	}
 
-	/**
-	* This function retrieves the ID of the current object (can be set via the constructor of the builder class)
-	* @return ID of current object as URI
-	*/
 	@JsonProperty("@id")
 	final public URI getId() {
 		return id;
@@ -85,20 +82,10 @@ public class TemporalEntityImpl implements Serializable, TemporalEntity {
 		return VocabUtil.getInstance().toRdf(this);
 	}
 
-	/**
-	* This function retrieves a human readable label about the current class, as defined in the ontology.
-	* This label could, for example, be used as a field heading in a user interface
-	* @return Human readable label
-	*/
 	public List<TypedLiteral> getLabel() {
 		return this.label;
 	}
 
-	/**
-	* This function retrieves a human readable explanatory comment about the current class, as defined in the ontology.
-	* This comment could, for example, be used as a tooltip in a user interface
-	* @return Human readable explanatory comment
-	*/
 	public List<TypedLiteral> getComment() {
 		return this.comment;
 	}
@@ -139,26 +126,32 @@ public class TemporalEntityImpl implements Serializable, TemporalEntity {
 		if (property.startsWith("@")) {return ;};
 		this.properties.put(property, value) ;
 	}
+	public int hashCode() {
+		return Objects.hash(new Object[]{this._hasDuration});
+	}
+
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		} else if (obj == null) {
+			return false;
+		} else if (this.getClass() != obj.getClass()) {
+			return false;
+		} else {
+			TemporalEntityImpl other = (TemporalEntityImpl) obj;
+			return Objects.equals(this._hasDuration, other._hasDuration);
+		}
+	}
+
 
 	// accessor method implementations as derived from the IDSA Information Model ontology
 
 
-	/**
-	* "Duration (relative time interval) of a temporal specification. Different to the TIME Ontology, durations are expressed using the xsd:duration datatype. In case it is used with a instance of ids:Instant, the value must be \'P0Y0M0DT0H0M0S\'^^xsd:duration."@en
-	* @return Returns the javax.xml.datatype.Duration for the property hasDuration.
-	* More information under https://w3id.org/idsa/core/hasDuration
-	*/
 	@JsonProperty("ids:hasDuration")
 	final public javax.xml.datatype.Duration getHasDuration() {
 		return _hasDuration;
 	}
-
 	
-	/**
-	* "Duration (relative time interval) of a temporal specification. Different to the TIME Ontology, durations are expressed using the xsd:duration datatype. In case it is used with a instance of ids:Instant, the value must be \'P0Y0M0DT0H0M0S\'^^xsd:duration."@en
-	* @param _hasDuration_ desired value for the property hasDuration.
-	* More information under https://w3id.org/idsa/core/hasDuration
-	*/
 	final public void setHasDuration (javax.xml.datatype.Duration _hasDuration_) {
 		this._hasDuration = _hasDuration_;
 	}

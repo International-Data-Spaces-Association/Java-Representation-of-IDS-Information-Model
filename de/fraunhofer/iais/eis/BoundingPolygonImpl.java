@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -65,7 +66,7 @@ public class BoundingPolygonImpl implements Serializable, BoundingPolygon {
 	*/
 	@NotEmpty
 	@JsonAlias({"ids:geoPoint", "geoPoint"})
-	protected ArrayList<? extends GeoPoint> _geoPoint;
+	protected List<GeoPoint> _geoPoint;
 
 
 	// no manual construction
@@ -73,10 +74,6 @@ public class BoundingPolygonImpl implements Serializable, BoundingPolygon {
 		id = VocabUtil.getInstance().createRandomUrl("boundingPolygon");
 	}
 
-	/**
-	* This function retrieves the ID of the current object (can be set via the constructor of the builder class)
-	* @return ID of current object as URI
-	*/
 	@JsonProperty("@id")
 	final public URI getId() {
 		return id;
@@ -86,20 +83,10 @@ public class BoundingPolygonImpl implements Serializable, BoundingPolygon {
 		return VocabUtil.getInstance().toRdf(this);
 	}
 
-	/**
-	* This function retrieves a human readable label about the current class, as defined in the ontology.
-	* This label could, for example, be used as a field heading in a user interface
-	* @return Human readable label
-	*/
 	public List<TypedLiteral> getLabel() {
 		return this.label;
 	}
 
-	/**
-	* This function retrieves a human readable explanatory comment about the current class, as defined in the ontology.
-	* This comment could, for example, be used as a tooltip in a user interface
-	* @return Human readable explanatory comment
-	*/
 	public List<TypedLiteral> getComment() {
 		return this.comment;
 	}
@@ -140,28 +127,34 @@ public class BoundingPolygonImpl implements Serializable, BoundingPolygon {
 		if (property.startsWith("@")) {return ;};
 		this.properties.put(property, value) ;
 	}
+	public int hashCode() {
+		return Objects.hash(new Object[]{this._geoPoint});
+	}
+
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		} else if (obj == null) {
+			return false;
+		} else if (this.getClass() != obj.getClass()) {
+			return false;
+		} else {
+			BoundingPolygonImpl other = (BoundingPolygonImpl) obj;
+			return Objects.equals(this._geoPoint, other._geoPoint);
+		}
+	}
+
 
 	// accessor method implementations as derived from the IDSA Information Model ontology
 
 
-	/**
-	* "Refers to a GeoPoint that is member of a BoundingPolygon."@en
-	* @return Returns the ArrayList of GeoPoint for the property geoPoint.
-	* More information under https://w3id.org/idsa/core/geoPoint
-	*/
 	@NotEmpty
 	@JsonProperty("ids:geoPoint")
-	final public ArrayList<? extends GeoPoint> getGeoPoint() {
+	final public List<GeoPoint> getGeoPoint() {
 		return _geoPoint;
 	}
-
 	
-	/**
-	* "Refers to a GeoPoint that is member of a BoundingPolygon."@en
-	* @param _geoPoint_ desired value for the property geoPoint.
-	* More information under https://w3id.org/idsa/core/geoPoint
-	*/
-	final public void setGeoPoint (ArrayList<? extends GeoPoint> _geoPoint_) {
+	final public void setGeoPoint (List<GeoPoint> _geoPoint_) {
 		this._geoPoint = _geoPoint_;
 	}
 

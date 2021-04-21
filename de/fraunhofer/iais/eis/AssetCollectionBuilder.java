@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -46,9 +47,9 @@ public class AssetCollectionBuilder {
 	}
 
 	/**
-	* This function allows setting a value for assetSource
+	* This function allows setting a value for _assetSource
 	* @param _assetSource_ desired value to be set
-	* @return Builder object with new value for assetSource
+	* @return Builder object with new value for _assetSource
 	*/
 	final public AssetCollectionBuilder _assetSource_(URI _assetSource_) {
 		this.assetCollectionImpl._assetSource = _assetSource_;
@@ -57,9 +58,9 @@ public class AssetCollectionBuilder {
 
 
 	/**
-	* This function allows setting a value for assetRefinement
+	* This function allows setting a value for _assetRefinement
 	* @param _assetRefinement_ desired value to be set
-	* @return Builder object with new value for assetRefinement
+	* @return Builder object with new value for _assetRefinement
 	*/
 	final public AssetCollectionBuilder _assetRefinement_(AbstractConstraint _assetRefinement_) {
 		this.assetCollectionImpl._assetRefinement = _assetRefinement_;

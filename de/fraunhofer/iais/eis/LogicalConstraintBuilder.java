@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -46,33 +47,33 @@ public class LogicalConstraintBuilder {
 	}
 
 	/**
-	* This function allows setting a value for and
+	* This function allows setting a value for _and
 	* @param _and_ desired value to be set
-	* @return Builder object with new value for and
+	* @return Builder object with new value for _and
 	*/
-	final public LogicalConstraintBuilder _and_(ArrayList<? extends Constraint> _and_) {
+	final public LogicalConstraintBuilder _and_(List<Constraint> _and_) {
 		this.logicalConstraintImpl._and = _and_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for or
+	* This function allows setting a value for _or
 	* @param _or_ desired value to be set
-	* @return Builder object with new value for or
+	* @return Builder object with new value for _or
 	*/
-	final public LogicalConstraintBuilder _or_(ArrayList<? extends Constraint> _or_) {
+	final public LogicalConstraintBuilder _or_(List<Constraint> _or_) {
 		this.logicalConstraintImpl._or = _or_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for xone
+	* This function allows setting a value for _xone
 	* @param _xone_ desired value to be set
-	* @return Builder object with new value for xone
+	* @return Builder object with new value for _xone
 	*/
-	final public LogicalConstraintBuilder _xone_(ArrayList<? extends Constraint> _xone_) {
+	final public LogicalConstraintBuilder _xone_(List<Constraint> _xone_) {
 		this.logicalConstraintImpl._xone = _xone_;
 		return this;
 	}

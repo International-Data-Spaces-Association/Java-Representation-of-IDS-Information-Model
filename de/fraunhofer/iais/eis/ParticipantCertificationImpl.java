@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -72,7 +73,7 @@ public class ParticipantCertificationImpl implements Serializable, ParticipantCe
 	* "Explanation of the resource in a natural language text."@en
 	*/
 	@JsonAlias({"ids:description", "description"})
-	protected ArrayList<? extends TypedLiteral> _description;
+	protected List<TypedLiteral> _description;
 
 
 	/**
@@ -104,7 +105,7 @@ public class ParticipantCertificationImpl implements Serializable, ParticipantCe
 	* "(Localized) name of the entity."@en
 	*/
 	@JsonAlias({"ids:title", "title"})
-	protected ArrayList<? extends TypedLiteral> _title;
+	protected List<TypedLiteral> _title;
 
 
 	/**
@@ -120,10 +121,6 @@ public class ParticipantCertificationImpl implements Serializable, ParticipantCe
 		id = VocabUtil.getInstance().createRandomUrl("participantCertification");
 	}
 
-	/**
-	* This function retrieves the ID of the current object (can be set via the constructor of the builder class)
-	* @return ID of current object as URI
-	*/
 	@JsonProperty("@id")
 	final public URI getId() {
 		return id;
@@ -133,20 +130,10 @@ public class ParticipantCertificationImpl implements Serializable, ParticipantCe
 		return VocabUtil.getInstance().toRdf(this);
 	}
 
-	/**
-	* This function retrieves a human readable label about the current class, as defined in the ontology.
-	* This label could, for example, be used as a field heading in a user interface
-	* @return Human readable label
-	*/
 	public List<TypedLiteral> getLabel() {
 		return this.label;
 	}
 
-	/**
-	* This function retrieves a human readable explanatory comment about the current class, as defined in the ontology.
-	* This comment could, for example, be used as a tooltip in a user interface
-	* @return Human readable explanatory comment
-	*/
 	public List<TypedLiteral> getComment() {
 		return this.comment;
 	}
@@ -187,149 +174,101 @@ public class ParticipantCertificationImpl implements Serializable, ParticipantCe
 		if (property.startsWith("@")) {return ;};
 		this.properties.put(property, value) ;
 	}
+	public int hashCode() {
+		return Objects.hash(new Object[]{this._membershipEnd,
+			this._certificationLevel,
+			this._lastValidDate,
+			this._evaluationFacility,
+			this._version,
+			this._title,
+			this._description});
+	}
+
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		} else if (obj == null) {
+			return false;
+		} else if (this.getClass() != obj.getClass()) {
+			return false;
+		} else {
+			ParticipantCertificationImpl other = (ParticipantCertificationImpl) obj;
+			return Objects.equals(this._membershipEnd, other._membershipEnd) &&
+				Objects.equals(this._certificationLevel, other._certificationLevel) &&
+				Objects.equals(this._lastValidDate, other._lastValidDate) &&
+				Objects.equals(this._evaluationFacility, other._evaluationFacility) &&
+				Objects.equals(this._version, other._version) &&
+				Objects.equals(this._title, other._title) &&
+				Objects.equals(this._description, other._description);
+		}
+	}
+
 
 	// accessor method implementations as derived from the IDSA Information Model ontology
 
 
-	/**
-	* "End of the participant\'s IDS membership."@en
-	* @return Returns the XMLGregorianCalendar for the property membershipEnd.
-	* More information under https://w3id.org/idsa/core/membershipEnd
-	*/
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
 	@JsonProperty("ids:membershipEnd")
 	final public XMLGregorianCalendar getMembershipEnd() {
 		return _membershipEnd;
 	}
-
 	
-	/**
-	* "End of the participant\'s IDS membership."@en
-	* @param _membershipEnd_ desired value for the property membershipEnd.
-	* More information under https://w3id.org/idsa/core/membershipEnd
-	*/
 	final public void setMembershipEnd (XMLGregorianCalendar _membershipEnd_) {
 		this._membershipEnd = _membershipEnd_;
 	}
 
-	/**
-	* "Level of certification (based on a combination of requierements, evaluation method etc.)"@en
-	* @return Returns the CertificationLevel for the property certificationLevel.
-	* More information under https://w3id.org/idsa/core/certificationLevel
-	*/
 	@JsonProperty("ids:certificationLevel")
 	final public CertificationLevel getCertificationLevel() {
 		return _certificationLevel;
 	}
-
 	
-	/**
-	* "Level of certification (based on a combination of requierements, evaluation method etc.)"@en
-	* @param _certificationLevel_ desired value for the property certificationLevel.
-	* More information under https://w3id.org/idsa/core/certificationLevel
-	*/
 	final public void setCertificationLevel (CertificationLevel _certificationLevel_) {
 		this._certificationLevel = _certificationLevel_;
 	}
 
-	/**
-	* "Last date (as xsd:dateTimeStamp) the given Certification is considered valid."@en
-	* @return Returns the XMLGregorianCalendar for the property lastValidDate.
-	* More information under https://w3id.org/idsa/core/lastValidDate
-	*/
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
 	@JsonProperty("ids:lastValidDate")
 	final public XMLGregorianCalendar getLastValidDate() {
 		return _lastValidDate;
 	}
-
 	
-	/**
-	* "Last date (as xsd:dateTimeStamp) the given Certification is considered valid."@en
-	* @param _lastValidDate_ desired value for the property lastValidDate.
-	* More information under https://w3id.org/idsa/core/lastValidDate
-	*/
 	final public void setLastValidDate (XMLGregorianCalendar _lastValidDate_) {
 		this._lastValidDate = _lastValidDate_;
 	}
 
-	/**
-	* "Evaluation Facility that performed and issued given Certification"@en
-	* @return Returns the EvaluationFacility for the property evaluationFacility.
-	* More information under https://w3id.org/idsa/core/evaluationFacility
-	*/
 	@JsonProperty("ids:evaluationFacility")
 	final public EvaluationFacility getEvaluationFacility() {
 		return _evaluationFacility;
 	}
-
 	
-	/**
-	* "Evaluation Facility that performed and issued given Certification"@en
-	* @param _evaluationFacility_ desired value for the property evaluationFacility.
-	* More information under https://w3id.org/idsa/core/evaluationFacility
-	*/
 	final public void setEvaluationFacility (EvaluationFacility _evaluationFacility_) {
 		this._evaluationFacility = _evaluationFacility_;
 	}
 
-	/**
-	* "Version identifier of the Managed Entity"@en
-	* @return Returns the String for the property version.
-	* More information under https://w3id.org/idsa/core/version
-	*/
 	@JsonProperty("ids:version")
 	final public String getVersion() {
 		return _version;
 	}
-
 	
-	/**
-	* "Version identifier of the Managed Entity"@en
-	* @param _version_ desired value for the property version.
-	* More information under https://w3id.org/idsa/core/version
-	*/
 	final public void setVersion (String _version_) {
 		this._version = _version_;
 	}
 
-	/**
-	* "(Localized) name of the entity."@en
-	* @return Returns the ArrayList of TypedLiteral for the property title.
-	* More information under https://w3id.org/idsa/core/title
-	*/
 	@JsonProperty("ids:title")
-	final public ArrayList<? extends TypedLiteral> getTitle() {
+	final public List<TypedLiteral> getTitle() {
 		return _title;
 	}
-
 	
-	/**
-	* "(Localized) name of the entity."@en
-	* @param _title_ desired value for the property title.
-	* More information under https://w3id.org/idsa/core/title
-	*/
-	final public void setTitle (ArrayList<? extends TypedLiteral> _title_) {
+	final public void setTitle (List<TypedLiteral> _title_) {
 		this._title = _title_;
 	}
 
-	/**
-	* "Explanation of the resource in a natural language text."@en
-	* @return Returns the ArrayList of TypedLiteral for the property description.
-	* More information under https://w3id.org/idsa/core/description
-	*/
 	@JsonProperty("ids:description")
-	final public ArrayList<? extends TypedLiteral> getDescription() {
+	final public List<TypedLiteral> getDescription() {
 		return _description;
 	}
-
 	
-	/**
-	* "Explanation of the resource in a natural language text."@en
-	* @param _description_ desired value for the property description.
-	* More information under https://w3id.org/idsa/core/description
-	*/
-	final public void setDescription (ArrayList<? extends TypedLiteral> _description_) {
+	final public void setDescription (List<TypedLiteral> _description_) {
 		this._description = _description_;
 	}
 

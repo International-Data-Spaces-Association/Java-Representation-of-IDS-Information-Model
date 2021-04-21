@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -75,23 +76,36 @@ public interface Described {
 	public Map<String,Object> getProperties();
 	public void setProperty(String property, Object value);
 
+	/**
+	* This function returns a hash code value for the Described for the benefit of e.g. hash tables.
+	* @return a hash code value for the Described
+	*/
+	public int hashCode();
+
+	/**
+	* This function indicates whether some other object is equal to this one.
+	* @param obj the reference object with which to compare.
+	* @return true if this Described is the same as the obj argument; false otherwise.
+	*/
+	public boolean equals(Object obj);
+
 	// accessor methods as derived from the IDSA Information Model ontology
 
 
 	/**
 	* "(Localized) name of the entity."@en
-	* @return Returns the ArrayList of TypedLiteral for the property title.
+	* @return Returns the List of TypedLiterals for the property _title.
 	* More information under https://w3id.org/idsa/core/title
 	*/
 	@JsonProperty("ids:title")
-	public ArrayList<? extends TypedLiteral> getTitle();
+	public List<TypedLiteral> getTitle();
 
 	/**
 	* "Explanation of the resource in a natural language text."@en
-	* @return Returns the ArrayList of TypedLiteral for the property description.
+	* @return Returns the List of TypedLiterals for the property _description.
 	* More information under https://w3id.org/idsa/core/description
 	*/
 	@JsonProperty("ids:description")
-	public ArrayList<? extends TypedLiteral> getDescription();
+	public List<TypedLiteral> getDescription();
 
 }

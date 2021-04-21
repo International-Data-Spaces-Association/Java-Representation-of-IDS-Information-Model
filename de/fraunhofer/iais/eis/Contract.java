@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -74,36 +75,49 @@ public interface Contract {
 	public Map<String,Object> getProperties();
 	public void setProperty(String property, Object value);
 
+	/**
+	* This function returns a hash code value for the Contract for the benefit of e.g. hash tables.
+	* @return a hash code value for the Contract
+	*/
+	public int hashCode();
+
+	/**
+	* This function indicates whether some other object is equal to this one.
+	* @param obj the reference object with which to compare.
+	* @return true if this Contract is the same as the obj argument; false otherwise.
+	*/
+	public boolean equals(Object obj);
+
 	// accessor methods as derived from the IDSA Information Model ontology
 
 
 	/**
 	* "A Permission granted by the Contract."@en
-	* @return Returns the ArrayList of Permission for the property permission.
+	* @return Returns the List of Permissions for the property _permission.
 	* More information under https://w3id.org/idsa/core/permission
 	*/
 	@JsonProperty("ids:permission")
-	public ArrayList<? extends Permission> getPermission();
+	public List<Permission> getPermission();
 
 	/**
 	* "A Prohibition imposed by the Contract."@en
-	* @return Returns the ArrayList of Prohibition for the property prohibition.
+	* @return Returns the List of Prohibitions for the property _prohibition.
 	* More information under https://w3id.org/idsa/core/prohibition
 	*/
 	@JsonProperty("ids:prohibition")
-	public ArrayList<? extends Prohibition> getProhibition();
+	public List<Prohibition> getProhibition();
 
 	/**
 	* "A Duty imposed by the Contract."@en
-	* @return Returns the ArrayList of Duty for the property obligation.
+	* @return Returns the List of Dutys for the property _obligation.
 	* More information under https://w3id.org/idsa/core/obligation
 	*/
 	@JsonProperty("ids:obligation")
-	public ArrayList<? extends Duty> getObligation();
+	public List<Duty> getObligation();
 
 	/**
 	* "Absolute datetime the Contract is requested, offered or expected to start, depending on the type of Contract."@en
-	* @return Returns the XMLGregorianCalendar for the property contractStart.
+	* @return Returns the XMLGregorianCalendar for the property _contractStart.
 	* More information under https://w3id.org/idsa/core/contractStart
 	*/
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
@@ -112,7 +126,7 @@ public interface Contract {
 
 	/**
 	* "Absolute datetime the Contract is requested, offered or expected to end. If omitted, the contract has to be explicitly terminated by any of the parties."@en
-	* @return Returns the XMLGregorianCalendar for the property contractEnd.
+	* @return Returns the XMLGregorianCalendar for the property _contractEnd.
 	* More information under https://w3id.org/idsa/core/contractEnd
 	*/
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
@@ -121,7 +135,7 @@ public interface Contract {
 
 	/**
 	* "Absolute datetime of singing the Contract."@en
-	* @return Returns the XMLGregorianCalendar for the property contractDate.
+	* @return Returns the XMLGregorianCalendar for the property _contractDate.
 	* More information under https://w3id.org/idsa/core/contractDate
 	*/
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
@@ -130,7 +144,7 @@ public interface Contract {
 
 	/**
 	* "Provider of a Resource or Service that is the subject matter of the contract. This party may differ from the Assigner specified by the Contract rules."@en
-	* @return Returns the URI for the property provider.
+	* @return Returns the URI for the property _provider.
 	* More information under https://w3id.org/idsa/core/provider
 	*/
 	@JsonProperty("ids:provider")
@@ -138,7 +152,7 @@ public interface Contract {
 
 	/**
 	* "Consumer of a Resource or Service that is the subject matter of the Contract. This party may differ from the Assignee specified by the Contract rules."@en
-	* @return Returns the URI for the property consumer.
+	* @return Returns the URI for the property _consumer.
 	* More information under https://w3id.org/idsa/core/consumer
 	*/
 	@JsonProperty("ids:consumer")
@@ -146,7 +160,7 @@ public interface Contract {
 
 	/**
 	* "Equivalent human-readable encoding of this machine-interpretable Contract."@en
-	* @return Returns the TextResource for the property contractDocument.
+	* @return Returns the TextResource for the property _contractDocument.
 	* More information under https://w3id.org/idsa/core/contractDocument
 	*/
 	@JsonProperty("ids:contractDocument")
@@ -154,7 +168,7 @@ public interface Contract {
 
 	/**
 	* "Any type of resource related to the Contract."@en
-	* @return Returns the Resource for the property contractAnnex.
+	* @return Returns the Resource for the property _contractAnnex.
 	* More information under https://w3id.org/idsa/core/contractAnnex
 	*/
 	@JsonProperty("ids:contractAnnex")

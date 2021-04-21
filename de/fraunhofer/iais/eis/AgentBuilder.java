@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -47,22 +48,22 @@ public class AgentBuilder {
 
 
 	/**
-	* This function allows setting a value for title
+	* This function allows setting a value for _title
 	* @param _title_ desired value to be set
-	* @return Builder object with new value for title
+	* @return Builder object with new value for _title
 	*/
-	final public AgentBuilder _title_(ArrayList<? extends TypedLiteral> _title_) {
+	final public AgentBuilder _title_(List<TypedLiteral> _title_) {
 		this.agentImpl._title = _title_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for description
+	* This function allows setting a value for _description
 	* @param _description_ desired value to be set
-	* @return Builder object with new value for description
+	* @return Builder object with new value for _description
 	*/
-	final public AgentBuilder _description_(ArrayList<? extends TypedLiteral> _description_) {
+	final public AgentBuilder _description_(List<TypedLiteral> _description_) {
 		this.agentImpl._description = _description_;
 		return this;
 	}

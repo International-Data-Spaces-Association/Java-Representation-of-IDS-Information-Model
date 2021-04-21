@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -112,7 +113,7 @@ public class SwapOfferImpl implements Serializable, SwapOffer {
 	* "A Duty imposed by the Contract."@en
 	*/
 	@JsonAlias({"ids:obligation", "obligation"})
-	protected ArrayList<? extends Duty> _obligation;
+	protected List<Duty> _obligation;
 
 
 	/**
@@ -120,7 +121,7 @@ public class SwapOfferImpl implements Serializable, SwapOffer {
 	* "A Permission granted by the Contract."@en
 	*/
 	@JsonAlias({"ids:permission", "permission"})
-	protected ArrayList<? extends Permission> _permission;
+	protected List<Permission> _permission;
 
 
 	/**
@@ -128,7 +129,7 @@ public class SwapOfferImpl implements Serializable, SwapOffer {
 	* "A Prohibition imposed by the Contract."@en
 	*/
 	@JsonAlias({"ids:prohibition", "prohibition"})
-	protected ArrayList<? extends Prohibition> _prohibition;
+	protected List<Prohibition> _prohibition;
 
 
 	/**
@@ -144,10 +145,6 @@ public class SwapOfferImpl implements Serializable, SwapOffer {
 		id = VocabUtil.getInstance().createRandomUrl("swapOffer");
 	}
 
-	/**
-	* This function retrieves the ID of the current object (can be set via the constructor of the builder class)
-	* @return ID of current object as URI
-	*/
 	@JsonProperty("@id")
 	final public URI getId() {
 		return id;
@@ -157,20 +154,10 @@ public class SwapOfferImpl implements Serializable, SwapOffer {
 		return VocabUtil.getInstance().toRdf(this);
 	}
 
-	/**
-	* This function retrieves a human readable label about the current class, as defined in the ontology.
-	* This label could, for example, be used as a field heading in a user interface
-	* @return Human readable label
-	*/
 	public List<TypedLiteral> getLabel() {
 		return this.label;
 	}
 
-	/**
-	* This function retrieves a human readable explanatory comment about the current class, as defined in the ontology.
-	* This comment could, for example, be used as a tooltip in a user interface
-	* @return Human readable explanatory comment
-	*/
 	public List<TypedLiteral> getComment() {
 		return this.comment;
 	}
@@ -211,211 +198,136 @@ public class SwapOfferImpl implements Serializable, SwapOffer {
 		if (property.startsWith("@")) {return ;};
 		this.properties.put(property, value) ;
 	}
+	public int hashCode() {
+		return Objects.hash(new Object[]{this._permission,
+			this._prohibition,
+			this._obligation,
+			this._contractStart,
+			this._contractEnd,
+			this._contractDate,
+			this._provider,
+			this._consumer,
+			this._contractDocument,
+			this._contractAnnex});
+	}
+
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		} else if (obj == null) {
+			return false;
+		} else if (this.getClass() != obj.getClass()) {
+			return false;
+		} else {
+			SwapOfferImpl other = (SwapOfferImpl) obj;
+			return Objects.equals(this._permission, other._permission) &&
+				Objects.equals(this._prohibition, other._prohibition) &&
+				Objects.equals(this._obligation, other._obligation) &&
+				Objects.equals(this._contractStart, other._contractStart) &&
+				Objects.equals(this._contractEnd, other._contractEnd) &&
+				Objects.equals(this._contractDate, other._contractDate) &&
+				Objects.equals(this._provider, other._provider) &&
+				Objects.equals(this._consumer, other._consumer) &&
+				Objects.equals(this._contractDocument, other._contractDocument) &&
+				Objects.equals(this._contractAnnex, other._contractAnnex);
+		}
+	}
+
 
 	// accessor method implementations as derived from the IDSA Information Model ontology
 
 
 
 
-	/**
-	* "A Permission granted by the Contract."@en
-	* @return Returns the ArrayList of Permission for the property permission.
-	* More information under https://w3id.org/idsa/core/permission
-	*/
 	@JsonProperty("ids:permission")
-	final public ArrayList<? extends Permission> getPermission() {
+	final public List<Permission> getPermission() {
 		return _permission;
 	}
-
 	
-	/**
-	* "A Permission granted by the Contract."@en
-	* @param _permission_ desired value for the property permission.
-	* More information under https://w3id.org/idsa/core/permission
-	*/
-	final public void setPermission (ArrayList<? extends Permission> _permission_) {
+	final public void setPermission (List<Permission> _permission_) {
 		this._permission = _permission_;
 	}
 
-	/**
-	* "A Prohibition imposed by the Contract."@en
-	* @return Returns the ArrayList of Prohibition for the property prohibition.
-	* More information under https://w3id.org/idsa/core/prohibition
-	*/
 	@JsonProperty("ids:prohibition")
-	final public ArrayList<? extends Prohibition> getProhibition() {
+	final public List<Prohibition> getProhibition() {
 		return _prohibition;
 	}
-
 	
-	/**
-	* "A Prohibition imposed by the Contract."@en
-	* @param _prohibition_ desired value for the property prohibition.
-	* More information under https://w3id.org/idsa/core/prohibition
-	*/
-	final public void setProhibition (ArrayList<? extends Prohibition> _prohibition_) {
+	final public void setProhibition (List<Prohibition> _prohibition_) {
 		this._prohibition = _prohibition_;
 	}
 
-	/**
-	* "A Duty imposed by the Contract."@en
-	* @return Returns the ArrayList of Duty for the property obligation.
-	* More information under https://w3id.org/idsa/core/obligation
-	*/
 	@JsonProperty("ids:obligation")
-	final public ArrayList<? extends Duty> getObligation() {
+	final public List<Duty> getObligation() {
 		return _obligation;
 	}
-
 	
-	/**
-	* "A Duty imposed by the Contract."@en
-	* @param _obligation_ desired value for the property obligation.
-	* More information under https://w3id.org/idsa/core/obligation
-	*/
-	final public void setObligation (ArrayList<? extends Duty> _obligation_) {
+	final public void setObligation (List<Duty> _obligation_) {
 		this._obligation = _obligation_;
 	}
 
-	/**
-	* "Absolute datetime the Contract is requested, offered or expected to start, depending on the type of Contract."@en
-	* @return Returns the XMLGregorianCalendar for the property contractStart.
-	* More information under https://w3id.org/idsa/core/contractStart
-	*/
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
 	@JsonProperty("ids:contractStart")
 	final public XMLGregorianCalendar getContractStart() {
 		return _contractStart;
 	}
-
 	
-	/**
-	* "Absolute datetime the Contract is requested, offered or expected to start, depending on the type of Contract."@en
-	* @param _contractStart_ desired value for the property contractStart.
-	* More information under https://w3id.org/idsa/core/contractStart
-	*/
 	final public void setContractStart (XMLGregorianCalendar _contractStart_) {
 		this._contractStart = _contractStart_;
 	}
 
-	/**
-	* "Absolute datetime the Contract is requested, offered or expected to end. If omitted, the contract has to be explicitly terminated by any of the parties."@en
-	* @return Returns the XMLGregorianCalendar for the property contractEnd.
-	* More information under https://w3id.org/idsa/core/contractEnd
-	*/
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
 	@JsonProperty("ids:contractEnd")
 	final public XMLGregorianCalendar getContractEnd() {
 		return _contractEnd;
 	}
-
 	
-	/**
-	* "Absolute datetime the Contract is requested, offered or expected to end. If omitted, the contract has to be explicitly terminated by any of the parties."@en
-	* @param _contractEnd_ desired value for the property contractEnd.
-	* More information under https://w3id.org/idsa/core/contractEnd
-	*/
 	final public void setContractEnd (XMLGregorianCalendar _contractEnd_) {
 		this._contractEnd = _contractEnd_;
 	}
 
-	/**
-	* "Absolute datetime of singing the Contract."@en
-	* @return Returns the XMLGregorianCalendar for the property contractDate.
-	* More information under https://w3id.org/idsa/core/contractDate
-	*/
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
 	@JsonProperty("ids:contractDate")
 	final public XMLGregorianCalendar getContractDate() {
 		return _contractDate;
 	}
-
 	
-	/**
-	* "Absolute datetime of singing the Contract."@en
-	* @param _contractDate_ desired value for the property contractDate.
-	* More information under https://w3id.org/idsa/core/contractDate
-	*/
 	final public void setContractDate (XMLGregorianCalendar _contractDate_) {
 		this._contractDate = _contractDate_;
 	}
 
-	/**
-	* "Provider of a Resource or Service that is the subject matter of the contract. This party may differ from the Assigner specified by the Contract rules."@en
-	* @return Returns the URI for the property provider.
-	* More information under https://w3id.org/idsa/core/provider
-	*/
 	@JsonProperty("ids:provider")
 	final public URI getProvider() {
 		return _provider;
 	}
-
 	
-	/**
-	* "Provider of a Resource or Service that is the subject matter of the contract. This party may differ from the Assigner specified by the Contract rules."@en
-	* @param _provider_ desired value for the property provider.
-	* More information under https://w3id.org/idsa/core/provider
-	*/
 	final public void setProvider (URI _provider_) {
 		this._provider = _provider_;
 	}
 
-	/**
-	* "Consumer of a Resource or Service that is the subject matter of the Contract. This party may differ from the Assignee specified by the Contract rules."@en
-	* @return Returns the URI for the property consumer.
-	* More information under https://w3id.org/idsa/core/consumer
-	*/
 	@JsonProperty("ids:consumer")
 	final public URI getConsumer() {
 		return _consumer;
 	}
-
 	
-	/**
-	* "Consumer of a Resource or Service that is the subject matter of the Contract. This party may differ from the Assignee specified by the Contract rules."@en
-	* @param _consumer_ desired value for the property consumer.
-	* More information under https://w3id.org/idsa/core/consumer
-	*/
 	final public void setConsumer (URI _consumer_) {
 		this._consumer = _consumer_;
 	}
 
-	/**
-	* "Equivalent human-readable encoding of this machine-interpretable Contract."@en
-	* @return Returns the TextResource for the property contractDocument.
-	* More information under https://w3id.org/idsa/core/contractDocument
-	*/
 	@JsonProperty("ids:contractDocument")
 	final public TextResource getContractDocument() {
 		return _contractDocument;
 	}
-
 	
-	/**
-	* "Equivalent human-readable encoding of this machine-interpretable Contract."@en
-	* @param _contractDocument_ desired value for the property contractDocument.
-	* More information under https://w3id.org/idsa/core/contractDocument
-	*/
 	final public void setContractDocument (TextResource _contractDocument_) {
 		this._contractDocument = _contractDocument_;
 	}
 
-	/**
-	* "Any type of resource related to the Contract."@en
-	* @return Returns the Resource for the property contractAnnex.
-	* More information under https://w3id.org/idsa/core/contractAnnex
-	*/
 	@JsonProperty("ids:contractAnnex")
 	final public Resource getContractAnnex() {
 		return _contractAnnex;
 	}
-
 	
-	/**
-	* "Any type of resource related to the Contract."@en
-	* @param _contractAnnex_ desired value for the property contractAnnex.
-	* More information under https://w3id.org/idsa/core/contractAnnex
-	*/
 	final public void setContractAnnex (Resource _contractAnnex_) {
 		this._contractAnnex = _contractAnnex_;
 	}

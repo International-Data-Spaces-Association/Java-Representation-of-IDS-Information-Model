@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -47,42 +48,42 @@ public class DutyBuilder {
 
 
 	/**
-	* This function allows setting a value for constraint
+	* This function allows setting a value for _constraint
 	* @param _constraint_ desired value to be set
-	* @return Builder object with new value for constraint
+	* @return Builder object with new value for _constraint
 	*/
-	final public DutyBuilder _constraint_(ArrayList<? extends AbstractConstraint> _constraint_) {
+	final public DutyBuilder _constraint_(List<AbstractConstraint> _constraint_) {
 		this.dutyImpl._constraint = _constraint_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for assigner
+	* This function allows setting a value for _assigner
 	* @param _assigner_ desired value to be set
-	* @return Builder object with new value for assigner
+	* @return Builder object with new value for _assigner
 	*/
-	final public DutyBuilder _assigner_(ArrayList<? extends URI> _assigner_) {
+	final public DutyBuilder _assigner_(List<URI> _assigner_) {
 		this.dutyImpl._assigner = _assigner_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for assignee
+	* This function allows setting a value for _assignee
 	* @param _assignee_ desired value to be set
-	* @return Builder object with new value for assignee
+	* @return Builder object with new value for _assignee
 	*/
-	final public DutyBuilder _assignee_(ArrayList<? extends URI> _assignee_) {
+	final public DutyBuilder _assignee_(List<URI> _assignee_) {
 		this.dutyImpl._assignee = _assignee_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for target
+	* This function allows setting a value for _target
 	* @param _target_ desired value to be set
-	* @return Builder object with new value for target
+	* @return Builder object with new value for _target
 	*/
 	final public DutyBuilder _target_(URI _target_) {
 		this.dutyImpl._target = _target_;
@@ -91,20 +92,20 @@ public class DutyBuilder {
 
 
 	/**
-	* This function allows setting a value for action
+	* This function allows setting a value for _action
 	* @param _action_ desired value to be set
-	* @return Builder object with new value for action
+	* @return Builder object with new value for _action
 	*/
-	final public DutyBuilder _action_(ArrayList<? extends Action> _action_) {
+	final public DutyBuilder _action_(List<Action> _action_) {
 		this.dutyImpl._action = _action_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for assetRefinement
+	* This function allows setting a value for _assetRefinement
 	* @param _assetRefinement_ desired value to be set
-	* @return Builder object with new value for assetRefinement
+	* @return Builder object with new value for _assetRefinement
 	*/
 	final public DutyBuilder _assetRefinement_(AbstractConstraint _assetRefinement_) {
 		this.dutyImpl._assetRefinement = _assetRefinement_;
@@ -113,22 +114,22 @@ public class DutyBuilder {
 
 
 	/**
-	* This function allows setting a value for title
+	* This function allows setting a value for _title
 	* @param _title_ desired value to be set
-	* @return Builder object with new value for title
+	* @return Builder object with new value for _title
 	*/
-	final public DutyBuilder _title_(ArrayList<? extends TypedLiteral> _title_) {
+	final public DutyBuilder _title_(List<TypedLiteral> _title_) {
 		this.dutyImpl._title = _title_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for description
+	* This function allows setting a value for _description
 	* @param _description_ desired value to be set
-	* @return Builder object with new value for description
+	* @return Builder object with new value for _description
 	*/
-	final public DutyBuilder _description_(ArrayList<? extends TypedLiteral> _description_) {
+	final public DutyBuilder _description_(List<TypedLiteral> _description_) {
 		this.dutyImpl._description = _description_;
 		return this;
 	}

@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -46,9 +47,9 @@ public class GeoPointBuilder {
 	}
 
 	/**
-	* This function allows setting a value for latitude
+	* This function allows setting a value for _latitude
 	* @param _latitude_ desired value to be set
-	* @return Builder object with new value for latitude
+	* @return Builder object with new value for _latitude
 	*/
 	final public GeoPointBuilder _latitude_(float _latitude_) {
 		this.geoPointImpl._latitude = _latitude_;
@@ -57,9 +58,9 @@ public class GeoPointBuilder {
 
 
 	/**
-	* This function allows setting a value for longitude
+	* This function allows setting a value for _longitude
 	* @param _longitude_ desired value to be set
-	* @return Builder object with new value for longitude
+	* @return Builder object with new value for _longitude
 	*/
 	final public GeoPointBuilder _longitude_(float _longitude_) {
 		this.geoPointImpl._longitude = _longitude_;

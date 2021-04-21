@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -72,12 +73,25 @@ public interface AppRepresentation extends SoftwareRepresentation {
 	public Map<String,Object> getProperties();
 	public void setProperty(String property, Object value);
 
+	/**
+	* This function returns a hash code value for the AppRepresentation for the benefit of e.g. hash tables.
+	* @return a hash code value for the AppRepresentation
+	*/
+	public int hashCode();
+
+	/**
+	* This function indicates whether some other object is equal to this one.
+	* @param obj the reference object with which to compare.
+	* @return true if this AppRepresentation is the same as the obj argument; false otherwise.
+	*/
+	public boolean equals(Object obj);
+
 	// accessor methods as derived from the IDSA Information Model ontology
 
 
 	/**
 	* "Information about the concrete data app implementation"@en
-	* @return Returns the DataApp for the property dataAppInformation.
+	* @return Returns the DataApp for the property _dataAppInformation.
 	* More information under https://w3id.org/idsa/core/dataAppInformation
 	*/
 	@JsonProperty("ids:dataAppInformation")
@@ -85,7 +99,7 @@ public interface AppRepresentation extends SoftwareRepresentation {
 
 	/**
 	* "IRI reference to storage and distribution system for the correspending data app. Unlinke regular representations for IDS resources, a data app may not be retrieved directly from a connector but from a separate registry instead."@en
-	* @return Returns the URI for the property dataAppDistributionService.
+	* @return Returns the URI for the property _dataAppDistributionService.
 	* More information under https://w3id.org/idsa/core/dataAppDistributionService
 	*/
 	@JsonProperty("ids:dataAppDistributionService")
@@ -93,7 +107,7 @@ public interface AppRepresentation extends SoftwareRepresentation {
 
 	/**
 	* "Runtime environment of a data app, e.g. software (or hardware) required to run the app."@en
-	* @return Returns the String for the property dataAppRuntimeEnvironment.
+	* @return Returns the String for the property _dataAppRuntimeEnvironment.
 	* More information under https://w3id.org/idsa/core/dataAppRuntimeEnvironment
 	*/
 	@JsonProperty("ids:dataAppRuntimeEnvironment")

@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -46,31 +47,31 @@ public class PersonBuilder {
 	}
 
 	/**
-	* This function allows setting a value for phoneNumber
+	* This function allows setting a value for _phoneNumber
 	* @param _phoneNumber_ desired value to be set
-	* @return Builder object with new value for phoneNumber
+	* @return Builder object with new value for _phoneNumber
 	*/
-	final public PersonBuilder _phoneNumber_(ArrayList<? extends String> _phoneNumber_) {
+	final public PersonBuilder _phoneNumber_(List<String> _phoneNumber_) {
 		this.personImpl._phoneNumber = _phoneNumber_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for emailAddress
+	* This function allows setting a value for _emailAddress
 	* @param _emailAddress_ desired value to be set
-	* @return Builder object with new value for emailAddress
+	* @return Builder object with new value for _emailAddress
 	*/
-	final public PersonBuilder _emailAddress_(ArrayList<? extends String> _emailAddress_) {
+	final public PersonBuilder _emailAddress_(List<String> _emailAddress_) {
 		this.personImpl._emailAddress = _emailAddress_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for familyName
+	* This function allows setting a value for _familyName
 	* @param _familyName_ desired value to be set
-	* @return Builder object with new value for familyName
+	* @return Builder object with new value for _familyName
 	*/
 	final public PersonBuilder _familyName_(String _familyName_) {
 		this.personImpl._familyName = _familyName_;
@@ -79,9 +80,9 @@ public class PersonBuilder {
 
 
 	/**
-	* This function allows setting a value for givenName
+	* This function allows setting a value for _givenName
 	* @param _givenName_ desired value to be set
-	* @return Builder object with new value for givenName
+	* @return Builder object with new value for _givenName
 	*/
 	final public PersonBuilder _givenName_(String _givenName_) {
 		this.personImpl._givenName = _givenName_;
@@ -90,9 +91,9 @@ public class PersonBuilder {
 
 
 	/**
-	* This function allows setting a value for homepage
+	* This function allows setting a value for _homepage
 	* @param _homepage_ desired value to be set
-	* @return Builder object with new value for homepage
+	* @return Builder object with new value for _homepage
 	*/
 	final public PersonBuilder _homepage_(String _homepage_) {
 		this.personImpl._homepage = _homepage_;

@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -88,10 +89,6 @@ public class HTTPAuthenticationImpl implements Serializable, HTTPAuthentication 
 		id = VocabUtil.getInstance().createRandomUrl("hTTPAuthentication");
 	}
 
-	/**
-	* This function retrieves the ID of the current object (can be set via the constructor of the builder class)
-	* @return ID of current object as URI
-	*/
 	@JsonProperty("@id")
 	final public URI getId() {
 		return id;
@@ -101,20 +98,10 @@ public class HTTPAuthenticationImpl implements Serializable, HTTPAuthentication 
 		return VocabUtil.getInstance().toRdf(this);
 	}
 
-	/**
-	* This function retrieves a human readable label about the current class, as defined in the ontology.
-	* This label could, for example, be used as a field heading in a user interface
-	* @return Human readable label
-	*/
 	public List<TypedLiteral> getLabel() {
 		return this.label;
 	}
 
-	/**
-	* This function retrieves a human readable explanatory comment about the current class, as defined in the ontology.
-	* This comment could, for example, be used as a tooltip in a user interface
-	* @return Human readable explanatory comment
-	*/
 	public List<TypedLiteral> getComment() {
 		return this.comment;
 	}
@@ -155,66 +142,54 @@ public class HTTPAuthenticationImpl implements Serializable, HTTPAuthentication 
 		if (property.startsWith("@")) {return ;};
 		this.properties.put(property, value) ;
 	}
+	public int hashCode() {
+		return Objects.hash(new Object[]{this._httpAuthURI,
+			this._authPassword,
+			this._authUsername});
+	}
+
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		} else if (obj == null) {
+			return false;
+		} else if (this.getClass() != obj.getClass()) {
+			return false;
+		} else {
+			HTTPAuthenticationImpl other = (HTTPAuthenticationImpl) obj;
+			return Objects.equals(this._httpAuthURI, other._httpAuthURI) &&
+				Objects.equals(this._authPassword, other._authPassword) &&
+				Objects.equals(this._authUsername, other._authUsername);
+		}
+	}
+
 
 	// accessor method implementations as derived from the IDSA Information Model ontology
 
 
-	/**
-	* "HTTP authentication URI."@en
-	* @return Returns the URI for the property httpAuthURI.
-	* More information under https://w3id.org/idsa/core/httpAuthURI
-	*/
 	@JsonProperty("ids:httpAuthURI")
 	final public URI getHttpAuthURI() {
 		return _httpAuthURI;
 	}
-
 	
-	/**
-	* "HTTP authentication URI."@en
-	* @param _httpAuthURI_ desired value for the property httpAuthURI.
-	* More information under https://w3id.org/idsa/core/httpAuthURI
-	*/
 	final public void setHttpAuthURI (URI _httpAuthURI_) {
 		this._httpAuthURI = _httpAuthURI_;
 	}
 
-	/**
-	* "Username / ID used for authentication."
-	* @return Returns the String for the property authPassword.
-	* More information under https://w3id.org/idsa/core/authPassword
-	*/
 	@JsonProperty("ids:authPassword")
 	final public String getAuthPassword() {
 		return _authPassword;
 	}
-
 	
-	/**
-	* "Username / ID used for authentication."
-	* @param _authPassword_ desired value for the property authPassword.
-	* More information under https://w3id.org/idsa/core/authPassword
-	*/
 	final public void setAuthPassword (String _authPassword_) {
 		this._authPassword = _authPassword_;
 	}
 
-	/**
-	* "Username / ID used for authentication."@en
-	* @return Returns the String for the property authUsername.
-	* More information under https://w3id.org/idsa/core/authUsername
-	*/
 	@JsonProperty("ids:authUsername")
 	final public String getAuthUsername() {
 		return _authUsername;
 	}
-
 	
-	/**
-	* "Username / ID used for authentication."@en
-	* @param _authUsername_ desired value for the property authUsername.
-	* More information under https://w3id.org/idsa/core/authUsername
-	*/
 	final public void setAuthUsername (String _authUsername_) {
 		this._authUsername = _authUsername_;
 	}

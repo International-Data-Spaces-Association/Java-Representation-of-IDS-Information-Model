@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -46,22 +47,22 @@ public class ResourceCatalogBuilder {
 	}
 
 	/**
-	* This function allows setting a value for requestedResource
+	* This function allows setting a value for _requestedResource
 	* @param _requestedResource_ desired value to be set
-	* @return Builder object with new value for requestedResource
+	* @return Builder object with new value for _requestedResource
 	*/
-	final public ResourceCatalogBuilder _requestedResource_(ArrayList<? extends Resource> _requestedResource_) {
+	final public ResourceCatalogBuilder _requestedResource_(List<Resource> _requestedResource_) {
 		this.resourceCatalogImpl._requestedResource = _requestedResource_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for offeredResource
+	* This function allows setting a value for _offeredResource
 	* @param _offeredResource_ desired value to be set
-	* @return Builder object with new value for offeredResource
+	* @return Builder object with new value for _offeredResource
 	*/
-	final public ResourceCatalogBuilder _offeredResource_(ArrayList<? extends Resource> _offeredResource_) {
+	final public ResourceCatalogBuilder _offeredResource_(List<Resource> _offeredResource_) {
 		this.resourceCatalogImpl._offeredResource = _offeredResource_;
 		return this;
 	}

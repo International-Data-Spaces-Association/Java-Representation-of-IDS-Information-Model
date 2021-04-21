@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -47,42 +48,42 @@ public class ContractOfferBuilder {
 
 
 	/**
-	* This function allows setting a value for permission
+	* This function allows setting a value for _permission
 	* @param _permission_ desired value to be set
-	* @return Builder object with new value for permission
+	* @return Builder object with new value for _permission
 	*/
-	final public ContractOfferBuilder _permission_(ArrayList<? extends Permission> _permission_) {
+	final public ContractOfferBuilder _permission_(List<Permission> _permission_) {
 		this.contractOfferImpl._permission = _permission_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for prohibition
+	* This function allows setting a value for _prohibition
 	* @param _prohibition_ desired value to be set
-	* @return Builder object with new value for prohibition
+	* @return Builder object with new value for _prohibition
 	*/
-	final public ContractOfferBuilder _prohibition_(ArrayList<? extends Prohibition> _prohibition_) {
+	final public ContractOfferBuilder _prohibition_(List<Prohibition> _prohibition_) {
 		this.contractOfferImpl._prohibition = _prohibition_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for obligation
+	* This function allows setting a value for _obligation
 	* @param _obligation_ desired value to be set
-	* @return Builder object with new value for obligation
+	* @return Builder object with new value for _obligation
 	*/
-	final public ContractOfferBuilder _obligation_(ArrayList<? extends Duty> _obligation_) {
+	final public ContractOfferBuilder _obligation_(List<Duty> _obligation_) {
 		this.contractOfferImpl._obligation = _obligation_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for contractStart
+	* This function allows setting a value for _contractStart
 	* @param _contractStart_ desired value to be set
-	* @return Builder object with new value for contractStart
+	* @return Builder object with new value for _contractStart
 	*/
 	final public ContractOfferBuilder _contractStart_(XMLGregorianCalendar _contractStart_) {
 		this.contractOfferImpl._contractStart = _contractStart_;
@@ -91,9 +92,9 @@ public class ContractOfferBuilder {
 
 
 	/**
-	* This function allows setting a value for contractEnd
+	* This function allows setting a value for _contractEnd
 	* @param _contractEnd_ desired value to be set
-	* @return Builder object with new value for contractEnd
+	* @return Builder object with new value for _contractEnd
 	*/
 	final public ContractOfferBuilder _contractEnd_(XMLGregorianCalendar _contractEnd_) {
 		this.contractOfferImpl._contractEnd = _contractEnd_;
@@ -102,9 +103,9 @@ public class ContractOfferBuilder {
 
 
 	/**
-	* This function allows setting a value for contractDate
+	* This function allows setting a value for _contractDate
 	* @param _contractDate_ desired value to be set
-	* @return Builder object with new value for contractDate
+	* @return Builder object with new value for _contractDate
 	*/
 	final public ContractOfferBuilder _contractDate_(XMLGregorianCalendar _contractDate_) {
 		this.contractOfferImpl._contractDate = _contractDate_;
@@ -113,9 +114,9 @@ public class ContractOfferBuilder {
 
 
 	/**
-	* This function allows setting a value for provider
+	* This function allows setting a value for _provider
 	* @param _provider_ desired value to be set
-	* @return Builder object with new value for provider
+	* @return Builder object with new value for _provider
 	*/
 	final public ContractOfferBuilder _provider_(URI _provider_) {
 		this.contractOfferImpl._provider = _provider_;
@@ -124,9 +125,9 @@ public class ContractOfferBuilder {
 
 
 	/**
-	* This function allows setting a value for consumer
+	* This function allows setting a value for _consumer
 	* @param _consumer_ desired value to be set
-	* @return Builder object with new value for consumer
+	* @return Builder object with new value for _consumer
 	*/
 	final public ContractOfferBuilder _consumer_(URI _consumer_) {
 		this.contractOfferImpl._consumer = _consumer_;
@@ -135,9 +136,9 @@ public class ContractOfferBuilder {
 
 
 	/**
-	* This function allows setting a value for contractDocument
+	* This function allows setting a value for _contractDocument
 	* @param _contractDocument_ desired value to be set
-	* @return Builder object with new value for contractDocument
+	* @return Builder object with new value for _contractDocument
 	*/
 	final public ContractOfferBuilder _contractDocument_(TextResource _contractDocument_) {
 		this.contractOfferImpl._contractDocument = _contractDocument_;
@@ -146,9 +147,9 @@ public class ContractOfferBuilder {
 
 
 	/**
-	* This function allows setting a value for contractAnnex
+	* This function allows setting a value for _contractAnnex
 	* @param _contractAnnex_ desired value to be set
-	* @return Builder object with new value for contractAnnex
+	* @return Builder object with new value for _contractAnnex
 	*/
 	final public ContractOfferBuilder _contractAnnex_(Resource _contractAnnex_) {
 		this.contractOfferImpl._contractAnnex = _contractAnnex_;

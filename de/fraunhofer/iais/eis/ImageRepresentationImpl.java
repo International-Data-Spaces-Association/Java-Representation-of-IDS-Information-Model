@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -80,7 +81,7 @@ public class ImageRepresentationImpl implements Serializable, ImageRepresentatio
 	* "Reference to an instance of given representation, i.e. inline value or file placeholder."@en
 	*/
 	@JsonAlias({"ids:instance", "instance"})
-	protected ArrayList<? extends RepresentationInstance> _instance;
+	protected List<RepresentationInstance> _instance;
 
 
 	/**
@@ -136,10 +137,6 @@ public class ImageRepresentationImpl implements Serializable, ImageRepresentatio
 		id = VocabUtil.getInstance().createRandomUrl("imageRepresentation");
 	}
 
-	/**
-	* This function retrieves the ID of the current object (can be set via the constructor of the builder class)
-	* @return ID of current object as URI
-	*/
 	@JsonProperty("@id")
 	final public URI getId() {
 		return id;
@@ -149,20 +146,10 @@ public class ImageRepresentationImpl implements Serializable, ImageRepresentatio
 		return VocabUtil.getInstance().toRdf(this);
 	}
 
-	/**
-	* This function retrieves a human readable label about the current class, as defined in the ontology.
-	* This label could, for example, be used as a field heading in a user interface
-	* @return Human readable label
-	*/
 	public List<TypedLiteral> getLabel() {
 		return this.label;
 	}
 
-	/**
-	* This function retrieves a human readable explanatory comment about the current class, as defined in the ontology.
-	* This comment could, for example, be used as a tooltip in a user interface
-	* @return Human readable explanatory comment
-	*/
 	public List<TypedLiteral> getComment() {
 		return this.comment;
 	}
@@ -203,190 +190,124 @@ public class ImageRepresentationImpl implements Serializable, ImageRepresentatio
 		if (property.startsWith("@")) {return ;};
 		this.properties.put(property, value) ;
 	}
+	public int hashCode() {
+		return Objects.hash(new Object[]{this._width,
+			this._height,
+			this._instance,
+			this._mediaType,
+			this._representationStandard,
+			this._language,
+			this._created,
+			this._modified,
+			this._shapesGraph});
+	}
+
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		} else if (obj == null) {
+			return false;
+		} else if (this.getClass() != obj.getClass()) {
+			return false;
+		} else {
+			ImageRepresentationImpl other = (ImageRepresentationImpl) obj;
+			return Objects.equals(this._width, other._width) &&
+				Objects.equals(this._height, other._height) &&
+				Objects.equals(this._instance, other._instance) &&
+				Objects.equals(this._mediaType, other._mediaType) &&
+				Objects.equals(this._representationStandard, other._representationStandard) &&
+				Objects.equals(this._language, other._language) &&
+				Objects.equals(this._created, other._created) &&
+				Objects.equals(this._modified, other._modified) &&
+				Objects.equals(this._shapesGraph, other._shapesGraph);
+		}
+	}
+
 
 	// accessor method implementations as derived from the IDSA Information Model ontology
 
 
-	/**
-	* "Width of the visible frame."@en
-	* @return Returns the java.math.BigDecimal for the property width.
-	* More information under https://w3id.org/idsa/core/width
-	*/
 	@JsonProperty("ids:width")
 	final public java.math.BigDecimal getWidth() {
 		return _width;
 	}
-
 	
-	/**
-	* "Width of the visible frame."@en
-	* @param _width_ desired value for the property width.
-	* More information under https://w3id.org/idsa/core/width
-	*/
 	final public void setWidth (java.math.BigDecimal _width_) {
 		this._width = _width_;
 	}
 
-	/**
-	* "Height of the visible frame."@en
-	* @return Returns the java.math.BigDecimal for the property height.
-	* More information under https://w3id.org/idsa/core/height
-	*/
 	@JsonProperty("ids:height")
 	final public java.math.BigDecimal getHeight() {
 		return _height;
 	}
-
 	
-	/**
-	* "Height of the visible frame."@en
-	* @param _height_ desired value for the property height.
-	* More information under https://w3id.org/idsa/core/height
-	*/
 	final public void setHeight (java.math.BigDecimal _height_) {
 		this._height = _height_;
 	}
 
-	/**
-	* "Reference to an instance of given representation, i.e. inline value or file placeholder."@en
-	* @return Returns the ArrayList of RepresentationInstance for the property instance.
-	* More information under https://w3id.org/idsa/core/instance
-	*/
 	@JsonProperty("ids:instance")
-	final public ArrayList<? extends RepresentationInstance> getInstance() {
+	final public List<RepresentationInstance> getInstance() {
 		return _instance;
 	}
-
 	
-	/**
-	* "Reference to an instance of given representation, i.e. inline value or file placeholder."@en
-	* @param _instance_ desired value for the property instance.
-	* More information under https://w3id.org/idsa/core/instance
-	*/
-	final public void setInstance (ArrayList<? extends RepresentationInstance> _instance_) {
+	final public void setInstance (List<RepresentationInstance> _instance_) {
 		this._instance = _instance_;
 	}
 
-	/**
-	* "Media Type of the Representation."@en
-	* @return Returns the MediaType for the property mediaType.
-	* More information under https://w3id.org/idsa/core/mediaType
-	*/
 	@JsonProperty("ids:mediaType")
 	final public MediaType getMediaType() {
 		return _mediaType;
 	}
-
 	
-	/**
-	* "Media Type of the Representation."@en
-	* @param _mediaType_ desired value for the property mediaType.
-	* More information under https://w3id.org/idsa/core/mediaType
-	*/
 	final public void setMediaType (MediaType _mediaType_) {
 		this._mediaType = _mediaType_;
 	}
 
-	/**
-	* "Standards document defining the given Representation (in contrast to general Resource content). The Representation is assumed to conform to that Standard."@en
-	* @return Returns the URI for the property representationStandard.
-	* More information under https://w3id.org/idsa/core/representationStandard
-	*/
 	@JsonProperty("ids:representationStandard")
 	final public URI getRepresentationStandard() {
 		return _representationStandard;
 	}
-
 	
-	/**
-	* "Standards document defining the given Representation (in contrast to general Resource content). The Representation is assumed to conform to that Standard."@en
-	* @param _representationStandard_ desired value for the property representationStandard.
-	* More information under https://w3id.org/idsa/core/representationStandard
-	*/
 	final public void setRepresentationStandard (URI _representationStandard_) {
 		this._representationStandard = _representationStandard_;
 	}
 
-	/**
-	* "Natural language(s) used within the content."@en
-	* @return Returns the Language for the property language.
-	* More information under https://w3id.org/idsa/core/language
-	*/
 	@JsonProperty("ids:language")
 	final public Language getLanguage() {
 		return _language;
 	}
-
 	
-	/**
-	* "Natural language(s) used within the content."@en
-	* @param _language_ desired value for the property language.
-	* More information under https://w3id.org/idsa/core/language
-	*/
 	final public void setLanguage (Language _language_) {
 		this._language = _language_;
 	}
 
-	/**
-	* "The date of the creation of the Digital Content. In contrast to the ids:temporalCoverage, creation dates of ids:Representation, ids:Artifacts or any other form of meta-data, this property describes the creation date of referenced Digital Content itself."@en
-	* @return Returns the XMLGregorianCalendar for the property created.
-	* More information under https://w3id.org/idsa/core/created
-	*/
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
 	@JsonProperty("ids:created")
 	final public XMLGregorianCalendar getCreated() {
 		return _created;
 	}
-
 	
-	/**
-	* "The date of the creation of the Digital Content. In contrast to the ids:temporalCoverage, creation dates of ids:Representation, ids:Artifacts or any other form of meta-data, this property describes the creation date of referenced Digital Content itself."@en
-	* @param _created_ desired value for the property created.
-	* More information under https://w3id.org/idsa/core/created
-	*/
 	final public void setCreated (XMLGregorianCalendar _created_) {
 		this._created = _created_;
 	}
 
-	/**
-	* "The date/time this Digital Content has been changed the last time. Only one \'modified\' attribute is usually needed."@en
-	* @return Returns the XMLGregorianCalendar for the property modified.
-	* More information under https://w3id.org/idsa/core/modified
-	*/
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
 	@JsonProperty("ids:modified")
 	final public XMLGregorianCalendar getModified() {
 		return _modified;
 	}
-
 	
-	/**
-	* "The date/time this Digital Content has been changed the last time. Only one \'modified\' attribute is usually needed."@en
-	* @param _modified_ desired value for the property modified.
-	* More information under https://w3id.org/idsa/core/modified
-	*/
 	final public void setModified (XMLGregorianCalendar _modified_) {
 		this._modified = _modified_;
 	}
 
 
 
-	/**
-	* "Reference to SHACL shape graph, which describes domain-specific knowledge."@en
-	* @return Returns the URI for the property shapesGraph.
-	* More information under https://w3id.org/idsa/core/shapesGraph
-	*/
 	@JsonProperty("ids:shapesGraph")
 	final public URI getShapesGraph() {
 		return _shapesGraph;
 	}
-
 	
-	/**
-	* "Reference to SHACL shape graph, which describes domain-specific knowledge."@en
-	* @param _shapesGraph_ desired value for the property shapesGraph.
-	* More information under https://w3id.org/idsa/core/shapesGraph
-	*/
 	final public void setShapesGraph (URI _shapesGraph_) {
 		this._shapesGraph = _shapesGraph_;
 	}

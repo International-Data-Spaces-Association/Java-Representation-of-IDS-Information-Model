@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -72,12 +73,25 @@ public interface ArtifactRequestMessage extends RequestMessage {
 	public Map<String,Object> getProperties();
 	public void setProperty(String property, Object value);
 
+	/**
+	* This function returns a hash code value for the ArtifactRequestMessage for the benefit of e.g. hash tables.
+	* @return a hash code value for the ArtifactRequestMessage
+	*/
+	public int hashCode();
+
+	/**
+	* This function indicates whether some other object is equal to this one.
+	* @param obj the reference object with which to compare.
+	* @return true if this ArtifactRequestMessage is the same as the obj argument; false otherwise.
+	*/
+	public boolean equals(Object obj);
+
 	// accessor methods as derived from the IDSA Information Model ontology
 
 
 	/**
 	* "References an artifact in the context of a request."@en
-	* @return Returns the URI for the property requestedArtifact.
+	* @return Returns the URI for the property _requestedArtifact.
 	* More information under https://w3id.org/idsa/core/requestedArtifact
 	*/
 	@NotNull

@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -47,9 +48,9 @@ public class ComponentCertificationBuilder {
 
 
 	/**
-	* This function allows setting a value for certificationLevel
+	* This function allows setting a value for _certificationLevel
 	* @param _certificationLevel_ desired value to be set
-	* @return Builder object with new value for certificationLevel
+	* @return Builder object with new value for _certificationLevel
 	*/
 	final public ComponentCertificationBuilder _certificationLevel_(CertificationLevel _certificationLevel_) {
 		this.componentCertificationImpl._certificationLevel = _certificationLevel_;
@@ -58,9 +59,9 @@ public class ComponentCertificationBuilder {
 
 
 	/**
-	* This function allows setting a value for lastValidDate
+	* This function allows setting a value for _lastValidDate
 	* @param _lastValidDate_ desired value to be set
-	* @return Builder object with new value for lastValidDate
+	* @return Builder object with new value for _lastValidDate
 	*/
 	final public ComponentCertificationBuilder _lastValidDate_(XMLGregorianCalendar _lastValidDate_) {
 		this.componentCertificationImpl._lastValidDate = _lastValidDate_;
@@ -69,9 +70,9 @@ public class ComponentCertificationBuilder {
 
 
 	/**
-	* This function allows setting a value for evaluationFacility
+	* This function allows setting a value for _evaluationFacility
 	* @param _evaluationFacility_ desired value to be set
-	* @return Builder object with new value for evaluationFacility
+	* @return Builder object with new value for _evaluationFacility
 	*/
 	final public ComponentCertificationBuilder _evaluationFacility_(EvaluationFacility _evaluationFacility_) {
 		this.componentCertificationImpl._evaluationFacility = _evaluationFacility_;
@@ -80,9 +81,9 @@ public class ComponentCertificationBuilder {
 
 
 	/**
-	* This function allows setting a value for version
+	* This function allows setting a value for _version
 	* @param _version_ desired value to be set
-	* @return Builder object with new value for version
+	* @return Builder object with new value for _version
 	*/
 	final public ComponentCertificationBuilder _version_(String _version_) {
 		this.componentCertificationImpl._version = _version_;
@@ -91,22 +92,22 @@ public class ComponentCertificationBuilder {
 
 
 	/**
-	* This function allows setting a value for title
+	* This function allows setting a value for _title
 	* @param _title_ desired value to be set
-	* @return Builder object with new value for title
+	* @return Builder object with new value for _title
 	*/
-	final public ComponentCertificationBuilder _title_(ArrayList<? extends TypedLiteral> _title_) {
+	final public ComponentCertificationBuilder _title_(List<TypedLiteral> _title_) {
 		this.componentCertificationImpl._title = _title_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for description
+	* This function allows setting a value for _description
 	* @param _description_ desired value to be set
-	* @return Builder object with new value for description
+	* @return Builder object with new value for _description
 	*/
-	final public ComponentCertificationBuilder _description_(ArrayList<? extends TypedLiteral> _description_) {
+	final public ComponentCertificationBuilder _description_(List<TypedLiteral> _description_) {
 		this.componentCertificationImpl._description = _description_;
 		return this;
 	}

@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -46,11 +47,11 @@ public class BoundingPolygonBuilder {
 	}
 
 	/**
-	* This function allows setting a value for geoPoint
+	* This function allows setting a value for _geoPoint
 	* @param _geoPoint_ desired value to be set
-	* @return Builder object with new value for geoPoint
+	* @return Builder object with new value for _geoPoint
 	*/
-	final public BoundingPolygonBuilder _geoPoint_(ArrayList<? extends GeoPoint> _geoPoint_) {
+	final public BoundingPolygonBuilder _geoPoint_(List<GeoPoint> _geoPoint_) {
 		this.boundingPolygonImpl._geoPoint = _geoPoint_;
 		return this;
 	}

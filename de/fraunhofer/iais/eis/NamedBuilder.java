@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -46,9 +47,9 @@ public class NamedBuilder {
 	}
 
 	/**
-	* This function allows setting a value for name
+	* This function allows setting a value for _name
 	* @param _name_ desired value to be set
-	* @return Builder object with new value for name
+	* @return Builder object with new value for _name
 	*/
 	final public NamedBuilder _name_(String _name_) {
 		this.namedImpl._name = _name_;

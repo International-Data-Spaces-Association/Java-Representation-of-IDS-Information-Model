@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -47,20 +48,20 @@ public class TextRepresentationBuilder {
 
 
 	/**
-	* This function allows setting a value for instance
+	* This function allows setting a value for _instance
 	* @param _instance_ desired value to be set
-	* @return Builder object with new value for instance
+	* @return Builder object with new value for _instance
 	*/
-	final public TextRepresentationBuilder _instance_(ArrayList<? extends RepresentationInstance> _instance_) {
+	final public TextRepresentationBuilder _instance_(List<RepresentationInstance> _instance_) {
 		this.textRepresentationImpl._instance = _instance_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for mediaType
+	* This function allows setting a value for _mediaType
 	* @param _mediaType_ desired value to be set
-	* @return Builder object with new value for mediaType
+	* @return Builder object with new value for _mediaType
 	*/
 	final public TextRepresentationBuilder _mediaType_(MediaType _mediaType_) {
 		this.textRepresentationImpl._mediaType = _mediaType_;
@@ -69,9 +70,9 @@ public class TextRepresentationBuilder {
 
 
 	/**
-	* This function allows setting a value for representationStandard
+	* This function allows setting a value for _representationStandard
 	* @param _representationStandard_ desired value to be set
-	* @return Builder object with new value for representationStandard
+	* @return Builder object with new value for _representationStandard
 	*/
 	final public TextRepresentationBuilder _representationStandard_(URI _representationStandard_) {
 		this.textRepresentationImpl._representationStandard = _representationStandard_;
@@ -80,9 +81,9 @@ public class TextRepresentationBuilder {
 
 
 	/**
-	* This function allows setting a value for language
+	* This function allows setting a value for _language
 	* @param _language_ desired value to be set
-	* @return Builder object with new value for language
+	* @return Builder object with new value for _language
 	*/
 	final public TextRepresentationBuilder _language_(Language _language_) {
 		this.textRepresentationImpl._language = _language_;
@@ -91,9 +92,9 @@ public class TextRepresentationBuilder {
 
 
 	/**
-	* This function allows setting a value for created
+	* This function allows setting a value for _created
 	* @param _created_ desired value to be set
-	* @return Builder object with new value for created
+	* @return Builder object with new value for _created
 	*/
 	final public TextRepresentationBuilder _created_(XMLGregorianCalendar _created_) {
 		this.textRepresentationImpl._created = _created_;
@@ -102,9 +103,9 @@ public class TextRepresentationBuilder {
 
 
 	/**
-	* This function allows setting a value for modified
+	* This function allows setting a value for _modified
 	* @param _modified_ desired value to be set
-	* @return Builder object with new value for modified
+	* @return Builder object with new value for _modified
 	*/
 	final public TextRepresentationBuilder _modified_(XMLGregorianCalendar _modified_) {
 		this.textRepresentationImpl._modified = _modified_;
@@ -115,9 +116,9 @@ public class TextRepresentationBuilder {
 
 
 	/**
-	* This function allows setting a value for shapesGraph
+	* This function allows setting a value for _shapesGraph
 	* @param _shapesGraph_ desired value to be set
-	* @return Builder object with new value for shapesGraph
+	* @return Builder object with new value for _shapesGraph
 	*/
 	final public TextRepresentationBuilder _shapesGraph_(URI _shapesGraph_) {
 		this.textRepresentationImpl._shapesGraph = _shapesGraph_;

@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -64,7 +65,7 @@ public class PersonImpl implements Serializable, Person {
 	* "Email contact of a person."@en
 	*/
 	@JsonAlias({"ids:emailAddress", "emailAddress"})
-	protected ArrayList<? extends String> _emailAddress;
+	protected List<String> _emailAddress;
 
 
 	/**
@@ -96,7 +97,7 @@ public class PersonImpl implements Serializable, Person {
 	* "Phone number of a person."@en
 	*/
 	@JsonAlias({"ids:phoneNumber", "phoneNumber"})
-	protected ArrayList<? extends String> _phoneNumber;
+	protected List<String> _phoneNumber;
 
 
 	// no manual construction
@@ -104,10 +105,6 @@ public class PersonImpl implements Serializable, Person {
 		id = VocabUtil.getInstance().createRandomUrl("person");
 	}
 
-	/**
-	* This function retrieves the ID of the current object (can be set via the constructor of the builder class)
-	* @return ID of current object as URI
-	*/
 	@JsonProperty("@id")
 	final public URI getId() {
 		return id;
@@ -117,20 +114,10 @@ public class PersonImpl implements Serializable, Person {
 		return VocabUtil.getInstance().toRdf(this);
 	}
 
-	/**
-	* This function retrieves a human readable label about the current class, as defined in the ontology.
-	* This label could, for example, be used as a field heading in a user interface
-	* @return Human readable label
-	*/
 	public List<TypedLiteral> getLabel() {
 		return this.label;
 	}
 
-	/**
-	* This function retrieves a human readable explanatory comment about the current class, as defined in the ontology.
-	* This comment could, for example, be used as a tooltip in a user interface
-	* @return Human readable explanatory comment
-	*/
 	public List<TypedLiteral> getComment() {
 		return this.comment;
 	}
@@ -171,106 +158,76 @@ public class PersonImpl implements Serializable, Person {
 		if (property.startsWith("@")) {return ;};
 		this.properties.put(property, value) ;
 	}
+	public int hashCode() {
+		return Objects.hash(new Object[]{this._phoneNumber,
+			this._emailAddress,
+			this._familyName,
+			this._givenName,
+			this._homepage});
+	}
+
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		} else if (obj == null) {
+			return false;
+		} else if (this.getClass() != obj.getClass()) {
+			return false;
+		} else {
+			PersonImpl other = (PersonImpl) obj;
+			return Objects.equals(this._phoneNumber, other._phoneNumber) &&
+				Objects.equals(this._emailAddress, other._emailAddress) &&
+				Objects.equals(this._familyName, other._familyName) &&
+				Objects.equals(this._givenName, other._givenName) &&
+				Objects.equals(this._homepage, other._homepage);
+		}
+	}
+
 
 	// accessor method implementations as derived from the IDSA Information Model ontology
 
 
-	/**
-	* "Phone number of a person."@en
-	* @return Returns the ArrayList of String for the property phoneNumber.
-	* More information under https://w3id.org/idsa/core/phoneNumber
-	*/
 	@JsonProperty("ids:phoneNumber")
-	final public ArrayList<? extends String> getPhoneNumber() {
+	final public List<String> getPhoneNumber() {
 		return _phoneNumber;
 	}
-
 	
-	/**
-	* "Phone number of a person."@en
-	* @param _phoneNumber_ desired value for the property phoneNumber.
-	* More information under https://w3id.org/idsa/core/phoneNumber
-	*/
-	final public void setPhoneNumber (ArrayList<? extends String> _phoneNumber_) {
+	final public void setPhoneNumber (List<String> _phoneNumber_) {
 		this._phoneNumber = _phoneNumber_;
 	}
 
-	/**
-	* "Email contact of a person."@en
-	* @return Returns the ArrayList of String for the property emailAddress.
-	* More information under https://w3id.org/idsa/core/emailAddress
-	*/
 	@JsonProperty("ids:emailAddress")
-	final public ArrayList<? extends String> getEmailAddress() {
+	final public List<String> getEmailAddress() {
 		return _emailAddress;
 	}
-
 	
-	/**
-	* "Email contact of a person."@en
-	* @param _emailAddress_ desired value for the property emailAddress.
-	* More information under https://w3id.org/idsa/core/emailAddress
-	*/
-	final public void setEmailAddress (ArrayList<? extends String> _emailAddress_) {
+	final public void setEmailAddress (List<String> _emailAddress_) {
 		this._emailAddress = _emailAddress_;
 	}
 
-	/**
-	* "Family name of a Person."@en
-	* @return Returns the String for the property familyName.
-	* More information under https://w3id.org/idsa/core/familyName
-	*/
 	@JsonProperty("ids:familyName")
 	final public String getFamilyName() {
 		return _familyName;
 	}
-
 	
-	/**
-	* "Family name of a Person."@en
-	* @param _familyName_ desired value for the property familyName.
-	* More information under https://w3id.org/idsa/core/familyName
-	*/
 	final public void setFamilyName (String _familyName_) {
 		this._familyName = _familyName_;
 	}
 
-	/**
-	* "Given name of a Person."@en
-	* @return Returns the String for the property givenName.
-	* More information under https://w3id.org/idsa/core/givenName
-	*/
 	@JsonProperty("ids:givenName")
 	final public String getGivenName() {
 		return _givenName;
 	}
-
 	
-	/**
-	* "Given name of a Person."@en
-	* @param _givenName_ desired value for the property givenName.
-	* More information under https://w3id.org/idsa/core/givenName
-	*/
 	final public void setGivenName (String _givenName_) {
 		this._givenName = _givenName_;
 	}
 
-	/**
-	* "Website providing additional information about a person."@en
-	* @return Returns the String for the property homepage.
-	* More information under https://w3id.org/idsa/core/homepage
-	*/
 	@JsonProperty("ids:homepage")
 	final public String getHomepage() {
 		return _homepage;
 	}
-
 	
-	/**
-	* "Website providing additional information about a person."@en
-	* @param _homepage_ desired value for the property homepage.
-	* More information under https://w3id.org/idsa/core/homepage
-	*/
 	final public void setHomepage (String _homepage_) {
 		this._homepage = _homepage_;
 	}

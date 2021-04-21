@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -47,9 +48,9 @@ public class DAPSBuilder {
 
 
 	/**
-	* This function allows setting a value for maintainer
+	* This function allows setting a value for _maintainer
 	* @param _maintainer_ desired value to be set
-	* @return Builder object with new value for maintainer
+	* @return Builder object with new value for _maintainer
 	*/
 	final public DAPSBuilder _maintainer_(URI _maintainer_) {
 		this.dAPSImpl._maintainer = _maintainer_;
@@ -58,9 +59,9 @@ public class DAPSBuilder {
 
 
 	/**
-	* This function allows setting a value for curator
+	* This function allows setting a value for _curator
 	* @param _curator_ desired value to be set
-	* @return Builder object with new value for curator
+	* @return Builder object with new value for _curator
 	*/
 	final public DAPSBuilder _curator_(URI _curator_) {
 		this.dAPSImpl._curator = _curator_;
@@ -69,20 +70,20 @@ public class DAPSBuilder {
 
 
 	/**
-	* This function allows setting a value for inboundModelVersion
+	* This function allows setting a value for _inboundModelVersion
 	* @param _inboundModelVersion_ desired value to be set
-	* @return Builder object with new value for inboundModelVersion
+	* @return Builder object with new value for _inboundModelVersion
 	*/
-	final public DAPSBuilder _inboundModelVersion_(ArrayList<? extends String> _inboundModelVersion_) {
+	final public DAPSBuilder _inboundModelVersion_(List<String> _inboundModelVersion_) {
 		this.dAPSImpl._inboundModelVersion = _inboundModelVersion_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for outboundModelVersion
+	* This function allows setting a value for _outboundModelVersion
 	* @param _outboundModelVersion_ desired value to be set
-	* @return Builder object with new value for outboundModelVersion
+	* @return Builder object with new value for _outboundModelVersion
 	*/
 	final public DAPSBuilder _outboundModelVersion_(String _outboundModelVersion_) {
 		this.dAPSImpl._outboundModelVersion = _outboundModelVersion_;
@@ -91,9 +92,9 @@ public class DAPSBuilder {
 
 
 	/**
-	* This function allows setting a value for physicalLocation
+	* This function allows setting a value for _physicalLocation
 	* @param _physicalLocation_ desired value to be set
-	* @return Builder object with new value for physicalLocation
+	* @return Builder object with new value for _physicalLocation
 	*/
 	final public DAPSBuilder _physicalLocation_(Location _physicalLocation_) {
 		this.dAPSImpl._physicalLocation = _physicalLocation_;
@@ -102,9 +103,9 @@ public class DAPSBuilder {
 
 
 	/**
-	* This function allows setting a value for componentCertification
+	* This function allows setting a value for _componentCertification
 	* @param _componentCertification_ desired value to be set
-	* @return Builder object with new value for componentCertification
+	* @return Builder object with new value for _componentCertification
 	*/
 	final public DAPSBuilder _componentCertification_(ComponentCertification _componentCertification_) {
 		this.dAPSImpl._componentCertification = _componentCertification_;
@@ -113,9 +114,9 @@ public class DAPSBuilder {
 
 
 	/**
-	* This function allows setting a value for publicKey
+	* This function allows setting a value for _publicKey
 	* @param _publicKey_ desired value to be set
-	* @return Builder object with new value for publicKey
+	* @return Builder object with new value for _publicKey
 	*/
 	final public DAPSBuilder _publicKey_(PublicKey _publicKey_) {
 		this.dAPSImpl._publicKey = _publicKey_;
@@ -124,9 +125,9 @@ public class DAPSBuilder {
 
 
 	/**
-	* This function allows setting a value for version
+	* This function allows setting a value for _version
 	* @param _version_ desired value to be set
-	* @return Builder object with new value for version
+	* @return Builder object with new value for _version
 	*/
 	final public DAPSBuilder _version_(String _version_) {
 		this.dAPSImpl._version = _version_;
@@ -135,22 +136,22 @@ public class DAPSBuilder {
 
 
 	/**
-	* This function allows setting a value for title
+	* This function allows setting a value for _title
 	* @param _title_ desired value to be set
-	* @return Builder object with new value for title
+	* @return Builder object with new value for _title
 	*/
-	final public DAPSBuilder _title_(ArrayList<? extends TypedLiteral> _title_) {
+	final public DAPSBuilder _title_(List<TypedLiteral> _title_) {
 		this.dAPSImpl._title = _title_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for description
+	* This function allows setting a value for _description
 	* @param _description_ desired value to be set
-	* @return Builder object with new value for description
+	* @return Builder object with new value for _description
 	*/
-	final public DAPSBuilder _description_(ArrayList<? extends TypedLiteral> _description_) {
+	final public DAPSBuilder _description_(List<TypedLiteral> _description_) {
 		this.dAPSImpl._description = _description_;
 		return this;
 	}

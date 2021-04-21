@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -49,9 +50,9 @@ public class AppUploadResponseMessageBuilder {
 
 
 	/**
-	* This function allows setting a value for modelVersion
+	* This function allows setting a value for _modelVersion
 	* @param _modelVersion_ desired value to be set
-	* @return Builder object with new value for modelVersion
+	* @return Builder object with new value for _modelVersion
 	*/
 	final public AppUploadResponseMessageBuilder _modelVersion_(String _modelVersion_) {
 		this.appUploadResponseMessageImpl._modelVersion = _modelVersion_;
@@ -60,9 +61,9 @@ public class AppUploadResponseMessageBuilder {
 
 
 	/**
-	* This function allows setting a value for issued
+	* This function allows setting a value for _issued
 	* @param _issued_ desired value to be set
-	* @return Builder object with new value for issued
+	* @return Builder object with new value for _issued
 	*/
 	final public AppUploadResponseMessageBuilder _issued_(XMLGregorianCalendar _issued_) {
 		this.appUploadResponseMessageImpl._issued = _issued_;
@@ -71,9 +72,9 @@ public class AppUploadResponseMessageBuilder {
 
 
 	/**
-	* This function allows setting a value for issuerConnector
+	* This function allows setting a value for _issuerConnector
 	* @param _issuerConnector_ desired value to be set
-	* @return Builder object with new value for issuerConnector
+	* @return Builder object with new value for _issuerConnector
 	*/
 	final public AppUploadResponseMessageBuilder _issuerConnector_(URI _issuerConnector_) {
 		this.appUploadResponseMessageImpl._issuerConnector = _issuerConnector_;
@@ -82,20 +83,20 @@ public class AppUploadResponseMessageBuilder {
 
 
 	/**
-	* This function allows setting a value for recipientConnector
+	* This function allows setting a value for _recipientConnector
 	* @param _recipientConnector_ desired value to be set
-	* @return Builder object with new value for recipientConnector
+	* @return Builder object with new value for _recipientConnector
 	*/
-	final public AppUploadResponseMessageBuilder _recipientConnector_(ArrayList<? extends URI> _recipientConnector_) {
+	final public AppUploadResponseMessageBuilder _recipientConnector_(List<URI> _recipientConnector_) {
 		this.appUploadResponseMessageImpl._recipientConnector = _recipientConnector_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for securityToken
+	* This function allows setting a value for _securityToken
 	* @param _securityToken_ desired value to be set
-	* @return Builder object with new value for securityToken
+	* @return Builder object with new value for _securityToken
 	*/
 	final public AppUploadResponseMessageBuilder _securityToken_(DynamicAttributeToken _securityToken_) {
 		this.appUploadResponseMessageImpl._securityToken = _securityToken_;
@@ -104,9 +105,9 @@ public class AppUploadResponseMessageBuilder {
 
 
 	/**
-	* This function allows setting a value for senderAgent
+	* This function allows setting a value for _senderAgent
 	* @param _senderAgent_ desired value to be set
-	* @return Builder object with new value for senderAgent
+	* @return Builder object with new value for _senderAgent
 	*/
 	final public AppUploadResponseMessageBuilder _senderAgent_(URI _senderAgent_) {
 		this.appUploadResponseMessageImpl._senderAgent = _senderAgent_;
@@ -115,20 +116,20 @@ public class AppUploadResponseMessageBuilder {
 
 
 	/**
-	* This function allows setting a value for recipientAgent
+	* This function allows setting a value for _recipientAgent
 	* @param _recipientAgent_ desired value to be set
-	* @return Builder object with new value for recipientAgent
+	* @return Builder object with new value for _recipientAgent
 	*/
-	final public AppUploadResponseMessageBuilder _recipientAgent_(ArrayList<? extends URI> _recipientAgent_) {
+	final public AppUploadResponseMessageBuilder _recipientAgent_(List<URI> _recipientAgent_) {
 		this.appUploadResponseMessageImpl._recipientAgent = _recipientAgent_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for correlationMessage
+	* This function allows setting a value for _correlationMessage
 	* @param _correlationMessage_ desired value to be set
-	* @return Builder object with new value for correlationMessage
+	* @return Builder object with new value for _correlationMessage
 	*/
 	final public AppUploadResponseMessageBuilder _correlationMessage_(URI _correlationMessage_) {
 		this.appUploadResponseMessageImpl._correlationMessage = _correlationMessage_;
@@ -137,9 +138,9 @@ public class AppUploadResponseMessageBuilder {
 
 
 	/**
-	* This function allows setting a value for authorizationToken
+	* This function allows setting a value for _authorizationToken
 	* @param _authorizationToken_ desired value to be set
-	* @return Builder object with new value for authorizationToken
+	* @return Builder object with new value for _authorizationToken
 	*/
 	final public AppUploadResponseMessageBuilder _authorizationToken_(Token _authorizationToken_) {
 		this.appUploadResponseMessageImpl._authorizationToken = _authorizationToken_;
@@ -148,9 +149,9 @@ public class AppUploadResponseMessageBuilder {
 
 
 	/**
-	* This function allows setting a value for transferContract
+	* This function allows setting a value for _transferContract
 	* @param _transferContract_ desired value to be set
-	* @return Builder object with new value for transferContract
+	* @return Builder object with new value for _transferContract
 	*/
 	final public AppUploadResponseMessageBuilder _transferContract_(URI _transferContract_) {
 		this.appUploadResponseMessageImpl._transferContract = _transferContract_;
@@ -159,9 +160,9 @@ public class AppUploadResponseMessageBuilder {
 
 
 	/**
-	* This function allows setting a value for contentVersion
+	* This function allows setting a value for _contentVersion
 	* @param _contentVersion_ desired value to be set
-	* @return Builder object with new value for contentVersion
+	* @return Builder object with new value for _contentVersion
 	*/
 	final public AppUploadResponseMessageBuilder _contentVersion_(String _contentVersion_) {
 		this.appUploadResponseMessageImpl._contentVersion = _contentVersion_;

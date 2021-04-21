@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -46,9 +47,9 @@ public class InvokeOperationMessageBuilder {
 	}
 
 	/**
-	* This function allows setting a value for operationReference
+	* This function allows setting a value for _operationReference
 	* @param _operationReference_ desired value to be set
-	* @return Builder object with new value for operationReference
+	* @return Builder object with new value for _operationReference
 	*/
 	final public InvokeOperationMessageBuilder _operationReference_(URI _operationReference_) {
 		this.invokeOperationMessageImpl._operationReference = _operationReference_;
@@ -58,9 +59,9 @@ public class InvokeOperationMessageBuilder {
 
 
 	/**
-	* This function allows setting a value for modelVersion
+	* This function allows setting a value for _modelVersion
 	* @param _modelVersion_ desired value to be set
-	* @return Builder object with new value for modelVersion
+	* @return Builder object with new value for _modelVersion
 	*/
 	final public InvokeOperationMessageBuilder _modelVersion_(String _modelVersion_) {
 		this.invokeOperationMessageImpl._modelVersion = _modelVersion_;
@@ -69,9 +70,9 @@ public class InvokeOperationMessageBuilder {
 
 
 	/**
-	* This function allows setting a value for issued
+	* This function allows setting a value for _issued
 	* @param _issued_ desired value to be set
-	* @return Builder object with new value for issued
+	* @return Builder object with new value for _issued
 	*/
 	final public InvokeOperationMessageBuilder _issued_(XMLGregorianCalendar _issued_) {
 		this.invokeOperationMessageImpl._issued = _issued_;
@@ -80,9 +81,9 @@ public class InvokeOperationMessageBuilder {
 
 
 	/**
-	* This function allows setting a value for issuerConnector
+	* This function allows setting a value for _issuerConnector
 	* @param _issuerConnector_ desired value to be set
-	* @return Builder object with new value for issuerConnector
+	* @return Builder object with new value for _issuerConnector
 	*/
 	final public InvokeOperationMessageBuilder _issuerConnector_(URI _issuerConnector_) {
 		this.invokeOperationMessageImpl._issuerConnector = _issuerConnector_;
@@ -91,20 +92,20 @@ public class InvokeOperationMessageBuilder {
 
 
 	/**
-	* This function allows setting a value for recipientConnector
+	* This function allows setting a value for _recipientConnector
 	* @param _recipientConnector_ desired value to be set
-	* @return Builder object with new value for recipientConnector
+	* @return Builder object with new value for _recipientConnector
 	*/
-	final public InvokeOperationMessageBuilder _recipientConnector_(ArrayList<? extends URI> _recipientConnector_) {
+	final public InvokeOperationMessageBuilder _recipientConnector_(List<URI> _recipientConnector_) {
 		this.invokeOperationMessageImpl._recipientConnector = _recipientConnector_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for securityToken
+	* This function allows setting a value for _securityToken
 	* @param _securityToken_ desired value to be set
-	* @return Builder object with new value for securityToken
+	* @return Builder object with new value for _securityToken
 	*/
 	final public InvokeOperationMessageBuilder _securityToken_(DynamicAttributeToken _securityToken_) {
 		this.invokeOperationMessageImpl._securityToken = _securityToken_;
@@ -113,9 +114,9 @@ public class InvokeOperationMessageBuilder {
 
 
 	/**
-	* This function allows setting a value for senderAgent
+	* This function allows setting a value for _senderAgent
 	* @param _senderAgent_ desired value to be set
-	* @return Builder object with new value for senderAgent
+	* @return Builder object with new value for _senderAgent
 	*/
 	final public InvokeOperationMessageBuilder _senderAgent_(URI _senderAgent_) {
 		this.invokeOperationMessageImpl._senderAgent = _senderAgent_;
@@ -124,20 +125,20 @@ public class InvokeOperationMessageBuilder {
 
 
 	/**
-	* This function allows setting a value for recipientAgent
+	* This function allows setting a value for _recipientAgent
 	* @param _recipientAgent_ desired value to be set
-	* @return Builder object with new value for recipientAgent
+	* @return Builder object with new value for _recipientAgent
 	*/
-	final public InvokeOperationMessageBuilder _recipientAgent_(ArrayList<? extends URI> _recipientAgent_) {
+	final public InvokeOperationMessageBuilder _recipientAgent_(List<URI> _recipientAgent_) {
 		this.invokeOperationMessageImpl._recipientAgent = _recipientAgent_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for correlationMessage
+	* This function allows setting a value for _correlationMessage
 	* @param _correlationMessage_ desired value to be set
-	* @return Builder object with new value for correlationMessage
+	* @return Builder object with new value for _correlationMessage
 	*/
 	final public InvokeOperationMessageBuilder _correlationMessage_(URI _correlationMessage_) {
 		this.invokeOperationMessageImpl._correlationMessage = _correlationMessage_;
@@ -146,9 +147,9 @@ public class InvokeOperationMessageBuilder {
 
 
 	/**
-	* This function allows setting a value for authorizationToken
+	* This function allows setting a value for _authorizationToken
 	* @param _authorizationToken_ desired value to be set
-	* @return Builder object with new value for authorizationToken
+	* @return Builder object with new value for _authorizationToken
 	*/
 	final public InvokeOperationMessageBuilder _authorizationToken_(Token _authorizationToken_) {
 		this.invokeOperationMessageImpl._authorizationToken = _authorizationToken_;
@@ -157,9 +158,9 @@ public class InvokeOperationMessageBuilder {
 
 
 	/**
-	* This function allows setting a value for transferContract
+	* This function allows setting a value for _transferContract
 	* @param _transferContract_ desired value to be set
-	* @return Builder object with new value for transferContract
+	* @return Builder object with new value for _transferContract
 	*/
 	final public InvokeOperationMessageBuilder _transferContract_(URI _transferContract_) {
 		this.invokeOperationMessageImpl._transferContract = _transferContract_;
@@ -168,9 +169,9 @@ public class InvokeOperationMessageBuilder {
 
 
 	/**
-	* This function allows setting a value for contentVersion
+	* This function allows setting a value for _contentVersion
 	* @param _contentVersion_ desired value to be set
-	* @return Builder object with new value for contentVersion
+	* @return Builder object with new value for _contentVersion
 	*/
 	final public InvokeOperationMessageBuilder _contentVersion_(String _contentVersion_) {
 		this.invokeOperationMessageImpl._contentVersion = _contentVersion_;

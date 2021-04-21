@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -82,7 +83,7 @@ public class DatPayloadImpl implements Serializable, DatPayload {
 	* "Reference to a security guarantee that, if used in combination with a security profile instance, overrides the respective guarantee of the given predefined instance."@en
 	*/
 	@JsonAlias({"ids:extendedGuarantee", "extendedGuarantee"})
-	protected ArrayList<? extends SecurityGuarantee> _extendedGuarantee;
+	protected List<SecurityGuarantee> _extendedGuarantee;
 
 
 	/**
@@ -154,7 +155,7 @@ public class DatPayloadImpl implements Serializable, DatPayload {
 	*/
 	@NotEmpty
 	@JsonAlias({"ids:transportCertsSha256", "transportCertsSha256"})
-	protected ArrayList<? extends String> _transportCertsSha256;
+	protected List<String> _transportCertsSha256;
 
 
 	// no manual construction
@@ -162,10 +163,6 @@ public class DatPayloadImpl implements Serializable, DatPayload {
 		id = VocabUtil.getInstance().createRandomUrl("datPayload");
 	}
 
-	/**
-	* This function retrieves the ID of the current object (can be set via the constructor of the builder class)
-	* @return ID of current object as URI
-	*/
 	@JsonProperty("@id")
 	final public URI getId() {
 		return id;
@@ -175,20 +172,10 @@ public class DatPayloadImpl implements Serializable, DatPayload {
 		return VocabUtil.getInstance().toRdf(this);
 	}
 
-	/**
-	* This function retrieves a human readable label about the current class, as defined in the ontology.
-	* This label could, for example, be used as a field heading in a user interface
-	* @return Human readable label
-	*/
 	public List<TypedLiteral> getLabel() {
 		return this.label;
 	}
 
-	/**
-	* This function retrieves a human readable explanatory comment about the current class, as defined in the ontology.
-	* This comment could, for example, be used as a tooltip in a user interface
-	* @return Human readable explanatory comment
-	*/
 	public List<TypedLiteral> getComment() {
 		return this.comment;
 	}
@@ -229,236 +216,152 @@ public class DatPayloadImpl implements Serializable, DatPayload {
 		if (property.startsWith("@")) {return ;};
 		this.properties.put(property, value) ;
 	}
+	public int hashCode() {
+		return Objects.hash(new Object[]{this._extendedGuarantee,
+			this._aud,
+			this._sub,
+			this._nbf,
+			this._exp,
+			this._iat,
+			this._scope,
+			this._transportCertsSha256,
+			this._referringConnector,
+			this._iss,
+			this._securityProfile});
+	}
+
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		} else if (obj == null) {
+			return false;
+		} else if (this.getClass() != obj.getClass()) {
+			return false;
+		} else {
+			DatPayloadImpl other = (DatPayloadImpl) obj;
+			return Objects.equals(this._extendedGuarantee, other._extendedGuarantee) &&
+				Objects.equals(this._aud, other._aud) &&
+				Objects.equals(this._sub, other._sub) &&
+				Objects.equals(this._nbf, other._nbf) &&
+				Objects.equals(this._exp, other._exp) &&
+				Objects.equals(this._iat, other._iat) &&
+				Objects.equals(this._scope, other._scope) &&
+				Objects.equals(this._transportCertsSha256, other._transportCertsSha256) &&
+				Objects.equals(this._referringConnector, other._referringConnector) &&
+				Objects.equals(this._iss, other._iss) &&
+				Objects.equals(this._securityProfile, other._securityProfile);
+		}
+	}
+
 
 	// accessor method implementations as derived from the IDSA Information Model ontology
 
 
-	/**
-	* "Reference to a security guarantee that, if used in combination with a security profile instance, overrides the respective guarantee of the given predefined instance."@en
-	* @return Returns the ArrayList of SecurityGuarantee for the property extendedGuarantee.
-	* More information under https://w3id.org/idsa/core/extendedGuarantee
-	*/
 	@JsonProperty("ids:extendedGuarantee")
-	final public ArrayList<? extends SecurityGuarantee> getExtendedGuarantee() {
+	final public List<SecurityGuarantee> getExtendedGuarantee() {
 		return _extendedGuarantee;
 	}
-
 	
-	/**
-	* "Reference to a security guarantee that, if used in combination with a security profile instance, overrides the respective guarantee of the given predefined instance."@en
-	* @param _extendedGuarantee_ desired value for the property extendedGuarantee.
-	* More information under https://w3id.org/idsa/core/extendedGuarantee
-	*/
-	final public void setExtendedGuarantee (ArrayList<? extends SecurityGuarantee> _extendedGuarantee_) {
+	final public void setExtendedGuarantee (List<SecurityGuarantee> _extendedGuarantee_) {
 		this._extendedGuarantee = _extendedGuarantee_;
 	}
 
-	/**
-	* "The \'aud\' (audience) claim identifies the recipients that the JWT is intended for."@en
-	* @return Returns the Audience for the property aud.
-	* More information under https://w3id.org/idsa/core/aud
-	*/
 	@NotNull
 	@JsonProperty("ids:aud")
 	final public Audience getAud() {
 		return _aud;
 	}
-
 	
-	/**
-	* "The \'aud\' (audience) claim identifies the recipients that the JWT is intended for."@en
-	* @param _aud_ desired value for the property aud.
-	* More information under https://w3id.org/idsa/core/aud
-	*/
 	final public void setAud (Audience _aud_) {
 		this._aud = _aud_;
 	}
 
-	/**
-	* "The \'sub\' (subject) claim identifies the principal that is the subject of the JWT."@en
-	* @return Returns the String for the property sub.
-	* More information under https://w3id.org/idsa/core/sub
-	*/
 	@NotNull
 	@JsonProperty("ids:sub")
 	final public String getSub() {
 		return _sub;
 	}
-
 	
-	/**
-	* "The \'sub\' (subject) claim identifies the principal that is the subject of the JWT."@en
-	* @param _sub_ desired value for the property sub.
-	* More information under https://w3id.org/idsa/core/sub
-	*/
 	final public void setSub (String _sub_) {
 		this._sub = _sub_;
 	}
 
-	/**
-	* "The \'aud\' (audience) claim identifies the recipients that the JWT is intended for."@en
-	* @return Returns the BigInteger for the property nbf.
-	* More information under https://w3id.org/idsa/core/nbf
-	*/
 	@NotNull
 	@JsonProperty("ids:nbf")
 	final public BigInteger getNbf() {
 		return _nbf;
 	}
-
 	
-	/**
-	* "The \'aud\' (audience) claim identifies the recipients that the JWT is intended for."@en
-	* @param _nbf_ desired value for the property nbf.
-	* More information under https://w3id.org/idsa/core/nbf
-	*/
 	final public void setNbf (BigInteger _nbf_) {
 		this._nbf = _nbf_;
 	}
 
-	/**
-	* "The \'exp\' (expiration time) claim identifies the expiration time on or after which the JWT MUST NOT be accepted for processing."@en
-	* @return Returns the BigInteger for the property exp.
-	* More information under https://w3id.org/idsa/core/exp
-	*/
 	@NotNull
 	@JsonProperty("ids:exp")
 	final public BigInteger getExp() {
 		return _exp;
 	}
-
 	
-	/**
-	* "The \'exp\' (expiration time) claim identifies the expiration time on or after which the JWT MUST NOT be accepted for processing."@en
-	* @param _exp_ desired value for the property exp.
-	* More information under https://w3id.org/idsa/core/exp
-	*/
 	final public void setExp (BigInteger _exp_) {
 		this._exp = _exp_;
 	}
 
-	/**
-	* "The \'iat\' (issued at) claim contains the point in time when the JWT was created."@en
-	* @return Returns the BigInteger for the property iat.
-	* More information under https://w3id.org/idsa/core/iat
-	*/
 	@NotNull
 	@JsonProperty("ids:iat")
 	final public BigInteger getIat() {
 		return _iat;
 	}
-
 	
-	/**
-	* "The \'iat\' (issued at) claim contains the point in time when the JWT was created."@en
-	* @param _iat_ desired value for the property iat.
-	* More information under https://w3id.org/idsa/core/iat
-	*/
 	final public void setIat (BigInteger _iat_) {
 		this._iat = _iat_;
 	}
 
-	/**
-	* "Currently, the scope is limited to \'Connector\' but can be used for scoping purposes in the future. Scope is currently fixed to \'https://w3id.org/idsa/core/Connector\'."@en
-	* @return Returns the String for the property scope.
-	* More information under https://w3id.org/idsa/core/scope
-	*/
 	@NotNull
 	@JsonProperty("ids:scope")
 	final public String getScope() {
 		return _scope;
 	}
-
 	
-	/**
-	* "Currently, the scope is limited to \'Connector\' but can be used for scoping purposes in the future. Scope is currently fixed to \'https://w3id.org/idsa/core/Connector\'."@en
-	* @param _scope_ desired value for the property scope.
-	* More information under https://w3id.org/idsa/core/scope
-	*/
 	final public void setScope (String _scope_) {
 		this._scope = _scope_;
 	}
 
-	/**
-	* "Separate certificates for IDS identification and transport encryption opens an attack vector for relay attacks. In order to prevent these attacks, a binding of this transport certificates to the connector is required. The inclusion of SHA256 fingerprints of currently valid transport certificates, mainly into the DAT, enables the client to relate the transport layer security with the IDS interactions."@en
-	* @return Returns the ArrayList of String for the property transportCertsSha256.
-	* More information under https://w3id.org/idsa/core/transportCertsSha256
-	*/
 	@NotEmpty
 	@JsonProperty("ids:transportCertsSha256")
-	final public ArrayList<? extends String> getTransportCertsSha256() {
+	final public List<String> getTransportCertsSha256() {
 		return _transportCertsSha256;
 	}
-
 	
-	/**
-	* "Separate certificates for IDS identification and transport encryption opens an attack vector for relay attacks. In order to prevent these attacks, a binding of this transport certificates to the connector is required. The inclusion of SHA256 fingerprints of currently valid transport certificates, mainly into the DAT, enables the client to relate the transport layer security with the IDS interactions."@en
-	* @param _transportCertsSha256_ desired value for the property transportCertsSha256.
-	* More information under https://w3id.org/idsa/core/transportCertsSha256
-	*/
-	final public void setTransportCertsSha256 (ArrayList<? extends String> _transportCertsSha256_) {
+	final public void setTransportCertsSha256 (List<String> _transportCertsSha256_) {
 		this._transportCertsSha256 = _transportCertsSha256_;
 	}
 
-	/**
-	* "The RDF connector entity as referred to by the DAT, with its URI included as the value. The value MUST be its accessible URI."@en
-	* @return Returns the URI for the property referringConnector.
-	* More information under https://w3id.org/idsa/core/referringConnector
-	*/
 	@NotNull
 	@JsonProperty("ids:referringConnector")
 	final public URI getReferringConnector() {
 		return _referringConnector;
 	}
-
 	
-	/**
-	* "The RDF connector entity as referred to by the DAT, with its URI included as the value. The value MUST be its accessible URI."@en
-	* @param _referringConnector_ desired value for the property referringConnector.
-	* More information under https://w3id.org/idsa/core/referringConnector
-	*/
 	final public void setReferringConnector (URI _referringConnector_) {
 		this._referringConnector = _referringConnector_;
 	}
 
-	/**
-	* "The \'iss\' (issuer) claim identifies the principal that issued the JWT."@en
-	* @return Returns the String for the property iss.
-	* More information under https://w3id.org/idsa/core/iss
-	*/
 	@NotNull
 	@JsonProperty("ids:iss")
 	final public String getIss() {
 		return _iss;
 	}
-
 	
-	/**
-	* "The \'iss\' (issuer) claim identifies the principal that issued the JWT."@en
-	* @param _iss_ desired value for the property iss.
-	* More information under https://w3id.org/idsa/core/iss
-	*/
 	final public void setIss (String _iss_) {
 		this._iss = _iss_;
 	}
 
-	/**
-	* "The SecurityProfile supported by the Connector."@en
-	* @return Returns the SecurityProfile for the property securityProfile.
-	* More information under https://w3id.org/idsa/core/securityProfile
-	*/
 	@NotNull
 	@JsonProperty("ids:securityProfile")
 	final public SecurityProfile getSecurityProfile() {
 		return _securityProfile;
 	}
-
 	
-	/**
-	* "The SecurityProfile supported by the Connector."@en
-	* @param _securityProfile_ desired value for the property securityProfile.
-	* More information under https://w3id.org/idsa/core/securityProfile
-	*/
 	final public void setSecurityProfile (SecurityProfile _securityProfile_) {
 		this._securityProfile = _securityProfile_;
 	}

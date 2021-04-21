@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -124,7 +125,7 @@ public class ParticipantCertificateGrantedMessageImpl implements Serializable, P
 	* "The Agent for which the Mesaage is intended."@en
 	*/
 	@JsonAlias({"ids:recipientAgent", "recipientAgent"})
-	protected ArrayList<? extends URI> _recipientAgent;
+	protected List<URI> _recipientAgent;
 
 
 	/**
@@ -132,7 +133,7 @@ public class ParticipantCertificateGrantedMessageImpl implements Serializable, P
 	* "The Connector which is the recipient of the message."@en
 	*/
 	@JsonAlias({"ids:recipientConnector", "recipientConnector"})
-	protected ArrayList<? extends URI> _recipientConnector;
+	protected List<URI> _recipientConnector;
 
 
 	/**
@@ -166,10 +167,6 @@ public class ParticipantCertificateGrantedMessageImpl implements Serializable, P
 		id = VocabUtil.getInstance().createRandomUrl("participantCertificateGrantedMessage");
 	}
 
-	/**
-	* This function retrieves the ID of the current object (can be set via the constructor of the builder class)
-	* @return ID of current object as URI
-	*/
 	@JsonProperty("@id")
 	final public URI getId() {
 		return id;
@@ -179,20 +176,10 @@ public class ParticipantCertificateGrantedMessageImpl implements Serializable, P
 		return VocabUtil.getInstance().toRdf(this);
 	}
 
-	/**
-	* This function retrieves a human readable label about the current class, as defined in the ontology.
-	* This label could, for example, be used as a field heading in a user interface
-	* @return Human readable label
-	*/
 	public List<TypedLiteral> getLabel() {
 		return this.label;
 	}
 
-	/**
-	* This function retrieves a human readable explanatory comment about the current class, as defined in the ontology.
-	* This comment could, for example, be used as a tooltip in a user interface
-	* @return Human readable explanatory comment
-	*/
 	public List<TypedLiteral> getComment() {
 		return this.comment;
 	}
@@ -233,255 +220,162 @@ public class ParticipantCertificateGrantedMessageImpl implements Serializable, P
 		if (property.startsWith("@")) {return ;};
 		this.properties.put(property, value) ;
 	}
+	public int hashCode() {
+		return Objects.hash(new Object[]{this._affectedParticipant,
+			this._modelVersion,
+			this._issued,
+			this._issuerConnector,
+			this._recipientConnector,
+			this._securityToken,
+			this._senderAgent,
+			this._recipientAgent,
+			this._correlationMessage,
+			this._authorizationToken,
+			this._transferContract,
+			this._contentVersion});
+	}
+
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		} else if (obj == null) {
+			return false;
+		} else if (this.getClass() != obj.getClass()) {
+			return false;
+		} else {
+			ParticipantCertificateGrantedMessageImpl other = (ParticipantCertificateGrantedMessageImpl) obj;
+			return Objects.equals(this._affectedParticipant, other._affectedParticipant) &&
+				Objects.equals(this._modelVersion, other._modelVersion) &&
+				Objects.equals(this._issued, other._issued) &&
+				Objects.equals(this._issuerConnector, other._issuerConnector) &&
+				Objects.equals(this._recipientConnector, other._recipientConnector) &&
+				Objects.equals(this._securityToken, other._securityToken) &&
+				Objects.equals(this._senderAgent, other._senderAgent) &&
+				Objects.equals(this._recipientAgent, other._recipientAgent) &&
+				Objects.equals(this._correlationMessage, other._correlationMessage) &&
+				Objects.equals(this._authorizationToken, other._authorizationToken) &&
+				Objects.equals(this._transferContract, other._transferContract) &&
+				Objects.equals(this._contentVersion, other._contentVersion);
+		}
+	}
+
 
 	// accessor method implementations as derived from the IDSA Information Model ontology
 
 
 
-	/**
-	* "References the participant that is referenced in the participant-related notification messages."@en
-	* @return Returns the URI for the property affectedParticipant.
-	* More information under https://w3id.org/idsa/core/affectedParticipant
-	*/
 	@NotNull
 	@JsonProperty("ids:affectedParticipant")
 	final public URI getAffectedParticipant() {
 		return _affectedParticipant;
 	}
-
 	
-	/**
-	* "References the participant that is referenced in the participant-related notification messages."@en
-	* @param _affectedParticipant_ desired value for the property affectedParticipant.
-	* More information under https://w3id.org/idsa/core/affectedParticipant
-	*/
 	final public void setAffectedParticipant (URI _affectedParticipant_) {
 		this._affectedParticipant = _affectedParticipant_;
 	}
 
 
-	/**
-	* "Version of the Information Model against which the Message should be interpreted."@en
-	* @return Returns the String for the property modelVersion.
-	* More information under https://w3id.org/idsa/core/modelVersion
-	*/
 	@NotNull
 	@JsonProperty("ids:modelVersion")
 	final public String getModelVersion() {
 		return _modelVersion;
 	}
-
 	
-	/**
-	* "Version of the Information Model against which the Message should be interpreted."@en
-	* @param _modelVersion_ desired value for the property modelVersion.
-	* More information under https://w3id.org/idsa/core/modelVersion
-	*/
 	final public void setModelVersion (String _modelVersion_) {
 		this._modelVersion = _modelVersion_;
 	}
 
-	/**
-	* "Date (as xsd:dateTimeStamp) of issuing the Message."@en
-	* @return Returns the XMLGregorianCalendar for the property issued.
-	* More information under https://w3id.org/idsa/core/issued
-	*/
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
 	@NotNull
 	@JsonProperty("ids:issued")
 	final public XMLGregorianCalendar getIssued() {
 		return _issued;
 	}
-
 	
-	/**
-	* "Date (as xsd:dateTimeStamp) of issuing the Message."@en
-	* @param _issued_ desired value for the property issued.
-	* More information under https://w3id.org/idsa/core/issued
-	*/
 	final public void setIssued (XMLGregorianCalendar _issued_) {
 		this._issued = _issued_;
 	}
 
-	/**
-	* "The Connector which is the origin of the message."@en
-	* @return Returns the URI for the property issuerConnector.
-	* More information under https://w3id.org/idsa/core/issuerConnector
-	*/
 	@NotNull
 	@JsonProperty("ids:issuerConnector")
 	final public URI getIssuerConnector() {
 		return _issuerConnector;
 	}
-
 	
-	/**
-	* "The Connector which is the origin of the message."@en
-	* @param _issuerConnector_ desired value for the property issuerConnector.
-	* More information under https://w3id.org/idsa/core/issuerConnector
-	*/
 	final public void setIssuerConnector (URI _issuerConnector_) {
 		this._issuerConnector = _issuerConnector_;
 	}
 
-	/**
-	* "The Connector which is the recipient of the message."@en
-	* @return Returns the ArrayList of URI for the property recipientConnector.
-	* More information under https://w3id.org/idsa/core/recipientConnector
-	*/
 	@JsonProperty("ids:recipientConnector")
-	final public ArrayList<? extends URI> getRecipientConnector() {
+	final public List<URI> getRecipientConnector() {
 		return _recipientConnector;
 	}
-
 	
-	/**
-	* "The Connector which is the recipient of the message."@en
-	* @param _recipientConnector_ desired value for the property recipientConnector.
-	* More information under https://w3id.org/idsa/core/recipientConnector
-	*/
-	final public void setRecipientConnector (ArrayList<? extends URI> _recipientConnector_) {
+	final public void setRecipientConnector (List<URI> _recipientConnector_) {
 		this._recipientConnector = _recipientConnector_;
 	}
 
-	/**
-	* "A token representing a claim that the message sender supports a certain security profile."@en
-	* @return Returns the DynamicAttributeToken for the property securityToken.
-	* More information under https://w3id.org/idsa/core/securityToken
-	*/
 	@NotNull
 	@JsonProperty("ids:securityToken")
 	final public DynamicAttributeToken getSecurityToken() {
 		return _securityToken;
 	}
-
 	
-	/**
-	* "A token representing a claim that the message sender supports a certain security profile."@en
-	* @param _securityToken_ desired value for the property securityToken.
-	* More information under https://w3id.org/idsa/core/securityToken
-	*/
 	final public void setSecurityToken (DynamicAttributeToken _securityToken_) {
 		this._securityToken = _securityToken_;
 	}
 
-	/**
-	* "The Agent which initiated the Message."@en
-	* @return Returns the URI for the property senderAgent.
-	* More information under https://w3id.org/idsa/core/senderAgent
-	*/
 	@NotNull
 	@JsonProperty("ids:senderAgent")
 	final public URI getSenderAgent() {
 		return _senderAgent;
 	}
-
 	
-	/**
-	* "The Agent which initiated the Message."@en
-	* @param _senderAgent_ desired value for the property senderAgent.
-	* More information under https://w3id.org/idsa/core/senderAgent
-	*/
 	final public void setSenderAgent (URI _senderAgent_) {
 		this._senderAgent = _senderAgent_;
 	}
 
-	/**
-	* "The Agent for which the Mesaage is intended."@en
-	* @return Returns the ArrayList of URI for the property recipientAgent.
-	* More information under https://w3id.org/idsa/core/recipientAgent
-	*/
 	@JsonProperty("ids:recipientAgent")
-	final public ArrayList<? extends URI> getRecipientAgent() {
+	final public List<URI> getRecipientAgent() {
 		return _recipientAgent;
 	}
-
 	
-	/**
-	* "The Agent for which the Mesaage is intended."@en
-	* @param _recipientAgent_ desired value for the property recipientAgent.
-	* More information under https://w3id.org/idsa/core/recipientAgent
-	*/
-	final public void setRecipientAgent (ArrayList<? extends URI> _recipientAgent_) {
+	final public void setRecipientAgent (List<URI> _recipientAgent_) {
 		this._recipientAgent = _recipientAgent_;
 	}
 
-	/**
-	* "Correlated message, e.g. a response to a previous request."@en
-	* @return Returns the URI for the property correlationMessage.
-	* More information under https://w3id.org/idsa/core/correlationMessage
-	*/
 	@JsonProperty("ids:correlationMessage")
 	final public URI getCorrelationMessage() {
 		return _correlationMessage;
 	}
-
 	
-	/**
-	* "Correlated message, e.g. a response to a previous request."@en
-	* @param _correlationMessage_ desired value for the property correlationMessage.
-	* More information under https://w3id.org/idsa/core/correlationMessage
-	*/
 	final public void setCorrelationMessage (URI _correlationMessage_) {
 		this._correlationMessage = _correlationMessage_;
 	}
 
-	/**
-	* "An authorization token like JSON Web Token."@en
-	* @return Returns the Token for the property authorizationToken.
-	* More information under https://w3id.org/idsa/core/authorizationToken
-	*/
 	@JsonProperty("ids:authorizationToken")
 	final public Token getAuthorizationToken() {
 		return _authorizationToken;
 	}
-
 	
-	/**
-	* "An authorization token like JSON Web Token."@en
-	* @param _authorizationToken_ desired value for the property authorizationToken.
-	* More information under https://w3id.org/idsa/core/authorizationToken
-	*/
 	final public void setAuthorizationToken (Token _authorizationToken_) {
 		this._authorizationToken = _authorizationToken_;
 	}
 
-	/**
-	* "The contract which is (or will be) the legal basis of the data transfer."@en
-	* @return Returns the URI for the property transferContract.
-	* More information under https://w3id.org/idsa/core/transferContract
-	*/
 	@JsonProperty("ids:transferContract")
 	final public URI getTransferContract() {
 		return _transferContract;
 	}
-
 	
-	/**
-	* "The contract which is (or will be) the legal basis of the data transfer."@en
-	* @param _transferContract_ desired value for the property transferContract.
-	* More information under https://w3id.org/idsa/core/transferContract
-	*/
 	final public void setTransferContract (URI _transferContract_) {
 		this._transferContract = _transferContract_;
 	}
 
-	/**
-	* "Version of the content in the payload. Use digits and semantic versioning pattern like MAJOR.MINOR.PATCH."@en
-	* @return Returns the String for the property contentVersion.
-	* More information under https://w3id.org/idsa/core/contentVersion
-	*/
 	@JsonProperty("ids:contentVersion")
 	final public String getContentVersion() {
 		return _contentVersion;
 	}
-
 	
-	/**
-	* "Version of the content in the payload. Use digits and semantic versioning pattern like MAJOR.MINOR.PATCH."@en
-	* @param _contentVersion_ desired value for the property contentVersion.
-	* More information under https://w3id.org/idsa/core/contentVersion
-	*/
 	final public void setContentVersion (String _contentVersion_) {
 		this._contentVersion = _contentVersion_;
 	}

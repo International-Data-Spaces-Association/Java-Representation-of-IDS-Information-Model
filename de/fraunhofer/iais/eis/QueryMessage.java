@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -72,12 +73,25 @@ public interface QueryMessage extends RequestMessage {
 	public Map<String,Object> getProperties();
 	public void setProperty(String property, Object value);
 
+	/**
+	* This function returns a hash code value for the QueryMessage for the benefit of e.g. hash tables.
+	* @return a hash code value for the QueryMessage
+	*/
+	public int hashCode();
+
+	/**
+	* This function indicates whether some other object is equal to this one.
+	* @param obj the reference object with which to compare.
+	* @return true if this QueryMessage is the same as the obj argument; false otherwise.
+	*/
+	public boolean equals(Object obj);
+
 	// accessor methods as derived from the IDSA Information Model ontology
 
 
 	/**
 	* "This property specifies the language of the query."@en
-	* @return Returns the QueryLanguage for the property queryLanguage.
+	* @return Returns the QueryLanguage for the property _queryLanguage.
 	* More information under https://w3id.org/idsa/core/queryLanguage
 	*/
 	@JsonProperty("ids:queryLanguage")
@@ -85,7 +99,7 @@ public interface QueryMessage extends RequestMessage {
 
 	/**
 	* "Refers to the scope property of a query message, see ids:QueryScope."@en
-	* @return Returns the QueryScope for the property queryScope.
+	* @return Returns the QueryScope for the property _queryScope.
 	* More information under https://w3id.org/idsa/core/queryScope
 	*/
 	@JsonProperty("ids:queryScope")
@@ -93,7 +107,7 @@ public interface QueryMessage extends RequestMessage {
 
 	/**
 	* "Refers to the target property of a query message, see ids:QueryTarget."@en
-	* @return Returns the QueryTarget for the property recipientScope.
+	* @return Returns the QueryTarget for the property _recipientScope.
 	* More information under https://w3id.org/idsa/core/recipientScope
 	*/
 	@JsonProperty("ids:recipientScope")

@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -64,7 +65,7 @@ public class LogicalConstraintImpl implements Serializable, LogicalConstraint {
 	* "The \'and\' operand connects a rdf:List of Constraints with the Boolean operator \'AND\'. All Constraints of an \'and\' relation must be satisfied at the same time. Only one of ids:and, ids:or, or ids:xone can be used for a specific ids:LogicalConstraint!"@en
 	*/
 	@JsonAlias({"ids:and", "and"})
-	protected ArrayList<? extends Constraint> _and;
+	protected List<Constraint> _and;
 
 
 	/**
@@ -72,7 +73,7 @@ public class LogicalConstraintImpl implements Serializable, LogicalConstraint {
 	* "The \'or\' operand connects a rdf:List of Constraints with the Boolean operator \'OR\'. At least one Constraint of an \'or\' relation must be satisfied. Only one of ids:and, ids:or, or ids:xone can be used for a specific ids:LogicalConstraint!"@en
 	*/
 	@JsonAlias({"ids:or", "or"})
-	protected ArrayList<? extends Constraint> _or;
+	protected List<Constraint> _or;
 
 
 	/**
@@ -80,7 +81,7 @@ public class LogicalConstraintImpl implements Serializable, LogicalConstraint {
 	* "The \'xone\' operand connects a rdf:List of Constraints. Only one Constraint, not more, of an \'xone\' relation must be satisfied. Only one of ids:and, ids:or, or ids:xone can be used for a specific ids:LogicalConstraint!"@en
 	*/
 	@JsonAlias({"ids:xone", "xone"})
-	protected ArrayList<? extends Constraint> _xone;
+	protected List<Constraint> _xone;
 
 
 	// no manual construction
@@ -88,10 +89,6 @@ public class LogicalConstraintImpl implements Serializable, LogicalConstraint {
 		id = VocabUtil.getInstance().createRandomUrl("logicalConstraint");
 	}
 
-	/**
-	* This function retrieves the ID of the current object (can be set via the constructor of the builder class)
-	* @return ID of current object as URI
-	*/
 	@JsonProperty("@id")
 	final public URI getId() {
 		return id;
@@ -101,20 +98,10 @@ public class LogicalConstraintImpl implements Serializable, LogicalConstraint {
 		return VocabUtil.getInstance().toRdf(this);
 	}
 
-	/**
-	* This function retrieves a human readable label about the current class, as defined in the ontology.
-	* This label could, for example, be used as a field heading in a user interface
-	* @return Human readable label
-	*/
 	public List<TypedLiteral> getLabel() {
 		return this.label;
 	}
 
-	/**
-	* This function retrieves a human readable explanatory comment about the current class, as defined in the ontology.
-	* This comment could, for example, be used as a tooltip in a user interface
-	* @return Human readable explanatory comment
-	*/
 	public List<TypedLiteral> getComment() {
 		return this.comment;
 	}
@@ -155,67 +142,55 @@ public class LogicalConstraintImpl implements Serializable, LogicalConstraint {
 		if (property.startsWith("@")) {return ;};
 		this.properties.put(property, value) ;
 	}
+	public int hashCode() {
+		return Objects.hash(new Object[]{this._and,
+			this._or,
+			this._xone});
+	}
+
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		} else if (obj == null) {
+			return false;
+		} else if (this.getClass() != obj.getClass()) {
+			return false;
+		} else {
+			LogicalConstraintImpl other = (LogicalConstraintImpl) obj;
+			return Objects.equals(this._and, other._and) &&
+				Objects.equals(this._or, other._or) &&
+				Objects.equals(this._xone, other._xone);
+		}
+	}
+
 
 	// accessor method implementations as derived from the IDSA Information Model ontology
 
 
-	/**
-	* "The \'and\' operand connects a rdf:List of Constraints with the Boolean operator \'AND\'. All Constraints of an \'and\' relation must be satisfied at the same time. Only one of ids:and, ids:or, or ids:xone can be used for a specific ids:LogicalConstraint!"@en
-	* @return Returns the ArrayList of Constraint for the property and.
-	* More information under https://w3id.org/idsa/core/and
-	*/
 	@JsonProperty("ids:and")
-	final public ArrayList<? extends Constraint> getAnd() {
+	final public List<Constraint> getAnd() {
 		return _and;
 	}
-
 	
-	/**
-	* "The \'and\' operand connects a rdf:List of Constraints with the Boolean operator \'AND\'. All Constraints of an \'and\' relation must be satisfied at the same time. Only one of ids:and, ids:or, or ids:xone can be used for a specific ids:LogicalConstraint!"@en
-	* @param _and_ desired value for the property and.
-	* More information under https://w3id.org/idsa/core/and
-	*/
-	final public void setAnd (ArrayList<? extends Constraint> _and_) {
+	final public void setAnd (List<Constraint> _and_) {
 		this._and = _and_;
 	}
 
-	/**
-	* "The \'or\' operand connects a rdf:List of Constraints with the Boolean operator \'OR\'. At least one Constraint of an \'or\' relation must be satisfied. Only one of ids:and, ids:or, or ids:xone can be used for a specific ids:LogicalConstraint!"@en
-	* @return Returns the ArrayList of Constraint for the property or.
-	* More information under https://w3id.org/idsa/core/or
-	*/
 	@JsonProperty("ids:or")
-	final public ArrayList<? extends Constraint> getOr() {
+	final public List<Constraint> getOr() {
 		return _or;
 	}
-
 	
-	/**
-	* "The \'or\' operand connects a rdf:List of Constraints with the Boolean operator \'OR\'. At least one Constraint of an \'or\' relation must be satisfied. Only one of ids:and, ids:or, or ids:xone can be used for a specific ids:LogicalConstraint!"@en
-	* @param _or_ desired value for the property or.
-	* More information under https://w3id.org/idsa/core/or
-	*/
-	final public void setOr (ArrayList<? extends Constraint> _or_) {
+	final public void setOr (List<Constraint> _or_) {
 		this._or = _or_;
 	}
 
-	/**
-	* "The \'xone\' operand connects a rdf:List of Constraints. Only one Constraint, not more, of an \'xone\' relation must be satisfied. Only one of ids:and, ids:or, or ids:xone can be used for a specific ids:LogicalConstraint!"@en
-	* @return Returns the ArrayList of Constraint for the property xone.
-	* More information under https://w3id.org/idsa/core/xone
-	*/
 	@JsonProperty("ids:xone")
-	final public ArrayList<? extends Constraint> getXone() {
+	final public List<Constraint> getXone() {
 		return _xone;
 	}
-
 	
-	/**
-	* "The \'xone\' operand connects a rdf:List of Constraints. Only one Constraint, not more, of an \'xone\' relation must be satisfied. Only one of ids:and, ids:or, or ids:xone can be used for a specific ids:LogicalConstraint!"@en
-	* @param _xone_ desired value for the property xone.
-	* More information under https://w3id.org/idsa/core/xone
-	*/
-	final public void setXone (ArrayList<? extends Constraint> _xone_) {
+	final public void setXone (List<Constraint> _xone_) {
 		this._xone = _xone_;
 	}
 

@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -74,29 +75,42 @@ public interface DataApp {
 	public Map<String,Object> getProperties();
 	public void setProperty(String property, Object value);
 
+	/**
+	* This function returns a hash code value for the DataApp for the benefit of e.g. hash tables.
+	* @return a hash code value for the DataApp
+	*/
+	public int hashCode();
+
+	/**
+	* This function indicates whether some other object is equal to this one.
+	* @param obj the reference object with which to compare.
+	* @return true if this DataApp is the same as the obj argument; false otherwise.
+	*/
+	public boolean equals(Object obj);
+
 	// accessor methods as derived from the IDSA Information Model ontology
 
 
 	/**
 	* "Endpoints of a data app"@en
-	* @return Returns the ArrayList of AppEndpoint for the property appEndpoint.
+	* @return Returns the List of AppEndpoints for the property _appEndpoint.
 	* More information under https://w3id.org/idsa/core/appEndpoint
 	*/
 	@NotEmpty
 	@JsonProperty("ids:appEndpoint")
-	public ArrayList<? extends AppEndpoint> getAppEndpoint();
+	public List<AppEndpoint> getAppEndpoint();
 
 	/**
 	* "IDS Usage Policies a DataApp supports"@en
-	* @return Returns the ArrayList of UsagePolicyClass for the property supportedUsagePolicies.
+	* @return Returns the List of UsagePolicyClasss for the property _supportedUsagePolicies.
 	* More information under https://w3id.org/idsa/core/supportedUsagePolicies
 	*/
 	@JsonProperty("ids:supportedUsagePolicies")
-	public ArrayList<? extends UsagePolicyClass> getSupportedUsagePolicies();
+	public List<UsagePolicyClass> getSupportedUsagePolicies();
 
 	/**
 	* "text documentation of the data app"@en
-	* @return Returns the String for the property appDocumentation.
+	* @return Returns the String for the property _appDocumentation.
 	* More information under https://w3id.org/idsa/core/appDocumentation
 	*/
 	@JsonProperty("ids:appDocumentation")
@@ -104,7 +118,7 @@ public interface DataApp {
 
 	/**
 	* "Necessary or optional environment variables of a data app."@en
-	* @return Returns the String for the property appEnvironmentVariables.
+	* @return Returns the String for the property _appEnvironmentVariables.
 	* More information under https://w3id.org/idsa/core/appEnvironmentVariables
 	*/
 	@JsonProperty("ids:appEnvironmentVariables")
@@ -112,7 +126,7 @@ public interface DataApp {
 
 	/**
 	* "Storage configuration of a data app. Value may differ based on the app ecosystem, e.g. a writeable path in the file system or a volume name (e.g. for containerized apps)"@en
-	* @return Returns the String for the property appStorageConfiguration.
+	* @return Returns the String for the property _appStorageConfiguration.
 	* More information under https://w3id.org/idsa/core/appStorageConfiguration
 	*/
 	@JsonProperty("ids:appStorageConfiguration")

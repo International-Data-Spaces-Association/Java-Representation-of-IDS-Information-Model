@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -72,12 +73,25 @@ public interface Artifact extends Asset, RepresentationInstance {
 	public Map<String,Object> getProperties();
 	public void setProperty(String property, Object value);
 
+	/**
+	* This function returns a hash code value for the Artifact for the benefit of e.g. hash tables.
+	* @return a hash code value for the Artifact
+	*/
+	public int hashCode();
+
+	/**
+	* This function indicates whether some other object is equal to this one.
+	* @param obj the reference object with which to compare.
+	* @return true if this Artifact is the same as the obj argument; false otherwise.
+	*/
+	public boolean equals(Object obj);
+
 	// accessor methods as derived from the IDSA Information Model ontology
 
 
 	/**
 	* "Size of the Artifact in bytes."@en
-	* @return Returns the BigInteger for the property byteSize.
+	* @return Returns the BigInteger for the property _byteSize.
 	* More information under https://w3id.org/idsa/core/byteSize
 	*/
 	@JsonProperty("ids:byteSize")
@@ -85,7 +99,7 @@ public interface Artifact extends Asset, RepresentationInstance {
 
 	/**
 	* "Name of the Artifcat file."@en
-	* @return Returns the String for the property fileName.
+	* @return Returns the String for the property _fileName.
 	* More information under https://w3id.org/idsa/core/fileName
 	*/
 	@JsonProperty("ids:fileName")
@@ -93,7 +107,7 @@ public interface Artifact extends Asset, RepresentationInstance {
 
 	/**
 	* "Date (as xsd:dateTimeStamp) when the artifact was created, i.e. persisted."@en
-	* @return Returns the XMLGregorianCalendar for the property creationDate.
+	* @return Returns the XMLGregorianCalendar for the property _creationDate.
 	* More information under https://w3id.org/idsa/core/creationDate
 	*/
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
@@ -102,7 +116,7 @@ public interface Artifact extends Asset, RepresentationInstance {
 
 	/**
 	* "Checksum of the artifact"@en
-	* @return Returns the String for the property checkSum.
+	* @return Returns the String for the property _checkSum.
 	* More information under https://w3id.org/idsa/core/checkSum
 	*/
 	@JsonProperty("ids:checkSum")
@@ -110,7 +124,7 @@ public interface Artifact extends Asset, RepresentationInstance {
 
 	/**
 	* "Duration of the media resource in seconds."@en
-	* @return Returns the java.math.BigDecimal for the property duration.
+	* @return Returns the java.math.BigDecimal for the property _duration.
 	* More information under https://w3id.org/idsa/core/duration
 	*/
 	@JsonProperty("ids:duration")

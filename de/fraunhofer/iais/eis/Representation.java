@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -78,20 +79,33 @@ public interface Representation extends Asset, DescribedSemantically {
 	public Map<String,Object> getProperties();
 	public void setProperty(String property, Object value);
 
+	/**
+	* This function returns a hash code value for the Representation for the benefit of e.g. hash tables.
+	* @return a hash code value for the Representation
+	*/
+	public int hashCode();
+
+	/**
+	* This function indicates whether some other object is equal to this one.
+	* @param obj the reference object with which to compare.
+	* @return true if this Representation is the same as the obj argument; false otherwise.
+	*/
+	public boolean equals(Object obj);
+
 	// accessor methods as derived from the IDSA Information Model ontology
 
 
 	/**
 	* "Reference to an instance of given representation, i.e. inline value or file placeholder."@en
-	* @return Returns the ArrayList of RepresentationInstance for the property instance.
+	* @return Returns the List of RepresentationInstances for the property _instance.
 	* More information under https://w3id.org/idsa/core/instance
 	*/
 	@JsonProperty("ids:instance")
-	public ArrayList<? extends RepresentationInstance> getInstance();
+	public List<RepresentationInstance> getInstance();
 
 	/**
 	* "Media Type of the Representation."@en
-	* @return Returns the MediaType for the property mediaType.
+	* @return Returns the MediaType for the property _mediaType.
 	* More information under https://w3id.org/idsa/core/mediaType
 	*/
 	@JsonProperty("ids:mediaType")
@@ -99,7 +113,7 @@ public interface Representation extends Asset, DescribedSemantically {
 
 	/**
 	* "Standards document defining the given Representation (in contrast to general Resource content). The Representation is assumed to conform to that Standard."@en
-	* @return Returns the URI for the property representationStandard.
+	* @return Returns the URI for the property _representationStandard.
 	* More information under https://w3id.org/idsa/core/representationStandard
 	*/
 	@JsonProperty("ids:representationStandard")
@@ -107,7 +121,7 @@ public interface Representation extends Asset, DescribedSemantically {
 
 	/**
 	* "Natural language(s) used within the content."@en
-	* @return Returns the Language for the property language.
+	* @return Returns the Language for the property _language.
 	* More information under https://w3id.org/idsa/core/language
 	*/
 	@JsonProperty("ids:language")
@@ -115,7 +129,7 @@ public interface Representation extends Asset, DescribedSemantically {
 
 	/**
 	* "The date of the creation of the Digital Content. In contrast to the ids:temporalCoverage, creation dates of ids:Representation, ids:Artifacts or any other form of meta-data, this property describes the creation date of referenced Digital Content itself."@en
-	* @return Returns the XMLGregorianCalendar for the property created.
+	* @return Returns the XMLGregorianCalendar for the property _created.
 	* More information under https://w3id.org/idsa/core/created
 	*/
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
@@ -124,7 +138,7 @@ public interface Representation extends Asset, DescribedSemantically {
 
 	/**
 	* "The date/time this Digital Content has been changed the last time. Only one \'modified\' attribute is usually needed."@en
-	* @return Returns the XMLGregorianCalendar for the property modified.
+	* @return Returns the XMLGregorianCalendar for the property _modified.
 	* More information under https://w3id.org/idsa/core/modified
 	*/
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")

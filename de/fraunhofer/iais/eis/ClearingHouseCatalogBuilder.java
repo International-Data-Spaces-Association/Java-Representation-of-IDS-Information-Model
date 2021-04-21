@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -46,11 +47,11 @@ public class ClearingHouseCatalogBuilder {
 	}
 
 	/**
-	* This function allows setting a value for listedClearingHouse
+	* This function allows setting a value for _listedClearingHouse
 	* @param _listedClearingHouse_ desired value to be set
-	* @return Builder object with new value for listedClearingHouse
+	* @return Builder object with new value for _listedClearingHouse
 	*/
-	final public ClearingHouseCatalogBuilder _listedClearingHouse_(ArrayList<? extends ClearingHouse> _listedClearingHouse_) {
+	final public ClearingHouseCatalogBuilder _listedClearingHouse_(List<ClearingHouse> _listedClearingHouse_) {
 		this.clearingHouseCatalogImpl._listedClearingHouse = _listedClearingHouse_;
 		return this;
 	}

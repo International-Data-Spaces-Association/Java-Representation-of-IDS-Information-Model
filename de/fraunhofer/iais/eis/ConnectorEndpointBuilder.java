@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -46,9 +47,9 @@ public class ConnectorEndpointBuilder {
 	}
 
 	/**
-	* This function allows setting a value for endpointArtifact
+	* This function allows setting a value for _endpointArtifact
 	* @param _endpointArtifact_ desired value to be set
-	* @return Builder object with new value for endpointArtifact
+	* @return Builder object with new value for _endpointArtifact
 	*/
 	final public ConnectorEndpointBuilder _endpointArtifact_(Artifact _endpointArtifact_) {
 		this.connectorEndpointImpl._endpointArtifact = _endpointArtifact_;
@@ -57,31 +58,31 @@ public class ConnectorEndpointBuilder {
 
 
 	/**
-	* This function allows setting a value for endpointInformation
+	* This function allows setting a value for _endpointInformation
 	* @param _endpointInformation_ desired value to be set
-	* @return Builder object with new value for endpointInformation
+	* @return Builder object with new value for _endpointInformation
 	*/
-	final public ConnectorEndpointBuilder _endpointInformation_(ArrayList<? extends TypedLiteral> _endpointInformation_) {
+	final public ConnectorEndpointBuilder _endpointInformation_(List<TypedLiteral> _endpointInformation_) {
 		this.connectorEndpointImpl._endpointInformation = _endpointInformation_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for endpointDocumentation
+	* This function allows setting a value for _endpointDocumentation
 	* @param _endpointDocumentation_ desired value to be set
-	* @return Builder object with new value for endpointDocumentation
+	* @return Builder object with new value for _endpointDocumentation
 	*/
-	final public ConnectorEndpointBuilder _endpointDocumentation_(ArrayList<? extends URI> _endpointDocumentation_) {
+	final public ConnectorEndpointBuilder _endpointDocumentation_(List<URI> _endpointDocumentation_) {
 		this.connectorEndpointImpl._endpointDocumentation = _endpointDocumentation_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for accessURL
+	* This function allows setting a value for _accessURL
 	* @param _accessURL_ desired value to be set
-	* @return Builder object with new value for accessURL
+	* @return Builder object with new value for _accessURL
 	*/
 	final public ConnectorEndpointBuilder _accessURL_(URI _accessURL_) {
 		this.connectorEndpointImpl._accessURL = _accessURL_;
@@ -90,9 +91,9 @@ public class ConnectorEndpointBuilder {
 
 
 	/**
-	* This function allows setting a value for path
+	* This function allows setting a value for _path
 	* @param _path_ desired value to be set
-	* @return Builder object with new value for path
+	* @return Builder object with new value for _path
 	*/
 	final public ConnectorEndpointBuilder _path_(String _path_) {
 		this.connectorEndpointImpl._path = _path_;
@@ -101,9 +102,9 @@ public class ConnectorEndpointBuilder {
 
 
 	/**
-	* This function allows setting a value for inboundPath
+	* This function allows setting a value for _inboundPath
 	* @param _inboundPath_ desired value to be set
-	* @return Builder object with new value for inboundPath
+	* @return Builder object with new value for _inboundPath
 	*/
 	final public ConnectorEndpointBuilder _inboundPath_(String _inboundPath_) {
 		this.connectorEndpointImpl._inboundPath = _inboundPath_;
@@ -112,9 +113,9 @@ public class ConnectorEndpointBuilder {
 
 
 	/**
-	* This function allows setting a value for outboundPath
+	* This function allows setting a value for _outboundPath
 	* @param _outboundPath_ desired value to be set
-	* @return Builder object with new value for outboundPath
+	* @return Builder object with new value for _outboundPath
 	*/
 	final public ConnectorEndpointBuilder _outboundPath_(String _outboundPath_) {
 		this.connectorEndpointImpl._outboundPath = _outboundPath_;

@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -46,9 +47,9 @@ public class InstantBuilder {
 	}
 
 	/**
-	* This function allows setting a value for dateTime
+	* This function allows setting a value for _dateTime
 	* @param _dateTime_ desired value to be set
-	* @return Builder object with new value for dateTime
+	* @return Builder object with new value for _dateTime
 	*/
 	final public InstantBuilder _dateTime_(XMLGregorianCalendar _dateTime_) {
 		this.instantImpl._dateTime = _dateTime_;
@@ -57,9 +58,9 @@ public class InstantBuilder {
 
 
 	/**
-	* This function allows setting a value for hasDuration
+	* This function allows setting a value for _hasDuration
 	* @param _hasDuration_ desired value to be set
-	* @return Builder object with new value for hasDuration
+	* @return Builder object with new value for _hasDuration
 	*/
 	final public InstantBuilder _hasDuration_(javax.xml.datatype.Duration _hasDuration_) {
 		this.instantImpl._hasDuration = _hasDuration_;

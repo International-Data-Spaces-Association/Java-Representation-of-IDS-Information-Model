@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -47,9 +48,9 @@ public class DatRequestPayloadBuilder {
 
 
 	/**
-	* This function allows setting a value for aud
+	* This function allows setting a value for _aud
 	* @param _aud_ desired value to be set
-	* @return Builder object with new value for aud
+	* @return Builder object with new value for _aud
 	*/
 	final public DatRequestPayloadBuilder _aud_(Audience _aud_) {
 		this.datRequestPayloadImpl._aud = _aud_;
@@ -58,9 +59,9 @@ public class DatRequestPayloadBuilder {
 
 
 	/**
-	* This function allows setting a value for sub
+	* This function allows setting a value for _sub
 	* @param _sub_ desired value to be set
-	* @return Builder object with new value for sub
+	* @return Builder object with new value for _sub
 	*/
 	final public DatRequestPayloadBuilder _sub_(String _sub_) {
 		this.datRequestPayloadImpl._sub = _sub_;
@@ -69,9 +70,9 @@ public class DatRequestPayloadBuilder {
 
 
 	/**
-	* This function allows setting a value for nbf
+	* This function allows setting a value for _nbf
 	* @param _nbf_ desired value to be set
-	* @return Builder object with new value for nbf
+	* @return Builder object with new value for _nbf
 	*/
 	final public DatRequestPayloadBuilder _nbf_(BigInteger _nbf_) {
 		this.datRequestPayloadImpl._nbf = _nbf_;
@@ -80,9 +81,9 @@ public class DatRequestPayloadBuilder {
 
 
 	/**
-	* This function allows setting a value for exp
+	* This function allows setting a value for _exp
 	* @param _exp_ desired value to be set
-	* @return Builder object with new value for exp
+	* @return Builder object with new value for _exp
 	*/
 	final public DatRequestPayloadBuilder _exp_(BigInteger _exp_) {
 		this.datRequestPayloadImpl._exp = _exp_;
@@ -91,9 +92,9 @@ public class DatRequestPayloadBuilder {
 
 
 	/**
-	* This function allows setting a value for iat
+	* This function allows setting a value for _iat
 	* @param _iat_ desired value to be set
-	* @return Builder object with new value for iat
+	* @return Builder object with new value for _iat
 	*/
 	final public DatRequestPayloadBuilder _iat_(BigInteger _iat_) {
 		this.datRequestPayloadImpl._iat = _iat_;
@@ -102,9 +103,9 @@ public class DatRequestPayloadBuilder {
 
 
 	/**
-	* This function allows setting a value for scope
+	* This function allows setting a value for _scope
 	* @param _scope_ desired value to be set
-	* @return Builder object with new value for scope
+	* @return Builder object with new value for _scope
 	*/
 	final public DatRequestPayloadBuilder _scope_(String _scope_) {
 		this.datRequestPayloadImpl._scope = _scope_;
@@ -113,20 +114,20 @@ public class DatRequestPayloadBuilder {
 
 
 	/**
-	* This function allows setting a value for transportCertsSha256
+	* This function allows setting a value for _transportCertsSha256
 	* @param _transportCertsSha256_ desired value to be set
-	* @return Builder object with new value for transportCertsSha256
+	* @return Builder object with new value for _transportCertsSha256
 	*/
-	final public DatRequestPayloadBuilder _transportCertsSha256_(ArrayList<? extends String> _transportCertsSha256_) {
+	final public DatRequestPayloadBuilder _transportCertsSha256_(List<String> _transportCertsSha256_) {
 		this.datRequestPayloadImpl._transportCertsSha256 = _transportCertsSha256_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for referringConnector
+	* This function allows setting a value for _referringConnector
 	* @param _referringConnector_ desired value to be set
-	* @return Builder object with new value for referringConnector
+	* @return Builder object with new value for _referringConnector
 	*/
 	final public DatRequestPayloadBuilder _referringConnector_(URI _referringConnector_) {
 		this.datRequestPayloadImpl._referringConnector = _referringConnector_;
@@ -135,9 +136,9 @@ public class DatRequestPayloadBuilder {
 
 
 	/**
-	* This function allows setting a value for iss
+	* This function allows setting a value for _iss
 	* @param _iss_ desired value to be set
-	* @return Builder object with new value for iss
+	* @return Builder object with new value for _iss
 	*/
 	final public DatRequestPayloadBuilder _iss_(String _iss_) {
 		this.datRequestPayloadImpl._iss = _iss_;
@@ -146,9 +147,9 @@ public class DatRequestPayloadBuilder {
 
 
 	/**
-	* This function allows setting a value for securityProfile
+	* This function allows setting a value for _securityProfile
 	* @param _securityProfile_ desired value to be set
-	* @return Builder object with new value for securityProfile
+	* @return Builder object with new value for _securityProfile
 	*/
 	final public DatRequestPayloadBuilder _securityProfile_(SecurityProfile _securityProfile_) {
 		this.datRequestPayloadImpl._securityProfile = _securityProfile_;

@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -72,7 +73,7 @@ public class UsageControlObjectImpl implements Serializable, UsageControlObject 
 	* "The operation relating to the asset /  data object. "@en
 	*/
 	@JsonAlias({"ids:action", "action"})
-	protected ArrayList<? extends Action> _action;
+	protected List<Action> _action;
 
 
 	/**
@@ -81,7 +82,7 @@ public class UsageControlObjectImpl implements Serializable, UsageControlObject 
 	*/
 	@NotEmpty
 	@JsonAlias({"ids:contract", "contract"})
-	protected ArrayList<? extends ContractAgreement> _contract;
+	protected List<ContractAgreement> _contract;
 
 
 	/**
@@ -107,7 +108,7 @@ public class UsageControlObjectImpl implements Serializable, UsageControlObject 
 	* "The list of combined current states of the data object."@en
 	*/
 	@JsonAlias({"ids:hasState", "hasState"})
-	protected ArrayList<? extends ArtifactState> _hasState;
+	protected List<ArtifactState> _hasState;
 
 
 	/**
@@ -155,10 +156,6 @@ public class UsageControlObjectImpl implements Serializable, UsageControlObject 
 		id = VocabUtil.getInstance().createRandomUrl("usageControlObject");
 	}
 
-	/**
-	* This function retrieves the ID of the current object (can be set via the constructor of the builder class)
-	* @return ID of current object as URI
-	*/
 	@JsonProperty("@id")
 	final public URI getId() {
 		return id;
@@ -168,20 +165,10 @@ public class UsageControlObjectImpl implements Serializable, UsageControlObject 
 		return VocabUtil.getInstance().toRdf(this);
 	}
 
-	/**
-	* This function retrieves a human readable label about the current class, as defined in the ontology.
-	* This label could, for example, be used as a field heading in a user interface
-	* @return Human readable label
-	*/
 	public List<TypedLiteral> getLabel() {
 		return this.label;
 	}
 
-	/**
-	* This function retrieves a human readable explanatory comment about the current class, as defined in the ontology.
-	* This comment could, for example, be used as a tooltip in a user interface
-	* @return Human readable explanatory comment
-	*/
 	public List<TypedLiteral> getComment() {
 		return this.comment;
 	}
@@ -222,233 +209,149 @@ public class UsageControlObjectImpl implements Serializable, UsageControlObject 
 		if (property.startsWith("@")) {return ;};
 		this.properties.put(property, value) ;
 	}
+	public int hashCode() {
+		return Objects.hash(new Object[]{this._data,
+			this._contract,
+			this._hasState,
+			this._user,
+			this._source,
+			this._usageDuration,
+			this._accessed,
+			this._requester,
+			this._created,
+			this._modified,
+			this._action});
+	}
+
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		} else if (obj == null) {
+			return false;
+		} else if (this.getClass() != obj.getClass()) {
+			return false;
+		} else {
+			UsageControlObjectImpl other = (UsageControlObjectImpl) obj;
+			return Objects.equals(this._data, other._data) &&
+				Objects.equals(this._contract, other._contract) &&
+				Objects.equals(this._hasState, other._hasState) &&
+				Objects.equals(this._user, other._user) &&
+				Objects.equals(this._source, other._source) &&
+				Objects.equals(this._usageDuration, other._usageDuration) &&
+				Objects.equals(this._accessed, other._accessed) &&
+				Objects.equals(this._requester, other._requester) &&
+				Objects.equals(this._created, other._created) &&
+				Objects.equals(this._modified, other._modified) &&
+				Objects.equals(this._action, other._action);
+		}
+	}
+
 
 	// accessor method implementations as derived from the IDSA Information Model ontology
 
 
-	/**
-	* "The related data or a pointer/reference to it."@en
-	* @return Returns the URI for the property data.
-	* More information under https://w3id.org/idsa/core/data
-	*/
 	@NotNull
 	@JsonProperty("ids:data")
 	final public URI getData() {
 		return _data;
 	}
-
 	
-	/**
-	* "The related data or a pointer/reference to it."@en
-	* @param _data_ desired value for the property data.
-	* More information under https://w3id.org/idsa/core/data
-	*/
 	final public void setData (URI _data_) {
 		this._data = _data_;
 	}
 
-	/**
-	* "The target contract defining the usage of the data object."@en
-	* @return Returns the ArrayList of ContractAgreement for the property contract.
-	* More information under https://w3id.org/idsa/core/contract
-	*/
 	@NotEmpty
 	@JsonProperty("ids:contract")
-	final public ArrayList<? extends ContractAgreement> getContract() {
+	final public List<ContractAgreement> getContract() {
 		return _contract;
 	}
-
 	
-	/**
-	* "The target contract defining the usage of the data object."@en
-	* @param _contract_ desired value for the property contract.
-	* More information under https://w3id.org/idsa/core/contract
-	*/
-	final public void setContract (ArrayList<? extends ContractAgreement> _contract_) {
+	final public void setContract (List<ContractAgreement> _contract_) {
 		this._contract = _contract_;
 	}
 
-	/**
-	* "The list of combined current states of the data object."@en
-	* @return Returns the ArrayList of ArtifactState for the property hasState.
-	* More information under https://w3id.org/idsa/core/hasState
-	*/
 	@JsonProperty("ids:hasState")
-	final public ArrayList<? extends ArtifactState> getHasState() {
+	final public List<ArtifactState> getHasState() {
 		return _hasState;
 	}
-
 	
-	/**
-	* "The list of combined current states of the data object."@en
-	* @param _hasState_ desired value for the property hasState.
-	* More information under https://w3id.org/idsa/core/hasState
-	*/
-	final public void setHasState (ArrayList<? extends ArtifactState> _hasState_) {
+	final public void setHasState (List<ArtifactState> _hasState_) {
 		this._hasState = _hasState_;
 	}
 
-	/**
-	* "The participant intending to use the data."@en
-	* @return Returns the Participant for the property user.
-	* More information under https://w3id.org/idsa/core/user
-	*/
 	@JsonProperty("ids:user")
 	final public Participant getUser() {
 		return _user;
 	}
-
 	
-	/**
-	* "The participant intending to use the data."@en
-	* @param _user_ desired value for the property user.
-	* More information under https://w3id.org/idsa/core/user
-	*/
 	final public void setUser (Participant _user_) {
 		this._user = _user_;
 	}
 
-	/**
-	* "The application which provided the data object. Should be a valid URI. Must be unique in the regarded environment."@en
-	* @return Returns the URI for the property source.
-	* More information under https://w3id.org/idsa/core/source
-	*/
 	@JsonProperty("ids:source")
 	final public URI getSource() {
 		return _source;
 	}
-
 	
-	/**
-	* "The application which provided the data object. Should be a valid URI. Must be unique in the regarded environment."@en
-	* @param _source_ desired value for the property source.
-	* More information under https://w3id.org/idsa/core/source
-	*/
 	final public void setSource (URI _source_) {
 		this._source = _source_;
 	}
 
-	/**
-	* "Duration, which this asset is in use by now. Might be calculated on the fly when requested by a Usage Control Engine."@en
-	* @return Returns the javax.xml.datatype.Duration for the property usageDuration.
-	* More information under https://w3id.org/idsa/core/usageDuration
-	*/
 	@JsonProperty("ids:usageDuration")
 	final public javax.xml.datatype.Duration getUsageDuration() {
 		return _usageDuration;
 	}
-
 	
-	/**
-	* "Duration, which this asset is in use by now. Might be calculated on the fly when requested by a Usage Control Engine."@en
-	* @param _usageDuration_ desired value for the property usageDuration.
-	* More information under https://w3id.org/idsa/core/usageDuration
-	*/
 	final public void setUsageDuration (javax.xml.datatype.Duration _usageDuration_) {
 		this._usageDuration = _usageDuration_;
 	}
 
-	/**
-	* "Last read or write access."@en
-	* @return Returns the XMLGregorianCalendar for the property accessed.
-	* More information under https://w3id.org/idsa/core/accessed
-	*/
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
 	@JsonProperty("ids:accessed")
 	final public XMLGregorianCalendar getAccessed() {
 		return _accessed;
 	}
-
 	
-	/**
-	* "Last read or write access."@en
-	* @param _accessed_ desired value for the property accessed.
-	* More information under https://w3id.org/idsa/core/accessed
-	*/
 	final public void setAccessed (XMLGregorianCalendar _accessed_) {
 		this._accessed = _accessed_;
 	}
 
-	/**
-	* "\tThe target application requesting the usage. Should be some locally unique identifiers, preferably URIs."@en
-	* @return Returns the URI for the property requester.
-	* More information under https://w3id.org/idsa/core/requester
-	*/
 	@JsonProperty("ids:requester")
 	final public URI getRequester() {
 		return _requester;
 	}
-
 	
-	/**
-	* "\tThe target application requesting the usage. Should be some locally unique identifiers, preferably URIs."@en
-	* @param _requester_ desired value for the property requester.
-	* More information under https://w3id.org/idsa/core/requester
-	*/
 	final public void setRequester (URI _requester_) {
 		this._requester = _requester_;
 	}
 
-	/**
-	* "The date of the creation of the Digital Content. In contrast to the ids:temporalCoverage, creation dates of ids:Representation, ids:Artifacts or any other form of meta-data, this property describes the creation date of referenced Digital Content itself."@en
-	* @return Returns the XMLGregorianCalendar for the property created.
-	* More information under https://w3id.org/idsa/core/created
-	*/
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
 	@NotNull
 	@JsonProperty("ids:created")
 	final public XMLGregorianCalendar getCreated() {
 		return _created;
 	}
-
 	
-	/**
-	* "The date of the creation of the Digital Content. In contrast to the ids:temporalCoverage, creation dates of ids:Representation, ids:Artifacts or any other form of meta-data, this property describes the creation date of referenced Digital Content itself."@en
-	* @param _created_ desired value for the property created.
-	* More information under https://w3id.org/idsa/core/created
-	*/
 	final public void setCreated (XMLGregorianCalendar _created_) {
 		this._created = _created_;
 	}
 
-	/**
-	* "The date/time this Digital Content has been changed the last time. Only one \'modified\' attribute is usually needed."@en
-	* @return Returns the XMLGregorianCalendar for the property modified.
-	* More information under https://w3id.org/idsa/core/modified
-	*/
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
 	@JsonProperty("ids:modified")
 	final public XMLGregorianCalendar getModified() {
 		return _modified;
 	}
-
 	
-	/**
-	* "The date/time this Digital Content has been changed the last time. Only one \'modified\' attribute is usually needed."@en
-	* @param _modified_ desired value for the property modified.
-	* More information under https://w3id.org/idsa/core/modified
-	*/
 	final public void setModified (XMLGregorianCalendar _modified_) {
 		this._modified = _modified_;
 	}
 
-	/**
-	* "The operation relating to the asset /  data object. "@en
-	* @return Returns the ArrayList of Action for the property action.
-	* More information under https://w3id.org/idsa/core/action
-	*/
 	@JsonProperty("ids:action")
-	final public ArrayList<? extends Action> getAction() {
+	final public List<Action> getAction() {
 		return _action;
 	}
-
 	
-	/**
-	* "The operation relating to the asset /  data object. "@en
-	* @param _action_ desired value for the property action.
-	* More information under https://w3id.org/idsa/core/action
-	*/
-	final public void setAction (ArrayList<? extends Action> _action_) {
+	final public void setAction (List<Action> _action_) {
 		this._action = _action_;
 	}
 }

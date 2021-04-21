@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -64,7 +65,7 @@ public class ConnectorCatalogImpl implements Serializable, ConnectorCatalog {
 	* "A Connector that is part of a Connector catalog."@en
 	*/
 	@JsonAlias({"ids:listedConnector", "listedConnector"})
-	protected ArrayList<? extends Connector> _listedConnector;
+	protected List<Connector> _listedConnector;
 
 
 	// no manual construction
@@ -72,10 +73,6 @@ public class ConnectorCatalogImpl implements Serializable, ConnectorCatalog {
 		id = VocabUtil.getInstance().createRandomUrl("connectorCatalog");
 	}
 
-	/**
-	* This function retrieves the ID of the current object (can be set via the constructor of the builder class)
-	* @return ID of current object as URI
-	*/
 	@JsonProperty("@id")
 	final public URI getId() {
 		return id;
@@ -85,20 +82,10 @@ public class ConnectorCatalogImpl implements Serializable, ConnectorCatalog {
 		return VocabUtil.getInstance().toRdf(this);
 	}
 
-	/**
-	* This function retrieves a human readable label about the current class, as defined in the ontology.
-	* This label could, for example, be used as a field heading in a user interface
-	* @return Human readable label
-	*/
 	public List<TypedLiteral> getLabel() {
 		return this.label;
 	}
 
-	/**
-	* This function retrieves a human readable explanatory comment about the current class, as defined in the ontology.
-	* This comment could, for example, be used as a tooltip in a user interface
-	* @return Human readable explanatory comment
-	*/
 	public List<TypedLiteral> getComment() {
 		return this.comment;
 	}
@@ -139,27 +126,33 @@ public class ConnectorCatalogImpl implements Serializable, ConnectorCatalog {
 		if (property.startsWith("@")) {return ;};
 		this.properties.put(property, value) ;
 	}
+	public int hashCode() {
+		return Objects.hash(new Object[]{this._listedConnector});
+	}
+
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		} else if (obj == null) {
+			return false;
+		} else if (this.getClass() != obj.getClass()) {
+			return false;
+		} else {
+			ConnectorCatalogImpl other = (ConnectorCatalogImpl) obj;
+			return Objects.equals(this._listedConnector, other._listedConnector);
+		}
+	}
+
 
 	// accessor method implementations as derived from the IDSA Information Model ontology
 
 
-	/**
-	* "A Connector that is part of a Connector catalog."@en
-	* @return Returns the ArrayList of Connector for the property listedConnector.
-	* More information under https://w3id.org/idsa/core/listedConnector
-	*/
 	@JsonProperty("ids:listedConnector")
-	final public ArrayList<? extends Connector> getListedConnector() {
+	final public List<Connector> getListedConnector() {
 		return _listedConnector;
 	}
-
 	
-	/**
-	* "A Connector that is part of a Connector catalog."@en
-	* @param _listedConnector_ desired value for the property listedConnector.
-	* More information under https://w3id.org/idsa/core/listedConnector
-	*/
-	final public void setListedConnector (ArrayList<? extends Connector> _listedConnector_) {
+	final public void setListedConnector (List<Connector> _listedConnector_) {
 		this._listedConnector = _listedConnector_;
 	}
 

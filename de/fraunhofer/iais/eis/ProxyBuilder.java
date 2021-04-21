@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -46,20 +47,20 @@ public class ProxyBuilder {
 	}
 
 	/**
-	* This function allows setting a value for noProxy
+	* This function allows setting a value for _noProxy
 	* @param _noProxy_ desired value to be set
-	* @return Builder object with new value for noProxy
+	* @return Builder object with new value for _noProxy
 	*/
-	final public ProxyBuilder _noProxy_(ArrayList<? extends URI> _noProxy_) {
+	final public ProxyBuilder _noProxy_(List<URI> _noProxy_) {
 		this.proxyImpl._noProxy = _noProxy_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for proxyURI
+	* This function allows setting a value for _proxyURI
 	* @param _proxyURI_ desired value to be set
-	* @return Builder object with new value for proxyURI
+	* @return Builder object with new value for _proxyURI
 	*/
 	final public ProxyBuilder _proxyURI_(URI _proxyURI_) {
 		this.proxyImpl._proxyURI = _proxyURI_;
@@ -68,9 +69,9 @@ public class ProxyBuilder {
 
 
 	/**
-	* This function allows setting a value for proxyAuthentication
+	* This function allows setting a value for _proxyAuthentication
 	* @param _proxyAuthentication_ desired value to be set
-	* @return Builder object with new value for proxyAuthentication
+	* @return Builder object with new value for _proxyAuthentication
 	*/
 	final public ProxyBuilder _proxyAuthentication_(BasicAuthentication _proxyAuthentication_) {
 		this.proxyImpl._proxyAuthentication = _proxyAuthentication_;
