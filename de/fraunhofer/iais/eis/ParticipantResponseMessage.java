@@ -34,8 +34,8 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
-* "Participant Response Message"@en
-* "Message that follows up a ParticipantRequestMessage and contains the Participant\'s information in the payload section."@en
+* "Participant Response Message (Deprecated)"@en
+* "This class is deprecated. Use ids:DescriptionResponseMessage instead. ParticipantResponseMessage follows up a ParticipantRequestMessage and contains the Participant\'s information in the payload section."@en
 */
 @JsonTypeInfo(use=JsonTypeInfo.Id.NAME, property="@type")
 @JsonSubTypes({

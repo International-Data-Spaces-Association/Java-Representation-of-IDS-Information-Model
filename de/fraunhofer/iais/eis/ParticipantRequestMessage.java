@@ -34,8 +34,8 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
-* "Participant Request Message"@en
-* "Message asking for retrieving the specified Participants information as the payload of an ParticipantResponse message."@en
+* "Participant Request Message (Deprecated)"@en
+* "This class is deprecated. Use ids:DescriptionRequestMessage instead. Message asking for retrieving the specified Participants information as the payload of an ids:ParticipantResponse message."@en
 */
 @JsonTypeInfo(use=JsonTypeInfo.Id.NAME, property="@type")
 @JsonSubTypes({
@@ -90,7 +90,7 @@ public interface ParticipantRequestMessage extends RequestMessage {
 
 
 	/**
-	* "References a Participant in the context of a request."@en
+	* "This property is deprecated. Use ids:requestedElement along with ids:DescriptionRequestMessage instead. References a Participant in the context of a request."@en
 	* @return Returns the URI for the property _requestedParticipant.
 	* More information under https://w3id.org/idsa/core/requestedParticipant
 	*/

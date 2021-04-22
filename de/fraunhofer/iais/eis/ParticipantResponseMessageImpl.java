@@ -34,8 +34,8 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /** 
-* "Participant Response Message"@en
-* "Message that follows up a ParticipantRequestMessage and contains the Participant\'s information in the payload section."@en 
+* "Participant Response Message (Deprecated)"@en
+* "This class is deprecated. Use ids:DescriptionResponseMessage instead. ParticipantResponseMessage follows up a ParticipantRequestMessage and contains the Participant\'s information in the payload section."@en 
 */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeName("ids:ParticipantResponseMessage")
@@ -48,11 +48,11 @@ public class ParticipantResponseMessageImpl implements Serializable, Participant
 
 	//List of all labels of this class
 	@JsonIgnore
-	protected List<TypedLiteral> label = Arrays.asList(new TypedLiteral("Participant Response Message", "en"));
+	protected List<TypedLiteral> label = Arrays.asList(new TypedLiteral("Participant Response Message (Deprecated)", "en"));
 
 	//List of all comments of this class
 	@JsonIgnore
-	protected List<TypedLiteral> comment = Arrays.asList(new TypedLiteral("Message that follows up a ParticipantRequestMessage and contains the Participant's information in the payload section.", "en"));
+	protected List<TypedLiteral> comment = Arrays.asList(new TypedLiteral("This class is deprecated. Use ids:DescriptionResponseMessage instead. ParticipantResponseMessage follows up a ParticipantRequestMessage and contains the Participant's information in the payload section.", "en"));
 
 	// all classes have a generic property array
 	@JsonIgnore

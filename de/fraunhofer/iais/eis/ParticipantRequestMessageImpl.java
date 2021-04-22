@@ -34,8 +34,8 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /** 
-* "Participant Request Message"@en
-* "Message asking for retrieving the specified Participants information as the payload of an ParticipantResponse message."@en 
+* "Participant Request Message (Deprecated)"@en
+* "This class is deprecated. Use ids:DescriptionRequestMessage instead. Message asking for retrieving the specified Participants information as the payload of an ids:ParticipantResponse message."@en 
 */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeName("ids:ParticipantRequestMessage")
@@ -48,11 +48,11 @@ public class ParticipantRequestMessageImpl implements Serializable, ParticipantR
 
 	//List of all labels of this class
 	@JsonIgnore
-	protected List<TypedLiteral> label = Arrays.asList(new TypedLiteral("Participant Request Message", "en"));
+	protected List<TypedLiteral> label = Arrays.asList(new TypedLiteral("Participant Request Message (Deprecated)", "en"));
 
 	//List of all comments of this class
 	@JsonIgnore
-	protected List<TypedLiteral> comment = Arrays.asList(new TypedLiteral("Message asking for retrieving the specified Participants information as the payload of an ParticipantResponse message.", "en"));
+	protected List<TypedLiteral> comment = Arrays.asList(new TypedLiteral("This class is deprecated. Use ids:DescriptionRequestMessage instead. Message asking for retrieving the specified Participants information as the payload of an ids:ParticipantResponse message.", "en"));
 
 	// all classes have a generic property array
 	@JsonIgnore
@@ -128,8 +128,8 @@ public class ParticipantRequestMessageImpl implements Serializable, ParticipantR
 
 
 	/**
-	* "Requested Participant"@en
-	* "References a Participant in the context of a request."@en
+	* "Requested Participant (Deprecated)"@en
+	* "This property is deprecated. Use ids:requestedElement along with ids:DescriptionRequestMessage instead. References a Participant in the context of a request."@en
 	*/
 	@NotNull
 	@JsonAlias({"ids:requestedParticipant", "requestedParticipant"})
