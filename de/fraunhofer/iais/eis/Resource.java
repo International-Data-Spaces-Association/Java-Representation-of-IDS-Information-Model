@@ -113,7 +113,7 @@ public interface Resource extends Asset, DigitalContent, DescribedSemantically, 
 	public URI getCustomLicense();
 
 	/**
-	* "Reference to the Endpoints serving the resource\'s content or let you exchange messages with an IDS Connector."@en
+	* "Reference to the Endpoints that serve the resource\'s content or let you exchange messages with an IDS Connector."@en
 	* @return Returns the List of ConnectorEndpoints for the property _resourceEndpoint.
 	* More information under https://w3id.org/idsa/core/resourceEndpoint
 	*/

@@ -151,11 +151,19 @@ public class ConfigurationModelImpl implements Serializable, ConfigurationModel 
 
 
 	/**
+	* "key store alias"@en
+	* "alias for the key store."@en
+	*/
+	@JsonAlias({"ids:keyStoreAlias", "keyStoreAlias"})
+	protected String _keyStoreAlias;
+
+
+	/**
 	* "key store password"@en
 	* "Password of the key store server."@en
 	*/
 	@JsonAlias({"ids:keyStorePassword", "keyStorePassword"})
-	protected List<String> _keyStorePassword;
+	protected String _keyStorePassword;
 
 
 	/**
@@ -167,11 +175,19 @@ public class ConfigurationModelImpl implements Serializable, ConfigurationModel 
 
 
 	/**
+	* "trust store alias"@en
+	* "alias for the trust store."@en
+	*/
+	@JsonAlias({"ids:trustStoreAlias", "trustStoreAlias"})
+	protected String _trustStoreAlias;
+
+
+	/**
 	* "trust store password"@en
 	* "Password of the trust store server."@en
 	*/
 	@JsonAlias({"ids:trustStorePassword", "trustStorePassword"})
-	protected List<String> _trustStorePassword;
+	protected String _trustStorePassword;
 
 
 	/**
@@ -249,8 +265,10 @@ public class ConfigurationModelImpl implements Serializable, ConfigurationModel 
 			this._appRoute,
 			this._connectorDescription,
 			this._trustStore,
+			this._trustStoreAlias,
 			this._trustStorePassword,
 			this._keyStore,
+			this._keyStoreAlias,
 			this._keyStorePassword,
 			this._configuredBroker,
 			this._configuredAppStore,
@@ -275,8 +293,10 @@ public class ConfigurationModelImpl implements Serializable, ConfigurationModel 
 				Objects.equals(this._appRoute, other._appRoute) &&
 				Objects.equals(this._connectorDescription, other._connectorDescription) &&
 				Objects.equals(this._trustStore, other._trustStore) &&
+				Objects.equals(this._trustStoreAlias, other._trustStoreAlias) &&
 				Objects.equals(this._trustStorePassword, other._trustStorePassword) &&
 				Objects.equals(this._keyStore, other._keyStore) &&
+				Objects.equals(this._keyStoreAlias, other._keyStoreAlias) &&
 				Objects.equals(this._keyStorePassword, other._keyStorePassword) &&
 				Objects.equals(this._configuredBroker, other._configuredBroker) &&
 				Objects.equals(this._configuredAppStore, other._configuredAppStore) &&
@@ -364,12 +384,21 @@ public class ConfigurationModelImpl implements Serializable, ConfigurationModel 
 		this._trustStore = _trustStore_;
 	}
 
+	@JsonProperty("ids:trustStoreAlias")
+	final public String getTrustStoreAlias() {
+		return _trustStoreAlias;
+	}
+	
+	final public void setTrustStoreAlias (String _trustStoreAlias_) {
+		this._trustStoreAlias = _trustStoreAlias_;
+	}
+
 	@JsonProperty("ids:trustStorePassword")
-	final public List<String> getTrustStorePassword() {
+	final public String getTrustStorePassword() {
 		return _trustStorePassword;
 	}
 	
-	final public void setTrustStorePassword (List<String> _trustStorePassword_) {
+	final public void setTrustStorePassword (String _trustStorePassword_) {
 		this._trustStorePassword = _trustStorePassword_;
 	}
 
@@ -382,12 +411,21 @@ public class ConfigurationModelImpl implements Serializable, ConfigurationModel 
 		this._keyStore = _keyStore_;
 	}
 
+	@JsonProperty("ids:keyStoreAlias")
+	final public String getKeyStoreAlias() {
+		return _keyStoreAlias;
+	}
+	
+	final public void setKeyStoreAlias (String _keyStoreAlias_) {
+		this._keyStoreAlias = _keyStoreAlias_;
+	}
+
 	@JsonProperty("ids:keyStorePassword")
-	final public List<String> getKeyStorePassword() {
+	final public String getKeyStorePassword() {
 		return _keyStorePassword;
 	}
 	
-	final public void setKeyStorePassword (List<String> _keyStorePassword_) {
+	final public void setKeyStorePassword (String _keyStorePassword_) {
 		this._keyStorePassword = _keyStorePassword_;
 	}
 

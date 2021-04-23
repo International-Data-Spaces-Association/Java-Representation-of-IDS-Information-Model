@@ -41,9 +41,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonSubTypes({
 	@JsonSubTypes.Type(value = Broker.class),
 	@JsonSubTypes.Type(value = AppStore.class),
+	@JsonSubTypes.Type(value = ParIS.class),
 	@JsonSubTypes.Type(value = BaseConnector.class),
-	@JsonSubTypes.Type(value = TrustedConnector.class),
-	@JsonSubTypes.Type(value = ParIS.class)
+	@JsonSubTypes.Type(value = TrustedConnector.class)
 })
 public interface Connector extends InfrastructureComponent {
 
@@ -94,7 +94,7 @@ public interface Connector extends InfrastructureComponent {
 
 
 	/**
-	* "Reference to the Endpoints serving the resource\'s content or let you exchange messages with an IDS Connector."@en
+	* "Reference to the Endpoints that serve the resource\'s content or let you exchange messages with an IDS Connector."@en
 	* @return Returns the List of ConnectorEndpoints for the property _hasEndpoint.
 	* More information under https://w3id.org/idsa/core/hasEndpoint
 	*/

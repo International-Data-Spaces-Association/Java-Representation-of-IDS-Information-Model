@@ -135,11 +135,22 @@ public class ConfigurationModelBuilder {
 
 
 	/**
+	* This function allows setting a value for _trustStoreAlias
+	* @param _trustStoreAlias_ desired value to be set
+	* @return Builder object with new value for _trustStoreAlias
+	*/
+	final public ConfigurationModelBuilder _trustStoreAlias_(String _trustStoreAlias_) {
+		this.configurationModelImpl._trustStoreAlias = _trustStoreAlias_;
+		return this;
+	}
+
+
+	/**
 	* This function allows setting a value for _trustStorePassword
 	* @param _trustStorePassword_ desired value to be set
 	* @return Builder object with new value for _trustStorePassword
 	*/
-	final public ConfigurationModelBuilder _trustStorePassword_(List<String> _trustStorePassword_) {
+	final public ConfigurationModelBuilder _trustStorePassword_(String _trustStorePassword_) {
 		this.configurationModelImpl._trustStorePassword = _trustStorePassword_;
 		return this;
 	}
@@ -157,11 +168,22 @@ public class ConfigurationModelBuilder {
 
 
 	/**
+	* This function allows setting a value for _keyStoreAlias
+	* @param _keyStoreAlias_ desired value to be set
+	* @return Builder object with new value for _keyStoreAlias
+	*/
+	final public ConfigurationModelBuilder _keyStoreAlias_(String _keyStoreAlias_) {
+		this.configurationModelImpl._keyStoreAlias = _keyStoreAlias_;
+		return this;
+	}
+
+
+	/**
 	* This function allows setting a value for _keyStorePassword
 	* @param _keyStorePassword_ desired value to be set
 	* @return Builder object with new value for _keyStorePassword
 	*/
-	final public ConfigurationModelBuilder _keyStorePassword_(List<String> _keyStorePassword_) {
+	final public ConfigurationModelBuilder _keyStorePassword_(String _keyStorePassword_) {
 		this.configurationModelImpl._keyStorePassword = _keyStorePassword_;
 		return this;
 	}

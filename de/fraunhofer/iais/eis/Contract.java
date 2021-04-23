@@ -39,8 +39,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 */
 @JsonTypeInfo(use=JsonTypeInfo.Id.NAME, property="@type")
 @JsonSubTypes({
-	@JsonSubTypes.Type(value = ContractOffer.class),
 	@JsonSubTypes.Type(value = ContractAgreement.class),
+	@JsonSubTypes.Type(value = ContractOffer.class),
 	@JsonSubTypes.Type(value = ContractRequest.class)
 })
 public interface Contract {

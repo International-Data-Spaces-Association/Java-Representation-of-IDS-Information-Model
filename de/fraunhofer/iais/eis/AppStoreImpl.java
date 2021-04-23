@@ -120,7 +120,7 @@ public class AppStoreImpl implements Serializable, AppStore {
 
 	/**
 	* "has endpoint"@en
-	* "Reference to the Endpoints serving the resource\'s content or let you exchange messages with an IDS Connector."@en
+	* "Reference to the Endpoints that serve the resource\'s content or let you exchange messages with an IDS Connector."@en
 	*/
 	@JsonAlias({"ids:hasEndpoint", "hasEndpoint"})
 	protected List<ConnectorEndpoint> _hasEndpoint;

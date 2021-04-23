@@ -174,7 +174,7 @@ public class ImageResourceImpl implements Serializable, ImageResource {
 
 	/**
 	* "resource endpoint"@en
-	* "Reference to the Endpoints serving the resource\'s content or let you exchange messages with an IDS Connector."@en
+	* "Reference to the Endpoints that serve the resource\'s content or let you exchange messages with an IDS Connector."@en
 	*/
 	@JsonAlias({"ids:resourceEndpoint", "resourceEndpoint"})
 	protected List<ConnectorEndpoint> _resourceEndpoint;

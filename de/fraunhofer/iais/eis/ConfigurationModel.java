@@ -156,12 +156,20 @@ public interface ConfigurationModel {
 	public URI getTrustStore();
 
 	/**
+	* "alias for the trust store."@en
+	* @return Returns the String for the property _trustStoreAlias.
+	* More information under https://w3id.org/idsa/core/trustStoreAlias
+	*/
+	@JsonProperty("ids:trustStoreAlias")
+	public String getTrustStoreAlias();
+
+	/**
 	* "Password of the trust store server."@en
-	* @return Returns the List of Strings for the property _trustStorePassword.
+	* @return Returns the String for the property _trustStorePassword.
 	* More information under https://w3id.org/idsa/core/trustStorePassword
 	*/
 	@JsonProperty("ids:trustStorePassword")
-	public List<String> getTrustStorePassword();
+	public String getTrustStorePassword();
 
 	/**
 	* "URI of the key store server."@en
@@ -172,12 +180,20 @@ public interface ConfigurationModel {
 	public URI getKeyStore();
 
 	/**
+	* "alias for the key store."@en
+	* @return Returns the String for the property _keyStoreAlias.
+	* More information under https://w3id.org/idsa/core/keyStoreAlias
+	*/
+	@JsonProperty("ids:keyStoreAlias")
+	public String getKeyStoreAlias();
+
+	/**
 	* "Password of the key store server."@en
-	* @return Returns the List of Strings for the property _keyStorePassword.
+	* @return Returns the String for the property _keyStorePassword.
 	* More information under https://w3id.org/idsa/core/keyStorePassword
 	*/
 	@JsonProperty("ids:keyStorePassword")
-	public List<String> getKeyStorePassword();
+	public String getKeyStorePassword();
 
 	/**
 	* "Catalog of Brokers to which the ids:Connector that we are configuring (cf. ids:connectorDescription) may want to talk."@en
