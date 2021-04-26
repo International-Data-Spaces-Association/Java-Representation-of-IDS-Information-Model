@@ -48,39 +48,6 @@ public class ContractOfferBuilder {
 
 
 	/**
-	* This function allows setting a value for _permission
-	* @param _permission_ desired value to be set
-	* @return Builder object with new value for _permission
-	*/
-	final public ContractOfferBuilder _permission_(List<Permission> _permission_) {
-		this.contractOfferImpl._permission = _permission_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _prohibition
-	* @param _prohibition_ desired value to be set
-	* @return Builder object with new value for _prohibition
-	*/
-	final public ContractOfferBuilder _prohibition_(List<Prohibition> _prohibition_) {
-		this.contractOfferImpl._prohibition = _prohibition_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _obligation
-	* @param _obligation_ desired value to be set
-	* @return Builder object with new value for _obligation
-	*/
-	final public ContractOfferBuilder _obligation_(List<Duty> _obligation_) {
-		this.contractOfferImpl._obligation = _obligation_;
-		return this;
-	}
-
-
-	/**
 	* This function allows setting a value for _contractStart
 	* @param _contractStart_ desired value to be set
 	* @return Builder object with new value for _contractStart
@@ -153,6 +120,39 @@ public class ContractOfferBuilder {
 	*/
 	final public ContractOfferBuilder _contractAnnex_(Resource _contractAnnex_) {
 		this.contractOfferImpl._contractAnnex = _contractAnnex_;
+		return this;
+	}
+
+
+	/**
+	* This function allows setting a value for _permission
+	* @param _permission_ desired value to be set
+	* @return Builder object with new value for _permission
+	*/
+	final public ContractOfferBuilder _permission_(List<Permission> _permission_) {
+		this.contractOfferImpl._permission = _permission_;
+		return this;
+	}
+
+
+	/**
+	* This function allows setting a value for _prohibition
+	* @param _prohibition_ desired value to be set
+	* @return Builder object with new value for _prohibition
+	*/
+	final public ContractOfferBuilder _prohibition_(List<Prohibition> _prohibition_) {
+		this.contractOfferImpl._prohibition = _prohibition_;
+		return this;
+	}
+
+
+	/**
+	* This function allows setting a value for _obligation
+	* @param _obligation_ desired value to be set
+	* @return Builder object with new value for _obligation
+	*/
+	final public ContractOfferBuilder _obligation_(List<Duty> _obligation_) {
+		this.contractOfferImpl._obligation = _obligation_;
 		return this;
 	}
 

@@ -90,6 +90,14 @@ public interface ConfigurationModel {
 
 
 	/**
+	* "authentication methods allowed in a Configuration Model"@en
+	* @return Returns the List of UserAuthentications for the property _userAuthentication.
+	* More information under https://w3id.org/idsa/core/userAuthentication
+	*/
+	@JsonProperty("ids:userAuthentication")
+	public List<UserAuthentication> getUserAuthentication();
+
+	/**
 	* "Log level configuration for a Connector which is deployed using the Configuration Model"@en
 	* @return Returns the LogLevel for the property _configurationModelLogLevel.
 	* More information under https://w3id.org/idsa/core/configurationModelLogLevel
@@ -117,12 +125,12 @@ public interface ConfigurationModel {
 	public ConnectorDeployMode getConnectorDeployMode();
 
 	/**
-	* "authentication methods allowed in a Configuration Model"@en
-	* @return Returns the List of UserAuthentications for the property _userAuthentication.
-	* More information under https://w3id.org/idsa/core/userAuthentication
+	* "References to Connector which is deployed / maintained in the Configuration Model"@en
+	* @return Returns the Connector for the property _connectorDescription.
+	* More information under https://w3id.org/idsa/core/connectorDescription
 	*/
-	@JsonProperty("ids:userAuthentication")
-	public List<UserAuthentication> getUserAuthentication();
+	@JsonProperty("ids:connectorDescription")
+	public Connector getConnectorDescription();
 
 	/**
 	* "Proxies for a Connector which is deployed using the Configuration Model"@en
@@ -131,21 +139,6 @@ public interface ConfigurationModel {
 	*/
 	@JsonProperty("ids:connectorProxy")
 	public List<Proxy> getConnectorProxy();
-
-	/**
-	* @return Returns the List of AppRoutes for the property _appRoute.
-	* More information under https://w3id.org/idsa/core/appRoute
-	*/
-	@JsonProperty("ids:appRoute")
-	public List<AppRoute> getAppRoute();
-
-	/**
-	* "References to Connector which is deployed / maintained in the Configuration Model"@en
-	* @return Returns the Connector for the property _connectorDescription.
-	* More information under https://w3id.org/idsa/core/connectorDescription
-	*/
-	@JsonProperty("ids:connectorDescription")
-	public Connector getConnectorDescription();
 
 	/**
 	* "URI of the trust store server."@en
@@ -202,6 +195,13 @@ public interface ConfigurationModel {
 	*/
 	@JsonProperty("ids:configuredBroker")
 	public BrokerCatalog getConfiguredBroker();
+
+	/**
+	* @return Returns the List of AppRoutes for the property _appRoute.
+	* More information under https://w3id.org/idsa/core/appRoute
+	*/
+	@JsonProperty("ids:appRoute")
+	public List<AppRoute> getAppRoute();
 
 	/**
 	* "One or more app stores to which the ids:Connector that we are configuring (cf. ids:connectorDescription) may want to talk, e.g. to retrieve apps from them."@en

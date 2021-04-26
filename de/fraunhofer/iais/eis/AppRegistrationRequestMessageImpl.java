@@ -223,12 +223,12 @@ public class AppRegistrationRequestMessageImpl implements Serializable, AppRegis
 		return Objects.hash(new Object[]{this._affectedDataApp,
 			this._modelVersion,
 			this._issued,
+			this._correlationMessage,
 			this._issuerConnector,
 			this._recipientConnector,
-			this._securityToken,
 			this._senderAgent,
 			this._recipientAgent,
-			this._correlationMessage,
+			this._securityToken,
 			this._authorizationToken,
 			this._transferContract,
 			this._contentVersion});
@@ -246,12 +246,12 @@ public class AppRegistrationRequestMessageImpl implements Serializable, AppRegis
 			return Objects.equals(this._affectedDataApp, other._affectedDataApp) &&
 				Objects.equals(this._modelVersion, other._modelVersion) &&
 				Objects.equals(this._issued, other._issued) &&
+				Objects.equals(this._correlationMessage, other._correlationMessage) &&
 				Objects.equals(this._issuerConnector, other._issuerConnector) &&
 				Objects.equals(this._recipientConnector, other._recipientConnector) &&
-				Objects.equals(this._securityToken, other._securityToken) &&
 				Objects.equals(this._senderAgent, other._senderAgent) &&
 				Objects.equals(this._recipientAgent, other._recipientAgent) &&
-				Objects.equals(this._correlationMessage, other._correlationMessage) &&
+				Objects.equals(this._securityToken, other._securityToken) &&
 				Objects.equals(this._authorizationToken, other._authorizationToken) &&
 				Objects.equals(this._transferContract, other._transferContract) &&
 				Objects.equals(this._contentVersion, other._contentVersion);
@@ -293,6 +293,15 @@ public class AppRegistrationRequestMessageImpl implements Serializable, AppRegis
 		this._issued = _issued_;
 	}
 
+	@JsonProperty("ids:correlationMessage")
+	final public URI getCorrelationMessage() {
+		return _correlationMessage;
+	}
+	
+	final public void setCorrelationMessage (URI _correlationMessage_) {
+		this._correlationMessage = _correlationMessage_;
+	}
+
 	@NotNull
 	@JsonProperty("ids:issuerConnector")
 	final public URI getIssuerConnector() {
@@ -310,16 +319,6 @@ public class AppRegistrationRequestMessageImpl implements Serializable, AppRegis
 	
 	final public void setRecipientConnector (List<URI> _recipientConnector_) {
 		this._recipientConnector = _recipientConnector_;
-	}
-
-	@NotNull
-	@JsonProperty("ids:securityToken")
-	final public DynamicAttributeToken getSecurityToken() {
-		return _securityToken;
-	}
-	
-	final public void setSecurityToken (DynamicAttributeToken _securityToken_) {
-		this._securityToken = _securityToken_;
 	}
 
 	@NotNull
@@ -341,13 +340,14 @@ public class AppRegistrationRequestMessageImpl implements Serializable, AppRegis
 		this._recipientAgent = _recipientAgent_;
 	}
 
-	@JsonProperty("ids:correlationMessage")
-	final public URI getCorrelationMessage() {
-		return _correlationMessage;
+	@NotNull
+	@JsonProperty("ids:securityToken")
+	final public DynamicAttributeToken getSecurityToken() {
+		return _securityToken;
 	}
 	
-	final public void setCorrelationMessage (URI _correlationMessage_) {
-		this._correlationMessage = _correlationMessage_;
+	final public void setSecurityToken (DynamicAttributeToken _securityToken_) {
+		this._securityToken = _securityToken_;
 	}
 
 	@JsonProperty("ids:authorizationToken")

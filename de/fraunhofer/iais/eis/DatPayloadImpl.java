@@ -218,15 +218,15 @@ public class DatPayloadImpl implements Serializable, DatPayload {
 	}
 	public int hashCode() {
 		return Objects.hash(new Object[]{this._extendedGuarantee,
+			this._transportCertsSha256,
 			this._aud,
-			this._sub,
-			this._nbf,
 			this._exp,
 			this._iat,
-			this._scope,
-			this._transportCertsSha256,
-			this._referringConnector,
 			this._iss,
+			this._nbf,
+			this._referringConnector,
+			this._scope,
+			this._sub,
 			this._securityProfile});
 	}
 
@@ -240,15 +240,15 @@ public class DatPayloadImpl implements Serializable, DatPayload {
 		} else {
 			DatPayloadImpl other = (DatPayloadImpl) obj;
 			return Objects.equals(this._extendedGuarantee, other._extendedGuarantee) &&
+				Objects.equals(this._transportCertsSha256, other._transportCertsSha256) &&
 				Objects.equals(this._aud, other._aud) &&
-				Objects.equals(this._sub, other._sub) &&
-				Objects.equals(this._nbf, other._nbf) &&
 				Objects.equals(this._exp, other._exp) &&
 				Objects.equals(this._iat, other._iat) &&
-				Objects.equals(this._scope, other._scope) &&
-				Objects.equals(this._transportCertsSha256, other._transportCertsSha256) &&
-				Objects.equals(this._referringConnector, other._referringConnector) &&
 				Objects.equals(this._iss, other._iss) &&
+				Objects.equals(this._nbf, other._nbf) &&
+				Objects.equals(this._referringConnector, other._referringConnector) &&
+				Objects.equals(this._scope, other._scope) &&
+				Objects.equals(this._sub, other._sub) &&
 				Objects.equals(this._securityProfile, other._securityProfile);
 		}
 	}
@@ -266,6 +266,16 @@ public class DatPayloadImpl implements Serializable, DatPayload {
 		this._extendedGuarantee = _extendedGuarantee_;
 	}
 
+	@NotEmpty
+	@JsonProperty("ids:transportCertsSha256")
+	final public List<String> getTransportCertsSha256() {
+		return _transportCertsSha256;
+	}
+	
+	final public void setTransportCertsSha256 (List<String> _transportCertsSha256_) {
+		this._transportCertsSha256 = _transportCertsSha256_;
+	}
+
 	@NotNull
 	@JsonProperty("ids:aud")
 	final public Audience getAud() {
@@ -274,26 +284,6 @@ public class DatPayloadImpl implements Serializable, DatPayload {
 	
 	final public void setAud (Audience _aud_) {
 		this._aud = _aud_;
-	}
-
-	@NotNull
-	@JsonProperty("ids:sub")
-	final public String getSub() {
-		return _sub;
-	}
-	
-	final public void setSub (String _sub_) {
-		this._sub = _sub_;
-	}
-
-	@NotNull
-	@JsonProperty("ids:nbf")
-	final public BigInteger getNbf() {
-		return _nbf;
-	}
-	
-	final public void setNbf (BigInteger _nbf_) {
-		this._nbf = _nbf_;
 	}
 
 	@NotNull
@@ -317,23 +307,23 @@ public class DatPayloadImpl implements Serializable, DatPayload {
 	}
 
 	@NotNull
-	@JsonProperty("ids:scope")
-	final public String getScope() {
-		return _scope;
+	@JsonProperty("ids:iss")
+	final public String getIss() {
+		return _iss;
 	}
 	
-	final public void setScope (String _scope_) {
-		this._scope = _scope_;
+	final public void setIss (String _iss_) {
+		this._iss = _iss_;
 	}
 
-	@NotEmpty
-	@JsonProperty("ids:transportCertsSha256")
-	final public List<String> getTransportCertsSha256() {
-		return _transportCertsSha256;
+	@NotNull
+	@JsonProperty("ids:nbf")
+	final public BigInteger getNbf() {
+		return _nbf;
 	}
 	
-	final public void setTransportCertsSha256 (List<String> _transportCertsSha256_) {
-		this._transportCertsSha256 = _transportCertsSha256_;
+	final public void setNbf (BigInteger _nbf_) {
+		this._nbf = _nbf_;
 	}
 
 	@NotNull
@@ -347,13 +337,23 @@ public class DatPayloadImpl implements Serializable, DatPayload {
 	}
 
 	@NotNull
-	@JsonProperty("ids:iss")
-	final public String getIss() {
-		return _iss;
+	@JsonProperty("ids:scope")
+	final public String getScope() {
+		return _scope;
 	}
 	
-	final public void setIss (String _iss_) {
-		this._iss = _iss_;
+	final public void setScope (String _scope_) {
+		this._scope = _scope_;
+	}
+
+	@NotNull
+	@JsonProperty("ids:sub")
+	final public String getSub() {
+		return _sub;
+	}
+	
+	final public void setSub (String _sub_) {
+		this._sub = _sub_;
 	}
 
 	@NotNull

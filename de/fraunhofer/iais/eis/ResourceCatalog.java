@@ -90,19 +90,19 @@ public interface ResourceCatalog extends Catalog {
 
 
 	/**
-	* "A Resource that is part of a resource catalog, indicating a request (of, e.g., data, software,...)."@en
-	* @return Returns the List of Resources for the property _requestedResource.
-	* More information under https://w3id.org/idsa/core/requestedResource
-	*/
-	@JsonProperty("ids:requestedResource")
-	public List<Resource> getRequestedResource();
-
-	/**
 	* "A Resource that is part of a resource catalog, indicating an offering (of, e.g., data)."@en
 	* @return Returns the List of Resources for the property _offeredResource.
 	* More information under https://w3id.org/idsa/core/offeredResource
 	*/
 	@JsonProperty("ids:offeredResource")
 	public List<Resource> getOfferedResource();
+
+	/**
+	* "A Resource that is part of a resource catalog, indicating a request (of, e.g., data, software,...)."@en
+	* @return Returns the List of Resources for the property _requestedResource.
+	* More information under https://w3id.org/idsa/core/requestedResource
+	*/
+	@JsonProperty("ids:requestedResource")
+	public List<Resource> getRequestedResource();
 
 }

@@ -113,14 +113,6 @@ public interface Resource extends Asset, DigitalContent, DescribedSemantically, 
 	public URI getCustomLicense();
 
 	/**
-	* "Reference to the Endpoints that serve the resource\'s content or let you exchange messages with an IDS Connector."@en
-	* @return Returns the List of ConnectorEndpoints for the property _resourceEndpoint.
-	* More information under https://w3id.org/idsa/core/resourceEndpoint
-	*/
-	@JsonProperty("ids:resourceEndpoint")
-	public List<ConnectorEndpoint> getResourceEndpoint();
-
-	/**
 	* "Reference to a Resource (physically or logically) included, definition of part-whole hierarchies."@en
 	* @return Returns the List of Resources for the property _resourcePart.
 	* More information under https://w3id.org/idsa/core/resourcePart
@@ -129,20 +121,20 @@ public interface Resource extends Asset, DigitalContent, DescribedSemantically, 
 	public List<Resource> getResourcePart();
 
 	/**
+	* "Reference to the Endpoints that serve the resource\'s content or let you exchange messages with an IDS Connector."@en
+	* @return Returns the List of ConnectorEndpoints for the property _resourceEndpoint.
+	* More information under https://w3id.org/idsa/core/resourceEndpoint
+	*/
+	@JsonProperty("ids:resourceEndpoint")
+	public List<ConnectorEndpoint> getResourceEndpoint();
+
+	/**
 	* "Reference to a Contract Offer defining the authorized use of the Resource."@en
 	* @return Returns the List of ContractOffers for the property _contractOffer.
 	* More information under https://w3id.org/idsa/core/contractOffer
 	*/
 	@JsonProperty("ids:contractOffer")
 	public List<ContractOffer> getContractOffer();
-
-	/**
-	* "Sample Resource instance."@en
-	* @return Returns the List of Resources for the property _sample.
-	* More information under https://w3id.org/idsa/core/sample
-	*/
-	@JsonProperty("ids:sample")
-	public List<Resource> getSample();
 
 	/**
 	* "The publisher of the resource (which may differ from the sovereign)."@en
@@ -159,6 +151,14 @@ public interface Resource extends Asset, DigitalContent, DescribedSemantically, 
 	*/
 	@JsonProperty("ids:sovereign")
 	public URI getSovereign();
+
+	/**
+	* "Sample Resource instance."@en
+	* @return Returns the List of Resources for the property _sample.
+	* More information under https://w3id.org/idsa/core/sample
+	*/
+	@JsonProperty("ids:sample")
+	public List<Resource> getSample();
 
 	/**
 	* "(Equivalent) variant of given Resource, e.g. a translation."@en

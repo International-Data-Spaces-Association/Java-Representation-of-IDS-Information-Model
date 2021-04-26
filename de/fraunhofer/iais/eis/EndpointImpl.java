@@ -167,9 +167,9 @@ public class EndpointImpl implements Serializable, Endpoint {
 		this.properties.put(property, value) ;
 	}
 	public int hashCode() {
-		return Objects.hash(new Object[]{this._endpointInformation,
+		return Objects.hash(new Object[]{this._accessURL,
+			this._endpointInformation,
 			this._endpointDocumentation,
-			this._accessURL,
 			this._path,
 			this._inboundPath,
 			this._outboundPath});
@@ -184,9 +184,9 @@ public class EndpointImpl implements Serializable, Endpoint {
 			return false;
 		} else {
 			EndpointImpl other = (EndpointImpl) obj;
-			return Objects.equals(this._endpointInformation, other._endpointInformation) &&
+			return Objects.equals(this._accessURL, other._accessURL) &&
+				Objects.equals(this._endpointInformation, other._endpointInformation) &&
 				Objects.equals(this._endpointDocumentation, other._endpointDocumentation) &&
-				Objects.equals(this._accessURL, other._accessURL) &&
 				Objects.equals(this._path, other._path) &&
 				Objects.equals(this._inboundPath, other._inboundPath) &&
 				Objects.equals(this._outboundPath, other._outboundPath);
@@ -196,6 +196,15 @@ public class EndpointImpl implements Serializable, Endpoint {
 
 	// accessor method implementations as derived from the IDSA Information Model ontology
 
+
+	@JsonProperty("ids:accessURL")
+	final public URI getAccessURL() {
+		return _accessURL;
+	}
+	
+	final public void setAccessURL (URI _accessURL_) {
+		this._accessURL = _accessURL_;
+	}
 
 	@JsonProperty("ids:endpointInformation")
 	final public List<TypedLiteral> getEndpointInformation() {
@@ -213,15 +222,6 @@ public class EndpointImpl implements Serializable, Endpoint {
 	
 	final public void setEndpointDocumentation (List<URI> _endpointDocumentation_) {
 		this._endpointDocumentation = _endpointDocumentation_;
-	}
-
-	@JsonProperty("ids:accessURL")
-	final public URI getAccessURL() {
-		return _accessURL;
-	}
-	
-	final public void setAccessURL (URI _accessURL_) {
-		this._accessURL = _accessURL_;
 	}
 
 	@JsonProperty("ids:path")

@@ -90,22 +90,6 @@ public interface Person {
 
 
 	/**
-	* "Phone number of a person."@en
-	* @return Returns the List of Strings for the property _phoneNumber.
-	* More information under https://w3id.org/idsa/core/phoneNumber
-	*/
-	@JsonProperty("ids:phoneNumber")
-	public List<String> getPhoneNumber();
-
-	/**
-	* "Email contact of a person."@en
-	* @return Returns the List of Strings for the property _emailAddress.
-	* More information under https://w3id.org/idsa/core/emailAddress
-	*/
-	@JsonProperty("ids:emailAddress")
-	public List<String> getEmailAddress();
-
-	/**
 	* "Family name of a Person."@en
 	* @return Returns the String for the property _familyName.
 	* More information under https://w3id.org/idsa/core/familyName
@@ -120,6 +104,22 @@ public interface Person {
 	*/
 	@JsonProperty("ids:givenName")
 	public String getGivenName();
+
+	/**
+	* "Phone number of a person."@en
+	* @return Returns the List of Strings for the property _phoneNumber.
+	* More information under https://w3id.org/idsa/core/phoneNumber
+	*/
+	@JsonProperty("ids:phoneNumber")
+	public List<String> getPhoneNumber();
+
+	/**
+	* "Email contact of a person."@en
+	* @return Returns the List of Strings for the property _emailAddress.
+	* More information under https://w3id.org/idsa/core/emailAddress
+	*/
+	@JsonProperty("ids:emailAddress")
+	public List<String> getEmailAddress();
 
 	/**
 	* "Website providing additional information about a person."@en

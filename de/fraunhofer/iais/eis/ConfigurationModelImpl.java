@@ -257,13 +257,12 @@ public class ConfigurationModelImpl implements Serializable, ConfigurationModel 
 		this.properties.put(property, value) ;
 	}
 	public int hashCode() {
-		return Objects.hash(new Object[]{this._configurationModelLogLevel,
+		return Objects.hash(new Object[]{this._userAuthentication,
+			this._configurationModelLogLevel,
 			this._connectorStatus,
 			this._connectorDeployMode,
-			this._userAuthentication,
-			this._connectorProxy,
-			this._appRoute,
 			this._connectorDescription,
+			this._connectorProxy,
 			this._trustStore,
 			this._trustStoreAlias,
 			this._trustStorePassword,
@@ -271,6 +270,7 @@ public class ConfigurationModelImpl implements Serializable, ConfigurationModel 
 			this._keyStoreAlias,
 			this._keyStorePassword,
 			this._configuredBroker,
+			this._appRoute,
 			this._configuredAppStore,
 			this._configuredAppResource,
 			this._configuredClearingHouse});
@@ -285,13 +285,12 @@ public class ConfigurationModelImpl implements Serializable, ConfigurationModel 
 			return false;
 		} else {
 			ConfigurationModelImpl other = (ConfigurationModelImpl) obj;
-			return Objects.equals(this._configurationModelLogLevel, other._configurationModelLogLevel) &&
+			return Objects.equals(this._userAuthentication, other._userAuthentication) &&
+				Objects.equals(this._configurationModelLogLevel, other._configurationModelLogLevel) &&
 				Objects.equals(this._connectorStatus, other._connectorStatus) &&
 				Objects.equals(this._connectorDeployMode, other._connectorDeployMode) &&
-				Objects.equals(this._userAuthentication, other._userAuthentication) &&
-				Objects.equals(this._connectorProxy, other._connectorProxy) &&
-				Objects.equals(this._appRoute, other._appRoute) &&
 				Objects.equals(this._connectorDescription, other._connectorDescription) &&
+				Objects.equals(this._connectorProxy, other._connectorProxy) &&
 				Objects.equals(this._trustStore, other._trustStore) &&
 				Objects.equals(this._trustStoreAlias, other._trustStoreAlias) &&
 				Objects.equals(this._trustStorePassword, other._trustStorePassword) &&
@@ -299,6 +298,7 @@ public class ConfigurationModelImpl implements Serializable, ConfigurationModel 
 				Objects.equals(this._keyStoreAlias, other._keyStoreAlias) &&
 				Objects.equals(this._keyStorePassword, other._keyStorePassword) &&
 				Objects.equals(this._configuredBroker, other._configuredBroker) &&
+				Objects.equals(this._appRoute, other._appRoute) &&
 				Objects.equals(this._configuredAppStore, other._configuredAppStore) &&
 				Objects.equals(this._configuredAppResource, other._configuredAppResource) &&
 				Objects.equals(this._configuredClearingHouse, other._configuredClearingHouse);
@@ -308,6 +308,15 @@ public class ConfigurationModelImpl implements Serializable, ConfigurationModel 
 
 	// accessor method implementations as derived from the IDSA Information Model ontology
 
+
+	@JsonProperty("ids:userAuthentication")
+	final public List<UserAuthentication> getUserAuthentication() {
+		return _userAuthentication;
+	}
+	
+	final public void setUserAuthentication (List<UserAuthentication> _userAuthentication_) {
+		this._userAuthentication = _userAuthentication_;
+	}
 
 	@NotNull
 	@JsonProperty("ids:configurationModelLogLevel")
@@ -339,13 +348,13 @@ public class ConfigurationModelImpl implements Serializable, ConfigurationModel 
 		this._connectorDeployMode = _connectorDeployMode_;
 	}
 
-	@JsonProperty("ids:userAuthentication")
-	final public List<UserAuthentication> getUserAuthentication() {
-		return _userAuthentication;
+	@JsonProperty("ids:connectorDescription")
+	final public Connector getConnectorDescription() {
+		return _connectorDescription;
 	}
 	
-	final public void setUserAuthentication (List<UserAuthentication> _userAuthentication_) {
-		this._userAuthentication = _userAuthentication_;
+	final public void setConnectorDescription (Connector _connectorDescription_) {
+		this._connectorDescription = _connectorDescription_;
 	}
 
 	@JsonProperty("ids:connectorProxy")
@@ -355,24 +364,6 @@ public class ConfigurationModelImpl implements Serializable, ConfigurationModel 
 	
 	final public void setConnectorProxy (List<Proxy> _connectorProxy_) {
 		this._connectorProxy = _connectorProxy_;
-	}
-
-	@JsonProperty("ids:appRoute")
-	final public List<AppRoute> getAppRoute() {
-		return _appRoute;
-	}
-	
-	final public void setAppRoute (List<AppRoute> _appRoute_) {
-		this._appRoute = _appRoute_;
-	}
-
-	@JsonProperty("ids:connectorDescription")
-	final public Connector getConnectorDescription() {
-		return _connectorDescription;
-	}
-	
-	final public void setConnectorDescription (Connector _connectorDescription_) {
-		this._connectorDescription = _connectorDescription_;
 	}
 
 	@JsonProperty("ids:trustStore")
@@ -436,6 +427,15 @@ public class ConfigurationModelImpl implements Serializable, ConfigurationModel 
 	
 	final public void setConfiguredBroker (BrokerCatalog _configuredBroker_) {
 		this._configuredBroker = _configuredBroker_;
+	}
+
+	@JsonProperty("ids:appRoute")
+	final public List<AppRoute> getAppRoute() {
+		return _appRoute;
+	}
+	
+	final public void setAppRoute (List<AppRoute> _appRoute_) {
+		this._appRoute = _appRoute_;
 	}
 
 	@JsonProperty("ids:configuredAppStore")

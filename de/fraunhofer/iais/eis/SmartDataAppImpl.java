@@ -160,11 +160,11 @@ public class SmartDataAppImpl implements Serializable, SmartDataApp {
 		this.properties.put(property, value) ;
 	}
 	public int hashCode() {
-		return Objects.hash(new Object[]{this._appEndpoint,
-			this._supportedUsagePolicies,
-			this._appDocumentation,
+		return Objects.hash(new Object[]{this._appDocumentation,
+			this._appEndpoint,
 			this._appEnvironmentVariables,
-			this._appStorageConfiguration});
+			this._appStorageConfiguration,
+			this._supportedUsagePolicies});
 	}
 
 	public boolean equals(Object obj) {
@@ -176,11 +176,11 @@ public class SmartDataAppImpl implements Serializable, SmartDataApp {
 			return false;
 		} else {
 			SmartDataAppImpl other = (SmartDataAppImpl) obj;
-			return Objects.equals(this._appEndpoint, other._appEndpoint) &&
-				Objects.equals(this._supportedUsagePolicies, other._supportedUsagePolicies) &&
-				Objects.equals(this._appDocumentation, other._appDocumentation) &&
+			return Objects.equals(this._appDocumentation, other._appDocumentation) &&
+				Objects.equals(this._appEndpoint, other._appEndpoint) &&
 				Objects.equals(this._appEnvironmentVariables, other._appEnvironmentVariables) &&
-				Objects.equals(this._appStorageConfiguration, other._appStorageConfiguration);
+				Objects.equals(this._appStorageConfiguration, other._appStorageConfiguration) &&
+				Objects.equals(this._supportedUsagePolicies, other._supportedUsagePolicies);
 		}
 	}
 
@@ -188,6 +188,15 @@ public class SmartDataAppImpl implements Serializable, SmartDataApp {
 	// accessor method implementations as derived from the IDSA Information Model ontology
 
 
+
+	@JsonProperty("ids:appDocumentation")
+	final public String getAppDocumentation() {
+		return _appDocumentation;
+	}
+	
+	final public void setAppDocumentation (String _appDocumentation_) {
+		this._appDocumentation = _appDocumentation_;
+	}
 
 	@NotEmpty
 	@JsonProperty("ids:appEndpoint")
@@ -197,24 +206,6 @@ public class SmartDataAppImpl implements Serializable, SmartDataApp {
 	
 	final public void setAppEndpoint (List<AppEndpoint> _appEndpoint_) {
 		this._appEndpoint = _appEndpoint_;
-	}
-
-	@JsonProperty("ids:supportedUsagePolicies")
-	final public List<UsagePolicyClass> getSupportedUsagePolicies() {
-		return _supportedUsagePolicies;
-	}
-	
-	final public void setSupportedUsagePolicies (List<UsagePolicyClass> _supportedUsagePolicies_) {
-		this._supportedUsagePolicies = _supportedUsagePolicies_;
-	}
-
-	@JsonProperty("ids:appDocumentation")
-	final public String getAppDocumentation() {
-		return _appDocumentation;
-	}
-	
-	final public void setAppDocumentation (String _appDocumentation_) {
-		this._appDocumentation = _appDocumentation_;
 	}
 
 	@JsonProperty("ids:appEnvironmentVariables")
@@ -233,5 +224,14 @@ public class SmartDataAppImpl implements Serializable, SmartDataApp {
 	
 	final public void setAppStorageConfiguration (String _appStorageConfiguration_) {
 		this._appStorageConfiguration = _appStorageConfiguration_;
+	}
+
+	@JsonProperty("ids:supportedUsagePolicies")
+	final public List<UsagePolicyClass> getSupportedUsagePolicies() {
+		return _supportedUsagePolicies;
+	}
+	
+	final public void setSupportedUsagePolicies (List<UsagePolicyClass> _supportedUsagePolicies_) {
+		this._supportedUsagePolicies = _supportedUsagePolicies_;
 	}
 }

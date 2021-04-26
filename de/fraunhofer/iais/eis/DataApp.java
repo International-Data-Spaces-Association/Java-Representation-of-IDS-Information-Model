@@ -92,6 +92,14 @@ public interface DataApp {
 
 
 	/**
+	* "text documentation of the data app"@en
+	* @return Returns the String for the property _appDocumentation.
+	* More information under https://w3id.org/idsa/core/appDocumentation
+	*/
+	@JsonProperty("ids:appDocumentation")
+	public String getAppDocumentation();
+
+	/**
 	* "Endpoints of a data app"@en
 	* @return Returns the List of AppEndpoints for the property _appEndpoint.
 	* More information under https://w3id.org/idsa/core/appEndpoint
@@ -99,22 +107,6 @@ public interface DataApp {
 	@NotEmpty
 	@JsonProperty("ids:appEndpoint")
 	public List<AppEndpoint> getAppEndpoint();
-
-	/**
-	* "IDS Usage Policies a DataApp supports"@en
-	* @return Returns the List of UsagePolicyClasss for the property _supportedUsagePolicies.
-	* More information under https://w3id.org/idsa/core/supportedUsagePolicies
-	*/
-	@JsonProperty("ids:supportedUsagePolicies")
-	public List<UsagePolicyClass> getSupportedUsagePolicies();
-
-	/**
-	* "text documentation of the data app"@en
-	* @return Returns the String for the property _appDocumentation.
-	* More information under https://w3id.org/idsa/core/appDocumentation
-	*/
-	@JsonProperty("ids:appDocumentation")
-	public String getAppDocumentation();
 
 	/**
 	* "Necessary or optional environment variables of a data app."@en
@@ -131,5 +123,13 @@ public interface DataApp {
 	*/
 	@JsonProperty("ids:appStorageConfiguration")
 	public String getAppStorageConfiguration();
+
+	/**
+	* "IDS Usage Policies a DataApp supports"@en
+	* @return Returns the List of UsagePolicyClasss for the property _supportedUsagePolicies.
+	* More information under https://w3id.org/idsa/core/supportedUsagePolicies
+	*/
+	@JsonProperty("ids:supportedUsagePolicies")
+	public List<UsagePolicyClass> getSupportedUsagePolicies();
 
 }

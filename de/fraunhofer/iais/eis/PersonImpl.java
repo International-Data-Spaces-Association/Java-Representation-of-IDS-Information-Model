@@ -159,10 +159,10 @@ public class PersonImpl implements Serializable, Person {
 		this.properties.put(property, value) ;
 	}
 	public int hashCode() {
-		return Objects.hash(new Object[]{this._phoneNumber,
-			this._emailAddress,
-			this._familyName,
+		return Objects.hash(new Object[]{this._familyName,
 			this._givenName,
+			this._phoneNumber,
+			this._emailAddress,
 			this._homepage});
 	}
 
@@ -175,10 +175,10 @@ public class PersonImpl implements Serializable, Person {
 			return false;
 		} else {
 			PersonImpl other = (PersonImpl) obj;
-			return Objects.equals(this._phoneNumber, other._phoneNumber) &&
-				Objects.equals(this._emailAddress, other._emailAddress) &&
-				Objects.equals(this._familyName, other._familyName) &&
+			return Objects.equals(this._familyName, other._familyName) &&
 				Objects.equals(this._givenName, other._givenName) &&
+				Objects.equals(this._phoneNumber, other._phoneNumber) &&
+				Objects.equals(this._emailAddress, other._emailAddress) &&
 				Objects.equals(this._homepage, other._homepage);
 		}
 	}
@@ -186,24 +186,6 @@ public class PersonImpl implements Serializable, Person {
 
 	// accessor method implementations as derived from the IDSA Information Model ontology
 
-
-	@JsonProperty("ids:phoneNumber")
-	final public List<String> getPhoneNumber() {
-		return _phoneNumber;
-	}
-	
-	final public void setPhoneNumber (List<String> _phoneNumber_) {
-		this._phoneNumber = _phoneNumber_;
-	}
-
-	@JsonProperty("ids:emailAddress")
-	final public List<String> getEmailAddress() {
-		return _emailAddress;
-	}
-	
-	final public void setEmailAddress (List<String> _emailAddress_) {
-		this._emailAddress = _emailAddress_;
-	}
 
 	@JsonProperty("ids:familyName")
 	final public String getFamilyName() {
@@ -221,6 +203,24 @@ public class PersonImpl implements Serializable, Person {
 	
 	final public void setGivenName (String _givenName_) {
 		this._givenName = _givenName_;
+	}
+
+	@JsonProperty("ids:phoneNumber")
+	final public List<String> getPhoneNumber() {
+		return _phoneNumber;
+	}
+	
+	final public void setPhoneNumber (List<String> _phoneNumber_) {
+		this._phoneNumber = _phoneNumber_;
+	}
+
+	@JsonProperty("ids:emailAddress")
+	final public List<String> getEmailAddress() {
+		return _emailAddress;
+	}
+	
+	final public void setEmailAddress (List<String> _emailAddress_) {
+		this._emailAddress = _emailAddress_;
 	}
 
 	@JsonProperty("ids:homepage")

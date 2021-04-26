@@ -135,8 +135,8 @@ public class ResourceCatalogImpl implements Serializable, ResourceCatalog {
 		this.properties.put(property, value) ;
 	}
 	public int hashCode() {
-		return Objects.hash(new Object[]{this._requestedResource,
-			this._offeredResource});
+		return Objects.hash(new Object[]{this._offeredResource,
+			this._requestedResource});
 	}
 
 	public boolean equals(Object obj) {
@@ -148,23 +148,14 @@ public class ResourceCatalogImpl implements Serializable, ResourceCatalog {
 			return false;
 		} else {
 			ResourceCatalogImpl other = (ResourceCatalogImpl) obj;
-			return Objects.equals(this._requestedResource, other._requestedResource) &&
-				Objects.equals(this._offeredResource, other._offeredResource);
+			return Objects.equals(this._offeredResource, other._offeredResource) &&
+				Objects.equals(this._requestedResource, other._requestedResource);
 		}
 	}
 
 
 	// accessor method implementations as derived from the IDSA Information Model ontology
 
-
-	@JsonProperty("ids:requestedResource")
-	final public List<Resource> getRequestedResource() {
-		return _requestedResource;
-	}
-	
-	final public void setRequestedResource (List<Resource> _requestedResource_) {
-		this._requestedResource = _requestedResource_;
-	}
 
 	@JsonProperty("ids:offeredResource")
 	final public List<Resource> getOfferedResource() {
@@ -173,6 +164,15 @@ public class ResourceCatalogImpl implements Serializable, ResourceCatalog {
 	
 	final public void setOfferedResource (List<Resource> _offeredResource_) {
 		this._offeredResource = _offeredResource_;
+	}
+
+	@JsonProperty("ids:requestedResource")
+	final public List<Resource> getRequestedResource() {
+		return _requestedResource;
+	}
+	
+	final public void setRequestedResource (List<Resource> _requestedResource_) {
+		this._requestedResource = _requestedResource_;
 	}
 
 

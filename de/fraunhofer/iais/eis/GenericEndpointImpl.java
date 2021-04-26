@@ -185,9 +185,9 @@ public class GenericEndpointImpl implements Serializable, GenericEndpoint {
 	public int hashCode() {
 		return Objects.hash(new Object[]{this._genericEndpointAuthentication,
 			this._genericEndpointConfiguration,
+			this._accessURL,
 			this._endpointInformation,
 			this._endpointDocumentation,
-			this._accessURL,
 			this._path,
 			this._inboundPath,
 			this._outboundPath});
@@ -204,9 +204,9 @@ public class GenericEndpointImpl implements Serializable, GenericEndpoint {
 			GenericEndpointImpl other = (GenericEndpointImpl) obj;
 			return Objects.equals(this._genericEndpointAuthentication, other._genericEndpointAuthentication) &&
 				Objects.equals(this._genericEndpointConfiguration, other._genericEndpointConfiguration) &&
+				Objects.equals(this._accessURL, other._accessURL) &&
 				Objects.equals(this._endpointInformation, other._endpointInformation) &&
 				Objects.equals(this._endpointDocumentation, other._endpointDocumentation) &&
-				Objects.equals(this._accessURL, other._accessURL) &&
 				Objects.equals(this._path, other._path) &&
 				Objects.equals(this._inboundPath, other._inboundPath) &&
 				Objects.equals(this._outboundPath, other._outboundPath);
@@ -235,6 +235,15 @@ public class GenericEndpointImpl implements Serializable, GenericEndpoint {
 		this._genericEndpointConfiguration = _genericEndpointConfiguration_;
 	}
 
+	@JsonProperty("ids:accessURL")
+	final public URI getAccessURL() {
+		return _accessURL;
+	}
+	
+	final public void setAccessURL (URI _accessURL_) {
+		this._accessURL = _accessURL_;
+	}
+
 	@JsonProperty("ids:endpointInformation")
 	final public List<TypedLiteral> getEndpointInformation() {
 		return _endpointInformation;
@@ -251,15 +260,6 @@ public class GenericEndpointImpl implements Serializable, GenericEndpoint {
 	
 	final public void setEndpointDocumentation (List<URI> _endpointDocumentation_) {
 		this._endpointDocumentation = _endpointDocumentation_;
-	}
-
-	@JsonProperty("ids:accessURL")
-	final public URI getAccessURL() {
-		return _accessURL;
-	}
-	
-	final public void setAccessURL (URI _accessURL_) {
-		this._accessURL = _accessURL_;
 	}
 
 	@JsonProperty("ids:path")

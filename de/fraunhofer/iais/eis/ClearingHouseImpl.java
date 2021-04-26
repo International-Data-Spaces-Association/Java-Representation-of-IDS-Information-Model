@@ -205,9 +205,9 @@ public class ClearingHouseImpl implements Serializable, ClearingHouse {
 	public int hashCode() {
 		return Objects.hash(new Object[]{this._maintainer,
 			this._curator,
+			this._physicalLocation,
 			this._inboundModelVersion,
 			this._outboundModelVersion,
-			this._physicalLocation,
 			this._componentCertification,
 			this._publicKey,
 			this._version,
@@ -226,9 +226,9 @@ public class ClearingHouseImpl implements Serializable, ClearingHouse {
 			ClearingHouseImpl other = (ClearingHouseImpl) obj;
 			return Objects.equals(this._maintainer, other._maintainer) &&
 				Objects.equals(this._curator, other._curator) &&
+				Objects.equals(this._physicalLocation, other._physicalLocation) &&
 				Objects.equals(this._inboundModelVersion, other._inboundModelVersion) &&
 				Objects.equals(this._outboundModelVersion, other._outboundModelVersion) &&
-				Objects.equals(this._physicalLocation, other._physicalLocation) &&
 				Objects.equals(this._componentCertification, other._componentCertification) &&
 				Objects.equals(this._publicKey, other._publicKey) &&
 				Objects.equals(this._version, other._version) &&
@@ -262,6 +262,15 @@ public class ClearingHouseImpl implements Serializable, ClearingHouse {
 		this._curator = _curator_;
 	}
 
+	@JsonProperty("ids:physicalLocation")
+	final public Location getPhysicalLocation() {
+		return _physicalLocation;
+	}
+	
+	final public void setPhysicalLocation (Location _physicalLocation_) {
+		this._physicalLocation = _physicalLocation_;
+	}
+
 	@NotEmpty
 	@JsonProperty("ids:inboundModelVersion")
 	final public List<String> getInboundModelVersion() {
@@ -280,15 +289,6 @@ public class ClearingHouseImpl implements Serializable, ClearingHouse {
 	
 	final public void setOutboundModelVersion (String _outboundModelVersion_) {
 		this._outboundModelVersion = _outboundModelVersion_;
-	}
-
-	@JsonProperty("ids:physicalLocation")
-	final public Location getPhysicalLocation() {
-		return _physicalLocation;
-	}
-	
-	final public void setPhysicalLocation (Location _physicalLocation_) {
-		this._physicalLocation = _physicalLocation_;
 	}
 
 	@JsonProperty("ids:componentCertification")

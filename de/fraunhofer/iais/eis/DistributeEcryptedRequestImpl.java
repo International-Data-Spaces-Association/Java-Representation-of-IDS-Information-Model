@@ -199,16 +199,16 @@ public class DistributeEcryptedRequestImpl implements Serializable, DistributeEc
 		this.properties.put(property, value) ;
 	}
 	public int hashCode() {
-		return Objects.hash(new Object[]{this._permission,
-			this._prohibition,
-			this._obligation,
-			this._contractStart,
+		return Objects.hash(new Object[]{this._contractStart,
 			this._contractEnd,
 			this._contractDate,
 			this._provider,
 			this._consumer,
 			this._contractDocument,
-			this._contractAnnex});
+			this._contractAnnex,
+			this._permission,
+			this._prohibition,
+			this._obligation});
 	}
 
 	public boolean equals(Object obj) {
@@ -220,16 +220,16 @@ public class DistributeEcryptedRequestImpl implements Serializable, DistributeEc
 			return false;
 		} else {
 			DistributeEcryptedRequestImpl other = (DistributeEcryptedRequestImpl) obj;
-			return Objects.equals(this._permission, other._permission) &&
-				Objects.equals(this._prohibition, other._prohibition) &&
-				Objects.equals(this._obligation, other._obligation) &&
-				Objects.equals(this._contractStart, other._contractStart) &&
+			return Objects.equals(this._contractStart, other._contractStart) &&
 				Objects.equals(this._contractEnd, other._contractEnd) &&
 				Objects.equals(this._contractDate, other._contractDate) &&
 				Objects.equals(this._provider, other._provider) &&
 				Objects.equals(this._consumer, other._consumer) &&
 				Objects.equals(this._contractDocument, other._contractDocument) &&
-				Objects.equals(this._contractAnnex, other._contractAnnex);
+				Objects.equals(this._contractAnnex, other._contractAnnex) &&
+				Objects.equals(this._permission, other._permission) &&
+				Objects.equals(this._prohibition, other._prohibition) &&
+				Objects.equals(this._obligation, other._obligation);
 		}
 	}
 
@@ -238,33 +238,6 @@ public class DistributeEcryptedRequestImpl implements Serializable, DistributeEc
 
 
 
-
-	@JsonProperty("ids:permission")
-	final public List<Permission> getPermission() {
-		return _permission;
-	}
-	
-	final public void setPermission (List<Permission> _permission_) {
-		this._permission = _permission_;
-	}
-
-	@JsonProperty("ids:prohibition")
-	final public List<Prohibition> getProhibition() {
-		return _prohibition;
-	}
-	
-	final public void setProhibition (List<Prohibition> _prohibition_) {
-		this._prohibition = _prohibition_;
-	}
-
-	@JsonProperty("ids:obligation")
-	final public List<Duty> getObligation() {
-		return _obligation;
-	}
-	
-	final public void setObligation (List<Duty> _obligation_) {
-		this._obligation = _obligation_;
-	}
 
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
 	@JsonProperty("ids:contractStart")
@@ -330,6 +303,33 @@ public class DistributeEcryptedRequestImpl implements Serializable, DistributeEc
 	
 	final public void setContractAnnex (Resource _contractAnnex_) {
 		this._contractAnnex = _contractAnnex_;
+	}
+
+	@JsonProperty("ids:permission")
+	final public List<Permission> getPermission() {
+		return _permission;
+	}
+	
+	final public void setPermission (List<Permission> _permission_) {
+		this._permission = _permission_;
+	}
+
+	@JsonProperty("ids:prohibition")
+	final public List<Prohibition> getProhibition() {
+		return _prohibition;
+	}
+	
+	final public void setProhibition (List<Prohibition> _prohibition_) {
+		this._prohibition = _prohibition_;
+	}
+
+	@JsonProperty("ids:obligation")
+	final public List<Duty> getObligation() {
+		return _obligation;
+	}
+	
+	final public void setObligation (List<Duty> _obligation_) {
+		this._obligation = _obligation_;
 	}
 
 

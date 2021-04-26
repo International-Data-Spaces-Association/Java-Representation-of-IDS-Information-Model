@@ -91,6 +91,15 @@ public interface JwtPayload {
 
 
 	/**
+	* "Separate certificates for IDS identification and transport encryption opens an attack vector for relay attacks. In order to prevent these attacks, a binding of this transport certificates to the connector is required. The inclusion of SHA256 fingerprints of currently valid transport certificates, mainly into the DAT, enables the client to relate the transport layer security with the IDS interactions."@en
+	* @return Returns the List of Strings for the property _transportCertsSha256.
+	* More information under https://w3id.org/idsa/core/transportCertsSha256
+	*/
+	@NotEmpty
+	@JsonProperty("ids:transportCertsSha256")
+	public List<String> getTransportCertsSha256();
+
+	/**
 	* "The \'aud\' (audience) claim identifies the recipients that the JWT is intended for."@en
 	* @return Returns the Audience for the property _aud.
 	* More information under https://w3id.org/idsa/core/aud
@@ -98,24 +107,6 @@ public interface JwtPayload {
 	@NotNull
 	@JsonProperty("ids:aud")
 	public Audience getAud();
-
-	/**
-	* "The \'sub\' (subject) claim identifies the principal that is the subject of the JWT."@en
-	* @return Returns the String for the property _sub.
-	* More information under https://w3id.org/idsa/core/sub
-	*/
-	@NotNull
-	@JsonProperty("ids:sub")
-	public String getSub();
-
-	/**
-	* "The \'aud\' (audience) claim identifies the recipients that the JWT is intended for."@en
-	* @return Returns the BigInteger for the property _nbf.
-	* More information under https://w3id.org/idsa/core/nbf
-	*/
-	@NotNull
-	@JsonProperty("ids:nbf")
-	public BigInteger getNbf();
 
 	/**
 	* "The \'exp\' (expiration time) claim identifies the expiration time on or after which the JWT MUST NOT be accepted for processing."@en
@@ -136,22 +127,21 @@ public interface JwtPayload {
 	public BigInteger getIat();
 
 	/**
-	* "Currently, the scope is limited to \'Connector\' but can be used for scoping purposes in the future. Scope is currently fixed to \'https://w3id.org/idsa/core/Connector\'."@en
-	* @return Returns the String for the property _scope.
-	* More information under https://w3id.org/idsa/core/scope
+	* "The \'iss\' (issuer) claim identifies the principal that issued the JWT."@en
+	* @return Returns the String for the property _iss.
+	* More information under https://w3id.org/idsa/core/iss
 	*/
-	@NotNull
-	@JsonProperty("ids:scope")
-	public String getScope();
+	@JsonProperty("ids:iss")
+	public String getIss();
 
 	/**
-	* "Separate certificates for IDS identification and transport encryption opens an attack vector for relay attacks. In order to prevent these attacks, a binding of this transport certificates to the connector is required. The inclusion of SHA256 fingerprints of currently valid transport certificates, mainly into the DAT, enables the client to relate the transport layer security with the IDS interactions."@en
-	* @return Returns the List of Strings for the property _transportCertsSha256.
-	* More information under https://w3id.org/idsa/core/transportCertsSha256
+	* "The \'aud\' (audience) claim identifies the recipients that the JWT is intended for."@en
+	* @return Returns the BigInteger for the property _nbf.
+	* More information under https://w3id.org/idsa/core/nbf
 	*/
-	@NotEmpty
-	@JsonProperty("ids:transportCertsSha256")
-	public List<String> getTransportCertsSha256();
+	@NotNull
+	@JsonProperty("ids:nbf")
+	public BigInteger getNbf();
 
 	/**
 	* "The RDF connector entity as referred to by the DAT, with its URI included as the value. The value MUST be its accessible URI."@en
@@ -162,12 +152,22 @@ public interface JwtPayload {
 	public URI getReferringConnector();
 
 	/**
-	* "The \'iss\' (issuer) claim identifies the principal that issued the JWT."@en
-	* @return Returns the String for the property _iss.
-	* More information under https://w3id.org/idsa/core/iss
+	* "Currently, the scope is limited to \'Connector\' but can be used for scoping purposes in the future. Scope is currently fixed to \'https://w3id.org/idsa/core/Connector\'."@en
+	* @return Returns the String for the property _scope.
+	* More information under https://w3id.org/idsa/core/scope
 	*/
-	@JsonProperty("ids:iss")
-	public String getIss();
+	@NotNull
+	@JsonProperty("ids:scope")
+	public String getScope();
+
+	/**
+	* "The \'sub\' (subject) claim identifies the principal that is the subject of the JWT."@en
+	* @return Returns the String for the property _sub.
+	* More information under https://w3id.org/idsa/core/sub
+	*/
+	@NotNull
+	@JsonProperty("ids:sub")
+	public String getSub();
 
 	/**
 	* "The SecurityProfile supported by the Connector."@en

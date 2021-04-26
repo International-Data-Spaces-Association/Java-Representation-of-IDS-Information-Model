@@ -193,14 +193,14 @@ public class AppRouteImpl implements Serializable, AppRoute {
 	}
 	public int hashCode() {
 		return Objects.hash(new Object[]{this._routeDeployMethod,
+			this._routeDescription,
+			this._routeConfiguration,
 			this._hasSubRoute,
 			this._appRouteStart,
 			this._appRouteEnd,
 			this._appRouteOutput,
 			this._appRouteBroker,
-			this._appRouteClearingHouse,
-			this._routeDescription,
-			this._routeConfiguration});
+			this._appRouteClearingHouse});
 	}
 
 	public boolean equals(Object obj) {
@@ -213,14 +213,14 @@ public class AppRouteImpl implements Serializable, AppRoute {
 		} else {
 			AppRouteImpl other = (AppRouteImpl) obj;
 			return Objects.equals(this._routeDeployMethod, other._routeDeployMethod) &&
+				Objects.equals(this._routeDescription, other._routeDescription) &&
+				Objects.equals(this._routeConfiguration, other._routeConfiguration) &&
 				Objects.equals(this._hasSubRoute, other._hasSubRoute) &&
 				Objects.equals(this._appRouteStart, other._appRouteStart) &&
 				Objects.equals(this._appRouteEnd, other._appRouteEnd) &&
 				Objects.equals(this._appRouteOutput, other._appRouteOutput) &&
 				Objects.equals(this._appRouteBroker, other._appRouteBroker) &&
-				Objects.equals(this._appRouteClearingHouse, other._appRouteClearingHouse) &&
-				Objects.equals(this._routeDescription, other._routeDescription) &&
-				Objects.equals(this._routeConfiguration, other._routeConfiguration);
+				Objects.equals(this._appRouteClearingHouse, other._appRouteClearingHouse);
 		}
 	}
 
@@ -236,6 +236,24 @@ public class AppRouteImpl implements Serializable, AppRoute {
 	
 	final public void setRouteDeployMethod (String _routeDeployMethod_) {
 		this._routeDeployMethod = _routeDeployMethod_;
+	}
+
+	@JsonProperty("ids:routeDescription")
+	final public String getRouteDescription() {
+		return _routeDescription;
+	}
+	
+	final public void setRouteDescription (String _routeDescription_) {
+		this._routeDescription = _routeDescription_;
+	}
+
+	@JsonProperty("ids:routeConfiguration")
+	final public String getRouteConfiguration() {
+		return _routeConfiguration;
+	}
+	
+	final public void setRouteConfiguration (String _routeConfiguration_) {
+		this._routeConfiguration = _routeConfiguration_;
 	}
 
 	@JsonProperty("ids:hasSubRoute")
@@ -290,23 +308,5 @@ public class AppRouteImpl implements Serializable, AppRoute {
 	
 	final public void setAppRouteClearingHouse (List<ClearingHouse> _appRouteClearingHouse_) {
 		this._appRouteClearingHouse = _appRouteClearingHouse_;
-	}
-
-	@JsonProperty("ids:routeDescription")
-	final public String getRouteDescription() {
-		return _routeDescription;
-	}
-	
-	final public void setRouteDescription (String _routeDescription_) {
-		this._routeDescription = _routeDescription_;
-	}
-
-	@JsonProperty("ids:routeConfiguration")
-	final public String getRouteConfiguration() {
-		return _routeConfiguration;
-	}
-	
-	final public void setRouteConfiguration (String _routeConfiguration_) {
-		this._routeConfiguration = _routeConfiguration_;
 	}
 }

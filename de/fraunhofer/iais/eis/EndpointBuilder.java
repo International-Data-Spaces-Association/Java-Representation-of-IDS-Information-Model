@@ -47,6 +47,17 @@ public class EndpointBuilder {
 	}
 
 	/**
+	* This function allows setting a value for _accessURL
+	* @param _accessURL_ desired value to be set
+	* @return Builder object with new value for _accessURL
+	*/
+	final public EndpointBuilder _accessURL_(URI _accessURL_) {
+		this.endpointImpl._accessURL = _accessURL_;
+		return this;
+	}
+
+
+	/**
 	* This function allows setting a value for _endpointInformation
 	* @param _endpointInformation_ desired value to be set
 	* @return Builder object with new value for _endpointInformation
@@ -64,17 +75,6 @@ public class EndpointBuilder {
 	*/
 	final public EndpointBuilder _endpointDocumentation_(List<URI> _endpointDocumentation_) {
 		this.endpointImpl._endpointDocumentation = _endpointDocumentation_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _accessURL
-	* @param _accessURL_ desired value to be set
-	* @return Builder object with new value for _accessURL
-	*/
-	final public EndpointBuilder _accessURL_(URI _accessURL_) {
-		this.endpointImpl._accessURL = _accessURL_;
 		return this;
 	}
 

@@ -82,6 +82,17 @@ public class ConnectorCertificateGrantedMessageBuilder {
 
 
 	/**
+	* This function allows setting a value for _correlationMessage
+	* @param _correlationMessage_ desired value to be set
+	* @return Builder object with new value for _correlationMessage
+	*/
+	final public ConnectorCertificateGrantedMessageBuilder _correlationMessage_(URI _correlationMessage_) {
+		this.connectorCertificateGrantedMessageImpl._correlationMessage = _correlationMessage_;
+		return this;
+	}
+
+
+	/**
 	* This function allows setting a value for _issuerConnector
 	* @param _issuerConnector_ desired value to be set
 	* @return Builder object with new value for _issuerConnector
@@ -99,17 +110,6 @@ public class ConnectorCertificateGrantedMessageBuilder {
 	*/
 	final public ConnectorCertificateGrantedMessageBuilder _recipientConnector_(List<URI> _recipientConnector_) {
 		this.connectorCertificateGrantedMessageImpl._recipientConnector = _recipientConnector_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _securityToken
-	* @param _securityToken_ desired value to be set
-	* @return Builder object with new value for _securityToken
-	*/
-	final public ConnectorCertificateGrantedMessageBuilder _securityToken_(DynamicAttributeToken _securityToken_) {
-		this.connectorCertificateGrantedMessageImpl._securityToken = _securityToken_;
 		return this;
 	}
 
@@ -137,12 +137,12 @@ public class ConnectorCertificateGrantedMessageBuilder {
 
 
 	/**
-	* This function allows setting a value for _correlationMessage
-	* @param _correlationMessage_ desired value to be set
-	* @return Builder object with new value for _correlationMessage
+	* This function allows setting a value for _securityToken
+	* @param _securityToken_ desired value to be set
+	* @return Builder object with new value for _securityToken
 	*/
-	final public ConnectorCertificateGrantedMessageBuilder _correlationMessage_(URI _correlationMessage_) {
-		this.connectorCertificateGrantedMessageImpl._correlationMessage = _correlationMessage_;
+	final public ConnectorCertificateGrantedMessageBuilder _securityToken_(DynamicAttributeToken _securityToken_) {
+		this.connectorCertificateGrantedMessageImpl._securityToken = _securityToken_;
 		return this;
 	}
 

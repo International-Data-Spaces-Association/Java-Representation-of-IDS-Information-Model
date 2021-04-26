@@ -111,6 +111,14 @@ public interface InfrastructureComponent extends ManagedEntity {
 	public URI getCurator();
 
 	/**
+	* "The location where the Connector is physically deployed."@en
+	* @return Returns the Location for the property _physicalLocation.
+	* More information under https://w3id.org/idsa/core/physicalLocation
+	*/
+	@JsonProperty("ids:physicalLocation")
+	public Location getPhysicalLocation();
+
+	/**
 	* "Information Model version that the InfrastructureComponent is capable of reading/processing."@en
 	* @return Returns the List of Strings for the property _inboundModelVersion.
 	* More information under https://w3id.org/idsa/core/inboundModelVersion
@@ -127,14 +135,6 @@ public interface InfrastructureComponent extends ManagedEntity {
 	@NotNull
 	@JsonProperty("ids:outboundModelVersion")
 	public String getOutboundModelVersion();
-
-	/**
-	* "The location where the Connector is physically deployed."@en
-	* @return Returns the Location for the property _physicalLocation.
-	* More information under https://w3id.org/idsa/core/physicalLocation
-	*/
-	@JsonProperty("ids:physicalLocation")
-	public Location getPhysicalLocation();
 
 	/**
 	* "Certification issued for the given Infrastructure Component."@en

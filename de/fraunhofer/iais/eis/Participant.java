@@ -90,38 +90,6 @@ public interface Participant extends Agent, ManagedEntity {
 
 
 	/**
-	* "Indicates membership of a person to an organization."@en
-	* @return Returns the List of Persons for the property _memberPerson.
-	* More information under https://w3id.org/idsa/core/memberPerson
-	*/
-	@JsonProperty("ids:memberPerson")
-	public List<Person> getMemberPerson();
-
-	/**
-	* "Indicates that a participant has a member which is again a participant. This is useful for defining hierarchical relations in a participant\'s organization as well as identifying groups of participants to capture, e.g., members of a collaboration."@en
-	* @return Returns the List of Participants for the property _memberParticipant.
-	* More information under https://w3id.org/idsa/core/memberParticipant
-	*/
-	@JsonProperty("ids:memberParticipant")
-	public List<Participant> getMemberParticipant();
-
-	/**
-	* "Email address for contacting the participant on a general level."@en
-	* @return Returns the List of Strings for the property _corporateEmailAddress.
-	* More information under https://w3id.org/idsa/core/corporateEmailAddress
-	*/
-	@JsonProperty("ids:corporateEmailAddress")
-	public List<String> getCorporateEmailAddress();
-
-	/**
-	* "Company identifiers, described via ids:BusinessIdentifier."@en
-	* @return Returns the List of BusinessIdentifiers for the property _businessIdentifier.
-	* More information under https://w3id.org/idsa/core/businessIdentifier
-	*/
-	@JsonProperty("ids:businessIdentifier")
-	public List<BusinessIdentifier> getBusinessIdentifier();
-
-	/**
 	* "The complete legal name of a Participant. Unlike the title property for the participant which refers to the commonly used name or term for the Participant, a legal name identifies a participant for legal, administrative and other official purposes."@en
 	* @return Returns the List of Strings for the property _legalName.
 	* More information under https://w3id.org/idsa/core/legalName
@@ -138,12 +106,28 @@ public interface Participant extends Agent, ManagedEntity {
 	public Site getPrimarySite();
 
 	/**
+	* "Email address for contacting the participant on a general level."@en
+	* @return Returns the List of Strings for the property _corporateEmailAddress.
+	* More information under https://w3id.org/idsa/core/corporateEmailAddress
+	*/
+	@JsonProperty("ids:corporateEmailAddress")
+	public List<String> getCorporateEmailAddress();
+
+	/**
 	* "General official homepage of the participant."@en
 	* @return Returns the URI for the property _corporateHomepage.
 	* More information under https://w3id.org/idsa/core/corporateHomepage
 	*/
 	@JsonProperty("ids:corporateHomepage")
 	public URI getCorporateHomepage();
+
+	/**
+	* "Indicates that a participant has a member which is again a participant. This is useful for defining hierarchical relations in a participant\'s organization as well as identifying groups of participants to capture, e.g., members of a collaboration."@en
+	* @return Returns the List of Participants for the property _memberParticipant.
+	* More information under https://w3id.org/idsa/core/memberParticipant
+	*/
+	@JsonProperty("ids:memberParticipant")
+	public List<Participant> getMemberParticipant();
 
 	/**
 	* "Certification issued for the given Participant."@en
@@ -160,6 +144,14 @@ public interface Participant extends Agent, ManagedEntity {
 	*/
 	@JsonProperty("ids:participantRefinement")
 	public AbstractConstraint getParticipantRefinement();
+
+	/**
+	* "Company identifiers, described via ids:BusinessIdentifier."@en
+	* @return Returns the List of BusinessIdentifiers for the property _businessIdentifier.
+	* More information under https://w3id.org/idsa/core/businessIdentifier
+	*/
+	@JsonProperty("ids:businessIdentifier")
+	public List<BusinessIdentifier> getBusinessIdentifier();
 
 	/**
 	* "The Value Added Tax ID (VAT ID) is used in the EU to clearly identify a company or entity which is liable for Value Added Tax."@en
@@ -185,5 +177,13 @@ public interface Participant extends Agent, ManagedEntity {
 	*/
 	@JsonProperty("ids:jurisdiction")
 	public String getJurisdiction();
+
+	/**
+	* "Indicates membership of a person to an organization."@en
+	* @return Returns the List of Persons for the property _memberPerson.
+	* More information under https://w3id.org/idsa/core/memberPerson
+	*/
+	@JsonProperty("ids:memberPerson")
+	public List<Person> getMemberPerson();
 
 }

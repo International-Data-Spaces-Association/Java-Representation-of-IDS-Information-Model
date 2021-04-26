@@ -69,17 +69,6 @@ public class ResourceBuilder {
 
 
 	/**
-	* This function allows setting a value for _resourceEndpoint
-	* @param _resourceEndpoint_ desired value to be set
-	* @return Builder object with new value for _resourceEndpoint
-	*/
-	final public ResourceBuilder _resourceEndpoint_(List<ConnectorEndpoint> _resourceEndpoint_) {
-		this.resourceImpl._resourceEndpoint = _resourceEndpoint_;
-		return this;
-	}
-
-
-	/**
 	* This function allows setting a value for _resourcePart
 	* @param _resourcePart_ desired value to be set
 	* @return Builder object with new value for _resourcePart
@@ -91,23 +80,23 @@ public class ResourceBuilder {
 
 
 	/**
+	* This function allows setting a value for _resourceEndpoint
+	* @param _resourceEndpoint_ desired value to be set
+	* @return Builder object with new value for _resourceEndpoint
+	*/
+	final public ResourceBuilder _resourceEndpoint_(List<ConnectorEndpoint> _resourceEndpoint_) {
+		this.resourceImpl._resourceEndpoint = _resourceEndpoint_;
+		return this;
+	}
+
+
+	/**
 	* This function allows setting a value for _contractOffer
 	* @param _contractOffer_ desired value to be set
 	* @return Builder object with new value for _contractOffer
 	*/
 	final public ResourceBuilder _contractOffer_(List<ContractOffer> _contractOffer_) {
 		this.resourceImpl._contractOffer = _contractOffer_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _sample
-	* @param _sample_ desired value to be set
-	* @return Builder object with new value for _sample
-	*/
-	final public ResourceBuilder _sample_(List<Resource> _sample_) {
-		this.resourceImpl._sample = _sample_;
 		return this;
 	}
 
@@ -135,6 +124,17 @@ public class ResourceBuilder {
 
 
 	/**
+	* This function allows setting a value for _sample
+	* @param _sample_ desired value to be set
+	* @return Builder object with new value for _sample
+	*/
+	final public ResourceBuilder _sample_(List<Resource> _sample_) {
+		this.resourceImpl._sample = _sample_;
+		return this;
+	}
+
+
+	/**
 	* This function allows setting a value for _variant
 	* @param _variant_ desired value to be set
 	* @return Builder object with new value for _variant
@@ -145,6 +145,17 @@ public class ResourceBuilder {
 	}
 
 
+
+
+	/**
+	* This function allows setting a value for _contentType
+	* @param _contentType_ desired value to be set
+	* @return Builder object with new value for _contentType
+	*/
+	final public ResourceBuilder _contentType_(ContentType _contentType_) {
+		this.resourceImpl._contentType = _contentType_;
+		return this;
+	}
 
 
 	/**
@@ -159,23 +170,23 @@ public class ResourceBuilder {
 
 
 	/**
-	* This function allows setting a value for _spatialCoverage
-	* @param _spatialCoverage_ desired value to be set
-	* @return Builder object with new value for _spatialCoverage
+	* This function allows setting a value for _representation
+	* @param _representation_ desired value to be set
+	* @return Builder object with new value for _representation
 	*/
-	final public ResourceBuilder _spatialCoverage_(List<Location> _spatialCoverage_) {
-		this.resourceImpl._spatialCoverage = _spatialCoverage_;
+	final public ResourceBuilder _representation_(List<Representation> _representation_) {
+		this.resourceImpl._representation = _representation_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for _temporalCoverage
-	* @param _temporalCoverage_ desired value to be set
-	* @return Builder object with new value for _temporalCoverage
+	* This function allows setting a value for _defaultRepresentation
+	* @param _defaultRepresentation_ desired value to be set
+	* @return Builder object with new value for _defaultRepresentation
 	*/
-	final public ResourceBuilder _temporalCoverage_(List<TemporalEntity> _temporalCoverage_) {
-		this.resourceImpl._temporalCoverage = _temporalCoverage_;
+	final public ResourceBuilder _defaultRepresentation_(List<Representation> _defaultRepresentation_) {
+		this.resourceImpl._defaultRepresentation = _defaultRepresentation_;
 		return this;
 	}
 
@@ -203,34 +214,12 @@ public class ResourceBuilder {
 
 
 	/**
-	* This function allows setting a value for _representation
-	* @param _representation_ desired value to be set
-	* @return Builder object with new value for _representation
+	* This function allows setting a value for _temporalCoverage
+	* @param _temporalCoverage_ desired value to be set
+	* @return Builder object with new value for _temporalCoverage
 	*/
-	final public ResourceBuilder _representation_(List<Representation> _representation_) {
-		this.resourceImpl._representation = _representation_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _contentType
-	* @param _contentType_ desired value to be set
-	* @return Builder object with new value for _contentType
-	*/
-	final public ResourceBuilder _contentType_(ContentType _contentType_) {
-		this.resourceImpl._contentType = _contentType_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _defaultRepresentation
-	* @param _defaultRepresentation_ desired value to be set
-	* @return Builder object with new value for _defaultRepresentation
-	*/
-	final public ResourceBuilder _defaultRepresentation_(List<Representation> _defaultRepresentation_) {
-		this.resourceImpl._defaultRepresentation = _defaultRepresentation_;
+	final public ResourceBuilder _temporalCoverage_(List<TemporalEntity> _temporalCoverage_) {
+		this.resourceImpl._temporalCoverage = _temporalCoverage_;
 		return this;
 	}
 
@@ -242,6 +231,17 @@ public class ResourceBuilder {
 	*/
 	final public ResourceBuilder _temporalResolution_(Frequency _temporalResolution_) {
 		this.resourceImpl._temporalResolution = _temporalResolution_;
+		return this;
+	}
+
+
+	/**
+	* This function allows setting a value for _spatialCoverage
+	* @param _spatialCoverage_ desired value to be set
+	* @return Builder object with new value for _spatialCoverage
+	*/
+	final public ResourceBuilder _spatialCoverage_(List<Location> _spatialCoverage_) {
+		this.resourceImpl._spatialCoverage = _spatialCoverage_;
 		return this;
 	}
 

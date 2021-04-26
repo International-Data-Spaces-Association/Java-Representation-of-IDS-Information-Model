@@ -58,6 +58,17 @@ public class BrokerBuilder {
 
 
 	/**
+	* This function allows setting a value for _hasDefaultEndpoint
+	* @param _hasDefaultEndpoint_ desired value to be set
+	* @return Builder object with new value for _hasDefaultEndpoint
+	*/
+	final public BrokerBuilder _hasDefaultEndpoint_(ConnectorEndpoint _hasDefaultEndpoint_) {
+		this.brokerImpl._hasDefaultEndpoint = _hasDefaultEndpoint_;
+		return this;
+	}
+
+
+	/**
 	* This function allows setting a value for _hasEndpoint
 	* @param _hasEndpoint_ desired value to be set
 	* @return Builder object with new value for _hasEndpoint
@@ -69,12 +80,12 @@ public class BrokerBuilder {
 
 
 	/**
-	* This function allows setting a value for _hasAgent
-	* @param _hasAgent_ desired value to be set
-	* @return Builder object with new value for _hasAgent
+	* This function allows setting a value for _authInfo
+	* @param _authInfo_ desired value to be set
+	* @return Builder object with new value for _authInfo
 	*/
-	final public BrokerBuilder _hasAgent_(List<URI> _hasAgent_) {
-		this.brokerImpl._hasAgent = _hasAgent_;
+	final public BrokerBuilder _authInfo_(AuthInfo _authInfo_) {
+		this.brokerImpl._authInfo = _authInfo_;
 		return this;
 	}
 
@@ -91,23 +102,12 @@ public class BrokerBuilder {
 
 
 	/**
-	* This function allows setting a value for _hasDefaultEndpoint
-	* @param _hasDefaultEndpoint_ desired value to be set
-	* @return Builder object with new value for _hasDefaultEndpoint
+	* This function allows setting a value for _hasAgent
+	* @param _hasAgent_ desired value to be set
+	* @return Builder object with new value for _hasAgent
 	*/
-	final public BrokerBuilder _hasDefaultEndpoint_(ConnectorEndpoint _hasDefaultEndpoint_) {
-		this.brokerImpl._hasDefaultEndpoint = _hasDefaultEndpoint_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _authInfo
-	* @param _authInfo_ desired value to be set
-	* @return Builder object with new value for _authInfo
-	*/
-	final public BrokerBuilder _authInfo_(AuthInfo _authInfo_) {
-		this.brokerImpl._authInfo = _authInfo_;
+	final public BrokerBuilder _hasAgent_(List<URI> _hasAgent_) {
+		this.brokerImpl._hasAgent = _hasAgent_;
 		return this;
 	}
 
@@ -157,6 +157,17 @@ public class BrokerBuilder {
 
 
 	/**
+	* This function allows setting a value for _physicalLocation
+	* @param _physicalLocation_ desired value to be set
+	* @return Builder object with new value for _physicalLocation
+	*/
+	final public BrokerBuilder _physicalLocation_(Location _physicalLocation_) {
+		this.brokerImpl._physicalLocation = _physicalLocation_;
+		return this;
+	}
+
+
+	/**
 	* This function allows setting a value for _inboundModelVersion
 	* @param _inboundModelVersion_ desired value to be set
 	* @return Builder object with new value for _inboundModelVersion
@@ -174,17 +185,6 @@ public class BrokerBuilder {
 	*/
 	final public BrokerBuilder _outboundModelVersion_(String _outboundModelVersion_) {
 		this.brokerImpl._outboundModelVersion = _outboundModelVersion_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _physicalLocation
-	* @param _physicalLocation_ desired value to be set
-	* @return Builder object with new value for _physicalLocation
-	*/
-	final public BrokerBuilder _physicalLocation_(Location _physicalLocation_) {
-		this.brokerImpl._physicalLocation = _physicalLocation_;
 		return this;
 	}
 

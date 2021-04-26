@@ -111,6 +111,14 @@ public interface Message {
 	public XMLGregorianCalendar getIssued();
 
 	/**
+	* "Correlated message, e.g. a response to a previous request."@en
+	* @return Returns the URI for the property _correlationMessage.
+	* More information under https://w3id.org/idsa/core/correlationMessage
+	*/
+	@JsonProperty("ids:correlationMessage")
+	public URI getCorrelationMessage();
+
+	/**
 	* "The Connector which is the origin of the message."@en
 	* @return Returns the URI for the property _issuerConnector.
 	* More information under https://w3id.org/idsa/core/issuerConnector
@@ -126,15 +134,6 @@ public interface Message {
 	*/
 	@JsonProperty("ids:recipientConnector")
 	public List<URI> getRecipientConnector();
-
-	/**
-	* "A token representing a claim that the message sender supports a certain security profile."@en
-	* @return Returns the DynamicAttributeToken for the property _securityToken.
-	* More information under https://w3id.org/idsa/core/securityToken
-	*/
-	@NotNull
-	@JsonProperty("ids:securityToken")
-	public DynamicAttributeToken getSecurityToken();
 
 	/**
 	* "The Agent which initiated the Message."@en
@@ -154,12 +153,13 @@ public interface Message {
 	public List<URI> getRecipientAgent();
 
 	/**
-	* "Correlated message, e.g. a response to a previous request."@en
-	* @return Returns the URI for the property _correlationMessage.
-	* More information under https://w3id.org/idsa/core/correlationMessage
+	* "A token representing a claim that the message sender supports a certain security profile."@en
+	* @return Returns the DynamicAttributeToken for the property _securityToken.
+	* More information under https://w3id.org/idsa/core/securityToken
 	*/
-	@JsonProperty("ids:correlationMessage")
-	public URI getCorrelationMessage();
+	@NotNull
+	@JsonProperty("ids:securityToken")
+	public DynamicAttributeToken getSecurityToken();
 
 	/**
 	* "An authorization token like JSON Web Token."@en

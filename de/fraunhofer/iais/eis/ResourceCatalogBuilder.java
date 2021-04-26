@@ -47,23 +47,23 @@ public class ResourceCatalogBuilder {
 	}
 
 	/**
-	* This function allows setting a value for _requestedResource
-	* @param _requestedResource_ desired value to be set
-	* @return Builder object with new value for _requestedResource
-	*/
-	final public ResourceCatalogBuilder _requestedResource_(List<Resource> _requestedResource_) {
-		this.resourceCatalogImpl._requestedResource = _requestedResource_;
-		return this;
-	}
-
-
-	/**
 	* This function allows setting a value for _offeredResource
 	* @param _offeredResource_ desired value to be set
 	* @return Builder object with new value for _offeredResource
 	*/
 	final public ResourceCatalogBuilder _offeredResource_(List<Resource> _offeredResource_) {
 		this.resourceCatalogImpl._offeredResource = _offeredResource_;
+		return this;
+	}
+
+
+	/**
+	* This function allows setting a value for _requestedResource
+	* @param _requestedResource_ desired value to be set
+	* @return Builder object with new value for _requestedResource
+	*/
+	final public ResourceCatalogBuilder _requestedResource_(List<Resource> _requestedResource_) {
+		this.resourceCatalogImpl._requestedResource = _requestedResource_;
 		return this;
 	}
 

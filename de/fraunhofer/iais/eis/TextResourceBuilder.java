@@ -70,17 +70,6 @@ public class TextResourceBuilder {
 
 
 	/**
-	* This function allows setting a value for _resourceEndpoint
-	* @param _resourceEndpoint_ desired value to be set
-	* @return Builder object with new value for _resourceEndpoint
-	*/
-	final public TextResourceBuilder _resourceEndpoint_(List<ConnectorEndpoint> _resourceEndpoint_) {
-		this.textResourceImpl._resourceEndpoint = _resourceEndpoint_;
-		return this;
-	}
-
-
-	/**
 	* This function allows setting a value for _resourcePart
 	* @param _resourcePart_ desired value to be set
 	* @return Builder object with new value for _resourcePart
@@ -92,23 +81,23 @@ public class TextResourceBuilder {
 
 
 	/**
+	* This function allows setting a value for _resourceEndpoint
+	* @param _resourceEndpoint_ desired value to be set
+	* @return Builder object with new value for _resourceEndpoint
+	*/
+	final public TextResourceBuilder _resourceEndpoint_(List<ConnectorEndpoint> _resourceEndpoint_) {
+		this.textResourceImpl._resourceEndpoint = _resourceEndpoint_;
+		return this;
+	}
+
+
+	/**
 	* This function allows setting a value for _contractOffer
 	* @param _contractOffer_ desired value to be set
 	* @return Builder object with new value for _contractOffer
 	*/
 	final public TextResourceBuilder _contractOffer_(List<ContractOffer> _contractOffer_) {
 		this.textResourceImpl._contractOffer = _contractOffer_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _sample
-	* @param _sample_ desired value to be set
-	* @return Builder object with new value for _sample
-	*/
-	final public TextResourceBuilder _sample_(List<Resource> _sample_) {
-		this.textResourceImpl._sample = _sample_;
 		return this;
 	}
 
@@ -136,6 +125,17 @@ public class TextResourceBuilder {
 
 
 	/**
+	* This function allows setting a value for _sample
+	* @param _sample_ desired value to be set
+	* @return Builder object with new value for _sample
+	*/
+	final public TextResourceBuilder _sample_(List<Resource> _sample_) {
+		this.textResourceImpl._sample = _sample_;
+		return this;
+	}
+
+
+	/**
 	* This function allows setting a value for _variant
 	* @param _variant_ desired value to be set
 	* @return Builder object with new value for _variant
@@ -146,6 +146,17 @@ public class TextResourceBuilder {
 	}
 
 
+
+
+	/**
+	* This function allows setting a value for _contentType
+	* @param _contentType_ desired value to be set
+	* @return Builder object with new value for _contentType
+	*/
+	final public TextResourceBuilder _contentType_(ContentType _contentType_) {
+		this.textResourceImpl._contentType = _contentType_;
+		return this;
+	}
 
 
 	/**
@@ -160,23 +171,23 @@ public class TextResourceBuilder {
 
 
 	/**
-	* This function allows setting a value for _spatialCoverage
-	* @param _spatialCoverage_ desired value to be set
-	* @return Builder object with new value for _spatialCoverage
+	* This function allows setting a value for _representation
+	* @param _representation_ desired value to be set
+	* @return Builder object with new value for _representation
 	*/
-	final public TextResourceBuilder _spatialCoverage_(List<Location> _spatialCoverage_) {
-		this.textResourceImpl._spatialCoverage = _spatialCoverage_;
+	final public TextResourceBuilder _representation_(List<Representation> _representation_) {
+		this.textResourceImpl._representation = _representation_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for _temporalCoverage
-	* @param _temporalCoverage_ desired value to be set
-	* @return Builder object with new value for _temporalCoverage
+	* This function allows setting a value for _defaultRepresentation
+	* @param _defaultRepresentation_ desired value to be set
+	* @return Builder object with new value for _defaultRepresentation
 	*/
-	final public TextResourceBuilder _temporalCoverage_(List<TemporalEntity> _temporalCoverage_) {
-		this.textResourceImpl._temporalCoverage = _temporalCoverage_;
+	final public TextResourceBuilder _defaultRepresentation_(List<Representation> _defaultRepresentation_) {
+		this.textResourceImpl._defaultRepresentation = _defaultRepresentation_;
 		return this;
 	}
 
@@ -204,34 +215,12 @@ public class TextResourceBuilder {
 
 
 	/**
-	* This function allows setting a value for _representation
-	* @param _representation_ desired value to be set
-	* @return Builder object with new value for _representation
+	* This function allows setting a value for _temporalCoverage
+	* @param _temporalCoverage_ desired value to be set
+	* @return Builder object with new value for _temporalCoverage
 	*/
-	final public TextResourceBuilder _representation_(List<Representation> _representation_) {
-		this.textResourceImpl._representation = _representation_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _contentType
-	* @param _contentType_ desired value to be set
-	* @return Builder object with new value for _contentType
-	*/
-	final public TextResourceBuilder _contentType_(ContentType _contentType_) {
-		this.textResourceImpl._contentType = _contentType_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _defaultRepresentation
-	* @param _defaultRepresentation_ desired value to be set
-	* @return Builder object with new value for _defaultRepresentation
-	*/
-	final public TextResourceBuilder _defaultRepresentation_(List<Representation> _defaultRepresentation_) {
-		this.textResourceImpl._defaultRepresentation = _defaultRepresentation_;
+	final public TextResourceBuilder _temporalCoverage_(List<TemporalEntity> _temporalCoverage_) {
+		this.textResourceImpl._temporalCoverage = _temporalCoverage_;
 		return this;
 	}
 
@@ -243,6 +232,17 @@ public class TextResourceBuilder {
 	*/
 	final public TextResourceBuilder _temporalResolution_(Frequency _temporalResolution_) {
 		this.textResourceImpl._temporalResolution = _temporalResolution_;
+		return this;
+	}
+
+
+	/**
+	* This function allows setting a value for _spatialCoverage
+	* @param _spatialCoverage_ desired value to be set
+	* @return Builder object with new value for _spatialCoverage
+	*/
+	final public TextResourceBuilder _spatialCoverage_(List<Location> _spatialCoverage_) {
+		this.textResourceImpl._spatialCoverage = _spatialCoverage_;
 		return this;
 	}
 

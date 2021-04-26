@@ -58,6 +58,17 @@ public class ConnectorEndpointBuilder {
 
 
 	/**
+	* This function allows setting a value for _accessURL
+	* @param _accessURL_ desired value to be set
+	* @return Builder object with new value for _accessURL
+	*/
+	final public ConnectorEndpointBuilder _accessURL_(URI _accessURL_) {
+		this.connectorEndpointImpl._accessURL = _accessURL_;
+		return this;
+	}
+
+
+	/**
 	* This function allows setting a value for _endpointInformation
 	* @param _endpointInformation_ desired value to be set
 	* @return Builder object with new value for _endpointInformation
@@ -75,17 +86,6 @@ public class ConnectorEndpointBuilder {
 	*/
 	final public ConnectorEndpointBuilder _endpointDocumentation_(List<URI> _endpointDocumentation_) {
 		this.connectorEndpointImpl._endpointDocumentation = _endpointDocumentation_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _accessURL
-	* @param _accessURL_ desired value to be set
-	* @return Builder object with new value for _accessURL
-	*/
-	final public ConnectorEndpointBuilder _accessURL_(URI _accessURL_) {
-		this.connectorEndpointImpl._accessURL = _accessURL_;
 		return this;
 	}
 

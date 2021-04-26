@@ -49,39 +49,6 @@ public class RentalAgreementBuilder {
 
 
 	/**
-	* This function allows setting a value for _permission
-	* @param _permission_ desired value to be set
-	* @return Builder object with new value for _permission
-	*/
-	final public RentalAgreementBuilder _permission_(List<Permission> _permission_) {
-		this.rentalAgreementImpl._permission = _permission_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _prohibition
-	* @param _prohibition_ desired value to be set
-	* @return Builder object with new value for _prohibition
-	*/
-	final public RentalAgreementBuilder _prohibition_(List<Prohibition> _prohibition_) {
-		this.rentalAgreementImpl._prohibition = _prohibition_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _obligation
-	* @param _obligation_ desired value to be set
-	* @return Builder object with new value for _obligation
-	*/
-	final public RentalAgreementBuilder _obligation_(List<Duty> _obligation_) {
-		this.rentalAgreementImpl._obligation = _obligation_;
-		return this;
-	}
-
-
-	/**
 	* This function allows setting a value for _contractStart
 	* @param _contractStart_ desired value to be set
 	* @return Builder object with new value for _contractStart
@@ -154,6 +121,39 @@ public class RentalAgreementBuilder {
 	*/
 	final public RentalAgreementBuilder _contractAnnex_(Resource _contractAnnex_) {
 		this.rentalAgreementImpl._contractAnnex = _contractAnnex_;
+		return this;
+	}
+
+
+	/**
+	* This function allows setting a value for _permission
+	* @param _permission_ desired value to be set
+	* @return Builder object with new value for _permission
+	*/
+	final public RentalAgreementBuilder _permission_(List<Permission> _permission_) {
+		this.rentalAgreementImpl._permission = _permission_;
+		return this;
+	}
+
+
+	/**
+	* This function allows setting a value for _prohibition
+	* @param _prohibition_ desired value to be set
+	* @return Builder object with new value for _prohibition
+	*/
+	final public RentalAgreementBuilder _prohibition_(List<Prohibition> _prohibition_) {
+		this.rentalAgreementImpl._prohibition = _prohibition_;
+		return this;
+	}
+
+
+	/**
+	* This function allows setting a value for _obligation
+	* @param _obligation_ desired value to be set
+	* @return Builder object with new value for _obligation
+	*/
+	final public RentalAgreementBuilder _obligation_(List<Duty> _obligation_) {
+		this.rentalAgreementImpl._obligation = _obligation_;
 		return this;
 	}
 

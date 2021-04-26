@@ -90,14 +90,6 @@ public interface Proxy {
 
 
 	/**
-	* "URLs that should be excluded from proxying.GNU emcs documentation contains a good explanation for the usage of noProxy."@en
-	* @return Returns the List of URIs for the property _noProxy.
-	* More information under https://w3id.org/idsa/core/noProxy
-	*/
-	@JsonProperty("ids:noProxy")
-	public List<URI> getNoProxy();
-
-	/**
 	* "URI of the proxy server."@en
 	* @return Returns the URI for the property _proxyURI.
 	* More information under https://w3id.org/idsa/core/proxyURI
@@ -105,6 +97,14 @@ public interface Proxy {
 	@NotNull
 	@JsonProperty("ids:proxyURI")
 	public URI getProxyURI();
+
+	/**
+	* "URLs that should be excluded from proxying.GNU emcs documentation contains a good explanation for the usage of noProxy."@en
+	* @return Returns the List of URIs for the property _noProxy.
+	* More information under https://w3id.org/idsa/core/noProxy
+	*/
+	@JsonProperty("ids:noProxy")
+	public List<URI> getNoProxy();
 
 	/**
 	* "authentication information for the proxy"@en

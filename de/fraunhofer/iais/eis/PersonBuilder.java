@@ -47,28 +47,6 @@ public class PersonBuilder {
 	}
 
 	/**
-	* This function allows setting a value for _phoneNumber
-	* @param _phoneNumber_ desired value to be set
-	* @return Builder object with new value for _phoneNumber
-	*/
-	final public PersonBuilder _phoneNumber_(List<String> _phoneNumber_) {
-		this.personImpl._phoneNumber = _phoneNumber_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _emailAddress
-	* @param _emailAddress_ desired value to be set
-	* @return Builder object with new value for _emailAddress
-	*/
-	final public PersonBuilder _emailAddress_(List<String> _emailAddress_) {
-		this.personImpl._emailAddress = _emailAddress_;
-		return this;
-	}
-
-
-	/**
 	* This function allows setting a value for _familyName
 	* @param _familyName_ desired value to be set
 	* @return Builder object with new value for _familyName
@@ -86,6 +64,28 @@ public class PersonBuilder {
 	*/
 	final public PersonBuilder _givenName_(String _givenName_) {
 		this.personImpl._givenName = _givenName_;
+		return this;
+	}
+
+
+	/**
+	* This function allows setting a value for _phoneNumber
+	* @param _phoneNumber_ desired value to be set
+	* @return Builder object with new value for _phoneNumber
+	*/
+	final public PersonBuilder _phoneNumber_(List<String> _phoneNumber_) {
+		this.personImpl._phoneNumber = _phoneNumber_;
+		return this;
+	}
+
+
+	/**
+	* This function allows setting a value for _emailAddress
+	* @param _emailAddress_ desired value to be set
+	* @return Builder object with new value for _emailAddress
+	*/
+	final public PersonBuilder _emailAddress_(List<String> _emailAddress_) {
+		this.personImpl._emailAddress = _emailAddress_;
 		return this;
 	}
 

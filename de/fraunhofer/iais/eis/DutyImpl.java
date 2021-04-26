@@ -184,10 +184,10 @@ public class DutyImpl implements Serializable, Duty {
 		this.properties.put(property, value) ;
 	}
 	public int hashCode() {
-		return Objects.hash(new Object[]{this._constraint,
+		return Objects.hash(new Object[]{this._assignee,
 			this._assigner,
-			this._assignee,
 			this._target,
+			this._constraint,
 			this._action,
 			this._assetRefinement,
 			this._title,
@@ -203,10 +203,10 @@ public class DutyImpl implements Serializable, Duty {
 			return false;
 		} else {
 			DutyImpl other = (DutyImpl) obj;
-			return Objects.equals(this._constraint, other._constraint) &&
+			return Objects.equals(this._assignee, other._assignee) &&
 				Objects.equals(this._assigner, other._assigner) &&
-				Objects.equals(this._assignee, other._assignee) &&
 				Objects.equals(this._target, other._target) &&
+				Objects.equals(this._constraint, other._constraint) &&
 				Objects.equals(this._action, other._action) &&
 				Objects.equals(this._assetRefinement, other._assetRefinement) &&
 				Objects.equals(this._title, other._title) &&
@@ -219,13 +219,13 @@ public class DutyImpl implements Serializable, Duty {
 
 
 
-	@JsonProperty("ids:constraint")
-	final public List<AbstractConstraint> getConstraint() {
-		return _constraint;
+	@JsonProperty("ids:assignee")
+	final public List<URI> getAssignee() {
+		return _assignee;
 	}
 	
-	final public void setConstraint (List<AbstractConstraint> _constraint_) {
-		this._constraint = _constraint_;
+	final public void setAssignee (List<URI> _assignee_) {
+		this._assignee = _assignee_;
 	}
 
 	@JsonProperty("ids:assigner")
@@ -237,15 +237,6 @@ public class DutyImpl implements Serializable, Duty {
 		this._assigner = _assigner_;
 	}
 
-	@JsonProperty("ids:assignee")
-	final public List<URI> getAssignee() {
-		return _assignee;
-	}
-	
-	final public void setAssignee (List<URI> _assignee_) {
-		this._assignee = _assignee_;
-	}
-
 	@JsonProperty("ids:target")
 	final public URI getTarget() {
 		return _target;
@@ -253,6 +244,15 @@ public class DutyImpl implements Serializable, Duty {
 	
 	final public void setTarget (URI _target_) {
 		this._target = _target_;
+	}
+
+	@JsonProperty("ids:constraint")
+	final public List<AbstractConstraint> getConstraint() {
+		return _constraint;
+	}
+	
+	final public void setConstraint (List<AbstractConstraint> _constraint_) {
+		this._constraint = _constraint_;
 	}
 
 	@NotEmpty

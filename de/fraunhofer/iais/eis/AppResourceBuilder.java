@@ -70,17 +70,6 @@ public class AppResourceBuilder {
 
 
 	/**
-	* This function allows setting a value for _resourceEndpoint
-	* @param _resourceEndpoint_ desired value to be set
-	* @return Builder object with new value for _resourceEndpoint
-	*/
-	final public AppResourceBuilder _resourceEndpoint_(List<ConnectorEndpoint> _resourceEndpoint_) {
-		this.appResourceImpl._resourceEndpoint = _resourceEndpoint_;
-		return this;
-	}
-
-
-	/**
 	* This function allows setting a value for _resourcePart
 	* @param _resourcePart_ desired value to be set
 	* @return Builder object with new value for _resourcePart
@@ -92,23 +81,23 @@ public class AppResourceBuilder {
 
 
 	/**
+	* This function allows setting a value for _resourceEndpoint
+	* @param _resourceEndpoint_ desired value to be set
+	* @return Builder object with new value for _resourceEndpoint
+	*/
+	final public AppResourceBuilder _resourceEndpoint_(List<ConnectorEndpoint> _resourceEndpoint_) {
+		this.appResourceImpl._resourceEndpoint = _resourceEndpoint_;
+		return this;
+	}
+
+
+	/**
 	* This function allows setting a value for _contractOffer
 	* @param _contractOffer_ desired value to be set
 	* @return Builder object with new value for _contractOffer
 	*/
 	final public AppResourceBuilder _contractOffer_(List<ContractOffer> _contractOffer_) {
 		this.appResourceImpl._contractOffer = _contractOffer_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _sample
-	* @param _sample_ desired value to be set
-	* @return Builder object with new value for _sample
-	*/
-	final public AppResourceBuilder _sample_(List<Resource> _sample_) {
-		this.appResourceImpl._sample = _sample_;
 		return this;
 	}
 
@@ -136,6 +125,17 @@ public class AppResourceBuilder {
 
 
 	/**
+	* This function allows setting a value for _sample
+	* @param _sample_ desired value to be set
+	* @return Builder object with new value for _sample
+	*/
+	final public AppResourceBuilder _sample_(List<Resource> _sample_) {
+		this.appResourceImpl._sample = _sample_;
+		return this;
+	}
+
+
+	/**
 	* This function allows setting a value for _variant
 	* @param _variant_ desired value to be set
 	* @return Builder object with new value for _variant
@@ -146,6 +146,17 @@ public class AppResourceBuilder {
 	}
 
 
+
+
+	/**
+	* This function allows setting a value for _contentType
+	* @param _contentType_ desired value to be set
+	* @return Builder object with new value for _contentType
+	*/
+	final public AppResourceBuilder _contentType_(ContentType _contentType_) {
+		this.appResourceImpl._contentType = _contentType_;
+		return this;
+	}
 
 
 	/**
@@ -160,23 +171,23 @@ public class AppResourceBuilder {
 
 
 	/**
-	* This function allows setting a value for _spatialCoverage
-	* @param _spatialCoverage_ desired value to be set
-	* @return Builder object with new value for _spatialCoverage
+	* This function allows setting a value for _representation
+	* @param _representation_ desired value to be set
+	* @return Builder object with new value for _representation
 	*/
-	final public AppResourceBuilder _spatialCoverage_(List<Location> _spatialCoverage_) {
-		this.appResourceImpl._spatialCoverage = _spatialCoverage_;
+	final public AppResourceBuilder _representation_(List<Representation> _representation_) {
+		this.appResourceImpl._representation = _representation_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for _temporalCoverage
-	* @param _temporalCoverage_ desired value to be set
-	* @return Builder object with new value for _temporalCoverage
+	* This function allows setting a value for _defaultRepresentation
+	* @param _defaultRepresentation_ desired value to be set
+	* @return Builder object with new value for _defaultRepresentation
 	*/
-	final public AppResourceBuilder _temporalCoverage_(List<TemporalEntity> _temporalCoverage_) {
-		this.appResourceImpl._temporalCoverage = _temporalCoverage_;
+	final public AppResourceBuilder _defaultRepresentation_(List<Representation> _defaultRepresentation_) {
+		this.appResourceImpl._defaultRepresentation = _defaultRepresentation_;
 		return this;
 	}
 
@@ -204,34 +215,12 @@ public class AppResourceBuilder {
 
 
 	/**
-	* This function allows setting a value for _representation
-	* @param _representation_ desired value to be set
-	* @return Builder object with new value for _representation
+	* This function allows setting a value for _temporalCoverage
+	* @param _temporalCoverage_ desired value to be set
+	* @return Builder object with new value for _temporalCoverage
 	*/
-	final public AppResourceBuilder _representation_(List<Representation> _representation_) {
-		this.appResourceImpl._representation = _representation_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _contentType
-	* @param _contentType_ desired value to be set
-	* @return Builder object with new value for _contentType
-	*/
-	final public AppResourceBuilder _contentType_(ContentType _contentType_) {
-		this.appResourceImpl._contentType = _contentType_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _defaultRepresentation
-	* @param _defaultRepresentation_ desired value to be set
-	* @return Builder object with new value for _defaultRepresentation
-	*/
-	final public AppResourceBuilder _defaultRepresentation_(List<Representation> _defaultRepresentation_) {
-		this.appResourceImpl._defaultRepresentation = _defaultRepresentation_;
+	final public AppResourceBuilder _temporalCoverage_(List<TemporalEntity> _temporalCoverage_) {
+		this.appResourceImpl._temporalCoverage = _temporalCoverage_;
 		return this;
 	}
 
@@ -243,6 +232,17 @@ public class AppResourceBuilder {
 	*/
 	final public AppResourceBuilder _temporalResolution_(Frequency _temporalResolution_) {
 		this.appResourceImpl._temporalResolution = _temporalResolution_;
+		return this;
+	}
+
+
+	/**
+	* This function allows setting a value for _spatialCoverage
+	* @param _spatialCoverage_ desired value to be set
+	* @return Builder object with new value for _spatialCoverage
+	*/
+	final public AppResourceBuilder _spatialCoverage_(List<Location> _spatialCoverage_) {
+		this.appResourceImpl._spatialCoverage = _spatialCoverage_;
 		return this;
 	}
 

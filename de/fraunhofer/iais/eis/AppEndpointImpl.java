@@ -213,9 +213,9 @@ public class AppEndpointImpl implements Serializable, AppEndpoint {
 			this._appEndpointMediaType,
 			this._appEndpointProtocol,
 			this._language,
+			this._accessURL,
 			this._endpointInformation,
 			this._endpointDocumentation,
-			this._accessURL,
 			this._path,
 			this._inboundPath,
 			this._outboundPath});
@@ -235,9 +235,9 @@ public class AppEndpointImpl implements Serializable, AppEndpoint {
 				Objects.equals(this._appEndpointMediaType, other._appEndpointMediaType) &&
 				Objects.equals(this._appEndpointProtocol, other._appEndpointProtocol) &&
 				Objects.equals(this._language, other._language) &&
+				Objects.equals(this._accessURL, other._accessURL) &&
 				Objects.equals(this._endpointInformation, other._endpointInformation) &&
 				Objects.equals(this._endpointDocumentation, other._endpointDocumentation) &&
-				Objects.equals(this._accessURL, other._accessURL) &&
 				Objects.equals(this._path, other._path) &&
 				Objects.equals(this._inboundPath, other._inboundPath) &&
 				Objects.equals(this._outboundPath, other._outboundPath);
@@ -294,6 +294,15 @@ public class AppEndpointImpl implements Serializable, AppEndpoint {
 		this._language = _language_;
 	}
 
+	@JsonProperty("ids:accessURL")
+	final public URI getAccessURL() {
+		return _accessURL;
+	}
+	
+	final public void setAccessURL (URI _accessURL_) {
+		this._accessURL = _accessURL_;
+	}
+
 	@JsonProperty("ids:endpointInformation")
 	final public List<TypedLiteral> getEndpointInformation() {
 		return _endpointInformation;
@@ -310,15 +319,6 @@ public class AppEndpointImpl implements Serializable, AppEndpoint {
 	
 	final public void setEndpointDocumentation (List<URI> _endpointDocumentation_) {
 		this._endpointDocumentation = _endpointDocumentation_;
-	}
-
-	@JsonProperty("ids:accessURL")
-	final public URI getAccessURL() {
-		return _accessURL;
-	}
-	
-	final public void setAccessURL (URI _accessURL_) {
-		this._accessURL = _accessURL_;
 	}
 
 	@JsonProperty("ids:path")

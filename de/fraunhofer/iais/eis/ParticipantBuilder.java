@@ -47,50 +47,6 @@ public class ParticipantBuilder {
 	}
 
 	/**
-	* This function allows setting a value for _memberPerson
-	* @param _memberPerson_ desired value to be set
-	* @return Builder object with new value for _memberPerson
-	*/
-	final public ParticipantBuilder _memberPerson_(List<Person> _memberPerson_) {
-		this.participantImpl._memberPerson = _memberPerson_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _memberParticipant
-	* @param _memberParticipant_ desired value to be set
-	* @return Builder object with new value for _memberParticipant
-	*/
-	final public ParticipantBuilder _memberParticipant_(List<Participant> _memberParticipant_) {
-		this.participantImpl._memberParticipant = _memberParticipant_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _corporateEmailAddress
-	* @param _corporateEmailAddress_ desired value to be set
-	* @return Builder object with new value for _corporateEmailAddress
-	*/
-	final public ParticipantBuilder _corporateEmailAddress_(List<String> _corporateEmailAddress_) {
-		this.participantImpl._corporateEmailAddress = _corporateEmailAddress_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _businessIdentifier
-	* @param _businessIdentifier_ desired value to be set
-	* @return Builder object with new value for _businessIdentifier
-	*/
-	final public ParticipantBuilder _businessIdentifier_(List<BusinessIdentifier> _businessIdentifier_) {
-		this.participantImpl._businessIdentifier = _businessIdentifier_;
-		return this;
-	}
-
-
-	/**
 	* This function allows setting a value for _legalName
 	* @param _legalName_ desired value to be set
 	* @return Builder object with new value for _legalName
@@ -113,12 +69,34 @@ public class ParticipantBuilder {
 
 
 	/**
+	* This function allows setting a value for _corporateEmailAddress
+	* @param _corporateEmailAddress_ desired value to be set
+	* @return Builder object with new value for _corporateEmailAddress
+	*/
+	final public ParticipantBuilder _corporateEmailAddress_(List<String> _corporateEmailAddress_) {
+		this.participantImpl._corporateEmailAddress = _corporateEmailAddress_;
+		return this;
+	}
+
+
+	/**
 	* This function allows setting a value for _corporateHomepage
 	* @param _corporateHomepage_ desired value to be set
 	* @return Builder object with new value for _corporateHomepage
 	*/
 	final public ParticipantBuilder _corporateHomepage_(URI _corporateHomepage_) {
 		this.participantImpl._corporateHomepage = _corporateHomepage_;
+		return this;
+	}
+
+
+	/**
+	* This function allows setting a value for _memberParticipant
+	* @param _memberParticipant_ desired value to be set
+	* @return Builder object with new value for _memberParticipant
+	*/
+	final public ParticipantBuilder _memberParticipant_(List<Participant> _memberParticipant_) {
+		this.participantImpl._memberParticipant = _memberParticipant_;
 		return this;
 	}
 
@@ -141,6 +119,17 @@ public class ParticipantBuilder {
 	*/
 	final public ParticipantBuilder _participantRefinement_(AbstractConstraint _participantRefinement_) {
 		this.participantImpl._participantRefinement = _participantRefinement_;
+		return this;
+	}
+
+
+	/**
+	* This function allows setting a value for _businessIdentifier
+	* @param _businessIdentifier_ desired value to be set
+	* @return Builder object with new value for _businessIdentifier
+	*/
+	final public ParticipantBuilder _businessIdentifier_(List<BusinessIdentifier> _businessIdentifier_) {
+		this.participantImpl._businessIdentifier = _businessIdentifier_;
 		return this;
 	}
 
@@ -174,6 +163,17 @@ public class ParticipantBuilder {
 	*/
 	final public ParticipantBuilder _jurisdiction_(String _jurisdiction_) {
 		this.participantImpl._jurisdiction = _jurisdiction_;
+		return this;
+	}
+
+
+	/**
+	* This function allows setting a value for _memberPerson
+	* @param _memberPerson_ desired value to be set
+	* @return Builder object with new value for _memberPerson
+	*/
+	final public ParticipantBuilder _memberPerson_(List<Person> _memberPerson_) {
+		this.participantImpl._memberPerson = _memberPerson_;
 		return this;
 	}
 

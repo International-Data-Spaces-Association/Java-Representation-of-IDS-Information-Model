@@ -83,6 +83,17 @@ public class AppAvailableMessageBuilder {
 
 
 	/**
+	* This function allows setting a value for _correlationMessage
+	* @param _correlationMessage_ desired value to be set
+	* @return Builder object with new value for _correlationMessage
+	*/
+	final public AppAvailableMessageBuilder _correlationMessage_(URI _correlationMessage_) {
+		this.appAvailableMessageImpl._correlationMessage = _correlationMessage_;
+		return this;
+	}
+
+
+	/**
 	* This function allows setting a value for _issuerConnector
 	* @param _issuerConnector_ desired value to be set
 	* @return Builder object with new value for _issuerConnector
@@ -100,17 +111,6 @@ public class AppAvailableMessageBuilder {
 	*/
 	final public AppAvailableMessageBuilder _recipientConnector_(List<URI> _recipientConnector_) {
 		this.appAvailableMessageImpl._recipientConnector = _recipientConnector_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _securityToken
-	* @param _securityToken_ desired value to be set
-	* @return Builder object with new value for _securityToken
-	*/
-	final public AppAvailableMessageBuilder _securityToken_(DynamicAttributeToken _securityToken_) {
-		this.appAvailableMessageImpl._securityToken = _securityToken_;
 		return this;
 	}
 
@@ -138,12 +138,12 @@ public class AppAvailableMessageBuilder {
 
 
 	/**
-	* This function allows setting a value for _correlationMessage
-	* @param _correlationMessage_ desired value to be set
-	* @return Builder object with new value for _correlationMessage
+	* This function allows setting a value for _securityToken
+	* @param _securityToken_ desired value to be set
+	* @return Builder object with new value for _securityToken
 	*/
-	final public AppAvailableMessageBuilder _correlationMessage_(URI _correlationMessage_) {
-		this.appAvailableMessageImpl._correlationMessage = _correlationMessage_;
+	final public AppAvailableMessageBuilder _securityToken_(DynamicAttributeToken _securityToken_) {
+		this.appAvailableMessageImpl._securityToken = _securityToken_;
 		return this;
 	}
 

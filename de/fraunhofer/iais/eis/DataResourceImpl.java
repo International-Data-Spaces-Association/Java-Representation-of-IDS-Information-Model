@@ -337,22 +337,22 @@ public class DataResourceImpl implements Serializable, DataResource {
 	public int hashCode() {
 		return Objects.hash(new Object[]{this._standardLicense,
 			this._customLicense,
-			this._resourceEndpoint,
 			this._resourcePart,
+			this._resourceEndpoint,
 			this._contractOffer,
-			this._sample,
 			this._publisher,
 			this._sovereign,
+			this._sample,
 			this._variant,
+			this._contentType,
 			this._contentPart,
-			this._spatialCoverage,
-			this._temporalCoverage,
+			this._representation,
+			this._defaultRepresentation,
 			this._theme,
 			this._keyword,
-			this._representation,
-			this._contentType,
-			this._defaultRepresentation,
+			this._temporalCoverage,
 			this._temporalResolution,
+			this._spatialCoverage,
 			this._accrualPeriodicity,
 			this._contentStandard,
 			this._language,
@@ -375,22 +375,22 @@ public class DataResourceImpl implements Serializable, DataResource {
 			DataResourceImpl other = (DataResourceImpl) obj;
 			return Objects.equals(this._standardLicense, other._standardLicense) &&
 				Objects.equals(this._customLicense, other._customLicense) &&
-				Objects.equals(this._resourceEndpoint, other._resourceEndpoint) &&
 				Objects.equals(this._resourcePart, other._resourcePart) &&
+				Objects.equals(this._resourceEndpoint, other._resourceEndpoint) &&
 				Objects.equals(this._contractOffer, other._contractOffer) &&
-				Objects.equals(this._sample, other._sample) &&
 				Objects.equals(this._publisher, other._publisher) &&
 				Objects.equals(this._sovereign, other._sovereign) &&
+				Objects.equals(this._sample, other._sample) &&
 				Objects.equals(this._variant, other._variant) &&
+				Objects.equals(this._contentType, other._contentType) &&
 				Objects.equals(this._contentPart, other._contentPart) &&
-				Objects.equals(this._spatialCoverage, other._spatialCoverage) &&
-				Objects.equals(this._temporalCoverage, other._temporalCoverage) &&
+				Objects.equals(this._representation, other._representation) &&
+				Objects.equals(this._defaultRepresentation, other._defaultRepresentation) &&
 				Objects.equals(this._theme, other._theme) &&
 				Objects.equals(this._keyword, other._keyword) &&
-				Objects.equals(this._representation, other._representation) &&
-				Objects.equals(this._contentType, other._contentType) &&
-				Objects.equals(this._defaultRepresentation, other._defaultRepresentation) &&
+				Objects.equals(this._temporalCoverage, other._temporalCoverage) &&
 				Objects.equals(this._temporalResolution, other._temporalResolution) &&
+				Objects.equals(this._spatialCoverage, other._spatialCoverage) &&
 				Objects.equals(this._accrualPeriodicity, other._accrualPeriodicity) &&
 				Objects.equals(this._contentStandard, other._contentStandard) &&
 				Objects.equals(this._language, other._language) &&
@@ -426,15 +426,6 @@ public class DataResourceImpl implements Serializable, DataResource {
 		this._customLicense = _customLicense_;
 	}
 
-	@JsonProperty("ids:resourceEndpoint")
-	final public List<ConnectorEndpoint> getResourceEndpoint() {
-		return _resourceEndpoint;
-	}
-	
-	final public void setResourceEndpoint (List<ConnectorEndpoint> _resourceEndpoint_) {
-		this._resourceEndpoint = _resourceEndpoint_;
-	}
-
 	@JsonProperty("ids:resourcePart")
 	final public List<Resource> getResourcePart() {
 		return _resourcePart;
@@ -444,6 +435,15 @@ public class DataResourceImpl implements Serializable, DataResource {
 		this._resourcePart = _resourcePart_;
 	}
 
+	@JsonProperty("ids:resourceEndpoint")
+	final public List<ConnectorEndpoint> getResourceEndpoint() {
+		return _resourceEndpoint;
+	}
+	
+	final public void setResourceEndpoint (List<ConnectorEndpoint> _resourceEndpoint_) {
+		this._resourceEndpoint = _resourceEndpoint_;
+	}
+
 	@JsonProperty("ids:contractOffer")
 	final public List<ContractOffer> getContractOffer() {
 		return _contractOffer;
@@ -451,15 +451,6 @@ public class DataResourceImpl implements Serializable, DataResource {
 	
 	final public void setContractOffer (List<ContractOffer> _contractOffer_) {
 		this._contractOffer = _contractOffer_;
-	}
-
-	@JsonProperty("ids:sample")
-	final public List<Resource> getSample() {
-		return _sample;
-	}
-	
-	final public void setSample (List<Resource> _sample_) {
-		this._sample = _sample_;
 	}
 
 	@JsonProperty("ids:publisher")
@@ -480,6 +471,15 @@ public class DataResourceImpl implements Serializable, DataResource {
 		this._sovereign = _sovereign_;
 	}
 
+	@JsonProperty("ids:sample")
+	final public List<Resource> getSample() {
+		return _sample;
+	}
+	
+	final public void setSample (List<Resource> _sample_) {
+		this._sample = _sample_;
+	}
+
 	@JsonProperty("ids:variant")
 	final public Resource getVariant() {
 		return _variant;
@@ -491,6 +491,15 @@ public class DataResourceImpl implements Serializable, DataResource {
 
 
 
+	@JsonProperty("ids:contentType")
+	final public ContentType getContentType() {
+		return _contentType;
+	}
+	
+	final public void setContentType (ContentType _contentType_) {
+		this._contentType = _contentType_;
+	}
+
 	@JsonProperty("ids:contentPart")
 	final public List<DigitalContent> getContentPart() {
 		return _contentPart;
@@ -500,22 +509,22 @@ public class DataResourceImpl implements Serializable, DataResource {
 		this._contentPart = _contentPart_;
 	}
 
-	@JsonProperty("ids:spatialCoverage")
-	final public List<Location> getSpatialCoverage() {
-		return _spatialCoverage;
+	@JsonProperty("ids:representation")
+	final public List<Representation> getRepresentation() {
+		return _representation;
 	}
 	
-	final public void setSpatialCoverage (List<Location> _spatialCoverage_) {
-		this._spatialCoverage = _spatialCoverage_;
+	final public void setRepresentation (List<Representation> _representation_) {
+		this._representation = _representation_;
 	}
 
-	@JsonProperty("ids:temporalCoverage")
-	final public List<TemporalEntity> getTemporalCoverage() {
-		return _temporalCoverage;
+	@JsonProperty("ids:defaultRepresentation")
+	final public List<Representation> getDefaultRepresentation() {
+		return _defaultRepresentation;
 	}
 	
-	final public void setTemporalCoverage (List<TemporalEntity> _temporalCoverage_) {
-		this._temporalCoverage = _temporalCoverage_;
+	final public void setDefaultRepresentation (List<Representation> _defaultRepresentation_) {
+		this._defaultRepresentation = _defaultRepresentation_;
 	}
 
 	@JsonProperty("ids:theme")
@@ -536,31 +545,13 @@ public class DataResourceImpl implements Serializable, DataResource {
 		this._keyword = _keyword_;
 	}
 
-	@JsonProperty("ids:representation")
-	final public List<Representation> getRepresentation() {
-		return _representation;
+	@JsonProperty("ids:temporalCoverage")
+	final public List<TemporalEntity> getTemporalCoverage() {
+		return _temporalCoverage;
 	}
 	
-	final public void setRepresentation (List<Representation> _representation_) {
-		this._representation = _representation_;
-	}
-
-	@JsonProperty("ids:contentType")
-	final public ContentType getContentType() {
-		return _contentType;
-	}
-	
-	final public void setContentType (ContentType _contentType_) {
-		this._contentType = _contentType_;
-	}
-
-	@JsonProperty("ids:defaultRepresentation")
-	final public List<Representation> getDefaultRepresentation() {
-		return _defaultRepresentation;
-	}
-	
-	final public void setDefaultRepresentation (List<Representation> _defaultRepresentation_) {
-		this._defaultRepresentation = _defaultRepresentation_;
+	final public void setTemporalCoverage (List<TemporalEntity> _temporalCoverage_) {
+		this._temporalCoverage = _temporalCoverage_;
 	}
 
 	@JsonProperty("ids:temporalResolution")
@@ -570,6 +561,15 @@ public class DataResourceImpl implements Serializable, DataResource {
 	
 	final public void setTemporalResolution (Frequency _temporalResolution_) {
 		this._temporalResolution = _temporalResolution_;
+	}
+
+	@JsonProperty("ids:spatialCoverage")
+	final public List<Location> getSpatialCoverage() {
+		return _spatialCoverage;
+	}
+	
+	final public void setSpatialCoverage (List<Location> _spatialCoverage_) {
+		this._spatialCoverage = _spatialCoverage_;
 	}
 
 	@JsonProperty("ids:accrualPeriodicity")

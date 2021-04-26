@@ -71,6 +71,17 @@ public class MessageProcessedNotificationMessageBuilder {
 
 
 	/**
+	* This function allows setting a value for _correlationMessage
+	* @param _correlationMessage_ desired value to be set
+	* @return Builder object with new value for _correlationMessage
+	*/
+	final public MessageProcessedNotificationMessageBuilder _correlationMessage_(URI _correlationMessage_) {
+		this.messageProcessedNotificationMessageImpl._correlationMessage = _correlationMessage_;
+		return this;
+	}
+
+
+	/**
 	* This function allows setting a value for _issuerConnector
 	* @param _issuerConnector_ desired value to be set
 	* @return Builder object with new value for _issuerConnector
@@ -88,17 +99,6 @@ public class MessageProcessedNotificationMessageBuilder {
 	*/
 	final public MessageProcessedNotificationMessageBuilder _recipientConnector_(List<URI> _recipientConnector_) {
 		this.messageProcessedNotificationMessageImpl._recipientConnector = _recipientConnector_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _securityToken
-	* @param _securityToken_ desired value to be set
-	* @return Builder object with new value for _securityToken
-	*/
-	final public MessageProcessedNotificationMessageBuilder _securityToken_(DynamicAttributeToken _securityToken_) {
-		this.messageProcessedNotificationMessageImpl._securityToken = _securityToken_;
 		return this;
 	}
 
@@ -126,12 +126,12 @@ public class MessageProcessedNotificationMessageBuilder {
 
 
 	/**
-	* This function allows setting a value for _correlationMessage
-	* @param _correlationMessage_ desired value to be set
-	* @return Builder object with new value for _correlationMessage
+	* This function allows setting a value for _securityToken
+	* @param _securityToken_ desired value to be set
+	* @return Builder object with new value for _securityToken
 	*/
-	final public MessageProcessedNotificationMessageBuilder _correlationMessage_(URI _correlationMessage_) {
-		this.messageProcessedNotificationMessageImpl._correlationMessage = _correlationMessage_;
+	final public MessageProcessedNotificationMessageBuilder _securityToken_(DynamicAttributeToken _securityToken_) {
+		this.messageProcessedNotificationMessageImpl._securityToken = _securityToken_;
 		return this;
 	}
 

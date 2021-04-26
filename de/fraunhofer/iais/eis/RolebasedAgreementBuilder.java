@@ -49,39 +49,6 @@ public class RolebasedAgreementBuilder {
 
 
 	/**
-	* This function allows setting a value for _permission
-	* @param _permission_ desired value to be set
-	* @return Builder object with new value for _permission
-	*/
-	final public RolebasedAgreementBuilder _permission_(List<Permission> _permission_) {
-		this.rolebasedAgreementImpl._permission = _permission_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _prohibition
-	* @param _prohibition_ desired value to be set
-	* @return Builder object with new value for _prohibition
-	*/
-	final public RolebasedAgreementBuilder _prohibition_(List<Prohibition> _prohibition_) {
-		this.rolebasedAgreementImpl._prohibition = _prohibition_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _obligation
-	* @param _obligation_ desired value to be set
-	* @return Builder object with new value for _obligation
-	*/
-	final public RolebasedAgreementBuilder _obligation_(List<Duty> _obligation_) {
-		this.rolebasedAgreementImpl._obligation = _obligation_;
-		return this;
-	}
-
-
-	/**
 	* This function allows setting a value for _contractStart
 	* @param _contractStart_ desired value to be set
 	* @return Builder object with new value for _contractStart
@@ -154,6 +121,39 @@ public class RolebasedAgreementBuilder {
 	*/
 	final public RolebasedAgreementBuilder _contractAnnex_(Resource _contractAnnex_) {
 		this.rolebasedAgreementImpl._contractAnnex = _contractAnnex_;
+		return this;
+	}
+
+
+	/**
+	* This function allows setting a value for _permission
+	* @param _permission_ desired value to be set
+	* @return Builder object with new value for _permission
+	*/
+	final public RolebasedAgreementBuilder _permission_(List<Permission> _permission_) {
+		this.rolebasedAgreementImpl._permission = _permission_;
+		return this;
+	}
+
+
+	/**
+	* This function allows setting a value for _prohibition
+	* @param _prohibition_ desired value to be set
+	* @return Builder object with new value for _prohibition
+	*/
+	final public RolebasedAgreementBuilder _prohibition_(List<Prohibition> _prohibition_) {
+		this.rolebasedAgreementImpl._prohibition = _prohibition_;
+		return this;
+	}
+
+
+	/**
+	* This function allows setting a value for _obligation
+	* @param _obligation_ desired value to be set
+	* @return Builder object with new value for _obligation
+	*/
+	final public RolebasedAgreementBuilder _obligation_(List<Duty> _obligation_) {
+		this.rolebasedAgreementImpl._obligation = _obligation_;
 		return this;
 	}
 

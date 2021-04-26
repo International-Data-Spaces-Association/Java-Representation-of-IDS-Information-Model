@@ -48,6 +48,17 @@ public class TrustedConnectorBuilder {
 
 
 	/**
+	* This function allows setting a value for _hasDefaultEndpoint
+	* @param _hasDefaultEndpoint_ desired value to be set
+	* @return Builder object with new value for _hasDefaultEndpoint
+	*/
+	final public TrustedConnectorBuilder _hasDefaultEndpoint_(ConnectorEndpoint _hasDefaultEndpoint_) {
+		this.trustedConnectorImpl._hasDefaultEndpoint = _hasDefaultEndpoint_;
+		return this;
+	}
+
+
+	/**
 	* This function allows setting a value for _hasEndpoint
 	* @param _hasEndpoint_ desired value to be set
 	* @return Builder object with new value for _hasEndpoint
@@ -59,12 +70,12 @@ public class TrustedConnectorBuilder {
 
 
 	/**
-	* This function allows setting a value for _hasAgent
-	* @param _hasAgent_ desired value to be set
-	* @return Builder object with new value for _hasAgent
+	* This function allows setting a value for _authInfo
+	* @param _authInfo_ desired value to be set
+	* @return Builder object with new value for _authInfo
 	*/
-	final public TrustedConnectorBuilder _hasAgent_(List<URI> _hasAgent_) {
-		this.trustedConnectorImpl._hasAgent = _hasAgent_;
+	final public TrustedConnectorBuilder _authInfo_(AuthInfo _authInfo_) {
+		this.trustedConnectorImpl._authInfo = _authInfo_;
 		return this;
 	}
 
@@ -81,23 +92,12 @@ public class TrustedConnectorBuilder {
 
 
 	/**
-	* This function allows setting a value for _hasDefaultEndpoint
-	* @param _hasDefaultEndpoint_ desired value to be set
-	* @return Builder object with new value for _hasDefaultEndpoint
+	* This function allows setting a value for _hasAgent
+	* @param _hasAgent_ desired value to be set
+	* @return Builder object with new value for _hasAgent
 	*/
-	final public TrustedConnectorBuilder _hasDefaultEndpoint_(ConnectorEndpoint _hasDefaultEndpoint_) {
-		this.trustedConnectorImpl._hasDefaultEndpoint = _hasDefaultEndpoint_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _authInfo
-	* @param _authInfo_ desired value to be set
-	* @return Builder object with new value for _authInfo
-	*/
-	final public TrustedConnectorBuilder _authInfo_(AuthInfo _authInfo_) {
-		this.trustedConnectorImpl._authInfo = _authInfo_;
+	final public TrustedConnectorBuilder _hasAgent_(List<URI> _hasAgent_) {
+		this.trustedConnectorImpl._hasAgent = _hasAgent_;
 		return this;
 	}
 
@@ -147,6 +147,17 @@ public class TrustedConnectorBuilder {
 
 
 	/**
+	* This function allows setting a value for _physicalLocation
+	* @param _physicalLocation_ desired value to be set
+	* @return Builder object with new value for _physicalLocation
+	*/
+	final public TrustedConnectorBuilder _physicalLocation_(Location _physicalLocation_) {
+		this.trustedConnectorImpl._physicalLocation = _physicalLocation_;
+		return this;
+	}
+
+
+	/**
 	* This function allows setting a value for _inboundModelVersion
 	* @param _inboundModelVersion_ desired value to be set
 	* @return Builder object with new value for _inboundModelVersion
@@ -164,17 +175,6 @@ public class TrustedConnectorBuilder {
 	*/
 	final public TrustedConnectorBuilder _outboundModelVersion_(String _outboundModelVersion_) {
 		this.trustedConnectorImpl._outboundModelVersion = _outboundModelVersion_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _physicalLocation
-	* @param _physicalLocation_ desired value to be set
-	* @return Builder object with new value for _physicalLocation
-	*/
-	final public TrustedConnectorBuilder _physicalLocation_(Location _physicalLocation_) {
-		this.trustedConnectorImpl._physicalLocation = _physicalLocation_;
 		return this;
 	}
 

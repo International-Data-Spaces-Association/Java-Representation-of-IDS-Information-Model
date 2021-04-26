@@ -100,6 +100,22 @@ public interface AppRoute {
 	public String getRouteDeployMethod();
 
 	/**
+	* "Route description."@en
+	* @return Returns the String for the property _routeDescription.
+	* More information under https://w3id.org/idsa/core/routeDescription
+	*/
+	@JsonProperty("ids:routeDescription")
+	public String getRouteDescription();
+
+	/**
+	* "Configuration details (e.g. contents of a config file) used to configure the route. Should be Base64 encoded."@en
+	* @return Returns the String for the property _routeConfiguration.
+	* More information under https://w3id.org/idsa/core/routeConfiguration
+	*/
+	@JsonProperty("ids:routeConfiguration")
+	public String getRouteConfiguration();
+
+	/**
 	* "Route between two or more app endpoints inside a app routing pipeline."@en
 	* @return Returns the List of RouteSteps for the property _hasSubRoute.
 	* More information under https://w3id.org/idsa/core/hasSubRoute
@@ -146,21 +162,5 @@ public interface AppRoute {
 	*/
 	@JsonProperty("ids:appRouteClearingHouse")
 	public List<ClearingHouse> getAppRouteClearingHouse();
-
-	/**
-	* "Route description."@en
-	* @return Returns the String for the property _routeDescription.
-	* More information under https://w3id.org/idsa/core/routeDescription
-	*/
-	@JsonProperty("ids:routeDescription")
-	public String getRouteDescription();
-
-	/**
-	* "Configuration details (e.g. contents of a config file) used to configure the route. Should be Base64 encoded."@en
-	* @return Returns the String for the property _routeConfiguration.
-	* More information under https://w3id.org/idsa/core/routeConfiguration
-	*/
-	@JsonProperty("ids:routeConfiguration")
-	public String getRouteConfiguration();
 
 }

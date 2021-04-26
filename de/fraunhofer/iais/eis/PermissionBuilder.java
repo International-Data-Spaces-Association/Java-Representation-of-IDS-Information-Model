@@ -69,12 +69,12 @@ public class PermissionBuilder {
 
 
 	/**
-	* This function allows setting a value for _constraint
-	* @param _constraint_ desired value to be set
-	* @return Builder object with new value for _constraint
+	* This function allows setting a value for _assignee
+	* @param _assignee_ desired value to be set
+	* @return Builder object with new value for _assignee
 	*/
-	final public PermissionBuilder _constraint_(List<AbstractConstraint> _constraint_) {
-		this.permissionImpl._constraint = _constraint_;
+	final public PermissionBuilder _assignee_(List<URI> _assignee_) {
+		this.permissionImpl._assignee = _assignee_;
 		return this;
 	}
 
@@ -91,23 +91,23 @@ public class PermissionBuilder {
 
 
 	/**
-	* This function allows setting a value for _assignee
-	* @param _assignee_ desired value to be set
-	* @return Builder object with new value for _assignee
-	*/
-	final public PermissionBuilder _assignee_(List<URI> _assignee_) {
-		this.permissionImpl._assignee = _assignee_;
-		return this;
-	}
-
-
-	/**
 	* This function allows setting a value for _target
 	* @param _target_ desired value to be set
 	* @return Builder object with new value for _target
 	*/
 	final public PermissionBuilder _target_(URI _target_) {
 		this.permissionImpl._target = _target_;
+		return this;
+	}
+
+
+	/**
+	* This function allows setting a value for _constraint
+	* @param _constraint_ desired value to be set
+	* @return Builder object with new value for _constraint
+	*/
+	final public PermissionBuilder _constraint_(List<AbstractConstraint> _constraint_) {
+		this.permissionImpl._constraint = _constraint_;
 		return this;
 	}
 

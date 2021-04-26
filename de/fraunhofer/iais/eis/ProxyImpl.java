@@ -144,8 +144,8 @@ public class ProxyImpl implements Serializable, Proxy {
 		this.properties.put(property, value) ;
 	}
 	public int hashCode() {
-		return Objects.hash(new Object[]{this._noProxy,
-			this._proxyURI,
+		return Objects.hash(new Object[]{this._proxyURI,
+			this._noProxy,
 			this._proxyAuthentication});
 	}
 
@@ -158,8 +158,8 @@ public class ProxyImpl implements Serializable, Proxy {
 			return false;
 		} else {
 			ProxyImpl other = (ProxyImpl) obj;
-			return Objects.equals(this._noProxy, other._noProxy) &&
-				Objects.equals(this._proxyURI, other._proxyURI) &&
+			return Objects.equals(this._proxyURI, other._proxyURI) &&
+				Objects.equals(this._noProxy, other._noProxy) &&
 				Objects.equals(this._proxyAuthentication, other._proxyAuthentication);
 		}
 	}
@@ -167,15 +167,6 @@ public class ProxyImpl implements Serializable, Proxy {
 
 	// accessor method implementations as derived from the IDSA Information Model ontology
 
-
-	@JsonProperty("ids:noProxy")
-	final public List<URI> getNoProxy() {
-		return _noProxy;
-	}
-	
-	final public void setNoProxy (List<URI> _noProxy_) {
-		this._noProxy = _noProxy_;
-	}
 
 	@NotNull
 	@JsonProperty("ids:proxyURI")
@@ -185,6 +176,15 @@ public class ProxyImpl implements Serializable, Proxy {
 	
 	final public void setProxyURI (URI _proxyURI_) {
 		this._proxyURI = _proxyURI_;
+	}
+
+	@JsonProperty("ids:noProxy")
+	final public List<URI> getNoProxy() {
+		return _noProxy;
+	}
+	
+	final public void setNoProxy (List<URI> _noProxy_) {
+		this._noProxy = _noProxy_;
 	}
 
 	@JsonProperty("ids:proxyAuthentication")

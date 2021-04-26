@@ -47,6 +47,17 @@ public class ConfigurationModelBuilder {
 	}
 
 	/**
+	* This function allows setting a value for _userAuthentication
+	* @param _userAuthentication_ desired value to be set
+	* @return Builder object with new value for _userAuthentication
+	*/
+	final public ConfigurationModelBuilder _userAuthentication_(List<UserAuthentication> _userAuthentication_) {
+		this.configurationModelImpl._userAuthentication = _userAuthentication_;
+		return this;
+	}
+
+
+	/**
 	* This function allows setting a value for _configurationModelLogLevel
 	* @param _configurationModelLogLevel_ desired value to be set
 	* @return Builder object with new value for _configurationModelLogLevel
@@ -80,12 +91,12 @@ public class ConfigurationModelBuilder {
 
 
 	/**
-	* This function allows setting a value for _userAuthentication
-	* @param _userAuthentication_ desired value to be set
-	* @return Builder object with new value for _userAuthentication
+	* This function allows setting a value for _connectorDescription
+	* @param _connectorDescription_ desired value to be set
+	* @return Builder object with new value for _connectorDescription
 	*/
-	final public ConfigurationModelBuilder _userAuthentication_(List<UserAuthentication> _userAuthentication_) {
-		this.configurationModelImpl._userAuthentication = _userAuthentication_;
+	final public ConfigurationModelBuilder _connectorDescription_(Connector _connectorDescription_) {
+		this.configurationModelImpl._connectorDescription = _connectorDescription_;
 		return this;
 	}
 
@@ -97,28 +108,6 @@ public class ConfigurationModelBuilder {
 	*/
 	final public ConfigurationModelBuilder _connectorProxy_(List<Proxy> _connectorProxy_) {
 		this.configurationModelImpl._connectorProxy = _connectorProxy_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _appRoute
-	* @param _appRoute_ desired value to be set
-	* @return Builder object with new value for _appRoute
-	*/
-	final public ConfigurationModelBuilder _appRoute_(List<AppRoute> _appRoute_) {
-		this.configurationModelImpl._appRoute = _appRoute_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _connectorDescription
-	* @param _connectorDescription_ desired value to be set
-	* @return Builder object with new value for _connectorDescription
-	*/
-	final public ConfigurationModelBuilder _connectorDescription_(Connector _connectorDescription_) {
-		this.configurationModelImpl._connectorDescription = _connectorDescription_;
 		return this;
 	}
 
@@ -196,6 +185,17 @@ public class ConfigurationModelBuilder {
 	*/
 	final public ConfigurationModelBuilder _configuredBroker_(BrokerCatalog _configuredBroker_) {
 		this.configurationModelImpl._configuredBroker = _configuredBroker_;
+		return this;
+	}
+
+
+	/**
+	* This function allows setting a value for _appRoute
+	* @param _appRoute_ desired value to be set
+	* @return Builder object with new value for _appRoute
+	*/
+	final public ConfigurationModelBuilder _appRoute_(List<AppRoute> _appRoute_) {
+		this.configurationModelImpl._appRoute = _appRoute_;
 		return this;
 	}
 

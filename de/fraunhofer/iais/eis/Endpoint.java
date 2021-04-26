@@ -93,6 +93,14 @@ public interface Endpoint {
 
 
 	/**
+	* "Access URL of an endpoint."@en
+	* @return Returns the URI for the property _accessURL.
+	* More information under https://w3id.org/idsa/core/accessURL
+	*/
+	@JsonProperty("ids:accessURL")
+	public URI getAccessURL();
+
+	/**
 	* "Human-readable information and description of the endpoint."@en
 	* @return Returns the List of TypedLiterals for the property _endpointInformation.
 	* More information under https://w3id.org/idsa/core/endpointInformation
@@ -107,14 +115,6 @@ public interface Endpoint {
 	*/
 	@JsonProperty("ids:endpointDocumentation")
 	public List<URI> getEndpointDocumentation();
-
-	/**
-	* "Access URL of an endpoint."@en
-	* @return Returns the URI for the property _accessURL.
-	* More information under https://w3id.org/idsa/core/accessURL
-	*/
-	@JsonProperty("ids:accessURL")
-	public URI getAccessURL();
 
 	/**
 	* "Relative path, topic or queue at which the content is published by the related host."@en

@@ -48,34 +48,23 @@ public class OrchestrationAppBuilder {
 
 
 	/**
-	* This function allows setting a value for _appEndpoint
-	* @param _appEndpoint_ desired value to be set
-	* @return Builder object with new value for _appEndpoint
-	*/
-	final public OrchestrationAppBuilder _appEndpoint_(List<AppEndpoint> _appEndpoint_) {
-		this.orchestrationAppImpl._appEndpoint = _appEndpoint_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _supportedUsagePolicies
-	* @param _supportedUsagePolicies_ desired value to be set
-	* @return Builder object with new value for _supportedUsagePolicies
-	*/
-	final public OrchestrationAppBuilder _supportedUsagePolicies_(List<UsagePolicyClass> _supportedUsagePolicies_) {
-		this.orchestrationAppImpl._supportedUsagePolicies = _supportedUsagePolicies_;
-		return this;
-	}
-
-
-	/**
 	* This function allows setting a value for _appDocumentation
 	* @param _appDocumentation_ desired value to be set
 	* @return Builder object with new value for _appDocumentation
 	*/
 	final public OrchestrationAppBuilder _appDocumentation_(String _appDocumentation_) {
 		this.orchestrationAppImpl._appDocumentation = _appDocumentation_;
+		return this;
+	}
+
+
+	/**
+	* This function allows setting a value for _appEndpoint
+	* @param _appEndpoint_ desired value to be set
+	* @return Builder object with new value for _appEndpoint
+	*/
+	final public OrchestrationAppBuilder _appEndpoint_(List<AppEndpoint> _appEndpoint_) {
+		this.orchestrationAppImpl._appEndpoint = _appEndpoint_;
 		return this;
 	}
 
@@ -98,6 +87,17 @@ public class OrchestrationAppBuilder {
 	*/
 	final public OrchestrationAppBuilder _appStorageConfiguration_(String _appStorageConfiguration_) {
 		this.orchestrationAppImpl._appStorageConfiguration = _appStorageConfiguration_;
+		return this;
+	}
+
+
+	/**
+	* This function allows setting a value for _supportedUsagePolicies
+	* @param _supportedUsagePolicies_ desired value to be set
+	* @return Builder object with new value for _supportedUsagePolicies
+	*/
+	final public OrchestrationAppBuilder _supportedUsagePolicies_(List<UsagePolicyClass> _supportedUsagePolicies_) {
+		this.orchestrationAppImpl._supportedUsagePolicies = _supportedUsagePolicies_;
 		return this;
 	}
 	/**

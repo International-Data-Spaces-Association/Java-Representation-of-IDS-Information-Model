@@ -58,6 +58,28 @@ public class AppRouteBuilder {
 
 
 	/**
+	* This function allows setting a value for _routeDescription
+	* @param _routeDescription_ desired value to be set
+	* @return Builder object with new value for _routeDescription
+	*/
+	final public AppRouteBuilder _routeDescription_(String _routeDescription_) {
+		this.appRouteImpl._routeDescription = _routeDescription_;
+		return this;
+	}
+
+
+	/**
+	* This function allows setting a value for _routeConfiguration
+	* @param _routeConfiguration_ desired value to be set
+	* @return Builder object with new value for _routeConfiguration
+	*/
+	final public AppRouteBuilder _routeConfiguration_(String _routeConfiguration_) {
+		this.appRouteImpl._routeConfiguration = _routeConfiguration_;
+		return this;
+	}
+
+
+	/**
 	* This function allows setting a value for _hasSubRoute
 	* @param _hasSubRoute_ desired value to be set
 	* @return Builder object with new value for _hasSubRoute
@@ -119,28 +141,6 @@ public class AppRouteBuilder {
 	*/
 	final public AppRouteBuilder _appRouteClearingHouse_(List<ClearingHouse> _appRouteClearingHouse_) {
 		this.appRouteImpl._appRouteClearingHouse = _appRouteClearingHouse_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _routeDescription
-	* @param _routeDescription_ desired value to be set
-	* @return Builder object with new value for _routeDescription
-	*/
-	final public AppRouteBuilder _routeDescription_(String _routeDescription_) {
-		this.appRouteImpl._routeDescription = _routeDescription_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _routeConfiguration
-	* @param _routeConfiguration_ desired value to be set
-	* @return Builder object with new value for _routeConfiguration
-	*/
-	final public AppRouteBuilder _routeConfiguration_(String _routeConfiguration_) {
-		this.appRouteImpl._routeConfiguration = _routeConfiguration_;
 		return this;
 	}
 	/**

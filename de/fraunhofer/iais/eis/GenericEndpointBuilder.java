@@ -69,6 +69,17 @@ public class GenericEndpointBuilder {
 
 
 	/**
+	* This function allows setting a value for _accessURL
+	* @param _accessURL_ desired value to be set
+	* @return Builder object with new value for _accessURL
+	*/
+	final public GenericEndpointBuilder _accessURL_(URI _accessURL_) {
+		this.genericEndpointImpl._accessURL = _accessURL_;
+		return this;
+	}
+
+
+	/**
 	* This function allows setting a value for _endpointInformation
 	* @param _endpointInformation_ desired value to be set
 	* @return Builder object with new value for _endpointInformation
@@ -86,17 +97,6 @@ public class GenericEndpointBuilder {
 	*/
 	final public GenericEndpointBuilder _endpointDocumentation_(List<URI> _endpointDocumentation_) {
 		this.genericEndpointImpl._endpointDocumentation = _endpointDocumentation_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _accessURL
-	* @param _accessURL_ desired value to be set
-	* @return Builder object with new value for _accessURL
-	*/
-	final public GenericEndpointBuilder _accessURL_(URI _accessURL_) {
-		this.genericEndpointImpl._accessURL = _accessURL_;
 		return this;
 	}
 

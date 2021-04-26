@@ -240,18 +240,18 @@ public class ParticipantImpl implements Serializable, Participant {
 		this.properties.put(property, value) ;
 	}
 	public int hashCode() {
-		return Objects.hash(new Object[]{this._memberPerson,
-			this._memberParticipant,
-			this._corporateEmailAddress,
-			this._businessIdentifier,
-			this._legalName,
+		return Objects.hash(new Object[]{this._legalName,
 			this._primarySite,
+			this._corporateEmailAddress,
 			this._corporateHomepage,
+			this._memberParticipant,
 			this._participantCertification,
 			this._participantRefinement,
+			this._businessIdentifier,
 			this._vatID,
 			this._legalForm,
 			this._jurisdiction,
+			this._memberPerson,
 			this._title,
 			this._description,
 			this._version});
@@ -266,18 +266,18 @@ public class ParticipantImpl implements Serializable, Participant {
 			return false;
 		} else {
 			ParticipantImpl other = (ParticipantImpl) obj;
-			return Objects.equals(this._memberPerson, other._memberPerson) &&
-				Objects.equals(this._memberParticipant, other._memberParticipant) &&
-				Objects.equals(this._corporateEmailAddress, other._corporateEmailAddress) &&
-				Objects.equals(this._businessIdentifier, other._businessIdentifier) &&
-				Objects.equals(this._legalName, other._legalName) &&
+			return Objects.equals(this._legalName, other._legalName) &&
 				Objects.equals(this._primarySite, other._primarySite) &&
+				Objects.equals(this._corporateEmailAddress, other._corporateEmailAddress) &&
 				Objects.equals(this._corporateHomepage, other._corporateHomepage) &&
+				Objects.equals(this._memberParticipant, other._memberParticipant) &&
 				Objects.equals(this._participantCertification, other._participantCertification) &&
 				Objects.equals(this._participantRefinement, other._participantRefinement) &&
+				Objects.equals(this._businessIdentifier, other._businessIdentifier) &&
 				Objects.equals(this._vatID, other._vatID) &&
 				Objects.equals(this._legalForm, other._legalForm) &&
 				Objects.equals(this._jurisdiction, other._jurisdiction) &&
+				Objects.equals(this._memberPerson, other._memberPerson) &&
 				Objects.equals(this._title, other._title) &&
 				Objects.equals(this._description, other._description) &&
 				Objects.equals(this._version, other._version);
@@ -287,42 +287,6 @@ public class ParticipantImpl implements Serializable, Participant {
 
 	// accessor method implementations as derived from the IDSA Information Model ontology
 
-
-	@JsonProperty("ids:memberPerson")
-	final public List<Person> getMemberPerson() {
-		return _memberPerson;
-	}
-	
-	final public void setMemberPerson (List<Person> _memberPerson_) {
-		this._memberPerson = _memberPerson_;
-	}
-
-	@JsonProperty("ids:memberParticipant")
-	final public List<Participant> getMemberParticipant() {
-		return _memberParticipant;
-	}
-	
-	final public void setMemberParticipant (List<Participant> _memberParticipant_) {
-		this._memberParticipant = _memberParticipant_;
-	}
-
-	@JsonProperty("ids:corporateEmailAddress")
-	final public List<String> getCorporateEmailAddress() {
-		return _corporateEmailAddress;
-	}
-	
-	final public void setCorporateEmailAddress (List<String> _corporateEmailAddress_) {
-		this._corporateEmailAddress = _corporateEmailAddress_;
-	}
-
-	@JsonProperty("ids:businessIdentifier")
-	final public List<BusinessIdentifier> getBusinessIdentifier() {
-		return _businessIdentifier;
-	}
-	
-	final public void setBusinessIdentifier (List<BusinessIdentifier> _businessIdentifier_) {
-		this._businessIdentifier = _businessIdentifier_;
-	}
 
 	@JsonProperty("ids:legalName")
 	final public List<String> getLegalName() {
@@ -342,6 +306,15 @@ public class ParticipantImpl implements Serializable, Participant {
 		this._primarySite = _primarySite_;
 	}
 
+	@JsonProperty("ids:corporateEmailAddress")
+	final public List<String> getCorporateEmailAddress() {
+		return _corporateEmailAddress;
+	}
+	
+	final public void setCorporateEmailAddress (List<String> _corporateEmailAddress_) {
+		this._corporateEmailAddress = _corporateEmailAddress_;
+	}
+
 	@JsonProperty("ids:corporateHomepage")
 	final public URI getCorporateHomepage() {
 		return _corporateHomepage;
@@ -349,6 +322,15 @@ public class ParticipantImpl implements Serializable, Participant {
 	
 	final public void setCorporateHomepage (URI _corporateHomepage_) {
 		this._corporateHomepage = _corporateHomepage_;
+	}
+
+	@JsonProperty("ids:memberParticipant")
+	final public List<Participant> getMemberParticipant() {
+		return _memberParticipant;
+	}
+	
+	final public void setMemberParticipant (List<Participant> _memberParticipant_) {
+		this._memberParticipant = _memberParticipant_;
 	}
 
 	@JsonProperty("ids:participantCertification")
@@ -367,6 +349,15 @@ public class ParticipantImpl implements Serializable, Participant {
 	
 	final public void setParticipantRefinement (AbstractConstraint _participantRefinement_) {
 		this._participantRefinement = _participantRefinement_;
+	}
+
+	@JsonProperty("ids:businessIdentifier")
+	final public List<BusinessIdentifier> getBusinessIdentifier() {
+		return _businessIdentifier;
+	}
+	
+	final public void setBusinessIdentifier (List<BusinessIdentifier> _businessIdentifier_) {
+		this._businessIdentifier = _businessIdentifier_;
 	}
 
 	@JsonProperty("ids:vatID")
@@ -395,6 +386,15 @@ public class ParticipantImpl implements Serializable, Participant {
 	
 	final public void setJurisdiction (String _jurisdiction_) {
 		this._jurisdiction = _jurisdiction_;
+	}
+
+	@JsonProperty("ids:memberPerson")
+	final public List<Person> getMemberPerson() {
+		return _memberPerson;
+	}
+	
+	final public void setMemberPerson (List<Person> _memberPerson_) {
+		this._memberPerson = _memberPerson_;
 	}
 
 

@@ -48,34 +48,23 @@ public class SystemAdapterBuilder {
 
 
 	/**
-	* This function allows setting a value for _appEndpoint
-	* @param _appEndpoint_ desired value to be set
-	* @return Builder object with new value for _appEndpoint
-	*/
-	final public SystemAdapterBuilder _appEndpoint_(List<AppEndpoint> _appEndpoint_) {
-		this.systemAdapterImpl._appEndpoint = _appEndpoint_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _supportedUsagePolicies
-	* @param _supportedUsagePolicies_ desired value to be set
-	* @return Builder object with new value for _supportedUsagePolicies
-	*/
-	final public SystemAdapterBuilder _supportedUsagePolicies_(List<UsagePolicyClass> _supportedUsagePolicies_) {
-		this.systemAdapterImpl._supportedUsagePolicies = _supportedUsagePolicies_;
-		return this;
-	}
-
-
-	/**
 	* This function allows setting a value for _appDocumentation
 	* @param _appDocumentation_ desired value to be set
 	* @return Builder object with new value for _appDocumentation
 	*/
 	final public SystemAdapterBuilder _appDocumentation_(String _appDocumentation_) {
 		this.systemAdapterImpl._appDocumentation = _appDocumentation_;
+		return this;
+	}
+
+
+	/**
+	* This function allows setting a value for _appEndpoint
+	* @param _appEndpoint_ desired value to be set
+	* @return Builder object with new value for _appEndpoint
+	*/
+	final public SystemAdapterBuilder _appEndpoint_(List<AppEndpoint> _appEndpoint_) {
+		this.systemAdapterImpl._appEndpoint = _appEndpoint_;
 		return this;
 	}
 
@@ -98,6 +87,17 @@ public class SystemAdapterBuilder {
 	*/
 	final public SystemAdapterBuilder _appStorageConfiguration_(String _appStorageConfiguration_) {
 		this.systemAdapterImpl._appStorageConfiguration = _appStorageConfiguration_;
+		return this;
+	}
+
+
+	/**
+	* This function allows setting a value for _supportedUsagePolicies
+	* @param _supportedUsagePolicies_ desired value to be set
+	* @return Builder object with new value for _supportedUsagePolicies
+	*/
+	final public SystemAdapterBuilder _supportedUsagePolicies_(List<UsagePolicyClass> _supportedUsagePolicies_) {
+		this.systemAdapterImpl._supportedUsagePolicies = _supportedUsagePolicies_;
 		return this;
 	}
 	/**

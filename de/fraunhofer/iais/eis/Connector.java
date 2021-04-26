@@ -41,9 +41,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonSubTypes({
 	@JsonSubTypes.Type(value = Broker.class),
 	@JsonSubTypes.Type(value = AppStore.class),
-	@JsonSubTypes.Type(value = ParIS.class),
 	@JsonSubTypes.Type(value = BaseConnector.class),
-	@JsonSubTypes.Type(value = TrustedConnector.class)
+	@JsonSubTypes.Type(value = TrustedConnector.class),
+	@JsonSubTypes.Type(value = ParIS.class)
 })
 public interface Connector extends InfrastructureComponent {
 
@@ -94,6 +94,15 @@ public interface Connector extends InfrastructureComponent {
 
 
 	/**
+	* "Indicates the default endpoint that should be used for basic infrastructure interactions, e.g., providing the self description."@en
+	* @return Returns the ConnectorEndpoint for the property _hasDefaultEndpoint.
+	* More information under https://w3id.org/idsa/core/hasDefaultEndpoint
+	*/
+	@NotNull
+	@JsonProperty("ids:hasDefaultEndpoint")
+	public ConnectorEndpoint getHasDefaultEndpoint();
+
+	/**
 	* "Reference to the Endpoints that serve the resource\'s content or let you exchange messages with an IDS Connector."@en
 	* @return Returns the List of ConnectorEndpoints for the property _hasEndpoint.
 	* More information under https://w3id.org/idsa/core/hasEndpoint
@@ -102,12 +111,12 @@ public interface Connector extends InfrastructureComponent {
 	public List<ConnectorEndpoint> getHasEndpoint();
 
 	/**
-	* "The Agents for which this Connector may initiate and receive Messages."@en
-	* @return Returns the List of URIs for the property _hasAgent.
-	* More information under https://w3id.org/idsa/core/hasAgent
+	* "Information of the authentication service used by the Connector."@en
+	* @return Returns the AuthInfo for the property _authInfo.
+	* More information under https://w3id.org/idsa/core/authInfo
 	*/
-	@JsonProperty("ids:hasAgent")
-	public List<URI> getHasAgent();
+	@JsonProperty("ids:authInfo")
+	public AuthInfo getAuthInfo();
 
 	/**
 	* "References the Catalog of published or requested resource by this Connector."@en
@@ -118,21 +127,12 @@ public interface Connector extends InfrastructureComponent {
 	public List<ResourceCatalog> getResourceCatalog();
 
 	/**
-	* "Indicates the default endpoint that should be used for basic infrastructure interactions, e.g., providing the self description."@en
-	* @return Returns the ConnectorEndpoint for the property _hasDefaultEndpoint.
-	* More information under https://w3id.org/idsa/core/hasDefaultEndpoint
+	* "The Agents for which this Connector may initiate and receive Messages."@en
+	* @return Returns the List of URIs for the property _hasAgent.
+	* More information under https://w3id.org/idsa/core/hasAgent
 	*/
-	@NotNull
-	@JsonProperty("ids:hasDefaultEndpoint")
-	public ConnectorEndpoint getHasDefaultEndpoint();
-
-	/**
-	* "Information of the authentication service used by the Connector."@en
-	* @return Returns the AuthInfo for the property _authInfo.
-	* More information under https://w3id.org/idsa/core/authInfo
-	*/
-	@JsonProperty("ids:authInfo")
-	public AuthInfo getAuthInfo();
+	@JsonProperty("ids:hasAgent")
+	public List<URI> getHasAgent();
 
 	/**
 	* "The SecurityProfile supported by the Connector."@en

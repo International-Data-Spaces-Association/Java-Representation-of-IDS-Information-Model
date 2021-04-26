@@ -270,18 +270,18 @@ public class ParISImpl implements Serializable, ParIS {
 	}
 	public int hashCode() {
 		return Objects.hash(new Object[]{this._participantCatalog,
-			this._hasEndpoint,
-			this._hasAgent,
-			this._resourceCatalog,
 			this._hasDefaultEndpoint,
+			this._hasEndpoint,
 			this._authInfo,
+			this._resourceCatalog,
+			this._hasAgent,
 			this._securityProfile,
 			this._extendedGuarantee,
 			this._maintainer,
 			this._curator,
+			this._physicalLocation,
 			this._inboundModelVersion,
 			this._outboundModelVersion,
-			this._physicalLocation,
 			this._componentCertification,
 			this._publicKey,
 			this._version,
@@ -299,18 +299,18 @@ public class ParISImpl implements Serializable, ParIS {
 		} else {
 			ParISImpl other = (ParISImpl) obj;
 			return Objects.equals(this._participantCatalog, other._participantCatalog) &&
-				Objects.equals(this._hasEndpoint, other._hasEndpoint) &&
-				Objects.equals(this._hasAgent, other._hasAgent) &&
-				Objects.equals(this._resourceCatalog, other._resourceCatalog) &&
 				Objects.equals(this._hasDefaultEndpoint, other._hasDefaultEndpoint) &&
+				Objects.equals(this._hasEndpoint, other._hasEndpoint) &&
 				Objects.equals(this._authInfo, other._authInfo) &&
+				Objects.equals(this._resourceCatalog, other._resourceCatalog) &&
+				Objects.equals(this._hasAgent, other._hasAgent) &&
 				Objects.equals(this._securityProfile, other._securityProfile) &&
 				Objects.equals(this._extendedGuarantee, other._extendedGuarantee) &&
 				Objects.equals(this._maintainer, other._maintainer) &&
 				Objects.equals(this._curator, other._curator) &&
+				Objects.equals(this._physicalLocation, other._physicalLocation) &&
 				Objects.equals(this._inboundModelVersion, other._inboundModelVersion) &&
 				Objects.equals(this._outboundModelVersion, other._outboundModelVersion) &&
-				Objects.equals(this._physicalLocation, other._physicalLocation) &&
 				Objects.equals(this._componentCertification, other._componentCertification) &&
 				Objects.equals(this._publicKey, other._publicKey) &&
 				Objects.equals(this._version, other._version) &&
@@ -332,6 +332,16 @@ public class ParISImpl implements Serializable, ParIS {
 		this._participantCatalog = _participantCatalog_;
 	}
 
+	@NotNull
+	@JsonProperty("ids:hasDefaultEndpoint")
+	final public ConnectorEndpoint getHasDefaultEndpoint() {
+		return _hasDefaultEndpoint;
+	}
+	
+	final public void setHasDefaultEndpoint (ConnectorEndpoint _hasDefaultEndpoint_) {
+		this._hasDefaultEndpoint = _hasDefaultEndpoint_;
+	}
+
 	@JsonProperty("ids:hasEndpoint")
 	final public List<ConnectorEndpoint> getHasEndpoint() {
 		return _hasEndpoint;
@@ -341,13 +351,13 @@ public class ParISImpl implements Serializable, ParIS {
 		this._hasEndpoint = _hasEndpoint_;
 	}
 
-	@JsonProperty("ids:hasAgent")
-	final public List<URI> getHasAgent() {
-		return _hasAgent;
+	@JsonProperty("ids:authInfo")
+	final public AuthInfo getAuthInfo() {
+		return _authInfo;
 	}
 	
-	final public void setHasAgent (List<URI> _hasAgent_) {
-		this._hasAgent = _hasAgent_;
+	final public void setAuthInfo (AuthInfo _authInfo_) {
+		this._authInfo = _authInfo_;
 	}
 
 	@JsonProperty("ids:resourceCatalog")
@@ -359,23 +369,13 @@ public class ParISImpl implements Serializable, ParIS {
 		this._resourceCatalog = _resourceCatalog_;
 	}
 
-	@NotNull
-	@JsonProperty("ids:hasDefaultEndpoint")
-	final public ConnectorEndpoint getHasDefaultEndpoint() {
-		return _hasDefaultEndpoint;
+	@JsonProperty("ids:hasAgent")
+	final public List<URI> getHasAgent() {
+		return _hasAgent;
 	}
 	
-	final public void setHasDefaultEndpoint (ConnectorEndpoint _hasDefaultEndpoint_) {
-		this._hasDefaultEndpoint = _hasDefaultEndpoint_;
-	}
-
-	@JsonProperty("ids:authInfo")
-	final public AuthInfo getAuthInfo() {
-		return _authInfo;
-	}
-	
-	final public void setAuthInfo (AuthInfo _authInfo_) {
-		this._authInfo = _authInfo_;
+	final public void setHasAgent (List<URI> _hasAgent_) {
+		this._hasAgent = _hasAgent_;
 	}
 
 	@NotNull
@@ -417,6 +417,15 @@ public class ParISImpl implements Serializable, ParIS {
 		this._curator = _curator_;
 	}
 
+	@JsonProperty("ids:physicalLocation")
+	final public Location getPhysicalLocation() {
+		return _physicalLocation;
+	}
+	
+	final public void setPhysicalLocation (Location _physicalLocation_) {
+		this._physicalLocation = _physicalLocation_;
+	}
+
 	@NotEmpty
 	@JsonProperty("ids:inboundModelVersion")
 	final public List<String> getInboundModelVersion() {
@@ -435,15 +444,6 @@ public class ParISImpl implements Serializable, ParIS {
 	
 	final public void setOutboundModelVersion (String _outboundModelVersion_) {
 		this._outboundModelVersion = _outboundModelVersion_;
-	}
-
-	@JsonProperty("ids:physicalLocation")
-	final public Location getPhysicalLocation() {
-		return _physicalLocation;
-	}
-	
-	final public void setPhysicalLocation (Location _physicalLocation_) {
-		this._physicalLocation = _physicalLocation_;
 	}
 
 	@JsonProperty("ids:componentCertification")

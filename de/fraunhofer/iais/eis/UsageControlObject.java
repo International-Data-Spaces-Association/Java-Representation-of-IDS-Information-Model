@@ -99,23 +99,6 @@ public interface UsageControlObject {
 	public URI getData();
 
 	/**
-	* "The target contract defining the usage of the data object."@en
-	* @return Returns the List of ContractAgreements for the property _contract.
-	* More information under https://w3id.org/idsa/core/contract
-	*/
-	@NotEmpty
-	@JsonProperty("ids:contract")
-	public List<ContractAgreement> getContract();
-
-	/**
-	* "The list of combined current states of the data object."@en
-	* @return Returns the List of ArtifactStates for the property _hasState.
-	* More information under https://w3id.org/idsa/core/hasState
-	*/
-	@JsonProperty("ids:hasState")
-	public List<ArtifactState> getHasState();
-
-	/**
 	* "The participant intending to use the data."@en
 	* @return Returns the Participant for the property _user.
 	* More information under https://w3id.org/idsa/core/user
@@ -130,6 +113,15 @@ public interface UsageControlObject {
 	*/
 	@JsonProperty("ids:source")
 	public URI getSource();
+
+	/**
+	* "The target contract defining the usage of the data object."@en
+	* @return Returns the List of ContractAgreements for the property _contract.
+	* More information under https://w3id.org/idsa/core/contract
+	*/
+	@NotEmpty
+	@JsonProperty("ids:contract")
+	public List<ContractAgreement> getContract();
 
 	/**
 	* "Duration, which this asset is in use by now. Might be calculated on the fly when requested by a Usage Control Engine."@en
@@ -147,6 +139,14 @@ public interface UsageControlObject {
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
 	@JsonProperty("ids:accessed")
 	public XMLGregorianCalendar getAccessed();
+
+	/**
+	* "The list of combined current states of the data object."@en
+	* @return Returns the List of ArtifactStates for the property _hasState.
+	* More information under https://w3id.org/idsa/core/hasState
+	*/
+	@JsonProperty("ids:hasState")
+	public List<ArtifactState> getHasState();
 
 	/**
 	* "\tThe target application requesting the usage. Should be some locally unique identifiers, preferably URIs."@en

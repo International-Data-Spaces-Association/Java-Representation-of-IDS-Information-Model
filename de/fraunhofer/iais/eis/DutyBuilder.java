@@ -48,12 +48,12 @@ public class DutyBuilder {
 
 
 	/**
-	* This function allows setting a value for _constraint
-	* @param _constraint_ desired value to be set
-	* @return Builder object with new value for _constraint
+	* This function allows setting a value for _assignee
+	* @param _assignee_ desired value to be set
+	* @return Builder object with new value for _assignee
 	*/
-	final public DutyBuilder _constraint_(List<AbstractConstraint> _constraint_) {
-		this.dutyImpl._constraint = _constraint_;
+	final public DutyBuilder _assignee_(List<URI> _assignee_) {
+		this.dutyImpl._assignee = _assignee_;
 		return this;
 	}
 
@@ -70,23 +70,23 @@ public class DutyBuilder {
 
 
 	/**
-	* This function allows setting a value for _assignee
-	* @param _assignee_ desired value to be set
-	* @return Builder object with new value for _assignee
-	*/
-	final public DutyBuilder _assignee_(List<URI> _assignee_) {
-		this.dutyImpl._assignee = _assignee_;
-		return this;
-	}
-
-
-	/**
 	* This function allows setting a value for _target
 	* @param _target_ desired value to be set
 	* @return Builder object with new value for _target
 	*/
 	final public DutyBuilder _target_(URI _target_) {
 		this.dutyImpl._target = _target_;
+		return this;
+	}
+
+
+	/**
+	* This function allows setting a value for _constraint
+	* @param _constraint_ desired value to be set
+	* @return Builder object with new value for _constraint
+	*/
+	final public DutyBuilder _constraint_(List<AbstractConstraint> _constraint_) {
+		this.dutyImpl._constraint = _constraint_;
 		return this;
 	}
 

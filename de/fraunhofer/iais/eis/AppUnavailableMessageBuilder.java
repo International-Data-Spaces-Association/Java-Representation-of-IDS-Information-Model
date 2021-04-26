@@ -83,6 +83,17 @@ public class AppUnavailableMessageBuilder {
 
 
 	/**
+	* This function allows setting a value for _correlationMessage
+	* @param _correlationMessage_ desired value to be set
+	* @return Builder object with new value for _correlationMessage
+	*/
+	final public AppUnavailableMessageBuilder _correlationMessage_(URI _correlationMessage_) {
+		this.appUnavailableMessageImpl._correlationMessage = _correlationMessage_;
+		return this;
+	}
+
+
+	/**
 	* This function allows setting a value for _issuerConnector
 	* @param _issuerConnector_ desired value to be set
 	* @return Builder object with new value for _issuerConnector
@@ -100,17 +111,6 @@ public class AppUnavailableMessageBuilder {
 	*/
 	final public AppUnavailableMessageBuilder _recipientConnector_(List<URI> _recipientConnector_) {
 		this.appUnavailableMessageImpl._recipientConnector = _recipientConnector_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _securityToken
-	* @param _securityToken_ desired value to be set
-	* @return Builder object with new value for _securityToken
-	*/
-	final public AppUnavailableMessageBuilder _securityToken_(DynamicAttributeToken _securityToken_) {
-		this.appUnavailableMessageImpl._securityToken = _securityToken_;
 		return this;
 	}
 
@@ -138,12 +138,12 @@ public class AppUnavailableMessageBuilder {
 
 
 	/**
-	* This function allows setting a value for _correlationMessage
-	* @param _correlationMessage_ desired value to be set
-	* @return Builder object with new value for _correlationMessage
+	* This function allows setting a value for _securityToken
+	* @param _securityToken_ desired value to be set
+	* @return Builder object with new value for _securityToken
 	*/
-	final public AppUnavailableMessageBuilder _correlationMessage_(URI _correlationMessage_) {
-		this.appUnavailableMessageImpl._correlationMessage = _correlationMessage_;
+	final public AppUnavailableMessageBuilder _securityToken_(DynamicAttributeToken _securityToken_) {
+		this.appUnavailableMessageImpl._securityToken = _securityToken_;
 		return this;
 	}
 

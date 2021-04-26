@@ -47,23 +47,23 @@ public class ProxyBuilder {
 	}
 
 	/**
-	* This function allows setting a value for _noProxy
-	* @param _noProxy_ desired value to be set
-	* @return Builder object with new value for _noProxy
-	*/
-	final public ProxyBuilder _noProxy_(List<URI> _noProxy_) {
-		this.proxyImpl._noProxy = _noProxy_;
-		return this;
-	}
-
-
-	/**
 	* This function allows setting a value for _proxyURI
 	* @param _proxyURI_ desired value to be set
 	* @return Builder object with new value for _proxyURI
 	*/
 	final public ProxyBuilder _proxyURI_(URI _proxyURI_) {
 		this.proxyImpl._proxyURI = _proxyURI_;
+		return this;
+	}
+
+
+	/**
+	* This function allows setting a value for _noProxy
+	* @param _noProxy_ desired value to be set
+	* @return Builder object with new value for _noProxy
+	*/
+	final public ProxyBuilder _noProxy_(List<URI> _noProxy_) {
+		this.proxyImpl._noProxy = _noProxy_;
 		return this;
 	}
 

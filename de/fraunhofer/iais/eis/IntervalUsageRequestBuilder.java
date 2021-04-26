@@ -49,39 +49,6 @@ public class IntervalUsageRequestBuilder {
 
 
 	/**
-	* This function allows setting a value for _permission
-	* @param _permission_ desired value to be set
-	* @return Builder object with new value for _permission
-	*/
-	final public IntervalUsageRequestBuilder _permission_(List<Permission> _permission_) {
-		this.intervalUsageRequestImpl._permission = _permission_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _prohibition
-	* @param _prohibition_ desired value to be set
-	* @return Builder object with new value for _prohibition
-	*/
-	final public IntervalUsageRequestBuilder _prohibition_(List<Prohibition> _prohibition_) {
-		this.intervalUsageRequestImpl._prohibition = _prohibition_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _obligation
-	* @param _obligation_ desired value to be set
-	* @return Builder object with new value for _obligation
-	*/
-	final public IntervalUsageRequestBuilder _obligation_(List<Duty> _obligation_) {
-		this.intervalUsageRequestImpl._obligation = _obligation_;
-		return this;
-	}
-
-
-	/**
 	* This function allows setting a value for _contractStart
 	* @param _contractStart_ desired value to be set
 	* @return Builder object with new value for _contractStart
@@ -154,6 +121,39 @@ public class IntervalUsageRequestBuilder {
 	*/
 	final public IntervalUsageRequestBuilder _contractAnnex_(Resource _contractAnnex_) {
 		this.intervalUsageRequestImpl._contractAnnex = _contractAnnex_;
+		return this;
+	}
+
+
+	/**
+	* This function allows setting a value for _permission
+	* @param _permission_ desired value to be set
+	* @return Builder object with new value for _permission
+	*/
+	final public IntervalUsageRequestBuilder _permission_(List<Permission> _permission_) {
+		this.intervalUsageRequestImpl._permission = _permission_;
+		return this;
+	}
+
+
+	/**
+	* This function allows setting a value for _prohibition
+	* @param _prohibition_ desired value to be set
+	* @return Builder object with new value for _prohibition
+	*/
+	final public IntervalUsageRequestBuilder _prohibition_(List<Prohibition> _prohibition_) {
+		this.intervalUsageRequestImpl._prohibition = _prohibition_;
+		return this;
+	}
+
+
+	/**
+	* This function allows setting a value for _obligation
+	* @param _obligation_ desired value to be set
+	* @return Builder object with new value for _obligation
+	*/
+	final public IntervalUsageRequestBuilder _obligation_(List<Duty> _obligation_) {
+		this.intervalUsageRequestImpl._obligation = _obligation_;
 		return this;
 	}
 

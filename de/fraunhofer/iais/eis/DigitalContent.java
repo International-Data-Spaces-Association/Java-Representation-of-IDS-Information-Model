@@ -90,6 +90,14 @@ public interface DigitalContent extends Described {
 
 
 	/**
+	* "Detailed type, genre or interpretation of the Digital Content."@en
+	* @return Returns the ContentType for the property _contentType.
+	* More information under https://w3id.org/idsa/core/contentType
+	*/
+	@JsonProperty("ids:contentType")
+	public ContentType getContentType();
+
+	/**
 	* "Reference to a Digital Content (physically or logically) included, definition of part-whole hierarchies."@en
 	* @return Returns the List of DigitalContents for the property _contentPart.
 	* More information under https://w3id.org/idsa/core/contentPart
@@ -98,20 +106,20 @@ public interface DigitalContent extends Described {
 	public List<DigitalContent> getContentPart();
 
 	/**
-	* "Named spatial entity covered by the Resource."@en
-	* @return Returns the List of Locations for the property _spatialCoverage.
-	* More information under https://w3id.org/idsa/core/spatialCoverage
+	* "Representation of the content."@en
+	* @return Returns the List of Representations for the property _representation.
+	* More information under https://w3id.org/idsa/core/representation
 	*/
-	@JsonProperty("ids:spatialCoverage")
-	public List<Location> getSpatialCoverage();
+	@JsonProperty("ids:representation")
+	public List<Representation> getRepresentation();
 
 	/**
-	* "Temporal period or instance covered by the content."@en
-	* @return Returns the List of TemporalEntitys for the property _temporalCoverage.
-	* More information under https://w3id.org/idsa/core/temporalCoverage
+	* "Default representation of the content."@en
+	* @return Returns the List of Representations for the property _defaultRepresentation.
+	* More information under https://w3id.org/idsa/core/defaultRepresentation
 	*/
-	@JsonProperty("ids:temporalCoverage")
-	public List<TemporalEntity> getTemporalCoverage();
+	@JsonProperty("ids:defaultRepresentation")
+	public List<Representation> getDefaultRepresentation();
 
 	/**
 	* "Abstract or concrete concept related to or referred by the content."@en
@@ -130,28 +138,12 @@ public interface DigitalContent extends Described {
 	public List<TypedLiteral> getKeyword();
 
 	/**
-	* "Representation of the content."@en
-	* @return Returns the List of Representations for the property _representation.
-	* More information under https://w3id.org/idsa/core/representation
+	* "Temporal period or instance covered by the content."@en
+	* @return Returns the List of TemporalEntitys for the property _temporalCoverage.
+	* More information under https://w3id.org/idsa/core/temporalCoverage
 	*/
-	@JsonProperty("ids:representation")
-	public List<Representation> getRepresentation();
-
-	/**
-	* "Detailed type, genre or interpretation of the Digital Content."@en
-	* @return Returns the ContentType for the property _contentType.
-	* More information under https://w3id.org/idsa/core/contentType
-	*/
-	@JsonProperty("ids:contentType")
-	public ContentType getContentType();
-
-	/**
-	* "Default representation of the content."@en
-	* @return Returns the List of Representations for the property _defaultRepresentation.
-	* More information under https://w3id.org/idsa/core/defaultRepresentation
-	*/
-	@JsonProperty("ids:defaultRepresentation")
-	public List<Representation> getDefaultRepresentation();
+	@JsonProperty("ids:temporalCoverage")
+	public List<TemporalEntity> getTemporalCoverage();
 
 	/**
 	* "Minimum time between collected data points in a time series within this content."@en
@@ -160,6 +152,14 @@ public interface DigitalContent extends Described {
 	*/
 	@JsonProperty("ids:temporalResolution")
 	public Frequency getTemporalResolution();
+
+	/**
+	* "Named spatial entity covered by the Resource."@en
+	* @return Returns the List of Locations for the property _spatialCoverage.
+	* More information under https://w3id.org/idsa/core/spatialCoverage
+	*/
+	@JsonProperty("ids:spatialCoverage")
+	public List<Location> getSpatialCoverage();
 
 	/**
 	* "The regular period with which items are added to a collection."@en

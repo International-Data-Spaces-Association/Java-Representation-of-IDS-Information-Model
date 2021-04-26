@@ -58,34 +58,23 @@ public class DatPayloadBuilder {
 
 
 	/**
+	* This function allows setting a value for _transportCertsSha256
+	* @param _transportCertsSha256_ desired value to be set
+	* @return Builder object with new value for _transportCertsSha256
+	*/
+	final public DatPayloadBuilder _transportCertsSha256_(List<String> _transportCertsSha256_) {
+		this.datPayloadImpl._transportCertsSha256 = _transportCertsSha256_;
+		return this;
+	}
+
+
+	/**
 	* This function allows setting a value for _aud
 	* @param _aud_ desired value to be set
 	* @return Builder object with new value for _aud
 	*/
 	final public DatPayloadBuilder _aud_(Audience _aud_) {
 		this.datPayloadImpl._aud = _aud_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _sub
-	* @param _sub_ desired value to be set
-	* @return Builder object with new value for _sub
-	*/
-	final public DatPayloadBuilder _sub_(String _sub_) {
-		this.datPayloadImpl._sub = _sub_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _nbf
-	* @param _nbf_ desired value to be set
-	* @return Builder object with new value for _nbf
-	*/
-	final public DatPayloadBuilder _nbf_(BigInteger _nbf_) {
-		this.datPayloadImpl._nbf = _nbf_;
 		return this;
 	}
 
@@ -113,23 +102,23 @@ public class DatPayloadBuilder {
 
 
 	/**
-	* This function allows setting a value for _scope
-	* @param _scope_ desired value to be set
-	* @return Builder object with new value for _scope
+	* This function allows setting a value for _iss
+	* @param _iss_ desired value to be set
+	* @return Builder object with new value for _iss
 	*/
-	final public DatPayloadBuilder _scope_(String _scope_) {
-		this.datPayloadImpl._scope = _scope_;
+	final public DatPayloadBuilder _iss_(String _iss_) {
+		this.datPayloadImpl._iss = _iss_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for _transportCertsSha256
-	* @param _transportCertsSha256_ desired value to be set
-	* @return Builder object with new value for _transportCertsSha256
+	* This function allows setting a value for _nbf
+	* @param _nbf_ desired value to be set
+	* @return Builder object with new value for _nbf
 	*/
-	final public DatPayloadBuilder _transportCertsSha256_(List<String> _transportCertsSha256_) {
-		this.datPayloadImpl._transportCertsSha256 = _transportCertsSha256_;
+	final public DatPayloadBuilder _nbf_(BigInteger _nbf_) {
+		this.datPayloadImpl._nbf = _nbf_;
 		return this;
 	}
 
@@ -146,12 +135,23 @@ public class DatPayloadBuilder {
 
 
 	/**
-	* This function allows setting a value for _iss
-	* @param _iss_ desired value to be set
-	* @return Builder object with new value for _iss
+	* This function allows setting a value for _scope
+	* @param _scope_ desired value to be set
+	* @return Builder object with new value for _scope
 	*/
-	final public DatPayloadBuilder _iss_(String _iss_) {
-		this.datPayloadImpl._iss = _iss_;
+	final public DatPayloadBuilder _scope_(String _scope_) {
+		this.datPayloadImpl._scope = _scope_;
+		return this;
+	}
+
+
+	/**
+	* This function allows setting a value for _sub
+	* @param _sub_ desired value to be set
+	* @return Builder object with new value for _sub
+	*/
+	final public DatPayloadBuilder _sub_(String _sub_) {
+		this.datPayloadImpl._sub = _sub_;
 		return this;
 	}
 

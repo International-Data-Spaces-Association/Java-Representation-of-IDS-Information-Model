@@ -58,28 +58,6 @@ public class UsageControlObjectBuilder {
 
 
 	/**
-	* This function allows setting a value for _contract
-	* @param _contract_ desired value to be set
-	* @return Builder object with new value for _contract
-	*/
-	final public UsageControlObjectBuilder _contract_(List<ContractAgreement> _contract_) {
-		this.usageControlObjectImpl._contract = _contract_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _hasState
-	* @param _hasState_ desired value to be set
-	* @return Builder object with new value for _hasState
-	*/
-	final public UsageControlObjectBuilder _hasState_(List<ArtifactState> _hasState_) {
-		this.usageControlObjectImpl._hasState = _hasState_;
-		return this;
-	}
-
-
-	/**
 	* This function allows setting a value for _user
 	* @param _user_ desired value to be set
 	* @return Builder object with new value for _user
@@ -102,6 +80,17 @@ public class UsageControlObjectBuilder {
 
 
 	/**
+	* This function allows setting a value for _contract
+	* @param _contract_ desired value to be set
+	* @return Builder object with new value for _contract
+	*/
+	final public UsageControlObjectBuilder _contract_(List<ContractAgreement> _contract_) {
+		this.usageControlObjectImpl._contract = _contract_;
+		return this;
+	}
+
+
+	/**
 	* This function allows setting a value for _usageDuration
 	* @param _usageDuration_ desired value to be set
 	* @return Builder object with new value for _usageDuration
@@ -119,6 +108,17 @@ public class UsageControlObjectBuilder {
 	*/
 	final public UsageControlObjectBuilder _accessed_(XMLGregorianCalendar _accessed_) {
 		this.usageControlObjectImpl._accessed = _accessed_;
+		return this;
+	}
+
+
+	/**
+	* This function allows setting a value for _hasState
+	* @param _hasState_ desired value to be set
+	* @return Builder object with new value for _hasState
+	*/
+	final public UsageControlObjectBuilder _hasState_(List<ArtifactState> _hasState_) {
+		this.usageControlObjectImpl._hasState = _hasState_;
 		return this;
 	}
 

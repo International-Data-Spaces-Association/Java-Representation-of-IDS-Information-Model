@@ -211,12 +211,12 @@ public class UsageControlObjectImpl implements Serializable, UsageControlObject 
 	}
 	public int hashCode() {
 		return Objects.hash(new Object[]{this._data,
-			this._contract,
-			this._hasState,
 			this._user,
 			this._source,
+			this._contract,
 			this._usageDuration,
 			this._accessed,
+			this._hasState,
 			this._requester,
 			this._created,
 			this._modified,
@@ -233,12 +233,12 @@ public class UsageControlObjectImpl implements Serializable, UsageControlObject 
 		} else {
 			UsageControlObjectImpl other = (UsageControlObjectImpl) obj;
 			return Objects.equals(this._data, other._data) &&
-				Objects.equals(this._contract, other._contract) &&
-				Objects.equals(this._hasState, other._hasState) &&
 				Objects.equals(this._user, other._user) &&
 				Objects.equals(this._source, other._source) &&
+				Objects.equals(this._contract, other._contract) &&
 				Objects.equals(this._usageDuration, other._usageDuration) &&
 				Objects.equals(this._accessed, other._accessed) &&
+				Objects.equals(this._hasState, other._hasState) &&
 				Objects.equals(this._requester, other._requester) &&
 				Objects.equals(this._created, other._created) &&
 				Objects.equals(this._modified, other._modified) &&
@@ -260,25 +260,6 @@ public class UsageControlObjectImpl implements Serializable, UsageControlObject 
 		this._data = _data_;
 	}
 
-	@NotEmpty
-	@JsonProperty("ids:contract")
-	final public List<ContractAgreement> getContract() {
-		return _contract;
-	}
-	
-	final public void setContract (List<ContractAgreement> _contract_) {
-		this._contract = _contract_;
-	}
-
-	@JsonProperty("ids:hasState")
-	final public List<ArtifactState> getHasState() {
-		return _hasState;
-	}
-	
-	final public void setHasState (List<ArtifactState> _hasState_) {
-		this._hasState = _hasState_;
-	}
-
 	@JsonProperty("ids:user")
 	final public Participant getUser() {
 		return _user;
@@ -295,6 +276,16 @@ public class UsageControlObjectImpl implements Serializable, UsageControlObject 
 	
 	final public void setSource (URI _source_) {
 		this._source = _source_;
+	}
+
+	@NotEmpty
+	@JsonProperty("ids:contract")
+	final public List<ContractAgreement> getContract() {
+		return _contract;
+	}
+	
+	final public void setContract (List<ContractAgreement> _contract_) {
+		this._contract = _contract_;
 	}
 
 	@JsonProperty("ids:usageDuration")
@@ -314,6 +305,15 @@ public class UsageControlObjectImpl implements Serializable, UsageControlObject 
 	
 	final public void setAccessed (XMLGregorianCalendar _accessed_) {
 		this._accessed = _accessed_;
+	}
+
+	@JsonProperty("ids:hasState")
+	final public List<ArtifactState> getHasState() {
+		return _hasState;
+	}
+	
+	final public void setHasState (List<ArtifactState> _hasState_) {
+		this._hasState = _hasState_;
 	}
 
 	@JsonProperty("ids:requester")

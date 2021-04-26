@@ -92,12 +92,12 @@ public interface Rule extends Described {
 
 
 	/**
-	* "The constraint to be used for a specific rule."@en
-	* @return Returns the List of AbstractConstraints for the property _constraint.
-	* More information under https://w3id.org/idsa/core/constraint
+	* "The recipient of the policy statement."@en
+	* @return Returns the List of URIs for the property _assignee.
+	* More information under https://w3id.org/idsa/core/assignee
 	*/
-	@JsonProperty("ids:constraint")
-	public List<AbstractConstraint> getConstraint();
+	@JsonProperty("ids:assignee")
+	public List<URI> getAssignee();
 
 	/**
 	* "The issuer of the policy statement."@en
@@ -108,20 +108,20 @@ public interface Rule extends Described {
 	public List<URI> getAssigner();
 
 	/**
-	* "The recipient of the policy statement."@en
-	* @return Returns the List of URIs for the property _assignee.
-	* More information under https://w3id.org/idsa/core/assignee
-	*/
-	@JsonProperty("ids:assignee")
-	public List<URI> getAssignee();
-
-	/**
 	* "The subject of the policy statement (ids:Rule)."@en
 	* @return Returns the URI for the property _target.
 	* More information under https://w3id.org/idsa/core/target
 	*/
 	@JsonProperty("ids:target")
 	public URI getTarget();
+
+	/**
+	* "The constraint to be used for a specific rule."@en
+	* @return Returns the List of AbstractConstraints for the property _constraint.
+	* More information under https://w3id.org/idsa/core/constraint
+	*/
+	@JsonProperty("ids:constraint")
+	public List<AbstractConstraint> getConstraint();
 
 	/**
 	* "The operation relating to the asset /  data object. "@en

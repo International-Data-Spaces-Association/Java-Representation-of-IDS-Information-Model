@@ -81,6 +81,17 @@ public class InvokeOperationMessageBuilder {
 
 
 	/**
+	* This function allows setting a value for _correlationMessage
+	* @param _correlationMessage_ desired value to be set
+	* @return Builder object with new value for _correlationMessage
+	*/
+	final public InvokeOperationMessageBuilder _correlationMessage_(URI _correlationMessage_) {
+		this.invokeOperationMessageImpl._correlationMessage = _correlationMessage_;
+		return this;
+	}
+
+
+	/**
 	* This function allows setting a value for _issuerConnector
 	* @param _issuerConnector_ desired value to be set
 	* @return Builder object with new value for _issuerConnector
@@ -98,17 +109,6 @@ public class InvokeOperationMessageBuilder {
 	*/
 	final public InvokeOperationMessageBuilder _recipientConnector_(List<URI> _recipientConnector_) {
 		this.invokeOperationMessageImpl._recipientConnector = _recipientConnector_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _securityToken
-	* @param _securityToken_ desired value to be set
-	* @return Builder object with new value for _securityToken
-	*/
-	final public InvokeOperationMessageBuilder _securityToken_(DynamicAttributeToken _securityToken_) {
-		this.invokeOperationMessageImpl._securityToken = _securityToken_;
 		return this;
 	}
 
@@ -136,12 +136,12 @@ public class InvokeOperationMessageBuilder {
 
 
 	/**
-	* This function allows setting a value for _correlationMessage
-	* @param _correlationMessage_ desired value to be set
-	* @return Builder object with new value for _correlationMessage
+	* This function allows setting a value for _securityToken
+	* @param _securityToken_ desired value to be set
+	* @return Builder object with new value for _securityToken
 	*/
-	final public InvokeOperationMessageBuilder _correlationMessage_(URI _correlationMessage_) {
-		this.invokeOperationMessageImpl._correlationMessage = _correlationMessage_;
+	final public InvokeOperationMessageBuilder _securityToken_(DynamicAttributeToken _securityToken_) {
+		this.invokeOperationMessageImpl._securityToken = _securityToken_;
 		return this;
 	}
 

@@ -70,17 +70,6 @@ public class DataResourceBuilder {
 
 
 	/**
-	* This function allows setting a value for _resourceEndpoint
-	* @param _resourceEndpoint_ desired value to be set
-	* @return Builder object with new value for _resourceEndpoint
-	*/
-	final public DataResourceBuilder _resourceEndpoint_(List<ConnectorEndpoint> _resourceEndpoint_) {
-		this.dataResourceImpl._resourceEndpoint = _resourceEndpoint_;
-		return this;
-	}
-
-
-	/**
 	* This function allows setting a value for _resourcePart
 	* @param _resourcePart_ desired value to be set
 	* @return Builder object with new value for _resourcePart
@@ -92,23 +81,23 @@ public class DataResourceBuilder {
 
 
 	/**
+	* This function allows setting a value for _resourceEndpoint
+	* @param _resourceEndpoint_ desired value to be set
+	* @return Builder object with new value for _resourceEndpoint
+	*/
+	final public DataResourceBuilder _resourceEndpoint_(List<ConnectorEndpoint> _resourceEndpoint_) {
+		this.dataResourceImpl._resourceEndpoint = _resourceEndpoint_;
+		return this;
+	}
+
+
+	/**
 	* This function allows setting a value for _contractOffer
 	* @param _contractOffer_ desired value to be set
 	* @return Builder object with new value for _contractOffer
 	*/
 	final public DataResourceBuilder _contractOffer_(List<ContractOffer> _contractOffer_) {
 		this.dataResourceImpl._contractOffer = _contractOffer_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _sample
-	* @param _sample_ desired value to be set
-	* @return Builder object with new value for _sample
-	*/
-	final public DataResourceBuilder _sample_(List<Resource> _sample_) {
-		this.dataResourceImpl._sample = _sample_;
 		return this;
 	}
 
@@ -136,6 +125,17 @@ public class DataResourceBuilder {
 
 
 	/**
+	* This function allows setting a value for _sample
+	* @param _sample_ desired value to be set
+	* @return Builder object with new value for _sample
+	*/
+	final public DataResourceBuilder _sample_(List<Resource> _sample_) {
+		this.dataResourceImpl._sample = _sample_;
+		return this;
+	}
+
+
+	/**
 	* This function allows setting a value for _variant
 	* @param _variant_ desired value to be set
 	* @return Builder object with new value for _variant
@@ -146,6 +146,17 @@ public class DataResourceBuilder {
 	}
 
 
+
+
+	/**
+	* This function allows setting a value for _contentType
+	* @param _contentType_ desired value to be set
+	* @return Builder object with new value for _contentType
+	*/
+	final public DataResourceBuilder _contentType_(ContentType _contentType_) {
+		this.dataResourceImpl._contentType = _contentType_;
+		return this;
+	}
 
 
 	/**
@@ -160,23 +171,23 @@ public class DataResourceBuilder {
 
 
 	/**
-	* This function allows setting a value for _spatialCoverage
-	* @param _spatialCoverage_ desired value to be set
-	* @return Builder object with new value for _spatialCoverage
+	* This function allows setting a value for _representation
+	* @param _representation_ desired value to be set
+	* @return Builder object with new value for _representation
 	*/
-	final public DataResourceBuilder _spatialCoverage_(List<Location> _spatialCoverage_) {
-		this.dataResourceImpl._spatialCoverage = _spatialCoverage_;
+	final public DataResourceBuilder _representation_(List<Representation> _representation_) {
+		this.dataResourceImpl._representation = _representation_;
 		return this;
 	}
 
 
 	/**
-	* This function allows setting a value for _temporalCoverage
-	* @param _temporalCoverage_ desired value to be set
-	* @return Builder object with new value for _temporalCoverage
+	* This function allows setting a value for _defaultRepresentation
+	* @param _defaultRepresentation_ desired value to be set
+	* @return Builder object with new value for _defaultRepresentation
 	*/
-	final public DataResourceBuilder _temporalCoverage_(List<TemporalEntity> _temporalCoverage_) {
-		this.dataResourceImpl._temporalCoverage = _temporalCoverage_;
+	final public DataResourceBuilder _defaultRepresentation_(List<Representation> _defaultRepresentation_) {
+		this.dataResourceImpl._defaultRepresentation = _defaultRepresentation_;
 		return this;
 	}
 
@@ -204,34 +215,12 @@ public class DataResourceBuilder {
 
 
 	/**
-	* This function allows setting a value for _representation
-	* @param _representation_ desired value to be set
-	* @return Builder object with new value for _representation
+	* This function allows setting a value for _temporalCoverage
+	* @param _temporalCoverage_ desired value to be set
+	* @return Builder object with new value for _temporalCoverage
 	*/
-	final public DataResourceBuilder _representation_(List<Representation> _representation_) {
-		this.dataResourceImpl._representation = _representation_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _contentType
-	* @param _contentType_ desired value to be set
-	* @return Builder object with new value for _contentType
-	*/
-	final public DataResourceBuilder _contentType_(ContentType _contentType_) {
-		this.dataResourceImpl._contentType = _contentType_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _defaultRepresentation
-	* @param _defaultRepresentation_ desired value to be set
-	* @return Builder object with new value for _defaultRepresentation
-	*/
-	final public DataResourceBuilder _defaultRepresentation_(List<Representation> _defaultRepresentation_) {
-		this.dataResourceImpl._defaultRepresentation = _defaultRepresentation_;
+	final public DataResourceBuilder _temporalCoverage_(List<TemporalEntity> _temporalCoverage_) {
+		this.dataResourceImpl._temporalCoverage = _temporalCoverage_;
 		return this;
 	}
 
@@ -243,6 +232,17 @@ public class DataResourceBuilder {
 	*/
 	final public DataResourceBuilder _temporalResolution_(Frequency _temporalResolution_) {
 		this.dataResourceImpl._temporalResolution = _temporalResolution_;
+		return this;
+	}
+
+
+	/**
+	* This function allows setting a value for _spatialCoverage
+	* @param _spatialCoverage_ desired value to be set
+	* @return Builder object with new value for _spatialCoverage
+	*/
+	final public DataResourceBuilder _spatialCoverage_(List<Location> _spatialCoverage_) {
+		this.dataResourceImpl._spatialCoverage = _spatialCoverage_;
 		return this;
 	}
 

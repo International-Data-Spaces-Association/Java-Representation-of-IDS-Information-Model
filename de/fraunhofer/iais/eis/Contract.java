@@ -39,8 +39,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 */
 @JsonTypeInfo(use=JsonTypeInfo.Id.NAME, property="@type")
 @JsonSubTypes({
-	@JsonSubTypes.Type(value = ContractAgreement.class),
 	@JsonSubTypes.Type(value = ContractOffer.class),
+	@JsonSubTypes.Type(value = ContractAgreement.class),
 	@JsonSubTypes.Type(value = ContractRequest.class)
 })
 public interface Contract {
@@ -90,30 +90,6 @@ public interface Contract {
 
 	// accessor methods as derived from the IDSA Information Model ontology
 
-
-	/**
-	* "A Permission granted by the Contract."@en
-	* @return Returns the List of Permissions for the property _permission.
-	* More information under https://w3id.org/idsa/core/permission
-	*/
-	@JsonProperty("ids:permission")
-	public List<Permission> getPermission();
-
-	/**
-	* "A Prohibition imposed by the Contract."@en
-	* @return Returns the List of Prohibitions for the property _prohibition.
-	* More information under https://w3id.org/idsa/core/prohibition
-	*/
-	@JsonProperty("ids:prohibition")
-	public List<Prohibition> getProhibition();
-
-	/**
-	* "A Duty imposed by the Contract."@en
-	* @return Returns the List of Dutys for the property _obligation.
-	* More information under https://w3id.org/idsa/core/obligation
-	*/
-	@JsonProperty("ids:obligation")
-	public List<Duty> getObligation();
 
 	/**
 	* "Absolute datetime the Contract is requested, offered or expected to start, depending on the type of Contract."@en
@@ -173,5 +149,29 @@ public interface Contract {
 	*/
 	@JsonProperty("ids:contractAnnex")
 	public Resource getContractAnnex();
+
+	/**
+	* "A Permission granted by the Contract."@en
+	* @return Returns the List of Permissions for the property _permission.
+	* More information under https://w3id.org/idsa/core/permission
+	*/
+	@JsonProperty("ids:permission")
+	public List<Permission> getPermission();
+
+	/**
+	* "A Prohibition imposed by the Contract."@en
+	* @return Returns the List of Prohibitions for the property _prohibition.
+	* More information under https://w3id.org/idsa/core/prohibition
+	*/
+	@JsonProperty("ids:prohibition")
+	public List<Prohibition> getProhibition();
+
+	/**
+	* "A Duty imposed by the Contract."@en
+	* @return Returns the List of Dutys for the property _obligation.
+	* More information under https://w3id.org/idsa/core/obligation
+	*/
+	@JsonProperty("ids:obligation")
+	public List<Duty> getObligation();
 
 }

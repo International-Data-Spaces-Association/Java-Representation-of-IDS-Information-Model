@@ -48,12 +48,12 @@ public class ProhibitionBuilder {
 
 
 	/**
-	* This function allows setting a value for _constraint
-	* @param _constraint_ desired value to be set
-	* @return Builder object with new value for _constraint
+	* This function allows setting a value for _assignee
+	* @param _assignee_ desired value to be set
+	* @return Builder object with new value for _assignee
 	*/
-	final public ProhibitionBuilder _constraint_(List<AbstractConstraint> _constraint_) {
-		this.prohibitionImpl._constraint = _constraint_;
+	final public ProhibitionBuilder _assignee_(List<URI> _assignee_) {
+		this.prohibitionImpl._assignee = _assignee_;
 		return this;
 	}
 
@@ -70,23 +70,23 @@ public class ProhibitionBuilder {
 
 
 	/**
-	* This function allows setting a value for _assignee
-	* @param _assignee_ desired value to be set
-	* @return Builder object with new value for _assignee
-	*/
-	final public ProhibitionBuilder _assignee_(List<URI> _assignee_) {
-		this.prohibitionImpl._assignee = _assignee_;
-		return this;
-	}
-
-
-	/**
 	* This function allows setting a value for _target
 	* @param _target_ desired value to be set
 	* @return Builder object with new value for _target
 	*/
 	final public ProhibitionBuilder _target_(URI _target_) {
 		this.prohibitionImpl._target = _target_;
+		return this;
+	}
+
+
+	/**
+	* This function allows setting a value for _constraint
+	* @param _constraint_ desired value to be set
+	* @return Builder object with new value for _constraint
+	*/
+	final public ProhibitionBuilder _constraint_(List<AbstractConstraint> _constraint_) {
+		this.prohibitionImpl._constraint = _constraint_;
 		return this;
 	}
 

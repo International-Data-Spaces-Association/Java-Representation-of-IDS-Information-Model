@@ -70,6 +70,17 @@ public class IdentityProviderBuilder {
 
 
 	/**
+	* This function allows setting a value for _physicalLocation
+	* @param _physicalLocation_ desired value to be set
+	* @return Builder object with new value for _physicalLocation
+	*/
+	final public IdentityProviderBuilder _physicalLocation_(Location _physicalLocation_) {
+		this.identityProviderImpl._physicalLocation = _physicalLocation_;
+		return this;
+	}
+
+
+	/**
 	* This function allows setting a value for _inboundModelVersion
 	* @param _inboundModelVersion_ desired value to be set
 	* @return Builder object with new value for _inboundModelVersion
@@ -87,17 +98,6 @@ public class IdentityProviderBuilder {
 	*/
 	final public IdentityProviderBuilder _outboundModelVersion_(String _outboundModelVersion_) {
 		this.identityProviderImpl._outboundModelVersion = _outboundModelVersion_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _physicalLocation
-	* @param _physicalLocation_ desired value to be set
-	* @return Builder object with new value for _physicalLocation
-	*/
-	final public IdentityProviderBuilder _physicalLocation_(Location _physicalLocation_) {
-		this.identityProviderImpl._physicalLocation = _physicalLocation_;
 		return this;
 	}
 

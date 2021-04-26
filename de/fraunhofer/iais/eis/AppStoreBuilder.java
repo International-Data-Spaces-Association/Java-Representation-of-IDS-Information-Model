@@ -48,6 +48,17 @@ public class AppStoreBuilder {
 
 
 	/**
+	* This function allows setting a value for _hasDefaultEndpoint
+	* @param _hasDefaultEndpoint_ desired value to be set
+	* @return Builder object with new value for _hasDefaultEndpoint
+	*/
+	final public AppStoreBuilder _hasDefaultEndpoint_(ConnectorEndpoint _hasDefaultEndpoint_) {
+		this.appStoreImpl._hasDefaultEndpoint = _hasDefaultEndpoint_;
+		return this;
+	}
+
+
+	/**
 	* This function allows setting a value for _hasEndpoint
 	* @param _hasEndpoint_ desired value to be set
 	* @return Builder object with new value for _hasEndpoint
@@ -59,12 +70,12 @@ public class AppStoreBuilder {
 
 
 	/**
-	* This function allows setting a value for _hasAgent
-	* @param _hasAgent_ desired value to be set
-	* @return Builder object with new value for _hasAgent
+	* This function allows setting a value for _authInfo
+	* @param _authInfo_ desired value to be set
+	* @return Builder object with new value for _authInfo
 	*/
-	final public AppStoreBuilder _hasAgent_(List<URI> _hasAgent_) {
-		this.appStoreImpl._hasAgent = _hasAgent_;
+	final public AppStoreBuilder _authInfo_(AuthInfo _authInfo_) {
+		this.appStoreImpl._authInfo = _authInfo_;
 		return this;
 	}
 
@@ -81,23 +92,12 @@ public class AppStoreBuilder {
 
 
 	/**
-	* This function allows setting a value for _hasDefaultEndpoint
-	* @param _hasDefaultEndpoint_ desired value to be set
-	* @return Builder object with new value for _hasDefaultEndpoint
+	* This function allows setting a value for _hasAgent
+	* @param _hasAgent_ desired value to be set
+	* @return Builder object with new value for _hasAgent
 	*/
-	final public AppStoreBuilder _hasDefaultEndpoint_(ConnectorEndpoint _hasDefaultEndpoint_) {
-		this.appStoreImpl._hasDefaultEndpoint = _hasDefaultEndpoint_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _authInfo
-	* @param _authInfo_ desired value to be set
-	* @return Builder object with new value for _authInfo
-	*/
-	final public AppStoreBuilder _authInfo_(AuthInfo _authInfo_) {
-		this.appStoreImpl._authInfo = _authInfo_;
+	final public AppStoreBuilder _hasAgent_(List<URI> _hasAgent_) {
+		this.appStoreImpl._hasAgent = _hasAgent_;
 		return this;
 	}
 
@@ -147,6 +147,17 @@ public class AppStoreBuilder {
 
 
 	/**
+	* This function allows setting a value for _physicalLocation
+	* @param _physicalLocation_ desired value to be set
+	* @return Builder object with new value for _physicalLocation
+	*/
+	final public AppStoreBuilder _physicalLocation_(Location _physicalLocation_) {
+		this.appStoreImpl._physicalLocation = _physicalLocation_;
+		return this;
+	}
+
+
+	/**
 	* This function allows setting a value for _inboundModelVersion
 	* @param _inboundModelVersion_ desired value to be set
 	* @return Builder object with new value for _inboundModelVersion
@@ -164,17 +175,6 @@ public class AppStoreBuilder {
 	*/
 	final public AppStoreBuilder _outboundModelVersion_(String _outboundModelVersion_) {
 		this.appStoreImpl._outboundModelVersion = _outboundModelVersion_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _physicalLocation
-	* @param _physicalLocation_ desired value to be set
-	* @return Builder object with new value for _physicalLocation
-	*/
-	final public AppStoreBuilder _physicalLocation_(Location _physicalLocation_) {
-		this.appStoreImpl._physicalLocation = _physicalLocation_;
 		return this;
 	}
 
