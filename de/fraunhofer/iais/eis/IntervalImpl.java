@@ -18,7 +18,6 @@ import java.util.Map;
 import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
-import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
@@ -39,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeName("ids:Interval")
-public class IntervalImpl implements Serializable, Interval {
+public class IntervalImpl implements Interval {
 
 	@JsonProperty("@id")
 	@JsonAlias({"@id", "id"})
@@ -143,12 +142,14 @@ public class IntervalImpl implements Serializable, Interval {
 		if (property.startsWith("@")) {return ;};
 		this.properties.put(property, value) ;
 	}
+	@Override
 	public int hashCode() {
 		return Objects.hash(new Object[]{this._begin,
 			this._end,
 			this._hasDuration});
 	}
 
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
 			return true;

@@ -18,7 +18,6 @@ import java.util.Map;
 import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
-import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
@@ -80,19 +79,6 @@ public interface NotificationMessage extends Message {
 	// getter and setter for generic property map
 	public Map<String,Object> getProperties();
 	public void setProperty(String property, Object value);
-
-	/**
-	* This function returns a hash code value for the NotificationMessage for the benefit of e.g. hash tables.
-	* @return a hash code value for the NotificationMessage
-	*/
-	public int hashCode();
-
-	/**
-	* This function indicates whether some other object is equal to this one.
-	* @param obj the reference object with which to compare.
-	* @return true if this NotificationMessage is the same as the obj argument; false otherwise.
-	*/
-	public boolean equals(Object obj);
 
 
 }

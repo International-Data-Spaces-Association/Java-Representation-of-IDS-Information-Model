@@ -18,7 +18,6 @@ import java.util.Map;
 import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
-import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;

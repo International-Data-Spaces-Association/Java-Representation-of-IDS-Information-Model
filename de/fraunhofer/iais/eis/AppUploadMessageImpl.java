@@ -18,7 +18,6 @@ import java.util.Map;
 import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
-import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
@@ -39,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeName("ids:AppUploadMessage")
-public class AppUploadMessageImpl implements Serializable, AppUploadMessage {
+public class AppUploadMessageImpl implements AppUploadMessage {
 
 	@JsonProperty("@id")
 	@JsonAlias({"@id", "id"})
@@ -220,6 +219,7 @@ public class AppUploadMessageImpl implements Serializable, AppUploadMessage {
 		if (property.startsWith("@")) {return ;};
 		this.properties.put(property, value) ;
 	}
+	@Override
 	public int hashCode() {
 		return Objects.hash(new Object[]{this._appArtifactReference,
 			this._modelVersion,
@@ -235,6 +235,7 @@ public class AppUploadMessageImpl implements Serializable, AppUploadMessage {
 			this._contentVersion});
 	}
 
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
 			return true;

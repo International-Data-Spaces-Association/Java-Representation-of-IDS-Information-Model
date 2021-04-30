@@ -18,7 +18,6 @@ import java.util.Map;
 import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
-import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
@@ -39,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeName("ids:IANAMediaType")
-public class IANAMediaTypeImpl implements Serializable, IANAMediaType {
+public class IANAMediaTypeImpl implements IANAMediaType {
 
 	@JsonProperty("@id")
 	@JsonAlias({"@id", "id"})
@@ -126,10 +125,12 @@ public class IANAMediaTypeImpl implements Serializable, IANAMediaType {
 		if (property.startsWith("@")) {return ;};
 		this.properties.put(property, value) ;
 	}
+	@Override
 	public int hashCode() {
 		return Objects.hash(new Object[]{this._filenameExtension});
 	}
 
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
 			return true;

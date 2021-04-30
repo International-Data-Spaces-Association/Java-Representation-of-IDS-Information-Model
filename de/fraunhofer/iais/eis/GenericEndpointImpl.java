@@ -18,7 +18,6 @@ import java.util.Map;
 import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
-import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
@@ -39,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeName("ids:GenericEndpoint")
-public class GenericEndpointImpl implements Serializable, GenericEndpoint {
+public class GenericEndpointImpl implements GenericEndpoint {
 
 	@JsonProperty("@id")
 	@JsonAlias({"@id", "id"})
@@ -182,6 +181,7 @@ public class GenericEndpointImpl implements Serializable, GenericEndpoint {
 		if (property.startsWith("@")) {return ;};
 		this.properties.put(property, value) ;
 	}
+	@Override
 	public int hashCode() {
 		return Objects.hash(new Object[]{this._genericEndpointAuthentication,
 			this._genericEndpointConfiguration,
@@ -193,6 +193,7 @@ public class GenericEndpointImpl implements Serializable, GenericEndpoint {
 			this._outboundPath});
 	}
 
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
 			return true;

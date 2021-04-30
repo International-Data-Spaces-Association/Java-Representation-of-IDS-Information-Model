@@ -18,7 +18,6 @@ import java.util.Map;
 import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
-import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
@@ -39,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeName("ids:DatPayload")
-public class DatPayloadImpl implements Serializable, DatPayload {
+public class DatPayloadImpl implements DatPayload {
 
 	@JsonProperty("@id")
 	@JsonAlias({"@id", "id"})
@@ -216,6 +215,7 @@ public class DatPayloadImpl implements Serializable, DatPayload {
 		if (property.startsWith("@")) {return ;};
 		this.properties.put(property, value) ;
 	}
+	@Override
 	public int hashCode() {
 		return Objects.hash(new Object[]{this._extendedGuarantee,
 			this._transportCertsSha256,
@@ -230,6 +230,7 @@ public class DatPayloadImpl implements Serializable, DatPayload {
 			this._securityProfile});
 	}
 
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
 			return true;

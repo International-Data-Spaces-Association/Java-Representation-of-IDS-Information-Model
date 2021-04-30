@@ -18,7 +18,6 @@ import java.util.Map;
 import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
-import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
@@ -39,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeName("ids:ResourceUnavailableMessage")
-public class ResourceUnavailableMessageImpl implements Serializable, ResourceUnavailableMessage {
+public class ResourceUnavailableMessageImpl implements ResourceUnavailableMessage {
 
 	@JsonProperty("@id")
 	@JsonAlias({"@id", "id"})
@@ -220,6 +219,7 @@ public class ResourceUnavailableMessageImpl implements Serializable, ResourceUna
 		if (property.startsWith("@")) {return ;};
 		this.properties.put(property, value) ;
 	}
+	@Override
 	public int hashCode() {
 		return Objects.hash(new Object[]{this._affectedResource,
 			this._modelVersion,
@@ -235,6 +235,7 @@ public class ResourceUnavailableMessageImpl implements Serializable, ResourceUna
 			this._contentVersion});
 	}
 
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
 			return true;

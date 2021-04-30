@@ -18,7 +18,6 @@ import java.util.Map;
 import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
-import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
@@ -39,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeName("ids:QueryMessage")
-public class QueryMessageImpl implements Serializable, QueryMessage {
+public class QueryMessageImpl implements QueryMessage {
 
 	@JsonProperty("@id")
 	@JsonAlias({"@id", "id"})
@@ -235,6 +234,7 @@ public class QueryMessageImpl implements Serializable, QueryMessage {
 		if (property.startsWith("@")) {return ;};
 		this.properties.put(property, value) ;
 	}
+	@Override
 	public int hashCode() {
 		return Objects.hash(new Object[]{this._queryLanguage,
 			this._queryScope,
@@ -252,6 +252,7 @@ public class QueryMessageImpl implements Serializable, QueryMessage {
 			this._contentVersion});
 	}
 
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
 			return true;

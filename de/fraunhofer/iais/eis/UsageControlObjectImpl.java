@@ -18,7 +18,6 @@ import java.util.Map;
 import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
-import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
@@ -39,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeName("ids:UsageControlObject")
-public class UsageControlObjectImpl implements Serializable, UsageControlObject {
+public class UsageControlObjectImpl implements UsageControlObject {
 
 	@JsonProperty("@id")
 	@JsonAlias({"@id", "id"})
@@ -209,6 +208,7 @@ public class UsageControlObjectImpl implements Serializable, UsageControlObject 
 		if (property.startsWith("@")) {return ;};
 		this.properties.put(property, value) ;
 	}
+	@Override
 	public int hashCode() {
 		return Objects.hash(new Object[]{this._data,
 			this._user,
@@ -223,6 +223,7 @@ public class UsageControlObjectImpl implements Serializable, UsageControlObject 
 			this._action});
 	}
 
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
 			return true;
