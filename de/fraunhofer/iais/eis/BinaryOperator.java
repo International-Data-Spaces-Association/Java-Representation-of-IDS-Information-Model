@@ -192,12 +192,12 @@ public enum BinaryOperator {
 	LONGER_EQ("https://w3id.org/idsa/code/LONGER_EQ", Arrays.asList(new TypedLiteral("longer or equals", "en")), Arrays.asList(new TypedLiteral("If temporal entity T1 is longer or equals than another temporal entity T2, then the length or duration of T1 is bigger or their length or their duration is equal. Instants and xsd:dateTimeStamp Literals have always the duration 'P0Y0M0DT0H0M0S'^^xsd:duration and therefore have always the same duration.", "en"))),
 
 	/** 
-	* "Lithuanian"@en
 	* "less than"@en
+	* "Lithuanian"@en
 	* "Less-than operator. Can be used for numeric (2 idsc:LT 5) comparisons."@en
 	* "Do not confuse with idsc:LT (which is a language)."@en
 	*/
-	LT("https://w3id.org/idsa/code/LT", Arrays.asList(new TypedLiteral("Lithuanian", "en"), new TypedLiteral("less than", "en")), Arrays.asList(new TypedLiteral("Less-than operator. Can be used for numeric (2 idsc:LT 5) comparisons.", "en"))),
+	LT("https://w3id.org/idsa/code/LT", Arrays.asList(new TypedLiteral("less than", "en"), new TypedLiteral("Lithuanian", "en")), Arrays.asList(new TypedLiteral("Less-than operator. Can be used for numeric (2 idsc:LT 5) comparisons.", "en"))),
 
 	/** 
 	* "less than or equals"@en

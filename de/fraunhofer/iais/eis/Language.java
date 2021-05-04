@@ -529,12 +529,12 @@ public enum Language {
 	LO("https://w3id.org/idsa/code/LO", Arrays.asList(new TypedLiteral("Lao", "en")), Collections.emptyList()),
 
 	/** 
-	* "Lithuanian"@en
 	* "less than"@en
+	* "Lithuanian"@en
 	* "Less-than operator. Can be used for numeric (2 idsc:LT 5) comparisons."@en
 	* "Do not confuse with idsc:LT (which is a language)."@en
 	*/
-	LT("https://w3id.org/idsa/code/LT", Arrays.asList(new TypedLiteral("Lithuanian", "en"), new TypedLiteral("less than", "en")), Arrays.asList(new TypedLiteral("Less-than operator. Can be used for numeric (2 idsc:LT 5) comparisons.", "en"))),
+	LT("https://w3id.org/idsa/code/LT", Arrays.asList(new TypedLiteral("less than", "en"), new TypedLiteral("Lithuanian", "en")), Arrays.asList(new TypedLiteral("Less-than operator. Can be used for numeric (2 idsc:LT 5) comparisons.", "en"))),
 
 	/** 
 	* "Luba-Katanga"@en
