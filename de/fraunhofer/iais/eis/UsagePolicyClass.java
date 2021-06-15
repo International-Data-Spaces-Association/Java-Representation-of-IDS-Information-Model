@@ -51,9 +51,9 @@ public enum UsagePolicyClass {
 
 	/** 
 	* "System restricted data usage"@en
-	* "This policy restricts the usage of the data to a specific system or application inside an IDS connector."@en
+	* "This policy restricts the usage of the data to a specific system or application inside an IDS Connector."@en
 	*/
-	APPLICATION_RESTRICTED_DATA_USAGE("https://w3id.org/idsa/code/APPLICATION_RESTRICTED_DATA_USAGE", Arrays.asList(new TypedLiteral("System restricted data usage", "en")), Arrays.asList(new TypedLiteral("This policy restricts the usage of the data to a specific system or application inside an IDS connector.", "en"))),
+	APPLICATION_RESTRICTED_DATA_USAGE("https://w3id.org/idsa/code/APPLICATION_RESTRICTED_DATA_USAGE", Arrays.asList(new TypedLiteral("System restricted data usage", "en")), Arrays.asList(new TypedLiteral("This policy restricts the usage of the data to a specific system or application inside an IDS Connector.", "en"))),
 
 	/** 
 	* "Remote notification"@en
@@ -105,15 +105,15 @@ public enum UsagePolicyClass {
 
 	/** 
 	* "Location restricted data usage"@en
-	* "This policy restricts the usage of the data to a specific location, e.g. expressed via location areas, geographic points or geographic bounding polygons."@en
+	* "This policy restricts the usage of the data to a specific location, e.g., expressed via location areas, geographic points or geographic bounding polygons."@en
 	*/
-	LOCATION_RESTRICTED_DATA_USAGE("https://w3id.org/idsa/code/LOCATION_RESTRICTED_DATA_USAGE", Arrays.asList(new TypedLiteral("Location restricted data usage", "en")), Arrays.asList(new TypedLiteral("This policy restricts the usage of the data to a specific location, e.g. expressed via location areas, geographic points or geographic bounding polygons.", "en"))),
+	LOCATION_RESTRICTED_DATA_USAGE("https://w3id.org/idsa/code/LOCATION_RESTRICTED_DATA_USAGE", Arrays.asList(new TypedLiteral("Location restricted data usage", "en")), Arrays.asList(new TypedLiteral("This policy restricts the usage of the data to a specific location, e.g., expressed via location areas, geographic points or geographic bounding polygons.", "en"))),
 
 	/** 
 	* "Modfy data in rest"@en
-	* "This policy restricts the usage of data assets with the obligation to anonymize the data before permission to use the data is granted. \n\t\t\t\t\tIn contrast to the idscMODIFY_DATA_IN_TRANSIT policy class, it demands the modifications to be done when data is stored."@en
+	* "This policy restricts the usage of data assets with the obligation to anonymize the data before permission to use the data is granted. \n\t\t\t\t\tIn contrast to the idsc:MODIFY_DATA_IN_TRANSIT policy class, it demands the modifications to be done when data is stored."@en
 	*/
-	MODIFY_DATA_IN_REST("https://w3id.org/idsa/code/MODIFY_DATA_IN_REST", Arrays.asList(new TypedLiteral("Modfy data in rest", "en")), Arrays.asList(new TypedLiteral("This policy restricts the usage of data assets with the obligation to anonymize the data before permission to use the data is granted. 					In contrast to the idscMODIFY_DATA_IN_TRANSIT policy class, it demands the modifications to be done when data is stored.", "en"))),
+	MODIFY_DATA_IN_REST("https://w3id.org/idsa/code/MODIFY_DATA_IN_REST", Arrays.asList(new TypedLiteral("Modfy data in rest", "en")), Arrays.asList(new TypedLiteral("This policy restricts the usage of data assets with the obligation to anonymize the data before permission to use the data is granted. 					In contrast to the idsc:MODIFY_DATA_IN_TRANSIT policy class, it demands the modifications to be done when data is stored.", "en"))),
 
 	/** 
 	* "Modfy data in transit"@en
@@ -123,9 +123,9 @@ public enum UsagePolicyClass {
 
 	/** 
 	* "Prepatual data sale"@en
-	* "This policy restricts the transfer of a Data Asset against a one-off payment in a given currency"@en
+	* "This policy restricts the transfer of a Data Asset against a one-off payment in a given currency."@en
 	*/
-	PREPATUAL_DATA_SALE("https://w3id.org/idsa/code/PREPATUAL_DATA_SALE", Arrays.asList(new TypedLiteral("Prepatual data sale", "en")), Arrays.asList(new TypedLiteral("This policy restricts the transfer of a Data Asset against a one-off payment in a given currency", "en"))),
+	PREPATUAL_DATA_SALE("https://w3id.org/idsa/code/PREPATUAL_DATA_SALE", Arrays.asList(new TypedLiteral("Prepatual data sale", "en")), Arrays.asList(new TypedLiteral("This policy restricts the transfer of a Data Asset against a one-off payment in a given currency.", "en"))),
 
 	/** 
 	* "Purpose restricted data usage"@en

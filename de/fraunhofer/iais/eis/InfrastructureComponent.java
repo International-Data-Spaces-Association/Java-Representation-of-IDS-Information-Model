@@ -38,8 +38,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 */
 @JsonTypeInfo(use=JsonTypeInfo.Id.NAME, property="@type")
 @JsonSubTypes({
-	@JsonSubTypes.Type(value = ClearingHouse.class),
 	@JsonSubTypes.Type(value = Connector.class),
+	@JsonSubTypes.Type(value = ClearingHouse.class),
 	@JsonSubTypes.Type(value = DAPS.class),
 	@JsonSubTypes.Type(value = IdentityProvider.class)
 })

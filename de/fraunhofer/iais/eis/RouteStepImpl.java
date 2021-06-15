@@ -69,7 +69,7 @@ public class RouteStepImpl implements RouteStep {
 
 	/**
 	* "app route broker"@en
-	* "One or more ids:ClearingHouse(s) to which information of this route\'s  data exchange are notified.\nThis should be a subset of clearing houses listed in the corresponding ids:ClearingHouseCatalog for a given configuration model. The Configuration Model ids:configuredClearingHouse in the ids:ConfigurationModel of which this is an ids:appRoute.\n"@en
+	* "One or more ids:ClearingHouse(s) to which information of this route\'s data exchange are notified.\nThis should be a subset of clearing houses listed in the corresponding ids:ClearingHouseCatalog for a given configuration model. The Configuration Model ids:configuredClearingHouse in the ids:ConfigurationModel of which this is an ids:appRoute.\n"@en
 	*/
 	@JsonAlias({"ids:appRouteClearingHouse", "appRouteClearingHouse"})
 	protected List<ClearingHouse> _appRouteClearingHouse;

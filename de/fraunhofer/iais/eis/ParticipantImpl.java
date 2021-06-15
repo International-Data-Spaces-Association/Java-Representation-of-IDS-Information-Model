@@ -165,7 +165,7 @@ public class ParticipantImpl implements Participant {
 
 
 	/**
-	* "vat ID"@en
+	* "VAT ID"@en
 	* "The Value Added Tax ID (VAT ID) is used in the EU to clearly identify a company or entity which is liable for Value Added Tax."@en
 	*/
 	@JsonAlias({"ids:vatID", "vatID"})

@@ -86,7 +86,7 @@ public class OrchestrationAppImpl implements OrchestrationApp {
 
 	/**
 	* "app storage configuration"@en
-	* "Storage configuration of a data app. Value may differ based on the app ecosystem, e.g. a writeable path in the file system or a volume name (e.g. for containerized apps)"@en
+	* "Storage configuration of a data app. Value may differ based on the app ecosystem, e.g., a writeable path in the file system or a volume name (e.g., for containerized apps)"@en
 	*/
 	@JsonAlias({"ids:appStorageConfiguration", "appStorageConfiguration"})
 	protected String _appStorageConfiguration;

@@ -110,7 +110,7 @@ public interface Rule extends Described {
 	public List<AbstractConstraint> getConstraint();
 
 	/**
-	* "The operation relating to the asset /  data object. "@en
+	* "The operation relating to the asset / data object. "@en
 	* @return Returns the List of Actions for the property _action.
 	* More information under https://w3id.org/idsa/core/action
 	*/

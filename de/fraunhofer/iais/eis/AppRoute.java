@@ -142,7 +142,7 @@ public interface AppRoute {
 	public List<Broker> getAppRouteBroker();
 
 	/**
-	* "One or more ids:ClearingHouse(s) to which information of this route\'s  data exchange are notified.\nThis should be a subset of clearing houses listed in the corresponding ids:ClearingHouseCatalog for a given configuration model. The Configuration Model ids:configuredClearingHouse in the ids:ConfigurationModel of which this is an ids:appRoute.\n"@en
+	* "One or more ids:ClearingHouse(s) to which information of this route\'s data exchange are notified.\nThis should be a subset of clearing houses listed in the corresponding ids:ClearingHouseCatalog for a given configuration model. The Configuration Model ids:configuredClearingHouse in the ids:ConfigurationModel of which this is an ids:appRoute.\n"@en
 	* @return Returns the List of ClearingHouses for the property _appRouteClearingHouse.
 	* More information under https://w3id.org/idsa/core/appRouteClearingHouse
 	*/

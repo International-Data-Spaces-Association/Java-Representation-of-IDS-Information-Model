@@ -69,7 +69,7 @@ public class UsageControlObjectImpl implements UsageControlObject {
 
 	/**
 	* "action"@en
-	* "The operation relating to the asset /  data object. "@en
+	* "The operation relating to the asset / data object. "@en
 	*/
 	@JsonAlias({"ids:action", "action"})
 	protected List<Action> _action;

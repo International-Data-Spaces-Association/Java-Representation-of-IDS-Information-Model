@@ -61,7 +61,7 @@ public class PermissionImpl implements Permission {
 
 	/**
 	* "action"@en
-	* "The operation relating to the asset /  data object. "@en
+	* "The operation relating to the asset / data object. "@en
 	*/
 	@NotEmpty
 	@JsonAlias({"ids:action", "action"})

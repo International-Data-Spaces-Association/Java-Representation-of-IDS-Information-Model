@@ -61,7 +61,7 @@ public class ProhibitionImpl implements Prohibition {
 
 	/**
 	* "action"@en
-	* "The operation relating to the asset /  data object. "@en
+	* "The operation relating to the asset / data object. "@en
 	*/
 	@NotEmpty
 	@JsonAlias({"ids:action", "action"})

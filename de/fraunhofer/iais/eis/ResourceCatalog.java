@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
 * "Resource Catalog"@en
-* "Class that aggregates Resources form a (distributable) Catalog."@en
+* "Class that aggregates Resources from a (distributable) Catalog."@en
 */
 @JsonTypeInfo(use=JsonTypeInfo.Id.NAME, property="@type")
 @JsonSubTypes({
@@ -84,7 +84,7 @@ public interface ResourceCatalog extends Catalog {
 	public List<Resource> getOfferedResource();
 
 	/**
-	* "A Resource that is part of a resource catalog, indicating a request (of, e.g., data, software,...)."@en
+	* "A Resource that is part of a resource catalog, indicating a request (of, e.g., data, software, …)."@en
 	* @return Returns the List of Resources for the property _requestedResource.
 	* More information under https://w3id.org/idsa/core/requestedResource
 	*/

@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
 * "Clearing House Catalog"@en
-* "Class that aggregates AppStores from a (distributable) Catalog."@en
+* "Class that aggregates Clearing Houses from a (distributable) Catalog."@en
 */
 @JsonTypeInfo(use=JsonTypeInfo.Id.NAME, property="@type")
 @JsonSubTypes({

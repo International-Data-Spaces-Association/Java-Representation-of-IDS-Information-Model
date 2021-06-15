@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /** 
 * "Resource Catalog"@en
-* "Class that aggregates Resources form a (distributable) Catalog."@en 
+* "Class that aggregates Resources from a (distributable) Catalog."@en 
 */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeName("ids:ResourceCatalog")
@@ -51,7 +51,7 @@ public class ResourceCatalogImpl implements ResourceCatalog {
 
 	//List of all comments of this class
 	@JsonIgnore
-	protected List<TypedLiteral> comment = Arrays.asList(new TypedLiteral("Class that aggregates Resources form a (distributable) Catalog.", "en"));
+	protected List<TypedLiteral> comment = Arrays.asList(new TypedLiteral("Class that aggregates Resources from a (distributable) Catalog.", "en"));
 
 	// all classes have a generic property array
 	@JsonIgnore
@@ -69,7 +69,7 @@ public class ResourceCatalogImpl implements ResourceCatalog {
 
 	/**
 	* "requested resource"@en
-	* "A Resource that is part of a resource catalog, indicating a request (of, e.g., data, software,...)."@en
+	* "A Resource that is part of a resource catalog, indicating a request (of, e.g., data, software, …)."@en
 	*/
 	@JsonAlias({"ids:requestedResource", "requestedResource"})
 	protected List<Resource> _requestedResource;

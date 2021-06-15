@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /** 
 * "Clearing House Catalog"@en
-* "Class that aggregates AppStores from a (distributable) Catalog."@en 
+* "Class that aggregates Clearing Houses from a (distributable) Catalog."@en 
 */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeName("ids:ClearingHouseCatalog")
@@ -51,7 +51,7 @@ public class ClearingHouseCatalogImpl implements ClearingHouseCatalog {
 
 	//List of all comments of this class
 	@JsonIgnore
-	protected List<TypedLiteral> comment = Arrays.asList(new TypedLiteral("Class that aggregates AppStores from a (distributable) Catalog.", "en"));
+	protected List<TypedLiteral> comment = Arrays.asList(new TypedLiteral("Class that aggregates Clearing Houses from a (distributable) Catalog.", "en"));
 
 	// all classes have a generic property array
 	@JsonIgnore

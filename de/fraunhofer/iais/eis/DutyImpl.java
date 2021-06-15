@@ -61,7 +61,7 @@ public class DutyImpl implements Duty {
 
 	/**
 	* "action"@en
-	* "The operation relating to the asset /  data object. "@en
+	* "The operation relating to the asset / data object. "@en
 	*/
 	@NotEmpty
 	@JsonAlias({"ids:action", "action"})
