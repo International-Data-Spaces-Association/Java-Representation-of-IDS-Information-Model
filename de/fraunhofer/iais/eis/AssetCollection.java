@@ -84,7 +84,7 @@ public interface AssetCollection extends Asset {
 	public URI getAssetSource();
 
 	/**
-	* "AssetRefinement define constraints that refines a (composite) Digital Content in an ids:Rule respectively the ids:AssetCollection."@en
+	* "AssetRefinement define constraints that refine a (composite) Digital Content in an ids:Rule respectively the ids:AssetCollection."@en
 	* @return Returns the AbstractConstraint for the property _assetRefinement.
 	* More information under https://w3id.org/idsa/core/assetRefinement
 	*/

@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /** 
 * "Log Message"@en
-* "Log Message which can be used to transfer logs e.g. to the clearing house."@en 
+* "Log Message which can be used to transfer logs e.g., to the clearing house."@en 
 */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeName("ids:LogMessage")
@@ -51,7 +51,7 @@ public class LogMessageImpl implements LogMessage {
 
 	//List of all comments of this class
 	@JsonIgnore
-	protected List<TypedLiteral> comment = Arrays.asList(new TypedLiteral("Log Message which can be used to transfer logs e.g. to the clearing house.", "en"));
+	protected List<TypedLiteral> comment = Arrays.asList(new TypedLiteral("Log Message which can be used to transfer logs e.g., to the clearing house.", "en"));
 
 	// all classes have a generic property array
 	@JsonIgnore
@@ -77,7 +77,7 @@ public class LogMessageImpl implements LogMessage {
 
 	/**
 	* "consumer connector"@en
-	* "Correlated message, e.g. a response to a previous request."@en
+	* "Correlated message, e.g., a response to a previous request."@en
 	*/
 	@JsonAlias({"ids:correlationMessage", "correlationMessage"})
 	protected URI _correlationMessage;

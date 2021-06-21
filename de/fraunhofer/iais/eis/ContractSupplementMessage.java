@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
 * "Contract Supplement Message"@en
-* "Message containing supplemental information to access resources of a contract (e.g. resource access tokens)."@en
+* "Message containing supplemental information to access resources of a contract (e.g., resource access tokens)."@en
 */
 @JsonTypeInfo(use=JsonTypeInfo.Id.NAME, property="@type")
 @JsonSubTypes({

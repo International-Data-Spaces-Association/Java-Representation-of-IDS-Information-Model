@@ -37,7 +37,7 @@ import java.util.stream.Stream;
 
 /** 
 * "Query Scope"@en
-* "Class of scopes that may limit the space of query results, e.g. ALL, ACTIVE_ONLY."@en 
+* "Class of scopes that may limit the space of query results, e.g., ALL, ACTIVE_ONLY."@en 
 */
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 @JsonTypeName("ids:QueryScope")

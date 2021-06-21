@@ -37,7 +37,7 @@ import java.util.stream.Stream;
 
 /** 
 * "Content type"@en
-* "Enumerated types of content expanding upon the Digital Content hierarchy."@en 
+* "Enumerated types of content expanding upon the Digital Content hierarchy. Instances of Content Type are used to more precisely specify the type, genre or interpretation of a Digital Content."@en 
 */
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 @JsonTypeName("ids:ContentType")
@@ -45,15 +45,15 @@ public enum ContentType {
 
 	/** 
 	* "Interface definition"
-	* "Formal, machine-interpretable definition of a protocol-specific API, e.g. OpenAPI, GraphQL, API Blueprint, WSDL."@en
+	* "Formal, machine-interpretable definition of a protocol-specific API, e.g., OpenAPI, GraphQL, API Blueprint, WSDL."@en
 	*/
-	INTERFACE_DEFINITION("https://w3id.org/idsa/code/INTERFACE_DEFINITION", Arrays.asList(new TypedLiteral("Interface definition", "")), Arrays.asList(new TypedLiteral("Formal, machine-interpretable definition of a protocol-specific API, e.g. OpenAPI, GraphQL, API Blueprint, WSDL.", "en"))),
+	INTERFACE_DEFINITION("https://w3id.org/idsa/code/INTERFACE_DEFINITION", Arrays.asList(new TypedLiteral("Interface definition", "")), Arrays.asList(new TypedLiteral("Formal, machine-interpretable definition of a protocol-specific API, e.g., OpenAPI, GraphQL, API Blueprint, WSDL.", "en"))),
 
 	/** 
 	* "Schema definition"
-	* "Formal, machine-interpretable definition of a data schema, e.g. XMLSchema, JSONSchema"@en
+	* "Formal, machine-interpretable definition of a data schema, e.g., XMLSchema, JSONSchema"@en
 	*/
-	SCHEMA_DEFINITION("https://w3id.org/idsa/code/SCHEMA_DEFINITION", Arrays.asList(new TypedLiteral("Schema definition", "")), Arrays.asList(new TypedLiteral("Formal, machine-interpretable definition of a data schema, e.g. XMLSchema, JSONSchema", "en")));
+	SCHEMA_DEFINITION("https://w3id.org/idsa/code/SCHEMA_DEFINITION", Arrays.asList(new TypedLiteral("Schema definition", "")), Arrays.asList(new TypedLiteral("Formal, machine-interpretable definition of a data schema, e.g., XMLSchema, JSONSchema", "en")));
 
 	private static final Map<String,ContentType> uriInstanceMapping;
 	static {

@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
 * "Media Type"@en
-* "General class of media types (formerly known as MIME types)."@en
+* "General class of media types (formerly known as MIME types). ids:CustomMediaType is used only when no ids:IANAMediaType available."@en
 */
 @JsonTypeInfo(use=JsonTypeInfo.Id.NAME, property="@type")
 @JsonSubTypes({

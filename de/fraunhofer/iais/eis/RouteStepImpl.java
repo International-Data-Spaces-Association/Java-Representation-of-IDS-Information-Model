@@ -117,7 +117,7 @@ public class RouteStepImpl implements RouteStep {
 
 	/**
 	* "route configuration"@en
-	* "Configuration details (e.g. contents of a config file) used to configure the route. Should be Base64 encoded."@en
+	* "Configuration details (e.g., contents of a config file) used to configure the route. Should be Base64 encoded."@en
 	*/
 	@JsonAlias({"ids:routeConfiguration", "routeConfiguration"})
 	protected String _routeConfiguration;

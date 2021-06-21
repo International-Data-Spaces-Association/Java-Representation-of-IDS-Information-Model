@@ -94,7 +94,7 @@ public interface AppRoute {
 	public String getRouteDescription();
 
 	/**
-	* "Configuration details (e.g. contents of a config file) used to configure the route. Should be Base64 encoded."@en
+	* "Configuration details (e.g., contents of a config file) used to configure the route. Should be Base64 encoded."@en
 	* @return Returns the String for the property _routeConfiguration.
 	* More information under https://w3id.org/idsa/core/routeConfiguration
 	*/

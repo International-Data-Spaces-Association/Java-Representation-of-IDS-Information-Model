@@ -261,7 +261,7 @@ public class ImageResourceImpl implements ImageResource {
 
 	/**
 	* "variant"@en
-	* "(Equivalent) variant of given Resource, e.g. a translation."@en
+	* "(Equivalent) variant of given Resource, e.g., a translation."@en
 	*/
 	@JsonAlias({"ids:variant", "variant"})
 	protected Resource _variant;

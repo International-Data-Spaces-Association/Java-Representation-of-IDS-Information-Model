@@ -37,7 +37,7 @@ import java.util.stream.Stream;
 
 /** 
 * "Query Target"@en
-* "Class of recipients of a query message, e.g. BROKER, APPSTORE, ANY."@en 
+* "Class of recipients of a query message, e.g., BROKER, APPSTORE, ANY."@en 
 */
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 @JsonTypeName("ids:QueryTarget")

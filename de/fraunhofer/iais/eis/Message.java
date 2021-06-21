@@ -97,7 +97,7 @@ public interface Message {
 	public XMLGregorianCalendar getIssued();
 
 	/**
-	* "Correlated message, e.g. a response to a previous request."@en
+	* "Correlated message, e.g., a response to a previous request."@en
 	* @return Returns the URI for the property _correlationMessage.
 	* More information under https://w3id.org/idsa/core/correlationMessage
 	*/

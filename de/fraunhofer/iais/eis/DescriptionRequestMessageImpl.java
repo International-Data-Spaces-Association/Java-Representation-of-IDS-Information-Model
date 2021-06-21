@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /** 
 * "Description Request Message"@en
-* "Message requesting metadata. If no URI is supplied via the ids:requestedElement field, this messages is treated like a self-description request and the recipient should return its self-description via an ids:DescriptionResponseMessage. However, if a URI is supplied, the Connector should either return metadata about the requested element via an ids:DescriptionResponseMessage, or send an ids:RejectionMessage, e.g. because the element was not found."@en 
+* "Message requesting metadata. If no URI is supplied via the ids:requestedElement field, this messages is treated like a self-description request and the recipient should return its self-description via an ids:DescriptionResponseMessage. However, if a URI is supplied, the Connector should either return metadata about the requested element via an ids:DescriptionResponseMessage, or send an ids:RejectionMessage, e.g., because the element was not found."@en 
 */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeName("ids:DescriptionRequestMessage")
@@ -51,7 +51,7 @@ public class DescriptionRequestMessageImpl implements DescriptionRequestMessage 
 
 	//List of all comments of this class
 	@JsonIgnore
-	protected List<TypedLiteral> comment = Arrays.asList(new TypedLiteral("Message requesting metadata. If no URI is supplied via the ids:requestedElement field, this messages is treated like a self-description request and the recipient should return its self-description via an ids:DescriptionResponseMessage. However, if a URI is supplied, the Connector should either return metadata about the requested element via an ids:DescriptionResponseMessage, or send an ids:RejectionMessage, e.g. because the element was not found.", "en"));
+	protected List<TypedLiteral> comment = Arrays.asList(new TypedLiteral("Message requesting metadata. If no URI is supplied via the ids:requestedElement field, this messages is treated like a self-description request and the recipient should return its self-description via an ids:DescriptionResponseMessage. However, if a URI is supplied, the Connector should either return metadata about the requested element via an ids:DescriptionResponseMessage, or send an ids:RejectionMessage, e.g., because the element was not found.", "en"));
 
 	// all classes have a generic property array
 	@JsonIgnore
@@ -77,7 +77,7 @@ public class DescriptionRequestMessageImpl implements DescriptionRequestMessage 
 
 	/**
 	* "consumer connector"@en
-	* "Correlated message, e.g. a response to a previous request."@en
+	* "Correlated message, e.g., a response to a previous request."@en
 	*/
 	@JsonAlias({"ids:correlationMessage", "correlationMessage"})
 	protected URI _correlationMessage;

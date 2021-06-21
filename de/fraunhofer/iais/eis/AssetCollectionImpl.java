@@ -61,7 +61,7 @@ public class AssetCollectionImpl implements AssetCollection {
 
 	/**
 	* "content refinement"@en
-	* "AssetRefinement define constraints that refines a (composite) Digital Content in an ids:Rule respectively the ids:AssetCollection."@en
+	* "AssetRefinement define constraints that refine a (composite) Digital Content in an ids:Rule respectively the ids:AssetCollection."@en
 	*/
 	@JsonAlias({"ids:assetRefinement", "assetRefinement"})
 	protected AbstractConstraint _assetRefinement;

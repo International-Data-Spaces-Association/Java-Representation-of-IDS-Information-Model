@@ -77,7 +77,7 @@ public class AppUploadResponseMessageImpl implements AppUploadResponseMessage {
 
 	/**
 	* "consumer connector"@en
-	* "Correlated message, e.g. a response to a previous request."@en
+	* "Correlated message, e.g., a response to a previous request."@en
 	*/
 	@NotNull
 	@JsonAlias({"ids:correlationMessage", "correlationMessage"})

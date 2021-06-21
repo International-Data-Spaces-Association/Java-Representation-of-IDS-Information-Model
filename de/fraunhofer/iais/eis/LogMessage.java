@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
 * "Log Message"@en
-* "Log Message which can be used to transfer logs e.g. to the clearing house."@en
+* "Log Message which can be used to transfer logs e.g., to the clearing house."@en
 */
 @JsonTypeInfo(use=JsonTypeInfo.Id.NAME, property="@type")
 @JsonSubTypes({

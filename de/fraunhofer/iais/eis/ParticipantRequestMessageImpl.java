@@ -77,7 +77,7 @@ public class ParticipantRequestMessageImpl implements ParticipantRequestMessage 
 
 	/**
 	* "consumer connector"@en
-	* "Correlated message, e.g. a response to a previous request."@en
+	* "Correlated message, e.g., a response to a previous request."@en
 	*/
 	@JsonAlias({"ids:correlationMessage", "correlationMessage"})
 	protected URI _correlationMessage;

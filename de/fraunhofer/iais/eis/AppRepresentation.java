@@ -92,7 +92,7 @@ public interface AppRepresentation extends SoftwareRepresentation {
 	public URI getDataAppDistributionService();
 
 	/**
-	* "Runtime environment of a data app, e.g. software (or hardware) required to run the app."@en
+	* "Runtime environment of a data app, e.g., software (or hardware) required to run the app."@en
 	* @return Returns the String for the property _dataAppRuntimeEnvironment.
 	* More information under https://w3id.org/idsa/core/dataAppRuntimeEnvironment
 	*/

@@ -85,7 +85,7 @@ public class ConfigurationModelImpl implements ConfigurationModel {
 
 	/**
 	* "configured appstore"@en
-	* "One or more app stores to which the ids:Connector that we are configuring (cf. ids:connectorDescription) may want to talk, e.g. to retrieve apps from them."@en
+	* "One or more app stores to which the ids:Connector that we are configuring (cf. ids:connectorDescription) may want to talk, e.g., to retrieve apps from them."@en
 	*/
 	@JsonAlias({"ids:configuredAppStore", "configuredAppStore"})
 	protected AppStoreCatalog _configuredAppStore;

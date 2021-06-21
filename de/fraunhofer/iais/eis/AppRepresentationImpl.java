@@ -85,7 +85,7 @@ public class AppRepresentationImpl implements AppRepresentation {
 
 	/**
 	* "data app runtime environment"@en
-	* "Runtime environment of a data app, e.g. software (or hardware) required to run the app."@en
+	* "Runtime environment of a data app, e.g., software (or hardware) required to run the app."@en
 	*/
 	@JsonAlias({"ids:dataAppRuntimeEnvironment", "dataAppRuntimeEnvironment"})
 	protected String _dataAppRuntimeEnvironment;

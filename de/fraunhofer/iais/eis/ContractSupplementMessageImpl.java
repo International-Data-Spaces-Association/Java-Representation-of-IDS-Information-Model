@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /** 
 * "Contract Supplement Message"@en
-* "Message containing supplemental information to access resources of a contract (e.g. resource access tokens)."@en 
+* "Message containing supplemental information to access resources of a contract (e.g., resource access tokens)."@en 
 */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeName("ids:ContractSupplementMessage")
@@ -51,7 +51,7 @@ public class ContractSupplementMessageImpl implements ContractSupplementMessage 
 
 	//List of all comments of this class
 	@JsonIgnore
-	protected List<TypedLiteral> comment = Arrays.asList(new TypedLiteral("Message containing supplemental information to access resources of a contract (e.g. resource access tokens).", "en"));
+	protected List<TypedLiteral> comment = Arrays.asList(new TypedLiteral("Message containing supplemental information to access resources of a contract (e.g., resource access tokens).", "en"));
 
 	// all classes have a generic property array
 	@JsonIgnore
@@ -77,7 +77,7 @@ public class ContractSupplementMessageImpl implements ContractSupplementMessage 
 
 	/**
 	* "consumer connector"@en
-	* "Correlated message, e.g. a response to a previous request."@en
+	* "Correlated message, e.g., a response to a previous request."@en
 	*/
 	@JsonAlias({"ids:correlationMessage", "correlationMessage"})
 	protected URI _correlationMessage;

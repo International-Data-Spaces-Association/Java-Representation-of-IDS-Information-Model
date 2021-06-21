@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
 * "JWT Payload"@en
-* "The payload of an JSON Web Token as a RDF class. Is used as the common parent of e.g. DatPayload and DatRequestPayload."@en
+* "The payload of an JSON Web Token as a RDF class. Is used as the common parent of e.g., DatPayload and DatRequestPayload."@en
 */
 @JsonTypeInfo(use=JsonTypeInfo.Id.NAME, property="@type")
 @JsonSubTypes({

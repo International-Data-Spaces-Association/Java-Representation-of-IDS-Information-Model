@@ -190,7 +190,7 @@ public interface ConfigurationModel {
 	public List<AppRoute> getAppRoute();
 
 	/**
-	* "One or more app stores to which the ids:Connector that we are configuring (cf. ids:connectorDescription) may want to talk, e.g. to retrieve apps from them."@en
+	* "One or more app stores to which the ids:Connector that we are configuring (cf. ids:connectorDescription) may want to talk, e.g., to retrieve apps from them."@en
 	* @return Returns the AppStoreCatalog for the property _configuredAppStore.
 	* More information under https://w3id.org/idsa/core/configuredAppStore
 	*/

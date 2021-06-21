@@ -147,7 +147,7 @@ public interface Resource extends Asset, DigitalContent, DescribedSemantically, 
 	public List<Resource> getSample();
 
 	/**
-	* "(Equivalent) variant of given Resource, e.g. a translation."@en
+	* "(Equivalent) variant of given Resource, e.g., a translation."@en
 	* @return Returns the Resource for the property _variant.
 	* More information under https://w3id.org/idsa/core/variant
 	*/
