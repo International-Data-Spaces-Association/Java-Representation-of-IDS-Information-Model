@@ -57,7 +57,7 @@ public class EndpointImpl implements Endpoint {
 	@JsonIgnore
 	protected Map<String,Object> properties;
 
-	// instance fields as derived from the IDSA Information Model ontology
+	// instance fields as derived from the IDS Information Model ontology
 
 	/**
 	* "access URL"@en
@@ -195,7 +195,7 @@ public class EndpointImpl implements Endpoint {
 	}
 
 
-	// accessor method implementations as derived from the IDSA Information Model ontology
+	// accessor method implementations as derived from the IDS Information Model ontology
 
 
 	@JsonProperty("ids:accessURL")

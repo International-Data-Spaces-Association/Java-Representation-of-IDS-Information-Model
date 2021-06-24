@@ -57,7 +57,7 @@ public class ParISImpl implements ParIS {
 	@JsonIgnore
 	protected Map<String,Object> properties;
 
-	// instance fields as derived from the IDSA Information Model ontology
+	// instance fields as derived from the IDS Information Model ontology
 
 	/**
 	* "authInfo"@en
@@ -321,7 +321,7 @@ public class ParISImpl implements ParIS {
 	}
 
 
-	// accessor method implementations as derived from the IDSA Information Model ontology
+	// accessor method implementations as derived from the IDS Information Model ontology
 
 
 	@JsonProperty("ids:participantCatalog")

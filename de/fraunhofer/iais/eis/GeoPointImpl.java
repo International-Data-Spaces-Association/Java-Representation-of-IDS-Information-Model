@@ -57,7 +57,7 @@ public class GeoPointImpl implements GeoPoint {
 	@JsonIgnore
 	protected Map<String,Object> properties;
 
-	// instance fields as derived from the IDSA Information Model ontology
+	// instance fields as derived from the IDS Information Model ontology
 
 	/**
 	* "latitude"@en
@@ -157,7 +157,7 @@ public class GeoPointImpl implements GeoPoint {
 	}
 
 
-	// accessor method implementations as derived from the IDSA Information Model ontology
+	// accessor method implementations as derived from the IDS Information Model ontology
 
 
 	@NotNull

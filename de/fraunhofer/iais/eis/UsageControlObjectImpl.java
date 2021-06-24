@@ -57,7 +57,7 @@ public class UsageControlObjectImpl implements UsageControlObject {
 	@JsonIgnore
 	protected Map<String,Object> properties;
 
-	// instance fields as derived from the IDSA Information Model ontology
+	// instance fields as derived from the IDS Information Model ontology
 
 	/**
 	* "last accessed"@en
@@ -248,7 +248,7 @@ public class UsageControlObjectImpl implements UsageControlObject {
 	}
 
 
-	// accessor method implementations as derived from the IDSA Information Model ontology
+	// accessor method implementations as derived from the IDS Information Model ontology
 
 
 	@NotNull

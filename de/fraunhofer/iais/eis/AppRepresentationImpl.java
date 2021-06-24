@@ -57,7 +57,7 @@ public class AppRepresentationImpl implements AppRepresentation {
 	@JsonIgnore
 	protected Map<String,Object> properties;
 
-	// instance fields as derived from the IDSA Information Model ontology
+	// instance fields as derived from the IDS Information Model ontology
 
 	/**
 	* "created"@en
@@ -235,7 +235,7 @@ public class AppRepresentationImpl implements AppRepresentation {
 	}
 
 
-	// accessor method implementations as derived from the IDSA Information Model ontology
+	// accessor method implementations as derived from the IDS Information Model ontology
 
 
 	@JsonProperty("ids:dataAppInformation")

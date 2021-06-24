@@ -72,7 +72,7 @@ public interface ParticipantCatalog extends Catalog {
 	public Map<String,Object> getProperties();
 	public void setProperty(String property, Object value);
 
-	// accessor methods as derived from the IDSA Information Model ontology
+	// accessor methods as derived from the IDS Information Model ontology
 
 
 	/**

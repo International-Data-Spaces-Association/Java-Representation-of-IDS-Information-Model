@@ -47,7 +47,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 	@JsonSubTypes.Type(value = VideoResource.class),
 	@JsonSubTypes.Type(value = SoftwareResource.class)
 })
-public interface Resource extends Asset, DigitalContent, DescribedSemantically, ManagedEntity {
+public interface Resource extends Asset, DescribedSemantically, DigitalContent, ManagedEntity {
 
 	// standard methods
 
@@ -79,7 +79,7 @@ public interface Resource extends Asset, DigitalContent, DescribedSemantically, 
 	public Map<String,Object> getProperties();
 	public void setProperty(String property, Object value);
 
-	// accessor methods as derived from the IDSA Information Model ontology
+	// accessor methods as derived from the IDS Information Model ontology
 
 
 	/**

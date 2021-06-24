@@ -57,7 +57,7 @@ public class ArtifactImpl implements Artifact {
 	@JsonIgnore
 	protected Map<String,Object> properties;
 
-	// instance fields as derived from the IDSA Information Model ontology
+	// instance fields as derived from the IDS Information Model ontology
 
 	/**
 	* "byte size"@en
@@ -185,7 +185,7 @@ public class ArtifactImpl implements Artifact {
 	}
 
 
-	// accessor method implementations as derived from the IDSA Information Model ontology
+	// accessor method implementations as derived from the IDS Information Model ontology
 
 
 	@JsonProperty("ids:byteSize")

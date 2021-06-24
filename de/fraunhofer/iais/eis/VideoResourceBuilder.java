@@ -148,6 +148,17 @@ public class VideoResourceBuilder {
 
 
 	/**
+	* This function allows setting a value for _shapesGraph
+	* @param _shapesGraph_ desired value to be set
+	* @return Builder object with new value for _shapesGraph
+	*/
+	final public VideoResourceBuilder _shapesGraph_(URI _shapesGraph_) {
+		this.videoResourceImpl._shapesGraph = _shapesGraph_;
+		return this;
+	}
+
+
+	/**
 	* This function allows setting a value for _contentType
 	* @param _contentType_ desired value to be set
 	* @return Builder object with new value for _contentType
@@ -322,17 +333,6 @@ public class VideoResourceBuilder {
 		return this;
 	}
 
-
-
-	/**
-	* This function allows setting a value for _shapesGraph
-	* @param _shapesGraph_ desired value to be set
-	* @return Builder object with new value for _shapesGraph
-	*/
-	final public VideoResourceBuilder _shapesGraph_(URI _shapesGraph_) {
-		this.videoResourceImpl._shapesGraph = _shapesGraph_;
-		return this;
-	}
 
 
 	/**
