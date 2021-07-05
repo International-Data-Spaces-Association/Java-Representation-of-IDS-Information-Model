@@ -47,7 +47,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 	@JsonSubTypes.Type(value = VideoResource.class),
 	@JsonSubTypes.Type(value = SoftwareResource.class)
 })
-public interface Resource extends Asset, DescribedSemantically, DigitalContent, ManagedEntity {
+public interface Resource extends Asset, DigitalContent, DescribedSemantically, ManagedEntity {
 
 	// standard methods
 

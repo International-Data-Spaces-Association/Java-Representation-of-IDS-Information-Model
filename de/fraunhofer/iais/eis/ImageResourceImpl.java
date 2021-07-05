@@ -344,7 +344,6 @@ public class ImageResourceImpl implements ImageResource {
 			this._sovereign,
 			this._sample,
 			this._variant,
-			this._shapesGraph,
 			this._contentType,
 			this._contentPart,
 			this._representation,
@@ -361,6 +360,7 @@ public class ImageResourceImpl implements ImageResource {
 			this._modified,
 			this._title,
 			this._description,
+			this._shapesGraph,
 			this._version});
 	}
 
@@ -383,7 +383,6 @@ public class ImageResourceImpl implements ImageResource {
 				Objects.equals(this._sovereign, other._sovereign) &&
 				Objects.equals(this._sample, other._sample) &&
 				Objects.equals(this._variant, other._variant) &&
-				Objects.equals(this._shapesGraph, other._shapesGraph) &&
 				Objects.equals(this._contentType, other._contentType) &&
 				Objects.equals(this._contentPart, other._contentPart) &&
 				Objects.equals(this._representation, other._representation) &&
@@ -400,6 +399,7 @@ public class ImageResourceImpl implements ImageResource {
 				Objects.equals(this._modified, other._modified) &&
 				Objects.equals(this._title, other._title) &&
 				Objects.equals(this._description, other._description) &&
+				Objects.equals(this._shapesGraph, other._shapesGraph) &&
 				Objects.equals(this._version, other._version);
 		}
 	}
@@ -491,15 +491,6 @@ public class ImageResourceImpl implements ImageResource {
 	}
 
 
-
-	@JsonProperty("ids:shapesGraph")
-	final public URI getShapesGraph() {
-		return _shapesGraph;
-	}
-	
-	final public void setShapesGraph (URI _shapesGraph_) {
-		this._shapesGraph = _shapesGraph_;
-	}
 
 	@JsonProperty("ids:contentType")
 	final public ContentType getContentType() {
@@ -647,6 +638,15 @@ public class ImageResourceImpl implements ImageResource {
 		this._description = _description_;
 	}
 
+
+	@JsonProperty("ids:shapesGraph")
+	final public URI getShapesGraph() {
+		return _shapesGraph;
+	}
+	
+	final public void setShapesGraph (URI _shapesGraph_) {
+		this._shapesGraph = _shapesGraph_;
+	}
 
 	@JsonProperty("ids:version")
 	final public String getVersion() {

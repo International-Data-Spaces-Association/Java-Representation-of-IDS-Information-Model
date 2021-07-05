@@ -38,8 +38,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 */
 @JsonTypeInfo(use=JsonTypeInfo.Id.NAME, property="@type")
 @JsonSubTypes({
-	@JsonSubTypes.Type(value = Artifact.class),
 	@JsonSubTypes.Type(value = Resource.class),
+	@JsonSubTypes.Type(value = Artifact.class),
 	@JsonSubTypes.Type(value = AssetCollection.class),
 	@JsonSubTypes.Type(value = Representation.class)
 })

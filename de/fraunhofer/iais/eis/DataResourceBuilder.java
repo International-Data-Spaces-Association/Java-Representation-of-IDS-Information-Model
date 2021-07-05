@@ -148,17 +148,6 @@ public class DataResourceBuilder {
 
 
 	/**
-	* This function allows setting a value for _shapesGraph
-	* @param _shapesGraph_ desired value to be set
-	* @return Builder object with new value for _shapesGraph
-	*/
-	final public DataResourceBuilder _shapesGraph_(URI _shapesGraph_) {
-		this.dataResourceImpl._shapesGraph = _shapesGraph_;
-		return this;
-	}
-
-
-	/**
 	* This function allows setting a value for _contentType
 	* @param _contentType_ desired value to be set
 	* @return Builder object with new value for _contentType
@@ -333,6 +322,17 @@ public class DataResourceBuilder {
 		return this;
 	}
 
+
+
+	/**
+	* This function allows setting a value for _shapesGraph
+	* @param _shapesGraph_ desired value to be set
+	* @return Builder object with new value for _shapesGraph
+	*/
+	final public DataResourceBuilder _shapesGraph_(URI _shapesGraph_) {
+		this.dataResourceImpl._shapesGraph = _shapesGraph_;
+		return this;
+	}
 
 
 	/**
