@@ -1,216 +1,391 @@
 package de.fraunhofer.iais.eis;
 
-import de.fraunhofer.iais.eis.util.*;
-import de.fraunhofer.iais.eis.*;
-
-import javax.xml.datatype.XMLGregorianCalendar;
-import java.lang.String;
-import java.math.BigInteger;
-import java.net.URL;
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.NotEmpty;
 
-import com.fasterxml.jackson.annotation.JsonAlias;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
+import javax.validation.constraints.NotNull;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonTypeName;
+
+import de.fraunhofer.iais.eis.util.*;
 
 /**
-* "Configuration Model"@en
-* "Configuration Model is used for Connector deployment."@en
-*/
-@JsonTypeInfo(use=JsonTypeInfo.Id.NAME, property="@type")
+ * Configuration Model is used for Connector deployment.
+ */
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 @JsonSubTypes({
-	@JsonSubTypes.Type(value = ConfigurationModelImpl.class)
+    @JsonSubTypes.Type(value = ConfigurationModelImpl.class)
 })
-public interface ConfigurationModel {
+public interface ConfigurationModel extends ModelClass {
 
-	// standard methods
+    // standard methods
 
-	/**
-	* This function retrieves the ID of the current object (can be set via the constructor of the builder class)
-	* @return ID of current object as URI
-	*/
-	@JsonProperty("@id")
-	@NotNull
-	public URI getId();
+    /**
+     * This function retrieves the ID of the current object (can be set via the constructor of the
+     * builder class)
+     * 
+     * @return ID of current object as URI
+     */
+    @JsonProperty("@id")
+    @NotNull
+    public URI getId();
 
-	/**
-	* This function retrieves a human readable label about the current class, as defined in the ontology.
-	* This label could, for example, be used as a field heading in a user interface
-	* @return Human readable label
-	*/
-	public List<TypedLiteral> getLabel();
+    /**
+     * This function retrieves a human readable label about the current class, as defined in the
+     * ontology. This label could, for example, be used as a field heading in a user interface
+     * 
+     * @return Human readable label
+     */
+    public List<TypedLiteral> getLabel();
 
-	/**
-	* This function retrieves a human readable explanatory comment about the current class, as defined in the ontology.
-	* This comment could, for example, be used as a tooltip in a user interface
-	* @return Human readable explanatory comment
-	*/
-	public List<TypedLiteral> getComment();
+    /**
+     * This function retrieves a human readable explanatory comment about the current class, as defined
+     * in the ontology. This comment could, for example, be used as a tooltip in a user interface
+     * 
+     * @return Human readable explanatory comment
+     */
+    public List<TypedLiteral> getComment();
 
-	public String toRdf();
+    public String toRdf();
 
-	// getter and setter for generic property map
-	public Map<String,Object> getProperties();
-	public void setProperty(String property, Object value);
+    // getter and setter for generic property map
+    public Map<String, Object> getProperties();
 
-	// accessor methods as derived from the IDS Information Model ontology
+    public void setProperty(String property, Object value);
 
+    // accessor methods as derived from the IDS Information Model ontology
 
-	/**
-	* "authentication methods allowed in a Configuration Model"@en
-	* @return Returns the List of UserAuthentications for the property _userAuthentication.
-	* More information under https://w3id.org/idsa/core/userAuthentication
-	*/
-	@JsonProperty("ids:userAuthentication")
-	public List<UserAuthentication> getUserAuthentication();
+    /**
+     * authentication methods allowed in a Configuration Model
+     *
+     * More information under https://w3id.org/idsa/core/userAuthentication
+     *
+     * @return Returns the List of UserAuthentications for the property _userAuthentication.
+     */
+    @JsonProperty("ids:userAuthentication")
+    List<UserAuthentication> getUserAuthentication();
 
-	/**
-	* "Log level configuration for a Connector which is deployed using the Configuration Model"@en
-	* @return Returns the LogLevel for the property _configurationModelLogLevel.
-	* More information under https://w3id.org/idsa/core/configurationModelLogLevel
-	*/
-	@NotNull
-	@JsonProperty("ids:configurationModelLogLevel")
-	public LogLevel getConfigurationModelLogLevel();
+    /**
+     * authentication methods allowed in a Configuration Model
+     *
+     * More information under https://w3id.org/idsa/core/userAuthentication
+     *
+     * @param _userAuthentication_ desired value for the property _userAuthentication.
+     */
+    void setUserAuthentication(List<UserAuthentication> _userAuthentication_);
 
-	/**
-	* "Status of a Connector deployed by the Configuration Model"@en
-	* @return Returns the ConnectorStatus for the property _connectorStatus.
-	* More information under https://w3id.org/idsa/core/connectorStatus
-	*/
-	@NotNull
-	@JsonProperty("ids:connectorStatus")
-	public ConnectorStatus getConnectorStatus();
+    /**
+     * Log level configuration for a Connector which is deployed using the Configuration Model
+     *
+     * More information under https://w3id.org/idsa/core/configurationModelLogLevel
+     *
+     * @return Returns the LogLevel for the property _configurationModelLogLevel.
+     */
+    @NotNull
+    @JsonProperty("ids:configurationModelLogLevel")
+    LogLevel getConfigurationModelLogLevel();
 
-	/**
-	* "Deply mode of a Connector in the Configuration Model"@en
-	* @return Returns the ConnectorDeployMode for the property _connectorDeployMode.
-	* More information under https://w3id.org/idsa/core/connectorDeployMode
-	*/
-	@NotNull
-	@JsonProperty("ids:connectorDeployMode")
-	public ConnectorDeployMode getConnectorDeployMode();
+    /**
+     * Log level configuration for a Connector which is deployed using the Configuration Model
+     *
+     * More information under https://w3id.org/idsa/core/configurationModelLogLevel
+     *
+     * @param _configurationModelLogLevel_ desired value for the property _configurationModelLogLevel.
+     */
+    void setConfigurationModelLogLevel(LogLevel _configurationModelLogLevel_);
 
-	/**
-	* "References to Connector which is deployed / maintained in the Configuration Model"@en
-	* @return Returns the Connector for the property _connectorDescription.
-	* More information under https://w3id.org/idsa/core/connectorDescription
-	*/
-	@JsonProperty("ids:connectorDescription")
-	public Connector getConnectorDescription();
+    /**
+     * Status of a Connector deployed by the Configuration Model
+     *
+     * More information under https://w3id.org/idsa/core/connectorStatus
+     *
+     * @return Returns the ConnectorStatus for the property _connectorStatus.
+     */
+    @NotNull
+    @JsonProperty("ids:connectorStatus")
+    ConnectorStatus getConnectorStatus();
 
-	/**
-	* "Proxies for a Connector which is deployed using the Configuration Model"@en
-	* @return Returns the List of Proxys for the property _connectorProxy.
-	* More information under https://w3id.org/idsa/core/connectorProxy
-	*/
-	@JsonProperty("ids:connectorProxy")
-	public List<Proxy> getConnectorProxy();
+    /**
+     * Status of a Connector deployed by the Configuration Model
+     *
+     * More information under https://w3id.org/idsa/core/connectorStatus
+     *
+     * @param _connectorStatus_ desired value for the property _connectorStatus.
+     */
+    void setConnectorStatus(ConnectorStatus _connectorStatus_);
 
-	/**
-	* "URI of the trust store server."@en
-	* @return Returns the URI for the property _trustStore.
-	* More information under https://w3id.org/idsa/core/trustStore
-	*/
-	@JsonProperty("ids:trustStore")
-	public URI getTrustStore();
+    /**
+     * Deply mode of a Connector in the Configuration Model
+     *
+     * More information under https://w3id.org/idsa/core/connectorDeployMode
+     *
+     * @return Returns the ConnectorDeployMode for the property _connectorDeployMode.
+     */
+    @NotNull
+    @JsonProperty("ids:connectorDeployMode")
+    ConnectorDeployMode getConnectorDeployMode();
 
-	/**
-	* "alias for the trust store."@en
-	* @return Returns the String for the property _trustStoreAlias.
-	* More information under https://w3id.org/idsa/core/trustStoreAlias
-	*/
-	@JsonProperty("ids:trustStoreAlias")
-	public String getTrustStoreAlias();
+    /**
+     * Deply mode of a Connector in the Configuration Model
+     *
+     * More information under https://w3id.org/idsa/core/connectorDeployMode
+     *
+     * @param _connectorDeployMode_ desired value for the property _connectorDeployMode.
+     */
+    void setConnectorDeployMode(ConnectorDeployMode _connectorDeployMode_);
 
-	/**
-	* "Password of the trust store server."@en
-	* @return Returns the String for the property _trustStorePassword.
-	* More information under https://w3id.org/idsa/core/trustStorePassword
-	*/
-	@JsonProperty("ids:trustStorePassword")
-	public String getTrustStorePassword();
+    /**
+     * References to Connector which is deployed / maintained in the Configuration Model
+     *
+     * More information under https://w3id.org/idsa/core/connectorDescription
+     *
+     * @return Returns the Connector for the property _connectorDescription.
+     */
+    @JsonProperty("ids:connectorDescription")
+    Connector getConnectorDescription();
 
-	/**
-	* "URI of the key store server."@en
-	* @return Returns the URI for the property _keyStore.
-	* More information under https://w3id.org/idsa/core/keyStore
-	*/
-	@JsonProperty("ids:keyStore")
-	public URI getKeyStore();
+    /**
+     * References to Connector which is deployed / maintained in the Configuration Model
+     *
+     * More information under https://w3id.org/idsa/core/connectorDescription
+     *
+     * @param _connectorDescription_ desired value for the property _connectorDescription.
+     */
+    void setConnectorDescription(Connector _connectorDescription_);
 
-	/**
-	* "alias for the key store."@en
-	* @return Returns the String for the property _keyStoreAlias.
-	* More information under https://w3id.org/idsa/core/keyStoreAlias
-	*/
-	@JsonProperty("ids:keyStoreAlias")
-	public String getKeyStoreAlias();
+    /**
+     * Proxies for a Connector which is deployed using the Configuration Model
+     *
+     * More information under https://w3id.org/idsa/core/connectorProxy
+     *
+     * @return Returns the List of Proxys for the property _connectorProxy.
+     */
+    @JsonProperty("ids:connectorProxy")
+    List<Proxy> getConnectorProxy();
 
-	/**
-	* "Password of the key store server."@en
-	* @return Returns the String for the property _keyStorePassword.
-	* More information under https://w3id.org/idsa/core/keyStorePassword
-	*/
-	@JsonProperty("ids:keyStorePassword")
-	public String getKeyStorePassword();
+    /**
+     * Proxies for a Connector which is deployed using the Configuration Model
+     *
+     * More information under https://w3id.org/idsa/core/connectorProxy
+     *
+     * @param _connectorProxy_ desired value for the property _connectorProxy.
+     */
+    void setConnectorProxy(List<Proxy> _connectorProxy_);
 
-	/**
-	* "Catalog of Brokers to which the ids:Connector that we are configuring (cf. ids:connectorDescription) may want to talk."@en
-	* @return Returns the BrokerCatalog for the property _configuredBroker.
-	* More information under https://w3id.org/idsa/core/configuredBroker
-	*/
-	@JsonProperty("ids:configuredBroker")
-	public BrokerCatalog getConfiguredBroker();
+    /**
+     * URI of the trust store server.
+     *
+     * More information under https://w3id.org/idsa/core/trustStore
+     *
+     * @return Returns the URI for the property _trustStore.
+     */
+    @JsonProperty("ids:trustStore")
+    URI getTrustStore();
 
-	/**
-	* @return Returns the List of AppRoutes for the property _appRoute.
-	* More information under https://w3id.org/idsa/core/appRoute
-	*/
-	@JsonProperty("ids:appRoute")
-	public List<AppRoute> getAppRoute();
+    /**
+     * URI of the trust store server.
+     *
+     * More information under https://w3id.org/idsa/core/trustStore
+     *
+     * @param _trustStore_ desired value for the property _trustStore.
+     */
+    void setTrustStore(URI _trustStore_);
 
-	/**
-	* "One or more app stores to which the ids:Connector that we are configuring (cf. ids:connectorDescription) may want to talk, e.g., to retrieve apps from them."@en
-	* @return Returns the AppStoreCatalog for the property _configuredAppStore.
-	* More information under https://w3id.org/idsa/core/configuredAppStore
-	*/
-	@JsonProperty("ids:configuredAppStore")
-	public AppStoreCatalog getConfiguredAppStore();
+    /**
+     * alias for the trust store.
+     *
+     * More information under https://w3id.org/idsa/core/trustStoreAlias
+     *
+     * @return Returns the String for the property _trustStoreAlias.
+     */
+    @JsonProperty("ids:trustStoreAlias")
+    String getTrustStoreAlias();
 
-	/**
-	* "Catalog of app resources for a given Configuration Model. Used to persist configured / installed apps."@en
-	* @return Returns the AppResourceCatalog for the property _configuredAppResource.
-	* More information under https://w3id.org/idsa/core/configuredAppResource
-	*/
-	@JsonProperty("ids:configuredAppResource")
-	public AppResourceCatalog getConfiguredAppResource();
+    /**
+     * alias for the trust store.
+     *
+     * More information under https://w3id.org/idsa/core/trustStoreAlias
+     *
+     * @param _trustStoreAlias_ desired value for the property _trustStoreAlias.
+     */
+    void setTrustStoreAlias(String _trustStoreAlias_);
 
-	/**
-	* "Catalog of clearing houses for a given Configuration Model."@en
-	* @return Returns the ClearingHouseCatalog for the property _configuredClearingHouse.
-	* More information under https://w3id.org/idsa/core/configuredClearingHouse
-	*/
-	@JsonProperty("ids:configuredClearingHouse")
-	public ClearingHouseCatalog getConfiguredClearingHouse();
+    /**
+     * Password of the trust store server.
+     *
+     * More information under https://w3id.org/idsa/core/trustStorePassword
+     *
+     * @return Returns the String for the property _trustStorePassword.
+     */
+    @JsonProperty("ids:trustStorePassword")
+    String getTrustStorePassword();
+
+    /**
+     * Password of the trust store server.
+     *
+     * More information under https://w3id.org/idsa/core/trustStorePassword
+     *
+     * @param _trustStorePassword_ desired value for the property _trustStorePassword.
+     */
+    void setTrustStorePassword(String _trustStorePassword_);
+
+    /**
+     * URI of the key store server.
+     *
+     * More information under https://w3id.org/idsa/core/keyStore
+     *
+     * @return Returns the URI for the property _keyStore.
+     */
+    @JsonProperty("ids:keyStore")
+    URI getKeyStore();
+
+    /**
+     * URI of the key store server.
+     *
+     * More information under https://w3id.org/idsa/core/keyStore
+     *
+     * @param _keyStore_ desired value for the property _keyStore.
+     */
+    void setKeyStore(URI _keyStore_);
+
+    /**
+     * alias for the key store.
+     *
+     * More information under https://w3id.org/idsa/core/keyStoreAlias
+     *
+     * @return Returns the String for the property _keyStoreAlias.
+     */
+    @JsonProperty("ids:keyStoreAlias")
+    String getKeyStoreAlias();
+
+    /**
+     * alias for the key store.
+     *
+     * More information under https://w3id.org/idsa/core/keyStoreAlias
+     *
+     * @param _keyStoreAlias_ desired value for the property _keyStoreAlias.
+     */
+    void setKeyStoreAlias(String _keyStoreAlias_);
+
+    /**
+     * Password of the key store server.
+     *
+     * More information under https://w3id.org/idsa/core/keyStorePassword
+     *
+     * @return Returns the String for the property _keyStorePassword.
+     */
+    @JsonProperty("ids:keyStorePassword")
+    String getKeyStorePassword();
+
+    /**
+     * Password of the key store server.
+     *
+     * More information under https://w3id.org/idsa/core/keyStorePassword
+     *
+     * @param _keyStorePassword_ desired value for the property _keyStorePassword.
+     */
+    void setKeyStorePassword(String _keyStorePassword_);
+
+    /**
+     * Catalog of Brokers to which the ids:Connector that we are configuring (cf.
+     * ids:connectorDescription) may want to talk.
+     *
+     * More information under https://w3id.org/idsa/core/configuredBroker
+     *
+     * @return Returns the BrokerCatalog for the property _configuredBroker.
+     */
+    @JsonProperty("ids:configuredBroker")
+    BrokerCatalog getConfiguredBroker();
+
+    /**
+     * Catalog of Brokers to which the ids:Connector that we are configuring (cf.
+     * ids:connectorDescription) may want to talk.
+     *
+     * More information under https://w3id.org/idsa/core/configuredBroker
+     *
+     * @param _configuredBroker_ desired value for the property _configuredBroker.
+     */
+    void setConfiguredBroker(BrokerCatalog _configuredBroker_);
+
+    /**
+     *
+     * More information under https://w3id.org/idsa/core/appRoute
+     *
+     * @return Returns the List of AppRoutes for the property _appRoute.
+     */
+    @JsonProperty("ids:appRoute")
+    List<AppRoute> getAppRoute();
+
+    /**
+     *
+     * More information under https://w3id.org/idsa/core/appRoute
+     *
+     * @param _appRoute_ desired value for the property _appRoute.
+     */
+    void setAppRoute(List<AppRoute> _appRoute_);
+
+    /**
+     * One or more app stores to which the ids:Connector that we are configuring (cf.
+     * ids:connectorDescription) may want to talk, e.g., to retrieve apps from them.
+     *
+     * More information under https://w3id.org/idsa/core/configuredAppStore
+     *
+     * @return Returns the AppStoreCatalog for the property _configuredAppStore.
+     */
+    @JsonProperty("ids:configuredAppStore")
+    AppStoreCatalog getConfiguredAppStore();
+
+    /**
+     * One or more app stores to which the ids:Connector that we are configuring (cf.
+     * ids:connectorDescription) may want to talk, e.g., to retrieve apps from them.
+     *
+     * More information under https://w3id.org/idsa/core/configuredAppStore
+     *
+     * @param _configuredAppStore_ desired value for the property _configuredAppStore.
+     */
+    void setConfiguredAppStore(AppStoreCatalog _configuredAppStore_);
+
+    /**
+     * Catalog of app resources for a given Configuration Model. Used to persist configured / installed
+     * apps.
+     *
+     * More information under https://w3id.org/idsa/core/configuredAppResource
+     *
+     * @return Returns the AppResourceCatalog for the property _configuredAppResource.
+     */
+    @JsonProperty("ids:configuredAppResource")
+    AppResourceCatalog getConfiguredAppResource();
+
+    /**
+     * Catalog of app resources for a given Configuration Model. Used to persist configured / installed
+     * apps.
+     *
+     * More information under https://w3id.org/idsa/core/configuredAppResource
+     *
+     * @param _configuredAppResource_ desired value for the property _configuredAppResource.
+     */
+    void setConfiguredAppResource(AppResourceCatalog _configuredAppResource_);
+
+    /**
+     * Catalog of clearing houses for a given Configuration Model.
+     *
+     * More information under https://w3id.org/idsa/core/configuredClearingHouse
+     *
+     * @return Returns the ClearingHouseCatalog for the property _configuredClearingHouse.
+     */
+    @JsonProperty("ids:configuredClearingHouse")
+    ClearingHouseCatalog getConfiguredClearingHouse();
+
+    /**
+     * Catalog of clearing houses for a given Configuration Model.
+     *
+     * More information under https://w3id.org/idsa/core/configuredClearingHouse
+     *
+     * @param _configuredClearingHouse_ desired value for the property _configuredClearingHouse.
+     */
+    void setConfiguredClearingHouse(ClearingHouseCatalog _configuredClearingHouse_);
 
 }

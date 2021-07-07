@@ -1,81 +1,56 @@
 package de.fraunhofer.iais.eis;
 
-import de.fraunhofer.iais.eis.util.*;
-import de.fraunhofer.iais.eis.*;
-
-import javax.xml.datatype.XMLGregorianCalendar;
-import java.lang.String;
-import java.math.BigInteger;
-import java.net.URL;
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.NotEmpty;
 
-import com.fasterxml.jackson.annotation.JsonAlias;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonTypeName;
+
+
+import de.fraunhofer.iais.eis.util.*;
 
 public class GeoPointBuilder {
 
-	private GeoPointImpl geoPointImpl;
+    private GeoPointImpl geoPointImpl;
 
-	public GeoPointBuilder() {
-		geoPointImpl = new GeoPointImpl();
-	}
+    public GeoPointBuilder() {
+        geoPointImpl = new GeoPointImpl();
+    }
 
-	public GeoPointBuilder(URI id) {
-		this();
-		geoPointImpl.id = id;
-	}
+    public GeoPointBuilder(URI id) {
+        this();
+        geoPointImpl.id = id;
+    }
 
-	/**
-	* This function allows setting a value for _latitude
-	* @param _latitude_ desired value to be set
-	* @return Builder object with new value for _latitude
-	*/
-	final public GeoPointBuilder _latitude_(float _latitude_) {
-		this.geoPointImpl._latitude = _latitude_;
-		return this;
-	}
+    /**
+     * This function allows setting a value for _latitude
+     * 
+     * @param _latitude_ desired value to be set
+     * @return Builder object with new value for _latitude
+     */
+    public GeoPointBuilder _latitude_(float _latitude_) {
+        this.geoPointImpl.setLatitude(_latitude_);
+        return this;
+    }
 
+    /**
+     * This function allows setting a value for _longitude
+     * 
+     * @param _longitude_ desired value to be set
+     * @return Builder object with new value for _longitude
+     */
+    public GeoPointBuilder _longitude_(float _longitude_) {
+        this.geoPointImpl.setLongitude(_longitude_);
+        return this;
+    }
 
-	/**
-	* This function allows setting a value for _longitude
-	* @param _longitude_ desired value to be set
-	* @return Builder object with new value for _longitude
-	*/
-	final public GeoPointBuilder _longitude_(float _longitude_) {
-		this.geoPointImpl._longitude = _longitude_;
-		return this;
-	}
-
-
-
-	/**
-	* This function takes the values that were set previously via the other functions of this class and turns them into a Java bean.
-	* @return Bean with specified values
-	* @throws ConstraintViolationException This exception is thrown, if a validator is used and a violation is found.
-	*/
-
-	final public GeoPoint build() throws ConstraintViolationException {
-		VocabUtil.getInstance().validate(geoPointImpl);
-		return geoPointImpl;
-	}
+    /**
+     * This function takes the values that were set previously via the other functions of this class and
+     * turns them into a Java bean.
+     * 
+     * @return Bean with specified values
+     * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
+     *         violation is found.
+     */
+    final public GeoPoint build() throws ConstraintViolationException {
+        VocabUtil.getInstance().validate(geoPointImpl);
+        return geoPointImpl;
+    }
 }

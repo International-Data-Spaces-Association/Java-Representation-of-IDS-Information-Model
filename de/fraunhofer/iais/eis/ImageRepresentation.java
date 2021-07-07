@@ -1,94 +1,99 @@
 package de.fraunhofer.iais.eis;
 
-import de.fraunhofer.iais.eis.util.*;
-import de.fraunhofer.iais.eis.*;
-
-import javax.xml.datatype.XMLGregorianCalendar;
-import java.lang.String;
-import java.math.BigInteger;
-import java.net.URL;
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.NotEmpty;
 
-import com.fasterxml.jackson.annotation.JsonAlias;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
+import javax.validation.constraints.NotNull;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonTypeName;
+
+import de.fraunhofer.iais.eis.util.*;
 
 /**
-* "Image Representation"@en
-* "Image representation"@en
-*/
-@JsonTypeInfo(use=JsonTypeInfo.Id.NAME, property="@type")
+ * Image representation
+ */
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 @JsonSubTypes({
-	@JsonSubTypes.Type(value = ImageRepresentationImpl.class)
+    @JsonSubTypes.Type(value = ImageRepresentationImpl.class)
 })
-public interface ImageRepresentation extends Representation {
+public interface ImageRepresentation extends ModelClass, Representation {
 
-	// standard methods
+    // standard methods
 
-	/**
-	* This function retrieves the ID of the current object (can be set via the constructor of the builder class)
-	* @return ID of current object as URI
-	*/
-	@JsonProperty("@id")
-	@NotNull
-	public URI getId();
+    /**
+     * This function retrieves the ID of the current object (can be set via the constructor of the
+     * builder class)
+     * 
+     * @return ID of current object as URI
+     */
+    @JsonProperty("@id")
+    @NotNull
+    public URI getId();
 
-	/**
-	* This function retrieves a human readable label about the current class, as defined in the ontology.
-	* This label could, for example, be used as a field heading in a user interface
-	* @return Human readable label
-	*/
-	public List<TypedLiteral> getLabel();
+    /**
+     * This function retrieves a human readable label about the current class, as defined in the
+     * ontology. This label could, for example, be used as a field heading in a user interface
+     * 
+     * @return Human readable label
+     */
+    public List<TypedLiteral> getLabel();
 
-	/**
-	* This function retrieves a human readable explanatory comment about the current class, as defined in the ontology.
-	* This comment could, for example, be used as a tooltip in a user interface
-	* @return Human readable explanatory comment
-	*/
-	public List<TypedLiteral> getComment();
+    /**
+     * This function retrieves a human readable explanatory comment about the current class, as defined
+     * in the ontology. This comment could, for example, be used as a tooltip in a user interface
+     * 
+     * @return Human readable explanatory comment
+     */
+    public List<TypedLiteral> getComment();
 
-	public String toRdf();
+    public String toRdf();
 
-	// getter and setter for generic property map
-	public Map<String,Object> getProperties();
-	public void setProperty(String property, Object value);
+    // getter and setter for generic property map
+    public Map<String, Object> getProperties();
 
-	// accessor methods as derived from the IDS Information Model ontology
+    public void setProperty(String property, Object value);
 
+    // accessor methods as derived from the IDS Information Model ontology
 
-	/**
-	* "Width of the visible frame."@en
-	* @return Returns the java.math.BigDecimal for the property _width.
-	* More information under https://w3id.org/idsa/core/width
-	*/
-	@JsonProperty("ids:width")
-	public java.math.BigDecimal getWidth();
+    /**
+     * Width of the visible frame.
+     *
+     * More information under https://w3id.org/idsa/core/width
+     *
+     * @return Returns the java.math.BigDecimal for the property _width.
+     */
+    @JsonProperty("ids:width")
+    java.math.BigDecimal getWidth();
 
-	/**
-	* "Height of the visible frame."@en
-	* @return Returns the java.math.BigDecimal for the property _height.
-	* More information under https://w3id.org/idsa/core/height
-	*/
-	@JsonProperty("ids:height")
-	public java.math.BigDecimal getHeight();
+    /**
+     * Width of the visible frame.
+     *
+     * More information under https://w3id.org/idsa/core/width
+     *
+     * @param _width_ desired value for the property _width.
+     */
+    void setWidth(java.math.BigDecimal _width_);
+
+    /**
+     * Height of the visible frame.
+     *
+     * More information under https://w3id.org/idsa/core/height
+     *
+     * @return Returns the java.math.BigDecimal for the property _height.
+     */
+    @JsonProperty("ids:height")
+    java.math.BigDecimal getHeight();
+
+    /**
+     * Height of the visible frame.
+     *
+     * More information under https://w3id.org/idsa/core/height
+     *
+     * @param _height_ desired value for the property _height.
+     */
+    void setHeight(java.math.BigDecimal _height_);
 
 }

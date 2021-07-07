@@ -1,239 +1,216 @@
 package de.fraunhofer.iais.eis;
 
-import de.fraunhofer.iais.eis.util.*;
-import de.fraunhofer.iais.eis.*;
-
-import javax.xml.datatype.XMLGregorianCalendar;
-import java.lang.String;
 import java.math.BigInteger;
-import java.net.URL;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.NotEmpty;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
-/** 
-* "Artifact"@en
-* "Instance of a Representation materialized at a partiuclar version and point in time. Possesses characteristics like file name, size, creation date etc."@en 
-*/
+import de.fraunhofer.iais.eis.util.*;
+
+/**
+ * Default implementation of package de.fraunhofer.iais.eis.Artifact
+ * 
+ * Instance of a Representation materialized at a partiuclar version and point in time. Possesses
+ * characteristics like file name, size, creation date etc.
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeName("ids:Artifact")
 public class ArtifactImpl implements Artifact {
 
-	@JsonProperty("@id")
-	@JsonAlias({"@id", "id"})
-	@NotNull
-	protected URI id;
+    @JsonProperty("@id")
+    @JsonAlias({"@id", "id"})
+    @NotNull
+    protected URI id;
 
-	//List of all labels of this class
-	@JsonIgnore
-	protected List<TypedLiteral> label = Arrays.asList(new TypedLiteral("Artifact", "en"));
+    // List of all labels of this class
+    @JsonIgnore
+    protected List<TypedLiteral> label = Arrays.asList(new TypedLiteral("Artifact", "en"));
 
-	//List of all comments of this class
-	@JsonIgnore
-	protected List<TypedLiteral> comment = Arrays.asList(new TypedLiteral("Instance of a Representation materialized at a partiuclar version and point in time. Possesses characteristics like file name, size, creation date etc.", "en"));
+    // List of all comments of this class
+    @JsonIgnore
+    protected List<TypedLiteral> comment = Arrays.asList(new TypedLiteral(
+        "Instance of a Representation materialized at a partiuclar version and point in time. Possesses characteristics like file name, size, creation date etc.",
+        "en"));
 
-	// all classes have a generic property array
-	@JsonIgnore
-	protected Map<String,Object> properties;
+    // all classes have a generic property array
+    @JsonIgnore
+    protected Map<String, Object> properties;
 
-	// instance fields as derived from the IDS Information Model ontology
+    // instance fields as derived from the IDS Information Model ontology
 
-	/**
-	* "byte size"@en
-	* "Size of the Artifact in bytes."@en
-	*/
-	@JsonAlias({"ids:byteSize", "byteSize"})
-	protected BigInteger _byteSize;
+    @JsonAlias({"ids:byteSize", "byteSize"})
+    protected BigInteger _byteSize;
 
+    @JsonAlias({"ids:checkSum", "checkSum"})
+    protected String _checkSum;
 
-	/**
-	* "checksum"@en
-	* "Checksum of the artifact"@en
-	*/
-	@JsonAlias({"ids:checkSum", "checkSum"})
-	protected String _checkSum;
+    @JsonAlias({"ids:creationDate", "creationDate"})
+    protected XMLGregorianCalendar _creationDate;
 
+    @JsonAlias({"ids:duration", "duration"})
+    protected java.math.BigDecimal _duration;
 
-	/**
-	* "creation date"@en
-	* "Date (as xsd:dateTimeStamp) when the artifact was created, i.e. persisted."@en
-	*/
-	@JsonAlias({"ids:creationDate", "creationDate"})
-	protected XMLGregorianCalendar _creationDate;
+    @JsonAlias({"ids:fileName", "fileName"})
+    protected String _fileName;
 
+    protected ArtifactImpl() {
+        id = VocabUtil.getInstance().createRandomUrl("artifact");
+    }
 
-	/**
-	* "duration"@en
-	* "Duration of the media resource in seconds."@en
-	*/
-	@JsonAlias({"ids:duration", "duration"})
-	protected java.math.BigDecimal _duration;
+    @JsonProperty("@id")
+    final public URI getId() {
+        return id;
+    }
 
+    public String toRdf() {
+        return VocabUtil.getInstance().toRdf(this);
+    }
 
-	/**
-	* "file name"@en
-	* "Name of the Artifcat file."@en
-	*/
-	@JsonAlias({"ids:fileName", "fileName"})
-	protected String _fileName;
+    public List<TypedLiteral> getLabel() {
+        return this.label;
+    }
 
+    public List<TypedLiteral> getComment() {
+        return this.comment;
+    }
 
-	// no manual construction
-	protected ArtifactImpl() {
-		id = VocabUtil.getInstance().createRandomUrl("artifact");
-	}
+    // getter and setter for generic property map
+    @JsonAnyGetter
+    public Map<String, Object> getProperties() {
+        if (this.properties == null)
+            return null;
+        Iterator<String> iter = this.properties.keySet().iterator();
+        Map<String, Object> resultset = new HashMap<String, Object>();
+        while (iter.hasNext()) {
+            String key = iter.next();
+            resultset.put(key, urifyObjects(this.properties.get(key)));
+        }
+        return resultset;
+    }
 
-	@JsonProperty("@id")
-	final public URI getId() {
-		return id;
-	}
+    public Object urifyObjects(Object value) {
+        if (value instanceof String && value.toString().startsWith("http")) {
+            try {
+                value = new URI(value.toString());
+            } catch (Exception e) {
+                /* do nothing */ }
+        } else if (value instanceof ArrayList) {
+            ArrayList<Object> result_array = new ArrayList<Object>();
+            ((ArrayList) value).forEach(x -> result_array.add(urifyObjects(x)));
+            return result_array;
+        } else if (value instanceof Map) {
+            Map<String, Object> result_map = new HashMap<String, Object>();
+            ((Map) value).forEach((k, v) -> result_map.put(k.toString(), urifyObjects(v)));
+            return result_map;
+        }
+        return value;
+    }
 
-	public String toRdf() {
-		return VocabUtil.getInstance().toRdf(this);
-	}
+    @JsonAnySetter
+    public void setProperty(String property, Object value) {
+        if (this.properties == null)
+            this.properties = new HashMap<String, Object>();
+        if (property.startsWith("@")) {
+            return;
+        } ;
+        this.properties.put(property, value);
+    }
 
-	public List<TypedLiteral> getLabel() {
-		return this.label;
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(this._byteSize,
+            this._fileName,
+            this._creationDate,
+            this._checkSum,
+            this._duration);
+    }
 
-	public List<TypedLiteral> getComment() {
-		return this.comment;
-	}
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        } else if (obj == null) {
+            return false;
+        } else if (this.getClass() != obj.getClass()) {
+            return false;
+        } else {
+            ArtifactImpl other = (ArtifactImpl) obj;
+            return Objects.equals(this._byteSize, other._byteSize) &&
+                Objects.equals(this._fileName, other._fileName) &&
+                Objects.equals(this._creationDate, other._creationDate) &&
+                Objects.equals(this._checkSum, other._checkSum) &&
+                Objects.equals(this._duration, other._duration);
+        }
+    }
 
-	// getter and setter for generic property map
-	@JsonAnyGetter
-	public Map<String,Object> getProperties() {
-		if (this.properties == null) return null;
-		Iterator<String> iter = this.properties.keySet().iterator();
-		Map<String,Object> resultset = new HashMap<String, Object>();
-		while (iter.hasNext()) {
-			String key = iter.next();
-			resultset.put(key,urifyObjects(this.properties.get(key)));
-		}
-		return resultset ;
-	}
+    // accessor method implementations as derived from the IDS Information Model ontology
 
-	public Object urifyObjects(Object value) {
-		if (value instanceof String && value.toString().startsWith("http")) {
-			try {
-				value = new URI(value.toString());
-			} catch (Exception e) { /* do nothing */ }
-		} else if (value instanceof ArrayList) {
-			ArrayList<Object> result_array = new ArrayList<Object>();
-			((ArrayList) value).forEach(x -> result_array.add(urifyObjects(x)));
-			return result_array;
-		} else if (value instanceof Map) {
-			Map<String, Object> result_map = new HashMap<String, Object>();
-			((Map) value).forEach((k,v) -> result_map.put(k.toString(), urifyObjects(v)));
-			return result_map;
-		}
-		return value;
-	}
+    @Override
+    public BigInteger getByteSize() {
+        return _byteSize;
+    }
 
-	@JsonAnySetter
-	public void setProperty(String property, Object value) {
-		if (this.properties == null) this.properties = new HashMap<String,Object>();
-		if (property.startsWith("@")) {return ;};
-		this.properties.put(property, value) ;
-	}
-	@Override
-	public int hashCode() {
-		return Objects.hash(new Object[]{this._byteSize,
-			this._fileName,
-			this._creationDate,
-			this._checkSum,
-			this._duration});
-	}
+    @Override
+    public void setByteSize(BigInteger _byteSize_) {
+        this._byteSize = _byteSize_;
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		} else if (obj == null) {
-			return false;
-		} else if (this.getClass() != obj.getClass()) {
-			return false;
-		} else {
-			ArtifactImpl other = (ArtifactImpl) obj;
-			return Objects.equals(this._byteSize, other._byteSize) &&
-				Objects.equals(this._fileName, other._fileName) &&
-				Objects.equals(this._creationDate, other._creationDate) &&
-				Objects.equals(this._checkSum, other._checkSum) &&
-				Objects.equals(this._duration, other._duration);
-		}
-	}
+    @Override
+    public String getFileName() {
+        return _fileName;
+    }
 
+    @Override
+    public void setFileName(String _fileName_) {
+        this._fileName = _fileName_;
+    }
 
-	// accessor method implementations as derived from the IDS Information Model ontology
+    @Override
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
+    public XMLGregorianCalendar getCreationDate() {
+        return _creationDate;
+    }
 
+    @Override
+    public void setCreationDate(XMLGregorianCalendar _creationDate_) {
+        this._creationDate = _creationDate_;
+    }
 
-	@JsonProperty("ids:byteSize")
-	final public BigInteger getByteSize() {
-		return _byteSize;
-	}
-	
-	final public void setByteSize (BigInteger _byteSize_) {
-		this._byteSize = _byteSize_;
-	}
+    @Override
+    public String getCheckSum() {
+        return _checkSum;
+    }
 
-	@JsonProperty("ids:fileName")
-	final public String getFileName() {
-		return _fileName;
-	}
-	
-	final public void setFileName (String _fileName_) {
-		this._fileName = _fileName_;
-	}
+    @Override
+    public void setCheckSum(String _checkSum_) {
+        this._checkSum = _checkSum_;
+    }
 
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
-	@JsonProperty("ids:creationDate")
-	final public XMLGregorianCalendar getCreationDate() {
-		return _creationDate;
-	}
-	
-	final public void setCreationDate (XMLGregorianCalendar _creationDate_) {
-		this._creationDate = _creationDate_;
-	}
+    @Override
+    public java.math.BigDecimal getDuration() {
+        return _duration;
+    }
 
-	@JsonProperty("ids:checkSum")
-	final public String getCheckSum() {
-		return _checkSum;
-	}
-	
-	final public void setCheckSum (String _checkSum_) {
-		this._checkSum = _checkSum_;
-	}
-
-	@JsonProperty("ids:duration")
-	final public java.math.BigDecimal getDuration() {
-		return _duration;
-	}
-	
-	final public void setDuration (java.math.BigDecimal _duration_) {
-		this._duration = _duration_;
-	}
-
-
+    @Override
+    public void setDuration(java.math.BigDecimal _duration_) {
+        this._duration = _duration_;
+    }
 
 }

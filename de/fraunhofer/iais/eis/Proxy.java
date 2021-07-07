@@ -1,103 +1,121 @@
 package de.fraunhofer.iais.eis;
 
-import de.fraunhofer.iais.eis.util.*;
-import de.fraunhofer.iais.eis.*;
-
-import javax.xml.datatype.XMLGregorianCalendar;
-import java.lang.String;
-import java.math.BigInteger;
-import java.net.URL;
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.NotEmpty;
 
-import com.fasterxml.jackson.annotation.JsonAlias;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
+import javax.validation.constraints.NotNull;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonTypeName;
+
+import de.fraunhofer.iais.eis.util.*;
 
 /**
-* "Proxy"@en
-* "Holds Proxy information."@en
-*/
-@JsonTypeInfo(use=JsonTypeInfo.Id.NAME, property="@type")
+ * Holds Proxy information.
+ */
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 @JsonSubTypes({
-	@JsonSubTypes.Type(value = ProxyImpl.class)
+    @JsonSubTypes.Type(value = ProxyImpl.class)
 })
-public interface Proxy {
+public interface Proxy extends ModelClass {
 
-	// standard methods
+    // standard methods
 
-	/**
-	* This function retrieves the ID of the current object (can be set via the constructor of the builder class)
-	* @return ID of current object as URI
-	*/
-	@JsonProperty("@id")
-	@NotNull
-	public URI getId();
+    /**
+     * This function retrieves the ID of the current object (can be set via the constructor of the
+     * builder class)
+     * 
+     * @return ID of current object as URI
+     */
+    @JsonProperty("@id")
+    @NotNull
+    public URI getId();
 
-	/**
-	* This function retrieves a human readable label about the current class, as defined in the ontology.
-	* This label could, for example, be used as a field heading in a user interface
-	* @return Human readable label
-	*/
-	public List<TypedLiteral> getLabel();
+    /**
+     * This function retrieves a human readable label about the current class, as defined in the
+     * ontology. This label could, for example, be used as a field heading in a user interface
+     * 
+     * @return Human readable label
+     */
+    public List<TypedLiteral> getLabel();
 
-	/**
-	* This function retrieves a human readable explanatory comment about the current class, as defined in the ontology.
-	* This comment could, for example, be used as a tooltip in a user interface
-	* @return Human readable explanatory comment
-	*/
-	public List<TypedLiteral> getComment();
+    /**
+     * This function retrieves a human readable explanatory comment about the current class, as defined
+     * in the ontology. This comment could, for example, be used as a tooltip in a user interface
+     * 
+     * @return Human readable explanatory comment
+     */
+    public List<TypedLiteral> getComment();
 
-	public String toRdf();
+    public String toRdf();
 
-	// getter and setter for generic property map
-	public Map<String,Object> getProperties();
-	public void setProperty(String property, Object value);
+    // getter and setter for generic property map
+    public Map<String, Object> getProperties();
 
-	// accessor methods as derived from the IDS Information Model ontology
+    public void setProperty(String property, Object value);
 
+    // accessor methods as derived from the IDS Information Model ontology
 
-	/**
-	* "URI of the proxy server."@en
-	* @return Returns the URI for the property _proxyURI.
-	* More information under https://w3id.org/idsa/core/proxyURI
-	*/
-	@NotNull
-	@JsonProperty("ids:proxyURI")
-	public URI getProxyURI();
+    /**
+     * URI of the proxy server.
+     *
+     * More information under https://w3id.org/idsa/core/proxyURI
+     *
+     * @return Returns the URI for the property _proxyURI.
+     */
+    @NotNull
+    @JsonProperty("ids:proxyURI")
+    URI getProxyURI();
 
-	/**
-	* "URLs that should be excluded from proxying.GNU emcs documentation contains a good explanation for the usage of noProxy."@en
-	* @return Returns the List of URIs for the property _noProxy.
-	* More information under https://w3id.org/idsa/core/noProxy
-	*/
-	@JsonProperty("ids:noProxy")
-	public List<URI> getNoProxy();
+    /**
+     * URI of the proxy server.
+     *
+     * More information under https://w3id.org/idsa/core/proxyURI
+     *
+     * @param _proxyURI_ desired value for the property _proxyURI.
+     */
+    void setProxyURI(URI _proxyURI_);
 
-	/**
-	* "authentication information for the proxy"@en
-	* @return Returns the BasicAuthentication for the property _proxyAuthentication.
-	* More information under https://w3id.org/idsa/core/proxyAuthentication
-	*/
-	@JsonProperty("ids:proxyAuthentication")
-	public BasicAuthentication getProxyAuthentication();
+    /**
+     * URLs that should be excluded from proxying.GNU emcs documentation contains a good explanation for
+     * the usage of noProxy.
+     *
+     * More information under https://w3id.org/idsa/core/noProxy
+     *
+     * @return Returns the List of URIs for the property _noProxy.
+     */
+    @JsonProperty("ids:noProxy")
+    List<URI> getNoProxy();
+
+    /**
+     * URLs that should be excluded from proxying.GNU emcs documentation contains a good explanation for
+     * the usage of noProxy.
+     *
+     * More information under https://w3id.org/idsa/core/noProxy
+     *
+     * @param _noProxy_ desired value for the property _noProxy.
+     */
+    void setNoProxy(List<URI> _noProxy_);
+
+    /**
+     * authentication information for the proxy
+     *
+     * More information under https://w3id.org/idsa/core/proxyAuthentication
+     *
+     * @return Returns the BasicAuthentication for the property _proxyAuthentication.
+     */
+    @JsonProperty("ids:proxyAuthentication")
+    BasicAuthentication getProxyAuthentication();
+
+    /**
+     * authentication information for the proxy
+     *
+     * More information under https://w3id.org/idsa/core/proxyAuthentication
+     *
+     * @param _proxyAuthentication_ desired value for the property _proxyAuthentication.
+     */
+    void setProxyAuthentication(BasicAuthentication _proxyAuthentication_);
 
 }

@@ -1,181 +1,166 @@
 package de.fraunhofer.iais.eis;
 
-import de.fraunhofer.iais.eis.util.*;
-import de.fraunhofer.iais.eis.*;
-
-import javax.xml.datatype.XMLGregorianCalendar;
-import java.lang.String;
-import java.math.BigInteger;
-import java.net.URL;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
-/** 
-* "Agent"@en
-* "Internal or external Agent interacting with the International Data Spaces, not necessarily an IDS Participant."@en 
-*/
+import de.fraunhofer.iais.eis.util.*;
+
+/**
+ * Default implementation of package de.fraunhofer.iais.eis.Agent
+ * 
+ * Internal or external Agent interacting with the International Data Spaces, not necessarily an IDS
+ * Participant.
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeName("ids:Agent")
 public class AgentImpl implements Agent {
 
-	@JsonProperty("@id")
-	@JsonAlias({"@id", "id"})
-	@NotNull
-	protected URI id;
+    @JsonProperty("@id")
+    @JsonAlias({"@id", "id"})
+    @NotNull
+    protected URI id;
 
-	//List of all labels of this class
-	@JsonIgnore
-	protected List<TypedLiteral> label = Arrays.asList(new TypedLiteral("Agent", "en"));
+    // List of all labels of this class
+    @JsonIgnore
+    protected List<TypedLiteral> label = Arrays.asList(new TypedLiteral("Agent", "en"));
 
-	//List of all comments of this class
-	@JsonIgnore
-	protected List<TypedLiteral> comment = Arrays.asList(new TypedLiteral("Internal or external Agent interacting with the International Data Spaces, not necessarily an IDS Participant.", "en"));
+    // List of all comments of this class
+    @JsonIgnore
+    protected List<TypedLiteral> comment = Arrays.asList(new TypedLiteral(
+        "Internal or external Agent interacting with the International Data Spaces, not necessarily an IDS Participant.", "en"));
 
-	// all classes have a generic property array
-	@JsonIgnore
-	protected Map<String,Object> properties;
+    // all classes have a generic property array
+    @JsonIgnore
+    protected Map<String, Object> properties;
 
-	// instance fields as derived from the IDS Information Model ontology
+    // instance fields as derived from the IDS Information Model ontology
 
-	/**
-	* "description"@en
-	* "Explanation of the resource in a natural language text."@en
-	*/
-	@JsonAlias({"ids:description", "description"})
-	protected List<TypedLiteral> _description;
+    @JsonAlias({"ids:description", "description"})
+    protected List<TypedLiteral> _description = new ArrayList<>();
 
+    @JsonAlias({"ids:title", "title"})
+    protected List<TypedLiteral> _title = new ArrayList<>();
 
-	/**
-	* "title"@en
-	* "(Localized) name of the entity."@en
-	*/
-	@JsonAlias({"ids:title", "title"})
-	protected List<TypedLiteral> _title;
+    protected AgentImpl() {
+        id = VocabUtil.getInstance().createRandomUrl("agent");
+    }
 
+    @JsonProperty("@id")
+    final public URI getId() {
+        return id;
+    }
 
-	// no manual construction
-	protected AgentImpl() {
-		id = VocabUtil.getInstance().createRandomUrl("agent");
-	}
+    public String toRdf() {
+        return VocabUtil.getInstance().toRdf(this);
+    }
 
-	@JsonProperty("@id")
-	final public URI getId() {
-		return id;
-	}
+    public List<TypedLiteral> getLabel() {
+        return this.label;
+    }
 
-	public String toRdf() {
-		return VocabUtil.getInstance().toRdf(this);
-	}
+    public List<TypedLiteral> getComment() {
+        return this.comment;
+    }
 
-	public List<TypedLiteral> getLabel() {
-		return this.label;
-	}
+    // getter and setter for generic property map
+    @JsonAnyGetter
+    public Map<String, Object> getProperties() {
+        if (this.properties == null)
+            return null;
+        Iterator<String> iter = this.properties.keySet().iterator();
+        Map<String, Object> resultset = new HashMap<String, Object>();
+        while (iter.hasNext()) {
+            String key = iter.next();
+            resultset.put(key, urifyObjects(this.properties.get(key)));
+        }
+        return resultset;
+    }
 
-	public List<TypedLiteral> getComment() {
-		return this.comment;
-	}
+    public Object urifyObjects(Object value) {
+        if (value instanceof String && value.toString().startsWith("http")) {
+            try {
+                value = new URI(value.toString());
+            } catch (Exception e) {
+                /* do nothing */ }
+        } else if (value instanceof ArrayList) {
+            ArrayList<Object> result_array = new ArrayList<Object>();
+            ((ArrayList) value).forEach(x -> result_array.add(urifyObjects(x)));
+            return result_array;
+        } else if (value instanceof Map) {
+            Map<String, Object> result_map = new HashMap<String, Object>();
+            ((Map) value).forEach((k, v) -> result_map.put(k.toString(), urifyObjects(v)));
+            return result_map;
+        }
+        return value;
+    }
 
-	// getter and setter for generic property map
-	@JsonAnyGetter
-	public Map<String,Object> getProperties() {
-		if (this.properties == null) return null;
-		Iterator<String> iter = this.properties.keySet().iterator();
-		Map<String,Object> resultset = new HashMap<String, Object>();
-		while (iter.hasNext()) {
-			String key = iter.next();
-			resultset.put(key,urifyObjects(this.properties.get(key)));
-		}
-		return resultset ;
-	}
+    @JsonAnySetter
+    public void setProperty(String property, Object value) {
+        if (this.properties == null)
+            this.properties = new HashMap<String, Object>();
+        if (property.startsWith("@")) {
+            return;
+        } ;
+        this.properties.put(property, value);
+    }
 
-	public Object urifyObjects(Object value) {
-		if (value instanceof String && value.toString().startsWith("http")) {
-			try {
-				value = new URI(value.toString());
-			} catch (Exception e) { /* do nothing */ }
-		} else if (value instanceof ArrayList) {
-			ArrayList<Object> result_array = new ArrayList<Object>();
-			((ArrayList) value).forEach(x -> result_array.add(urifyObjects(x)));
-			return result_array;
-		} else if (value instanceof Map) {
-			Map<String, Object> result_map = new HashMap<String, Object>();
-			((Map) value).forEach((k,v) -> result_map.put(k.toString(), urifyObjects(v)));
-			return result_map;
-		}
-		return value;
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(this._title,
+            this._description);
+    }
 
-	@JsonAnySetter
-	public void setProperty(String property, Object value) {
-		if (this.properties == null) this.properties = new HashMap<String,Object>();
-		if (property.startsWith("@")) {return ;};
-		this.properties.put(property, value) ;
-	}
-	@Override
-	public int hashCode() {
-		return Objects.hash(new Object[]{this._title,
-			this._description});
-	}
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        } else if (obj == null) {
+            return false;
+        } else if (this.getClass() != obj.getClass()) {
+            return false;
+        } else {
+            AgentImpl other = (AgentImpl) obj;
+            return Objects.equals(this._title, other._title) &&
+                Objects.equals(this._description, other._description);
+        }
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		} else if (obj == null) {
-			return false;
-		} else if (this.getClass() != obj.getClass()) {
-			return false;
-		} else {
-			AgentImpl other = (AgentImpl) obj;
-			return Objects.equals(this._title, other._title) &&
-				Objects.equals(this._description, other._description);
-		}
-	}
+    // accessor method implementations as derived from the IDS Information Model ontology
 
+    @Override
+    public List<TypedLiteral> getTitle() {
+        return _title;
+    }
 
-	// accessor method implementations as derived from the IDS Information Model ontology
+    @Override
+    public void setTitle(List<TypedLiteral> _title_) {
+        this._title = _title_;
+    }
 
+    @Override
+    public List<TypedLiteral> getDescription() {
+        return _description;
+    }
 
-
-	@JsonProperty("ids:title")
-	final public List<TypedLiteral> getTitle() {
-		return _title;
-	}
-	
-	final public void setTitle (List<TypedLiteral> _title_) {
-		this._title = _title_;
-	}
-
-	@JsonProperty("ids:description")
-	final public List<TypedLiteral> getDescription() {
-		return _description;
-	}
-	
-	final public void setDescription (List<TypedLiteral> _description_) {
-		this._description = _description_;
-	}
-
+    @Override
+    public void setDescription(List<TypedLiteral> _description_) {
+        this._description = _description_;
+    }
 
 }

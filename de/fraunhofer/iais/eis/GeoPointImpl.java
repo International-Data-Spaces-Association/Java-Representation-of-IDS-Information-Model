@@ -1,185 +1,168 @@
 package de.fraunhofer.iais.eis;
 
-import de.fraunhofer.iais.eis.util.*;
-import de.fraunhofer.iais.eis.*;
-
-import javax.xml.datatype.XMLGregorianCalendar;
-import java.lang.String;
-import java.math.BigInteger;
-import java.net.URL;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
-/** 
-* "GeoPoint"@en
-* "A location identified by geo coordinates."@en 
-*/
+import de.fraunhofer.iais.eis.util.*;
+
+/**
+ * Default implementation of package de.fraunhofer.iais.eis.GeoPoint
+ * 
+ * A location identified by geo coordinates.
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeName("ids:GeoPoint")
 public class GeoPointImpl implements GeoPoint {
 
-	@JsonProperty("@id")
-	@JsonAlias({"@id", "id"})
-	@NotNull
-	protected URI id;
+    @JsonProperty("@id")
+    @JsonAlias({"@id", "id"})
+    @NotNull
+    protected URI id;
 
-	//List of all labels of this class
-	@JsonIgnore
-	protected List<TypedLiteral> label = Arrays.asList(new TypedLiteral("GeoPoint", "en"));
+    // List of all labels of this class
+    @JsonIgnore
+    protected List<TypedLiteral> label = Arrays.asList(new TypedLiteral("GeoPoint", "en"));
 
-	//List of all comments of this class
-	@JsonIgnore
-	protected List<TypedLiteral> comment = Arrays.asList(new TypedLiteral("A location identified by geo coordinates.", "en"));
+    // List of all comments of this class
+    @JsonIgnore
+    protected List<TypedLiteral> comment = Arrays.asList(new TypedLiteral("A location identified by geo coordinates.", "en"));
 
-	// all classes have a generic property array
-	@JsonIgnore
-	protected Map<String,Object> properties;
+    // all classes have a generic property array
+    @JsonIgnore
+    protected Map<String, Object> properties;
 
-	// instance fields as derived from the IDS Information Model ontology
+    // instance fields as derived from the IDS Information Model ontology
 
-	/**
-	* "latitude"@en
-	* "Latitude of a GeoPoint (decimal degrees)."@en
-	*/
-	@NotNull
-	@JsonAlias({"ids:latitude", "latitude"})
-	protected float _latitude;
+    @NotNull
+    @JsonAlias({"ids:latitude", "latitude"})
+    protected float _latitude;
 
+    @NotNull
+    @JsonAlias({"ids:longitude", "longitude"})
+    protected float _longitude;
 
-	/**
-	* "longitude"@en
-	* "Longitude of a GeoPoint (decimal degrees)."@en
-	*/
-	@NotNull
-	@JsonAlias({"ids:longitude", "longitude"})
-	protected float _longitude;
+    protected GeoPointImpl() {
+        id = VocabUtil.getInstance().createRandomUrl("geoPoint");
+    }
 
+    @JsonProperty("@id")
+    final public URI getId() {
+        return id;
+    }
 
-	// no manual construction
-	protected GeoPointImpl() {
-		id = VocabUtil.getInstance().createRandomUrl("geoPoint");
-	}
+    public String toRdf() {
+        return VocabUtil.getInstance().toRdf(this);
+    }
 
-	@JsonProperty("@id")
-	final public URI getId() {
-		return id;
-	}
+    public List<TypedLiteral> getLabel() {
+        return this.label;
+    }
 
-	public String toRdf() {
-		return VocabUtil.getInstance().toRdf(this);
-	}
+    public List<TypedLiteral> getComment() {
+        return this.comment;
+    }
 
-	public List<TypedLiteral> getLabel() {
-		return this.label;
-	}
+    // getter and setter for generic property map
+    @JsonAnyGetter
+    public Map<String, Object> getProperties() {
+        if (this.properties == null)
+            return null;
+        Iterator<String> iter = this.properties.keySet().iterator();
+        Map<String, Object> resultset = new HashMap<String, Object>();
+        while (iter.hasNext()) {
+            String key = iter.next();
+            resultset.put(key, urifyObjects(this.properties.get(key)));
+        }
+        return resultset;
+    }
 
-	public List<TypedLiteral> getComment() {
-		return this.comment;
-	}
+    public Object urifyObjects(Object value) {
+        if (value instanceof String && value.toString().startsWith("http")) {
+            try {
+                value = new URI(value.toString());
+            } catch (Exception e) {
+                /* do nothing */ }
+        } else if (value instanceof ArrayList) {
+            ArrayList<Object> result_array = new ArrayList<Object>();
+            ((ArrayList) value).forEach(x -> result_array.add(urifyObjects(x)));
+            return result_array;
+        } else if (value instanceof Map) {
+            Map<String, Object> result_map = new HashMap<String, Object>();
+            ((Map) value).forEach((k, v) -> result_map.put(k.toString(), urifyObjects(v)));
+            return result_map;
+        }
+        return value;
+    }
 
-	// getter and setter for generic property map
-	@JsonAnyGetter
-	public Map<String,Object> getProperties() {
-		if (this.properties == null) return null;
-		Iterator<String> iter = this.properties.keySet().iterator();
-		Map<String,Object> resultset = new HashMap<String, Object>();
-		while (iter.hasNext()) {
-			String key = iter.next();
-			resultset.put(key,urifyObjects(this.properties.get(key)));
-		}
-		return resultset ;
-	}
+    @JsonAnySetter
+    public void setProperty(String property, Object value) {
+        if (this.properties == null)
+            this.properties = new HashMap<String, Object>();
+        if (property.startsWith("@")) {
+            return;
+        } ;
+        this.properties.put(property, value);
+    }
 
-	public Object urifyObjects(Object value) {
-		if (value instanceof String && value.toString().startsWith("http")) {
-			try {
-				value = new URI(value.toString());
-			} catch (Exception e) { /* do nothing */ }
-		} else if (value instanceof ArrayList) {
-			ArrayList<Object> result_array = new ArrayList<Object>();
-			((ArrayList) value).forEach(x -> result_array.add(urifyObjects(x)));
-			return result_array;
-		} else if (value instanceof Map) {
-			Map<String, Object> result_map = new HashMap<String, Object>();
-			((Map) value).forEach((k,v) -> result_map.put(k.toString(), urifyObjects(v)));
-			return result_map;
-		}
-		return value;
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(this._latitude,
+            this._longitude);
+    }
 
-	@JsonAnySetter
-	public void setProperty(String property, Object value) {
-		if (this.properties == null) this.properties = new HashMap<String,Object>();
-		if (property.startsWith("@")) {return ;};
-		this.properties.put(property, value) ;
-	}
-	@Override
-	public int hashCode() {
-		return Objects.hash(new Object[]{this._latitude,
-			this._longitude});
-	}
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        } else if (obj == null) {
+            return false;
+        } else if (this.getClass() != obj.getClass()) {
+            return false;
+        } else {
+            GeoPointImpl other = (GeoPointImpl) obj;
+            return Objects.equals(this._latitude, other._latitude) &&
+                Objects.equals(this._longitude, other._longitude);
+        }
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		} else if (obj == null) {
-			return false;
-		} else if (this.getClass() != obj.getClass()) {
-			return false;
-		} else {
-			GeoPointImpl other = (GeoPointImpl) obj;
-			return Objects.equals(this._latitude, other._latitude) &&
-				Objects.equals(this._longitude, other._longitude);
-		}
-	}
+    // accessor method implementations as derived from the IDS Information Model ontology
 
+    @Override
+    @NotNull
+    public float getLatitude() {
+        return _latitude;
+    }
 
-	// accessor method implementations as derived from the IDS Information Model ontology
+    @Override
+    public void setLatitude(float _latitude_) {
+        this._latitude = _latitude_;
+    }
 
+    @Override
+    @NotNull
+    public float getLongitude() {
+        return _longitude;
+    }
 
-	@NotNull
-	@JsonProperty("ids:latitude")
-	final public float getLatitude() {
-		return _latitude;
-	}
-	
-	final public void setLatitude (float _latitude_) {
-		this._latitude = _latitude_;
-	}
-
-	@NotNull
-	@JsonProperty("ids:longitude")
-	final public float getLongitude() {
-		return _longitude;
-	}
-	
-	final public void setLongitude (float _longitude_) {
-		this._longitude = _longitude_;
-	}
-
-
+    @Override
+    public void setLongitude(float _longitude_) {
+        this._longitude = _longitude_;
+    }
 
 }

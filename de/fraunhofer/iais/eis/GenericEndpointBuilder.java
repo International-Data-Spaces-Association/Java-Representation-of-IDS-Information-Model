@@ -1,144 +1,145 @@
 package de.fraunhofer.iais.eis;
 
-import de.fraunhofer.iais.eis.util.*;
-import de.fraunhofer.iais.eis.*;
-
-import javax.xml.datatype.XMLGregorianCalendar;
-import java.lang.String;
-import java.math.BigInteger;
-import java.net.URL;
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.NotEmpty;
 
-import com.fasterxml.jackson.annotation.JsonAlias;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonTypeName;
+
+
+import de.fraunhofer.iais.eis.util.*;
 
 public class GenericEndpointBuilder {
 
-	private GenericEndpointImpl genericEndpointImpl;
+    private GenericEndpointImpl genericEndpointImpl;
 
-	public GenericEndpointBuilder() {
-		genericEndpointImpl = new GenericEndpointImpl();
-	}
+    public GenericEndpointBuilder() {
+        genericEndpointImpl = new GenericEndpointImpl();
+    }
 
-	public GenericEndpointBuilder(URI id) {
-		this();
-		genericEndpointImpl.id = id;
-	}
+    public GenericEndpointBuilder(URI id) {
+        this();
+        genericEndpointImpl.id = id;
+    }
 
-	/**
-	* This function allows setting a value for _genericEndpointAuthentication
-	* @param _genericEndpointAuthentication_ desired value to be set
-	* @return Builder object with new value for _genericEndpointAuthentication
-	*/
-	final public GenericEndpointBuilder _genericEndpointAuthentication_(BasicAuthentication _genericEndpointAuthentication_) {
-		this.genericEndpointImpl._genericEndpointAuthentication = _genericEndpointAuthentication_;
-		return this;
-	}
+    /**
+     * This function allows setting a value for _genericEndpointAuthentication
+     * 
+     * @param _genericEndpointAuthentication_ desired value to be set
+     * @return Builder object with new value for _genericEndpointAuthentication
+     */
+    public GenericEndpointBuilder _genericEndpointAuthentication_(BasicAuthentication _genericEndpointAuthentication_) {
+        this.genericEndpointImpl.setGenericEndpointAuthentication(_genericEndpointAuthentication_);
+        return this;
+    }
 
+    /**
+     * This function allows setting a value for _genericEndpointConfiguration
+     * 
+     * @param _genericEndpointConfiguration_ desired value to be set
+     * @return Builder object with new value for _genericEndpointConfiguration
+     */
+    public GenericEndpointBuilder _genericEndpointConfiguration_(String _genericEndpointConfiguration_) {
+        this.genericEndpointImpl.setGenericEndpointConfiguration(_genericEndpointConfiguration_);
+        return this;
+    }
 
-	/**
-	* This function allows setting a value for _genericEndpointConfiguration
-	* @param _genericEndpointConfiguration_ desired value to be set
-	* @return Builder object with new value for _genericEndpointConfiguration
-	*/
-	final public GenericEndpointBuilder _genericEndpointConfiguration_(String _genericEndpointConfiguration_) {
-		this.genericEndpointImpl._genericEndpointConfiguration = _genericEndpointConfiguration_;
-		return this;
-	}
+    /**
+     * This function allows setting a value for _accessURL
+     * 
+     * @param _accessURL_ desired value to be set
+     * @return Builder object with new value for _accessURL
+     */
+    public GenericEndpointBuilder _accessURL_(URI _accessURL_) {
+        this.genericEndpointImpl.setAccessURL(_accessURL_);
+        return this;
+    }
 
+    /**
+     * This function allows setting a value for _endpointInformation
+     * 
+     * @param _endpointInformation_ desired value to be set
+     * @return Builder object with new value for _endpointInformation
+     */
+    public GenericEndpointBuilder _endpointInformation_(List<TypedLiteral> _endpointInformation_) {
+        this.genericEndpointImpl.setEndpointInformation(_endpointInformation_);
+        return this;
+    }
 
-	/**
-	* This function allows setting a value for _accessURL
-	* @param _accessURL_ desired value to be set
-	* @return Builder object with new value for _accessURL
-	*/
-	final public GenericEndpointBuilder _accessURL_(URI _accessURL_) {
-		this.genericEndpointImpl._accessURL = _accessURL_;
-		return this;
-	}
+    /**
+     * This function allows adding a value to the List _endpointInformation
+     * 
+     * @param _endpointInformation_ desired value to be added
+     * @return Builder object with new value for _endpointInformation
+     */
+    public GenericEndpointBuilder _endpointInformation_(TypedLiteral _endpointInformation_) {
+        this.genericEndpointImpl.getEndpointInformation().add(_endpointInformation_);
+        return this;
+    }
 
+    /**
+     * This function allows setting a value for _endpointDocumentation
+     * 
+     * @param _endpointDocumentation_ desired value to be set
+     * @return Builder object with new value for _endpointDocumentation
+     */
+    public GenericEndpointBuilder _endpointDocumentation_(List<URI> _endpointDocumentation_) {
+        this.genericEndpointImpl.setEndpointDocumentation(_endpointDocumentation_);
+        return this;
+    }
 
-	/**
-	* This function allows setting a value for _endpointInformation
-	* @param _endpointInformation_ desired value to be set
-	* @return Builder object with new value for _endpointInformation
-	*/
-	final public GenericEndpointBuilder _endpointInformation_(List<TypedLiteral> _endpointInformation_) {
-		this.genericEndpointImpl._endpointInformation = _endpointInformation_;
-		return this;
-	}
+    /**
+     * This function allows adding a value to the List _endpointDocumentation
+     * 
+     * @param _endpointDocumentation_ desired value to be added
+     * @return Builder object with new value for _endpointDocumentation
+     */
+    public GenericEndpointBuilder _endpointDocumentation_(URI _endpointDocumentation_) {
+        this.genericEndpointImpl.getEndpointDocumentation().add(_endpointDocumentation_);
+        return this;
+    }
 
+    /**
+     * This function allows setting a value for _path
+     * 
+     * @param _path_ desired value to be set
+     * @return Builder object with new value for _path
+     */
+    public GenericEndpointBuilder _path_(String _path_) {
+        this.genericEndpointImpl.setPath(_path_);
+        return this;
+    }
 
-	/**
-	* This function allows setting a value for _endpointDocumentation
-	* @param _endpointDocumentation_ desired value to be set
-	* @return Builder object with new value for _endpointDocumentation
-	*/
-	final public GenericEndpointBuilder _endpointDocumentation_(List<URI> _endpointDocumentation_) {
-		this.genericEndpointImpl._endpointDocumentation = _endpointDocumentation_;
-		return this;
-	}
+    /**
+     * This function allows setting a value for _inboundPath
+     * 
+     * @param _inboundPath_ desired value to be set
+     * @return Builder object with new value for _inboundPath
+     */
+    public GenericEndpointBuilder _inboundPath_(String _inboundPath_) {
+        this.genericEndpointImpl.setInboundPath(_inboundPath_);
+        return this;
+    }
 
+    /**
+     * This function allows setting a value for _outboundPath
+     * 
+     * @param _outboundPath_ desired value to be set
+     * @return Builder object with new value for _outboundPath
+     */
+    public GenericEndpointBuilder _outboundPath_(String _outboundPath_) {
+        this.genericEndpointImpl.setOutboundPath(_outboundPath_);
+        return this;
+    }
 
-	/**
-	* This function allows setting a value for _path
-	* @param _path_ desired value to be set
-	* @return Builder object with new value for _path
-	*/
-	final public GenericEndpointBuilder _path_(String _path_) {
-		this.genericEndpointImpl._path = _path_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _inboundPath
-	* @param _inboundPath_ desired value to be set
-	* @return Builder object with new value for _inboundPath
-	*/
-	final public GenericEndpointBuilder _inboundPath_(String _inboundPath_) {
-		this.genericEndpointImpl._inboundPath = _inboundPath_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _outboundPath
-	* @param _outboundPath_ desired value to be set
-	* @return Builder object with new value for _outboundPath
-	*/
-	final public GenericEndpointBuilder _outboundPath_(String _outboundPath_) {
-		this.genericEndpointImpl._outboundPath = _outboundPath_;
-		return this;
-	}
-	/**
-	* This function takes the values that were set previously via the other functions of this class and turns them into a Java bean.
-	* @return Bean with specified values
-	* @throws ConstraintViolationException This exception is thrown, if a validator is used and a violation is found.
-	*/
-
-	final public GenericEndpoint build() throws ConstraintViolationException {
-		VocabUtil.getInstance().validate(genericEndpointImpl);
-		return genericEndpointImpl;
-	}
+    /**
+     * This function takes the values that were set previously via the other functions of this class and
+     * turns them into a Java bean.
+     * 
+     * @return Bean with specified values
+     * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
+     *         violation is found.
+     */
+    final public GenericEndpoint build() throws ConstraintViolationException {
+        VocabUtil.getInstance().validate(genericEndpointImpl);
+        return genericEndpointImpl;
+    }
 }

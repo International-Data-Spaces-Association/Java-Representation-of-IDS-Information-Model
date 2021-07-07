@@ -1,334 +1,288 @@
 package de.fraunhofer.iais.eis;
 
-import de.fraunhofer.iais.eis.util.*;
-import de.fraunhofer.iais.eis.*;
-
-import javax.xml.datatype.XMLGregorianCalendar;
-import java.lang.String;
-import java.math.BigInteger;
-import java.net.URL;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import javax.validation.constraints.NotNull;
+
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
-/** 
-* "Permission"@en
-* "The class of Permissions as defined in the ODRL ontology."@en 
-*/
+import de.fraunhofer.iais.eis.util.*;
+
+/**
+ * Default implementation of package de.fraunhofer.iais.eis.Permission
+ * 
+ * The class of Permissions as defined in the ODRL ontology.
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeName("ids:Permission")
 public class PermissionImpl implements Permission {
 
-	@JsonProperty("@id")
-	@JsonAlias({"@id", "id"})
-	@NotNull
-	protected URI id;
+    @JsonProperty("@id")
+    @JsonAlias({"@id", "id"})
+    @NotNull
+    protected URI id;
 
-	//List of all labels of this class
-	@JsonIgnore
-	protected List<TypedLiteral> label = Arrays.asList(new TypedLiteral("Permission", "en"));
+    // List of all labels of this class
+    @JsonIgnore
+    protected List<TypedLiteral> label = Arrays.asList(new TypedLiteral("Permission", "en"));
 
-	//List of all comments of this class
-	@JsonIgnore
-	protected List<TypedLiteral> comment = Arrays.asList(new TypedLiteral("The class of Permissions as defined in the ODRL ontology.", "en"));
+    // List of all comments of this class
+    @JsonIgnore
+    protected List<TypedLiteral> comment =
+        Arrays.asList(new TypedLiteral("The class of Permissions as defined in the ODRL ontology.", "en"));
 
-	// all classes have a generic property array
-	@JsonIgnore
-	protected Map<String,Object> properties;
+    // all classes have a generic property array
+    @JsonIgnore
+    protected Map<String, Object> properties;
 
-	// instance fields as derived from the IDS Information Model ontology
+    // instance fields as derived from the IDS Information Model ontology
 
-	/**
-	* "action"@en
-	* "The operation relating to the asset / data object. "@en
-	*/
-	@NotEmpty
-	@JsonAlias({"ids:action", "action"})
-	protected List<Action> _action;
+    @NotEmpty
+    @JsonAlias({"ids:action", "action"})
+    protected List<Action> _action = new ArrayList<>();
 
+    @JsonAlias({"ids:assetRefinement", "assetRefinement"})
+    protected AbstractConstraint _assetRefinement;
 
-	/**
-	* "content refinement"@en
-	* "AssetRefinement define constraints that refine a (composite) Digital Content in an ids:Rule respectively the ids:AssetCollection."@en
-	*/
-	@JsonAlias({"ids:assetRefinement", "assetRefinement"})
-	protected AbstractConstraint _assetRefinement;
+    @JsonAlias({"ids:assignee", "assignee"})
+    protected List<URI> _assignee = new ArrayList<>();
 
+    @JsonAlias({"ids:assigner", "assigner"})
+    protected List<URI> _assigner = new ArrayList<>();
 
-	/**
-	* "assignee"@en
-	* "The recipient of the policy statement."@en
-	*/
-	@JsonAlias({"ids:assignee", "assignee"})
-	protected List<URI> _assignee;
+    @JsonAlias({"ids:constraint", "constraint"})
+    protected List<AbstractConstraint> _constraint = new ArrayList<>();
 
+    @JsonAlias({"ids:description", "description"})
+    protected List<TypedLiteral> _description = new ArrayList<>();
 
-	/**
-	* "assigner"@en
-	* "The issuer of the policy statement."@en
-	*/
-	@JsonAlias({"ids:assigner", "assigner"})
-	protected List<URI> _assigner;
+    @JsonAlias({"ids:postDuty", "postDuty"})
+    protected List<Duty> _postDuty = new ArrayList<>();
 
+    @JsonAlias({"ids:preDuty", "preDuty"})
+    protected List<Duty> _preDuty = new ArrayList<>();
 
-	/**
-	* "constraint"@en
-	* "The constraint to be used for a specific rule."@en
-	*/
-	@JsonAlias({"ids:constraint", "constraint"})
-	protected List<AbstractConstraint> _constraint;
+    @JsonAlias({"ids:target", "target"})
+    protected URI _target;
 
+    @JsonAlias({"ids:title", "title"})
+    protected List<TypedLiteral> _title = new ArrayList<>();
 
-	/**
-	* "description"@en
-	* "Explanation of the resource in a natural language text."@en
-	*/
-	@JsonAlias({"ids:description", "description"})
-	protected List<TypedLiteral> _description;
+    protected PermissionImpl() {
+        id = VocabUtil.getInstance().createRandomUrl("permission");
+    }
 
+    @JsonProperty("@id")
+    final public URI getId() {
+        return id;
+    }
 
-	/**
-	* "post-duty"@en
-	* "A Duty imposed by the Rule, which must be executed after the Rule."@en
-	*/
-	@JsonAlias({"ids:postDuty", "postDuty"})
-	protected List<Duty> _postDuty;
+    public String toRdf() {
+        return VocabUtil.getInstance().toRdf(this);
+    }
 
+    public List<TypedLiteral> getLabel() {
+        return this.label;
+    }
 
-	/**
-	* "pre-duty"@en
-	* "A Duty imposed by the Rule, which must be executed before the Rule."@en
-	*/
-	@JsonAlias({"ids:preDuty", "preDuty"})
-	protected List<Duty> _preDuty;
+    public List<TypedLiteral> getComment() {
+        return this.comment;
+    }
 
+    // getter and setter for generic property map
+    @JsonAnyGetter
+    public Map<String, Object> getProperties() {
+        if (this.properties == null)
+            return null;
+        Iterator<String> iter = this.properties.keySet().iterator();
+        Map<String, Object> resultset = new HashMap<String, Object>();
+        while (iter.hasNext()) {
+            String key = iter.next();
+            resultset.put(key, urifyObjects(this.properties.get(key)));
+        }
+        return resultset;
+    }
 
-	/**
-	* "target"@en
-	* "The subject of the policy statement (ids:Rule)."@en
-	*/
-	@JsonAlias({"ids:target", "target"})
-	protected URI _target;
+    public Object urifyObjects(Object value) {
+        if (value instanceof String && value.toString().startsWith("http")) {
+            try {
+                value = new URI(value.toString());
+            } catch (Exception e) {
+                /* do nothing */ }
+        } else if (value instanceof ArrayList) {
+            ArrayList<Object> result_array = new ArrayList<Object>();
+            ((ArrayList) value).forEach(x -> result_array.add(urifyObjects(x)));
+            return result_array;
+        } else if (value instanceof Map) {
+            Map<String, Object> result_map = new HashMap<String, Object>();
+            ((Map) value).forEach((k, v) -> result_map.put(k.toString(), urifyObjects(v)));
+            return result_map;
+        }
+        return value;
+    }
 
+    @JsonAnySetter
+    public void setProperty(String property, Object value) {
+        if (this.properties == null)
+            this.properties = new HashMap<String, Object>();
+        if (property.startsWith("@")) {
+            return;
+        } ;
+        this.properties.put(property, value);
+    }
 
-	/**
-	* "title"@en
-	* "(Localized) name of the entity."@en
-	*/
-	@JsonAlias({"ids:title", "title"})
-	protected List<TypedLiteral> _title;
+    @Override
+    public int hashCode() {
+        return Objects.hash(this._preDuty,
+            this._postDuty,
+            this._assignee,
+            this._assigner,
+            this._target,
+            this._constraint,
+            this._action,
+            this._assetRefinement,
+            this._title,
+            this._description);
+    }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        } else if (obj == null) {
+            return false;
+        } else if (this.getClass() != obj.getClass()) {
+            return false;
+        } else {
+            PermissionImpl other = (PermissionImpl) obj;
+            return Objects.equals(this._preDuty, other._preDuty) &&
+                Objects.equals(this._postDuty, other._postDuty) &&
+                Objects.equals(this._assignee, other._assignee) &&
+                Objects.equals(this._assigner, other._assigner) &&
+                Objects.equals(this._target, other._target) &&
+                Objects.equals(this._constraint, other._constraint) &&
+                Objects.equals(this._action, other._action) &&
+                Objects.equals(this._assetRefinement, other._assetRefinement) &&
+                Objects.equals(this._title, other._title) &&
+                Objects.equals(this._description, other._description);
+        }
+    }
 
-	// no manual construction
-	protected PermissionImpl() {
-		id = VocabUtil.getInstance().createRandomUrl("permission");
-	}
+    // accessor method implementations as derived from the IDS Information Model ontology
 
-	@JsonProperty("@id")
-	final public URI getId() {
-		return id;
-	}
+    @Override
+    public List<Duty> getPreDuty() {
+        return _preDuty;
+    }
 
-	public String toRdf() {
-		return VocabUtil.getInstance().toRdf(this);
-	}
+    @Override
+    public void setPreDuty(List<Duty> _preDuty_) {
+        this._preDuty = _preDuty_;
+    }
 
-	public List<TypedLiteral> getLabel() {
-		return this.label;
-	}
+    @Override
+    public List<Duty> getPostDuty() {
+        return _postDuty;
+    }
 
-	public List<TypedLiteral> getComment() {
-		return this.comment;
-	}
+    @Override
+    public void setPostDuty(List<Duty> _postDuty_) {
+        this._postDuty = _postDuty_;
+    }
 
-	// getter and setter for generic property map
-	@JsonAnyGetter
-	public Map<String,Object> getProperties() {
-		if (this.properties == null) return null;
-		Iterator<String> iter = this.properties.keySet().iterator();
-		Map<String,Object> resultset = new HashMap<String, Object>();
-		while (iter.hasNext()) {
-			String key = iter.next();
-			resultset.put(key,urifyObjects(this.properties.get(key)));
-		}
-		return resultset ;
-	}
+    @Override
+    public List<URI> getAssignee() {
+        return _assignee;
+    }
 
-	public Object urifyObjects(Object value) {
-		if (value instanceof String && value.toString().startsWith("http")) {
-			try {
-				value = new URI(value.toString());
-			} catch (Exception e) { /* do nothing */ }
-		} else if (value instanceof ArrayList) {
-			ArrayList<Object> result_array = new ArrayList<Object>();
-			((ArrayList) value).forEach(x -> result_array.add(urifyObjects(x)));
-			return result_array;
-		} else if (value instanceof Map) {
-			Map<String, Object> result_map = new HashMap<String, Object>();
-			((Map) value).forEach((k,v) -> result_map.put(k.toString(), urifyObjects(v)));
-			return result_map;
-		}
-		return value;
-	}
+    @Override
+    public void setAssignee(List<URI> _assignee_) {
+        this._assignee = _assignee_;
+    }
 
-	@JsonAnySetter
-	public void setProperty(String property, Object value) {
-		if (this.properties == null) this.properties = new HashMap<String,Object>();
-		if (property.startsWith("@")) {return ;};
-		this.properties.put(property, value) ;
-	}
-	@Override
-	public int hashCode() {
-		return Objects.hash(new Object[]{this._preDuty,
-			this._postDuty,
-			this._assignee,
-			this._assigner,
-			this._target,
-			this._constraint,
-			this._action,
-			this._assetRefinement,
-			this._title,
-			this._description});
-	}
+    @Override
+    public List<URI> getAssigner() {
+        return _assigner;
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		} else if (obj == null) {
-			return false;
-		} else if (this.getClass() != obj.getClass()) {
-			return false;
-		} else {
-			PermissionImpl other = (PermissionImpl) obj;
-			return Objects.equals(this._preDuty, other._preDuty) &&
-				Objects.equals(this._postDuty, other._postDuty) &&
-				Objects.equals(this._assignee, other._assignee) &&
-				Objects.equals(this._assigner, other._assigner) &&
-				Objects.equals(this._target, other._target) &&
-				Objects.equals(this._constraint, other._constraint) &&
-				Objects.equals(this._action, other._action) &&
-				Objects.equals(this._assetRefinement, other._assetRefinement) &&
-				Objects.equals(this._title, other._title) &&
-				Objects.equals(this._description, other._description);
-		}
-	}
+    @Override
+    public void setAssigner(List<URI> _assigner_) {
+        this._assigner = _assigner_;
+    }
 
+    @Override
+    public URI getTarget() {
+        return _target;
+    }
 
-	// accessor method implementations as derived from the IDS Information Model ontology
+    @Override
+    public void setTarget(URI _target_) {
+        this._target = _target_;
+    }
 
+    @Override
+    public List<AbstractConstraint> getConstraint() {
+        return _constraint;
+    }
 
-	@JsonProperty("ids:preDuty")
-	final public List<Duty> getPreDuty() {
-		return _preDuty;
-	}
-	
-	final public void setPreDuty (List<Duty> _preDuty_) {
-		this._preDuty = _preDuty_;
-	}
+    @Override
+    public void setConstraint(List<AbstractConstraint> _constraint_) {
+        this._constraint = _constraint_;
+    }
 
-	@JsonProperty("ids:postDuty")
-	final public List<Duty> getPostDuty() {
-		return _postDuty;
-	}
-	
-	final public void setPostDuty (List<Duty> _postDuty_) {
-		this._postDuty = _postDuty_;
-	}
+    @Override
+    @NotEmpty
+    public List<Action> getAction() {
+        return _action;
+    }
 
-	@JsonProperty("ids:assignee")
-	final public List<URI> getAssignee() {
-		return _assignee;
-	}
-	
-	final public void setAssignee (List<URI> _assignee_) {
-		this._assignee = _assignee_;
-	}
+    @Override
+    public void setAction(List<Action> _action_) {
+        this._action = _action_;
+    }
 
-	@JsonProperty("ids:assigner")
-	final public List<URI> getAssigner() {
-		return _assigner;
-	}
-	
-	final public void setAssigner (List<URI> _assigner_) {
-		this._assigner = _assigner_;
-	}
+    @Override
+    public AbstractConstraint getAssetRefinement() {
+        return _assetRefinement;
+    }
 
-	@JsonProperty("ids:target")
-	final public URI getTarget() {
-		return _target;
-	}
-	
-	final public void setTarget (URI _target_) {
-		this._target = _target_;
-	}
+    @Override
+    public void setAssetRefinement(AbstractConstraint _assetRefinement_) {
+        this._assetRefinement = _assetRefinement_;
+    }
 
-	@JsonProperty("ids:constraint")
-	final public List<AbstractConstraint> getConstraint() {
-		return _constraint;
-	}
-	
-	final public void setConstraint (List<AbstractConstraint> _constraint_) {
-		this._constraint = _constraint_;
-	}
+    @Override
+    public List<TypedLiteral> getTitle() {
+        return _title;
+    }
 
-	@NotEmpty
-	@JsonProperty("ids:action")
-	final public List<Action> getAction() {
-		return _action;
-	}
-	
-	final public void setAction (List<Action> _action_) {
-		this._action = _action_;
-	}
+    @Override
+    public void setTitle(List<TypedLiteral> _title_) {
+        this._title = _title_;
+    }
 
-	@JsonProperty("ids:assetRefinement")
-	final public AbstractConstraint getAssetRefinement() {
-		return _assetRefinement;
-	}
-	
-	final public void setAssetRefinement (AbstractConstraint _assetRefinement_) {
-		this._assetRefinement = _assetRefinement_;
-	}
+    @Override
+    public List<TypedLiteral> getDescription() {
+        return _description;
+    }
 
-	@JsonProperty("ids:title")
-	final public List<TypedLiteral> getTitle() {
-		return _title;
-	}
-	
-	final public void setTitle (List<TypedLiteral> _title_) {
-		this._title = _title_;
-	}
-
-	@JsonProperty("ids:description")
-	final public List<TypedLiteral> getDescription() {
-		return _description;
-	}
-	
-	final public void setDescription (List<TypedLiteral> _description_) {
-		this._description = _description_;
-	}
-
+    @Override
+    public void setDescription(List<TypedLiteral> _description_) {
+        this._description = _description_;
+    }
 
 }

@@ -1,69 +1,57 @@
 package de.fraunhofer.iais.eis;
 
-import de.fraunhofer.iais.eis.util.*;
-import de.fraunhofer.iais.eis.*;
-
-import javax.xml.datatype.XMLGregorianCalendar;
-import java.lang.String;
-import java.math.BigInteger;
-import java.net.URL;
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.NotEmpty;
 
-import com.fasterxml.jackson.annotation.JsonAlias;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonTypeName;
+
+
+import de.fraunhofer.iais.eis.util.*;
 
 public class ParticipantCatalogBuilder {
 
-	private ParticipantCatalogImpl participantCatalogImpl;
+    private ParticipantCatalogImpl participantCatalogImpl;
 
-	public ParticipantCatalogBuilder() {
-		participantCatalogImpl = new ParticipantCatalogImpl();
-	}
+    public ParticipantCatalogBuilder() {
+        participantCatalogImpl = new ParticipantCatalogImpl();
+    }
 
-	public ParticipantCatalogBuilder(URI id) {
-		this();
-		participantCatalogImpl.id = id;
-	}
+    public ParticipantCatalogBuilder(URI id) {
+        this();
+        participantCatalogImpl.id = id;
+    }
 
-	/**
-	* This function allows setting a value for _member
-	* @param _member_ desired value to be set
-	* @return Builder object with new value for _member
-	*/
-	final public ParticipantCatalogBuilder _member_(List<Participant> _member_) {
-		this.participantCatalogImpl._member = _member_;
-		return this;
-	}
+    /**
+     * This function allows setting a value for _member
+     * 
+     * @param _member_ desired value to be set
+     * @return Builder object with new value for _member
+     */
+    public ParticipantCatalogBuilder _member_(List<Participant> _member_) {
+        this.participantCatalogImpl.setMember(_member_);
+        return this;
+    }
 
+    /**
+     * This function allows adding a value to the List _member
+     * 
+     * @param _member_ desired value to be added
+     * @return Builder object with new value for _member
+     */
+    public ParticipantCatalogBuilder _member_(Participant _member_) {
+        this.participantCatalogImpl.getMember().add(_member_);
+        return this;
+    }
 
-	/**
-	* This function takes the values that were set previously via the other functions of this class and turns them into a Java bean.
-	* @return Bean with specified values
-	* @throws ConstraintViolationException This exception is thrown, if a validator is used and a violation is found.
-	*/
-
-	final public ParticipantCatalog build() throws ConstraintViolationException {
-		VocabUtil.getInstance().validate(participantCatalogImpl);
-		return participantCatalogImpl;
-	}
+    /**
+     * This function takes the values that were set previously via the other functions of this class and
+     * turns them into a Java bean.
+     * 
+     * @return Bean with specified values
+     * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
+     *         violation is found.
+     */
+    final public ParticipantCatalog build() throws ConstraintViolationException {
+        VocabUtil.getInstance().validate(participantCatalogImpl);
+        return participantCatalogImpl;
+    }
 }

@@ -1,140 +1,207 @@
 package de.fraunhofer.iais.eis;
 
-import de.fraunhofer.iais.eis.util.*;
-import de.fraunhofer.iais.eis.*;
-
-import javax.xml.datatype.XMLGregorianCalendar;
-import java.lang.String;
-import java.math.BigInteger;
-import java.net.URL;
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.NotEmpty;
 
-import com.fasterxml.jackson.annotation.JsonAlias;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
+import javax.validation.constraints.NotNull;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonTypeName;
+
+import de.fraunhofer.iais.eis.util.*;
 
 /**
-* "Connector"@en
-* "Dedicated communication server for sending and receiving data in compliance with the Connector specification. There are different types of Connectors according to provided capabilities."@en
-*/
-@JsonTypeInfo(use=JsonTypeInfo.Id.NAME, property="@type")
+ * Dedicated communication server for sending and receiving data in compliance with the Connector
+ * specification. There are different types of Connectors according to provided capabilities.
+ */
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 @JsonSubTypes({
-	@JsonSubTypes.Type(value = Broker.class),
-	@JsonSubTypes.Type(value = AppStore.class),
-	@JsonSubTypes.Type(value = BaseConnector.class),
-	@JsonSubTypes.Type(value = TrustedConnector.class),
-	@JsonSubTypes.Type(value = ParIS.class)
+    @JsonSubTypes.Type(value = Broker.class),
+    @JsonSubTypes.Type(value = AppStore.class),
+    @JsonSubTypes.Type(value = BaseConnector.class),
+    @JsonSubTypes.Type(value = TrustedConnector.class),
+    @JsonSubTypes.Type(value = ParIS.class)
 })
-public interface Connector extends InfrastructureComponent {
+public interface Connector extends ModelClass, InfrastructureComponent {
 
-	// standard methods
+    // standard methods
 
-	/**
-	* This function retrieves the ID of the current object (can be set via the constructor of the builder class)
-	* @return ID of current object as URI
-	*/
-	@JsonProperty("@id")
-	@NotNull
-	public URI getId();
+    /**
+     * This function retrieves the ID of the current object (can be set via the constructor of the
+     * builder class)
+     * 
+     * @return ID of current object as URI
+     */
+    @JsonProperty("@id")
+    @NotNull
+    public URI getId();
 
-	/**
-	* This function retrieves a human readable label about the current class, as defined in the ontology.
-	* This label could, for example, be used as a field heading in a user interface
-	* @return Human readable label
-	*/
-	public List<TypedLiteral> getLabel();
+    /**
+     * This function retrieves a human readable label about the current class, as defined in the
+     * ontology. This label could, for example, be used as a field heading in a user interface
+     * 
+     * @return Human readable label
+     */
+    public List<TypedLiteral> getLabel();
 
-	/**
-	* This function retrieves a human readable explanatory comment about the current class, as defined in the ontology.
-	* This comment could, for example, be used as a tooltip in a user interface
-	* @return Human readable explanatory comment
-	*/
-	public List<TypedLiteral> getComment();
+    /**
+     * This function retrieves a human readable explanatory comment about the current class, as defined
+     * in the ontology. This comment could, for example, be used as a tooltip in a user interface
+     * 
+     * @return Human readable explanatory comment
+     */
+    public List<TypedLiteral> getComment();
 
-	public String toRdf();
+    public String toRdf();
 
-	// getter and setter for generic property map
-	public Map<String,Object> getProperties();
-	public void setProperty(String property, Object value);
+    // getter and setter for generic property map
+    public Map<String, Object> getProperties();
 
-	// accessor methods as derived from the IDS Information Model ontology
+    public void setProperty(String property, Object value);
 
+    // accessor methods as derived from the IDS Information Model ontology
 
-	/**
-	* "Indicates the default endpoint that should be used for basic infrastructure interactions, e.g., providing the self description."@en
-	* @return Returns the ConnectorEndpoint for the property _hasDefaultEndpoint.
-	* More information under https://w3id.org/idsa/core/hasDefaultEndpoint
-	*/
-	@NotNull
-	@JsonProperty("ids:hasDefaultEndpoint")
-	public ConnectorEndpoint getHasDefaultEndpoint();
+    /**
+     * Indicates the default endpoint that should be used for basic infrastructure interactions, e.g.,
+     * providing the self description.
+     *
+     * More information under https://w3id.org/idsa/core/hasDefaultEndpoint
+     *
+     * @return Returns the ConnectorEndpoint for the property _hasDefaultEndpoint.
+     */
+    @NotNull
+    @JsonProperty("ids:hasDefaultEndpoint")
+    ConnectorEndpoint getHasDefaultEndpoint();
 
-	/**
-	* "Reference to the Endpoints that serve the resource\'s content or let you exchange messages with an IDS Connector."@en
-	* @return Returns the List of ConnectorEndpoints for the property _hasEndpoint.
-	* More information under https://w3id.org/idsa/core/hasEndpoint
-	*/
-	@JsonProperty("ids:hasEndpoint")
-	public List<ConnectorEndpoint> getHasEndpoint();
+    /**
+     * Indicates the default endpoint that should be used for basic infrastructure interactions, e.g.,
+     * providing the self description.
+     *
+     * More information under https://w3id.org/idsa/core/hasDefaultEndpoint
+     *
+     * @param _hasDefaultEndpoint_ desired value for the property _hasDefaultEndpoint.
+     */
+    void setHasDefaultEndpoint(ConnectorEndpoint _hasDefaultEndpoint_);
 
-	/**
-	* "Information of the authentication service used by the Connector."@en
-	* @return Returns the AuthInfo for the property _authInfo.
-	* More information under https://w3id.org/idsa/core/authInfo
-	*/
-	@JsonProperty("ids:authInfo")
-	public AuthInfo getAuthInfo();
+    /**
+     * Reference to the Endpoints that serve the resource's content or let you exchange messages with an
+     * IDS Connector.
+     *
+     * More information under https://w3id.org/idsa/core/hasEndpoint
+     *
+     * @return Returns the List of ConnectorEndpoints for the property _hasEndpoint.
+     */
+    @JsonProperty("ids:hasEndpoint")
+    List<ConnectorEndpoint> getHasEndpoint();
 
-	/**
-	* "References the Catalog of published or requested resource by this Connector."@en
-	* @return Returns the List of ResourceCatalogs for the property _resourceCatalog.
-	* More information under https://w3id.org/idsa/core/resourceCatalog
-	*/
-	@JsonProperty("ids:resourceCatalog")
-	public List<ResourceCatalog> getResourceCatalog();
+    /**
+     * Reference to the Endpoints that serve the resource's content or let you exchange messages with an
+     * IDS Connector.
+     *
+     * More information under https://w3id.org/idsa/core/hasEndpoint
+     *
+     * @param _hasEndpoint_ desired value for the property _hasEndpoint.
+     */
+    void setHasEndpoint(List<ConnectorEndpoint> _hasEndpoint_);
 
-	/**
-	* "The Agents for which this Connector may initiate and receive Messages."@en
-	* @return Returns the List of URIs for the property _hasAgent.
-	* More information under https://w3id.org/idsa/core/hasAgent
-	*/
-	@JsonProperty("ids:hasAgent")
-	public List<URI> getHasAgent();
+    /**
+     * Information of the authentication service used by the Connector.
+     *
+     * More information under https://w3id.org/idsa/core/authInfo
+     *
+     * @return Returns the AuthInfo for the property _authInfo.
+     */
+    @JsonProperty("ids:authInfo")
+    AuthInfo getAuthInfo();
 
-	/**
-	* "The SecurityProfile supported by the Connector."@en
-	* @return Returns the SecurityProfile for the property _securityProfile.
-	* More information under https://w3id.org/idsa/core/securityProfile
-	*/
-	@NotNull
-	@JsonProperty("ids:securityProfile")
-	public SecurityProfile getSecurityProfile();
+    /**
+     * Information of the authentication service used by the Connector.
+     *
+     * More information under https://w3id.org/idsa/core/authInfo
+     *
+     * @param _authInfo_ desired value for the property _authInfo.
+     */
+    void setAuthInfo(AuthInfo _authInfo_);
 
-	/**
-	* "Reference to a security guarantee that, if used in combination with a security profile instance, overrides the respective guarantee of the given predefined instance."@en
-	* @return Returns the List of SecurityGuarantees for the property _extendedGuarantee.
-	* More information under https://w3id.org/idsa/core/extendedGuarantee
-	*/
-	@JsonProperty("ids:extendedGuarantee")
-	public List<SecurityGuarantee> getExtendedGuarantee();
+    /**
+     * References the Catalog of published or requested resource by this Connector.
+     *
+     * More information under https://w3id.org/idsa/core/resourceCatalog
+     *
+     * @return Returns the List of ResourceCatalogs for the property _resourceCatalog.
+     */
+    @JsonProperty("ids:resourceCatalog")
+    List<ResourceCatalog> getResourceCatalog();
+
+    /**
+     * References the Catalog of published or requested resource by this Connector.
+     *
+     * More information under https://w3id.org/idsa/core/resourceCatalog
+     *
+     * @param _resourceCatalog_ desired value for the property _resourceCatalog.
+     */
+    void setResourceCatalog(List<ResourceCatalog> _resourceCatalog_);
+
+    /**
+     * The Agents for which this Connector may initiate and receive Messages.
+     *
+     * More information under https://w3id.org/idsa/core/hasAgent
+     *
+     * @return Returns the List of URIs for the property _hasAgent.
+     */
+    @JsonProperty("ids:hasAgent")
+    List<URI> getHasAgent();
+
+    /**
+     * The Agents for which this Connector may initiate and receive Messages.
+     *
+     * More information under https://w3id.org/idsa/core/hasAgent
+     *
+     * @param _hasAgent_ desired value for the property _hasAgent.
+     */
+    void setHasAgent(List<URI> _hasAgent_);
+
+    /**
+     * The SecurityProfile supported by the Connector.
+     *
+     * More information under https://w3id.org/idsa/core/securityProfile
+     *
+     * @return Returns the SecurityProfile for the property _securityProfile.
+     */
+    @NotNull
+    @JsonProperty("ids:securityProfile")
+    SecurityProfile getSecurityProfile();
+
+    /**
+     * The SecurityProfile supported by the Connector.
+     *
+     * More information under https://w3id.org/idsa/core/securityProfile
+     *
+     * @param _securityProfile_ desired value for the property _securityProfile.
+     */
+    void setSecurityProfile(SecurityProfile _securityProfile_);
+
+    /**
+     * Reference to a security guarantee that, if used in combination with a security profile instance,
+     * overrides the respective guarantee of the given predefined instance.
+     *
+     * More information under https://w3id.org/idsa/core/extendedGuarantee
+     *
+     * @return Returns the List of SecurityGuarantees for the property _extendedGuarantee.
+     */
+    @JsonProperty("ids:extendedGuarantee")
+    List<SecurityGuarantee> getExtendedGuarantee();
+
+    /**
+     * Reference to a security guarantee that, if used in combination with a security profile instance,
+     * overrides the respective guarantee of the given predefined instance.
+     *
+     * More information under https://w3id.org/idsa/core/extendedGuarantee
+     *
+     * @param _extendedGuarantee_ desired value for the property _extendedGuarantee.
+     */
+    void setExtendedGuarantee(List<SecurityGuarantee> _extendedGuarantee_);
 
 }

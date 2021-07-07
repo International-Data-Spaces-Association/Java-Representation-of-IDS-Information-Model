@@ -1,95 +1,100 @@
 package de.fraunhofer.iais.eis;
 
-import de.fraunhofer.iais.eis.util.*;
-import de.fraunhofer.iais.eis.*;
-
-import javax.xml.datatype.XMLGregorianCalendar;
-import java.lang.String;
-import java.math.BigInteger;
-import java.net.URL;
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.NotEmpty;
 
-import com.fasterxml.jackson.annotation.JsonAlias;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
+import javax.validation.constraints.NotNull;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonTypeName;
+
+import de.fraunhofer.iais.eis.util.*;
 
 /**
-* "Interval"@en
-* "A temporal entity with extent or duration, fixed in time (different to ids:DurationEntity)."@en
-*/
-@JsonTypeInfo(use=JsonTypeInfo.Id.NAME, property="@type")
+ * A temporal entity with extent or duration, fixed in time (different to ids:DurationEntity).
+ */
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 @JsonSubTypes({
-	@JsonSubTypes.Type(value = IntervalImpl.class)
+    @JsonSubTypes.Type(value = IntervalImpl.class)
 })
-public interface Interval extends TemporalEntity {
+public interface Interval extends ModelClass, TemporalEntity {
 
-	// standard methods
+    // standard methods
 
-	/**
-	* This function retrieves the ID of the current object (can be set via the constructor of the builder class)
-	* @return ID of current object as URI
-	*/
-	@JsonProperty("@id")
-	@NotNull
-	public URI getId();
+    /**
+     * This function retrieves the ID of the current object (can be set via the constructor of the
+     * builder class)
+     * 
+     * @return ID of current object as URI
+     */
+    @JsonProperty("@id")
+    @NotNull
+    public URI getId();
 
-	/**
-	* This function retrieves a human readable label about the current class, as defined in the ontology.
-	* This label could, for example, be used as a field heading in a user interface
-	* @return Human readable label
-	*/
-	public List<TypedLiteral> getLabel();
+    /**
+     * This function retrieves a human readable label about the current class, as defined in the
+     * ontology. This label could, for example, be used as a field heading in a user interface
+     * 
+     * @return Human readable label
+     */
+    public List<TypedLiteral> getLabel();
 
-	/**
-	* This function retrieves a human readable explanatory comment about the current class, as defined in the ontology.
-	* This comment could, for example, be used as a tooltip in a user interface
-	* @return Human readable explanatory comment
-	*/
-	public List<TypedLiteral> getComment();
+    /**
+     * This function retrieves a human readable explanatory comment about the current class, as defined
+     * in the ontology. This comment could, for example, be used as a tooltip in a user interface
+     * 
+     * @return Human readable explanatory comment
+     */
+    public List<TypedLiteral> getComment();
 
-	public String toRdf();
+    public String toRdf();
 
-	// getter and setter for generic property map
-	public Map<String,Object> getProperties();
-	public void setProperty(String property, Object value);
+    // getter and setter for generic property map
+    public Map<String, Object> getProperties();
 
-	// accessor methods as derived from the IDS Information Model ontology
+    public void setProperty(String property, Object value);
 
+    // accessor methods as derived from the IDS Information Model ontology
 
-	/**
-	* "Beginning of an Interval."@en
-	* @return Returns the Instant for the property _begin.
-	* More information under https://w3id.org/idsa/core/begin
-	*/
-	@NotNull
-	@JsonProperty("ids:begin")
-	public Instant getBegin();
+    /**
+     * Beginning of an Interval.
+     *
+     * More information under https://w3id.org/idsa/core/begin
+     *
+     * @return Returns the Instant for the property _begin.
+     */
+    @NotNull
+    @JsonProperty("ids:begin")
+    Instant getBegin();
 
-	/**
-	* "End of an Interval."@en
-	* @return Returns the Instant for the property _end.
-	* More information under https://w3id.org/idsa/core/end
-	*/
-	@JsonProperty("ids:end")
-	public Instant getEnd();
+    /**
+     * Beginning of an Interval.
+     *
+     * More information under https://w3id.org/idsa/core/begin
+     *
+     * @param _begin_ desired value for the property _begin.
+     */
+    void setBegin(Instant _begin_);
+
+    /**
+     * End of an Interval.
+     *
+     * More information under https://w3id.org/idsa/core/end
+     *
+     * @return Returns the Instant for the property _end.
+     */
+    @JsonProperty("ids:end")
+    Instant getEnd();
+
+    /**
+     * End of an Interval.
+     *
+     * More information under https://w3id.org/idsa/core/end
+     *
+     * @param _end_ desired value for the property _end.
+     */
+    void setEnd(Instant _end_);
 
 }

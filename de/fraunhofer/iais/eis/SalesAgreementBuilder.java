@@ -1,170 +1,179 @@
 package de.fraunhofer.iais.eis;
 
-import de.fraunhofer.iais.eis.util.*;
-import de.fraunhofer.iais.eis.*;
+import java.net.URI;
+import java.util.List;
 
 import javax.xml.datatype.XMLGregorianCalendar;
-import java.lang.String;
-import java.math.BigInteger;
-import java.net.URL;
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.NotEmpty;
 
-import com.fasterxml.jackson.annotation.JsonAlias;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonTypeName;
+
+import de.fraunhofer.iais.eis.util.*;
 
 public class SalesAgreementBuilder {
 
-	private SalesAgreementImpl salesAgreementImpl;
+    private SalesAgreementImpl salesAgreementImpl;
 
-	public SalesAgreementBuilder() {
-		salesAgreementImpl = new SalesAgreementImpl();
-	}
+    public SalesAgreementBuilder() {
+        salesAgreementImpl = new SalesAgreementImpl();
+    }
 
-	public SalesAgreementBuilder(URI id) {
-		this();
-		salesAgreementImpl.id = id;
-	}
+    public SalesAgreementBuilder(URI id) {
+        this();
+        salesAgreementImpl.id = id;
+    }
 
+    /**
+     * This function allows setting a value for _contractStart
+     * 
+     * @param _contractStart_ desired value to be set
+     * @return Builder object with new value for _contractStart
+     */
+    public SalesAgreementBuilder _contractStart_(XMLGregorianCalendar _contractStart_) {
+        this.salesAgreementImpl.setContractStart(_contractStart_);
+        return this;
+    }
 
+    /**
+     * This function allows setting a value for _contractEnd
+     * 
+     * @param _contractEnd_ desired value to be set
+     * @return Builder object with new value for _contractEnd
+     */
+    public SalesAgreementBuilder _contractEnd_(XMLGregorianCalendar _contractEnd_) {
+        this.salesAgreementImpl.setContractEnd(_contractEnd_);
+        return this;
+    }
 
-	/**
-	* This function allows setting a value for _contractStart
-	* @param _contractStart_ desired value to be set
-	* @return Builder object with new value for _contractStart
-	*/
-	final public SalesAgreementBuilder _contractStart_(XMLGregorianCalendar _contractStart_) {
-		this.salesAgreementImpl._contractStart = _contractStart_;
-		return this;
-	}
+    /**
+     * This function allows setting a value for _contractDate
+     * 
+     * @param _contractDate_ desired value to be set
+     * @return Builder object with new value for _contractDate
+     */
+    public SalesAgreementBuilder _contractDate_(XMLGregorianCalendar _contractDate_) {
+        this.salesAgreementImpl.setContractDate(_contractDate_);
+        return this;
+    }
 
+    /**
+     * This function allows setting a value for _provider
+     * 
+     * @param _provider_ desired value to be set
+     * @return Builder object with new value for _provider
+     */
+    public SalesAgreementBuilder _provider_(URI _provider_) {
+        this.salesAgreementImpl.setProvider(_provider_);
+        return this;
+    }
 
-	/**
-	* This function allows setting a value for _contractEnd
-	* @param _contractEnd_ desired value to be set
-	* @return Builder object with new value for _contractEnd
-	*/
-	final public SalesAgreementBuilder _contractEnd_(XMLGregorianCalendar _contractEnd_) {
-		this.salesAgreementImpl._contractEnd = _contractEnd_;
-		return this;
-	}
+    /**
+     * This function allows setting a value for _consumer
+     * 
+     * @param _consumer_ desired value to be set
+     * @return Builder object with new value for _consumer
+     */
+    public SalesAgreementBuilder _consumer_(URI _consumer_) {
+        this.salesAgreementImpl.setConsumer(_consumer_);
+        return this;
+    }
 
+    /**
+     * This function allows setting a value for _contractDocument
+     * 
+     * @param _contractDocument_ desired value to be set
+     * @return Builder object with new value for _contractDocument
+     */
+    public SalesAgreementBuilder _contractDocument_(TextResource _contractDocument_) {
+        this.salesAgreementImpl.setContractDocument(_contractDocument_);
+        return this;
+    }
 
-	/**
-	* This function allows setting a value for _contractDate
-	* @param _contractDate_ desired value to be set
-	* @return Builder object with new value for _contractDate
-	*/
-	final public SalesAgreementBuilder _contractDate_(XMLGregorianCalendar _contractDate_) {
-		this.salesAgreementImpl._contractDate = _contractDate_;
-		return this;
-	}
+    /**
+     * This function allows setting a value for _contractAnnex
+     * 
+     * @param _contractAnnex_ desired value to be set
+     * @return Builder object with new value for _contractAnnex
+     */
+    public SalesAgreementBuilder _contractAnnex_(Resource _contractAnnex_) {
+        this.salesAgreementImpl.setContractAnnex(_contractAnnex_);
+        return this;
+    }
 
+    /**
+     * This function allows setting a value for _permission
+     * 
+     * @param _permission_ desired value to be set
+     * @return Builder object with new value for _permission
+     */
+    public SalesAgreementBuilder _permission_(List<Permission> _permission_) {
+        this.salesAgreementImpl.setPermission(_permission_);
+        return this;
+    }
 
-	/**
-	* This function allows setting a value for _provider
-	* @param _provider_ desired value to be set
-	* @return Builder object with new value for _provider
-	*/
-	final public SalesAgreementBuilder _provider_(URI _provider_) {
-		this.salesAgreementImpl._provider = _provider_;
-		return this;
-	}
+    /**
+     * This function allows adding a value to the List _permission
+     * 
+     * @param _permission_ desired value to be added
+     * @return Builder object with new value for _permission
+     */
+    public SalesAgreementBuilder _permission_(Permission _permission_) {
+        this.salesAgreementImpl.getPermission().add(_permission_);
+        return this;
+    }
 
+    /**
+     * This function allows setting a value for _prohibition
+     * 
+     * @param _prohibition_ desired value to be set
+     * @return Builder object with new value for _prohibition
+     */
+    public SalesAgreementBuilder _prohibition_(List<Prohibition> _prohibition_) {
+        this.salesAgreementImpl.setProhibition(_prohibition_);
+        return this;
+    }
 
-	/**
-	* This function allows setting a value for _consumer
-	* @param _consumer_ desired value to be set
-	* @return Builder object with new value for _consumer
-	*/
-	final public SalesAgreementBuilder _consumer_(URI _consumer_) {
-		this.salesAgreementImpl._consumer = _consumer_;
-		return this;
-	}
+    /**
+     * This function allows adding a value to the List _prohibition
+     * 
+     * @param _prohibition_ desired value to be added
+     * @return Builder object with new value for _prohibition
+     */
+    public SalesAgreementBuilder _prohibition_(Prohibition _prohibition_) {
+        this.salesAgreementImpl.getProhibition().add(_prohibition_);
+        return this;
+    }
 
+    /**
+     * This function allows setting a value for _obligation
+     * 
+     * @param _obligation_ desired value to be set
+     * @return Builder object with new value for _obligation
+     */
+    public SalesAgreementBuilder _obligation_(List<Duty> _obligation_) {
+        this.salesAgreementImpl.setObligation(_obligation_);
+        return this;
+    }
 
-	/**
-	* This function allows setting a value for _contractDocument
-	* @param _contractDocument_ desired value to be set
-	* @return Builder object with new value for _contractDocument
-	*/
-	final public SalesAgreementBuilder _contractDocument_(TextResource _contractDocument_) {
-		this.salesAgreementImpl._contractDocument = _contractDocument_;
-		return this;
-	}
+    /**
+     * This function allows adding a value to the List _obligation
+     * 
+     * @param _obligation_ desired value to be added
+     * @return Builder object with new value for _obligation
+     */
+    public SalesAgreementBuilder _obligation_(Duty _obligation_) {
+        this.salesAgreementImpl.getObligation().add(_obligation_);
+        return this;
+    }
 
-
-	/**
-	* This function allows setting a value for _contractAnnex
-	* @param _contractAnnex_ desired value to be set
-	* @return Builder object with new value for _contractAnnex
-	*/
-	final public SalesAgreementBuilder _contractAnnex_(Resource _contractAnnex_) {
-		this.salesAgreementImpl._contractAnnex = _contractAnnex_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _permission
-	* @param _permission_ desired value to be set
-	* @return Builder object with new value for _permission
-	*/
-	final public SalesAgreementBuilder _permission_(List<Permission> _permission_) {
-		this.salesAgreementImpl._permission = _permission_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _prohibition
-	* @param _prohibition_ desired value to be set
-	* @return Builder object with new value for _prohibition
-	*/
-	final public SalesAgreementBuilder _prohibition_(List<Prohibition> _prohibition_) {
-		this.salesAgreementImpl._prohibition = _prohibition_;
-		return this;
-	}
-
-
-	/**
-	* This function allows setting a value for _obligation
-	* @param _obligation_ desired value to be set
-	* @return Builder object with new value for _obligation
-	*/
-	final public SalesAgreementBuilder _obligation_(List<Duty> _obligation_) {
-		this.salesAgreementImpl._obligation = _obligation_;
-		return this;
-	}
-
-
-	/**
-	* This function takes the values that were set previously via the other functions of this class and turns them into a Java bean.
-	* @return Bean with specified values
-	* @throws ConstraintViolationException This exception is thrown, if a validator is used and a violation is found.
-	*/
-
-	final public SalesAgreement build() throws ConstraintViolationException {
-		VocabUtil.getInstance().validate(salesAgreementImpl);
-		return salesAgreementImpl;
-	}
+    /**
+     * This function takes the values that were set previously via the other functions of this class and
+     * turns them into a Java bean.
+     * 
+     * @return Bean with specified values
+     * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
+     *         violation is found.
+     */
+    final public SalesAgreement build() throws ConstraintViolationException {
+        VocabUtil.getInstance().validate(salesAgreementImpl);
+        return salesAgreementImpl;
+    }
 }

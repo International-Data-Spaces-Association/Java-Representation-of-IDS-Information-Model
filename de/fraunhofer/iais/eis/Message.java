@@ -1,174 +1,282 @@
 package de.fraunhofer.iais.eis;
 
-import de.fraunhofer.iais.eis.util.*;
-import de.fraunhofer.iais.eis.*;
-
-import javax.xml.datatype.XMLGregorianCalendar;
-import java.lang.String;
-import java.math.BigInteger;
-import java.net.URL;
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.NotEmpty;
 
-import com.fasterxml.jackson.annotation.JsonAlias;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import javax.validation.constraints.NotNull;
+import javax.xml.datatype.XMLGregorianCalendar;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonTypeName;
+
+import de.fraunhofer.iais.eis.util.*;
 
 /**
-* "Message"@en
-* "Metadata describing payload exchanged by interacting Connectors."@en
-*/
-@JsonTypeInfo(use=JsonTypeInfo.Id.NAME, property="@type")
+ * Metadata describing payload exchanged by interacting Connectors.
+ */
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 @JsonSubTypes({
-	@JsonSubTypes.Type(value = RequestMessage.class),
-	@JsonSubTypes.Type(value = ResponseMessage.class),
-	@JsonSubTypes.Type(value = NotificationMessage.class)
+    @JsonSubTypes.Type(value = RequestMessage.class),
+    @JsonSubTypes.Type(value = ResponseMessage.class),
+    @JsonSubTypes.Type(value = NotificationMessage.class)
 })
-public interface Message {
+public interface Message extends ModelClass {
 
-	// standard methods
+    // standard methods
 
-	/**
-	* This function retrieves the ID of the current object (can be set via the constructor of the builder class)
-	* @return ID of current object as URI
-	*/
-	@JsonProperty("@id")
-	@NotNull
-	public URI getId();
+    /**
+     * This function retrieves the ID of the current object (can be set via the constructor of the
+     * builder class)
+     * 
+     * @return ID of current object as URI
+     */
+    @JsonProperty("@id")
+    @NotNull
+    public URI getId();
 
-	/**
-	* This function retrieves a human readable label about the current class, as defined in the ontology.
-	* This label could, for example, be used as a field heading in a user interface
-	* @return Human readable label
-	*/
-	public List<TypedLiteral> getLabel();
+    /**
+     * This function retrieves a human readable label about the current class, as defined in the
+     * ontology. This label could, for example, be used as a field heading in a user interface
+     * 
+     * @return Human readable label
+     */
+    public List<TypedLiteral> getLabel();
 
-	/**
-	* This function retrieves a human readable explanatory comment about the current class, as defined in the ontology.
-	* This comment could, for example, be used as a tooltip in a user interface
-	* @return Human readable explanatory comment
-	*/
-	public List<TypedLiteral> getComment();
+    /**
+     * This function retrieves a human readable explanatory comment about the current class, as defined
+     * in the ontology. This comment could, for example, be used as a tooltip in a user interface
+     * 
+     * @return Human readable explanatory comment
+     */
+    public List<TypedLiteral> getComment();
 
-	public String toRdf();
+    public String toRdf();
 
-	// getter and setter for generic property map
-	public Map<String,Object> getProperties();
-	public void setProperty(String property, Object value);
+    // getter and setter for generic property map
+    public Map<String, Object> getProperties();
 
-	// accessor methods as derived from the IDS Information Model ontology
+    public void setProperty(String property, Object value);
 
+    // accessor methods as derived from the IDS Information Model ontology
 
-	/**
-	* "Version of the Information Model against which the Message should be interpreted."@en
-	* @return Returns the String for the property _modelVersion.
-	* More information under https://w3id.org/idsa/core/modelVersion
-	*/
-	@NotNull
-	@JsonProperty("ids:modelVersion")
-	public String getModelVersion();
+    /**
+     * Version of the Information Model against which the Message should be interpreted.
+     *
+     * More information under https://w3id.org/idsa/core/modelVersion
+     *
+     * @return Returns the String for the property _modelVersion.
+     */
+    @NotNull
+    @JsonProperty("ids:modelVersion")
+    String getModelVersion();
 
-	/**
-	* "Date (as xsd:dateTimeStamp) of issuing the Message."@en
-	* @return Returns the XMLGregorianCalendar for the property _issued.
-	* More information under https://w3id.org/idsa/core/issued
-	*/
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
-	@NotNull
-	@JsonProperty("ids:issued")
-	public XMLGregorianCalendar getIssued();
+    /**
+     * Version of the Information Model against which the Message should be interpreted.
+     *
+     * More information under https://w3id.org/idsa/core/modelVersion
+     *
+     * @param _modelVersion_ desired value for the property _modelVersion.
+     */
+    void setModelVersion(String _modelVersion_);
 
-	/**
-	* "Correlated message, e.g., a response to a previous request."@en
-	* @return Returns the URI for the property _correlationMessage.
-	* More information under https://w3id.org/idsa/core/correlationMessage
-	*/
-	@JsonProperty("ids:correlationMessage")
-	public URI getCorrelationMessage();
+    /**
+     * Date (as xsd:dateTimeStamp) of issuing the Message.
+     *
+     * More information under https://w3id.org/idsa/core/issued
+     *
+     * @return Returns the XMLGregorianCalendar for the property _issued.
+     */
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
+    @NotNull
+    @JsonProperty("ids:issued")
+    XMLGregorianCalendar getIssued();
 
-	/**
-	* "The Connector which is the origin of the message."@en
-	* @return Returns the URI for the property _issuerConnector.
-	* More information under https://w3id.org/idsa/core/issuerConnector
-	*/
-	@NotNull
-	@JsonProperty("ids:issuerConnector")
-	public URI getIssuerConnector();
+    /**
+     * Date (as xsd:dateTimeStamp) of issuing the Message.
+     *
+     * More information under https://w3id.org/idsa/core/issued
+     *
+     * @param _issued_ desired value for the property _issued.
+     */
+    void setIssued(XMLGregorianCalendar _issued_);
 
-	/**
-	* "The Connector which is the recipient of the message."@en
-	* @return Returns the List of URIs for the property _recipientConnector.
-	* More information under https://w3id.org/idsa/core/recipientConnector
-	*/
-	@JsonProperty("ids:recipientConnector")
-	public List<URI> getRecipientConnector();
+    /**
+     * Correlated message, e.g., a response to a previous request.
+     *
+     * More information under https://w3id.org/idsa/core/correlationMessage
+     *
+     * @return Returns the URI for the property _correlationMessage.
+     */
+    @JsonProperty("ids:correlationMessage")
+    URI getCorrelationMessage();
 
-	/**
-	* "The Agent which initiated the Message."@en
-	* @return Returns the URI for the property _senderAgent.
-	* More information under https://w3id.org/idsa/core/senderAgent
-	*/
-	@NotNull
-	@JsonProperty("ids:senderAgent")
-	public URI getSenderAgent();
+    /**
+     * Correlated message, e.g., a response to a previous request.
+     *
+     * More information under https://w3id.org/idsa/core/correlationMessage
+     *
+     * @param _correlationMessage_ desired value for the property _correlationMessage.
+     */
+    void setCorrelationMessage(URI _correlationMessage_);
 
-	/**
-	* "The Agent for which the Mesaage is intended."@en
-	* @return Returns the List of URIs for the property _recipientAgent.
-	* More information under https://w3id.org/idsa/core/recipientAgent
-	*/
-	@JsonProperty("ids:recipientAgent")
-	public List<URI> getRecipientAgent();
+    /**
+     * The Connector which is the origin of the message.
+     *
+     * More information under https://w3id.org/idsa/core/issuerConnector
+     *
+     * @return Returns the URI for the property _issuerConnector.
+     */
+    @NotNull
+    @JsonProperty("ids:issuerConnector")
+    URI getIssuerConnector();
 
-	/**
-	* "A token representing a claim that the message sender supports a certain security profile."@en
-	* @return Returns the DynamicAttributeToken for the property _securityToken.
-	* More information under https://w3id.org/idsa/core/securityToken
-	*/
-	@NotNull
-	@JsonProperty("ids:securityToken")
-	public DynamicAttributeToken getSecurityToken();
+    /**
+     * The Connector which is the origin of the message.
+     *
+     * More information under https://w3id.org/idsa/core/issuerConnector
+     *
+     * @param _issuerConnector_ desired value for the property _issuerConnector.
+     */
+    void setIssuerConnector(URI _issuerConnector_);
 
-	/**
-	* "An authorization token like JSON Web Token."@en
-	* @return Returns the Token for the property _authorizationToken.
-	* More information under https://w3id.org/idsa/core/authorizationToken
-	*/
-	@JsonProperty("ids:authorizationToken")
-	public Token getAuthorizationToken();
+    /**
+     * The Connector which is the recipient of the message.
+     *
+     * More information under https://w3id.org/idsa/core/recipientConnector
+     *
+     * @return Returns the List of URIs for the property _recipientConnector.
+     */
+    @JsonProperty("ids:recipientConnector")
+    List<URI> getRecipientConnector();
 
-	/**
-	* "The contract which is (or will be) the legal basis of the data transfer."@en
-	* @return Returns the URI for the property _transferContract.
-	* More information under https://w3id.org/idsa/core/transferContract
-	*/
-	@JsonProperty("ids:transferContract")
-	public URI getTransferContract();
+    /**
+     * The Connector which is the recipient of the message.
+     *
+     * More information under https://w3id.org/idsa/core/recipientConnector
+     *
+     * @param _recipientConnector_ desired value for the property _recipientConnector.
+     */
+    void setRecipientConnector(List<URI> _recipientConnector_);
 
-	/**
-	* "Version of the content in the payload. Use digits and semantic versioning pattern like MAJOR.MINOR.PATCH."@en
-	* @return Returns the String for the property _contentVersion.
-	* More information under https://w3id.org/idsa/core/contentVersion
-	*/
-	@JsonProperty("ids:contentVersion")
-	public String getContentVersion();
+    /**
+     * The Agent which initiated the Message.
+     *
+     * More information under https://w3id.org/idsa/core/senderAgent
+     *
+     * @return Returns the URI for the property _senderAgent.
+     */
+    @NotNull
+    @JsonProperty("ids:senderAgent")
+    URI getSenderAgent();
+
+    /**
+     * The Agent which initiated the Message.
+     *
+     * More information under https://w3id.org/idsa/core/senderAgent
+     *
+     * @param _senderAgent_ desired value for the property _senderAgent.
+     */
+    void setSenderAgent(URI _senderAgent_);
+
+    /**
+     * The Agent for which the Mesaage is intended.
+     *
+     * More information under https://w3id.org/idsa/core/recipientAgent
+     *
+     * @return Returns the List of URIs for the property _recipientAgent.
+     */
+    @JsonProperty("ids:recipientAgent")
+    List<URI> getRecipientAgent();
+
+    /**
+     * The Agent for which the Mesaage is intended.
+     *
+     * More information under https://w3id.org/idsa/core/recipientAgent
+     *
+     * @param _recipientAgent_ desired value for the property _recipientAgent.
+     */
+    void setRecipientAgent(List<URI> _recipientAgent_);
+
+    /**
+     * A token representing a claim that the message sender supports a certain security profile.
+     *
+     * More information under https://w3id.org/idsa/core/securityToken
+     *
+     * @return Returns the DynamicAttributeToken for the property _securityToken.
+     */
+    @NotNull
+    @JsonProperty("ids:securityToken")
+    DynamicAttributeToken getSecurityToken();
+
+    /**
+     * A token representing a claim that the message sender supports a certain security profile.
+     *
+     * More information under https://w3id.org/idsa/core/securityToken
+     *
+     * @param _securityToken_ desired value for the property _securityToken.
+     */
+    void setSecurityToken(DynamicAttributeToken _securityToken_);
+
+    /**
+     * An authorization token like JSON Web Token.
+     *
+     * More information under https://w3id.org/idsa/core/authorizationToken
+     *
+     * @return Returns the Token for the property _authorizationToken.
+     */
+    @JsonProperty("ids:authorizationToken")
+    Token getAuthorizationToken();
+
+    /**
+     * An authorization token like JSON Web Token.
+     *
+     * More information under https://w3id.org/idsa/core/authorizationToken
+     *
+     * @param _authorizationToken_ desired value for the property _authorizationToken.
+     */
+    void setAuthorizationToken(Token _authorizationToken_);
+
+    /**
+     * The contract which is (or will be) the legal basis of the data transfer.
+     *
+     * More information under https://w3id.org/idsa/core/transferContract
+     *
+     * @return Returns the URI for the property _transferContract.
+     */
+    @JsonProperty("ids:transferContract")
+    URI getTransferContract();
+
+    /**
+     * The contract which is (or will be) the legal basis of the data transfer.
+     *
+     * More information under https://w3id.org/idsa/core/transferContract
+     *
+     * @param _transferContract_ desired value for the property _transferContract.
+     */
+    void setTransferContract(URI _transferContract_);
+
+    /**
+     * Version of the content in the payload. Use digits and semantic versioning pattern like
+     * MAJOR.MINOR.PATCH.
+     *
+     * More information under https://w3id.org/idsa/core/contentVersion
+     *
+     * @return Returns the String for the property _contentVersion.
+     */
+    @JsonProperty("ids:contentVersion")
+    String getContentVersion();
+
+    /**
+     * Version of the content in the payload. Use digits and semantic versioning pattern like
+     * MAJOR.MINOR.PATCH.
+     *
+     * More information under https://w3id.org/idsa/core/contentVersion
+     *
+     * @param _contentVersion_ desired value for the property _contentVersion.
+     */
+    void setContentVersion(String _contentVersion_);
 
 }

@@ -1,121 +1,164 @@
 package de.fraunhofer.iais.eis;
 
-import de.fraunhofer.iais.eis.util.*;
-import de.fraunhofer.iais.eis.*;
-
-import javax.xml.datatype.XMLGregorianCalendar;
-import java.lang.String;
-import java.math.BigInteger;
-import java.net.URL;
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.NotEmpty;
 
-import com.fasterxml.jackson.annotation.JsonAlias;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonTypeName;
+
+import de.fraunhofer.iais.eis.util.*;
 
 /**
-* "DataApp"@en
-* "Self-contained, self-descriptive software package that is distributed via the App Store and deployed inside a Connector; provides access to data and data processing capa­bilities; the interface of a Data App is semantically described by the IDS Information Model."@en
-*/
-@JsonTypeInfo(use=JsonTypeInfo.Id.NAME, property="@type")
+ * Self-contained, self-descriptive software package that is distributed via the App Store and
+ * deployed inside a Connector; provides access to data and data processing capa­bilities; the
+ * interface of a Data App is semantically described by the IDS Information Model.
+ */
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 @JsonSubTypes({
-	@JsonSubTypes.Type(value = SystemAdapter.class),
-	@JsonSubTypes.Type(value = OrchestrationApp.class),
-	@JsonSubTypes.Type(value = SmartDataApp.class)
+    @JsonSubTypes.Type(value = SystemAdapter.class),
+    @JsonSubTypes.Type(value = OrchestrationApp.class),
+    @JsonSubTypes.Type(value = SmartDataApp.class)
 })
-public interface DataApp {
+public interface DataApp extends ModelClass {
 
-	// standard methods
+    // standard methods
 
-	/**
-	* This function retrieves the ID of the current object (can be set via the constructor of the builder class)
-	* @return ID of current object as URI
-	*/
-	@JsonProperty("@id")
-	@NotNull
-	public URI getId();
+    /**
+     * This function retrieves the ID of the current object (can be set via the constructor of the
+     * builder class)
+     * 
+     * @return ID of current object as URI
+     */
+    @JsonProperty("@id")
+    @NotNull
+    public URI getId();
 
-	/**
-	* This function retrieves a human readable label about the current class, as defined in the ontology.
-	* This label could, for example, be used as a field heading in a user interface
-	* @return Human readable label
-	*/
-	public List<TypedLiteral> getLabel();
+    /**
+     * This function retrieves a human readable label about the current class, as defined in the
+     * ontology. This label could, for example, be used as a field heading in a user interface
+     * 
+     * @return Human readable label
+     */
+    public List<TypedLiteral> getLabel();
 
-	/**
-	* This function retrieves a human readable explanatory comment about the current class, as defined in the ontology.
-	* This comment could, for example, be used as a tooltip in a user interface
-	* @return Human readable explanatory comment
-	*/
-	public List<TypedLiteral> getComment();
+    /**
+     * This function retrieves a human readable explanatory comment about the current class, as defined
+     * in the ontology. This comment could, for example, be used as a tooltip in a user interface
+     * 
+     * @return Human readable explanatory comment
+     */
+    public List<TypedLiteral> getComment();
 
-	public String toRdf();
+    public String toRdf();
 
-	// getter and setter for generic property map
-	public Map<String,Object> getProperties();
-	public void setProperty(String property, Object value);
+    // getter and setter for generic property map
+    public Map<String, Object> getProperties();
 
-	// accessor methods as derived from the IDS Information Model ontology
+    public void setProperty(String property, Object value);
 
+    // accessor methods as derived from the IDS Information Model ontology
 
-	/**
-	* "text documentation of the data app"@en
-	* @return Returns the String for the property _appDocumentation.
-	* More information under https://w3id.org/idsa/core/appDocumentation
-	*/
-	@JsonProperty("ids:appDocumentation")
-	public String getAppDocumentation();
+    /**
+     * text documentation of the data app
+     *
+     * More information under https://w3id.org/idsa/core/appDocumentation
+     *
+     * @return Returns the String for the property _appDocumentation.
+     */
+    @JsonProperty("ids:appDocumentation")
+    String getAppDocumentation();
 
-	/**
-	* "Endpoints of a data app"@en
-	* @return Returns the List of AppEndpoints for the property _appEndpoint.
-	* More information under https://w3id.org/idsa/core/appEndpoint
-	*/
-	@NotEmpty
-	@JsonProperty("ids:appEndpoint")
-	public List<AppEndpoint> getAppEndpoint();
+    /**
+     * text documentation of the data app
+     *
+     * More information under https://w3id.org/idsa/core/appDocumentation
+     *
+     * @param _appDocumentation_ desired value for the property _appDocumentation.
+     */
+    void setAppDocumentation(String _appDocumentation_);
 
-	/**
-	* "Necessary or optional environment variables of a data app."@en
-	* @return Returns the String for the property _appEnvironmentVariables.
-	* More information under https://w3id.org/idsa/core/appEnvironmentVariables
-	*/
-	@JsonProperty("ids:appEnvironmentVariables")
-	public String getAppEnvironmentVariables();
+    /**
+     * Endpoints of a data app
+     *
+     * More information under https://w3id.org/idsa/core/appEndpoint
+     *
+     * @return Returns the List of AppEndpoints for the property _appEndpoint.
+     */
+    @NotEmpty
+    @JsonProperty("ids:appEndpoint")
+    List<AppEndpoint> getAppEndpoint();
 
-	/**
-	* "Storage configuration of a data app. Value may differ based on the app ecosystem, e.g., a writeable path in the file system or a volume name (e.g., for containerized apps)"@en
-	* @return Returns the String for the property _appStorageConfiguration.
-	* More information under https://w3id.org/idsa/core/appStorageConfiguration
-	*/
-	@JsonProperty("ids:appStorageConfiguration")
-	public String getAppStorageConfiguration();
+    /**
+     * Endpoints of a data app
+     *
+     * More information under https://w3id.org/idsa/core/appEndpoint
+     *
+     * @param _appEndpoint_ desired value for the property _appEndpoint.
+     */
+    void setAppEndpoint(List<AppEndpoint> _appEndpoint_);
 
-	/**
-	* "IDS Usage Policies a DataApp supports"@en
-	* @return Returns the List of UsagePolicyClasss for the property _supportedUsagePolicies.
-	* More information under https://w3id.org/idsa/core/supportedUsagePolicies
-	*/
-	@JsonProperty("ids:supportedUsagePolicies")
-	public List<UsagePolicyClass> getSupportedUsagePolicies();
+    /**
+     * Necessary or optional environment variables of a data app.
+     *
+     * More information under https://w3id.org/idsa/core/appEnvironmentVariables
+     *
+     * @return Returns the String for the property _appEnvironmentVariables.
+     */
+    @JsonProperty("ids:appEnvironmentVariables")
+    String getAppEnvironmentVariables();
+
+    /**
+     * Necessary or optional environment variables of a data app.
+     *
+     * More information under https://w3id.org/idsa/core/appEnvironmentVariables
+     *
+     * @param _appEnvironmentVariables_ desired value for the property _appEnvironmentVariables.
+     */
+    void setAppEnvironmentVariables(String _appEnvironmentVariables_);
+
+    /**
+     * Storage configuration of a data app. Value may differ based on the app ecosystem, e.g., a
+     * writeable path in the file system or a volume name (e.g., for containerized apps)
+     *
+     * More information under https://w3id.org/idsa/core/appStorageConfiguration
+     *
+     * @return Returns the String for the property _appStorageConfiguration.
+     */
+    @JsonProperty("ids:appStorageConfiguration")
+    String getAppStorageConfiguration();
+
+    /**
+     * Storage configuration of a data app. Value may differ based on the app ecosystem, e.g., a
+     * writeable path in the file system or a volume name (e.g., for containerized apps)
+     *
+     * More information under https://w3id.org/idsa/core/appStorageConfiguration
+     *
+     * @param _appStorageConfiguration_ desired value for the property _appStorageConfiguration.
+     */
+    void setAppStorageConfiguration(String _appStorageConfiguration_);
+
+    /**
+     * IDS Usage Policies a DataApp supports
+     *
+     * More information under https://w3id.org/idsa/core/supportedUsagePolicies
+     *
+     * @return Returns the List of UsagePolicyClasss for the property _supportedUsagePolicies.
+     */
+    @JsonProperty("ids:supportedUsagePolicies")
+    List<UsagePolicyClass> getSupportedUsagePolicies();
+
+    /**
+     * IDS Usage Policies a DataApp supports
+     *
+     * More information under https://w3id.org/idsa/core/supportedUsagePolicies
+     *
+     * @param _supportedUsagePolicies_ desired value for the property _supportedUsagePolicies.
+     */
+    void setSupportedUsagePolicies(List<UsagePolicyClass> _supportedUsagePolicies_);
 
 }
