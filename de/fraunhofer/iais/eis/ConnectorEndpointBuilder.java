@@ -7,7 +7,7 @@ import java.util.List;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class ConnectorEndpointBuilder {
+public class ConnectorEndpointBuilder implements Builder<ConnectorEndpoint> {
 
     private ConnectorEndpointImpl connectorEndpointImpl;
 
@@ -127,7 +127,8 @@ public class ConnectorEndpointBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public ConnectorEndpoint build() throws ConstraintViolationException {
+    @Override
+    public ConnectorEndpoint build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(connectorEndpointImpl);
         return connectorEndpointImpl;
     }

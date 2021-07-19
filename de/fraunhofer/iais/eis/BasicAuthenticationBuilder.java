@@ -6,7 +6,7 @@ import java.net.URI;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class BasicAuthenticationBuilder {
+public class BasicAuthenticationBuilder implements Builder<BasicAuthentication> {
 
     private BasicAuthenticationImpl basicAuthenticationImpl;
 
@@ -49,7 +49,8 @@ public class BasicAuthenticationBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public BasicAuthentication build() throws ConstraintViolationException {
+    @Override
+    public BasicAuthentication build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(basicAuthenticationImpl);
         return basicAuthenticationImpl;
     }

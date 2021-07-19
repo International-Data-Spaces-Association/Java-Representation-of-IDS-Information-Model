@@ -7,7 +7,7 @@ import java.util.List;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class ClearingHouseCatalogBuilder {
+public class ClearingHouseCatalogBuilder implements Builder<ClearingHouseCatalog> {
 
     private ClearingHouseCatalogImpl clearingHouseCatalogImpl;
 
@@ -50,7 +50,8 @@ public class ClearingHouseCatalogBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public ClearingHouseCatalog build() throws ConstraintViolationException {
+    @Override
+    public ClearingHouseCatalog build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(clearingHouseCatalogImpl);
         return clearingHouseCatalogImpl;
     }

@@ -66,6 +66,11 @@ public class AppStoreCatalogImpl implements AppStoreCatalog {
         return VocabUtil.getInstance().toRdf(this);
     }
 
+    @Override
+    public String toString() {
+        return this.toRdf();
+    }
+
     public List<TypedLiteral> getLabel() {
         return this.label;
     }
@@ -133,6 +138,17 @@ public class AppStoreCatalogImpl implements AppStoreCatalog {
             AppStoreCatalogImpl other = (AppStoreCatalogImpl) obj;
             return Objects.equals(this._listedConnector, other._listedConnector);
         }
+    }
+
+    @Override
+    public AppStoreCatalog deepCopy() {
+        AppStoreCatalogBuilder builder = new AppStoreCatalogBuilder();
+        for (Connector item : this._listedConnector) {
+            if (item != null) {
+                builder._listedConnector_(item.deepCopy());
+            }
+        }
+        return builder.build();
     }
 
     // accessor method implementations as derived from the IDS Information Model ontology

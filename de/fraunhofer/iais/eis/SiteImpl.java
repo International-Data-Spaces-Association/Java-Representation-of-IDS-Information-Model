@@ -66,6 +66,11 @@ public class SiteImpl implements Site {
         return VocabUtil.getInstance().toRdf(this);
     }
 
+    @Override
+    public String toString() {
+        return this.toRdf();
+    }
+
     public List<TypedLiteral> getLabel() {
         return this.label;
     }
@@ -133,6 +138,13 @@ public class SiteImpl implements Site {
             SiteImpl other = (SiteImpl) obj;
             return Objects.equals(this._siteAddress, other._siteAddress);
         }
+    }
+
+    @Override
+    public Site deepCopy() {
+        SiteBuilder builder = new SiteBuilder();
+        builder._siteAddress_(this._siteAddress);
+        return builder.build();
     }
 
     // accessor method implementations as derived from the IDS Information Model ontology

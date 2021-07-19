@@ -68,6 +68,11 @@ public class BasicAuthenticationImpl implements BasicAuthentication {
         return VocabUtil.getInstance().toRdf(this);
     }
 
+    @Override
+    public String toString() {
+        return this.toRdf();
+    }
+
     public List<TypedLiteral> getLabel() {
         return this.label;
     }
@@ -137,6 +142,14 @@ public class BasicAuthenticationImpl implements BasicAuthentication {
             return Objects.equals(this._authPassword, other._authPassword) &&
                 Objects.equals(this._authUsername, other._authUsername);
         }
+    }
+
+    @Override
+    public BasicAuthentication deepCopy() {
+        BasicAuthenticationBuilder builder = new BasicAuthenticationBuilder();
+        builder._authPassword_(this._authPassword);
+        builder._authUsername_(this._authUsername);
+        return builder.build();
     }
 
     // accessor method implementations as derived from the IDS Information Model ontology

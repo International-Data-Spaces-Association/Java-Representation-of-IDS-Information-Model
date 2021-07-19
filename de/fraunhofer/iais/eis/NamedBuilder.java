@@ -6,7 +6,7 @@ import java.net.URI;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class NamedBuilder {
+public class NamedBuilder implements Builder<Named> {
 
     private NamedImpl namedImpl;
 
@@ -38,7 +38,8 @@ public class NamedBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public Named build() throws ConstraintViolationException {
+    @Override
+    public Named build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(namedImpl);
         return namedImpl;
     }

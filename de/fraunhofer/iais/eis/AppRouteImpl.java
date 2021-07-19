@@ -98,6 +98,11 @@ public class AppRouteImpl implements AppRoute {
         return VocabUtil.getInstance().toRdf(this);
     }
 
+    @Override
+    public String toString() {
+        return this.toRdf();
+    }
+
     public List<TypedLiteral> getLabel() {
         return this.label;
     }
@@ -181,6 +186,45 @@ public class AppRouteImpl implements AppRoute {
                 Objects.equals(this._appRouteBroker, other._appRouteBroker) &&
                 Objects.equals(this._appRouteClearingHouse, other._appRouteClearingHouse);
         }
+    }
+
+    @Override
+    public AppRoute deepCopy() {
+        AppRouteBuilder builder = new AppRouteBuilder();
+        builder._routeDeployMethod_(this._routeDeployMethod);
+        builder._routeDescription_(this._routeDescription);
+        builder._routeConfiguration_(this._routeConfiguration);
+        for (RouteStep item : this._hasSubRoute) {
+            if (item != null) {
+                builder._hasSubRoute_(item.deepCopy());
+            }
+        }
+        for (Endpoint item : this._appRouteStart) {
+            if (item != null) {
+                builder._appRouteStart_(item.deepCopy());
+            }
+        }
+        for (Endpoint item : this._appRouteEnd) {
+            if (item != null) {
+                builder._appRouteEnd_(item.deepCopy());
+            }
+        }
+        for (Resource item : this._appRouteOutput) {
+            if (item != null) {
+                builder._appRouteOutput_(item.deepCopy());
+            }
+        }
+        for (Broker item : this._appRouteBroker) {
+            if (item != null) {
+                builder._appRouteBroker_(item.deepCopy());
+            }
+        }
+        for (ClearingHouse item : this._appRouteClearingHouse) {
+            if (item != null) {
+                builder._appRouteClearingHouse_(item.deepCopy());
+            }
+        }
+        return builder.build();
     }
 
     // accessor method implementations as derived from the IDS Information Model ontology

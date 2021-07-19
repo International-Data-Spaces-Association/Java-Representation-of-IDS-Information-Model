@@ -8,7 +8,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class ParticipantCertificateRevokedMessageBuilder {
+public class ParticipantCertificateRevokedMessageBuilder implements Builder<ParticipantCertificateRevokedMessage> {
 
     private ParticipantCertificateRevokedMessageImpl participantCertificateRevokedMessageImpl;
 
@@ -194,7 +194,8 @@ public class ParticipantCertificateRevokedMessageBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public ParticipantCertificateRevokedMessage build() throws ConstraintViolationException {
+    @Override
+    public ParticipantCertificateRevokedMessage build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(participantCertificateRevokedMessageImpl);
         return participantCertificateRevokedMessageImpl;
     }

@@ -7,7 +7,7 @@ import java.util.List;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class ProhibitionBuilder {
+public class ProhibitionBuilder implements Builder<Prohibition> {
 
     private ProhibitionImpl prohibitionImpl;
 
@@ -182,7 +182,8 @@ public class ProhibitionBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public Prohibition build() throws ConstraintViolationException {
+    @Override
+    public Prohibition build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(prohibitionImpl);
         return prohibitionImpl;
     }

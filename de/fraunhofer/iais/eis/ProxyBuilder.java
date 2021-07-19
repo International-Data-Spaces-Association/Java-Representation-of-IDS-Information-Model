@@ -7,7 +7,7 @@ import java.util.List;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class ProxyBuilder {
+public class ProxyBuilder implements Builder<Proxy> {
 
     private ProxyImpl proxyImpl;
 
@@ -72,7 +72,8 @@ public class ProxyBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public Proxy build() throws ConstraintViolationException {
+    @Override
+    public Proxy build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(proxyImpl);
         return proxyImpl;
     }

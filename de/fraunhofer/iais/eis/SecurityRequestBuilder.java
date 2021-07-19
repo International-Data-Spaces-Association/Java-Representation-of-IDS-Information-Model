@@ -8,7 +8,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class SecurityRequestBuilder {
+public class SecurityRequestBuilder implements Builder<SecurityRequest> {
 
     private SecurityRequestImpl securityRequestImpl;
 
@@ -172,7 +172,8 @@ public class SecurityRequestBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public SecurityRequest build() throws ConstraintViolationException {
+    @Override
+    public SecurityRequest build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(securityRequestImpl);
         return securityRequestImpl;
     }

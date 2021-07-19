@@ -73,6 +73,11 @@ public class BusinessIdentifierImpl implements BusinessIdentifier {
         return VocabUtil.getInstance().toRdf(this);
     }
 
+    @Override
+    public String toString() {
+        return this.toRdf();
+    }
+
     public List<TypedLiteral> getLabel() {
         return this.label;
     }
@@ -142,6 +147,14 @@ public class BusinessIdentifierImpl implements BusinessIdentifier {
             return Objects.equals(this._identifierSystem, other._identifierSystem) &&
                 Objects.equals(this._identifierNumber, other._identifierNumber);
         }
+    }
+
+    @Override
+    public BusinessIdentifier deepCopy() {
+        BusinessIdentifierBuilder builder = new BusinessIdentifierBuilder();
+        builder._identifierSystem_(this._identifierSystem);
+        builder._identifierNumber_(this._identifierNumber);
+        return builder.build();
     }
 
     // accessor method implementations as derived from the IDS Information Model ontology

@@ -73,6 +73,11 @@ public class IntervalImpl implements Interval {
         return VocabUtil.getInstance().toRdf(this);
     }
 
+    @Override
+    public String toString() {
+        return this.toRdf();
+    }
+
     public List<TypedLiteral> getLabel() {
         return this.label;
     }
@@ -144,6 +149,19 @@ public class IntervalImpl implements Interval {
                 Objects.equals(this._end, other._end) &&
                 Objects.equals(this._hasDuration, other._hasDuration);
         }
+    }
+
+    @Override
+    public Interval deepCopy() {
+        IntervalBuilder builder = new IntervalBuilder();
+        if (this._begin != null) {
+            builder._begin_(this._begin.deepCopy());
+        }
+        if (this._end != null) {
+            builder._end_(this._end.deepCopy());
+        }
+        builder._hasDuration_(this._hasDuration);
+        return builder.build();
     }
 
     // accessor method implementations as derived from the IDS Information Model ontology

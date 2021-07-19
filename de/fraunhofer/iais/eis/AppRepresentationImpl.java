@@ -94,6 +94,11 @@ public class AppRepresentationImpl implements AppRepresentation {
         return VocabUtil.getInstance().toRdf(this);
     }
 
+    @Override
+    public String toString() {
+        return this.toRdf();
+    }
+
     public List<TypedLiteral> getLabel() {
         return this.label;
     }
@@ -179,6 +184,40 @@ public class AppRepresentationImpl implements AppRepresentation {
                 Objects.equals(this._modified, other._modified) &&
                 Objects.equals(this._shapesGraph, other._shapesGraph);
         }
+    }
+
+    @Override
+    public AppRepresentation deepCopy() {
+        AppRepresentationBuilder builder = new AppRepresentationBuilder();
+        if (this._dataAppInformation != null) {
+            builder._dataAppInformation_(this._dataAppInformation.deepCopy());
+        }
+        if (this._dataAppDistributionService != null) {
+            builder._dataAppDistributionService_(URI.create(this._dataAppDistributionService.toString()));
+        }
+        builder._dataAppRuntimeEnvironment_(this._dataAppRuntimeEnvironment);
+        for (RepresentationInstance item : this._instance) {
+            if (item != null) {
+                builder._instance_(item.deepCopy());
+            }
+        }
+        if (this._mediaType != null) {
+            builder._mediaType_(this._mediaType.deepCopy());
+        }
+        if (this._representationStandard != null) {
+            builder._representationStandard_(URI.create(this._representationStandard.toString()));
+        }
+        builder._language_(this._language);
+        if (this._created != null) {
+            builder._created_((XMLGregorianCalendar) this._created.clone());
+        }
+        if (this._modified != null) {
+            builder._modified_((XMLGregorianCalendar) this._modified.clone());
+        }
+        if (this._shapesGraph != null) {
+            builder._shapesGraph_(URI.create(this._shapesGraph.toString()));
+        }
+        return builder.build();
     }
 
     // accessor method implementations as derived from the IDS Information Model ontology

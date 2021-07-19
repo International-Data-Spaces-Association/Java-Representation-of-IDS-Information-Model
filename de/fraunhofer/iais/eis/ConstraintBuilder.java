@@ -6,7 +6,7 @@ import java.net.URI;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class ConstraintBuilder {
+public class ConstraintBuilder implements Builder<Constraint> {
 
     private ConstraintImpl constraintImpl;
 
@@ -93,7 +93,8 @@ public class ConstraintBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public Constraint build() throws ConstraintViolationException {
+    @Override
+    public Constraint build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(constraintImpl);
         return constraintImpl;
     }

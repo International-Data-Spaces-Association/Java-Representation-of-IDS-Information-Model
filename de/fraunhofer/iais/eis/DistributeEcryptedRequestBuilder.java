@@ -8,7 +8,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class DistributeEcryptedRequestBuilder {
+public class DistributeEcryptedRequestBuilder implements Builder<DistributeEcryptedRequest> {
 
     private DistributeEcryptedRequestImpl distributeEcryptedRequestImpl;
 
@@ -172,7 +172,8 @@ public class DistributeEcryptedRequestBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public DistributeEcryptedRequest build() throws ConstraintViolationException {
+    @Override
+    public DistributeEcryptedRequest build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(distributeEcryptedRequestImpl);
         return distributeEcryptedRequestImpl;
     }

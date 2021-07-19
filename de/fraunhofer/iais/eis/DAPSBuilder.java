@@ -7,7 +7,7 @@ import java.util.List;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class DAPSBuilder {
+public class DAPSBuilder implements Builder<DAPS> {
 
     private DAPSImpl dAPSImpl;
 
@@ -171,7 +171,8 @@ public class DAPSBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public DAPS build() throws ConstraintViolationException {
+    @Override
+    public DAPS build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(dAPSImpl);
         return dAPSImpl;
     }

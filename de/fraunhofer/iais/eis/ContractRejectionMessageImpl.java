@@ -109,6 +109,11 @@ public class ContractRejectionMessageImpl implements ContractRejectionMessage {
         return VocabUtil.getInstance().toRdf(this);
     }
 
+    @Override
+    public String toString() {
+        return this.toRdf();
+    }
+
     public List<TypedLiteral> getLabel() {
         return this.label;
     }
@@ -200,6 +205,53 @@ public class ContractRejectionMessageImpl implements ContractRejectionMessage {
                 Objects.equals(this._transferContract, other._transferContract) &&
                 Objects.equals(this._contentVersion, other._contentVersion);
         }
+    }
+
+    @Override
+    public ContractRejectionMessage deepCopy() {
+        ContractRejectionMessageBuilder builder = new ContractRejectionMessageBuilder();
+        if (this._contractRejectionReason != null && this._contractRejectionReason.getLanguage() != null) {
+            builder._contractRejectionReason_(
+                new TypedLiteral(this._contractRejectionReason.getValue(), this._contractRejectionReason.getLanguage()));
+        } else {
+            builder._contractRejectionReason_(
+                new TypedLiteral(this._contractRejectionReason.getValue(), URI.create(this._contractRejectionReason.getType())));
+        }
+        builder._rejectionReason_(this._rejectionReason);
+        builder._modelVersion_(this._modelVersion);
+        if (this._issued != null) {
+            builder._issued_((XMLGregorianCalendar) this._issued.clone());
+        }
+        if (this._correlationMessage != null) {
+            builder._correlationMessage_(URI.create(this._correlationMessage.toString()));
+        }
+        if (this._issuerConnector != null) {
+            builder._issuerConnector_(URI.create(this._issuerConnector.toString()));
+        }
+        for (URI item : this._recipientConnector) {
+            if (item != null) {
+                builder._recipientConnector_(URI.create(item.toString()));
+            }
+        }
+        if (this._senderAgent != null) {
+            builder._senderAgent_(URI.create(this._senderAgent.toString()));
+        }
+        for (URI item : this._recipientAgent) {
+            if (item != null) {
+                builder._recipientAgent_(URI.create(item.toString()));
+            }
+        }
+        if (this._securityToken != null) {
+            builder._securityToken_(this._securityToken.deepCopy());
+        }
+        if (this._authorizationToken != null) {
+            builder._authorizationToken_(this._authorizationToken.deepCopy());
+        }
+        if (this._transferContract != null) {
+            builder._transferContract_(URI.create(this._transferContract.toString()));
+        }
+        builder._contentVersion_(this._contentVersion);
+        return builder.build();
     }
 
     // accessor method implementations as derived from the IDS Information Model ontology

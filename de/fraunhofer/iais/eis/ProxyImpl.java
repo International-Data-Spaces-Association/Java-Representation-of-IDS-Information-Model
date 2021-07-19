@@ -72,6 +72,11 @@ public class ProxyImpl implements Proxy {
         return VocabUtil.getInstance().toRdf(this);
     }
 
+    @Override
+    public String toString() {
+        return this.toRdf();
+    }
+
     public List<TypedLiteral> getLabel() {
         return this.label;
     }
@@ -143,6 +148,23 @@ public class ProxyImpl implements Proxy {
                 Objects.equals(this._noProxy, other._noProxy) &&
                 Objects.equals(this._proxyAuthentication, other._proxyAuthentication);
         }
+    }
+
+    @Override
+    public Proxy deepCopy() {
+        ProxyBuilder builder = new ProxyBuilder();
+        if (this._proxyURI != null) {
+            builder._proxyURI_(URI.create(this._proxyURI.toString()));
+        }
+        for (URI item : this._noProxy) {
+            if (item != null) {
+                builder._noProxy_(URI.create(item.toString()));
+            }
+        }
+        if (this._proxyAuthentication != null) {
+            builder._proxyAuthentication_(this._proxyAuthentication.deepCopy());
+        }
+        return builder.build();
     }
 
     // accessor method implementations as derived from the IDS Information Model ontology

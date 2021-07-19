@@ -6,7 +6,7 @@ import java.net.URI;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class SiteBuilder {
+public class SiteBuilder implements Builder<Site> {
 
     private SiteImpl siteImpl;
 
@@ -38,7 +38,8 @@ public class SiteBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public Site build() throws ConstraintViolationException {
+    @Override
+    public Site build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(siteImpl);
         return siteImpl;
     }

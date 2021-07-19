@@ -116,6 +116,11 @@ public class ConfigurationModelImpl implements ConfigurationModel {
         return VocabUtil.getInstance().toRdf(this);
     }
 
+    @Override
+    public String toString() {
+        return this.toRdf();
+    }
+
     public List<TypedLiteral> getLabel() {
         return this.label;
     }
@@ -215,6 +220,55 @@ public class ConfigurationModelImpl implements ConfigurationModel {
                 Objects.equals(this._configuredAppResource, other._configuredAppResource) &&
                 Objects.equals(this._configuredClearingHouse, other._configuredClearingHouse);
         }
+    }
+
+    @Override
+    public ConfigurationModel deepCopy() {
+        ConfigurationModelBuilder builder = new ConfigurationModelBuilder();
+        for (UserAuthentication item : this._userAuthentication) {
+            if (item != null) {
+                builder._userAuthentication_(item.deepCopy());
+            }
+        }
+        builder._configurationModelLogLevel_(this._configurationModelLogLevel);
+        builder._connectorStatus_(this._connectorStatus);
+        builder._connectorDeployMode_(this._connectorDeployMode);
+        if (this._connectorDescription != null) {
+            builder._connectorDescription_(this._connectorDescription.deepCopy());
+        }
+        for (Proxy item : this._connectorProxy) {
+            if (item != null) {
+                builder._connectorProxy_(item.deepCopy());
+            }
+        }
+        if (this._trustStore != null) {
+            builder._trustStore_(URI.create(this._trustStore.toString()));
+        }
+        builder._trustStoreAlias_(this._trustStoreAlias);
+        builder._trustStorePassword_(this._trustStorePassword);
+        if (this._keyStore != null) {
+            builder._keyStore_(URI.create(this._keyStore.toString()));
+        }
+        builder._keyStoreAlias_(this._keyStoreAlias);
+        builder._keyStorePassword_(this._keyStorePassword);
+        if (this._configuredBroker != null) {
+            builder._configuredBroker_(this._configuredBroker.deepCopy());
+        }
+        for (AppRoute item : this._appRoute) {
+            if (item != null) {
+                builder._appRoute_(item.deepCopy());
+            }
+        }
+        if (this._configuredAppStore != null) {
+            builder._configuredAppStore_(this._configuredAppStore.deepCopy());
+        }
+        if (this._configuredAppResource != null) {
+            builder._configuredAppResource_(this._configuredAppResource.deepCopy());
+        }
+        if (this._configuredClearingHouse != null) {
+            builder._configuredClearingHouse_(this._configuredClearingHouse.deepCopy());
+        }
+        return builder.build();
     }
 
     // accessor method implementations as derived from the IDS Information Model ontology

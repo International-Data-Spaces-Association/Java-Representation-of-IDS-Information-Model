@@ -7,7 +7,7 @@ import java.util.List;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class BrokerCatalogBuilder {
+public class BrokerCatalogBuilder implements Builder<BrokerCatalog> {
 
     private BrokerCatalogImpl brokerCatalogImpl;
 
@@ -50,7 +50,8 @@ public class BrokerCatalogBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public BrokerCatalog build() throws ConstraintViolationException {
+    @Override
+    public BrokerCatalog build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(brokerCatalogImpl);
         return brokerCatalogImpl;
     }

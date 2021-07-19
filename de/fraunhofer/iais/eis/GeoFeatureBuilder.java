@@ -6,7 +6,7 @@ import java.net.URI;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class GeoFeatureBuilder {
+public class GeoFeatureBuilder implements Builder<GeoFeature> {
 
     private GeoFeatureImpl geoFeatureImpl;
 
@@ -27,7 +27,8 @@ public class GeoFeatureBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public GeoFeature build() throws ConstraintViolationException {
+    @Override
+    public GeoFeature build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(geoFeatureImpl);
         return geoFeatureImpl;
     }

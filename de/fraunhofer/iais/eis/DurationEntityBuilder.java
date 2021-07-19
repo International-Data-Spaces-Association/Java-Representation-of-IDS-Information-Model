@@ -6,7 +6,7 @@ import java.net.URI;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class DurationEntityBuilder {
+public class DurationEntityBuilder implements Builder<DurationEntity> {
 
     private DurationEntityImpl durationEntityImpl;
 
@@ -38,7 +38,8 @@ public class DurationEntityBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public DurationEntity build() throws ConstraintViolationException {
+    @Override
+    public DurationEntity build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(durationEntityImpl);
         return durationEntityImpl;
     }

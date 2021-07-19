@@ -96,6 +96,11 @@ public class EventAgreementImpl implements EventAgreement {
         return VocabUtil.getInstance().toRdf(this);
     }
 
+    @Override
+    public String toString() {
+        return this.toRdf();
+    }
+
     public List<TypedLiteral> getLabel() {
         return this.label;
     }
@@ -181,6 +186,48 @@ public class EventAgreementImpl implements EventAgreement {
                 Objects.equals(this._prohibition, other._prohibition) &&
                 Objects.equals(this._obligation, other._obligation);
         }
+    }
+
+    @Override
+    public EventAgreement deepCopy() {
+        EventAgreementBuilder builder = new EventAgreementBuilder();
+        if (this._contractStart != null) {
+            builder._contractStart_((XMLGregorianCalendar) this._contractStart.clone());
+        }
+        if (this._contractEnd != null) {
+            builder._contractEnd_((XMLGregorianCalendar) this._contractEnd.clone());
+        }
+        if (this._contractDate != null) {
+            builder._contractDate_((XMLGregorianCalendar) this._contractDate.clone());
+        }
+        if (this._provider != null) {
+            builder._provider_(URI.create(this._provider.toString()));
+        }
+        if (this._consumer != null) {
+            builder._consumer_(URI.create(this._consumer.toString()));
+        }
+        if (this._contractDocument != null) {
+            builder._contractDocument_(this._contractDocument.deepCopy());
+        }
+        if (this._contractAnnex != null) {
+            builder._contractAnnex_(this._contractAnnex.deepCopy());
+        }
+        for (Permission item : this._permission) {
+            if (item != null) {
+                builder._permission_(item.deepCopy());
+            }
+        }
+        for (Prohibition item : this._prohibition) {
+            if (item != null) {
+                builder._prohibition_(item.deepCopy());
+            }
+        }
+        for (Duty item : this._obligation) {
+            if (item != null) {
+                builder._obligation_(item.deepCopy());
+            }
+        }
+        return builder.build();
     }
 
     // accessor method implementations as derived from the IDS Information Model ontology

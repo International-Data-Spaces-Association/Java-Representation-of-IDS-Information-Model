@@ -121,6 +121,11 @@ public class TrustedConnectorImpl implements TrustedConnector {
         return VocabUtil.getInstance().toRdf(this);
     }
 
+    @Override
+    public String toString() {
+        return this.toRdf();
+    }
+
     public List<TypedLiteral> getLabel() {
         return this.label;
     }
@@ -220,6 +225,71 @@ public class TrustedConnectorImpl implements TrustedConnector {
                 Objects.equals(this._title, other._title) &&
                 Objects.equals(this._description, other._description);
         }
+    }
+
+    @Override
+    public TrustedConnector deepCopy() {
+        TrustedConnectorBuilder builder = new TrustedConnectorBuilder();
+        if (this._hasDefaultEndpoint != null) {
+            builder._hasDefaultEndpoint_(this._hasDefaultEndpoint.deepCopy());
+        }
+        for (ConnectorEndpoint item : this._hasEndpoint) {
+            if (item != null) {
+                builder._hasEndpoint_(item.deepCopy());
+            }
+        }
+        if (this._authInfo != null) {
+            builder._authInfo_(this._authInfo.deepCopy());
+        }
+        for (ResourceCatalog item : this._resourceCatalog) {
+            if (item != null) {
+                builder._resourceCatalog_(item.deepCopy());
+            }
+        }
+        for (URI item : this._hasAgent) {
+            if (item != null) {
+                builder._hasAgent_(URI.create(item.toString()));
+            }
+        }
+        builder._securityProfile_(this._securityProfile);
+        for (SecurityGuarantee item : this._extendedGuarantee) {
+            builder._extendedGuarantee_(item);
+        }
+        if (this._maintainer != null) {
+            builder._maintainer_(URI.create(this._maintainer.toString()));
+        }
+        if (this._curator != null) {
+            builder._curator_(URI.create(this._curator.toString()));
+        }
+        if (this._physicalLocation != null) {
+            builder._physicalLocation_(this._physicalLocation.deepCopy());
+        }
+        for (String item : this._inboundModelVersion) {
+            builder._inboundModelVersion_(item);
+        }
+        builder._outboundModelVersion_(this._outboundModelVersion);
+        if (this._componentCertification != null) {
+            builder._componentCertification_(this._componentCertification.deepCopy());
+        }
+        if (this._publicKey != null) {
+            builder._publicKey_(this._publicKey.deepCopy());
+        }
+        builder._version_(this._version);
+        for (TypedLiteral item : this._title) {
+            if (item != null && item.getLanguage() != null) {
+                builder._title_(new TypedLiteral(item.getValue(), item.getLanguage()));
+            } else {
+                builder._title_(new TypedLiteral(item.getValue(), URI.create(item.getType())));
+            }
+        }
+        for (TypedLiteral item : this._description) {
+            if (item != null && item.getLanguage() != null) {
+                builder._description_(new TypedLiteral(item.getValue(), item.getLanguage()));
+            } else {
+                builder._description_(new TypedLiteral(item.getValue(), URI.create(item.getType())));
+            }
+        }
+        return builder.build();
     }
 
     // accessor method implementations as derived from the IDS Information Model ontology

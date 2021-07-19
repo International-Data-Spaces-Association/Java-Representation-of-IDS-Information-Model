@@ -70,6 +70,11 @@ public class InstantImpl implements Instant {
         return VocabUtil.getInstance().toRdf(this);
     }
 
+    @Override
+    public String toString() {
+        return this.toRdf();
+    }
+
     public List<TypedLiteral> getLabel() {
         return this.label;
     }
@@ -139,6 +144,16 @@ public class InstantImpl implements Instant {
             return Objects.equals(this._dateTime, other._dateTime) &&
                 Objects.equals(this._hasDuration, other._hasDuration);
         }
+    }
+
+    @Override
+    public Instant deepCopy() {
+        InstantBuilder builder = new InstantBuilder();
+        if (this._dateTime != null) {
+            builder._dateTime_((XMLGregorianCalendar) this._dateTime.clone());
+        }
+        builder._hasDuration_(this._hasDuration);
+        return builder.build();
     }
 
     // accessor method implementations as derived from the IDS Information Model ontology

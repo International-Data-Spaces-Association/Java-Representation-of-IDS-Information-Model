@@ -6,7 +6,7 @@ import java.net.URI;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class DynamicAttributeTokenBuilder {
+public class DynamicAttributeTokenBuilder implements Builder<DynamicAttributeToken> {
 
     private DynamicAttributeTokenImpl dynamicAttributeTokenImpl;
 
@@ -49,7 +49,8 @@ public class DynamicAttributeTokenBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public DynamicAttributeToken build() throws ConstraintViolationException {
+    @Override
+    public DynamicAttributeToken build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(dynamicAttributeTokenImpl);
         return dynamicAttributeTokenImpl;
     }

@@ -70,6 +70,11 @@ public class AgentImpl implements Agent {
         return VocabUtil.getInstance().toRdf(this);
     }
 
+    @Override
+    public String toString() {
+        return this.toRdf();
+    }
+
     public List<TypedLiteral> getLabel() {
         return this.label;
     }
@@ -139,6 +144,26 @@ public class AgentImpl implements Agent {
             return Objects.equals(this._title, other._title) &&
                 Objects.equals(this._description, other._description);
         }
+    }
+
+    @Override
+    public Agent deepCopy() {
+        AgentBuilder builder = new AgentBuilder();
+        for (TypedLiteral item : this._title) {
+            if (item != null && item.getLanguage() != null) {
+                builder._title_(new TypedLiteral(item.getValue(), item.getLanguage()));
+            } else {
+                builder._title_(new TypedLiteral(item.getValue(), URI.create(item.getType())));
+            }
+        }
+        for (TypedLiteral item : this._description) {
+            if (item != null && item.getLanguage() != null) {
+                builder._description_(new TypedLiteral(item.getValue(), item.getLanguage()));
+            } else {
+                builder._description_(new TypedLiteral(item.getValue(), URI.create(item.getType())));
+            }
+        }
+        return builder.build();
     }
 
     // accessor method implementations as derived from the IDS Information Model ontology

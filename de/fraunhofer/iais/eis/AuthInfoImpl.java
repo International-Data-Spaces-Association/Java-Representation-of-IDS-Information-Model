@@ -71,6 +71,11 @@ public class AuthInfoImpl implements AuthInfo {
         return VocabUtil.getInstance().toRdf(this);
     }
 
+    @Override
+    public String toString() {
+        return this.toRdf();
+    }
+
     public List<TypedLiteral> getLabel() {
         return this.label;
     }
@@ -140,6 +145,16 @@ public class AuthInfoImpl implements AuthInfo {
             return Objects.equals(this._authService, other._authService) &&
                 Objects.equals(this._authStandard, other._authStandard);
         }
+    }
+
+    @Override
+    public AuthInfo deepCopy() {
+        AuthInfoBuilder builder = new AuthInfoBuilder();
+        if (this._authService != null) {
+            builder._authService_(URI.create(this._authService.toString()));
+        }
+        builder._authStandard_(this._authStandard);
+        return builder.build();
     }
 
     // accessor method implementations as derived from the IDS Information Model ontology

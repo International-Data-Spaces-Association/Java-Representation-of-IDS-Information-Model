@@ -88,6 +88,11 @@ public class ParticipantCertificationImpl implements ParticipantCertification {
         return VocabUtil.getInstance().toRdf(this);
     }
 
+    @Override
+    public String toString() {
+        return this.toRdf();
+    }
+
     public List<TypedLiteral> getLabel() {
         return this.label;
     }
@@ -167,6 +172,37 @@ public class ParticipantCertificationImpl implements ParticipantCertification {
                 Objects.equals(this._title, other._title) &&
                 Objects.equals(this._description, other._description);
         }
+    }
+
+    @Override
+    public ParticipantCertification deepCopy() {
+        ParticipantCertificationBuilder builder = new ParticipantCertificationBuilder();
+        if (this._membershipEnd != null) {
+            builder._membershipEnd_((XMLGregorianCalendar) this._membershipEnd.clone());
+        }
+        builder._certificationLevel_(this._certificationLevel);
+        if (this._lastValidDate != null) {
+            builder._lastValidDate_((XMLGregorianCalendar) this._lastValidDate.clone());
+        }
+        if (this._evaluationFacility != null) {
+            builder._evaluationFacility_(this._evaluationFacility.deepCopy());
+        }
+        builder._version_(this._version);
+        for (TypedLiteral item : this._title) {
+            if (item != null && item.getLanguage() != null) {
+                builder._title_(new TypedLiteral(item.getValue(), item.getLanguage()));
+            } else {
+                builder._title_(new TypedLiteral(item.getValue(), URI.create(item.getType())));
+            }
+        }
+        for (TypedLiteral item : this._description) {
+            if (item != null && item.getLanguage() != null) {
+                builder._description_(new TypedLiteral(item.getValue(), item.getLanguage()));
+            } else {
+                builder._description_(new TypedLiteral(item.getValue(), URI.create(item.getType())));
+            }
+        }
+        return builder.build();
     }
 
     // accessor method implementations as derived from the IDS Information Model ontology

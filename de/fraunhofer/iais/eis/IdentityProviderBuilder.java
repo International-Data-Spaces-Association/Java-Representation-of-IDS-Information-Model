@@ -7,7 +7,7 @@ import java.util.List;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class IdentityProviderBuilder {
+public class IdentityProviderBuilder implements Builder<IdentityProvider> {
 
     private IdentityProviderImpl identityProviderImpl;
 
@@ -171,7 +171,8 @@ public class IdentityProviderBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public IdentityProvider build() throws ConstraintViolationException {
+    @Override
+    public IdentityProvider build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(identityProviderImpl);
         return identityProviderImpl;
     }

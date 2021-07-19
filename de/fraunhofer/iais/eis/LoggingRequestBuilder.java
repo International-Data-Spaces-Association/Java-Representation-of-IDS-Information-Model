@@ -8,7 +8,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class LoggingRequestBuilder {
+public class LoggingRequestBuilder implements Builder<LoggingRequest> {
 
     private LoggingRequestImpl loggingRequestImpl;
 
@@ -172,7 +172,8 @@ public class LoggingRequestBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public LoggingRequest build() throws ConstraintViolationException {
+    @Override
+    public LoggingRequest build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(loggingRequestImpl);
         return loggingRequestImpl;
     }

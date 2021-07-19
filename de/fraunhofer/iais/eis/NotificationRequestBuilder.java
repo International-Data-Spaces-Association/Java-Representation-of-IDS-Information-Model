@@ -8,7 +8,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class NotificationRequestBuilder {
+public class NotificationRequestBuilder implements Builder<NotificationRequest> {
 
     private NotificationRequestImpl notificationRequestImpl;
 
@@ -172,7 +172,8 @@ public class NotificationRequestBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public NotificationRequest build() throws ConstraintViolationException {
+    @Override
+    public NotificationRequest build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(notificationRequestImpl);
         return notificationRequestImpl;
     }

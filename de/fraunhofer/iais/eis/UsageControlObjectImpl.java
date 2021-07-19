@@ -102,6 +102,11 @@ public class UsageControlObjectImpl implements UsageControlObject {
         return VocabUtil.getInstance().toRdf(this);
     }
 
+    @Override
+    public String toString() {
+        return this.toRdf();
+    }
+
     public List<TypedLiteral> getLabel() {
         return this.label;
     }
@@ -189,6 +194,45 @@ public class UsageControlObjectImpl implements UsageControlObject {
                 Objects.equals(this._modified, other._modified) &&
                 Objects.equals(this._action, other._action);
         }
+    }
+
+    @Override
+    public UsageControlObject deepCopy() {
+        UsageControlObjectBuilder builder = new UsageControlObjectBuilder();
+        if (this._data != null) {
+            builder._data_(URI.create(this._data.toString()));
+        }
+        if (this._user != null) {
+            builder._user_(this._user.deepCopy());
+        }
+        if (this._source != null) {
+            builder._source_(URI.create(this._source.toString()));
+        }
+        for (ContractAgreement item : this._contract) {
+            if (item != null) {
+                builder._contract_(item.deepCopy());
+            }
+        }
+        builder._usageDuration_(this._usageDuration);
+        if (this._accessed != null) {
+            builder._accessed_((XMLGregorianCalendar) this._accessed.clone());
+        }
+        for (ArtifactState item : this._hasState) {
+            builder._hasState_(item);
+        }
+        if (this._requester != null) {
+            builder._requester_(URI.create(this._requester.toString()));
+        }
+        if (this._created != null) {
+            builder._created_((XMLGregorianCalendar) this._created.clone());
+        }
+        if (this._modified != null) {
+            builder._modified_((XMLGregorianCalendar) this._modified.clone());
+        }
+        for (Action item : this._action) {
+            builder._action_(item);
+        }
+        return builder.build();
     }
 
     // accessor method implementations as derived from the IDS Information Model ontology

@@ -66,6 +66,11 @@ public class ClearingHouseCatalogImpl implements ClearingHouseCatalog {
         return VocabUtil.getInstance().toRdf(this);
     }
 
+    @Override
+    public String toString() {
+        return this.toRdf();
+    }
+
     public List<TypedLiteral> getLabel() {
         return this.label;
     }
@@ -133,6 +138,17 @@ public class ClearingHouseCatalogImpl implements ClearingHouseCatalog {
             ClearingHouseCatalogImpl other = (ClearingHouseCatalogImpl) obj;
             return Objects.equals(this._listedClearingHouse, other._listedClearingHouse);
         }
+    }
+
+    @Override
+    public ClearingHouseCatalog deepCopy() {
+        ClearingHouseCatalogBuilder builder = new ClearingHouseCatalogBuilder();
+        for (ClearingHouse item : this._listedClearingHouse) {
+            if (item != null) {
+                builder._listedClearingHouse_(item.deepCopy());
+            }
+        }
+        return builder.build();
     }
 
     // accessor method implementations as derived from the IDS Information Model ontology

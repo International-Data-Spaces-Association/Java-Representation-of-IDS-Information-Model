@@ -77,6 +77,11 @@ public class PersonImpl implements Person {
         return VocabUtil.getInstance().toRdf(this);
     }
 
+    @Override
+    public String toString() {
+        return this.toRdf();
+    }
+
     public List<TypedLiteral> getLabel() {
         return this.label;
     }
@@ -152,6 +157,21 @@ public class PersonImpl implements Person {
                 Objects.equals(this._emailAddress, other._emailAddress) &&
                 Objects.equals(this._homepage, other._homepage);
         }
+    }
+
+    @Override
+    public Person deepCopy() {
+        PersonBuilder builder = new PersonBuilder();
+        builder._familyName_(this._familyName);
+        builder._givenName_(this._givenName);
+        for (String item : this._phoneNumber) {
+            builder._phoneNumber_(item);
+        }
+        for (String item : this._emailAddress) {
+            builder._emailAddress_(item);
+        }
+        builder._homepage_(this._homepage);
+        return builder.build();
     }
 
     // accessor method implementations as derived from the IDS Information Model ontology

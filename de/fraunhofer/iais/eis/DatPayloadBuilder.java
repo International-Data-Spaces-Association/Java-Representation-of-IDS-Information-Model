@@ -8,7 +8,7 @@ import java.util.List;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class DatPayloadBuilder {
+public class DatPayloadBuilder implements Builder<DatPayload> {
 
     private DatPayloadImpl datPayloadImpl;
 
@@ -172,7 +172,8 @@ public class DatPayloadBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public DatPayload build() throws ConstraintViolationException {
+    @Override
+    public DatPayload build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(datPayloadImpl);
         return datPayloadImpl;
     }

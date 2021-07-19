@@ -8,7 +8,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class SpatialRequestBuilder {
+public class SpatialRequestBuilder implements Builder<SpatialRequest> {
 
     private SpatialRequestImpl spatialRequestImpl;
 
@@ -172,7 +172,8 @@ public class SpatialRequestBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public SpatialRequest build() throws ConstraintViolationException {
+    @Override
+    public SpatialRequest build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(spatialRequestImpl);
         return spatialRequestImpl;
     }

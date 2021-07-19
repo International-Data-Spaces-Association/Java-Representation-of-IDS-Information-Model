@@ -7,7 +7,7 @@ import java.util.List;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class RouteStepBuilder {
+public class RouteStepBuilder implements Builder<RouteStep> {
 
     private RouteStepImpl routeStepImpl;
 
@@ -204,7 +204,8 @@ public class RouteStepBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public RouteStep build() throws ConstraintViolationException {
+    @Override
+    public RouteStep build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(routeStepImpl);
         return routeStepImpl;
     }

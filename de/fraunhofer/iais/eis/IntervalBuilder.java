@@ -6,7 +6,7 @@ import java.net.URI;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class IntervalBuilder {
+public class IntervalBuilder implements Builder<Interval> {
 
     private IntervalImpl intervalImpl;
 
@@ -60,7 +60,8 @@ public class IntervalBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public Interval build() throws ConstraintViolationException {
+    @Override
+    public Interval build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(intervalImpl);
         return intervalImpl;
     }

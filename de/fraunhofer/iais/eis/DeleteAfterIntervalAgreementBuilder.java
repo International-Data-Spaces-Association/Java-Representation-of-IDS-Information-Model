@@ -8,7 +8,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class DeleteAfterIntervalAgreementBuilder {
+public class DeleteAfterIntervalAgreementBuilder implements Builder<DeleteAfterIntervalAgreement> {
 
     private DeleteAfterIntervalAgreementImpl deleteAfterIntervalAgreementImpl;
 
@@ -172,7 +172,8 @@ public class DeleteAfterIntervalAgreementBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public DeleteAfterIntervalAgreement build() throws ConstraintViolationException {
+    @Override
+    public DeleteAfterIntervalAgreement build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(deleteAfterIntervalAgreementImpl);
         return deleteAfterIntervalAgreementImpl;
     }

@@ -8,7 +8,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class ComponentCertificationBuilder {
+public class ComponentCertificationBuilder implements Builder<ComponentCertification> {
 
     private ComponentCertificationImpl componentCertificationImpl;
 
@@ -117,7 +117,8 @@ public class ComponentCertificationBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public ComponentCertification build() throws ConstraintViolationException {
+    @Override
+    public ComponentCertification build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(componentCertificationImpl);
         return componentCertificationImpl;
     }

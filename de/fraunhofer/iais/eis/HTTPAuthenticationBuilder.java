@@ -6,7 +6,7 @@ import java.net.URI;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class HTTPAuthenticationBuilder {
+public class HTTPAuthenticationBuilder implements Builder<HTTPAuthentication> {
 
     private HTTPAuthenticationImpl hTTPAuthenticationImpl;
 
@@ -60,7 +60,8 @@ public class HTTPAuthenticationBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public HTTPAuthentication build() throws ConstraintViolationException {
+    @Override
+    public HTTPAuthentication build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(hTTPAuthenticationImpl);
         return hTTPAuthenticationImpl;
     }

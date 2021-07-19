@@ -67,6 +67,11 @@ public class AppResourceCatalogImpl implements AppResourceCatalog {
         return VocabUtil.getInstance().toRdf(this);
     }
 
+    @Override
+    public String toString() {
+        return this.toRdf();
+    }
+
     public List<TypedLiteral> getLabel() {
         return this.label;
     }
@@ -134,6 +139,17 @@ public class AppResourceCatalogImpl implements AppResourceCatalog {
             AppResourceCatalogImpl other = (AppResourceCatalogImpl) obj;
             return Objects.equals(this._listedAppResource, other._listedAppResource);
         }
+    }
+
+    @Override
+    public AppResourceCatalog deepCopy() {
+        AppResourceCatalogBuilder builder = new AppResourceCatalogBuilder();
+        for (AppResource item : this._listedAppResource) {
+            if (item != null) {
+                builder._listedAppResource_(item.deepCopy());
+            }
+        }
+        return builder.build();
     }
 
     // accessor method implementations as derived from the IDS Information Model ontology

@@ -7,7 +7,7 @@ import java.util.List;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class ResourceCatalogBuilder {
+public class ResourceCatalogBuilder implements Builder<ResourceCatalog> {
 
     private ResourceCatalogImpl resourceCatalogImpl;
 
@@ -72,7 +72,8 @@ public class ResourceCatalogBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public ResourceCatalog build() throws ConstraintViolationException {
+    @Override
+    public ResourceCatalog build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(resourceCatalogImpl);
         return resourceCatalogImpl;
     }

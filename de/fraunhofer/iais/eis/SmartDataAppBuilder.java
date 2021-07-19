@@ -7,7 +7,7 @@ import java.util.List;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class SmartDataAppBuilder {
+public class SmartDataAppBuilder implements Builder<SmartDataApp> {
 
     private SmartDataAppImpl smartDataAppImpl;
 
@@ -105,7 +105,8 @@ public class SmartDataAppBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public SmartDataApp build() throws ConstraintViolationException {
+    @Override
+    public SmartDataApp build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(smartDataAppImpl);
         return smartDataAppImpl;
     }

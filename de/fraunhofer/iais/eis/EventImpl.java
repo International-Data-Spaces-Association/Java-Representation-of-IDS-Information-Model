@@ -63,6 +63,11 @@ public class EventImpl implements Event {
         return VocabUtil.getInstance().toRdf(this);
     }
 
+    @Override
+    public String toString() {
+        return this.toRdf();
+    }
+
     public List<TypedLiteral> getLabel() {
         return this.label;
     }
@@ -128,6 +133,13 @@ public class EventImpl implements Event {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public Event deepCopy() {
+        EventBuilder builder = new EventBuilder();
+
+        return builder.build();
     }
 
 }

@@ -7,7 +7,7 @@ import java.util.List;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class SystemAdapterBuilder {
+public class SystemAdapterBuilder implements Builder<SystemAdapter> {
 
     private SystemAdapterImpl systemAdapterImpl;
 
@@ -105,7 +105,8 @@ public class SystemAdapterBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public SystemAdapter build() throws ConstraintViolationException {
+    @Override
+    public SystemAdapter build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(systemAdapterImpl);
         return systemAdapterImpl;
     }

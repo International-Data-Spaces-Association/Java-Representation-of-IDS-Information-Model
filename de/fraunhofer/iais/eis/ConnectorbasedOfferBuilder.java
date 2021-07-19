@@ -8,7 +8,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class ConnectorbasedOfferBuilder {
+public class ConnectorbasedOfferBuilder implements Builder<ConnectorbasedOffer> {
 
     private ConnectorbasedOfferImpl connectorbasedOfferImpl;
 
@@ -172,7 +172,8 @@ public class ConnectorbasedOfferBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public ConnectorbasedOffer build() throws ConstraintViolationException {
+    @Override
+    public ConnectorbasedOffer build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(connectorbasedOfferImpl);
         return connectorbasedOfferImpl;
     }

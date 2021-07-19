@@ -114,6 +114,11 @@ public class DatPayloadImpl implements DatPayload {
         return VocabUtil.getInstance().toRdf(this);
     }
 
+    @Override
+    public String toString() {
+        return this.toRdf();
+    }
+
     public List<TypedLiteral> getLabel() {
         return this.label;
     }
@@ -201,6 +206,29 @@ public class DatPayloadImpl implements DatPayload {
                 Objects.equals(this._sub, other._sub) &&
                 Objects.equals(this._securityProfile, other._securityProfile);
         }
+    }
+
+    @Override
+    public DatPayload deepCopy() {
+        DatPayloadBuilder builder = new DatPayloadBuilder();
+        for (SecurityGuarantee item : this._extendedGuarantee) {
+            builder._extendedGuarantee_(item);
+        }
+        for (String item : this._transportCertsSha256) {
+            builder._transportCertsSha256_(item);
+        }
+        builder._aud_(this._aud);
+        builder._exp_(this._exp);
+        builder._iat_(this._iat);
+        builder._iss_(this._iss);
+        builder._nbf_(this._nbf);
+        if (this._referringConnector != null) {
+            builder._referringConnector_(URI.create(this._referringConnector.toString()));
+        }
+        builder._scope_(this._scope);
+        builder._sub_(this._sub);
+        builder._securityProfile_(this._securityProfile);
+        return builder.build();
     }
 
     // accessor method implementations as derived from the IDS Information Model ontology

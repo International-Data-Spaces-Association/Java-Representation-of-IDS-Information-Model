@@ -111,6 +111,11 @@ public class ParticipantImpl implements Participant {
         return VocabUtil.getInstance().toRdf(this);
     }
 
+    @Override
+    public String toString() {
+        return this.toRdf();
+    }
+
     public List<TypedLiteral> getLabel() {
         return this.label;
     }
@@ -206,6 +211,63 @@ public class ParticipantImpl implements Participant {
                 Objects.equals(this._description, other._description) &&
                 Objects.equals(this._version, other._version);
         }
+    }
+
+    @Override
+    public Participant deepCopy() {
+        ParticipantBuilder builder = new ParticipantBuilder();
+        for (String item : this._legalName) {
+            builder._legalName_(item);
+        }
+        if (this._primarySite != null) {
+            builder._primarySite_(this._primarySite.deepCopy());
+        }
+        for (String item : this._corporateEmailAddress) {
+            builder._corporateEmailAddress_(item);
+        }
+        if (this._corporateHomepage != null) {
+            builder._corporateHomepage_(URI.create(this._corporateHomepage.toString()));
+        }
+        for (Participant item : this._memberParticipant) {
+            if (item != null) {
+                builder._memberParticipant_(item.deepCopy());
+            }
+        }
+        if (this._participantCertification != null) {
+            builder._participantCertification_(this._participantCertification.deepCopy());
+        }
+        if (this._participantRefinement != null) {
+            builder._participantRefinement_(this._participantRefinement.deepCopy());
+        }
+        for (BusinessIdentifier item : this._businessIdentifier) {
+            if (item != null) {
+                builder._businessIdentifier_(item.deepCopy());
+            }
+        }
+        builder._vatID_(this._vatID);
+        builder._legalForm_(this._legalForm);
+        builder._jurisdiction_(this._jurisdiction);
+        for (Person item : this._memberPerson) {
+            if (item != null) {
+                builder._memberPerson_(item.deepCopy());
+            }
+        }
+        for (TypedLiteral item : this._title) {
+            if (item != null && item.getLanguage() != null) {
+                builder._title_(new TypedLiteral(item.getValue(), item.getLanguage()));
+            } else {
+                builder._title_(new TypedLiteral(item.getValue(), URI.create(item.getType())));
+            }
+        }
+        for (TypedLiteral item : this._description) {
+            if (item != null && item.getLanguage() != null) {
+                builder._description_(new TypedLiteral(item.getValue(), item.getLanguage()));
+            } else {
+                builder._description_(new TypedLiteral(item.getValue(), URI.create(item.getType())));
+            }
+        }
+        builder._version_(this._version);
+        return builder.build();
     }
 
     // accessor method implementations as derived from the IDS Information Model ontology

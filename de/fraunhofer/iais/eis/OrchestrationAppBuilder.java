@@ -7,7 +7,7 @@ import java.util.List;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class OrchestrationAppBuilder {
+public class OrchestrationAppBuilder implements Builder<OrchestrationApp> {
 
     private OrchestrationAppImpl orchestrationAppImpl;
 
@@ -105,7 +105,8 @@ public class OrchestrationAppBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public OrchestrationApp build() throws ConstraintViolationException {
+    @Override
+    public OrchestrationApp build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(orchestrationAppImpl);
         return orchestrationAppImpl;
     }

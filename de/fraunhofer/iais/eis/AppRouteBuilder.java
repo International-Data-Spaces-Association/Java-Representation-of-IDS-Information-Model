@@ -7,7 +7,7 @@ import java.util.List;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class AppRouteBuilder {
+public class AppRouteBuilder implements Builder<AppRoute> {
 
     private AppRouteImpl appRouteImpl;
 
@@ -193,7 +193,8 @@ public class AppRouteBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public AppRoute build() throws ConstraintViolationException {
+    @Override
+    public AppRoute build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(appRouteImpl);
         return appRouteImpl;
     }

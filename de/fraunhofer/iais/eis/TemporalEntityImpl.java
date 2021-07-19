@@ -65,6 +65,11 @@ public class TemporalEntityImpl implements TemporalEntity {
         return VocabUtil.getInstance().toRdf(this);
     }
 
+    @Override
+    public String toString() {
+        return this.toRdf();
+    }
+
     public List<TypedLiteral> getLabel() {
         return this.label;
     }
@@ -132,6 +137,13 @@ public class TemporalEntityImpl implements TemporalEntity {
             TemporalEntityImpl other = (TemporalEntityImpl) obj;
             return Objects.equals(this._hasDuration, other._hasDuration);
         }
+    }
+
+    @Override
+    public TemporalEntity deepCopy() {
+        TemporalEntityBuilder builder = new TemporalEntityBuilder();
+        builder._hasDuration_(this._hasDuration);
+        return builder.build();
     }
 
     // accessor method implementations as derived from the IDS Information Model ontology

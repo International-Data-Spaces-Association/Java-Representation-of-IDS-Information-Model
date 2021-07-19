@@ -7,7 +7,7 @@ import java.util.List;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class EndpointBuilder {
+public class EndpointBuilder implements Builder<Endpoint> {
 
     private EndpointImpl endpointImpl;
 
@@ -116,7 +116,8 @@ public class EndpointBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public Endpoint build() throws ConstraintViolationException {
+    @Override
+    public Endpoint build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(endpointImpl);
         return endpointImpl;
     }

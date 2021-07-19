@@ -7,7 +7,7 @@ import java.util.List;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class ConnectorCatalogBuilder {
+public class ConnectorCatalogBuilder implements Builder<ConnectorCatalog> {
 
     private ConnectorCatalogImpl connectorCatalogImpl;
 
@@ -50,7 +50,8 @@ public class ConnectorCatalogBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public ConnectorCatalog build() throws ConstraintViolationException {
+    @Override
+    public ConnectorCatalog build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(connectorCatalogImpl);
         return connectorCatalogImpl;
     }

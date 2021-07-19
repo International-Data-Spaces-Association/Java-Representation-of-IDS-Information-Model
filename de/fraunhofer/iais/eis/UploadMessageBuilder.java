@@ -8,7 +8,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class UploadMessageBuilder {
+public class UploadMessageBuilder implements Builder<UploadMessage> {
 
     private UploadMessageImpl uploadMessageImpl;
 
@@ -172,7 +172,8 @@ public class UploadMessageBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public UploadMessage build() throws ConstraintViolationException {
+    @Override
+    public UploadMessage build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(uploadMessageImpl);
         return uploadMessageImpl;
     }

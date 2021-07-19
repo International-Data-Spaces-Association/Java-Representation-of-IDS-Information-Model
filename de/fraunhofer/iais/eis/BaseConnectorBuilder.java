@@ -7,7 +7,7 @@ import java.util.List;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class BaseConnectorBuilder {
+public class BaseConnectorBuilder implements Builder<BaseConnector> {
 
     private BaseConnectorImpl baseConnectorImpl;
 
@@ -292,7 +292,8 @@ public class BaseConnectorBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public BaseConnector build() throws ConstraintViolationException {
+    @Override
+    public BaseConnector build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(baseConnectorImpl);
         return baseConnectorImpl;
     }

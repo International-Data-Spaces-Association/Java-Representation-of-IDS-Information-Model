@@ -8,7 +8,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class AppAvailableMessageBuilder {
+public class AppAvailableMessageBuilder implements Builder<AppAvailableMessage> {
 
     private AppAvailableMessageImpl appAvailableMessageImpl;
 
@@ -183,7 +183,8 @@ public class AppAvailableMessageBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public AppAvailableMessage build() throws ConstraintViolationException {
+    @Override
+    public AppAvailableMessage build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(appAvailableMessageImpl);
         return appAvailableMessageImpl;
     }

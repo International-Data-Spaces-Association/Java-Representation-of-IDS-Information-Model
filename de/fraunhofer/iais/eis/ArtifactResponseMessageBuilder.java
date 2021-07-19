@@ -8,7 +8,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class ArtifactResponseMessageBuilder {
+public class ArtifactResponseMessageBuilder implements Builder<ArtifactResponseMessage> {
 
     private ArtifactResponseMessageImpl artifactResponseMessageImpl;
 
@@ -172,7 +172,8 @@ public class ArtifactResponseMessageBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public ArtifactResponseMessage build() throws ConstraintViolationException {
+    @Override
+    public ArtifactResponseMessage build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(artifactResponseMessageImpl);
         return artifactResponseMessageImpl;
     }

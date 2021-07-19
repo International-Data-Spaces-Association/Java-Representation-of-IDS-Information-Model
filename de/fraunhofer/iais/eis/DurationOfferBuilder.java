@@ -8,7 +8,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class DurationOfferBuilder {
+public class DurationOfferBuilder implements Builder<DurationOffer> {
 
     private DurationOfferImpl durationOfferImpl;
 
@@ -172,7 +172,8 @@ public class DurationOfferBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public DurationOffer build() throws ConstraintViolationException {
+    @Override
+    public DurationOffer build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(durationOfferImpl);
         return durationOfferImpl;
     }

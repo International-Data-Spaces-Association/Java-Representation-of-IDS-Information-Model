@@ -8,7 +8,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class MessageProcessedNotificationMessageBuilder {
+public class MessageProcessedNotificationMessageBuilder implements Builder<MessageProcessedNotificationMessage> {
 
     private MessageProcessedNotificationMessageImpl messageProcessedNotificationMessageImpl;
 
@@ -172,7 +172,8 @@ public class MessageProcessedNotificationMessageBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public MessageProcessedNotificationMessage build() throws ConstraintViolationException {
+    @Override
+    public MessageProcessedNotificationMessage build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(messageProcessedNotificationMessageImpl);
         return messageProcessedNotificationMessageImpl;
     }

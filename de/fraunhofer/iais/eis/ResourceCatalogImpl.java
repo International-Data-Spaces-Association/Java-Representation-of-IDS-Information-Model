@@ -69,6 +69,11 @@ public class ResourceCatalogImpl implements ResourceCatalog {
         return VocabUtil.getInstance().toRdf(this);
     }
 
+    @Override
+    public String toString() {
+        return this.toRdf();
+    }
+
     public List<TypedLiteral> getLabel() {
         return this.label;
     }
@@ -138,6 +143,22 @@ public class ResourceCatalogImpl implements ResourceCatalog {
             return Objects.equals(this._offeredResource, other._offeredResource) &&
                 Objects.equals(this._requestedResource, other._requestedResource);
         }
+    }
+
+    @Override
+    public ResourceCatalog deepCopy() {
+        ResourceCatalogBuilder builder = new ResourceCatalogBuilder();
+        for (Resource item : this._offeredResource) {
+            if (item != null) {
+                builder._offeredResource_(item.deepCopy());
+            }
+        }
+        for (Resource item : this._requestedResource) {
+            if (item != null) {
+                builder._requestedResource_(item.deepCopy());
+            }
+        }
+        return builder.build();
     }
 
     // accessor method implementations as derived from the IDS Information Model ontology

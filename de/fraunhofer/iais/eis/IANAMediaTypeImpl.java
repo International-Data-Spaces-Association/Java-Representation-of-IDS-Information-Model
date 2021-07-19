@@ -65,6 +65,11 @@ public class IANAMediaTypeImpl implements IANAMediaType {
         return VocabUtil.getInstance().toRdf(this);
     }
 
+    @Override
+    public String toString() {
+        return this.toRdf();
+    }
+
     public List<TypedLiteral> getLabel() {
         return this.label;
     }
@@ -132,6 +137,13 @@ public class IANAMediaTypeImpl implements IANAMediaType {
             IANAMediaTypeImpl other = (IANAMediaTypeImpl) obj;
             return Objects.equals(this._filenameExtension, other._filenameExtension);
         }
+    }
+
+    @Override
+    public IANAMediaType deepCopy() {
+        IANAMediaTypeBuilder builder = new IANAMediaTypeBuilder();
+        builder._filenameExtension_(this._filenameExtension);
+        return builder.build();
     }
 
     // accessor method implementations as derived from the IDS Information Model ontology

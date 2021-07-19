@@ -6,7 +6,7 @@ import java.net.URI;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class PublicKeyBuilder {
+public class PublicKeyBuilder implements Builder<PublicKey> {
 
     private PublicKeyImpl publicKeyImpl;
 
@@ -49,7 +49,8 @@ public class PublicKeyBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public PublicKey build() throws ConstraintViolationException {
+    @Override
+    public PublicKey build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(publicKeyImpl);
         return publicKeyImpl;
     }

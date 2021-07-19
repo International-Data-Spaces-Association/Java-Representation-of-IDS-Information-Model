@@ -68,6 +68,11 @@ public class PublicKeyImpl implements PublicKey {
         return VocabUtil.getInstance().toRdf(this);
     }
 
+    @Override
+    public String toString() {
+        return this.toRdf();
+    }
+
     public List<TypedLiteral> getLabel() {
         return this.label;
     }
@@ -137,6 +142,16 @@ public class PublicKeyImpl implements PublicKey {
             return Objects.equals(this._keyType, other._keyType) &&
                 Arrays.equals(this._keyValue, other._keyValue);
         }
+    }
+
+    @Override
+    public PublicKey deepCopy() {
+        PublicKeyBuilder builder = new PublicKeyBuilder();
+        builder._keyType_(this._keyType);
+        if (this._keyValue != null) {
+            builder._keyValue_((byte[]) this._keyValue.clone());
+        }
+        return builder.build();
     }
 
     // accessor method implementations as derived from the IDS Information Model ontology

@@ -8,7 +8,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class AudioRepresentationBuilder {
+public class AudioRepresentationBuilder implements Builder<AudioRepresentation> {
 
     private AudioRepresentationImpl audioRepresentationImpl;
 
@@ -128,7 +128,8 @@ public class AudioRepresentationBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public AudioRepresentation build() throws ConstraintViolationException {
+    @Override
+    public AudioRepresentation build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(audioRepresentationImpl);
         return audioRepresentationImpl;
     }

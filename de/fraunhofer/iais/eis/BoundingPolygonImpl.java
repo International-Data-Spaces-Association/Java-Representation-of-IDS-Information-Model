@@ -68,6 +68,11 @@ public class BoundingPolygonImpl implements BoundingPolygon {
         return VocabUtil.getInstance().toRdf(this);
     }
 
+    @Override
+    public String toString() {
+        return this.toRdf();
+    }
+
     public List<TypedLiteral> getLabel() {
         return this.label;
     }
@@ -135,6 +140,17 @@ public class BoundingPolygonImpl implements BoundingPolygon {
             BoundingPolygonImpl other = (BoundingPolygonImpl) obj;
             return Objects.equals(this._geoPoint, other._geoPoint);
         }
+    }
+
+    @Override
+    public BoundingPolygon deepCopy() {
+        BoundingPolygonBuilder builder = new BoundingPolygonBuilder();
+        for (GeoPoint item : this._geoPoint) {
+            if (item != null) {
+                builder._geoPoint_(item.deepCopy());
+            }
+        }
+        return builder.build();
     }
 
     // accessor method implementations as derived from the IDS Information Model ontology

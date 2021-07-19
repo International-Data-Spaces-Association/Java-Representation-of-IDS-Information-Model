@@ -70,6 +70,11 @@ public class DurationEntityImpl implements DurationEntity {
         return VocabUtil.getInstance().toRdf(this);
     }
 
+    @Override
+    public String toString() {
+        return this.toRdf();
+    }
+
     public List<TypedLiteral> getLabel() {
         return this.label;
     }
@@ -137,6 +142,13 @@ public class DurationEntityImpl implements DurationEntity {
             DurationEntityImpl other = (DurationEntityImpl) obj;
             return Objects.equals(this._hasDuration, other._hasDuration);
         }
+    }
+
+    @Override
+    public DurationEntity deepCopy() {
+        DurationEntityBuilder builder = new DurationEntityBuilder();
+        builder._hasDuration_(this._hasDuration);
+        return builder.build();
     }
 
     // accessor method implementations as derived from the IDS Information Model ontology

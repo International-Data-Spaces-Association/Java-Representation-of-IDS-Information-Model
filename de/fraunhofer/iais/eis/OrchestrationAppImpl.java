@@ -80,6 +80,11 @@ public class OrchestrationAppImpl implements OrchestrationApp {
         return VocabUtil.getInstance().toRdf(this);
     }
 
+    @Override
+    public String toString() {
+        return this.toRdf();
+    }
+
     public List<TypedLiteral> getLabel() {
         return this.label;
     }
@@ -155,6 +160,23 @@ public class OrchestrationAppImpl implements OrchestrationApp {
                 Objects.equals(this._appStorageConfiguration, other._appStorageConfiguration) &&
                 Objects.equals(this._supportedUsagePolicies, other._supportedUsagePolicies);
         }
+    }
+
+    @Override
+    public OrchestrationApp deepCopy() {
+        OrchestrationAppBuilder builder = new OrchestrationAppBuilder();
+        builder._appDocumentation_(this._appDocumentation);
+        for (AppEndpoint item : this._appEndpoint) {
+            if (item != null) {
+                builder._appEndpoint_(item.deepCopy());
+            }
+        }
+        builder._appEnvironmentVariables_(this._appEnvironmentVariables);
+        builder._appStorageConfiguration_(this._appStorageConfiguration);
+        for (UsagePolicyClass item : this._supportedUsagePolicies) {
+            builder._supportedUsagePolicies_(item);
+        }
+        return builder.build();
     }
 
     // accessor method implementations as derived from the IDS Information Model ontology

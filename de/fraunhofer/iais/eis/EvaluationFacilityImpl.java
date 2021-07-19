@@ -65,6 +65,11 @@ public class EvaluationFacilityImpl implements EvaluationFacility {
         return VocabUtil.getInstance().toRdf(this);
     }
 
+    @Override
+    public String toString() {
+        return this.toRdf();
+    }
+
     public List<TypedLiteral> getLabel() {
         return this.label;
     }
@@ -130,6 +135,13 @@ public class EvaluationFacilityImpl implements EvaluationFacility {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public EvaluationFacility deepCopy() {
+        EvaluationFacilityBuilder builder = new EvaluationFacilityBuilder();
+
+        return builder.build();
     }
 
 }

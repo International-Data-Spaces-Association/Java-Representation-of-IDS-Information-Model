@@ -146,6 +146,11 @@ public class TextResourceImpl implements TextResource {
         return VocabUtil.getInstance().toRdf(this);
     }
 
+    @Override
+    public String toString() {
+        return this.toRdf();
+    }
+
     public List<TypedLiteral> getLabel() {
         return this.label;
     }
@@ -265,6 +270,117 @@ public class TextResourceImpl implements TextResource {
                 Objects.equals(this._shapesGraph, other._shapesGraph) &&
                 Objects.equals(this._version, other._version);
         }
+    }
+
+    @Override
+    public TextResource deepCopy() {
+        TextResourceBuilder builder = new TextResourceBuilder();
+        if (this._standardLicense != null) {
+            builder._standardLicense_(URI.create(this._standardLicense.toString()));
+        }
+        if (this._customLicense != null) {
+            builder._customLicense_(URI.create(this._customLicense.toString()));
+        }
+        for (Resource item : this._resourcePart) {
+            if (item != null) {
+                builder._resourcePart_(item.deepCopy());
+            }
+        }
+        for (ConnectorEndpoint item : this._resourceEndpoint) {
+            if (item != null) {
+                builder._resourceEndpoint_(item.deepCopy());
+            }
+        }
+        for (ContractOffer item : this._contractOffer) {
+            if (item != null) {
+                builder._contractOffer_(item.deepCopy());
+            }
+        }
+        if (this._publisher != null) {
+            builder._publisher_(URI.create(this._publisher.toString()));
+        }
+        if (this._sovereign != null) {
+            builder._sovereign_(URI.create(this._sovereign.toString()));
+        }
+        for (Resource item : this._sample) {
+            if (item != null) {
+                builder._sample_(item.deepCopy());
+            }
+        }
+        if (this._variant != null) {
+            builder._variant_(this._variant.deepCopy());
+        }
+        builder._contentType_(this._contentType);
+        for (DigitalContent item : this._contentPart) {
+            if (item != null) {
+                builder._contentPart_(item.deepCopy());
+            }
+        }
+        for (Representation item : this._representation) {
+            if (item != null) {
+                builder._representation_(item.deepCopy());
+            }
+        }
+        for (Representation item : this._defaultRepresentation) {
+            if (item != null) {
+                builder._defaultRepresentation_(item.deepCopy());
+            }
+        }
+        for (URI item : this._theme) {
+            if (item != null) {
+                builder._theme_(URI.create(item.toString()));
+            }
+        }
+        for (TypedLiteral item : this._keyword) {
+            if (item != null && item.getLanguage() != null) {
+                builder._keyword_(new TypedLiteral(item.getValue(), item.getLanguage()));
+            } else {
+                builder._keyword_(new TypedLiteral(item.getValue(), URI.create(item.getType())));
+            }
+        }
+        for (TemporalEntity item : this._temporalCoverage) {
+            if (item != null) {
+                builder._temporalCoverage_(item.deepCopy());
+            }
+        }
+        builder._temporalResolution_(this._temporalResolution);
+        for (Location item : this._spatialCoverage) {
+            if (item != null) {
+                builder._spatialCoverage_(item.deepCopy());
+            }
+        }
+        builder._accrualPeriodicity_(this._accrualPeriodicity);
+        if (this._contentStandard != null) {
+            builder._contentStandard_(URI.create(this._contentStandard.toString()));
+        }
+        for (Language item : this._language) {
+            builder._language_(item);
+        }
+        if (this._created != null) {
+            builder._created_((XMLGregorianCalendar) this._created.clone());
+        }
+        if (this._modified != null) {
+            builder._modified_((XMLGregorianCalendar) this._modified.clone());
+        }
+        for (TypedLiteral item : this._title) {
+            if (item != null && item.getLanguage() != null) {
+                builder._title_(new TypedLiteral(item.getValue(), item.getLanguage()));
+            } else {
+                builder._title_(new TypedLiteral(item.getValue(), URI.create(item.getType())));
+            }
+        }
+        for (TypedLiteral item : this._description) {
+            if (item != null && item.getLanguage() != null) {
+                builder._description_(new TypedLiteral(item.getValue(), item.getLanguage()));
+            } else {
+                builder._description_(new TypedLiteral(item.getValue(), URI.create(item.getType())));
+            }
+        }
+        if (this._shapesGraph != null) {
+            builder._shapesGraph_(URI.create(this._shapesGraph.toString()));
+        }
+        builder._version_(this._version);
+        return builder.build();
     }
 
     // accessor method implementations as derived from the IDS Information Model ontology

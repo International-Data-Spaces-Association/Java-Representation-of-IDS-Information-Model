@@ -7,7 +7,7 @@ import java.util.List;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class PersonBuilder {
+public class PersonBuilder implements Builder<Person> {
 
     private PersonImpl personImpl;
 
@@ -105,7 +105,8 @@ public class PersonBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public Person build() throws ConstraintViolationException {
+    @Override
+    public Person build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(personImpl);
         return personImpl;
     }

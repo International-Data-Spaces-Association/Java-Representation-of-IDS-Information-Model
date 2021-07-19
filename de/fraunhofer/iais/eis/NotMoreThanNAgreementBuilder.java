@@ -8,7 +8,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class NotMoreThanNAgreementBuilder {
+public class NotMoreThanNAgreementBuilder implements Builder<NotMoreThanNAgreement> {
 
     private NotMoreThanNAgreementImpl notMoreThanNAgreementImpl;
 
@@ -172,7 +172,8 @@ public class NotMoreThanNAgreementBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public NotMoreThanNAgreement build() throws ConstraintViolationException {
+    @Override
+    public NotMoreThanNAgreement build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(notMoreThanNAgreementImpl);
         return notMoreThanNAgreementImpl;
     }

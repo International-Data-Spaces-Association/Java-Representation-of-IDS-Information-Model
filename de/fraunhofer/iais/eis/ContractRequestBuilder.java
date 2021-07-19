@@ -8,7 +8,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class ContractRequestBuilder {
+public class ContractRequestBuilder implements Builder<ContractRequest> {
 
     private ContractRequestImpl contractRequestImpl;
 
@@ -172,7 +172,8 @@ public class ContractRequestBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public ContractRequest build() throws ConstraintViolationException {
+    @Override
+    public ContractRequest build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(contractRequestImpl);
         return contractRequestImpl;
     }

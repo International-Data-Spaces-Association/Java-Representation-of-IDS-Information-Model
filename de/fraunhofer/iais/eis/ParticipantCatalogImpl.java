@@ -66,6 +66,11 @@ public class ParticipantCatalogImpl implements ParticipantCatalog {
         return VocabUtil.getInstance().toRdf(this);
     }
 
+    @Override
+    public String toString() {
+        return this.toRdf();
+    }
+
     public List<TypedLiteral> getLabel() {
         return this.label;
     }
@@ -133,6 +138,17 @@ public class ParticipantCatalogImpl implements ParticipantCatalog {
             ParticipantCatalogImpl other = (ParticipantCatalogImpl) obj;
             return Objects.equals(this._member, other._member);
         }
+    }
+
+    @Override
+    public ParticipantCatalog deepCopy() {
+        ParticipantCatalogBuilder builder = new ParticipantCatalogBuilder();
+        for (Participant item : this._member) {
+            if (item != null) {
+                builder._member_(item.deepCopy());
+            }
+        }
+        return builder.build();
     }
 
     // accessor method implementations as derived from the IDS Information Model ontology

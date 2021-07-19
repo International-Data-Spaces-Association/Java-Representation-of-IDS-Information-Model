@@ -6,7 +6,7 @@ import java.net.URI;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class AuthInfoBuilder {
+public class AuthInfoBuilder implements Builder<AuthInfo> {
 
     private AuthInfoImpl authInfoImpl;
 
@@ -49,7 +49,8 @@ public class AuthInfoBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public AuthInfo build() throws ConstraintViolationException {
+    @Override
+    public AuthInfo build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(authInfoImpl);
         return authInfoImpl;
     }

@@ -82,6 +82,11 @@ public class ConstraintImpl implements Constraint {
         return VocabUtil.getInstance().toRdf(this);
     }
 
+    @Override
+    public String toString() {
+        return this.toRdf();
+    }
+
     public List<TypedLiteral> getLabel() {
         return this.label;
     }
@@ -159,6 +164,26 @@ public class ConstraintImpl implements Constraint {
                 Objects.equals(this._unit, other._unit) &&
                 Objects.equals(this._pipEndpoint, other._pipEndpoint);
         }
+    }
+
+    @Override
+    public Constraint deepCopy() {
+        ConstraintBuilder builder = new ConstraintBuilder();
+        builder._leftOperand_(this._leftOperand);
+        builder._operator_(this._operator);
+        if (this._rightOperand != null) {
+            builder._rightOperand_(new RdfResource(this._rightOperand.getValue(), URI.create(this._rightOperand.getType())));
+        }
+        if (this._rightOperandReference != null) {
+            builder._rightOperandReference_(URI.create(this._rightOperandReference.toString()));
+        }
+        if (this._unit != null) {
+            builder._unit_(URI.create(this._unit.toString()));
+        }
+        if (this._pipEndpoint != null) {
+            builder._pipEndpoint_(URI.create(this._pipEndpoint.toString()));
+        }
+        return builder.build();
     }
 
     // accessor method implementations as derived from the IDS Information Model ontology

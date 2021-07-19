@@ -84,6 +84,11 @@ public class ConnectorEndpointImpl implements ConnectorEndpoint {
         return VocabUtil.getInstance().toRdf(this);
     }
 
+    @Override
+    public String toString() {
+        return this.toRdf();
+    }
+
     public List<TypedLiteral> getLabel() {
         return this.label;
     }
@@ -163,6 +168,33 @@ public class ConnectorEndpointImpl implements ConnectorEndpoint {
                 Objects.equals(this._inboundPath, other._inboundPath) &&
                 Objects.equals(this._outboundPath, other._outboundPath);
         }
+    }
+
+    @Override
+    public ConnectorEndpoint deepCopy() {
+        ConnectorEndpointBuilder builder = new ConnectorEndpointBuilder();
+        if (this._endpointArtifact != null) {
+            builder._endpointArtifact_(this._endpointArtifact.deepCopy());
+        }
+        if (this._accessURL != null) {
+            builder._accessURL_(URI.create(this._accessURL.toString()));
+        }
+        for (TypedLiteral item : this._endpointInformation) {
+            if (item != null && item.getLanguage() != null) {
+                builder._endpointInformation_(new TypedLiteral(item.getValue(), item.getLanguage()));
+            } else {
+                builder._endpointInformation_(new TypedLiteral(item.getValue(), URI.create(item.getType())));
+            }
+        }
+        for (URI item : this._endpointDocumentation) {
+            if (item != null) {
+                builder._endpointDocumentation_(URI.create(item.toString()));
+            }
+        }
+        builder._path_(this._path);
+        builder._inboundPath_(this._inboundPath);
+        builder._outboundPath_(this._outboundPath);
+        return builder.build();
     }
 
     // accessor method implementations as derived from the IDS Information Model ontology

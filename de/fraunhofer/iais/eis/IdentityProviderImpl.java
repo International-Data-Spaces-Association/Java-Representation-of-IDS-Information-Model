@@ -99,6 +99,11 @@ public class IdentityProviderImpl implements IdentityProvider {
         return VocabUtil.getInstance().toRdf(this);
     }
 
+    @Override
+    public String toString() {
+        return this.toRdf();
+    }
+
     public List<TypedLiteral> getLabel() {
         return this.label;
     }
@@ -184,6 +189,46 @@ public class IdentityProviderImpl implements IdentityProvider {
                 Objects.equals(this._title, other._title) &&
                 Objects.equals(this._description, other._description);
         }
+    }
+
+    @Override
+    public IdentityProvider deepCopy() {
+        IdentityProviderBuilder builder = new IdentityProviderBuilder();
+        if (this._maintainer != null) {
+            builder._maintainer_(URI.create(this._maintainer.toString()));
+        }
+        if (this._curator != null) {
+            builder._curator_(URI.create(this._curator.toString()));
+        }
+        if (this._physicalLocation != null) {
+            builder._physicalLocation_(this._physicalLocation.deepCopy());
+        }
+        for (String item : this._inboundModelVersion) {
+            builder._inboundModelVersion_(item);
+        }
+        builder._outboundModelVersion_(this._outboundModelVersion);
+        if (this._componentCertification != null) {
+            builder._componentCertification_(this._componentCertification.deepCopy());
+        }
+        if (this._publicKey != null) {
+            builder._publicKey_(this._publicKey.deepCopy());
+        }
+        builder._version_(this._version);
+        for (TypedLiteral item : this._title) {
+            if (item != null && item.getLanguage() != null) {
+                builder._title_(new TypedLiteral(item.getValue(), item.getLanguage()));
+            } else {
+                builder._title_(new TypedLiteral(item.getValue(), URI.create(item.getType())));
+            }
+        }
+        for (TypedLiteral item : this._description) {
+            if (item != null && item.getLanguage() != null) {
+                builder._description_(new TypedLiteral(item.getValue(), item.getLanguage()));
+            } else {
+                builder._description_(new TypedLiteral(item.getValue(), URI.create(item.getType())));
+            }
+        }
+        return builder.build();
     }
 
     // accessor method implementations as derived from the IDS Information Model ontology

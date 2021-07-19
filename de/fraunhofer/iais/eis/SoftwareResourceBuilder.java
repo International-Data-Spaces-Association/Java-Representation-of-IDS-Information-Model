@@ -8,7 +8,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class SoftwareResourceBuilder {
+public class SoftwareResourceBuilder implements Builder<SoftwareResource> {
 
     private SoftwareResourceImpl softwareResourceImpl;
 
@@ -480,7 +480,8 @@ public class SoftwareResourceBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public SoftwareResource build() throws ConstraintViolationException {
+    @Override
+    public SoftwareResource build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(softwareResourceImpl);
         return softwareResourceImpl;
     }

@@ -7,7 +7,7 @@ import java.util.List;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class ConfigurationModelBuilder {
+public class ConfigurationModelBuilder implements Builder<ConfigurationModel> {
 
     private ConfigurationModelImpl configurationModelImpl;
 
@@ -248,7 +248,8 @@ public class ConfigurationModelBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public ConfigurationModel build() throws ConstraintViolationException {
+    @Override
+    public ConfigurationModel build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(configurationModelImpl);
         return configurationModelImpl;
     }

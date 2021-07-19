@@ -69,6 +69,11 @@ public class AssetCollectionImpl implements AssetCollection {
         return VocabUtil.getInstance().toRdf(this);
     }
 
+    @Override
+    public String toString() {
+        return this.toRdf();
+    }
+
     public List<TypedLiteral> getLabel() {
         return this.label;
     }
@@ -138,6 +143,18 @@ public class AssetCollectionImpl implements AssetCollection {
             return Objects.equals(this._assetSource, other._assetSource) &&
                 Objects.equals(this._assetRefinement, other._assetRefinement);
         }
+    }
+
+    @Override
+    public AssetCollection deepCopy() {
+        AssetCollectionBuilder builder = new AssetCollectionBuilder();
+        if (this._assetSource != null) {
+            builder._assetSource_(URI.create(this._assetSource.toString()));
+        }
+        if (this._assetRefinement != null) {
+            builder._assetRefinement_(this._assetRefinement.deepCopy());
+        }
+        return builder.build();
     }
 
     // accessor method implementations as derived from the IDS Information Model ontology

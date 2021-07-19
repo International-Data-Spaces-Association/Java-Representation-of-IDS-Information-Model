@@ -7,7 +7,7 @@ import java.util.List;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class AppStoreBuilder {
+public class AppStoreBuilder implements Builder<AppStore> {
 
     private AppStoreImpl appStoreImpl;
 
@@ -292,7 +292,8 @@ public class AppStoreBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public AppStore build() throws ConstraintViolationException {
+    @Override
+    public AppStore build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(appStoreImpl);
         return appStoreImpl;
     }

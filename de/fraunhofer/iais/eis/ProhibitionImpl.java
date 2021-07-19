@@ -89,6 +89,11 @@ public class ProhibitionImpl implements Prohibition {
         return VocabUtil.getInstance().toRdf(this);
     }
 
+    @Override
+    public String toString() {
+        return this.toRdf();
+    }
+
     public List<TypedLiteral> getLabel() {
         return this.label;
     }
@@ -170,6 +175,50 @@ public class ProhibitionImpl implements Prohibition {
                 Objects.equals(this._title, other._title) &&
                 Objects.equals(this._description, other._description);
         }
+    }
+
+    @Override
+    public Prohibition deepCopy() {
+        ProhibitionBuilder builder = new ProhibitionBuilder();
+        for (URI item : this._assignee) {
+            if (item != null) {
+                builder._assignee_(URI.create(item.toString()));
+            }
+        }
+        for (URI item : this._assigner) {
+            if (item != null) {
+                builder._assigner_(URI.create(item.toString()));
+            }
+        }
+        if (this._target != null) {
+            builder._target_(URI.create(this._target.toString()));
+        }
+        for (AbstractConstraint item : this._constraint) {
+            if (item != null) {
+                builder._constraint_(item.deepCopy());
+            }
+        }
+        for (Action item : this._action) {
+            builder._action_(item);
+        }
+        if (this._assetRefinement != null) {
+            builder._assetRefinement_(this._assetRefinement.deepCopy());
+        }
+        for (TypedLiteral item : this._title) {
+            if (item != null && item.getLanguage() != null) {
+                builder._title_(new TypedLiteral(item.getValue(), item.getLanguage()));
+            } else {
+                builder._title_(new TypedLiteral(item.getValue(), URI.create(item.getType())));
+            }
+        }
+        for (TypedLiteral item : this._description) {
+            if (item != null && item.getLanguage() != null) {
+                builder._description_(new TypedLiteral(item.getValue(), item.getLanguage()));
+            } else {
+                builder._description_(new TypedLiteral(item.getValue(), URI.create(item.getType())));
+            }
+        }
+        return builder.build();
     }
 
     // accessor method implementations as derived from the IDS Information Model ontology

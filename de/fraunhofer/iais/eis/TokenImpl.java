@@ -71,6 +71,11 @@ public class TokenImpl implements Token {
         return VocabUtil.getInstance().toRdf(this);
     }
 
+    @Override
+    public String toString() {
+        return this.toRdf();
+    }
+
     public List<TypedLiteral> getLabel() {
         return this.label;
     }
@@ -140,6 +145,14 @@ public class TokenImpl implements Token {
             return Objects.equals(this._tokenValue, other._tokenValue) &&
                 Objects.equals(this._tokenFormat, other._tokenFormat);
         }
+    }
+
+    @Override
+    public Token deepCopy() {
+        TokenBuilder builder = new TokenBuilder();
+        builder._tokenValue_(this._tokenValue);
+        builder._tokenFormat_(this._tokenFormat);
+        return builder.build();
     }
 
     // accessor method implementations as derived from the IDS Information Model ontology

@@ -8,7 +8,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class AccessTokenRequestMessageBuilder {
+public class AccessTokenRequestMessageBuilder implements Builder<AccessTokenRequestMessage> {
 
     private AccessTokenRequestMessageImpl accessTokenRequestMessageImpl;
 
@@ -172,7 +172,8 @@ public class AccessTokenRequestMessageBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public AccessTokenRequestMessage build() throws ConstraintViolationException {
+    @Override
+    public AccessTokenRequestMessage build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(accessTokenRequestMessageImpl);
         return accessTokenRequestMessageImpl;
     }

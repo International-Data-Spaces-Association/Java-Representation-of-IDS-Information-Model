@@ -66,6 +66,11 @@ public class ConnectorCatalogImpl implements ConnectorCatalog {
         return VocabUtil.getInstance().toRdf(this);
     }
 
+    @Override
+    public String toString() {
+        return this.toRdf();
+    }
+
     public List<TypedLiteral> getLabel() {
         return this.label;
     }
@@ -133,6 +138,17 @@ public class ConnectorCatalogImpl implements ConnectorCatalog {
             ConnectorCatalogImpl other = (ConnectorCatalogImpl) obj;
             return Objects.equals(this._listedConnector, other._listedConnector);
         }
+    }
+
+    @Override
+    public ConnectorCatalog deepCopy() {
+        ConnectorCatalogBuilder builder = new ConnectorCatalogBuilder();
+        for (Connector item : this._listedConnector) {
+            if (item != null) {
+                builder._listedConnector_(item.deepCopy());
+            }
+        }
+        return builder.build();
     }
 
     // accessor method implementations as derived from the IDS Information Model ontology

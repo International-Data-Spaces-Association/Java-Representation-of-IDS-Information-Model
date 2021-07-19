@@ -6,7 +6,7 @@ import java.net.URI;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class AssetCollectionBuilder {
+public class AssetCollectionBuilder implements Builder<AssetCollection> {
 
     private AssetCollectionImpl assetCollectionImpl;
 
@@ -49,7 +49,8 @@ public class AssetCollectionBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public AssetCollection build() throws ConstraintViolationException {
+    @Override
+    public AssetCollection build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(assetCollectionImpl);
         return assetCollectionImpl;
     }

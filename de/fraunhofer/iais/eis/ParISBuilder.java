@@ -7,7 +7,7 @@ import java.util.List;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class ParISBuilder {
+public class ParISBuilder implements Builder<ParIS> {
 
     private ParISImpl parISImpl;
 
@@ -314,7 +314,8 @@ public class ParISBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public ParIS build() throws ConstraintViolationException {
+    @Override
+    public ParIS build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(parISImpl);
         return parISImpl;
     }

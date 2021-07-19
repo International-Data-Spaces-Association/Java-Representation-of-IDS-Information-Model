@@ -8,7 +8,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class DistributeEcryptedAgreementBuilder {
+public class DistributeEcryptedAgreementBuilder implements Builder<DistributeEcryptedAgreement> {
 
     private DistributeEcryptedAgreementImpl distributeEcryptedAgreementImpl;
 
@@ -172,7 +172,8 @@ public class DistributeEcryptedAgreementBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public DistributeEcryptedAgreement build() throws ConstraintViolationException {
+    @Override
+    public DistributeEcryptedAgreement build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(distributeEcryptedAgreementImpl);
         return distributeEcryptedAgreementImpl;
     }

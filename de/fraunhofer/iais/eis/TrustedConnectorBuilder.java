@@ -7,7 +7,7 @@ import java.util.List;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class TrustedConnectorBuilder {
+public class TrustedConnectorBuilder implements Builder<TrustedConnector> {
 
     private TrustedConnectorImpl trustedConnectorImpl;
 
@@ -292,7 +292,8 @@ public class TrustedConnectorBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public TrustedConnector build() throws ConstraintViolationException {
+    @Override
+    public TrustedConnector build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(trustedConnectorImpl);
         return trustedConnectorImpl;
     }

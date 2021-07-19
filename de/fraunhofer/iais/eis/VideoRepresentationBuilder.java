@@ -8,7 +8,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class VideoRepresentationBuilder {
+public class VideoRepresentationBuilder implements Builder<VideoRepresentation> {
 
     private VideoRepresentationImpl videoRepresentationImpl;
 
@@ -128,7 +128,8 @@ public class VideoRepresentationBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public VideoRepresentation build() throws ConstraintViolationException {
+    @Override
+    public VideoRepresentation build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(videoRepresentationImpl);
         return videoRepresentationImpl;
     }

@@ -6,7 +6,7 @@ import java.net.URI;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class CustomMediaTypeBuilder {
+public class CustomMediaTypeBuilder implements Builder<CustomMediaType> {
 
     private CustomMediaTypeImpl customMediaTypeImpl;
 
@@ -38,7 +38,8 @@ public class CustomMediaTypeBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public CustomMediaType build() throws ConstraintViolationException {
+    @Override
+    public CustomMediaType build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(customMediaTypeImpl);
         return customMediaTypeImpl;
     }

@@ -8,7 +8,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class SwapAgreementBuilder {
+public class SwapAgreementBuilder implements Builder<SwapAgreement> {
 
     private SwapAgreementImpl swapAgreementImpl;
 
@@ -172,7 +172,8 @@ public class SwapAgreementBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public SwapAgreement build() throws ConstraintViolationException {
+    @Override
+    public SwapAgreement build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(swapAgreementImpl);
         return swapAgreementImpl;
     }

@@ -8,7 +8,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class PurposeOfferBuilder {
+public class PurposeOfferBuilder implements Builder<PurposeOffer> {
 
     private PurposeOfferImpl purposeOfferImpl;
 
@@ -172,7 +172,8 @@ public class PurposeOfferBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public PurposeOffer build() throws ConstraintViolationException {
+    @Override
+    public PurposeOffer build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(purposeOfferImpl);
         return purposeOfferImpl;
     }

@@ -8,7 +8,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class ResourceUpdateMessageBuilder {
+public class ResourceUpdateMessageBuilder implements Builder<ResourceUpdateMessage> {
 
     private ResourceUpdateMessageImpl resourceUpdateMessageImpl;
 
@@ -183,7 +183,8 @@ public class ResourceUpdateMessageBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public ResourceUpdateMessage build() throws ConstraintViolationException {
+    @Override
+    public ResourceUpdateMessage build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(resourceUpdateMessageImpl);
         return resourceUpdateMessageImpl;
     }

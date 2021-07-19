@@ -8,7 +8,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class RolebasedRequestBuilder {
+public class RolebasedRequestBuilder implements Builder<RolebasedRequest> {
 
     private RolebasedRequestImpl rolebasedRequestImpl;
 
@@ -172,7 +172,8 @@ public class RolebasedRequestBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public RolebasedRequest build() throws ConstraintViolationException {
+    @Override
+    public RolebasedRequest build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(rolebasedRequestImpl);
         return rolebasedRequestImpl;
     }

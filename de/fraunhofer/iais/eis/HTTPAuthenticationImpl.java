@@ -71,6 +71,11 @@ public class HTTPAuthenticationImpl implements HTTPAuthentication {
         return VocabUtil.getInstance().toRdf(this);
     }
 
+    @Override
+    public String toString() {
+        return this.toRdf();
+    }
+
     public List<TypedLiteral> getLabel() {
         return this.label;
     }
@@ -142,6 +147,17 @@ public class HTTPAuthenticationImpl implements HTTPAuthentication {
                 Objects.equals(this._authPassword, other._authPassword) &&
                 Objects.equals(this._authUsername, other._authUsername);
         }
+    }
+
+    @Override
+    public HTTPAuthentication deepCopy() {
+        HTTPAuthenticationBuilder builder = new HTTPAuthenticationBuilder();
+        if (this._httpAuthURI != null) {
+            builder._httpAuthURI_(URI.create(this._httpAuthURI.toString()));
+        }
+        builder._authPassword_(this._authPassword);
+        builder._authUsername_(this._authUsername);
+        return builder.build();
     }
 
     // accessor method implementations as derived from the IDS Information Model ontology

@@ -8,7 +8,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class ResourceUnavailableMessageBuilder {
+public class ResourceUnavailableMessageBuilder implements Builder<ResourceUnavailableMessage> {
 
     private ResourceUnavailableMessageImpl resourceUnavailableMessageImpl;
 
@@ -183,7 +183,8 @@ public class ResourceUnavailableMessageBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public ResourceUnavailableMessage build() throws ConstraintViolationException {
+    @Override
+    public ResourceUnavailableMessage build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(resourceUnavailableMessageImpl);
         return resourceUnavailableMessageImpl;
     }

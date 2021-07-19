@@ -75,6 +75,11 @@ public class DynamicAttributeTokenImpl implements DynamicAttributeToken {
         return VocabUtil.getInstance().toRdf(this);
     }
 
+    @Override
+    public String toString() {
+        return this.toRdf();
+    }
+
     public List<TypedLiteral> getLabel() {
         return this.label;
     }
@@ -144,6 +149,14 @@ public class DynamicAttributeTokenImpl implements DynamicAttributeToken {
             return Objects.equals(this._tokenValue, other._tokenValue) &&
                 Objects.equals(this._tokenFormat, other._tokenFormat);
         }
+    }
+
+    @Override
+    public DynamicAttributeToken deepCopy() {
+        DynamicAttributeTokenBuilder builder = new DynamicAttributeTokenBuilder();
+        builder._tokenValue_(this._tokenValue);
+        builder._tokenFormat_(this._tokenFormat);
+        return builder.build();
     }
 
     // accessor method implementations as derived from the IDS Information Model ontology

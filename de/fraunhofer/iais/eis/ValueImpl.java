@@ -63,6 +63,11 @@ public class ValueImpl implements Value {
         return VocabUtil.getInstance().toRdf(this);
     }
 
+    @Override
+    public String toString() {
+        return this.toRdf();
+    }
+
     public List<TypedLiteral> getLabel() {
         return this.label;
     }
@@ -128,6 +133,13 @@ public class ValueImpl implements Value {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public Value deepCopy() {
+        ValueBuilder builder = new ValueBuilder();
+
+        return builder.build();
     }
 
 }

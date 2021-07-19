@@ -8,7 +8,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class IntervalUsageRequestBuilder {
+public class IntervalUsageRequestBuilder implements Builder<IntervalUsageRequest> {
 
     private IntervalUsageRequestImpl intervalUsageRequestImpl;
 
@@ -172,7 +172,8 @@ public class IntervalUsageRequestBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public IntervalUsageRequest build() throws ConstraintViolationException {
+    @Override
+    public IntervalUsageRequest build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(intervalUsageRequestImpl);
         return intervalUsageRequestImpl;
     }

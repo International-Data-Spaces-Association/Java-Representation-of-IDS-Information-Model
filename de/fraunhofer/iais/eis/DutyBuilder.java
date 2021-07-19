@@ -7,7 +7,7 @@ import java.util.List;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class DutyBuilder {
+public class DutyBuilder implements Builder<Duty> {
 
     private DutyImpl dutyImpl;
 
@@ -182,7 +182,8 @@ public class DutyBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public Duty build() throws ConstraintViolationException {
+    @Override
+    public Duty build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(dutyImpl);
         return dutyImpl;
     }

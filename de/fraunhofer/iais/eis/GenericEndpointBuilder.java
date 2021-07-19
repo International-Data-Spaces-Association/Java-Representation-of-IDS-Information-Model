@@ -7,7 +7,7 @@ import java.util.List;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class GenericEndpointBuilder {
+public class GenericEndpointBuilder implements Builder<GenericEndpoint> {
 
     private GenericEndpointImpl genericEndpointImpl;
 
@@ -138,7 +138,8 @@ public class GenericEndpointBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public GenericEndpoint build() throws ConstraintViolationException {
+    @Override
+    public GenericEndpoint build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(genericEndpointImpl);
         return genericEndpointImpl;
     }

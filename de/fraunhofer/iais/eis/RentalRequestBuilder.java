@@ -8,7 +8,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class RentalRequestBuilder {
+public class RentalRequestBuilder implements Builder<RentalRequest> {
 
     private RentalRequestImpl rentalRequestImpl;
 
@@ -172,7 +172,8 @@ public class RentalRequestBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public RentalRequest build() throws ConstraintViolationException {
+    @Override
+    public RentalRequest build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(rentalRequestImpl);
         return rentalRequestImpl;
     }

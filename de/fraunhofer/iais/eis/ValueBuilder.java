@@ -6,7 +6,7 @@ import java.net.URI;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class ValueBuilder {
+public class ValueBuilder implements Builder<Value> {
 
     private ValueImpl valueImpl;
 
@@ -27,7 +27,8 @@ public class ValueBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public Value build() throws ConstraintViolationException {
+    @Override
+    public Value build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(valueImpl);
         return valueImpl;
     }

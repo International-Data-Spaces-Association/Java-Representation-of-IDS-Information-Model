@@ -6,7 +6,7 @@ import java.net.URI;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class IANAMediaTypeBuilder {
+public class IANAMediaTypeBuilder implements Builder<IANAMediaType> {
 
     private IANAMediaTypeImpl iANAMediaTypeImpl;
 
@@ -38,7 +38,8 @@ public class IANAMediaTypeBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public IANAMediaType build() throws ConstraintViolationException {
+    @Override
+    public IANAMediaType build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(iANAMediaTypeImpl);
         return iANAMediaTypeImpl;
     }

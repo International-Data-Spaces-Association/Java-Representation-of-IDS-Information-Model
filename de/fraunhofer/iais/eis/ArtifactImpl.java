@@ -83,6 +83,11 @@ public class ArtifactImpl implements Artifact {
         return VocabUtil.getInstance().toRdf(this);
     }
 
+    @Override
+    public String toString() {
+        return this.toRdf();
+    }
+
     public List<TypedLiteral> getLabel() {
         return this.label;
     }
@@ -158,6 +163,19 @@ public class ArtifactImpl implements Artifact {
                 Objects.equals(this._checkSum, other._checkSum) &&
                 Objects.equals(this._duration, other._duration);
         }
+    }
+
+    @Override
+    public Artifact deepCopy() {
+        ArtifactBuilder builder = new ArtifactBuilder();
+        builder._byteSize_(this._byteSize);
+        builder._fileName_(this._fileName);
+        if (this._creationDate != null) {
+            builder._creationDate_((XMLGregorianCalendar) this._creationDate.clone());
+        }
+        builder._checkSum_(this._checkSum);
+        builder._duration_(this._duration);
+        return builder.build();
     }
 
     // accessor method implementations as derived from the IDS Information Model ontology

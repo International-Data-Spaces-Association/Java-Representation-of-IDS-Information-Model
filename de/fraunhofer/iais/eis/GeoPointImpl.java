@@ -70,6 +70,11 @@ public class GeoPointImpl implements GeoPoint {
         return VocabUtil.getInstance().toRdf(this);
     }
 
+    @Override
+    public String toString() {
+        return this.toRdf();
+    }
+
     public List<TypedLiteral> getLabel() {
         return this.label;
     }
@@ -139,6 +144,14 @@ public class GeoPointImpl implements GeoPoint {
             return Objects.equals(this._latitude, other._latitude) &&
                 Objects.equals(this._longitude, other._longitude);
         }
+    }
+
+    @Override
+    public GeoPoint deepCopy() {
+        GeoPointBuilder builder = new GeoPointBuilder();
+        builder._latitude_(this._latitude);
+        builder._longitude_(this._longitude);
+        return builder.build();
     }
 
     // accessor method implementations as derived from the IDS Information Model ontology

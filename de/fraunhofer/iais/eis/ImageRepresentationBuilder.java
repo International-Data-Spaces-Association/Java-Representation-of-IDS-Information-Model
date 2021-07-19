@@ -8,7 +8,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class ImageRepresentationBuilder {
+public class ImageRepresentationBuilder implements Builder<ImageRepresentation> {
 
     private ImageRepresentationImpl imageRepresentationImpl;
 
@@ -139,7 +139,8 @@ public class ImageRepresentationBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public ImageRepresentation build() throws ConstraintViolationException {
+    @Override
+    public ImageRepresentation build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(imageRepresentationImpl);
         return imageRepresentationImpl;
     }

@@ -6,7 +6,7 @@ import java.net.URI;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class TokenBuilder {
+public class TokenBuilder implements Builder<Token> {
 
     private TokenImpl tokenImpl;
 
@@ -49,7 +49,8 @@ public class TokenBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public Token build() throws ConstraintViolationException {
+    @Override
+    public Token build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(tokenImpl);
         return tokenImpl;
     }

@@ -74,6 +74,11 @@ public class LogicalConstraintImpl implements LogicalConstraint {
         return VocabUtil.getInstance().toRdf(this);
     }
 
+    @Override
+    public String toString() {
+        return this.toRdf();
+    }
+
     public List<TypedLiteral> getLabel() {
         return this.label;
     }
@@ -145,6 +150,27 @@ public class LogicalConstraintImpl implements LogicalConstraint {
                 Objects.equals(this._or, other._or) &&
                 Objects.equals(this._xone, other._xone);
         }
+    }
+
+    @Override
+    public LogicalConstraint deepCopy() {
+        LogicalConstraintBuilder builder = new LogicalConstraintBuilder();
+        for (Constraint item : this._and) {
+            if (item != null) {
+                builder._and_(item.deepCopy());
+            }
+        }
+        for (Constraint item : this._or) {
+            if (item != null) {
+                builder._or_(item.deepCopy());
+            }
+        }
+        for (Constraint item : this._xone) {
+            if (item != null) {
+                builder._xone_(item.deepCopy());
+            }
+        }
+        return builder.build();
     }
 
     // accessor method implementations as derived from the IDS Information Model ontology

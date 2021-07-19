@@ -8,7 +8,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class AppDeleteMessageBuilder {
+public class AppDeleteMessageBuilder implements Builder<AppDeleteMessage> {
 
     private AppDeleteMessageImpl appDeleteMessageImpl;
 
@@ -183,7 +183,8 @@ public class AppDeleteMessageBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public AppDeleteMessage build() throws ConstraintViolationException {
+    @Override
+    public AppDeleteMessage build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(appDeleteMessageImpl);
         return appDeleteMessageImpl;
     }

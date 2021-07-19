@@ -8,7 +8,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class RepresentationBuilder {
+public class RepresentationBuilder implements Builder<Representation> {
 
     private RepresentationImpl representationImpl;
 
@@ -117,7 +117,8 @@ public class RepresentationBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public Representation build() throws ConstraintViolationException {
+    @Override
+    public Representation build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(representationImpl);
         return representationImpl;
     }

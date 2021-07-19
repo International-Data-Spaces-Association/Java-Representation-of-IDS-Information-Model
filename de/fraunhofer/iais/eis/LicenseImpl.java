@@ -62,6 +62,11 @@ public class LicenseImpl implements License {
         return VocabUtil.getInstance().toRdf(this);
     }
 
+    @Override
+    public String toString() {
+        return this.toRdf();
+    }
+
     public List<TypedLiteral> getLabel() {
         return this.label;
     }
@@ -127,6 +132,13 @@ public class LicenseImpl implements License {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public License deepCopy() {
+        LicenseBuilder builder = new LicenseBuilder();
+
+        return builder.build();
     }
 
 }

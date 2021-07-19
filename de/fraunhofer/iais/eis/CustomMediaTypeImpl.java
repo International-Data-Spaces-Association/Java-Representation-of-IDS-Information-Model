@@ -67,6 +67,11 @@ public class CustomMediaTypeImpl implements CustomMediaType {
         return VocabUtil.getInstance().toRdf(this);
     }
 
+    @Override
+    public String toString() {
+        return this.toRdf();
+    }
+
     public List<TypedLiteral> getLabel() {
         return this.label;
     }
@@ -134,6 +139,13 @@ public class CustomMediaTypeImpl implements CustomMediaType {
             CustomMediaTypeImpl other = (CustomMediaTypeImpl) obj;
             return Objects.equals(this._filenameExtension, other._filenameExtension);
         }
+    }
+
+    @Override
+    public CustomMediaType deepCopy() {
+        CustomMediaTypeBuilder builder = new CustomMediaTypeBuilder();
+        builder._filenameExtension_(this._filenameExtension);
+        return builder.build();
     }
 
     // accessor method implementations as derived from the IDS Information Model ontology

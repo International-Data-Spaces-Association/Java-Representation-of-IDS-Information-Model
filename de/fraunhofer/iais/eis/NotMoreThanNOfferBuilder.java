@@ -8,7 +8,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class NotMoreThanNOfferBuilder {
+public class NotMoreThanNOfferBuilder implements Builder<NotMoreThanNOffer> {
 
     private NotMoreThanNOfferImpl notMoreThanNOfferImpl;
 
@@ -172,7 +172,8 @@ public class NotMoreThanNOfferBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public NotMoreThanNOffer build() throws ConstraintViolationException {
+    @Override
+    public NotMoreThanNOffer build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(notMoreThanNOfferImpl);
         return notMoreThanNOfferImpl;
     }

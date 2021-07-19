@@ -8,7 +8,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class DescriptionRequestMessageBuilder {
+public class DescriptionRequestMessageBuilder implements Builder<DescriptionRequestMessage> {
 
     private DescriptionRequestMessageImpl descriptionRequestMessageImpl;
 
@@ -183,7 +183,8 @@ public class DescriptionRequestMessageBuilder {
      * @throws ConstraintViolationException This exception is thrown, if a validator is used and a
      *         violation is found.
      */
-    final public DescriptionRequestMessage build() throws ConstraintViolationException {
+    @Override
+    public DescriptionRequestMessage build() throws ConstraintViolationException {
         VocabUtil.getInstance().validate(descriptionRequestMessageImpl);
         return descriptionRequestMessageImpl;
     }
