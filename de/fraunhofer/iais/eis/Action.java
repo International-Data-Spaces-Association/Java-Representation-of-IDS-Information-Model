@@ -77,7 +77,7 @@ public enum Action {
      * ids:DataConsumer nor any other third party. The encryption algorithm might be specified by a
      * constraint. This action is always evaluated at the provider side.
      */
-    ENCRYPT("https://w3id.org/idsa/code/ENCRYPT", Arrays.asList(new TypedLiteral("ecrypt", "en")), Arrays.asList(new TypedLiteral(
+    ENCRYPT("https://w3id.org/idsa/code/ENCRYPT", Arrays.asList(new TypedLiteral("encrypt", "en")), Arrays.asList(new TypedLiteral(
         "The data artifact or parts of it are encrypted and can not be read by neither the ids:DataConsumer nor any other third party. The encryption algorithm might be specified by a constraint.",
         "en"))),
 
