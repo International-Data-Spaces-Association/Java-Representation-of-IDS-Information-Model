@@ -26,7 +26,7 @@ import de.fraunhofer.iais.eis.util.*;
  */
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 @JsonTypeName("ids:ServiceIsolationGuarantee")
-public enum ServiceIsolationGuarantee {
+public enum ServiceIsolationGuarantee implements ModelClass {
 
     /** 
     */
@@ -82,6 +82,7 @@ public enum ServiceIsolationGuarantee {
      */
 
     @JsonIgnore
+    @Override
     final public URI getId() {
         return id;
     }
@@ -93,6 +94,7 @@ public enum ServiceIsolationGuarantee {
      * @return Human readable label
      */
     @JsonIgnore
+    @Override
     final public List<TypedLiteral> getLabel() {
         return label;
     }
@@ -104,6 +106,7 @@ public enum ServiceIsolationGuarantee {
      * @return Human readable explanatory comment
      */
     @JsonIgnore
+    @Override
     final public List<TypedLiteral> getComment() {
         return comment;
     }

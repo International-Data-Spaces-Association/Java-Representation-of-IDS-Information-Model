@@ -23,7 +23,7 @@ import de.fraunhofer.iais.eis.util.*;
  */
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 @JsonTypeName("ids:ConnectorStatus")
-public enum ConnectorStatus {
+public enum ConnectorStatus implements ModelClass {
 
     /**
      * Indicates that a Connector is badly configured.
@@ -83,6 +83,7 @@ public enum ConnectorStatus {
      */
 
     @JsonIgnore
+    @Override
     final public URI getId() {
         return id;
     }
@@ -94,6 +95,7 @@ public enum ConnectorStatus {
      * @return Human readable label
      */
     @JsonIgnore
+    @Override
     final public List<TypedLiteral> getLabel() {
         return label;
     }
@@ -105,6 +107,7 @@ public enum ConnectorStatus {
      * @return Human readable explanatory comment
      */
     @JsonIgnore
+    @Override
     final public List<TypedLiteral> getComment() {
         return comment;
     }

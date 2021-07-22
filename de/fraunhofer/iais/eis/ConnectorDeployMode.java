@@ -24,7 +24,7 @@ import de.fraunhofer.iais.eis.util.*;
  */
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 @JsonTypeName("ids:ConnectorDeployMode")
-public enum ConnectorDeployMode {
+public enum ConnectorDeployMode implements ModelClass {
 
     /**
      * Indicates that a Connector is deployed for productive use.
@@ -78,6 +78,7 @@ public enum ConnectorDeployMode {
      */
 
     @JsonIgnore
+    @Override
     final public URI getId() {
         return id;
     }
@@ -89,6 +90,7 @@ public enum ConnectorDeployMode {
      * @return Human readable label
      */
     @JsonIgnore
+    @Override
     final public List<TypedLiteral> getLabel() {
         return label;
     }
@@ -100,6 +102,7 @@ public enum ConnectorDeployMode {
      * @return Human readable explanatory comment
      */
     @JsonIgnore
+    @Override
     final public List<TypedLiteral> getComment() {
         return comment;
     }

@@ -23,7 +23,7 @@ import de.fraunhofer.iais.eis.util.*;
  */
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 @JsonTypeName("ids:Audience")
-public enum Audience {
+public enum Audience implements ModelClass {
 
     /**
      * Every IDS Connector is in the intended audience for the DAT with this 'scope' property.
@@ -71,6 +71,7 @@ public enum Audience {
      */
 
     @JsonIgnore
+    @Override
     final public URI getId() {
         return id;
     }
@@ -82,6 +83,7 @@ public enum Audience {
      * @return Human readable label
      */
     @JsonIgnore
+    @Override
     final public List<TypedLiteral> getLabel() {
         return label;
     }
@@ -93,6 +95,7 @@ public enum Audience {
      * @return Human readable explanatory comment
      */
     @JsonIgnore
+    @Override
     final public List<TypedLiteral> getComment() {
         return comment;
     }

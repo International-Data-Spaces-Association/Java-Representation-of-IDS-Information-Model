@@ -23,7 +23,7 @@ import de.fraunhofer.iais.eis.util.*;
  */
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 @JsonTypeName("ids:Frequency")
-public enum Frequency {
+public enum Frequency implements ModelClass {
 
     /**
      * The event occurs once a year.
@@ -166,6 +166,7 @@ public enum Frequency {
      */
 
     @JsonIgnore
+    @Override
     final public URI getId() {
         return id;
     }
@@ -177,6 +178,7 @@ public enum Frequency {
      * @return Human readable label
      */
     @JsonIgnore
+    @Override
     final public List<TypedLiteral> getLabel() {
         return label;
     }
@@ -188,6 +190,7 @@ public enum Frequency {
      * @return Human readable explanatory comment
      */
     @JsonIgnore
+    @Override
     final public List<TypedLiteral> getComment() {
         return comment;
     }

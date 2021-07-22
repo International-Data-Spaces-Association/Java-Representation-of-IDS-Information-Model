@@ -24,7 +24,7 @@ import de.fraunhofer.iais.eis.util.*;
  */
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 @JsonTypeName("ids:LogLevel")
-public enum LogLevel {
+public enum LogLevel implements ModelClass {
 
     /**
      * Debug level logging.
@@ -83,6 +83,7 @@ public enum LogLevel {
      */
 
     @JsonIgnore
+    @Override
     final public URI getId() {
         return id;
     }
@@ -94,6 +95,7 @@ public enum LogLevel {
      * @return Human readable label
      */
     @JsonIgnore
+    @Override
     final public List<TypedLiteral> getLabel() {
         return label;
     }
@@ -105,6 +107,7 @@ public enum LogLevel {
      * @return Human readable explanatory comment
      */
     @JsonIgnore
+    @Override
     final public List<TypedLiteral> getComment() {
         return comment;
     }

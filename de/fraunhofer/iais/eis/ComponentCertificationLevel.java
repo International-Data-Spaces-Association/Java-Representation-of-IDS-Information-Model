@@ -24,7 +24,7 @@ import de.fraunhofer.iais.eis.util.*;
  */
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 @JsonTypeName("ids:ComponentCertificationLevel")
-public enum ComponentCertificationLevel {
+public enum ComponentCertificationLevel implements ModelClass {
 
     /** 
     */
@@ -103,6 +103,7 @@ public enum ComponentCertificationLevel {
      */
 
     @JsonIgnore
+    @Override
     final public URI getId() {
         return id;
     }
@@ -114,6 +115,7 @@ public enum ComponentCertificationLevel {
      * @return Human readable label
      */
     @JsonIgnore
+    @Override
     final public List<TypedLiteral> getLabel() {
         return label;
     }
@@ -125,6 +127,7 @@ public enum ComponentCertificationLevel {
      * @return Human readable explanatory comment
      */
     @JsonIgnore
+    @Override
     final public List<TypedLiteral> getComment() {
         return comment;
     }

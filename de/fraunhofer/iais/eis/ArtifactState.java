@@ -23,7 +23,7 @@ import de.fraunhofer.iais.eis.util.*;
  */
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 @JsonTypeName("ids:ArtifactState")
-public enum ArtifactState {
+public enum ArtifactState implements ModelClass {
 
     /**
      * The artifact is anonymized so the data source can not be recognized by any further user.
@@ -89,6 +89,7 @@ public enum ArtifactState {
      */
 
     @JsonIgnore
+    @Override
     final public URI getId() {
         return id;
     }
@@ -100,6 +101,7 @@ public enum ArtifactState {
      * @return Human readable label
      */
     @JsonIgnore
+    @Override
     final public List<TypedLiteral> getLabel() {
         return label;
     }
@@ -111,6 +113,7 @@ public enum ArtifactState {
      * @return Human readable explanatory comment
      */
     @JsonIgnore
+    @Override
     final public List<TypedLiteral> getComment() {
         return comment;
     }

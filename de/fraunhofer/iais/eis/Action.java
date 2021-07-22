@@ -23,7 +23,7 @@ import de.fraunhofer.iais.eis.util.*;
  */
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 @JsonTypeName("ids:Action")
-public enum Action {
+public enum Action implements ModelClass {
 
     /**
      * Data will be part of another piece of data so that it is not distinguishable anymore. This action
@@ -186,6 +186,7 @@ public enum Action {
      */
 
     @JsonIgnore
+    @Override
     final public URI getId() {
         return id;
     }
@@ -197,6 +198,7 @@ public enum Action {
      * @return Human readable label
      */
     @JsonIgnore
+    @Override
     final public List<TypedLiteral> getLabel() {
         return label;
     }
@@ -208,6 +210,7 @@ public enum Action {
      * @return Human readable explanatory comment
      */
     @JsonIgnore
+    @Override
     final public List<TypedLiteral> getComment() {
         return comment;
     }

@@ -23,7 +23,7 @@ import de.fraunhofer.iais.eis.util.*;
  */
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 @JsonTypeName("ids:AppEndpointType")
-public enum AppEndpointType {
+public enum AppEndpointType implements ModelClass {
 
     /**
      * Endpoint is used for runtime-related app configurations and app parameters.
@@ -108,6 +108,7 @@ public enum AppEndpointType {
      */
 
     @JsonIgnore
+    @Override
     final public URI getId() {
         return id;
     }
@@ -119,6 +120,7 @@ public enum AppEndpointType {
      * @return Human readable label
      */
     @JsonIgnore
+    @Override
     final public List<TypedLiteral> getLabel() {
         return label;
     }
@@ -130,6 +132,7 @@ public enum AppEndpointType {
      * @return Human readable explanatory comment
      */
     @JsonIgnore
+    @Override
     final public List<TypedLiteral> getComment() {
         return comment;
     }

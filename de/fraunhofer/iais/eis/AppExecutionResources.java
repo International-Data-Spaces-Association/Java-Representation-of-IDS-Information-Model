@@ -24,7 +24,7 @@ import de.fraunhofer.iais.eis.util.*;
  */
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 @JsonTypeName("ids:AppExecutionResources")
-public enum AppExecutionResources {
+public enum AppExecutionResources implements ModelClass {
 
     /** 
     */
@@ -80,6 +80,7 @@ public enum AppExecutionResources {
      */
 
     @JsonIgnore
+    @Override
     final public URI getId() {
         return id;
     }
@@ -91,6 +92,7 @@ public enum AppExecutionResources {
      * @return Human readable label
      */
     @JsonIgnore
+    @Override
     final public List<TypedLiteral> getLabel() {
         return label;
     }
@@ -102,6 +104,7 @@ public enum AppExecutionResources {
      * @return Human readable explanatory comment
      */
     @JsonIgnore
+    @Override
     final public List<TypedLiteral> getComment() {
         return comment;
     }

@@ -24,7 +24,7 @@ import de.fraunhofer.iais.eis.util.*;
  */
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 @JsonTypeName("ids:SecurityGuarantee")
-public enum SecurityGuarantee {
+public enum SecurityGuarantee implements ModelClass {
 
     /** 
     */
@@ -185,6 +185,7 @@ public enum SecurityGuarantee {
      */
 
     @JsonIgnore
+    @Override
     final public URI getId() {
         return id;
     }
@@ -196,6 +197,7 @@ public enum SecurityGuarantee {
      * @return Human readable label
      */
     @JsonIgnore
+    @Override
     final public List<TypedLiteral> getLabel() {
         return label;
     }
@@ -207,6 +209,7 @@ public enum SecurityGuarantee {
      * @return Human readable explanatory comment
      */
     @JsonIgnore
+    @Override
     final public List<TypedLiteral> getComment() {
         return comment;
     }

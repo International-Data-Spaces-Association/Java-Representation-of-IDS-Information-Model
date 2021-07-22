@@ -23,7 +23,7 @@ import de.fraunhofer.iais.eis.util.*;
  */
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 @JsonTypeName("ids:UsagePolicyClass")
-public enum UsagePolicyClass {
+public enum UsagePolicyClass implements ModelClass {
 
     /**
      * This policy restricts the usage of the data to a specific Data Consumer, regardless of how many
@@ -250,6 +250,7 @@ public enum UsagePolicyClass {
      */
 
     @JsonIgnore
+    @Override
     final public URI getId() {
         return id;
     }
@@ -261,6 +262,7 @@ public enum UsagePolicyClass {
      * @return Human readable label
      */
     @JsonIgnore
+    @Override
     final public List<TypedLiteral> getLabel() {
         return label;
     }
@@ -272,6 +274,7 @@ public enum UsagePolicyClass {
      * @return Human readable explanatory comment
      */
     @JsonIgnore
+    @Override
     final public List<TypedLiteral> getComment() {
         return comment;
     }

@@ -24,7 +24,7 @@ import de.fraunhofer.iais.eis.util.*;
  */
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 @JsonTypeName("ids:TokenFormat")
-public enum TokenFormat {
+public enum TokenFormat implements ModelClass {
 
     /** 
     */
@@ -91,6 +91,7 @@ public enum TokenFormat {
      */
 
     @JsonIgnore
+    @Override
     final public URI getId() {
         return id;
     }
@@ -102,6 +103,7 @@ public enum TokenFormat {
      * @return Human readable label
      */
     @JsonIgnore
+    @Override
     final public List<TypedLiteral> getLabel() {
         return label;
     }
@@ -113,6 +115,7 @@ public enum TokenFormat {
      * @return Human readable explanatory comment
      */
     @JsonIgnore
+    @Override
     final public List<TypedLiteral> getComment() {
         return comment;
     }

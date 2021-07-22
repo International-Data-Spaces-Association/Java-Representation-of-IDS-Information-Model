@@ -23,7 +23,7 @@ import de.fraunhofer.iais.eis.util.*;
  */
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 @JsonTypeName("ids:RejectionReason")
-public enum RejectionReason {
+public enum RejectionReason implements ModelClass {
 
     /**
      * At least one query or operation parameter is not acceptable for the sender of this rejection
@@ -141,6 +141,7 @@ public enum RejectionReason {
      */
 
     @JsonIgnore
+    @Override
     final public URI getId() {
         return id;
     }
@@ -152,6 +153,7 @@ public enum RejectionReason {
      * @return Human readable label
      */
     @JsonIgnore
+    @Override
     final public List<TypedLiteral> getLabel() {
         return label;
     }
@@ -163,6 +165,7 @@ public enum RejectionReason {
      * @return Human readable explanatory comment
      */
     @JsonIgnore
+    @Override
     final public List<TypedLiteral> getComment() {
         return comment;
     }

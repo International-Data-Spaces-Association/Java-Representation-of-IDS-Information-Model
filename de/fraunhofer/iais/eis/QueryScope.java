@@ -24,7 +24,7 @@ import de.fraunhofer.iais.eis.util.*;
  */
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 @JsonTypeName("ids:QueryScope")
-public enum QueryScope {
+public enum QueryScope implements ModelClass {
 
     /** 
     */
@@ -78,6 +78,7 @@ public enum QueryScope {
      */
 
     @JsonIgnore
+    @Override
     final public URI getId() {
         return id;
     }
@@ -89,6 +90,7 @@ public enum QueryScope {
      * @return Human readable label
      */
     @JsonIgnore
+    @Override
     final public List<TypedLiteral> getLabel() {
         return label;
     }
@@ -100,6 +102,7 @@ public enum QueryScope {
      * @return Human readable explanatory comment
      */
     @JsonIgnore
+    @Override
     final public List<TypedLiteral> getComment() {
         return comment;
     }

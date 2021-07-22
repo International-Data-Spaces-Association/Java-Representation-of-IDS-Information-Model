@@ -23,7 +23,7 @@ import de.fraunhofer.iais.eis.util.*;
  */
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 @JsonTypeName("ids:LeftOperand")
-public enum LeftOperand {
+public enum LeftOperand implements ModelClass {
 
     /**
      * The current geospatial position of the *consuming connector*. In case the connector only appears
@@ -218,6 +218,7 @@ public enum LeftOperand {
      */
 
     @JsonIgnore
+    @Override
     final public URI getId() {
         return id;
     }
@@ -229,6 +230,7 @@ public enum LeftOperand {
      * @return Human readable label
      */
     @JsonIgnore
+    @Override
     final public List<TypedLiteral> getLabel() {
         return label;
     }
@@ -240,6 +242,7 @@ public enum LeftOperand {
      * @return Human readable explanatory comment
      */
     @JsonIgnore
+    @Override
     final public List<TypedLiteral> getComment() {
         return comment;
     }

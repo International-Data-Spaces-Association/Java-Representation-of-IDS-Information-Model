@@ -24,7 +24,7 @@ import de.fraunhofer.iais.eis.util.*;
  */
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 @JsonTypeName("ids:ContentType")
-public enum ContentType {
+public enum ContentType implements ModelClass {
 
     /**
      * Formal, machine-interpretable definition of a protocol-specific API, e.g., OpenAPI, GraphQL, API
@@ -79,6 +79,7 @@ public enum ContentType {
      */
 
     @JsonIgnore
+    @Override
     final public URI getId() {
         return id;
     }
@@ -90,6 +91,7 @@ public enum ContentType {
      * @return Human readable label
      */
     @JsonIgnore
+    @Override
     final public List<TypedLiteral> getLabel() {
         return label;
     }
@@ -101,6 +103,7 @@ public enum ContentType {
      * @return Human readable explanatory comment
      */
     @JsonIgnore
+    @Override
     final public List<TypedLiteral> getComment() {
         return comment;
     }
