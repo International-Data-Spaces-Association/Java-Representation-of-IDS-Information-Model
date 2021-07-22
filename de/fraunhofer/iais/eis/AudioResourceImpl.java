@@ -87,6 +87,9 @@ public class AudioResourceImpl implements AudioResource {
     @JsonAlias({"ids:modified", "modified"})
     protected XMLGregorianCalendar _modified;
 
+    @JsonAlias({"ids:paymentModality", "paymentModality"})
+    protected List<PaymentModality> _paymentModality = new ArrayList<>();
+
     @JsonAlias({"ids:publisher", "publisher"})
     protected URI _publisher;
 
@@ -207,6 +210,7 @@ public class AudioResourceImpl implements AudioResource {
             this._resourcePart,
             this._resourceEndpoint,
             this._contractOffer,
+            this._paymentModality,
             this._publisher,
             this._sovereign,
             this._sample,
@@ -246,6 +250,7 @@ public class AudioResourceImpl implements AudioResource {
                 Objects.equals(this._resourcePart, other._resourcePart) &&
                 Objects.equals(this._resourceEndpoint, other._resourceEndpoint) &&
                 Objects.equals(this._contractOffer, other._contractOffer) &&
+                Objects.equals(this._paymentModality, other._paymentModality) &&
                 Objects.equals(this._publisher, other._publisher) &&
                 Objects.equals(this._sovereign, other._sovereign) &&
                 Objects.equals(this._sample, other._sample) &&
@@ -294,6 +299,9 @@ public class AudioResourceImpl implements AudioResource {
             if (item != null) {
                 builder._contractOffer_(item.deepCopy());
             }
+        }
+        for (PaymentModality item : this._paymentModality) {
+            builder._paymentModality_(item);
         }
         if (this._publisher != null) {
             builder._publisher_(URI.create(this._publisher.toString()));
@@ -432,6 +440,16 @@ public class AudioResourceImpl implements AudioResource {
     @Override
     public void setContractOffer(List<ContractOffer> _contractOffer_) {
         this._contractOffer = _contractOffer_;
+    }
+
+    @Override
+    public List<PaymentModality> getPaymentModality() {
+        return _paymentModality;
+    }
+
+    @Override
+    public void setPaymentModality(List<PaymentModality> _paymentModality_) {
+        this._paymentModality = _paymentModality_;
     }
 
     @Override

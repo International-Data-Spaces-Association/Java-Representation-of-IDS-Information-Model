@@ -110,6 +110,28 @@ public class SoftwareResourceBuilder implements Builder<SoftwareResource> {
     }
 
     /**
+     * This function allows setting a value for _paymentModality
+     * 
+     * @param _paymentModality_ desired value to be set
+     * @return Builder object with new value for _paymentModality
+     */
+    public SoftwareResourceBuilder _paymentModality_(List<PaymentModality> _paymentModality_) {
+        this.softwareResourceImpl.setPaymentModality(_paymentModality_);
+        return this;
+    }
+
+    /**
+     * This function allows adding a value to the List _paymentModality
+     * 
+     * @param _paymentModality_ desired value to be added
+     * @return Builder object with new value for _paymentModality
+     */
+    public SoftwareResourceBuilder _paymentModality_(PaymentModality _paymentModality_) {
+        this.softwareResourceImpl.getPaymentModality().add(_paymentModality_);
+        return this;
+    }
+
+    /**
      * This function allows setting a value for _publisher
      * 
      * @param _publisher_ desired value to be set

@@ -145,6 +145,29 @@ public interface Resource extends Asset, DigitalContent, DescribedSemantically, 
     void setContractOffer(List<ContractOffer> _contractOffer_);
 
     /**
+     * Various pricing modalities such as idsc:FREE, idsc:FIXED_PRICE and idsc:NEGOTIATION_BASIS can be
+     * used as a pre-selection to annotate the terms of the contract. Depending on the requirements,
+     * additional free text information can be attached.
+     *
+     * More information under https://w3id.org/idsa/core/paymentModality
+     *
+     * @return Returns the List of PaymentModalitys for the property _paymentModality.
+     */
+    @JsonProperty("ids:paymentModality")
+    List<PaymentModality> getPaymentModality();
+
+    /**
+     * Various pricing modalities such as idsc:FREE, idsc:FIXED_PRICE and idsc:NEGOTIATION_BASIS can be
+     * used as a pre-selection to annotate the terms of the contract. Depending on the requirements,
+     * additional free text information can be attached.
+     *
+     * More information under https://w3id.org/idsa/core/paymentModality
+     *
+     * @param _paymentModality_ desired value for the property _paymentModality.
+     */
+    void setPaymentModality(List<PaymentModality> _paymentModality_);
+
+    /**
      * The publisher of the resource (which may differ from the sovereign).
      *
      * More information under https://w3id.org/idsa/core/publisher
