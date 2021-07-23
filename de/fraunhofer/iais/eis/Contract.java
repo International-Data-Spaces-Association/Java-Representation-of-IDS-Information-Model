@@ -17,8 +17,8 @@ import de.fraunhofer.iais.eis.util.*;
  */
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 @JsonSubTypes({
-    @JsonSubTypes.Type(value = ContractOffer.class),
     @JsonSubTypes.Type(value = ContractAgreement.class),
+    @JsonSubTypes.Type(value = ContractOffer.class),
     @JsonSubTypes.Type(value = ContractRequest.class)
 })
 public interface Contract extends ModelClass {
