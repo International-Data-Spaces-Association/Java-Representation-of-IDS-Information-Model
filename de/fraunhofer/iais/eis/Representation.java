@@ -25,7 +25,7 @@ import de.fraunhofer.iais.eis.util.*;
     @JsonSubTypes.Type(value = VideoRepresentation.class),
     @JsonSubTypes.Type(value = SoftwareRepresentation.class)
 })
-public interface Representation extends Asset, DescribedSemantically {
+public interface Representation extends Asset, Described, DescribedSemantically {
 
     // standard methods
 

@@ -54,6 +54,9 @@ public class TextRepresentationImpl implements TextRepresentation {
     @JsonAlias({"ids:created", "created"})
     protected XMLGregorianCalendar _created;
 
+    @JsonAlias({"ids:description", "description"})
+    protected List<TypedLiteral> _description = new ArrayList<>();
+
     @JsonAlias({"ids:instance", "instance"})
     protected List<RepresentationInstance> _instance = new ArrayList<>();
 
@@ -71,6 +74,9 @@ public class TextRepresentationImpl implements TextRepresentation {
 
     @JsonAlias({"ids:shapesGraph", "shapesGraph"})
     protected URI _shapesGraph;
+
+    @JsonAlias({"ids:title", "title"})
+    protected List<TypedLiteral> _title = new ArrayList<>();
 
     protected TextRepresentationImpl() {
         id = VocabUtil.getInstance().createRandomUrl("textRepresentation");
@@ -148,6 +154,8 @@ public class TextRepresentationImpl implements TextRepresentation {
             this._language,
             this._created,
             this._modified,
+            this._title,
+            this._description,
             this._shapesGraph);
     }
 
@@ -167,6 +175,8 @@ public class TextRepresentationImpl implements TextRepresentation {
                 Objects.equals(this._language, other._language) &&
                 Objects.equals(this._created, other._created) &&
                 Objects.equals(this._modified, other._modified) &&
+                Objects.equals(this._title, other._title) &&
+                Objects.equals(this._description, other._description) &&
                 Objects.equals(this._shapesGraph, other._shapesGraph);
         }
     }
@@ -191,6 +201,20 @@ public class TextRepresentationImpl implements TextRepresentation {
         }
         if (this._modified != null) {
             builder._modified_((XMLGregorianCalendar) this._modified.clone());
+        }
+        for (TypedLiteral item : this._title) {
+            if (item != null && item.getLanguage() != null) {
+                builder._title_(new TypedLiteral(item.getValue(), item.getLanguage()));
+            } else {
+                builder._title_(new TypedLiteral(item.getValue(), URI.create(item.getType())));
+            }
+        }
+        for (TypedLiteral item : this._description) {
+            if (item != null && item.getLanguage() != null) {
+                builder._description_(new TypedLiteral(item.getValue(), item.getLanguage()));
+            } else {
+                builder._description_(new TypedLiteral(item.getValue(), URI.create(item.getType())));
+            }
         }
         if (this._shapesGraph != null) {
             builder._shapesGraph_(URI.create(this._shapesGraph.toString()));
@@ -260,6 +284,26 @@ public class TextRepresentationImpl implements TextRepresentation {
     @Override
     public void setModified(XMLGregorianCalendar _modified_) {
         this._modified = _modified_;
+    }
+
+    @Override
+    public List<TypedLiteral> getTitle() {
+        return _title;
+    }
+
+    @Override
+    public void setTitle(List<TypedLiteral> _title_) {
+        this._title = _title_;
+    }
+
+    @Override
+    public List<TypedLiteral> getDescription() {
+        return _description;
+    }
+
+    @Override
+    public void setDescription(List<TypedLiteral> _description_) {
+        this._description = _description_;
     }
 
     @Override

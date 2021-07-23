@@ -110,6 +110,50 @@ public class AudioRepresentationBuilder implements Builder<AudioRepresentation> 
     }
 
     /**
+     * This function allows setting a value for _title
+     * 
+     * @param _title_ desired value to be set
+     * @return Builder object with new value for _title
+     */
+    public AudioRepresentationBuilder _title_(List<TypedLiteral> _title_) {
+        this.audioRepresentationImpl.setTitle(_title_);
+        return this;
+    }
+
+    /**
+     * This function allows adding a value to the List _title
+     * 
+     * @param _title_ desired value to be added
+     * @return Builder object with new value for _title
+     */
+    public AudioRepresentationBuilder _title_(TypedLiteral _title_) {
+        this.audioRepresentationImpl.getTitle().add(_title_);
+        return this;
+    }
+
+    /**
+     * This function allows setting a value for _description
+     * 
+     * @param _description_ desired value to be set
+     * @return Builder object with new value for _description
+     */
+    public AudioRepresentationBuilder _description_(List<TypedLiteral> _description_) {
+        this.audioRepresentationImpl.setDescription(_description_);
+        return this;
+    }
+
+    /**
+     * This function allows adding a value to the List _description
+     * 
+     * @param _description_ desired value to be added
+     * @return Builder object with new value for _description
+     */
+    public AudioRepresentationBuilder _description_(TypedLiteral _description_) {
+        this.audioRepresentationImpl.getDescription().add(_description_);
+        return this;
+    }
+
+    /**
      * This function allows setting a value for _shapesGraph
      * 
      * @param _shapesGraph_ desired value to be set

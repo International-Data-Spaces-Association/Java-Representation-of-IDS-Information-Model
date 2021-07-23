@@ -13,6 +13,7 @@ import de.fraunhofer.iais.eis.util.*;
  */
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 @JsonSubTypes({
+    @JsonSubTypes.Type(value = CommandMessageImpl.class)
 })
 public interface CommandMessage extends RequestMessage {
 

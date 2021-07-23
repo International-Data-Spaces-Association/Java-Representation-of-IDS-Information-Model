@@ -121,6 +121,50 @@ public class DataRepresentationBuilder implements Builder<DataRepresentation> {
     }
 
     /**
+     * This function allows setting a value for _title
+     * 
+     * @param _title_ desired value to be set
+     * @return Builder object with new value for _title
+     */
+    public DataRepresentationBuilder _title_(List<TypedLiteral> _title_) {
+        this.dataRepresentationImpl.setTitle(_title_);
+        return this;
+    }
+
+    /**
+     * This function allows adding a value to the List _title
+     * 
+     * @param _title_ desired value to be added
+     * @return Builder object with new value for _title
+     */
+    public DataRepresentationBuilder _title_(TypedLiteral _title_) {
+        this.dataRepresentationImpl.getTitle().add(_title_);
+        return this;
+    }
+
+    /**
+     * This function allows setting a value for _description
+     * 
+     * @param _description_ desired value to be set
+     * @return Builder object with new value for _description
+     */
+    public DataRepresentationBuilder _description_(List<TypedLiteral> _description_) {
+        this.dataRepresentationImpl.setDescription(_description_);
+        return this;
+    }
+
+    /**
+     * This function allows adding a value to the List _description
+     * 
+     * @param _description_ desired value to be added
+     * @return Builder object with new value for _description
+     */
+    public DataRepresentationBuilder _description_(TypedLiteral _description_) {
+        this.dataRepresentationImpl.getDescription().add(_description_);
+        return this;
+    }
+
+    /**
      * This function allows setting a value for _shapesGraph
      * 
      * @param _shapesGraph_ desired value to be set

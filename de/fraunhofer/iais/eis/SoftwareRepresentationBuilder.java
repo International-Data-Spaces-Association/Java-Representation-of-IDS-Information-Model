@@ -99,6 +99,50 @@ public class SoftwareRepresentationBuilder implements Builder<SoftwareRepresenta
     }
 
     /**
+     * This function allows setting a value for _title
+     * 
+     * @param _title_ desired value to be set
+     * @return Builder object with new value for _title
+     */
+    public SoftwareRepresentationBuilder _title_(List<TypedLiteral> _title_) {
+        this.softwareRepresentationImpl.setTitle(_title_);
+        return this;
+    }
+
+    /**
+     * This function allows adding a value to the List _title
+     * 
+     * @param _title_ desired value to be added
+     * @return Builder object with new value for _title
+     */
+    public SoftwareRepresentationBuilder _title_(TypedLiteral _title_) {
+        this.softwareRepresentationImpl.getTitle().add(_title_);
+        return this;
+    }
+
+    /**
+     * This function allows setting a value for _description
+     * 
+     * @param _description_ desired value to be set
+     * @return Builder object with new value for _description
+     */
+    public SoftwareRepresentationBuilder _description_(List<TypedLiteral> _description_) {
+        this.softwareRepresentationImpl.setDescription(_description_);
+        return this;
+    }
+
+    /**
+     * This function allows adding a value to the List _description
+     * 
+     * @param _description_ desired value to be added
+     * @return Builder object with new value for _description
+     */
+    public SoftwareRepresentationBuilder _description_(TypedLiteral _description_) {
+        this.softwareRepresentationImpl.getDescription().add(_description_);
+        return this;
+    }
+
+    /**
      * This function allows setting a value for _shapesGraph
      * 
      * @param _shapesGraph_ desired value to be set

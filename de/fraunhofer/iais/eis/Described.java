@@ -16,6 +16,7 @@ import de.fraunhofer.iais.eis.util.*;
 @JsonSubTypes({
     @JsonSubTypes.Type(value = Agent.class),
     @JsonSubTypes.Type(value = DigitalContent.class),
+    @JsonSubTypes.Type(value = Representation.class),
     @JsonSubTypes.Type(value = ManagedEntity.class),
     @JsonSubTypes.Type(value = Rule.class)
 })

@@ -38,6 +38,12 @@ public enum Frequency implements ModelClass {
         Arrays.asList(new TypedLiteral("The event occurs every two years.", "en"))),
 
     /**
+     * The event occurs twice an hour.
+     */
+    BIHOURLY("https://w3id.org/idsa/code/BIHOURLY", Arrays.asList(new TypedLiteral("Bihourly", "en")),
+        Arrays.asList(new TypedLiteral("The event occurs twice an hour.", "en"))),
+
+    /**
      * The event occurs every two months.
      */
     BIMONTHLY("https://w3id.org/idsa/code/BIMONTHLY", Arrays.asList(new TypedLiteral("Bimonthly", "en")),
@@ -60,6 +66,48 @@ public enum Frequency implements ModelClass {
      */
     DAILY("https://w3id.org/idsa/code/DAILY", Arrays.asList(new TypedLiteral("Daily", "en")),
         Arrays.asList(new TypedLiteral("The event occurs once a day.", "en"))),
+
+    /**
+     * The event occurs every 10 minutes.
+     */
+    EVERY_10_MINUTES("https://w3id.org/idsa/code/EVERY_10_MINUTES", Arrays.asList(new TypedLiteral("Every 10 minutes", "en")),
+        Arrays.asList(new TypedLiteral("The event occurs every 10 minutes.", "en"))),
+
+    /**
+     * The event occurs every 15 minutes.
+     */
+    EVERY_15_MINUTES("https://w3id.org/idsa/code/EVERY_15_MINUTES", Arrays.asList(new TypedLiteral("Every 15 minutes", "en")),
+        Arrays.asList(new TypedLiteral("The event occurs every 15 minutes.", "en"))),
+
+    /**
+     * The event occurs every 1 minute.
+     */
+    EVERY_1_MINUTE("https://w3id.org/idsa/code/EVERY_1_MINUTE", Arrays.asList(new TypedLiteral("Every 1 minutes", "en")),
+        Arrays.asList(new TypedLiteral("The event occurs every 1 minute.", "en"))),
+
+    /**
+     * The event occurs every 30 minutes.
+     */
+    EVERY_30_MINUTES("https://w3id.org/idsa/code/EVERY_30_MINUTES", Arrays.asList(new TypedLiteral("Every 30 minutes", "en")),
+        Arrays.asList(new TypedLiteral("The event occurs every 30 minutes.", "en"))),
+
+    /**
+     * The event occurs every 5 minutes.
+     */
+    EVERY_5_MINUTES("https://w3id.org/idsa/code/EVERY_5_MINUTES", Arrays.asList(new TypedLiteral("Every 5 minutes", "en")),
+        Arrays.asList(new TypedLiteral("The event occurs every 5 minutes.", "en"))),
+
+    /**
+     * The event occurs every three hours.
+     */
+    EVERY_THREE_HOURS("https://w3id.org/idsa/code/EVERY_THREE_HOURS", Arrays.asList(new TypedLiteral("Every three hours", "en")),
+        Arrays.asList(new TypedLiteral("The event occurs every three hours.", "en"))),
+
+    /**
+     * The event occurs every hour.
+     */
+    HOURLY("https://w3id.org/idsa/code/HOURLY", Arrays.asList(new TypedLiteral("Hourly", "en")),
+        Arrays.asList(new TypedLiteral("The event occurs every hour.", "en"))),
 
     /**
      * The event occurs at uneven intervals.
@@ -120,6 +168,12 @@ public enum Frequency implements ModelClass {
      */
     TRIENNIAL("https://w3id.org/idsa/code/TRIENNIAL", Arrays.asList(new TypedLiteral("Triennial", "en")),
         Arrays.asList(new TypedLiteral("The event occurs every three years.", "en"))),
+
+    /**
+     * The event occurs twice a day.
+     */
+    TWO_TIMES_A_DAY("https://w3id.org/idsa/code/TWO_TIMES_A_DAY", Arrays.asList(new TypedLiteral("Two times a day", "en")),
+        Arrays.asList(new TypedLiteral("The event occurs twice a day.", "en"))),
 
     /**
      * The event occurs once a week.
