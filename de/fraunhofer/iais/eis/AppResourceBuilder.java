@@ -115,19 +115,8 @@ public class AppResourceBuilder implements Builder<AppResource> {
      * @param _paymentModality_ desired value to be set
      * @return Builder object with new value for _paymentModality
      */
-    public AppResourceBuilder _paymentModality_(List<PaymentModality> _paymentModality_) {
-        this.appResourceImpl.setPaymentModality(_paymentModality_);
-        return this;
-    }
-
-    /**
-     * This function allows adding a value to the List _paymentModality
-     * 
-     * @param _paymentModality_ desired value to be added
-     * @return Builder object with new value for _paymentModality
-     */
     public AppResourceBuilder _paymentModality_(PaymentModality _paymentModality_) {
-        this.appResourceImpl.getPaymentModality().add(_paymentModality_);
+        this.appResourceImpl.setPaymentModality(_paymentModality_);
         return this;
     }
 

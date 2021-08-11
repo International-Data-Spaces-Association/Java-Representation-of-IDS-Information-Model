@@ -115,19 +115,8 @@ public class AudioResourceBuilder implements Builder<AudioResource> {
      * @param _paymentModality_ desired value to be set
      * @return Builder object with new value for _paymentModality
      */
-    public AudioResourceBuilder _paymentModality_(List<PaymentModality> _paymentModality_) {
-        this.audioResourceImpl.setPaymentModality(_paymentModality_);
-        return this;
-    }
-
-    /**
-     * This function allows adding a value to the List _paymentModality
-     * 
-     * @param _paymentModality_ desired value to be added
-     * @return Builder object with new value for _paymentModality
-     */
     public AudioResourceBuilder _paymentModality_(PaymentModality _paymentModality_) {
-        this.audioResourceImpl.getPaymentModality().add(_paymentModality_);
+        this.audioResourceImpl.setPaymentModality(_paymentModality_);
         return this;
     }
 

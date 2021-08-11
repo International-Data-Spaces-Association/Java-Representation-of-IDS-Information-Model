@@ -115,19 +115,8 @@ public class ResourceBuilder implements Builder<Resource> {
      * @param _paymentModality_ desired value to be set
      * @return Builder object with new value for _paymentModality
      */
-    public ResourceBuilder _paymentModality_(List<PaymentModality> _paymentModality_) {
-        this.resourceImpl.setPaymentModality(_paymentModality_);
-        return this;
-    }
-
-    /**
-     * This function allows adding a value to the List _paymentModality
-     * 
-     * @param _paymentModality_ desired value to be added
-     * @return Builder object with new value for _paymentModality
-     */
     public ResourceBuilder _paymentModality_(PaymentModality _paymentModality_) {
-        this.resourceImpl.getPaymentModality().add(_paymentModality_);
+        this.resourceImpl.setPaymentModality(_paymentModality_);
         return this;
     }
 

@@ -88,7 +88,7 @@ public class SoftwareResourceImpl implements SoftwareResource {
     protected XMLGregorianCalendar _modified;
 
     @JsonAlias({"ids:paymentModality", "paymentModality"})
-    protected List<PaymentModality> _paymentModality = new ArrayList<>();
+    protected PaymentModality _paymentModality;
 
     @JsonAlias({"ids:publisher", "publisher"})
     protected URI _publisher;
@@ -300,9 +300,7 @@ public class SoftwareResourceImpl implements SoftwareResource {
                 builder._contractOffer_(item.deepCopy());
             }
         }
-        for (PaymentModality item : this._paymentModality) {
-            builder._paymentModality_(item);
-        }
+        builder._paymentModality_(this._paymentModality);
         if (this._publisher != null) {
             builder._publisher_(URI.create(this._publisher.toString()));
         }
@@ -443,12 +441,12 @@ public class SoftwareResourceImpl implements SoftwareResource {
     }
 
     @Override
-    public List<PaymentModality> getPaymentModality() {
+    public PaymentModality getPaymentModality() {
         return _paymentModality;
     }
 
     @Override
-    public void setPaymentModality(List<PaymentModality> _paymentModality_) {
+    public void setPaymentModality(PaymentModality _paymentModality_) {
         this._paymentModality = _paymentModality_;
     }
 

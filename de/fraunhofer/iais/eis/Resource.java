@@ -151,10 +151,10 @@ public interface Resource extends Asset, DigitalContent, DescribedSemantically, 
      *
      * More information under https://w3id.org/idsa/core/paymentModality
      *
-     * @return Returns the List of PaymentModalitys for the property _paymentModality.
+     * @return Returns the PaymentModality for the property _paymentModality.
      */
     @JsonProperty("ids:paymentModality")
-    List<PaymentModality> getPaymentModality();
+    PaymentModality getPaymentModality();
 
     /**
      * Various pricing modalities such as idsc:FREE, idsc:FIXED_PRICE and idsc:NEGOTIATION_BASIS can be
@@ -165,7 +165,7 @@ public interface Resource extends Asset, DigitalContent, DescribedSemantically, 
      *
      * @param _paymentModality_ desired value for the property _paymentModality.
      */
-    void setPaymentModality(List<PaymentModality> _paymentModality_);
+    void setPaymentModality(PaymentModality _paymentModality_);
 
     /**
      * The publisher of the resource (which may differ from the sovereign).
