@@ -170,8 +170,7 @@ public class ConnectorCertificateRevokedMessageImpl implements ConnectorCertific
 
     @Override
     public int hashCode() {
-        return Objects.hash(this._revocationReason,
-            this._affectedConnector,
+        return Objects.hash(this._affectedConnector,
             this._modelVersion,
             this._issued,
             this._correlationMessage,

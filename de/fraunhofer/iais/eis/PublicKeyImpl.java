@@ -126,7 +126,7 @@ public class PublicKeyImpl implements PublicKey {
     @Override
     public int hashCode() {
         return Objects.hash(this._keyType,
-            this._keyValue);
+            Arrays.hashCode(this._keyValue));
     }
 
     @Override

@@ -170,8 +170,7 @@ public class ParticipantCertificateRevokedMessageImpl implements ParticipantCert
 
     @Override
     public int hashCode() {
-        return Objects.hash(this._revocationReason,
-            this._affectedParticipant,
+        return Objects.hash(this._affectedParticipant,
             this._modelVersion,
             this._issued,
             this._correlationMessage,
