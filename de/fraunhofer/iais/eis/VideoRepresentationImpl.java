@@ -195,9 +195,7 @@ public class VideoRepresentationImpl implements VideoRepresentation {
                 builder._instance_(item.deepCopy());
             }
         }
-        if (this._mediaType != null) {
-            builder._mediaType_(this._mediaType.deepCopy());
-        }
+        builder._mediaType_(this._mediaType);
         if (this._representationStandard != null) {
             builder._representationStandard_(URI.create(this._representationStandard.toString()));
         }
