@@ -65,11 +65,11 @@ public enum LeftOperand implements ModelClass {
     /**
      * Remote target for an action or information provider (PIP). Must be used together with idsc:IS or
      * idsc:IN operators. RightOperand must be a xsd:anyURI or an URL which should point to an actually
-     * deployed endpoint. An example is a refinment of idsc:NOTIFY where idsc:REMOTE points to a
+     * deployed endpoint. An example is a refinement of idsc:NOTIFY where idsc:REMOTE points to a
      * Clearing House.
      */
     ENDPOINT("https://w3id.org/idsa/code/ENDPOINT", Arrays.asList(new TypedLiteral("endpoint", "")), Arrays.asList(new TypedLiteral(
-        "Remote target for an action or information provider (PIP). Must be used together with idsc:IS or idsc:IN operators. RightOperand must be a xsd:anyURI or an URL which should point to an actually deployed endpoint. An example is a refinment of idsc:NOTIFY where idsc:REMOTE points to a Clearing House.",
+        "Remote target for an action or information provider (PIP). Must be used together with idsc:IS or idsc:IN operators. RightOperand must be a xsd:anyURI or an URL which should point to an actually deployed endpoint. An example is a refinement of idsc:NOTIFY where idsc:REMOTE points to a Clearing House.",
         "en"))),
 
     /**
