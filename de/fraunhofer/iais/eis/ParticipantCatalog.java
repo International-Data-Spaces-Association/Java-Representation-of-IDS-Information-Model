@@ -1,5 +1,6 @@
 package de.fraunhofer.iais.eis;
 
+import java.net.URI;
 import java.util.List;
 
 
@@ -30,10 +31,10 @@ public interface ParticipantCatalog extends Catalog {
      *
      * More information under https://w3id.org/idsa/core/member
      *
-     * @return Returns the List of Participants for the property _member.
+     * @return Returns the List of URIs for the property _member.
      */
     @JsonProperty("ids:member")
-    List<Participant> getMember();
+    List<URI> getMember();
 
     /**
      * A Participant that is part of a participant catalog.
@@ -42,6 +43,6 @@ public interface ParticipantCatalog extends Catalog {
      *
      * @param _member_ desired value for the property _member.
      */
-    void setMember(List<Participant> _member_);
+    void setMember(List<URI> _member_);
 
 }

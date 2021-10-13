@@ -51,7 +51,7 @@ public class ParticipantCatalogImpl implements ParticipantCatalog {
     // instance fields as derived from the IDS Information Model ontology
 
     @JsonAlias({"ids:member", "member"})
-    protected List<Participant> _member = new ArrayList<>();
+    protected List<URI> _member = new ArrayList<>();
 
     protected ParticipantCatalogImpl() {
         id = VocabUtil.getInstance().createRandomUrl("participantCatalog");
@@ -143,9 +143,9 @@ public class ParticipantCatalogImpl implements ParticipantCatalog {
     @Override
     public ParticipantCatalog deepCopy() {
         ParticipantCatalogBuilder builder = new ParticipantCatalogBuilder();
-        for (Participant item : this._member) {
+        for (URI item : this._member) {
             if (item != null) {
-                builder._member_(item.deepCopy());
+                builder._member_(URI.create(item.toString()));
             }
         }
         return builder.build();
@@ -154,12 +154,12 @@ public class ParticipantCatalogImpl implements ParticipantCatalog {
     // accessor method implementations as derived from the IDS Information Model ontology
 
     @Override
-    public List<Participant> getMember() {
+    public List<URI> getMember() {
         return _member;
     }
 
     @Override
-    public void setMember(List<Participant> _member_) {
+    public void setMember(List<URI> _member_) {
         this._member = _member_;
     }
 

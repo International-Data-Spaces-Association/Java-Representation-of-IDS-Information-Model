@@ -51,10 +51,10 @@ public class ResourceCatalogImpl implements ResourceCatalog {
     // instance fields as derived from the IDS Information Model ontology
 
     @JsonAlias({"ids:offeredResource", "offeredResource"})
-    protected List<Resource> _offeredResource = new ArrayList<>();
+    protected List<URI> _offeredResource = new ArrayList<>();
 
     @JsonAlias({"ids:requestedResource", "requestedResource"})
-    protected List<Resource> _requestedResource = new ArrayList<>();
+    protected List<URI> _requestedResource = new ArrayList<>();
 
     protected ResourceCatalogImpl() {
         id = VocabUtil.getInstance().createRandomUrl("resourceCatalog");
@@ -148,14 +148,14 @@ public class ResourceCatalogImpl implements ResourceCatalog {
     @Override
     public ResourceCatalog deepCopy() {
         ResourceCatalogBuilder builder = new ResourceCatalogBuilder();
-        for (Resource item : this._offeredResource) {
+        for (URI item : this._offeredResource) {
             if (item != null) {
-                builder._offeredResource_(item.deepCopy());
+                builder._offeredResource_(URI.create(item.toString()));
             }
         }
-        for (Resource item : this._requestedResource) {
+        for (URI item : this._requestedResource) {
             if (item != null) {
-                builder._requestedResource_(item.deepCopy());
+                builder._requestedResource_(URI.create(item.toString()));
             }
         }
         return builder.build();
@@ -164,22 +164,22 @@ public class ResourceCatalogImpl implements ResourceCatalog {
     // accessor method implementations as derived from the IDS Information Model ontology
 
     @Override
-    public List<Resource> getOfferedResource() {
+    public List<URI> getOfferedResource() {
         return _offeredResource;
     }
 
     @Override
-    public void setOfferedResource(List<Resource> _offeredResource_) {
+    public void setOfferedResource(List<URI> _offeredResource_) {
         this._offeredResource = _offeredResource_;
     }
 
     @Override
-    public List<Resource> getRequestedResource() {
+    public List<URI> getRequestedResource() {
         return _requestedResource;
     }
 
     @Override
-    public void setRequestedResource(List<Resource> _requestedResource_) {
+    public void setRequestedResource(List<URI> _requestedResource_) {
         this._requestedResource = _requestedResource_;
     }
 
