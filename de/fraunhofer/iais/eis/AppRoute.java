@@ -2,7 +2,6 @@ package de.fraunhofer.iais.eis;
 
 import java.util.List;
 
-import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -40,7 +39,6 @@ public interface AppRoute extends ModelClass {
      *
      * @return Returns the String for the property _routeDeployMethod.
      */
-    @NotNull
     @JsonProperty("ids:routeDeployMethod")
     String getRouteDeployMethod();
 

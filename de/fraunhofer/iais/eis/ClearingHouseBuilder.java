@@ -32,6 +32,17 @@ public class ClearingHouseBuilder implements Builder<ClearingHouse> {
     }
 
     /**
+     * This function allows setting a value for _maintainerAsParticipant
+     * 
+     * @param _maintainer_ desired value to be set
+     * @return Builder object with new value for _maintainerAsParticipant
+     */
+    public ClearingHouseBuilder _maintainerAsParticipant_(Participant _maintainer_) {
+        this.clearingHouseImpl.setMaintainerAsParticipant(_maintainer_);
+        return this;
+    }
+
+    /**
      * This function allows setting a value for _curator
      * 
      * @param _curator_ desired value to be set
@@ -39,6 +50,17 @@ public class ClearingHouseBuilder implements Builder<ClearingHouse> {
      */
     public ClearingHouseBuilder _curator_(URI _curator_) {
         this.clearingHouseImpl.setCurator(_curator_);
+        return this;
+    }
+
+    /**
+     * This function allows setting a value for _curatorAsParticipant
+     * 
+     * @param _curator_ desired value to be set
+     * @return Builder object with new value for _curatorAsParticipant
+     */
+    public ClearingHouseBuilder _curatorAsParticipant_(Participant _curator_) {
+        this.clearingHouseImpl.setCuratorAsParticipant(_curator_);
         return this;
     }
 

@@ -62,7 +62,6 @@ public class AppEndpointImpl implements AppEndpoint {
     @JsonAlias({"ids:appEndpointProtocol", "appEndpointProtocol"})
     protected String _appEndpointProtocol;
 
-    @NotNull
     @JsonAlias({"ids:appEndpointType", "appEndpointType"})
     protected AppEndpointType _appEndpointType;
 
@@ -223,7 +222,6 @@ public class AppEndpointImpl implements AppEndpoint {
     // accessor method implementations as derived from the IDS Information Model ontology
 
     @Override
-    @NotNull
     public AppEndpointType getAppEndpointType() {
         return _appEndpointType;
     }

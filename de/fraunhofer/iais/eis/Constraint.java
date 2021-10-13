@@ -2,7 +2,6 @@ package de.fraunhofer.iais.eis;
 
 import java.net.URI;
 
-import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -33,7 +32,6 @@ public interface Constraint extends AbstractConstraint {
      *
      * @return Returns the LeftOperand for the property _leftOperand.
      */
-    @NotNull
     @JsonProperty("ids:leftOperand")
     LeftOperand getLeftOperand();
 
@@ -53,7 +51,6 @@ public interface Constraint extends AbstractConstraint {
      *
      * @return Returns the BinaryOperator for the property _operator.
      */
-    @NotNull
     @JsonProperty("ids:operator")
     BinaryOperator getOperator();
 

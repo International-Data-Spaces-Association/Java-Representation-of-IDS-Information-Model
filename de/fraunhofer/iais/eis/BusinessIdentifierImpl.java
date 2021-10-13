@@ -52,11 +52,9 @@ public class BusinessIdentifierImpl implements BusinessIdentifier {
 
     // instance fields as derived from the IDS Information Model ontology
 
-    @NotNull
     @JsonAlias({"ids:identifierNumber", "identifierNumber"})
     protected String _identifierNumber;
 
-    @NotNull
     @JsonAlias({"ids:identifierSystem", "identifierSystem"})
     protected String _identifierSystem;
 
@@ -160,7 +158,6 @@ public class BusinessIdentifierImpl implements BusinessIdentifier {
     // accessor method implementations as derived from the IDS Information Model ontology
 
     @Override
-    @NotNull
     public String getIdentifierSystem() {
         return _identifierSystem;
     }
@@ -171,7 +168,6 @@ public class BusinessIdentifierImpl implements BusinessIdentifier {
     }
 
     @Override
-    @NotNull
     public String getIdentifierNumber() {
         return _identifierNumber;
     }

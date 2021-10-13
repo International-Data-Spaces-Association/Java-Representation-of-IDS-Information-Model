@@ -87,6 +87,28 @@ public class PermissionBuilder implements Builder<Permission> {
     }
 
     /**
+     * This function allows setting a value for _assigneeAsParticipant
+     * 
+     * @param _assignee_ desired value to be set
+     * @return Builder object with new value for _assigneeAsParticipant
+     */
+    public PermissionBuilder _assigneeAsParticipant_(List<Participant> _assignee_) {
+        this.permissionImpl.setAssigneeAsParticipant(_assignee_);
+        return this;
+    }
+
+    /**
+     * This function allows adding a value to the List _assigneeAsParticipant
+     * 
+     * @param _assignee_ desired value to be added
+     * @return Builder object with new value for _assigneeAsParticipant
+     */
+    public PermissionBuilder _assigneeAsParticipant_(Participant _assignee_) {
+        this.permissionImpl.getAssigneeAsParticipant().add(_assignee_);
+        return this;
+    }
+
+    /**
      * This function allows setting a value for _assigner
      * 
      * @param _assigner_ desired value to be set
@@ -109,6 +131,28 @@ public class PermissionBuilder implements Builder<Permission> {
     }
 
     /**
+     * This function allows setting a value for _assignerAsParticipant
+     * 
+     * @param _assigner_ desired value to be set
+     * @return Builder object with new value for _assignerAsParticipant
+     */
+    public PermissionBuilder _assignerAsParticipant_(List<Participant> _assigner_) {
+        this.permissionImpl.setAssignerAsParticipant(_assigner_);
+        return this;
+    }
+
+    /**
+     * This function allows adding a value to the List _assignerAsParticipant
+     * 
+     * @param _assigner_ desired value to be added
+     * @return Builder object with new value for _assignerAsParticipant
+     */
+    public PermissionBuilder _assignerAsParticipant_(Participant _assigner_) {
+        this.permissionImpl.getAssignerAsParticipant().add(_assigner_);
+        return this;
+    }
+
+    /**
      * This function allows setting a value for _target
      * 
      * @param _target_ desired value to be set
@@ -116,6 +160,17 @@ public class PermissionBuilder implements Builder<Permission> {
      */
     public PermissionBuilder _target_(URI _target_) {
         this.permissionImpl.setTarget(_target_);
+        return this;
+    }
+
+    /**
+     * This function allows setting a value for _targetAsAsset
+     * 
+     * @param _target_ desired value to be set
+     * @return Builder object with new value for _targetAsAsset
+     */
+    public PermissionBuilder _targetAsAsset_(Asset _target_) {
+        this.permissionImpl.setTargetAsAsset(_target_);
         return this;
     }
 

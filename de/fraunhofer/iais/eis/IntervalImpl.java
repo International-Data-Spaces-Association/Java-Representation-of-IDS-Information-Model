@@ -50,7 +50,6 @@ public class IntervalImpl implements Interval {
 
     // instance fields as derived from the IDS Information Model ontology
 
-    @NotNull
     @JsonAlias({"ids:begin", "begin"})
     protected Instant _begin;
 
@@ -167,7 +166,6 @@ public class IntervalImpl implements Interval {
     // accessor method implementations as derived from the IDS Information Model ontology
 
     @Override
-    @NotNull
     public Instant getBegin() {
         return _begin;
     }

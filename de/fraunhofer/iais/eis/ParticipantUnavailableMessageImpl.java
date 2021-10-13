@@ -54,7 +54,6 @@ public class ParticipantUnavailableMessageImpl implements ParticipantUnavailable
 
     // instance fields as derived from the IDS Information Model ontology
 
-    @NotNull
     @JsonAlias({"ids:affectedParticipant", "affectedParticipant"})
     protected URI _affectedParticipant;
 
@@ -67,15 +66,12 @@ public class ParticipantUnavailableMessageImpl implements ParticipantUnavailable
     @JsonAlias({"ids:correlationMessage", "correlationMessage"})
     protected URI _correlationMessage;
 
-    @NotNull
     @JsonAlias({"ids:issued", "issued"})
     protected XMLGregorianCalendar _issued;
 
-    @NotNull
     @JsonAlias({"ids:issuerConnector", "issuerConnector"})
     protected URI _issuerConnector;
 
-    @NotNull
     @JsonAlias({"ids:modelVersion", "modelVersion"})
     protected String _modelVersion;
 
@@ -85,11 +81,9 @@ public class ParticipantUnavailableMessageImpl implements ParticipantUnavailable
     @JsonAlias({"ids:recipientConnector", "recipientConnector"})
     protected List<URI> _recipientConnector = new ArrayList<>();
 
-    @NotNull
     @JsonAlias({"ids:securityToken", "securityToken"})
     protected DynamicAttributeToken _securityToken;
 
-    @NotNull
     @JsonAlias({"ids:senderAgent", "senderAgent"})
     protected URI _senderAgent;
 
@@ -250,7 +244,6 @@ public class ParticipantUnavailableMessageImpl implements ParticipantUnavailable
     // accessor method implementations as derived from the IDS Information Model ontology
 
     @Override
-    @NotNull
     public URI getAffectedParticipant() {
         return _affectedParticipant;
     }
@@ -261,7 +254,6 @@ public class ParticipantUnavailableMessageImpl implements ParticipantUnavailable
     }
 
     @Override
-    @NotNull
     public String getModelVersion() {
         return _modelVersion;
     }
@@ -273,7 +265,6 @@ public class ParticipantUnavailableMessageImpl implements ParticipantUnavailable
 
     @Override
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
-    @NotNull
     public XMLGregorianCalendar getIssued() {
         return _issued;
     }
@@ -294,7 +285,6 @@ public class ParticipantUnavailableMessageImpl implements ParticipantUnavailable
     }
 
     @Override
-    @NotNull
     public URI getIssuerConnector() {
         return _issuerConnector;
     }
@@ -315,7 +305,6 @@ public class ParticipantUnavailableMessageImpl implements ParticipantUnavailable
     }
 
     @Override
-    @NotNull
     public URI getSenderAgent() {
         return _senderAgent;
     }
@@ -336,7 +325,6 @@ public class ParticipantUnavailableMessageImpl implements ParticipantUnavailable
     }
 
     @Override
-    @NotNull
     public DynamicAttributeToken getSecurityToken() {
         return _securityToken;
     }

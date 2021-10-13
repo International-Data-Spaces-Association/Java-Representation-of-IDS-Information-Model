@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
@@ -61,41 +60,33 @@ public class DatRequestPayloadImpl implements DatRequestPayload {
 
     // instance fields as derived from the IDS Information Model ontology
 
-    @NotNull
     @JsonAlias({"ids:aud", "aud"})
     protected Audience _aud;
 
-    @NotNull
     @JsonAlias({"ids:exp", "exp"})
     protected BigInteger _exp;
 
-    @NotNull
     @JsonAlias({"ids:iat", "iat"})
     protected BigInteger _iat;
 
     @JsonAlias({"ids:iss", "iss"})
     protected String _iss;
 
-    @NotNull
     @JsonAlias({"ids:nbf", "nbf"})
     protected BigInteger _nbf;
 
     @JsonAlias({"ids:referringConnector", "referringConnector"})
     protected URI _referringConnector;
 
-    @NotNull
     @JsonAlias({"ids:scope", "scope"})
     protected String _scope;
 
-    @NotNull
     @JsonAlias({"ids:securityProfile", "securityProfile"})
     protected SecurityProfile _securityProfile;
 
-    @NotNull
     @JsonAlias({"ids:sub", "sub"})
     protected String _sub;
 
-    @NotEmpty
     @JsonAlias({"ids:transportCertsSha256", "transportCertsSha256"})
     protected List<String> _transportCertsSha256 = new ArrayList<>();
 
@@ -227,7 +218,6 @@ public class DatRequestPayloadImpl implements DatRequestPayload {
     // accessor method implementations as derived from the IDS Information Model ontology
 
     @Override
-    @NotEmpty
     public List<String> getTransportCertsSha256() {
         return _transportCertsSha256;
     }
@@ -238,7 +228,6 @@ public class DatRequestPayloadImpl implements DatRequestPayload {
     }
 
     @Override
-    @NotNull
     public Audience getAud() {
         return _aud;
     }
@@ -249,7 +238,6 @@ public class DatRequestPayloadImpl implements DatRequestPayload {
     }
 
     @Override
-    @NotNull
     public BigInteger getExp() {
         return _exp;
     }
@@ -260,7 +248,6 @@ public class DatRequestPayloadImpl implements DatRequestPayload {
     }
 
     @Override
-    @NotNull
     public BigInteger getIat() {
         return _iat;
     }
@@ -281,7 +268,6 @@ public class DatRequestPayloadImpl implements DatRequestPayload {
     }
 
     @Override
-    @NotNull
     public BigInteger getNbf() {
         return _nbf;
     }
@@ -302,7 +288,6 @@ public class DatRequestPayloadImpl implements DatRequestPayload {
     }
 
     @Override
-    @NotNull
     public String getScope() {
         return _scope;
     }
@@ -313,7 +298,6 @@ public class DatRequestPayloadImpl implements DatRequestPayload {
     }
 
     @Override
-    @NotNull
     public String getSub() {
         return _sub;
     }
@@ -324,7 +308,6 @@ public class DatRequestPayloadImpl implements DatRequestPayload {
     }
 
     @Override
-    @NotNull
     public SecurityProfile getSecurityProfile() {
         return _securityProfile;
     }

@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
@@ -59,9 +58,11 @@ public class ParISImpl implements ParIS {
     @JsonAlias({"ids:componentCertification", "componentCertification"})
     protected ComponentCertification _componentCertification;
 
-    @NotNull
     @JsonAlias({"ids:curator", "curator"})
     protected URI _curator;
+
+    @JsonAlias({"ids:curator", "curator"})
+    protected Participant _curatorAsParticipant;
 
     @JsonAlias({"ids:description", "description"})
     protected List<TypedLiteral> _description = new ArrayList<>();
@@ -72,22 +73,21 @@ public class ParISImpl implements ParIS {
     @JsonAlias({"ids:hasAgent", "hasAgent"})
     protected List<URI> _hasAgent = new ArrayList<>();
 
-    @NotNull
     @JsonAlias({"ids:hasDefaultEndpoint", "hasDefaultEndpoint"})
     protected ConnectorEndpoint _hasDefaultEndpoint;
 
     @JsonAlias({"ids:hasEndpoint", "hasEndpoint"})
     protected List<ConnectorEndpoint> _hasEndpoint = new ArrayList<>();
 
-    @NotEmpty
     @JsonAlias({"ids:inboundModelVersion", "inboundModelVersion"})
     protected List<String> _inboundModelVersion = new ArrayList<>();
 
-    @NotNull
     @JsonAlias({"ids:maintainer", "maintainer"})
     protected URI _maintainer;
 
-    @NotNull
+    @JsonAlias({"ids:maintainer", "maintainer"})
+    protected Participant _maintainerAsParticipant;
+
     @JsonAlias({"ids:outboundModelVersion", "outboundModelVersion"})
     protected String _outboundModelVersion;
 
@@ -103,7 +103,6 @@ public class ParISImpl implements ParIS {
     @JsonAlias({"ids:resourceCatalog", "resourceCatalog"})
     protected List<ResourceCatalog> _resourceCatalog = new ArrayList<>();
 
-    @NotNull
     @JsonAlias({"ids:securityProfile", "securityProfile"})
     protected SecurityProfile _securityProfile;
 
@@ -222,7 +221,9 @@ public class ParISImpl implements ParIS {
                 Objects.equals(this._securityProfile, other._securityProfile) &&
                 Objects.equals(this._extendedGuarantee, other._extendedGuarantee) &&
                 Objects.equals(this._maintainer, other._maintainer) &&
+                Objects.equals(this._maintainerAsParticipant, other._maintainerAsParticipant) &&
                 Objects.equals(this._curator, other._curator) &&
+                Objects.equals(this._curatorAsParticipant, other._curatorAsParticipant) &&
                 Objects.equals(this._physicalLocation, other._physicalLocation) &&
                 Objects.equals(this._inboundModelVersion, other._inboundModelVersion) &&
                 Objects.equals(this._outboundModelVersion, other._outboundModelVersion) &&
@@ -270,8 +271,14 @@ public class ParISImpl implements ParIS {
         if (this._maintainer != null) {
             builder._maintainer_(URI.create(this._maintainer.toString()));
         }
+        if (this._maintainerAsParticipant != null) {
+            builder._maintainerAsParticipant_(this._maintainerAsParticipant.deepCopy());
+        }
         if (this._curator != null) {
             builder._curator_(URI.create(this._curator.toString()));
+        }
+        if (this._curatorAsParticipant != null) {
+            builder._curatorAsParticipant_(this._curatorAsParticipant.deepCopy());
         }
         if (this._physicalLocation != null) {
             builder._physicalLocation_(this._physicalLocation.deepCopy());
@@ -317,7 +324,6 @@ public class ParISImpl implements ParIS {
     }
 
     @Override
-    @NotNull
     public ConnectorEndpoint getHasDefaultEndpoint() {
         return _hasDefaultEndpoint;
     }
@@ -368,7 +374,6 @@ public class ParISImpl implements ParIS {
     }
 
     @Override
-    @NotNull
     public SecurityProfile getSecurityProfile() {
         return _securityProfile;
     }
@@ -389,25 +394,93 @@ public class ParISImpl implements ParIS {
     }
 
     @Override
-    @NotNull
     public URI getMaintainer() {
-        return _maintainer;
+        if (this._maintainer != null) {
+            return _maintainer;
+        } else if (this._maintainerAsParticipant != null) {
+            return _maintainerAsParticipant.getId();
+        } else {
+            return _maintainer;
+        }
     }
 
     @Override
     public void setMaintainer(URI _maintainer_) {
         this._maintainer = _maintainer_;
+        this._maintainerAsParticipant = null;
     }
 
     @Override
-    @NotNull
+    public Participant getMaintainerAsParticipant() {
+        return _maintainerAsParticipant;
+    }
+
+    @Override
+    public void setMaintainerAsParticipant(Participant _maintainer_) {
+        this._maintainerAsParticipant = _maintainer_;
+        this._maintainer = null;
+    }
+
+    @Override
+    /**
+     * Helper function for (de-)serialization of the _parIS and the _parISAsParticipantfields.
+     *
+     * @return Returns the a UriOrModelClass object with the content of the field or null if the field
+     *         is not set.
+     */
+    public UriOrModelClass getMaintainerAsObject() {
+        if (_maintainerAsParticipant != null) {
+            return new UriOrModelClass(_maintainerAsParticipant);
+        } else if (_maintainer != null) {
+            return new UriOrModelClass(_maintainer);
+        } else {
+            return null;
+        }
+    }
+
+    @Override
     public URI getCurator() {
-        return _curator;
+        if (this._curator != null) {
+            return _curator;
+        } else if (this._curatorAsParticipant != null) {
+            return _curatorAsParticipant.getId();
+        } else {
+            return _curator;
+        }
     }
 
     @Override
     public void setCurator(URI _curator_) {
         this._curator = _curator_;
+        this._curatorAsParticipant = null;
+    }
+
+    @Override
+    public Participant getCuratorAsParticipant() {
+        return _curatorAsParticipant;
+    }
+
+    @Override
+    public void setCuratorAsParticipant(Participant _curator_) {
+        this._curatorAsParticipant = _curator_;
+        this._curator = null;
+    }
+
+    @Override
+    /**
+     * Helper function for (de-)serialization of the _parIS and the _parISAsParticipantfields.
+     *
+     * @return Returns the a UriOrModelClass object with the content of the field or null if the field
+     *         is not set.
+     */
+    public UriOrModelClass getCuratorAsObject() {
+        if (_curatorAsParticipant != null) {
+            return new UriOrModelClass(_curatorAsParticipant);
+        } else if (_curator != null) {
+            return new UriOrModelClass(_curator);
+        } else {
+            return null;
+        }
     }
 
     @Override
@@ -421,7 +494,6 @@ public class ParISImpl implements ParIS {
     }
 
     @Override
-    @NotEmpty
     public List<String> getInboundModelVersion() {
         return _inboundModelVersion;
     }
@@ -432,7 +504,6 @@ public class ParISImpl implements ParIS {
     }
 
     @Override
-    @NotNull
     public String getOutboundModelVersion() {
         return _outboundModelVersion;
     }

@@ -3,7 +3,6 @@ package de.fraunhofer.iais.eis;
 import java.net.URI;
 import java.util.List;
 
-import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -34,7 +33,6 @@ public interface Proxy extends ModelClass {
      *
      * @return Returns the URI for the property _proxyURI.
      */
-    @NotNull
     @JsonProperty("ids:proxyURI")
     URI getProxyURI();
 

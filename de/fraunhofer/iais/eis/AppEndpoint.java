@@ -2,7 +2,6 @@ package de.fraunhofer.iais.eis;
 
 import java.math.BigInteger;
 
-import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -34,7 +33,6 @@ public interface AppEndpoint extends Endpoint {
      *
      * @return Returns the AppEndpointType for the property _appEndpointType.
      */
-    @NotNull
     @JsonProperty("ids:appEndpointType")
     AppEndpointType getAppEndpointType();
 

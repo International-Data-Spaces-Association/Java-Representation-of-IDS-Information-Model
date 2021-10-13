@@ -4,7 +4,8 @@ import java.net.URI;
 import java.util.List;
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -33,7 +34,7 @@ public interface ResourceCatalog extends Catalog {
      *
      * @return Returns the List of URIs for the property _offeredResource.
      */
-    @JsonProperty("ids:offeredResource")
+    @JsonIgnore
     List<URI> getOfferedResource();
 
     /**
@@ -46,6 +47,35 @@ public interface ResourceCatalog extends Catalog {
     void setOfferedResource(List<URI> _offeredResource_);
 
     /**
+     * A Resource that is part of a resource catalog, indicating an offering (of, e.g., data).
+     *
+     * More information under https://w3id.org/idsa/core/offeredResource
+     *
+     * @return Returns the List of Resources for the property _offeredResourceAsResource.
+     */
+    @JsonIgnore
+    List<Resource> getOfferedResourceAsResource();
+
+    /**
+     * A Resource that is part of a resource catalog, indicating an offering (of, e.g., data).
+     *
+     * More information under https://w3id.org/idsa/core/offeredResource
+     *
+     * @param _offeredResource_ desired value for the property _offeredResourceAsResource.
+     */
+    void setOfferedResourceAsResource(List<Resource> _offeredResource_);
+
+    /**
+     * Helper function for (de-)serialization of the _resourceCatalog and the
+     * _resourceCatalogAsResourcefields.
+     *
+     * @return Returns the a UriOrModelClass object with the content of the field or null if the field
+     *         is not set.
+     */
+    @JsonGetter("ids:offeredResource")
+    UriOrModelClass getOfferedResourceAsObject();
+
+    /**
      * A Resource that is part of a resource catalog, indicating a request (of, e.g., data, software,
      * …).
      *
@@ -53,7 +83,7 @@ public interface ResourceCatalog extends Catalog {
      *
      * @return Returns the List of URIs for the property _requestedResource.
      */
-    @JsonProperty("ids:requestedResource")
+    @JsonIgnore
     List<URI> getRequestedResource();
 
     /**
@@ -65,5 +95,36 @@ public interface ResourceCatalog extends Catalog {
      * @param _requestedResource_ desired value for the property _requestedResource.
      */
     void setRequestedResource(List<URI> _requestedResource_);
+
+    /**
+     * A Resource that is part of a resource catalog, indicating a request (of, e.g., data, software,
+     * …).
+     *
+     * More information under https://w3id.org/idsa/core/requestedResource
+     *
+     * @return Returns the List of Resources for the property _requestedResourceAsResource.
+     */
+    @JsonIgnore
+    List<Resource> getRequestedResourceAsResource();
+
+    /**
+     * A Resource that is part of a resource catalog, indicating a request (of, e.g., data, software,
+     * …).
+     *
+     * More information under https://w3id.org/idsa/core/requestedResource
+     *
+     * @param _requestedResource_ desired value for the property _requestedResourceAsResource.
+     */
+    void setRequestedResourceAsResource(List<Resource> _requestedResource_);
+
+    /**
+     * Helper function for (de-)serialization of the _resourceCatalog and the
+     * _resourceCatalogAsResourcefields.
+     *
+     * @return Returns the a UriOrModelClass object with the content of the field or null if the field
+     *         is not set.
+     */
+    @JsonGetter("ids:requestedResource")
+    UriOrModelClass getRequestedResourceAsObject();
 
 }

@@ -67,7 +67,6 @@ public class SecurityAgreementImpl implements SecurityAgreement {
     @JsonAlias({"ids:contractEnd", "contractEnd"})
     protected XMLGregorianCalendar _contractEnd;
 
-    @NotNull
     @JsonAlias({"ids:contractStart", "contractStart"})
     protected XMLGregorianCalendar _contractStart;
 
@@ -234,7 +233,6 @@ public class SecurityAgreementImpl implements SecurityAgreement {
 
     @Override
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
-    @NotNull
     public XMLGregorianCalendar getContractStart() {
         return _contractStart;
     }

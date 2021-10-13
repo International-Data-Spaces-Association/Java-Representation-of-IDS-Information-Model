@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
@@ -51,7 +50,6 @@ public class BoundingPolygonImpl implements BoundingPolygon {
 
     // instance fields as derived from the IDS Information Model ontology
 
-    @NotEmpty
     @JsonAlias({"ids:geoPoint", "geoPoint"})
     protected List<GeoPoint> _geoPoint = new ArrayList<>();
 
@@ -156,7 +154,6 @@ public class BoundingPolygonImpl implements BoundingPolygon {
     // accessor method implementations as derived from the IDS Information Model ontology
 
     @Override
-    @NotEmpty
     public List<GeoPoint> getGeoPoint() {
         return _geoPoint;
     }

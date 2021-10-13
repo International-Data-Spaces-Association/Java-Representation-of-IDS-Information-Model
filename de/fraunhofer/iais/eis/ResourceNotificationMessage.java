@@ -2,7 +2,6 @@ package de.fraunhofer.iais.eis;
 
 import java.net.URI;
 
-import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -35,7 +34,6 @@ public interface ResourceNotificationMessage extends NotificationMessage {
      *
      * @return Returns the URI for the property _affectedResource.
      */
-    @NotNull
     @JsonProperty("ids:affectedResource")
     URI getAffectedResource();
 

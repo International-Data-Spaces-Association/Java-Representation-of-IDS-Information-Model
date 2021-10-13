@@ -50,11 +50,9 @@ public class TokenImpl implements Token {
 
     // instance fields as derived from the IDS Information Model ontology
 
-    @NotNull
     @JsonAlias({"ids:tokenFormat", "tokenFormat"})
     protected TokenFormat _tokenFormat;
 
-    @NotNull
     @JsonAlias({"ids:tokenValue", "tokenValue"})
     protected String _tokenValue;
 
@@ -158,7 +156,6 @@ public class TokenImpl implements Token {
     // accessor method implementations as derived from the IDS Information Model ontology
 
     @Override
-    @NotNull
     public String getTokenValue() {
         return _tokenValue;
     }
@@ -169,7 +166,6 @@ public class TokenImpl implements Token {
     }
 
     @Override
-    @NotNull
     public TokenFormat getTokenFormat() {
         return _tokenFormat;
     }

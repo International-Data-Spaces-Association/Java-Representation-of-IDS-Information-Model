@@ -53,7 +53,6 @@ public class DurationEntityImpl implements DurationEntity {
 
     // instance fields as derived from the IDS Information Model ontology
 
-    @NotNull
     @JsonAlias({"ids:hasDuration", "hasDuration"})
     protected javax.xml.datatype.Duration _hasDuration;
 
@@ -154,7 +153,6 @@ public class DurationEntityImpl implements DurationEntity {
     // accessor method implementations as derived from the IDS Information Model ontology
 
     @Override
-    @NotNull
     public javax.xml.datatype.Duration getHasDuration() {
         return _hasDuration;
     }

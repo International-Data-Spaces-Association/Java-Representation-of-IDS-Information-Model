@@ -51,7 +51,6 @@ public class AuthInfoImpl implements AuthInfo {
 
     // instance fields as derived from the IDS Information Model ontology
 
-    @NotNull
     @JsonAlias({"ids:authService", "authService"})
     protected URI _authService;
 
@@ -160,7 +159,6 @@ public class AuthInfoImpl implements AuthInfo {
     // accessor method implementations as derived from the IDS Information Model ontology
 
     @Override
-    @NotNull
     public URI getAuthService() {
         return _authService;
     }

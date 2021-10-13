@@ -2,7 +2,6 @@ package de.fraunhofer.iais.eis;
 
 import java.net.URI;
 
-import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -34,7 +33,6 @@ public interface ArtifactRequestMessage extends RequestMessage {
      *
      * @return Returns the URI for the property _requestedArtifact.
      */
-    @NotNull
     @JsonProperty("ids:requestedArtifact")
     URI getRequestedArtifact();
 

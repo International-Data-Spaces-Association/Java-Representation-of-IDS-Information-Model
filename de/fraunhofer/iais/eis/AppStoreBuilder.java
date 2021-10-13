@@ -153,6 +153,17 @@ public class AppStoreBuilder implements Builder<AppStore> {
     }
 
     /**
+     * This function allows setting a value for _maintainerAsParticipant
+     * 
+     * @param _maintainer_ desired value to be set
+     * @return Builder object with new value for _maintainerAsParticipant
+     */
+    public AppStoreBuilder _maintainerAsParticipant_(Participant _maintainer_) {
+        this.appStoreImpl.setMaintainerAsParticipant(_maintainer_);
+        return this;
+    }
+
+    /**
      * This function allows setting a value for _curator
      * 
      * @param _curator_ desired value to be set
@@ -160,6 +171,17 @@ public class AppStoreBuilder implements Builder<AppStore> {
      */
     public AppStoreBuilder _curator_(URI _curator_) {
         this.appStoreImpl.setCurator(_curator_);
+        return this;
+    }
+
+    /**
+     * This function allows setting a value for _curatorAsParticipant
+     * 
+     * @param _curator_ desired value to be set
+     * @return Builder object with new value for _curatorAsParticipant
+     */
+    public AppStoreBuilder _curatorAsParticipant_(Participant _curator_) {
+        this.appStoreImpl.setCuratorAsParticipant(_curator_);
         return this;
     }
 

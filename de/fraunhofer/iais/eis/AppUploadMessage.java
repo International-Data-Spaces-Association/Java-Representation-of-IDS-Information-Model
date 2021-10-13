@@ -2,7 +2,6 @@ package de.fraunhofer.iais.eis;
 
 import java.net.URI;
 
-import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -42,7 +41,6 @@ public interface AppUploadMessage extends UploadMessage {
      *
      * @return Returns the URI for the property _appArtifactReference.
      */
-    @NotNull
     @JsonProperty("ids:appArtifactReference")
     URI getAppArtifactReference();
 

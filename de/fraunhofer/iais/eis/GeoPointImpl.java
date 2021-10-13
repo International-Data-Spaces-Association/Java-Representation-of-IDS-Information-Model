@@ -49,11 +49,9 @@ public class GeoPointImpl implements GeoPoint {
 
     // instance fields as derived from the IDS Information Model ontology
 
-    @NotNull
     @JsonAlias({"ids:latitude", "latitude"})
     protected float _latitude;
 
-    @NotNull
     @JsonAlias({"ids:longitude", "longitude"})
     protected float _longitude;
 
@@ -157,7 +155,6 @@ public class GeoPointImpl implements GeoPoint {
     // accessor method implementations as derived from the IDS Information Model ontology
 
     @Override
-    @NotNull
     public float getLatitude() {
         return _latitude;
     }
@@ -168,7 +165,6 @@ public class GeoPointImpl implements GeoPoint {
     }
 
     @Override
-    @NotNull
     public float getLongitude() {
         return _longitude;
     }

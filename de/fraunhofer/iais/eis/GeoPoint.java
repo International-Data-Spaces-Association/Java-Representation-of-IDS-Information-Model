@@ -1,7 +1,6 @@
 package de.fraunhofer.iais.eis;
 
 
-import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -32,7 +31,6 @@ public interface GeoPoint extends Location {
      *
      * @return Returns the float for the property _latitude.
      */
-    @NotNull
     @JsonProperty("ids:latitude")
     float getLatitude();
 
@@ -52,7 +50,6 @@ public interface GeoPoint extends Location {
      *
      * @return Returns the float for the property _longitude.
      */
-    @NotNull
     @JsonProperty("ids:longitude")
     float getLongitude();
 

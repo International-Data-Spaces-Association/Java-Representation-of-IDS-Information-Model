@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
@@ -50,7 +49,6 @@ public class DutyImpl implements Duty {
 
     // instance fields as derived from the IDS Information Model ontology
 
-    @NotEmpty
     @JsonAlias({"ids:action", "action"})
     protected List<Action> _action = new ArrayList<>();
 
@@ -60,8 +58,14 @@ public class DutyImpl implements Duty {
     @JsonAlias({"ids:assignee", "assignee"})
     protected List<URI> _assignee = new ArrayList<>();
 
+    @JsonAlias({"ids:assignee", "assignee"})
+    protected List<Participant> _assigneeAsParticipant = new ArrayList<>();
+
     @JsonAlias({"ids:assigner", "assigner"})
     protected List<URI> _assigner = new ArrayList<>();
+
+    @JsonAlias({"ids:assigner", "assigner"})
+    protected List<Participant> _assignerAsParticipant = new ArrayList<>();
 
     @JsonAlias({"ids:constraint", "constraint"})
     protected List<AbstractConstraint> _constraint = new ArrayList<>();
@@ -71,6 +75,9 @@ public class DutyImpl implements Duty {
 
     @JsonAlias({"ids:target", "target"})
     protected URI _target;
+
+    @JsonAlias({"ids:target", "target"})
+    protected Asset _targetAsAsset;
 
     @JsonAlias({"ids:title", "title"})
     protected List<TypedLiteral> _title = new ArrayList<>();
@@ -166,8 +173,11 @@ public class DutyImpl implements Duty {
         } else {
             DutyImpl other = (DutyImpl) obj;
             return Objects.equals(this._assignee, other._assignee) &&
+                Objects.equals(this._assigneeAsParticipant, other._assigneeAsParticipant) &&
                 Objects.equals(this._assigner, other._assigner) &&
+                Objects.equals(this._assignerAsParticipant, other._assignerAsParticipant) &&
                 Objects.equals(this._target, other._target) &&
+                Objects.equals(this._targetAsAsset, other._targetAsAsset) &&
                 Objects.equals(this._constraint, other._constraint) &&
                 Objects.equals(this._action, other._action) &&
                 Objects.equals(this._assetRefinement, other._assetRefinement) &&
@@ -184,13 +194,26 @@ public class DutyImpl implements Duty {
                 builder._assignee_(URI.create(item.toString()));
             }
         }
+        for (Participant item : this._assigneeAsParticipant) {
+            if (item != null) {
+                builder._assigneeAsParticipant_(item.deepCopy());
+            }
+        }
         for (URI item : this._assigner) {
             if (item != null) {
                 builder._assigner_(URI.create(item.toString()));
             }
         }
+        for (Participant item : this._assignerAsParticipant) {
+            if (item != null) {
+                builder._assignerAsParticipant_(item.deepCopy());
+            }
+        }
         if (this._target != null) {
             builder._target_(URI.create(this._target.toString()));
+        }
+        if (this._targetAsAsset != null) {
+            builder._targetAsAsset_(this._targetAsAsset.deepCopy());
         }
         for (AbstractConstraint item : this._constraint) {
             if (item != null) {
@@ -224,32 +247,145 @@ public class DutyImpl implements Duty {
 
     @Override
     public List<URI> getAssignee() {
-        return _assignee;
+        if (!this._assignee.isEmpty()) {
+            return _assignee;
+        } else if (!this._assigneeAsParticipant.isEmpty()) {
+            List<URI> ids = new ArrayList<>();
+            for (Participant item : _assigneeAsParticipant) {
+                ids.add(item.getId());
+            }
+            return ids;
+        } else {
+            return _assignee;
+        }
     }
 
     @Override
     public void setAssignee(List<URI> _assignee_) {
         this._assignee = _assignee_;
+        this._assigneeAsParticipant = new ArrayList<>();
+    }
+
+    @Override
+    public List<Participant> getAssigneeAsParticipant() {
+        return _assigneeAsParticipant;
+    }
+
+    @Override
+    public void setAssigneeAsParticipant(List<Participant> _assignee_) {
+        this._assigneeAsParticipant = _assignee_;
+        this._assignee = new ArrayList<>();
+    }
+
+    @Override
+    /**
+     * Helper function for (de-)serialization of the _duty and the _dutyAsParticipantfields.
+     *
+     * @return Returns the a UriOrModelClass object with the content of the field or null if the field
+     *         is not set.
+     */
+    public UriOrModelClass getAssigneeAsObject() {
+        if (!_assigneeAsParticipant.isEmpty()) {
+            return new UriOrModelClass(_assigneeAsParticipant);
+        } else if (!_assignee.isEmpty()) {
+            return new UriOrModelClass(_assignee);
+        } else {
+            return null;
+        }
     }
 
     @Override
     public List<URI> getAssigner() {
-        return _assigner;
+        if (!this._assigner.isEmpty()) {
+            return _assigner;
+        } else if (!this._assignerAsParticipant.isEmpty()) {
+            List<URI> ids = new ArrayList<>();
+            for (Participant item : _assignerAsParticipant) {
+                ids.add(item.getId());
+            }
+            return ids;
+        } else {
+            return _assigner;
+        }
     }
 
     @Override
     public void setAssigner(List<URI> _assigner_) {
         this._assigner = _assigner_;
+        this._assignerAsParticipant = new ArrayList<>();
+    }
+
+    @Override
+    public List<Participant> getAssignerAsParticipant() {
+        return _assignerAsParticipant;
+    }
+
+    @Override
+    public void setAssignerAsParticipant(List<Participant> _assigner_) {
+        this._assignerAsParticipant = _assigner_;
+        this._assigner = new ArrayList<>();
+    }
+
+    @Override
+    /**
+     * Helper function for (de-)serialization of the _duty and the _dutyAsParticipantfields.
+     *
+     * @return Returns the a UriOrModelClass object with the content of the field or null if the field
+     *         is not set.
+     */
+    public UriOrModelClass getAssignerAsObject() {
+        if (!_assignerAsParticipant.isEmpty()) {
+            return new UriOrModelClass(_assignerAsParticipant);
+        } else if (!_assigner.isEmpty()) {
+            return new UriOrModelClass(_assigner);
+        } else {
+            return null;
+        }
     }
 
     @Override
     public URI getTarget() {
-        return _target;
+        if (this._target != null) {
+            return _target;
+        } else if (this._targetAsAsset != null) {
+            return _targetAsAsset.getId();
+        } else {
+            return _target;
+        }
     }
 
     @Override
     public void setTarget(URI _target_) {
         this._target = _target_;
+        this._targetAsAsset = null;
+    }
+
+    @Override
+    public Asset getTargetAsAsset() {
+        return _targetAsAsset;
+    }
+
+    @Override
+    public void setTargetAsAsset(Asset _target_) {
+        this._targetAsAsset = _target_;
+        this._target = null;
+    }
+
+    @Override
+    /**
+     * Helper function for (de-)serialization of the _duty and the _dutyAsAssetfields.
+     *
+     * @return Returns the a UriOrModelClass object with the content of the field or null if the field
+     *         is not set.
+     */
+    public UriOrModelClass getTargetAsObject() {
+        if (_targetAsAsset != null) {
+            return new UriOrModelClass(_targetAsAsset);
+        } else if (_target != null) {
+            return new UriOrModelClass(_target);
+        } else {
+            return null;
+        }
     }
 
     @Override
@@ -263,7 +399,6 @@ public class DutyImpl implements Duty {
     }
 
     @Override
-    @NotEmpty
     public List<Action> getAction() {
         return _action;
     }

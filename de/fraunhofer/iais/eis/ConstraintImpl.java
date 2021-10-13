@@ -49,11 +49,9 @@ public class ConstraintImpl implements Constraint {
 
     // instance fields as derived from the IDS Information Model ontology
 
-    @NotNull
     @JsonAlias({"ids:leftOperand", "leftOperand"})
     protected LeftOperand _leftOperand;
 
-    @NotNull
     @JsonAlias({"ids:operator", "operator"})
     protected BinaryOperator _operator;
 
@@ -189,7 +187,6 @@ public class ConstraintImpl implements Constraint {
     // accessor method implementations as derived from the IDS Information Model ontology
 
     @Override
-    @NotNull
     public LeftOperand getLeftOperand() {
         return _leftOperand;
     }
@@ -200,7 +197,6 @@ public class ConstraintImpl implements Constraint {
     }
 
     @Override
-    @NotNull
     public BinaryOperator getOperator() {
         return _operator;
     }
