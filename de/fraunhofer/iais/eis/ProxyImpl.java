@@ -55,6 +55,7 @@ public class ProxyImpl implements Proxy {
     @JsonAlias({"ids:proxyAuthentication", "proxyAuthentication"})
     protected BasicAuthentication _proxyAuthentication;
 
+    @NotNull
     @JsonAlias({"ids:proxyURI", "proxyURI"})
     protected URI _proxyURI;
 
@@ -169,6 +170,7 @@ public class ProxyImpl implements Proxy {
     // accessor method implementations as derived from the IDS Information Model ontology
 
     @Override
+    @NotNull
     public URI getProxyURI() {
         return _proxyURI;
     }

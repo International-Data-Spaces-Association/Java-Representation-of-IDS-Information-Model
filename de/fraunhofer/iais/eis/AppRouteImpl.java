@@ -78,6 +78,7 @@ public class AppRouteImpl implements AppRoute {
     @JsonAlias({"ids:routeConfiguration", "routeConfiguration"})
     protected String _routeConfiguration;
 
+    @NotNull
     @JsonAlias({"ids:routeDeployMethod", "routeDeployMethod"})
     protected String _routeDeployMethod;
 
@@ -229,6 +230,7 @@ public class AppRouteImpl implements AppRoute {
     // accessor method implementations as derived from the IDS Information Model ontology
 
     @Override
+    @NotNull
     public String getRouteDeployMethod() {
         return _routeDeployMethod;
     }

@@ -2,6 +2,7 @@ package de.fraunhofer.iais.eis;
 
 import java.util.List;
 
+import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -55,6 +56,7 @@ public interface DataApp extends ModelClass {
      *
      * @return Returns the List of AppEndpoints for the property _appEndpoint.
      */
+    @NotEmpty
     @JsonProperty("ids:appEndpoint")
     List<AppEndpoint> getAppEndpoint();
 

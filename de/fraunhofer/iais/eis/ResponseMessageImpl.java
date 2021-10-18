@@ -60,15 +60,19 @@ public class ResponseMessageImpl implements ResponseMessage {
     @JsonAlias({"ids:contentVersion", "contentVersion"})
     protected String _contentVersion;
 
+    @NotNull
     @JsonAlias({"ids:correlationMessage", "correlationMessage"})
     protected URI _correlationMessage;
 
+    @NotNull
     @JsonAlias({"ids:issued", "issued"})
     protected XMLGregorianCalendar _issued;
 
+    @NotNull
     @JsonAlias({"ids:issuerConnector", "issuerConnector"})
     protected URI _issuerConnector;
 
+    @NotNull
     @JsonAlias({"ids:modelVersion", "modelVersion"})
     protected String _modelVersion;
 
@@ -78,9 +82,11 @@ public class ResponseMessageImpl implements ResponseMessage {
     @JsonAlias({"ids:recipientConnector", "recipientConnector"})
     protected List<URI> _recipientConnector = new ArrayList<>();
 
+    @NotNull
     @JsonAlias({"ids:securityToken", "securityToken"})
     protected DynamicAttributeToken _securityToken;
 
+    @NotNull
     @JsonAlias({"ids:senderAgent", "senderAgent"})
     protected URI _senderAgent;
 
@@ -236,6 +242,7 @@ public class ResponseMessageImpl implements ResponseMessage {
     // accessor method implementations as derived from the IDS Information Model ontology
 
     @Override
+    @NotNull
     public String getModelVersion() {
         return _modelVersion;
     }
@@ -247,6 +254,7 @@ public class ResponseMessageImpl implements ResponseMessage {
 
     @Override
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
+    @NotNull
     public XMLGregorianCalendar getIssued() {
         return _issued;
     }
@@ -257,6 +265,7 @@ public class ResponseMessageImpl implements ResponseMessage {
     }
 
     @Override
+    @NotNull
     public URI getCorrelationMessage() {
         return _correlationMessage;
     }
@@ -267,6 +276,7 @@ public class ResponseMessageImpl implements ResponseMessage {
     }
 
     @Override
+    @NotNull
     public URI getIssuerConnector() {
         return _issuerConnector;
     }
@@ -287,6 +297,7 @@ public class ResponseMessageImpl implements ResponseMessage {
     }
 
     @Override
+    @NotNull
     public URI getSenderAgent() {
         return _senderAgent;
     }
@@ -307,6 +318,7 @@ public class ResponseMessageImpl implements ResponseMessage {
     }
 
     @Override
+    @NotNull
     public DynamicAttributeToken getSecurityToken() {
         return _securityToken;
     }

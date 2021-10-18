@@ -1,6 +1,7 @@
 package de.fraunhofer.iais.eis;
 
 
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -31,6 +32,7 @@ public interface Named extends ModelClass {
      *
      * @return Returns the String for the property _name.
      */
+    @NotNull
     @JsonProperty("ids:name")
     String getName();
 

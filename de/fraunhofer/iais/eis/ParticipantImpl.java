@@ -67,6 +67,7 @@ public class ParticipantImpl implements Participant {
     @JsonAlias({"ids:jurisdiction", "jurisdiction"})
     protected String _jurisdiction;
 
+    @NotNull
     @JsonAlias({"ids:legalForm", "legalForm"})
     protected String _legalForm;
 
@@ -362,6 +363,7 @@ public class ParticipantImpl implements Participant {
     }
 
     @Override
+    @NotNull
     public String getLegalForm() {
         return _legalForm;
     }

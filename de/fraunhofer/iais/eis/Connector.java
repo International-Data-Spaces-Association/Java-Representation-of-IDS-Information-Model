@@ -3,6 +3,7 @@ package de.fraunhofer.iais.eis;
 import java.net.URI;
 import java.util.List;
 
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -39,6 +40,7 @@ public interface Connector extends InfrastructureComponent {
      *
      * @return Returns the ConnectorEndpoint for the property _hasDefaultEndpoint.
      */
+    @NotNull
     @JsonProperty("ids:hasDefaultEndpoint")
     ConnectorEndpoint getHasDefaultEndpoint();
 
@@ -137,6 +139,7 @@ public interface Connector extends InfrastructureComponent {
      *
      * @return Returns the SecurityProfile for the property _securityProfile.
      */
+    @NotNull
     @JsonProperty("ids:securityProfile")
     SecurityProfile getSecurityProfile();
 

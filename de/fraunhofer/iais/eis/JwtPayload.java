@@ -4,6 +4,8 @@ import java.math.BigInteger;
 import java.net.URI;
 import java.util.List;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -40,6 +42,7 @@ public interface JwtPayload extends ModelClass {
      *
      * @return Returns the List of Strings for the property _transportCertsSha256.
      */
+    @NotEmpty
     @JsonProperty("ids:transportCertsSha256")
     List<String> getTransportCertsSha256();
 
@@ -63,6 +66,7 @@ public interface JwtPayload extends ModelClass {
      *
      * @return Returns the Audience for the property _aud.
      */
+    @NotNull
     @JsonProperty("ids:aud")
     Audience getAud();
 
@@ -83,6 +87,7 @@ public interface JwtPayload extends ModelClass {
      *
      * @return Returns the BigInteger for the property _exp.
      */
+    @NotNull
     @JsonProperty("ids:exp")
     BigInteger getExp();
 
@@ -103,6 +108,7 @@ public interface JwtPayload extends ModelClass {
      *
      * @return Returns the BigInteger for the property _iat.
      */
+    @NotNull
     @JsonProperty("ids:iat")
     BigInteger getIat();
 
@@ -141,6 +147,7 @@ public interface JwtPayload extends ModelClass {
      *
      * @return Returns the BigInteger for the property _nbf.
      */
+    @NotNull
     @JsonProperty("ids:nbf")
     BigInteger getNbf();
 
@@ -182,6 +189,7 @@ public interface JwtPayload extends ModelClass {
      *
      * @return Returns the String for the property _scope.
      */
+    @NotNull
     @JsonProperty("ids:scope")
     String getScope();
 
@@ -202,6 +210,7 @@ public interface JwtPayload extends ModelClass {
      *
      * @return Returns the String for the property _sub.
      */
+    @NotNull
     @JsonProperty("ids:sub")
     String getSub();
 
@@ -221,6 +230,7 @@ public interface JwtPayload extends ModelClass {
      *
      * @return Returns the SecurityProfile for the property _securityProfile.
      */
+    @NotNull
     @JsonProperty("ids:securityProfile")
     SecurityProfile getSecurityProfile();
 

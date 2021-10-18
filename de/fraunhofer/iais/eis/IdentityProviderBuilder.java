@@ -32,17 +32,6 @@ public class IdentityProviderBuilder implements Builder<IdentityProvider> {
     }
 
     /**
-     * This function allows setting a value for _maintainerAsParticipant
-     * 
-     * @param _maintainer_ desired value to be set
-     * @return Builder object with new value for _maintainerAsParticipant
-     */
-    public IdentityProviderBuilder _maintainerAsParticipant_(Participant _maintainer_) {
-        this.identityProviderImpl.setMaintainerAsParticipant(_maintainer_);
-        return this;
-    }
-
-    /**
      * This function allows setting a value for _curator
      * 
      * @param _curator_ desired value to be set
@@ -50,17 +39,6 @@ public class IdentityProviderBuilder implements Builder<IdentityProvider> {
      */
     public IdentityProviderBuilder _curator_(URI _curator_) {
         this.identityProviderImpl.setCurator(_curator_);
-        return this;
-    }
-
-    /**
-     * This function allows setting a value for _curatorAsParticipant
-     * 
-     * @param _curator_ desired value to be set
-     * @return Builder object with new value for _curatorAsParticipant
-     */
-    public IdentityProviderBuilder _curatorAsParticipant_(Participant _curator_) {
-        this.identityProviderImpl.setCuratorAsParticipant(_curator_);
         return this;
     }
 

@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
@@ -57,36 +58,46 @@ public class DatPayloadImpl implements DatPayload {
 
     // instance fields as derived from the IDS Information Model ontology
 
+    @NotNull
     @JsonAlias({"ids:aud", "aud"})
     protected Audience _aud;
 
+    @NotNull
     @JsonAlias({"ids:exp", "exp"})
     protected BigInteger _exp;
 
     @JsonAlias({"ids:extendedGuarantee", "extendedGuarantee"})
     protected List<SecurityGuarantee> _extendedGuarantee = new ArrayList<>();
 
+    @NotNull
     @JsonAlias({"ids:iat", "iat"})
     protected BigInteger _iat;
 
+    @NotNull
     @JsonAlias({"ids:iss", "iss"})
     protected String _iss;
 
+    @NotNull
     @JsonAlias({"ids:nbf", "nbf"})
     protected BigInteger _nbf;
 
+    @NotNull
     @JsonAlias({"ids:referringConnector", "referringConnector"})
     protected URI _referringConnector;
 
+    @NotNull
     @JsonAlias({"ids:scope", "scope"})
     protected String _scope;
 
+    @NotNull
     @JsonAlias({"ids:securityProfile", "securityProfile"})
     protected SecurityProfile _securityProfile;
 
+    @NotNull
     @JsonAlias({"ids:sub", "sub"})
     protected String _sub;
 
+    @NotEmpty
     @JsonAlias({"ids:transportCertsSha256", "transportCertsSha256"})
     protected List<String> _transportCertsSha256 = new ArrayList<>();
 
@@ -233,6 +244,7 @@ public class DatPayloadImpl implements DatPayload {
     }
 
     @Override
+    @NotEmpty
     public List<String> getTransportCertsSha256() {
         return _transportCertsSha256;
     }
@@ -243,6 +255,7 @@ public class DatPayloadImpl implements DatPayload {
     }
 
     @Override
+    @NotNull
     public Audience getAud() {
         return _aud;
     }
@@ -253,6 +266,7 @@ public class DatPayloadImpl implements DatPayload {
     }
 
     @Override
+    @NotNull
     public BigInteger getExp() {
         return _exp;
     }
@@ -263,6 +277,7 @@ public class DatPayloadImpl implements DatPayload {
     }
 
     @Override
+    @NotNull
     public BigInteger getIat() {
         return _iat;
     }
@@ -273,6 +288,7 @@ public class DatPayloadImpl implements DatPayload {
     }
 
     @Override
+    @NotNull
     public String getIss() {
         return _iss;
     }
@@ -283,6 +299,7 @@ public class DatPayloadImpl implements DatPayload {
     }
 
     @Override
+    @NotNull
     public BigInteger getNbf() {
         return _nbf;
     }
@@ -293,6 +310,7 @@ public class DatPayloadImpl implements DatPayload {
     }
 
     @Override
+    @NotNull
     public URI getReferringConnector() {
         return _referringConnector;
     }
@@ -303,6 +321,7 @@ public class DatPayloadImpl implements DatPayload {
     }
 
     @Override
+    @NotNull
     public String getScope() {
         return _scope;
     }
@@ -313,6 +332,7 @@ public class DatPayloadImpl implements DatPayload {
     }
 
     @Override
+    @NotNull
     public String getSub() {
         return _sub;
     }
@@ -323,6 +343,7 @@ public class DatPayloadImpl implements DatPayload {
     }
 
     @Override
+    @NotNull
     public SecurityProfile getSecurityProfile() {
         return _securityProfile;
     }

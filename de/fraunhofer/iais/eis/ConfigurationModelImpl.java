@@ -52,6 +52,7 @@ public class ConfigurationModelImpl implements ConfigurationModel {
     @JsonAlias({"ids:appRoute", "appRoute"})
     protected List<AppRoute> _appRoute = new ArrayList<>();
 
+    @NotNull
     @JsonAlias({"ids:configurationModelLogLevel", "configurationModelLogLevel"})
     protected LogLevel _configurationModelLogLevel;
 
@@ -67,6 +68,7 @@ public class ConfigurationModelImpl implements ConfigurationModel {
     @JsonAlias({"ids:configuredClearingHouse", "configuredClearingHouse"})
     protected ClearingHouseCatalog _configuredClearingHouse;
 
+    @NotNull
     @JsonAlias({"ids:connectorDeployMode", "connectorDeployMode"})
     protected ConnectorDeployMode _connectorDeployMode;
 
@@ -76,6 +78,7 @@ public class ConfigurationModelImpl implements ConfigurationModel {
     @JsonAlias({"ids:connectorProxy", "connectorProxy"})
     protected List<Proxy> _connectorProxy = new ArrayList<>();
 
+    @NotNull
     @JsonAlias({"ids:connectorStatus", "connectorStatus"})
     protected ConnectorStatus _connectorStatus;
 
@@ -281,6 +284,7 @@ public class ConfigurationModelImpl implements ConfigurationModel {
     }
 
     @Override
+    @NotNull
     public LogLevel getConfigurationModelLogLevel() {
         return _configurationModelLogLevel;
     }
@@ -291,6 +295,7 @@ public class ConfigurationModelImpl implements ConfigurationModel {
     }
 
     @Override
+    @NotNull
     public ConnectorStatus getConnectorStatus() {
         return _connectorStatus;
     }
@@ -301,6 +306,7 @@ public class ConfigurationModelImpl implements ConfigurationModel {
     }
 
     @Override
+    @NotNull
     public ConnectorDeployMode getConnectorDeployMode() {
         return _connectorDeployMode;
     }

@@ -53,9 +53,6 @@ public class ParticipantCatalogImpl implements ParticipantCatalog {
     @JsonAlias({"ids:member", "member"})
     protected List<URI> _member = new ArrayList<>();
 
-    @JsonAlias({"ids:member", "member"})
-    protected List<Participant> _memberAsParticipant = new ArrayList<>();
-
     protected ParticipantCatalogImpl() {
         id = VocabUtil.getInstance().createRandomUrl("participantCatalog");
     }
@@ -139,8 +136,7 @@ public class ParticipantCatalogImpl implements ParticipantCatalog {
             return false;
         } else {
             ParticipantCatalogImpl other = (ParticipantCatalogImpl) obj;
-            return Objects.equals(this._member, other._member) &&
-                Objects.equals(this._memberAsParticipant, other._memberAsParticipant);
+            return Objects.equals(this._member, other._member);
         }
     }
 
@@ -152,11 +148,6 @@ public class ParticipantCatalogImpl implements ParticipantCatalog {
                 builder._member_(URI.create(item.toString()));
             }
         }
-        for (Participant item : this._memberAsParticipant) {
-            if (item != null) {
-                builder._memberAsParticipant_(item.deepCopy());
-            }
-        }
         return builder.build();
     }
 
@@ -164,52 +155,12 @@ public class ParticipantCatalogImpl implements ParticipantCatalog {
 
     @Override
     public List<URI> getMember() {
-        if (!this._member.isEmpty()) {
-            return _member;
-        } else if (!this._memberAsParticipant.isEmpty()) {
-            List<URI> ids = new ArrayList<>();
-            for (Participant item : _memberAsParticipant) {
-                ids.add(item.getId());
-            }
-            return ids;
-        } else {
-            return _member;
-        }
+        return _member;
     }
 
     @Override
     public void setMember(List<URI> _member_) {
         this._member = _member_;
-        this._memberAsParticipant = new ArrayList<>();
-    }
-
-    @Override
-    public List<Participant> getMemberAsParticipant() {
-        return _memberAsParticipant;
-    }
-
-    @Override
-    public void setMemberAsParticipant(List<Participant> _member_) {
-        this._memberAsParticipant = _member_;
-        this._member = new ArrayList<>();
-    }
-
-    @Override
-    /**
-     * Helper function for (de-)serialization of the _participantCatalog and the
-     * _participantCatalogAsParticipantfields.
-     *
-     * @return Returns the a UriOrModelClass object with the content of the field or null if the field
-     *         is not set.
-     */
-    public UriOrModelClass getMemberAsObject() {
-        if (!_memberAsParticipant.isEmpty()) {
-            return new UriOrModelClass(_memberAsParticipant);
-        } else if (!_member.isEmpty()) {
-            return new UriOrModelClass(_member);
-        } else {
-            return null;
-        }
     }
 
 }

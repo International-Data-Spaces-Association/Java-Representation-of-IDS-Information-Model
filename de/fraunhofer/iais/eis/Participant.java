@@ -3,6 +3,7 @@ package de.fraunhofer.iais.eis;
 import java.net.URI;
 import java.util.List;
 
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -221,6 +222,7 @@ public interface Participant extends Agent, ManagedEntity {
      *
      * @return Returns the String for the property _legalForm.
      */
+    @NotNull
     @JsonProperty("ids:legalForm")
     String getLegalForm();
 

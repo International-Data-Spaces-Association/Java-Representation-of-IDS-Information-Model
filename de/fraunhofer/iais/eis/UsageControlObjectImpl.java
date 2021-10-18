@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.xml.datatype.XMLGregorianCalendar;
 
@@ -58,12 +59,15 @@ public class UsageControlObjectImpl implements UsageControlObject {
     @JsonAlias({"ids:action", "action"})
     protected List<Action> _action = new ArrayList<>();
 
+    @NotEmpty
     @JsonAlias({"ids:contract", "contract"})
     protected List<ContractAgreement> _contract = new ArrayList<>();
 
+    @NotNull
     @JsonAlias({"ids:created", "created"})
     protected XMLGregorianCalendar _created;
 
+    @NotNull
     @JsonAlias({"ids:data", "data"})
     protected URI _data;
 
@@ -234,6 +238,7 @@ public class UsageControlObjectImpl implements UsageControlObject {
     // accessor method implementations as derived from the IDS Information Model ontology
 
     @Override
+    @NotNull
     public URI getData() {
         return _data;
     }
@@ -264,6 +269,7 @@ public class UsageControlObjectImpl implements UsageControlObject {
     }
 
     @Override
+    @NotEmpty
     public List<ContractAgreement> getContract() {
         return _contract;
     }
@@ -316,6 +322,7 @@ public class UsageControlObjectImpl implements UsageControlObject {
 
     @Override
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
+    @NotNull
     public XMLGregorianCalendar getCreated() {
         return _created;
     }

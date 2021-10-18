@@ -43,28 +43,6 @@ public class ResourceCatalogBuilder implements Builder<ResourceCatalog> {
     }
 
     /**
-     * This function allows setting a value for _offeredResourceAsResource
-     * 
-     * @param _offeredResource_ desired value to be set
-     * @return Builder object with new value for _offeredResourceAsResource
-     */
-    public ResourceCatalogBuilder _offeredResourceAsResource_(List<Resource> _offeredResource_) {
-        this.resourceCatalogImpl.setOfferedResourceAsResource(_offeredResource_);
-        return this;
-    }
-
-    /**
-     * This function allows adding a value to the List _offeredResourceAsResource
-     * 
-     * @param _offeredResource_ desired value to be added
-     * @return Builder object with new value for _offeredResourceAsResource
-     */
-    public ResourceCatalogBuilder _offeredResourceAsResource_(Resource _offeredResource_) {
-        this.resourceCatalogImpl.getOfferedResourceAsResource().add(_offeredResource_);
-        return this;
-    }
-
-    /**
      * This function allows setting a value for _requestedResource
      * 
      * @param _requestedResource_ desired value to be set
@@ -83,28 +61,6 @@ public class ResourceCatalogBuilder implements Builder<ResourceCatalog> {
      */
     public ResourceCatalogBuilder _requestedResource_(URI _requestedResource_) {
         this.resourceCatalogImpl.getRequestedResource().add(_requestedResource_);
-        return this;
-    }
-
-    /**
-     * This function allows setting a value for _requestedResourceAsResource
-     * 
-     * @param _requestedResource_ desired value to be set
-     * @return Builder object with new value for _requestedResourceAsResource
-     */
-    public ResourceCatalogBuilder _requestedResourceAsResource_(List<Resource> _requestedResource_) {
-        this.resourceCatalogImpl.setRequestedResourceAsResource(_requestedResource_);
-        return this;
-    }
-
-    /**
-     * This function allows adding a value to the List _requestedResourceAsResource
-     * 
-     * @param _requestedResource_ desired value to be added
-     * @return Builder object with new value for _requestedResourceAsResource
-     */
-    public ResourceCatalogBuilder _requestedResourceAsResource_(Resource _requestedResource_) {
-        this.resourceCatalogImpl.getRequestedResourceAsResource().add(_requestedResource_);
         return this;
     }
 

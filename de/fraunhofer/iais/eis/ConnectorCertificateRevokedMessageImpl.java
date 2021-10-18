@@ -55,6 +55,7 @@ public class ConnectorCertificateRevokedMessageImpl implements ConnectorCertific
 
     // instance fields as derived from the IDS Information Model ontology
 
+    @NotNull
     @JsonAlias({"ids:affectedConnector", "affectedConnector"})
     protected URI _affectedConnector;
 
@@ -67,12 +68,15 @@ public class ConnectorCertificateRevokedMessageImpl implements ConnectorCertific
     @JsonAlias({"ids:correlationMessage", "correlationMessage"})
     protected URI _correlationMessage;
 
+    @NotNull
     @JsonAlias({"ids:issued", "issued"})
     protected XMLGregorianCalendar _issued;
 
+    @NotNull
     @JsonAlias({"ids:issuerConnector", "issuerConnector"})
     protected URI _issuerConnector;
 
+    @NotNull
     @JsonAlias({"ids:modelVersion", "modelVersion"})
     protected String _modelVersion;
 
@@ -85,9 +89,11 @@ public class ConnectorCertificateRevokedMessageImpl implements ConnectorCertific
     @JsonAlias({"ids:revocationReason", "revocationReason"})
     protected TypedLiteral _revocationReason;
 
+    @NotNull
     @JsonAlias({"ids:securityToken", "securityToken"})
     protected DynamicAttributeToken _securityToken;
 
+    @NotNull
     @JsonAlias({"ids:senderAgent", "senderAgent"})
     protected URI _senderAgent;
 
@@ -264,6 +270,7 @@ public class ConnectorCertificateRevokedMessageImpl implements ConnectorCertific
     }
 
     @Override
+    @NotNull
     public URI getAffectedConnector() {
         return _affectedConnector;
     }
@@ -274,6 +281,7 @@ public class ConnectorCertificateRevokedMessageImpl implements ConnectorCertific
     }
 
     @Override
+    @NotNull
     public String getModelVersion() {
         return _modelVersion;
     }
@@ -285,6 +293,7 @@ public class ConnectorCertificateRevokedMessageImpl implements ConnectorCertific
 
     @Override
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
+    @NotNull
     public XMLGregorianCalendar getIssued() {
         return _issued;
     }
@@ -305,6 +314,7 @@ public class ConnectorCertificateRevokedMessageImpl implements ConnectorCertific
     }
 
     @Override
+    @NotNull
     public URI getIssuerConnector() {
         return _issuerConnector;
     }
@@ -325,6 +335,7 @@ public class ConnectorCertificateRevokedMessageImpl implements ConnectorCertific
     }
 
     @Override
+    @NotNull
     public URI getSenderAgent() {
         return _senderAgent;
     }
@@ -345,6 +356,7 @@ public class ConnectorCertificateRevokedMessageImpl implements ConnectorCertific
     }
 
     @Override
+    @NotNull
     public DynamicAttributeToken getSecurityToken() {
         return _securityToken;
     }

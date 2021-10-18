@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
@@ -53,6 +54,7 @@ public class SmartDataAppImpl implements SmartDataApp {
     @JsonAlias({"ids:appDocumentation", "appDocumentation"})
     protected String _appDocumentation;
 
+    @NotEmpty
     @JsonAlias({"ids:appEndpoint", "appEndpoint"})
     protected List<AppEndpoint> _appEndpoint = new ArrayList<>();
 
@@ -190,6 +192,7 @@ public class SmartDataAppImpl implements SmartDataApp {
     }
 
     @Override
+    @NotEmpty
     public List<AppEndpoint> getAppEndpoint() {
         return _appEndpoint;
     }

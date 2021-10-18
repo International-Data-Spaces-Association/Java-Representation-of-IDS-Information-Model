@@ -3,6 +3,7 @@ package de.fraunhofer.iais.eis;
 import java.net.URI;
 import java.util.List;
 
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -52,6 +53,7 @@ public interface ConfigurationModel extends ModelClass {
      *
      * @return Returns the LogLevel for the property _configurationModelLogLevel.
      */
+    @NotNull
     @JsonProperty("ids:configurationModelLogLevel")
     LogLevel getConfigurationModelLogLevel();
 
@@ -71,6 +73,7 @@ public interface ConfigurationModel extends ModelClass {
      *
      * @return Returns the ConnectorStatus for the property _connectorStatus.
      */
+    @NotNull
     @JsonProperty("ids:connectorStatus")
     ConnectorStatus getConnectorStatus();
 
@@ -90,6 +93,7 @@ public interface ConfigurationModel extends ModelClass {
      *
      * @return Returns the ConnectorDeployMode for the property _connectorDeployMode.
      */
+    @NotNull
     @JsonProperty("ids:connectorDeployMode")
     ConnectorDeployMode getConnectorDeployMode();
 

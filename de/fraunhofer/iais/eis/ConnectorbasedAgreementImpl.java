@@ -67,6 +67,7 @@ public class ConnectorbasedAgreementImpl implements ConnectorbasedAgreement {
     @JsonAlias({"ids:contractEnd", "contractEnd"})
     protected XMLGregorianCalendar _contractEnd;
 
+    @NotNull
     @JsonAlias({"ids:contractStart", "contractStart"})
     protected XMLGregorianCalendar _contractStart;
 
@@ -233,6 +234,7 @@ public class ConnectorbasedAgreementImpl implements ConnectorbasedAgreement {
 
     @Override
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
+    @NotNull
     public XMLGregorianCalendar getContractStart() {
         return _contractStart;
     }

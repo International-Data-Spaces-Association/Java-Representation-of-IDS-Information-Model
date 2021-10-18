@@ -1,6 +1,7 @@
 package de.fraunhofer.iais.eis;
 
 
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -32,6 +33,7 @@ public interface Token extends ModelClass {
      *
      * @return Returns the String for the property _tokenValue.
      */
+    @NotNull
     @JsonProperty("ids:tokenValue")
     String getTokenValue();
 
@@ -51,6 +53,7 @@ public interface Token extends ModelClass {
      *
      * @return Returns the TokenFormat for the property _tokenFormat.
      */
+    @NotNull
     @JsonProperty("ids:tokenFormat")
     TokenFormat getTokenFormat();
 

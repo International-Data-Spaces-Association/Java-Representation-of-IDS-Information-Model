@@ -60,15 +60,19 @@ public class ContractRejectionMessageImpl implements ContractRejectionMessage {
     @JsonAlias({"ids:contractRejectionReason", "contractRejectionReason"})
     protected TypedLiteral _contractRejectionReason;
 
+    @NotNull
     @JsonAlias({"ids:correlationMessage", "correlationMessage"})
     protected URI _correlationMessage;
 
+    @NotNull
     @JsonAlias({"ids:issued", "issued"})
     protected XMLGregorianCalendar _issued;
 
+    @NotNull
     @JsonAlias({"ids:issuerConnector", "issuerConnector"})
     protected URI _issuerConnector;
 
+    @NotNull
     @JsonAlias({"ids:modelVersion", "modelVersion"})
     protected String _modelVersion;
 
@@ -81,9 +85,11 @@ public class ContractRejectionMessageImpl implements ContractRejectionMessage {
     @JsonAlias({"ids:rejectionReason", "rejectionReason"})
     protected RejectionReason _rejectionReason;
 
+    @NotNull
     @JsonAlias({"ids:securityToken", "securityToken"})
     protected DynamicAttributeToken _securityToken;
 
+    @NotNull
     @JsonAlias({"ids:senderAgent", "senderAgent"})
     protected URI _senderAgent;
 
@@ -271,6 +277,7 @@ public class ContractRejectionMessageImpl implements ContractRejectionMessage {
     }
 
     @Override
+    @NotNull
     public String getModelVersion() {
         return _modelVersion;
     }
@@ -282,6 +289,7 @@ public class ContractRejectionMessageImpl implements ContractRejectionMessage {
 
     @Override
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
+    @NotNull
     public XMLGregorianCalendar getIssued() {
         return _issued;
     }
@@ -292,6 +300,7 @@ public class ContractRejectionMessageImpl implements ContractRejectionMessage {
     }
 
     @Override
+    @NotNull
     public URI getCorrelationMessage() {
         return _correlationMessage;
     }
@@ -302,6 +311,7 @@ public class ContractRejectionMessageImpl implements ContractRejectionMessage {
     }
 
     @Override
+    @NotNull
     public URI getIssuerConnector() {
         return _issuerConnector;
     }
@@ -322,6 +332,7 @@ public class ContractRejectionMessageImpl implements ContractRejectionMessage {
     }
 
     @Override
+    @NotNull
     public URI getSenderAgent() {
         return _senderAgent;
     }
@@ -342,6 +353,7 @@ public class ContractRejectionMessageImpl implements ContractRejectionMessage {
     }
 
     @Override
+    @NotNull
     public DynamicAttributeToken getSecurityToken() {
         return _securityToken;
     }

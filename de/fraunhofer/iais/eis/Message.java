@@ -3,6 +3,7 @@ package de.fraunhofer.iais.eis;
 import java.net.URI;
 import java.util.List;
 
+import javax.validation.constraints.NotNull;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -37,6 +38,7 @@ public interface Message extends ModelClass {
      *
      * @return Returns the String for the property _modelVersion.
      */
+    @NotNull
     @JsonProperty("ids:modelVersion")
     String getModelVersion();
 
@@ -57,6 +59,7 @@ public interface Message extends ModelClass {
      * @return Returns the XMLGregorianCalendar for the property _issued.
      */
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
+    @NotNull
     @JsonProperty("ids:issued")
     XMLGregorianCalendar getIssued();
 
@@ -95,6 +98,7 @@ public interface Message extends ModelClass {
      *
      * @return Returns the URI for the property _issuerConnector.
      */
+    @NotNull
     @JsonProperty("ids:issuerConnector")
     URI getIssuerConnector();
 
@@ -133,6 +137,7 @@ public interface Message extends ModelClass {
      *
      * @return Returns the URI for the property _senderAgent.
      */
+    @NotNull
     @JsonProperty("ids:senderAgent")
     URI getSenderAgent();
 
@@ -171,6 +176,7 @@ public interface Message extends ModelClass {
      *
      * @return Returns the DynamicAttributeToken for the property _securityToken.
      */
+    @NotNull
     @JsonProperty("ids:securityToken")
     DynamicAttributeToken getSecurityToken();
 

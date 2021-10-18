@@ -50,6 +50,7 @@ public class NamedImpl implements Named {
 
     // instance fields as derived from the IDS Information Model ontology
 
+    @NotNull
     @JsonAlias({"ids:name", "name"})
     protected String _name;
 
@@ -150,6 +151,7 @@ public class NamedImpl implements Named {
     // accessor method implementations as derived from the IDS Information Model ontology
 
     @Override
+    @NotNull
     public String getName() {
         return _name;
     }

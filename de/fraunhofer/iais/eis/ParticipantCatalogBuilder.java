@@ -43,28 +43,6 @@ public class ParticipantCatalogBuilder implements Builder<ParticipantCatalog> {
     }
 
     /**
-     * This function allows setting a value for _memberAsParticipant
-     * 
-     * @param _member_ desired value to be set
-     * @return Builder object with new value for _memberAsParticipant
-     */
-    public ParticipantCatalogBuilder _memberAsParticipant_(List<Participant> _member_) {
-        this.participantCatalogImpl.setMemberAsParticipant(_member_);
-        return this;
-    }
-
-    /**
-     * This function allows adding a value to the List _memberAsParticipant
-     * 
-     * @param _member_ desired value to be added
-     * @return Builder object with new value for _memberAsParticipant
-     */
-    public ParticipantCatalogBuilder _memberAsParticipant_(Participant _member_) {
-        this.participantCatalogImpl.getMemberAsParticipant().add(_member_);
-        return this;
-    }
-
-    /**
      * This function takes the values that were set previously via the other functions of this class and
      * turns them into a Java bean.
      * 

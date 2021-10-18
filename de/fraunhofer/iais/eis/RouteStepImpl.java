@@ -78,6 +78,7 @@ public class RouteStepImpl implements RouteStep {
     @JsonAlias({"ids:routeConfiguration", "routeConfiguration"})
     protected String _routeConfiguration;
 
+    @NotNull
     @JsonAlias({"ids:routeDeployMethod", "routeDeployMethod"})
     protected String _routeDeployMethod;
 
@@ -244,6 +245,7 @@ public class RouteStepImpl implements RouteStep {
     }
 
     @Override
+    @NotNull
     public String getRouteDeployMethod() {
         return _routeDeployMethod;
     }

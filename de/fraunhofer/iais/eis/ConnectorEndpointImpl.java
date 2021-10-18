@@ -49,6 +49,7 @@ public class ConnectorEndpointImpl implements ConnectorEndpoint {
 
     // instance fields as derived from the IDS Information Model ontology
 
+    @NotNull
     @JsonAlias({"ids:accessURL", "accessURL"})
     protected URI _accessURL;
 
@@ -209,6 +210,7 @@ public class ConnectorEndpointImpl implements ConnectorEndpoint {
     }
 
     @Override
+    @NotNull
     public URI getAccessURL() {
         return _accessURL;
     }

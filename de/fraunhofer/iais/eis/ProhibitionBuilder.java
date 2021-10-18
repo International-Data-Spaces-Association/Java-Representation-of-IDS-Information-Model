@@ -43,28 +43,6 @@ public class ProhibitionBuilder implements Builder<Prohibition> {
     }
 
     /**
-     * This function allows setting a value for _assigneeAsParticipant
-     * 
-     * @param _assignee_ desired value to be set
-     * @return Builder object with new value for _assigneeAsParticipant
-     */
-    public ProhibitionBuilder _assigneeAsParticipant_(List<Participant> _assignee_) {
-        this.prohibitionImpl.setAssigneeAsParticipant(_assignee_);
-        return this;
-    }
-
-    /**
-     * This function allows adding a value to the List _assigneeAsParticipant
-     * 
-     * @param _assignee_ desired value to be added
-     * @return Builder object with new value for _assigneeAsParticipant
-     */
-    public ProhibitionBuilder _assigneeAsParticipant_(Participant _assignee_) {
-        this.prohibitionImpl.getAssigneeAsParticipant().add(_assignee_);
-        return this;
-    }
-
-    /**
      * This function allows setting a value for _assigner
      * 
      * @param _assigner_ desired value to be set
@@ -87,28 +65,6 @@ public class ProhibitionBuilder implements Builder<Prohibition> {
     }
 
     /**
-     * This function allows setting a value for _assignerAsParticipant
-     * 
-     * @param _assigner_ desired value to be set
-     * @return Builder object with new value for _assignerAsParticipant
-     */
-    public ProhibitionBuilder _assignerAsParticipant_(List<Participant> _assigner_) {
-        this.prohibitionImpl.setAssignerAsParticipant(_assigner_);
-        return this;
-    }
-
-    /**
-     * This function allows adding a value to the List _assignerAsParticipant
-     * 
-     * @param _assigner_ desired value to be added
-     * @return Builder object with new value for _assignerAsParticipant
-     */
-    public ProhibitionBuilder _assignerAsParticipant_(Participant _assigner_) {
-        this.prohibitionImpl.getAssignerAsParticipant().add(_assigner_);
-        return this;
-    }
-
-    /**
      * This function allows setting a value for _target
      * 
      * @param _target_ desired value to be set
@@ -116,17 +72,6 @@ public class ProhibitionBuilder implements Builder<Prohibition> {
      */
     public ProhibitionBuilder _target_(URI _target_) {
         this.prohibitionImpl.setTarget(_target_);
-        return this;
-    }
-
-    /**
-     * This function allows setting a value for _targetAsAsset
-     * 
-     * @param _target_ desired value to be set
-     * @return Builder object with new value for _targetAsAsset
-     */
-    public ProhibitionBuilder _targetAsAsset_(Asset _target_) {
-        this.prohibitionImpl.setTargetAsAsset(_target_);
         return this;
     }
 

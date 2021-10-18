@@ -43,28 +43,6 @@ public class DutyBuilder implements Builder<Duty> {
     }
 
     /**
-     * This function allows setting a value for _assigneeAsParticipant
-     * 
-     * @param _assignee_ desired value to be set
-     * @return Builder object with new value for _assigneeAsParticipant
-     */
-    public DutyBuilder _assigneeAsParticipant_(List<Participant> _assignee_) {
-        this.dutyImpl.setAssigneeAsParticipant(_assignee_);
-        return this;
-    }
-
-    /**
-     * This function allows adding a value to the List _assigneeAsParticipant
-     * 
-     * @param _assignee_ desired value to be added
-     * @return Builder object with new value for _assigneeAsParticipant
-     */
-    public DutyBuilder _assigneeAsParticipant_(Participant _assignee_) {
-        this.dutyImpl.getAssigneeAsParticipant().add(_assignee_);
-        return this;
-    }
-
-    /**
      * This function allows setting a value for _assigner
      * 
      * @param _assigner_ desired value to be set
@@ -87,28 +65,6 @@ public class DutyBuilder implements Builder<Duty> {
     }
 
     /**
-     * This function allows setting a value for _assignerAsParticipant
-     * 
-     * @param _assigner_ desired value to be set
-     * @return Builder object with new value for _assignerAsParticipant
-     */
-    public DutyBuilder _assignerAsParticipant_(List<Participant> _assigner_) {
-        this.dutyImpl.setAssignerAsParticipant(_assigner_);
-        return this;
-    }
-
-    /**
-     * This function allows adding a value to the List _assignerAsParticipant
-     * 
-     * @param _assigner_ desired value to be added
-     * @return Builder object with new value for _assignerAsParticipant
-     */
-    public DutyBuilder _assignerAsParticipant_(Participant _assigner_) {
-        this.dutyImpl.getAssignerAsParticipant().add(_assigner_);
-        return this;
-    }
-
-    /**
      * This function allows setting a value for _target
      * 
      * @param _target_ desired value to be set
@@ -116,17 +72,6 @@ public class DutyBuilder implements Builder<Duty> {
      */
     public DutyBuilder _target_(URI _target_) {
         this.dutyImpl.setTarget(_target_);
-        return this;
-    }
-
-    /**
-     * This function allows setting a value for _targetAsAsset
-     * 
-     * @param _target_ desired value to be set
-     * @return Builder object with new value for _targetAsAsset
-     */
-    public DutyBuilder _targetAsAsset_(Asset _target_) {
-        this.dutyImpl.setTargetAsAsset(_target_);
         return this;
     }
 

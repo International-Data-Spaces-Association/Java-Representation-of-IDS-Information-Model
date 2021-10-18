@@ -67,6 +67,7 @@ public class SpatialAgreementImpl implements SpatialAgreement {
     @JsonAlias({"ids:contractEnd", "contractEnd"})
     protected XMLGregorianCalendar _contractEnd;
 
+    @NotNull
     @JsonAlias({"ids:contractStart", "contractStart"})
     protected XMLGregorianCalendar _contractStart;
 
@@ -233,6 +234,7 @@ public class SpatialAgreementImpl implements SpatialAgreement {
 
     @Override
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
+    @NotNull
     public XMLGregorianCalendar getContractStart() {
         return _contractStart;
     }

@@ -2,6 +2,7 @@ package de.fraunhofer.iais.eis;
 
 import java.net.URI;
 
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -35,6 +36,7 @@ public interface ConnectorNotificationMessage extends NotificationMessage {
      *
      * @return Returns the URI for the property _affectedConnector.
      */
+    @NotNull
     @JsonProperty("ids:affectedConnector")
     URI getAffectedConnector();
 
