@@ -196,7 +196,9 @@ public class AppEndpointImpl implements AppEndpoint {
         AppEndpointBuilder builder = new AppEndpointBuilder();
         builder._appEndpointType_(this._appEndpointType);
         builder._appEndpointPort_(this._appEndpointPort);
-        builder._appEndpointMediaType_(this._appEndpointMediaType);
+        if (this._appEndpointMediaType != null) {
+            builder._appEndpointMediaType_(this._appEndpointMediaType.deepCopy());
+        }
         builder._appEndpointProtocol_(this._appEndpointProtocol);
         builder._language_(this._language);
         if (this._accessURL != null) {

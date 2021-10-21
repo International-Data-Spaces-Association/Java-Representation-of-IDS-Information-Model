@@ -26,7 +26,7 @@ public class ResourceCatalogBuilder implements Builder<ResourceCatalog> {
      * @param _offeredResource_ desired value to be set
      * @return Builder object with new value for _offeredResource
      */
-    public ResourceCatalogBuilder _offeredResource_(List<URI> _offeredResource_) {
+    public ResourceCatalogBuilder _offeredResource_(List<Resource> _offeredResource_) {
         this.resourceCatalogImpl.setOfferedResource(_offeredResource_);
         return this;
     }
@@ -37,7 +37,7 @@ public class ResourceCatalogBuilder implements Builder<ResourceCatalog> {
      * @param _offeredResource_ desired value to be added
      * @return Builder object with new value for _offeredResource
      */
-    public ResourceCatalogBuilder _offeredResource_(URI _offeredResource_) {
+    public ResourceCatalogBuilder _offeredResource_(Resource _offeredResource_) {
         this.resourceCatalogImpl.getOfferedResource().add(_offeredResource_);
         return this;
     }
@@ -48,7 +48,7 @@ public class ResourceCatalogBuilder implements Builder<ResourceCatalog> {
      * @param _requestedResource_ desired value to be set
      * @return Builder object with new value for _requestedResource
      */
-    public ResourceCatalogBuilder _requestedResource_(List<URI> _requestedResource_) {
+    public ResourceCatalogBuilder _requestedResource_(List<Resource> _requestedResource_) {
         this.resourceCatalogImpl.setRequestedResource(_requestedResource_);
         return this;
     }
@@ -59,7 +59,7 @@ public class ResourceCatalogBuilder implements Builder<ResourceCatalog> {
      * @param _requestedResource_ desired value to be added
      * @return Builder object with new value for _requestedResource
      */
-    public ResourceCatalogBuilder _requestedResource_(URI _requestedResource_) {
+    public ResourceCatalogBuilder _requestedResource_(Resource _requestedResource_) {
         this.resourceCatalogImpl.getRequestedResource().add(_requestedResource_);
         return this;
     }

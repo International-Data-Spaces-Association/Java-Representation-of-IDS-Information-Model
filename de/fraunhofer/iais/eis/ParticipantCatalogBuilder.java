@@ -26,7 +26,7 @@ public class ParticipantCatalogBuilder implements Builder<ParticipantCatalog> {
      * @param _member_ desired value to be set
      * @return Builder object with new value for _member
      */
-    public ParticipantCatalogBuilder _member_(List<URI> _member_) {
+    public ParticipantCatalogBuilder _member_(List<Participant> _member_) {
         this.participantCatalogImpl.setMember(_member_);
         return this;
     }
@@ -37,7 +37,7 @@ public class ParticipantCatalogBuilder implements Builder<ParticipantCatalog> {
      * @param _member_ desired value to be added
      * @return Builder object with new value for _member
      */
-    public ParticipantCatalogBuilder _member_(URI _member_) {
+    public ParticipantCatalogBuilder _member_(Participant _member_) {
         this.participantCatalogImpl.getMember().add(_member_);
         return this;
     }

@@ -1,6 +1,5 @@
 package de.fraunhofer.iais.eis;
 
-import java.net.URI;
 import java.util.List;
 
 
@@ -31,10 +30,10 @@ public interface ResourceCatalog extends Catalog {
      *
      * More information under https://w3id.org/idsa/core/offeredResource
      *
-     * @return Returns the List of URIs for the property _offeredResource.
+     * @return Returns the List of Resources for the property _offeredResource.
      */
     @JsonProperty("ids:offeredResource")
-    List<URI> getOfferedResource();
+    List<Resource> getOfferedResource();
 
     /**
      * A Resource that is part of a resource catalog, indicating an offering (of, e.g., data).
@@ -43,7 +42,7 @@ public interface ResourceCatalog extends Catalog {
      *
      * @param _offeredResource_ desired value for the property _offeredResource.
      */
-    void setOfferedResource(List<URI> _offeredResource_);
+    void setOfferedResource(List<Resource> _offeredResource_);
 
     /**
      * A Resource that is part of a resource catalog, indicating a request (of, e.g., data, software,
@@ -51,10 +50,10 @@ public interface ResourceCatalog extends Catalog {
      *
      * More information under https://w3id.org/idsa/core/requestedResource
      *
-     * @return Returns the List of URIs for the property _requestedResource.
+     * @return Returns the List of Resources for the property _requestedResource.
      */
     @JsonProperty("ids:requestedResource")
-    List<URI> getRequestedResource();
+    List<Resource> getRequestedResource();
 
     /**
      * A Resource that is part of a resource catalog, indicating a request (of, e.g., data, software,
@@ -64,6 +63,6 @@ public interface ResourceCatalog extends Catalog {
      *
      * @param _requestedResource_ desired value for the property _requestedResource.
      */
-    void setRequestedResource(List<URI> _requestedResource_);
+    void setRequestedResource(List<Resource> _requestedResource_);
 
 }

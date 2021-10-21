@@ -22,13 +22,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import de.fraunhofer.iais.eis.util.*;
 
 /**
- * Default implementation of package de.fraunhofer.iais.eis.ResourceCatalog
+ * Default implementation of package de.fraunhofer.iais.eis.IANAMediaType
  * 
- * Class that aggregates Resources from a (distributable) Catalog.
+ * The class of media types registered with IANA.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonTypeName("ids:ResourceCatalog")
-public class ResourceCatalogImpl implements ResourceCatalog {
+@JsonTypeName("ids:IANAMediaType")
+public class IANAMediaTypeImpl implements IANAMediaType {
 
     @JsonProperty("@id")
     @JsonAlias({"@id", "id"})
@@ -37,12 +37,11 @@ public class ResourceCatalogImpl implements ResourceCatalog {
 
     // List of all labels of this class
     @JsonIgnore
-    protected List<TypedLiteral> label = Arrays.asList(new TypedLiteral("Resource Catalog", "en"));
+    protected List<TypedLiteral> label = Arrays.asList(new TypedLiteral("IANA Media Type", "en"));
 
     // List of all comments of this class
     @JsonIgnore
-    protected List<TypedLiteral> comment =
-        Arrays.asList(new TypedLiteral("Class that aggregates Resources from a (distributable) Catalog.", "en"));
+    protected List<TypedLiteral> comment = Arrays.asList(new TypedLiteral("The class of media types registered with IANA.", "en"));
 
     // all classes have a generic property array
     @JsonIgnore
@@ -50,14 +49,11 @@ public class ResourceCatalogImpl implements ResourceCatalog {
 
     // instance fields as derived from the IDS Information Model ontology
 
-    @JsonAlias({"ids:offeredResource", "offeredResource"})
-    protected List<Resource> _offeredResource = new ArrayList<>();
+    @JsonAlias({"ids:filenameExtension", "filenameExtension"})
+    protected String _filenameExtension;
 
-    @JsonAlias({"ids:requestedResource", "requestedResource"})
-    protected List<Resource> _requestedResource = new ArrayList<>();
-
-    protected ResourceCatalogImpl() {
-        id = VocabUtil.getInstance().createRandomUrl("resourceCatalog");
+    protected IANAMediaTypeImpl() {
+        id = VocabUtil.getInstance().createRandomUrl("iANAMediaType");
     }
 
     @JsonProperty("@id")
@@ -126,8 +122,7 @@ public class ResourceCatalogImpl implements ResourceCatalog {
 
     @Override
     public int hashCode() {
-        return Objects.hash(this._offeredResource,
-            this._requestedResource);
+        return Objects.hash(this._filenameExtension);
     }
 
     @Override
@@ -139,48 +134,28 @@ public class ResourceCatalogImpl implements ResourceCatalog {
         } else if (this.getClass() != obj.getClass()) {
             return false;
         } else {
-            ResourceCatalogImpl other = (ResourceCatalogImpl) obj;
-            return Objects.equals(this._offeredResource, other._offeredResource) &&
-                Objects.equals(this._requestedResource, other._requestedResource);
+            IANAMediaTypeImpl other = (IANAMediaTypeImpl) obj;
+            return Objects.equals(this._filenameExtension, other._filenameExtension);
         }
     }
 
     @Override
-    public ResourceCatalog deepCopy() {
-        ResourceCatalogBuilder builder = new ResourceCatalogBuilder();
-        for (Resource item : this._offeredResource) {
-            if (item != null) {
-                builder._offeredResource_(item.deepCopy());
-            }
-        }
-        for (Resource item : this._requestedResource) {
-            if (item != null) {
-                builder._requestedResource_(item.deepCopy());
-            }
-        }
+    public IANAMediaType deepCopy() {
+        IANAMediaTypeBuilder builder = new IANAMediaTypeBuilder();
+        builder._filenameExtension_(this._filenameExtension);
         return builder.build();
     }
 
     // accessor method implementations as derived from the IDS Information Model ontology
 
     @Override
-    public List<Resource> getOfferedResource() {
-        return _offeredResource;
+    public String getFilenameExtension() {
+        return _filenameExtension;
     }
 
     @Override
-    public void setOfferedResource(List<Resource> _offeredResource_) {
-        this._offeredResource = _offeredResource_;
-    }
-
-    @Override
-    public List<Resource> getRequestedResource() {
-        return _requestedResource;
-    }
-
-    @Override
-    public void setRequestedResource(List<Resource> _requestedResource_) {
-        this._requestedResource = _requestedResource_;
+    public void setFilenameExtension(String _filenameExtension_) {
+        this._filenameExtension = _filenameExtension_;
     }
 
 }
