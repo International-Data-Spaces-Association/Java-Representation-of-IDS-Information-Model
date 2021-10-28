@@ -1,6 +1,7 @@
 package de.fraunhofer.iais.eis;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -38,7 +39,35 @@ public class ParticipantCatalogBuilder implements Builder<ParticipantCatalog> {
      * @return Builder object with new value for _member
      */
     public ParticipantCatalogBuilder _member_(Participant _member_) {
+        if (!this.participantCatalogImpl.getMemberAsUri().isEmpty()) {
+            this.participantCatalogImpl.setMemberAsUri(new ArrayList<>());
+        }
         this.participantCatalogImpl.getMember().add(_member_);
+        return this;
+    }
+
+    /**
+     * This function allows setting a value for _memberAsUri
+     * 
+     * @param _member_ desired value to be set
+     * @return Builder object with new value for _memberAsUri
+     */
+    public ParticipantCatalogBuilder _memberAsUri_(List<URI> _member_) {
+        this.participantCatalogImpl.setMemberAsUri(_member_);
+        return this;
+    }
+
+    /**
+     * This function allows adding a value to the List _memberAsUri
+     * 
+     * @param _member_ desired value to be added
+     * @return Builder object with new value for _memberAsUri
+     */
+    public ParticipantCatalogBuilder _memberAsUri_(URI _member_) {
+        if (!this.participantCatalogImpl.getMember().isEmpty()) {
+            this.participantCatalogImpl.setMember(new ArrayList<>());
+        }
+        this.participantCatalogImpl.getMemberAsUri().add(_member_);
         return this;
     }
 

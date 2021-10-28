@@ -153,6 +153,17 @@ public class TrustedConnectorBuilder implements Builder<TrustedConnector> {
     }
 
     /**
+     * This function allows setting a value for _maintainerAsParticipant
+     * 
+     * @param _maintainer_ desired value to be set
+     * @return Builder object with new value for _maintainerAsParticipant
+     */
+    public TrustedConnectorBuilder _maintainerAsParticipant_(Participant _maintainer_) {
+        this.trustedConnectorImpl.setMaintainerAsParticipant(_maintainer_);
+        return this;
+    }
+
+    /**
      * This function allows setting a value for _curator
      * 
      * @param _curator_ desired value to be set
@@ -160,6 +171,17 @@ public class TrustedConnectorBuilder implements Builder<TrustedConnector> {
      */
     public TrustedConnectorBuilder _curator_(URI _curator_) {
         this.trustedConnectorImpl.setCurator(_curator_);
+        return this;
+    }
+
+    /**
+     * This function allows setting a value for _curatorAsParticipant
+     * 
+     * @param _curator_ desired value to be set
+     * @return Builder object with new value for _curatorAsParticipant
+     */
+    public TrustedConnectorBuilder _curatorAsParticipant_(Participant _curator_) {
+        this.trustedConnectorImpl.setCuratorAsParticipant(_curator_);
         return this;
     }
 
