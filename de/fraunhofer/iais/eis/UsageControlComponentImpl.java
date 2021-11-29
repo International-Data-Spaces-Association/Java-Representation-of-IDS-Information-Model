@@ -22,13 +22,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import de.fraunhofer.iais.eis.util.*;
 
 /**
- * Default implementation of package de.fraunhofer.iais.eis.Constraint
+ * Default implementation of package de.fraunhofer.iais.eis.UsageControlComponent
  * 
- * The class of Constraints that restrict a Rule.
+ * Defined usage control component (i.e. PIP, PXP, etc.) in the IDS.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonTypeName("ids:Constraint")
-public class ConstraintImpl implements Constraint {
+@JsonTypeName("ids:UsageControlComponent")
+public class UsageControlComponentImpl implements UsageControlComponent {
 
     @JsonProperty("@id")
     @JsonAlias({"@id", "id"})
@@ -37,11 +37,12 @@ public class ConstraintImpl implements Constraint {
 
     // List of all labels of this class
     @JsonIgnore
-    protected List<TypedLiteral> label = Arrays.asList(new TypedLiteral("Constraint", "en"));
+    protected List<TypedLiteral> label = Arrays.asList(new TypedLiteral("Usage Control Component", "en"));
 
     // List of all comments of this class
     @JsonIgnore
-    protected List<TypedLiteral> comment = Arrays.asList(new TypedLiteral("The class of Constraints that restrict a Rule.", "en"));
+    protected List<TypedLiteral> comment =
+        Arrays.asList(new TypedLiteral("Defined usage control component (i.e. PIP, PXP, etc.) in the IDS.", "en"));
 
     // all classes have a generic property array
     @JsonIgnore
@@ -49,29 +50,15 @@ public class ConstraintImpl implements Constraint {
 
     // instance fields as derived from the IDS Information Model ontology
 
-    @NotNull
-    @JsonAlias({"ids:leftOperand", "leftOperand"})
-    protected LeftOperand _leftOperand;
+    @JsonAlias({"ids:endpointURI", "endpointURI"})
+    protected URI _endpointURI;
 
     @NotNull
-    @JsonAlias({"ids:operator", "operator"})
-    protected BinaryOperator _operator;
+    @JsonAlias({"ids:interfaceDescription", "interfaceDescription"})
+    protected URI _interfaceDescription;
 
-    @NotNull
-    @JsonAlias({"ids:pipEndpoint", "pipEndpoint"})
-    protected PIP _pipEndpoint;
-
-    @JsonAlias({"ids:rightOperand", "rightOperand"})
-    protected RdfResource _rightOperand;
-
-    @JsonAlias({"ids:rightOperandReference", "rightOperandReference"})
-    protected URI _rightOperandReference;
-
-    @JsonAlias({"ids:unit", "unit"})
-    protected URI _unit;
-
-    protected ConstraintImpl() {
-        id = VocabUtil.getInstance().createRandomUrl("constraint");
+    protected UsageControlComponentImpl() {
+        id = VocabUtil.getInstance().createRandomUrl("usageControlComponent");
     }
 
     @JsonProperty("@id")
@@ -140,12 +127,8 @@ public class ConstraintImpl implements Constraint {
 
     @Override
     public int hashCode() {
-        return Objects.hash(this._leftOperand,
-            this._operator,
-            this._rightOperand,
-            this._rightOperandReference,
-            this._unit,
-            this._pipEndpoint);
+        return Objects.hash(this._interfaceDescription,
+            this._endpointURI);
     }
 
     @Override
@@ -157,32 +140,20 @@ public class ConstraintImpl implements Constraint {
         } else if (this.getClass() != obj.getClass()) {
             return false;
         } else {
-            ConstraintImpl other = (ConstraintImpl) obj;
-            return Objects.equals(this._leftOperand, other._leftOperand) &&
-                Objects.equals(this._operator, other._operator) &&
-                Objects.equals(this._rightOperand, other._rightOperand) &&
-                Objects.equals(this._rightOperandReference, other._rightOperandReference) &&
-                Objects.equals(this._unit, other._unit) &&
-                Objects.equals(this._pipEndpoint, other._pipEndpoint);
+            UsageControlComponentImpl other = (UsageControlComponentImpl) obj;
+            return Objects.equals(this._interfaceDescription, other._interfaceDescription) &&
+                Objects.equals(this._endpointURI, other._endpointURI);
         }
     }
 
     @Override
-    public Constraint deepCopy() {
-        ConstraintBuilder builder = new ConstraintBuilder();
-        builder._leftOperand_(this._leftOperand);
-        builder._operator_(this._operator);
-        if (this._rightOperand != null) {
-            builder._rightOperand_(new RdfResource(this._rightOperand.getValue(), URI.create(this._rightOperand.getType())));
+    public UsageControlComponent deepCopy() {
+        UsageControlComponentBuilder builder = new UsageControlComponentBuilder();
+        if (this._interfaceDescription != null) {
+            builder._interfaceDescription_(URI.create(this._interfaceDescription.toString()));
         }
-        if (this._rightOperandReference != null) {
-            builder._rightOperandReference_(URI.create(this._rightOperandReference.toString()));
-        }
-        if (this._unit != null) {
-            builder._unit_(URI.create(this._unit.toString()));
-        }
-        if (this._pipEndpoint != null) {
-            builder._pipEndpoint_(this._pipEndpoint.deepCopy());
+        if (this._endpointURI != null) {
+            builder._endpointURI_(URI.create(this._endpointURI.toString()));
         }
         return builder.build();
     }
@@ -191,65 +162,22 @@ public class ConstraintImpl implements Constraint {
 
     @Override
     @NotNull
-    public LeftOperand getLeftOperand() {
-        return _leftOperand;
+    public URI getInterfaceDescription() {
+        return _interfaceDescription;
     }
 
     @Override
-    public void setLeftOperand(LeftOperand _leftOperand_) {
-        this._leftOperand = _leftOperand_;
+    public void setInterfaceDescription(URI _interfaceDescription_) {
+        this._interfaceDescription = _interfaceDescription_;
     }
 
     @Override
-    @NotNull
-    public BinaryOperator getOperator() {
-        return _operator;
+    public URI getEndpointURI() {
+        return _endpointURI;
     }
 
     @Override
-    public void setOperator(BinaryOperator _operator_) {
-        this._operator = _operator_;
+    public void setEndpointURI(URI _endpointURI_) {
+        this._endpointURI = _endpointURI_;
     }
-
-    @Override
-    public RdfResource getRightOperand() {
-        return _rightOperand;
-    }
-
-    @Override
-    public void setRightOperand(RdfResource _rightOperand_) {
-        this._rightOperand = _rightOperand_;
-    }
-
-    @Override
-    public URI getRightOperandReference() {
-        return _rightOperandReference;
-    }
-
-    @Override
-    public void setRightOperandReference(URI _rightOperandReference_) {
-        this._rightOperandReference = _rightOperandReference_;
-    }
-
-    @Override
-    public URI getUnit() {
-        return _unit;
-    }
-
-    @Override
-    public void setUnit(URI _unit_) {
-        this._unit = _unit_;
-    }
-
-    @Override
-    @NotNull
-    public PIP getPipEndpoint() {
-        return _pipEndpoint;
-    }
-
-    @Override
-    public void setPipEndpoint(PIP _pipEndpoint_) {
-        this._pipEndpoint = _pipEndpoint_;
-    }
-
 }

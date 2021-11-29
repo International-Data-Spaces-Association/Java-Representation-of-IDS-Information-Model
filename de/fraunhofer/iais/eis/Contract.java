@@ -75,7 +75,7 @@ public interface Contract extends ModelClass {
     void setContractEnd(XMLGregorianCalendar _contractEnd_);
 
     /**
-     * Absolute datetime of singing the Contract.
+     * Absolute datetime of signing the Contract.
      *
      * More information under https://w3id.org/idsa/core/contractDate
      *
@@ -86,7 +86,7 @@ public interface Contract extends ModelClass {
     XMLGregorianCalendar getContractDate();
 
     /**
-     * Absolute datetime of singing the Contract.
+     * Absolute datetime of signing the Contract.
      *
      * More information under https://w3id.org/idsa/core/contractDate
      *

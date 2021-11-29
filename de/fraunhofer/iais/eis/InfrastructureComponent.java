@@ -19,6 +19,7 @@ import de.fraunhofer.iais.eis.util.*;
  */
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 @JsonSubTypes({
+    @JsonSubTypes.Type(value = InfrastructureComponentImpl.class),
     @JsonSubTypes.Type(value = ClearingHouse.class),
     @JsonSubTypes.Type(value = Connector.class),
     @JsonSubTypes.Type(value = DAPS.class),

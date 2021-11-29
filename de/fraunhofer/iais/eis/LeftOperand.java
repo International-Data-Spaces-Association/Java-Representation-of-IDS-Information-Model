@@ -37,12 +37,43 @@ public enum LeftOperand implements ModelClass {
             "en"))),
 
     /**
+     * An application is a program or piece of software designed to fulfill a particular purpose. For
+     * example, a certified IDS App.
+     */
+    APPLICATION("https://w3id.org/idsa/code/APPLICATION", Arrays.asList(new TypedLiteral("application", "")),
+        Arrays.asList(new TypedLiteral(
+            "An application is a program or piece of software designed to fulfill a particular purpose. For example, a certified IDS App.",
+            "en"))),
+
+    /**
+     * Suggested values exist in the Information Model : idsc:ANONYMIZED, idsc:PSEUDONYMIZED,
+     * idsc:ENCRYPTED, idsc:COMBINED.
+     */
+    ARTIFACT_STATE("https://w3id.org/idsa/code/ARTIFACT_STATE", Arrays.asList(new TypedLiteral("artifact state", "en")),
+        Arrays.asList(new TypedLiteral(
+            "Suggested values exist in the Information Model : idsc:ANONYMIZED, idsc:PSEUDONYMIZED, idsc:ENCRYPTED, idsc:COMBINED. ",
+            "en"))),
+
+    /**
+     * Accepts an IDS connector URI.
+     */
+    CONNECTOR("https://w3id.org/idsa/code/CONNECTOR", Arrays.asList(new TypedLiteral("connector", "")),
+        Arrays.asList(new TypedLiteral("Accepts an IDS connector URI.", "en"))),
+
+    /**
      * Numeric count of executions of the Rule. Operators can be idsc:LT, idsc:LTEQ, idsc:EQ, idsc:GT,
      * idsc:GTEQ. Datatype is xsd:double.
      */
     COUNT("https://w3id.org/idsa/code/COUNT", Arrays.asList(new TypedLiteral("count", "en")), Arrays.asList(new TypedLiteral(
         "Numeric count of executions of the Rule. Operators can be idsc:LT, idsc:LTEQ, idsc:EQ, idsc:GT, idsc:GTEQ. Datatype is xsd:double.",
         "en"))),
+
+    /**
+     * The date and time of exercising the action of the Rule. Right operand value must be an
+     * xsd:dateTimeStamp.
+     */
+    DATE_TIME("https://w3id.org/idsa/code/DATE_TIME", Arrays.asList(new TypedLiteral("date time", "en")), Arrays.asList(new TypedLiteral(
+        "The date and time of exercising the action of the Rule. Right operand value must be an xsd:dateTimeStamp.", "en"))),
 
     /**
      * Delay the action. Use idsc:DURATION_EQ, idsc:LONGER, idsc:LONGER_EQ, idsc:SHORTER_EQ, or
@@ -80,6 +111,36 @@ public enum LeftOperand implements ModelClass {
     EVENT("https://w3id.org/idsa/code/EVENT", Arrays.asList(new TypedLiteral("current event", "en")), Arrays.asList(new TypedLiteral(
         "The feature dimension regarding whether current events are happening. Does NOT refer 'events' as in real-time data, sensor observations, or Complex Event Processing but rather as 'World Cup 2018' or 'Hannover Trade Fair'.",
         "en"))),
+
+    /**
+     * Indicate the hash value to be used, eg.SHA256.
+     */
+    HASH_ALGORITHM("https://w3id.org/idsa/code/HASH_ALGORITHM", Arrays.asList(new TypedLiteral("hash algorithm", "en")),
+        Arrays.asList(new TypedLiteral("Indicate the hash value to be used, eg.SHA256.", "en"))),
+
+    /**
+     * An expression that refers to a part of a JSON structured data.
+     */
+    JSON_PATH("https://w3id.org/idsa/code/JSON_PATH", Arrays.asList(new TypedLiteral("json path", "en")),
+        Arrays.asList(new TypedLiteral("An expression that refers to a part of a JSON structured data.", "en"))),
+
+    /**
+     * Accepted values: ON_DENY, ON_ALLOW, ON_DUTY_EXERCISED, ON_ACTION_OPERATED.
+     */
+    LOG_LEVEL("https://w3id.org/idsa/code/LOG_LEVEL", Arrays.asList(new TypedLiteral("log level", "")),
+        Arrays.asList(new TypedLiteral("Accepted values: ON_DENY, ON_ALLOW, ON_DUTY_EXERCISED, ON_ACTION_OPERATED.", "en"))),
+
+    /**
+     * Similar to the idsc:LOG_LEVEL.
+     */
+    NOTIFICATION_LEVEL("https://w3id.org/idsa/code/NOTIFICATION_LEVEL", Arrays.asList(new TypedLiteral("notification level", "")),
+        Arrays.asList(new TypedLiteral("Similar to the idsc:LOG_LEVEL.", "en"))),
+
+    /**
+     * To indicate the second operand value for the Actions idsc:ADD, idsc:MULTIPLY and idsc:DIVIDE.
+     */
+    OPERAND("https://w3id.org/idsa/code/OPERAND", Arrays.asList(new TypedLiteral("operand", "en")), Arrays
+        .asList(new TypedLiteral("To indicate the second operand value for the Actions idsc:ADD, idsc:MULTIPLY and idsc:DIVIDE.", "en"))),
 
     /**
      * Path to specific attribute (default JsonPath). Must be used together with idsc:STRING_EQ,
@@ -131,6 +192,12 @@ public enum LeftOperand implements ModelClass {
         ""))),
 
     /**
+     * For example, the recipient of the notify/inform action.
+     */
+    RECIPIENT("https://w3id.org/idsa/code/RECIPIENT", Arrays.asList(new TypedLiteral("recipient", "en")),
+        Arrays.asList(new TypedLiteral("For example, the recipient of the notify/inform action.", "en"))),
+
+    /**
      * The limit how often exercising the action of the Rule may be possible. Operators can be idsc:LT,
      * idsc:LTEQ, idsc:EQ, idsc:GT, idsc:GTEQ. Datatype is xsd:double.
      */
@@ -138,6 +205,20 @@ public enum LeftOperand implements ModelClass {
         Arrays.asList(new TypedLiteral(
             "The limit how often exercising the action of the Rule may be possible. Operators can be idsc:LT, idsc:LTEQ, idsc:EQ, idsc:GT, idsc:GTEQ. Datatype is xsd:double.",
             ""))),
+
+    /**
+     * Specifies a new value for a specific field. The action must be idsc:REPLACE and the operator must
+     * be idsc:EQUALS.
+     */
+    REPLACE_WITH("https://w3id.org/idsa/code/REPLACE_WITH", Arrays.asList(new TypedLiteral("repace with", "en")),
+        Arrays.asList(new TypedLiteral(
+            "Specifies a new value for a specific field. The action must be idsc:REPLACE and the operator must be idsc:EQUALS.", "en"))),
+
+    /**
+     * As end user role, not the IDS participant type.
+     */
+    ROLE("https://w3id.org/idsa/code/ROLE", Arrays.asList(new TypedLiteral("role", "en")),
+        Arrays.asList(new TypedLiteral("As end user role, not the IDS participant type.", "en"))),
 
     /**
      * The security level the consuming connector must have. Use together with idsc:SAME_AS or idsc:IN.
@@ -169,6 +250,21 @@ public enum LeftOperand implements ModelClass {
         "en"))),
 
     /**
+     * The ODRL definitions is “An identified computing system or computing device used for exercising
+     * the action of the Rule.”
+     */
+    SYSTEM_DEVICE("https://w3id.org/idsa/code/SYSTEM_DEVICE", Arrays.asList(new TypedLiteral("system device", "")),
+        Arrays.asList(new TypedLiteral(
+            "The ODRL definitions is “An identified computing system or computing device used for exercising the action of the Rule.” ",
+            "en"))),
+
+    /**
+     * In order to attach/address a policy to a contract.
+     */
+    TARGET_POLICY("https://w3id.org/idsa/code/TARGET_POLICY", Arrays.asList(new TypedLiteral("target policy", "en")),
+        Arrays.asList(new TypedLiteral("In order to attach/address a policy to a contract. ", "en"))),
+
+    /**
      * The user of a system at the *consuming connector* requesting access to a resource. Recommended
      * usage for checking whether the user's role is sufficient for his/her desired action. Allowed
      * operators are idsc:MEMBER_OF, idsc:HAS_MEMBERSHIP, idsc:HAS_SITE with a RightOperand referencing
@@ -177,7 +273,13 @@ public enum LeftOperand implements ModelClass {
      */
     USER("https://w3id.org/idsa/code/USER", Arrays.asList(new TypedLiteral("user", "en")), Arrays.asList(new TypedLiteral(
         "The user of a system at the *consuming connector* requesting access to a resource. Recommended usage for checking whether the user's role is sufficient for his/her desired action. Allowed operators are idsc:MEMBER_OF, idsc:HAS_MEMBERSHIP, idsc:HAS_SITE with a RightOperand referencing a (set of) acceptable organisations (ids:Participant),memberships, sites. Preferred behaviour is that the RightOperand dereferences to an endpoint hosting the required role information.",
-        "en")));
+        "en"))),
+
+    /**
+     * An expression that refers to specific elements of an XML document.
+     */
+    XPATH("https://w3id.org/idsa/code/XPATH", Arrays.asList(new TypedLiteral("xpath", "en")),
+        Arrays.asList(new TypedLiteral("An expression that refers to specific elements of an XML document.", "en")));
 
     private static final Map<String, LeftOperand> uriInstanceMapping;
     static {
