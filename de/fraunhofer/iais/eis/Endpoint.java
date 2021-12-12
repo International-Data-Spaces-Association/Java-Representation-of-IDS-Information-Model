@@ -149,4 +149,23 @@ public interface Endpoint extends ModelClass {
      */
     void setOutboundPath(String _outboundPath_);
 
+    /**
+     * Declares which endpoint specification is supported by this IDS endpoint.
+     *
+     * More information under https://w3id.org/idsa/core/apiSpecifiation
+     *
+     * @return Returns the List of IdsProtocolSpecifications for the property _apiSpecifiation.
+     */
+    @JsonProperty("ids:apiSpecifiation")
+    List<IdsProtocolSpecification> getApiSpecifiation();
+
+    /**
+     * Declares which endpoint specification is supported by this IDS endpoint.
+     *
+     * More information under https://w3id.org/idsa/core/apiSpecifiation
+     *
+     * @param _apiSpecifiation_ desired value for the property _apiSpecifiation.
+     */
+    void setApiSpecifiation(List<IdsProtocolSpecification> _apiSpecifiation_);
+
 }

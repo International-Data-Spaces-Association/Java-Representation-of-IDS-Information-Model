@@ -8,17 +8,18 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import de.fraunhofer.iais.eis.util.*;
 
 /**
- * The class of media types registered with IANA.
+ * The reference to the PXP that operates a specific action, URI or reference to an associated PXP
+ * interface.
  */
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 @JsonSubTypes({
-    @JsonSubTypes.Type(value = IANAMediaTypeImpl.class)
+    @JsonSubTypes.Type(value = PXPImpl.class)
 })
-public interface IANAMediaType extends MediaType {
+public interface PXP extends UsageControlComponent {
 
     // standard methods
 
     @Beta
-    public IANAMediaType deepCopy();
+    public PXP deepCopy();
 
 }

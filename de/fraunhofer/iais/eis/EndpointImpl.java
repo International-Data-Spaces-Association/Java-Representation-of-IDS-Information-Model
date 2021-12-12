@@ -53,6 +53,9 @@ public class EndpointImpl implements Endpoint {
     @JsonAlias({"ids:accessURL", "accessURL"})
     protected URI _accessURL;
 
+    @JsonAlias({"ids:apiSpecifiation", "apiSpecifiation"})
+    protected List<IdsProtocolSpecification> _apiSpecifiation = new ArrayList<>();
+
     @JsonAlias({"ids:endpointDocumentation", "endpointDocumentation"})
     protected List<URI> _endpointDocumentation = new ArrayList<>();
 
@@ -143,7 +146,8 @@ public class EndpointImpl implements Endpoint {
             this._endpointDocumentation,
             this._path,
             this._inboundPath,
-            this._outboundPath);
+            this._outboundPath,
+            this._apiSpecifiation);
     }
 
     @Override
@@ -161,7 +165,8 @@ public class EndpointImpl implements Endpoint {
                 Objects.equals(this._endpointDocumentation, other._endpointDocumentation) &&
                 Objects.equals(this._path, other._path) &&
                 Objects.equals(this._inboundPath, other._inboundPath) &&
-                Objects.equals(this._outboundPath, other._outboundPath);
+                Objects.equals(this._outboundPath, other._outboundPath) &&
+                Objects.equals(this._apiSpecifiation, other._apiSpecifiation);
         }
     }
 
@@ -186,6 +191,9 @@ public class EndpointImpl implements Endpoint {
         builder._path_(this._path);
         builder._inboundPath_(this._inboundPath);
         builder._outboundPath_(this._outboundPath);
+        for (IdsProtocolSpecification item : this._apiSpecifiation) {
+            builder._apiSpecifiation_(item);
+        }
         return builder.build();
     }
 
@@ -249,5 +257,15 @@ public class EndpointImpl implements Endpoint {
     @Override
     public void setOutboundPath(String _outboundPath_) {
         this._outboundPath = _outboundPath_;
+    }
+
+    @Override
+    public List<IdsProtocolSpecification> getApiSpecifiation() {
+        return _apiSpecifiation;
+    }
+
+    @Override
+    public void setApiSpecifiation(List<IdsProtocolSpecification> _apiSpecifiation_) {
+        this._apiSpecifiation = _apiSpecifiation_;
     }
 }

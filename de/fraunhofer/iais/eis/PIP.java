@@ -8,17 +8,18 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import de.fraunhofer.iais.eis.util.*;
 
 /**
- * The class of media types registered with IANA.
+ * Refers to the PIP that provides a specific piece of information (URI/reference to an associated
+ * PIP interface).
  */
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 @JsonSubTypes({
-    @JsonSubTypes.Type(value = IANAMediaTypeImpl.class)
+    @JsonSubTypes.Type(value = PIPImpl.class)
 })
-public interface IANAMediaType extends MediaType {
+public interface PIP extends UsageControlComponent {
 
     // standard methods
 
     @Beta
-    public IANAMediaType deepCopy();
+    public PIP deepCopy();
 
 }

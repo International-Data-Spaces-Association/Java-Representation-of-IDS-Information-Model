@@ -1,11 +1,10 @@
 package de.fraunhofer.iais.eis;
 
+import java.net.URI;
 import java.util.List;
 
 import javax.validation.constraints.NotEmpty;
 
-import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -35,10 +34,10 @@ public interface Rule extends Described {
      *
      * More information under https://w3id.org/idsa/core/assignee
      *
-     * @return Returns the List of Participants for the property _assignee.
+     * @return Returns the List of URIs for the property _assignee.
      */
-    @JsonIgnore
-    List<Participant> getAssignee();
+    @JsonProperty("ids:assignee")
+    List<URI> getAssignee();
 
     /**
      * The recipient of the policy statement.
@@ -47,45 +46,17 @@ public interface Rule extends Described {
      *
      * @param _assignee_ desired value for the property _assignee.
      */
-    void setAssignee(List<Participant> _assignee_);
-
-    /**
-     * The recipient of the policy statement.
-     *
-     * More information under https://w3id.org/idsa/core/assignee
-     *
-     * @return Returns the List of Participants for the property _assigneeAsUri.
-     */
-    @JsonIgnore
-    List<Participant> getAssigneeAsUri();
-
-    /**
-     * The recipient of the policy statement.
-     *
-     * More information under https://w3id.org/idsa/core/assignee
-     *
-     * @param _assignee_ desired value for the property _assigneeAsUri.
-     */
-    void setAssigneeAsUri(List<Participant> _assignee_);
-
-    /**
-     * Helper function for (de-)serialization of the _rule and the _ruleAsfields.
-     *
-     * @return Returns the a UriOrModelClass object with the content of the field or null if the field
-     *         is not set.
-     */
-    @JsonGetter("ids:assignee")
-    UriOrModelClass getAssigneeAsObject();
+    void setAssignee(List<URI> _assignee_);
 
     /**
      * The issuer of the policy statement.
      *
      * More information under https://w3id.org/idsa/core/assigner
      *
-     * @return Returns the List of Participants for the property _assigner.
+     * @return Returns the List of URIs for the property _assigner.
      */
-    @JsonIgnore
-    List<Participant> getAssigner();
+    @JsonProperty("ids:assigner")
+    List<URI> getAssigner();
 
     /**
      * The issuer of the policy statement.
@@ -94,45 +65,17 @@ public interface Rule extends Described {
      *
      * @param _assigner_ desired value for the property _assigner.
      */
-    void setAssigner(List<Participant> _assigner_);
-
-    /**
-     * The issuer of the policy statement.
-     *
-     * More information under https://w3id.org/idsa/core/assigner
-     *
-     * @return Returns the List of Participants for the property _assignerAsUri.
-     */
-    @JsonIgnore
-    List<Participant> getAssignerAsUri();
-
-    /**
-     * The issuer of the policy statement.
-     *
-     * More information under https://w3id.org/idsa/core/assigner
-     *
-     * @param _assigner_ desired value for the property _assignerAsUri.
-     */
-    void setAssignerAsUri(List<Participant> _assigner_);
-
-    /**
-     * Helper function for (de-)serialization of the _rule and the _ruleAsfields.
-     *
-     * @return Returns the a UriOrModelClass object with the content of the field or null if the field
-     *         is not set.
-     */
-    @JsonGetter("ids:assigner")
-    UriOrModelClass getAssignerAsObject();
+    void setAssigner(List<URI> _assigner_);
 
     /**
      * The subject of the policy statement (ids:Rule).
      *
      * More information under https://w3id.org/idsa/core/target
      *
-     * @return Returns the Asset for the property _target.
+     * @return Returns the URI for the property _target.
      */
-    @JsonIgnore
-    Asset getTarget();
+    @JsonProperty("ids:target")
+    URI getTarget();
 
     /**
      * The subject of the policy statement (ids:Rule).
@@ -141,35 +84,7 @@ public interface Rule extends Described {
      *
      * @param _target_ desired value for the property _target.
      */
-    void setTarget(Asset _target_);
-
-    /**
-     * The subject of the policy statement (ids:Rule).
-     *
-     * More information under https://w3id.org/idsa/core/target
-     *
-     * @return Returns the Asset for the property _targetAsUri.
-     */
-    @JsonIgnore
-    Asset getTargetAsUri();
-
-    /**
-     * The subject of the policy statement (ids:Rule).
-     *
-     * More information under https://w3id.org/idsa/core/target
-     *
-     * @param _target_ desired value for the property _targetAsUri.
-     */
-    void setTargetAsUri(Asset _target_);
-
-    /**
-     * Helper function for (de-)serialization of the _rule and the _ruleAsfields.
-     *
-     * @return Returns the a UriOrModelClass object with the content of the field or null if the field
-     *         is not set.
-     */
-    @JsonGetter("ids:target")
-    UriOrModelClass getTargetAsObject();
+    void setTarget(URI _target_);
 
     /**
      * The constraint to be used for a specific rule.

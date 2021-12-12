@@ -53,6 +53,9 @@ public class AppEndpointImpl implements AppEndpoint {
     @JsonAlias({"ids:accessURL", "accessURL"})
     protected URI _accessURL;
 
+    @JsonAlias({"ids:apiSpecifiation", "apiSpecifiation"})
+    protected List<IdsProtocolSpecification> _apiSpecifiation = new ArrayList<>();
+
     @JsonAlias({"ids:appEndpointMediaType", "appEndpointMediaType"})
     protected MediaType _appEndpointMediaType;
 
@@ -164,7 +167,8 @@ public class AppEndpointImpl implements AppEndpoint {
             this._endpointDocumentation,
             this._path,
             this._inboundPath,
-            this._outboundPath);
+            this._outboundPath,
+            this._apiSpecifiation);
     }
 
     @Override
@@ -187,7 +191,8 @@ public class AppEndpointImpl implements AppEndpoint {
                 Objects.equals(this._endpointDocumentation, other._endpointDocumentation) &&
                 Objects.equals(this._path, other._path) &&
                 Objects.equals(this._inboundPath, other._inboundPath) &&
-                Objects.equals(this._outboundPath, other._outboundPath);
+                Objects.equals(this._outboundPath, other._outboundPath) &&
+                Objects.equals(this._apiSpecifiation, other._apiSpecifiation);
         }
     }
 
@@ -196,7 +201,9 @@ public class AppEndpointImpl implements AppEndpoint {
         AppEndpointBuilder builder = new AppEndpointBuilder();
         builder._appEndpointType_(this._appEndpointType);
         builder._appEndpointPort_(this._appEndpointPort);
-        builder._appEndpointMediaType_(this._appEndpointMediaType);
+        if (this._appEndpointMediaType != null) {
+            builder._appEndpointMediaType_(this._appEndpointMediaType.deepCopy());
+        }
         builder._appEndpointProtocol_(this._appEndpointProtocol);
         builder._language_(this._language);
         if (this._accessURL != null) {
@@ -217,6 +224,9 @@ public class AppEndpointImpl implements AppEndpoint {
         builder._path_(this._path);
         builder._inboundPath_(this._inboundPath);
         builder._outboundPath_(this._outboundPath);
+        for (IdsProtocolSpecification item : this._apiSpecifiation) {
+            builder._apiSpecifiation_(item);
+        }
         return builder.build();
     }
 
@@ -331,5 +341,15 @@ public class AppEndpointImpl implements AppEndpoint {
     @Override
     public void setOutboundPath(String _outboundPath_) {
         this._outboundPath = _outboundPath_;
+    }
+
+    @Override
+    public List<IdsProtocolSpecification> getApiSpecifiation() {
+        return _apiSpecifiation;
+    }
+
+    @Override
+    public void setApiSpecifiation(List<IdsProtocolSpecification> _apiSpecifiation_) {
+        this._apiSpecifiation = _apiSpecifiation_;
     }
 }

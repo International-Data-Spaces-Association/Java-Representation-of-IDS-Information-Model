@@ -1,7 +1,6 @@
 package de.fraunhofer.iais.eis;
 
 import java.net.URI;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -27,7 +26,7 @@ public class DutyBuilder implements Builder<Duty> {
      * @param _assignee_ desired value to be set
      * @return Builder object with new value for _assignee
      */
-    public DutyBuilder _assignee_(List<Participant> _assignee_) {
+    public DutyBuilder _assignee_(List<URI> _assignee_) {
         this.dutyImpl.setAssignee(_assignee_);
         return this;
     }
@@ -38,36 +37,8 @@ public class DutyBuilder implements Builder<Duty> {
      * @param _assignee_ desired value to be added
      * @return Builder object with new value for _assignee
      */
-    public DutyBuilder _assignee_(Participant _assignee_) {
-        if (!this.dutyImpl.getAssigneeAsUri().isEmpty()) {
-            this.dutyImpl.setAssigneeAsUri(new ArrayList<>());
-        }
+    public DutyBuilder _assignee_(URI _assignee_) {
         this.dutyImpl.getAssignee().add(_assignee_);
-        return this;
-    }
-
-    /**
-     * This function allows setting a value for _assigneeAsUri
-     * 
-     * @param _assignee_ desired value to be set
-     * @return Builder object with new value for _assigneeAsUri
-     */
-    public DutyBuilder _assigneeAsUri_(List<Participant> _assignee_) {
-        this.dutyImpl.setAssigneeAsUri(_assignee_);
-        return this;
-    }
-
-    /**
-     * This function allows adding a value to the List _assigneeAsUri
-     * 
-     * @param _assignee_ desired value to be added
-     * @return Builder object with new value for _assigneeAsUri
-     */
-    public DutyBuilder _assigneeAsUri_(Participant _assignee_) {
-        if (!this.dutyImpl.getAssignee().isEmpty()) {
-            this.dutyImpl.setAssignee(new ArrayList<>());
-        }
-        this.dutyImpl.getAssigneeAsUri().add(_assignee_);
         return this;
     }
 
@@ -77,7 +48,7 @@ public class DutyBuilder implements Builder<Duty> {
      * @param _assigner_ desired value to be set
      * @return Builder object with new value for _assigner
      */
-    public DutyBuilder _assigner_(List<Participant> _assigner_) {
+    public DutyBuilder _assigner_(List<URI> _assigner_) {
         this.dutyImpl.setAssigner(_assigner_);
         return this;
     }
@@ -88,36 +59,8 @@ public class DutyBuilder implements Builder<Duty> {
      * @param _assigner_ desired value to be added
      * @return Builder object with new value for _assigner
      */
-    public DutyBuilder _assigner_(Participant _assigner_) {
-        if (!this.dutyImpl.getAssignerAsUri().isEmpty()) {
-            this.dutyImpl.setAssignerAsUri(new ArrayList<>());
-        }
+    public DutyBuilder _assigner_(URI _assigner_) {
         this.dutyImpl.getAssigner().add(_assigner_);
-        return this;
-    }
-
-    /**
-     * This function allows setting a value for _assignerAsUri
-     * 
-     * @param _assigner_ desired value to be set
-     * @return Builder object with new value for _assignerAsUri
-     */
-    public DutyBuilder _assignerAsUri_(List<Participant> _assigner_) {
-        this.dutyImpl.setAssignerAsUri(_assigner_);
-        return this;
-    }
-
-    /**
-     * This function allows adding a value to the List _assignerAsUri
-     * 
-     * @param _assigner_ desired value to be added
-     * @return Builder object with new value for _assignerAsUri
-     */
-    public DutyBuilder _assignerAsUri_(Participant _assigner_) {
-        if (!this.dutyImpl.getAssigner().isEmpty()) {
-            this.dutyImpl.setAssigner(new ArrayList<>());
-        }
-        this.dutyImpl.getAssignerAsUri().add(_assigner_);
         return this;
     }
 
@@ -127,19 +70,8 @@ public class DutyBuilder implements Builder<Duty> {
      * @param _target_ desired value to be set
      * @return Builder object with new value for _target
      */
-    public DutyBuilder _target_(Asset _target_) {
+    public DutyBuilder _target_(URI _target_) {
         this.dutyImpl.setTarget(_target_);
-        return this;
-    }
-
-    /**
-     * This function allows setting a value for _targetAsUri
-     * 
-     * @param _target_ desired value to be set
-     * @return Builder object with new value for _targetAsUri
-     */
-    public DutyBuilder _targetAsUri_(Asset _target_) {
-        this.dutyImpl.setTargetAsUri(_target_);
         return this;
     }
 

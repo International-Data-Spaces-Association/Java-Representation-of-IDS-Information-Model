@@ -165,6 +165,28 @@ public class AppEndpointBuilder implements Builder<AppEndpoint> {
     }
 
     /**
+     * This function allows setting a value for _apiSpecifiation
+     * 
+     * @param _apiSpecifiation_ desired value to be set
+     * @return Builder object with new value for _apiSpecifiation
+     */
+    public AppEndpointBuilder _apiSpecifiation_(List<IdsProtocolSpecification> _apiSpecifiation_) {
+        this.appEndpointImpl.setApiSpecifiation(_apiSpecifiation_);
+        return this;
+    }
+
+    /**
+     * This function allows adding a value to the List _apiSpecifiation
+     * 
+     * @param _apiSpecifiation_ desired value to be added
+     * @return Builder object with new value for _apiSpecifiation
+     */
+    public AppEndpointBuilder _apiSpecifiation_(IdsProtocolSpecification _apiSpecifiation_) {
+        this.appEndpointImpl.getApiSpecifiation().add(_apiSpecifiation_);
+        return this;
+    }
+
+    /**
      * This function takes the values that were set previously via the other functions of this class and
      * turns them into a Java bean.
      * 
