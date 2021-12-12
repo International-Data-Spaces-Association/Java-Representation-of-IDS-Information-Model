@@ -59,10 +59,16 @@ public class ProhibitionImpl implements Prohibition {
     protected AbstractConstraint _assetRefinement;
 
     @JsonAlias({"ids:assignee", "assignee"})
-    protected List<URI> _assignee = new ArrayList<>();
+    protected List<Participant> _assignee = new ArrayList<>();
+
+    @JsonAlias({"ids:assignee", "assignee"})
+    protected List<Participant> _assigneeAsUri = new ArrayList<>();
 
     @JsonAlias({"ids:assigner", "assigner"})
-    protected List<URI> _assigner = new ArrayList<>();
+    protected List<Participant> _assigner = new ArrayList<>();
+
+    @JsonAlias({"ids:assigner", "assigner"})
+    protected List<Participant> _assignerAsUri = new ArrayList<>();
 
     @JsonAlias({"ids:constraint", "constraint"})
     protected List<AbstractConstraint> _constraint = new ArrayList<>();
@@ -71,7 +77,10 @@ public class ProhibitionImpl implements Prohibition {
     protected List<TypedLiteral> _description = new ArrayList<>();
 
     @JsonAlias({"ids:target", "target"})
-    protected URI _target;
+    protected Asset _target;
+
+    @JsonAlias({"ids:target", "target"})
+    protected Asset _targetAsUri;
 
     @JsonAlias({"ids:title", "title"})
     protected List<TypedLiteral> _title = new ArrayList<>();
@@ -147,8 +156,11 @@ public class ProhibitionImpl implements Prohibition {
     @Override
     public int hashCode() {
         return Objects.hash(this._assignee,
+            this._assigneeAsUri,
             this._assigner,
+            this._assignerAsUri,
             this._target,
+            this._targetAsUri,
             this._constraint,
             this._action,
             this._assetRefinement,
@@ -167,8 +179,11 @@ public class ProhibitionImpl implements Prohibition {
         } else {
             ProhibitionImpl other = (ProhibitionImpl) obj;
             return Objects.equals(this._assignee, other._assignee) &&
+                Objects.equals(this._assigneeAsUri, other._assigneeAsUri) &&
                 Objects.equals(this._assigner, other._assigner) &&
+                Objects.equals(this._assignerAsUri, other._assignerAsUri) &&
                 Objects.equals(this._target, other._target) &&
+                Objects.equals(this._targetAsUri, other._targetAsUri) &&
                 Objects.equals(this._constraint, other._constraint) &&
                 Objects.equals(this._action, other._action) &&
                 Objects.equals(this._assetRefinement, other._assetRefinement) &&
@@ -180,18 +195,31 @@ public class ProhibitionImpl implements Prohibition {
     @Override
     public Prohibition deepCopy() {
         ProhibitionBuilder builder = new ProhibitionBuilder();
-        for (URI item : this._assignee) {
+        for (Participant item : this._assignee) {
             if (item != null) {
-                builder._assignee_(URI.create(item.toString()));
+                builder._assignee_(item.deepCopy());
             }
         }
-        for (URI item : this._assigner) {
+        for (Participant item : this._assigneeAsUri) {
             if (item != null) {
-                builder._assigner_(URI.create(item.toString()));
+                builder._assigneeAsUri_(item.deepCopy());
+            }
+        }
+        for (Participant item : this._assigner) {
+            if (item != null) {
+                builder._assigner_(item.deepCopy());
+            }
+        }
+        for (Participant item : this._assignerAsUri) {
+            if (item != null) {
+                builder._assignerAsUri_(item.deepCopy());
             }
         }
         if (this._target != null) {
-            builder._target_(URI.create(this._target.toString()));
+            builder._target_(this._target.deepCopy());
+        }
+        if (this._targetAsUri != null) {
+            builder._targetAsUri_(this._targetAsUri.deepCopy());
         }
         for (AbstractConstraint item : this._constraint) {
             if (item != null) {
@@ -224,33 +252,120 @@ public class ProhibitionImpl implements Prohibition {
     // accessor method implementations as derived from the IDS Information Model ontology
 
     @Override
-    public List<URI> getAssignee() {
+    public List<Participant> getAssignee() {
         return _assignee;
     }
 
     @Override
-    public void setAssignee(List<URI> _assignee_) {
+    public void setAssignee(List<Participant> _assignee_) {
         this._assignee = _assignee_;
+        this._assigneeAsUri = new ArrayList<>();
     }
 
     @Override
-    public List<URI> getAssigner() {
+    public List<Participant> getAssigneeAsUri() {
+        return _assigneeAsUri;
+    }
+
+    @Override
+    public void setAssigneeAsUri(List<Participant> _assignee_) {
+        this._assigneeAsUri = _assignee_;
+        this._assignee = new ArrayList<>();
+    }
+
+    /**
+     * Helper function for (de-)serialization of the _prohibition and the _prohibitionAsfields.
+     *
+     * @return Returns the a UriOrModelClass object with the content of the field or null if the field
+     *         is not set.
+     */
+    @Override
+    public UriOrModelClass getAssigneeAsObject() {
+        if (!_assigneeAsUri.isEmpty()) {
+            return new UriOrModelClass(_assigneeAsUri);
+        } else if (!_assignee.isEmpty()) {
+            return new UriOrModelClass(_assignee);
+        } else {
+            return null;
+        }
+    }
+
+    @Override
+    public List<Participant> getAssigner() {
         return _assigner;
     }
 
     @Override
-    public void setAssigner(List<URI> _assigner_) {
+    public void setAssigner(List<Participant> _assigner_) {
         this._assigner = _assigner_;
+        this._assignerAsUri = new ArrayList<>();
     }
 
     @Override
-    public URI getTarget() {
+    public List<Participant> getAssignerAsUri() {
+        return _assignerAsUri;
+    }
+
+    @Override
+    public void setAssignerAsUri(List<Participant> _assigner_) {
+        this._assignerAsUri = _assigner_;
+        this._assigner = new ArrayList<>();
+    }
+
+    /**
+     * Helper function for (de-)serialization of the _prohibition and the _prohibitionAsfields.
+     *
+     * @return Returns the a UriOrModelClass object with the content of the field or null if the field
+     *         is not set.
+     */
+    @Override
+    public UriOrModelClass getAssignerAsObject() {
+        if (!_assignerAsUri.isEmpty()) {
+            return new UriOrModelClass(_assignerAsUri);
+        } else if (!_assigner.isEmpty()) {
+            return new UriOrModelClass(_assigner);
+        } else {
+            return null;
+        }
+    }
+
+    @Override
+    public Asset getTarget() {
         return _target;
     }
 
     @Override
-    public void setTarget(URI _target_) {
+    public void setTarget(Asset _target_) {
         this._target = _target_;
+        this._targetAsUri = null;
+    }
+
+    @Override
+    public Asset getTargetAsUri() {
+        return _targetAsUri;
+    }
+
+    @Override
+    public void setTargetAsUri(Asset _target_) {
+        this._targetAsUri = _target_;
+        this._target = null;
+    }
+
+    /**
+     * Helper function for (de-)serialization of the _prohibition and the _prohibitionAsfields.
+     *
+     * @return Returns the a UriOrModelClass object with the content of the field or null if the field
+     *         is not set.
+     */
+    @Override
+    public UriOrModelClass getTargetAsObject() {
+        if (_targetAsUri != null) {
+            return new UriOrModelClass(_targetAsUri);
+        } else if (_target != null) {
+            return new UriOrModelClass(_target);
+        } else {
+            return null;
+        }
     }
 
     @Override

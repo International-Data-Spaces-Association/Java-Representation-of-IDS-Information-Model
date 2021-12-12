@@ -57,9 +57,8 @@ public class ConstraintImpl implements Constraint {
     @JsonAlias({"ids:operator", "operator"})
     protected BinaryOperator _operator;
 
-    @NotNull
     @JsonAlias({"ids:pipEndpoint", "pipEndpoint"})
-    protected PIP _pipEndpoint;
+    protected URI _pipEndpoint;
 
     @JsonAlias({"ids:rightOperand", "rightOperand"})
     protected RdfResource _rightOperand;
@@ -182,7 +181,7 @@ public class ConstraintImpl implements Constraint {
             builder._unit_(URI.create(this._unit.toString()));
         }
         if (this._pipEndpoint != null) {
-            builder._pipEndpoint_(this._pipEndpoint.deepCopy());
+            builder._pipEndpoint_(URI.create(this._pipEndpoint.toString()));
         }
         return builder.build();
     }
@@ -242,13 +241,12 @@ public class ConstraintImpl implements Constraint {
     }
 
     @Override
-    @NotNull
-    public PIP getPipEndpoint() {
+    public URI getPipEndpoint() {
         return _pipEndpoint;
     }
 
     @Override
-    public void setPipEndpoint(PIP _pipEndpoint_) {
+    public void setPipEndpoint(URI _pipEndpoint_) {
         this._pipEndpoint = _pipEndpoint_;
     }
 

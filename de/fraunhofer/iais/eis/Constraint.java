@@ -132,25 +132,24 @@ public interface Constraint extends AbstractConstraint {
     void setUnit(URI _unit_);
 
     /**
-     * The reference to the PIP which provides the current state of the feature of interest (as
+     * The reference to the endpoint which provides the current state of the feature of interest (as
      * referrenced by the leftOperand) can be retrieved.
      *
      * More information under https://w3id.org/idsa/core/pipEndpoint
      *
-     * @return Returns the PIP for the property _pipEndpoint.
+     * @return Returns the URI for the property _pipEndpoint.
      */
-    @NotNull
     @JsonProperty("ids:pipEndpoint")
-    PIP getPipEndpoint();
+    URI getPipEndpoint();
 
     /**
-     * The reference to the PIP which provides the current state of the feature of interest (as
+     * The reference to the endpoint which provides the current state of the feature of interest (as
      * referrenced by the leftOperand) can be retrieved.
      *
      * More information under https://w3id.org/idsa/core/pipEndpoint
      *
      * @param _pipEndpoint_ desired value for the property _pipEndpoint.
      */
-    void setPipEndpoint(PIP _pipEndpoint_);
+    void setPipEndpoint(URI _pipEndpoint_);
 
 }

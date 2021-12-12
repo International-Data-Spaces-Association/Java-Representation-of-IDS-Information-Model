@@ -1,6 +1,7 @@
 package de.fraunhofer.iais.eis;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -70,7 +71,7 @@ public class PermissionBuilder implements Builder<Permission> {
      * @param _assignee_ desired value to be set
      * @return Builder object with new value for _assignee
      */
-    public PermissionBuilder _assignee_(List<URI> _assignee_) {
+    public PermissionBuilder _assignee_(List<Participant> _assignee_) {
         this.permissionImpl.setAssignee(_assignee_);
         return this;
     }
@@ -81,8 +82,36 @@ public class PermissionBuilder implements Builder<Permission> {
      * @param _assignee_ desired value to be added
      * @return Builder object with new value for _assignee
      */
-    public PermissionBuilder _assignee_(URI _assignee_) {
+    public PermissionBuilder _assignee_(Participant _assignee_) {
+        if (!this.permissionImpl.getAssigneeAsUri().isEmpty()) {
+            this.permissionImpl.setAssigneeAsUri(new ArrayList<>());
+        }
         this.permissionImpl.getAssignee().add(_assignee_);
+        return this;
+    }
+
+    /**
+     * This function allows setting a value for _assigneeAsUri
+     * 
+     * @param _assignee_ desired value to be set
+     * @return Builder object with new value for _assigneeAsUri
+     */
+    public PermissionBuilder _assigneeAsUri_(List<Participant> _assignee_) {
+        this.permissionImpl.setAssigneeAsUri(_assignee_);
+        return this;
+    }
+
+    /**
+     * This function allows adding a value to the List _assigneeAsUri
+     * 
+     * @param _assignee_ desired value to be added
+     * @return Builder object with new value for _assigneeAsUri
+     */
+    public PermissionBuilder _assigneeAsUri_(Participant _assignee_) {
+        if (!this.permissionImpl.getAssignee().isEmpty()) {
+            this.permissionImpl.setAssignee(new ArrayList<>());
+        }
+        this.permissionImpl.getAssigneeAsUri().add(_assignee_);
         return this;
     }
 
@@ -92,7 +121,7 @@ public class PermissionBuilder implements Builder<Permission> {
      * @param _assigner_ desired value to be set
      * @return Builder object with new value for _assigner
      */
-    public PermissionBuilder _assigner_(List<URI> _assigner_) {
+    public PermissionBuilder _assigner_(List<Participant> _assigner_) {
         this.permissionImpl.setAssigner(_assigner_);
         return this;
     }
@@ -103,8 +132,36 @@ public class PermissionBuilder implements Builder<Permission> {
      * @param _assigner_ desired value to be added
      * @return Builder object with new value for _assigner
      */
-    public PermissionBuilder _assigner_(URI _assigner_) {
+    public PermissionBuilder _assigner_(Participant _assigner_) {
+        if (!this.permissionImpl.getAssignerAsUri().isEmpty()) {
+            this.permissionImpl.setAssignerAsUri(new ArrayList<>());
+        }
         this.permissionImpl.getAssigner().add(_assigner_);
+        return this;
+    }
+
+    /**
+     * This function allows setting a value for _assignerAsUri
+     * 
+     * @param _assigner_ desired value to be set
+     * @return Builder object with new value for _assignerAsUri
+     */
+    public PermissionBuilder _assignerAsUri_(List<Participant> _assigner_) {
+        this.permissionImpl.setAssignerAsUri(_assigner_);
+        return this;
+    }
+
+    /**
+     * This function allows adding a value to the List _assignerAsUri
+     * 
+     * @param _assigner_ desired value to be added
+     * @return Builder object with new value for _assignerAsUri
+     */
+    public PermissionBuilder _assignerAsUri_(Participant _assigner_) {
+        if (!this.permissionImpl.getAssigner().isEmpty()) {
+            this.permissionImpl.setAssigner(new ArrayList<>());
+        }
+        this.permissionImpl.getAssignerAsUri().add(_assigner_);
         return this;
     }
 
@@ -114,8 +171,19 @@ public class PermissionBuilder implements Builder<Permission> {
      * @param _target_ desired value to be set
      * @return Builder object with new value for _target
      */
-    public PermissionBuilder _target_(URI _target_) {
+    public PermissionBuilder _target_(Asset _target_) {
         this.permissionImpl.setTarget(_target_);
+        return this;
+    }
+
+    /**
+     * This function allows setting a value for _targetAsUri
+     * 
+     * @param _target_ desired value to be set
+     * @return Builder object with new value for _targetAsUri
+     */
+    public PermissionBuilder _targetAsUri_(Asset _target_) {
+        this.permissionImpl.setTargetAsUri(_target_);
         return this;
     }
 

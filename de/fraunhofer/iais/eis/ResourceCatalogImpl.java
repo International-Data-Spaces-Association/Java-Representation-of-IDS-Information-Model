@@ -53,14 +53,8 @@ public class ResourceCatalogImpl implements ResourceCatalog {
     @JsonAlias({"ids:offeredResource", "offeredResource"})
     protected List<Resource> _offeredResource = new ArrayList<>();
 
-    @JsonAlias({"ids:offeredResource", "offeredResource"})
-    protected List<URI> _offeredResourceAsUri = new ArrayList<>();
-
     @JsonAlias({"ids:requestedResource", "requestedResource"})
     protected List<Resource> _requestedResource = new ArrayList<>();
-
-    @JsonAlias({"ids:requestedResource", "requestedResource"})
-    protected List<URI> _requestedResourceAsUri = new ArrayList<>();
 
     protected ResourceCatalogImpl() {
         id = VocabUtil.getInstance().createRandomUrl("resourceCatalog");
@@ -133,9 +127,7 @@ public class ResourceCatalogImpl implements ResourceCatalog {
     @Override
     public int hashCode() {
         return Objects.hash(this._offeredResource,
-            this._offeredResourceAsUri,
-            this._requestedResource,
-            this._requestedResourceAsUri);
+            this._requestedResource);
     }
 
     @Override
@@ -149,9 +141,7 @@ public class ResourceCatalogImpl implements ResourceCatalog {
         } else {
             ResourceCatalogImpl other = (ResourceCatalogImpl) obj;
             return Objects.equals(this._offeredResource, other._offeredResource) &&
-                Objects.equals(this._offeredResourceAsUri, other._offeredResourceAsUri) &&
-                Objects.equals(this._requestedResource, other._requestedResource) &&
-                Objects.equals(this._requestedResourceAsUri, other._requestedResourceAsUri);
+                Objects.equals(this._requestedResource, other._requestedResource);
         }
     }
 
@@ -163,19 +153,9 @@ public class ResourceCatalogImpl implements ResourceCatalog {
                 builder._offeredResource_(item.deepCopy());
             }
         }
-        for (URI item : this._offeredResourceAsUri) {
-            if (item != null) {
-                builder._offeredResourceAsUri_(URI.create(item.toString()));
-            }
-        }
         for (Resource item : this._requestedResource) {
             if (item != null) {
                 builder._requestedResource_(item.deepCopy());
-            }
-        }
-        for (URI item : this._requestedResourceAsUri) {
-            if (item != null) {
-                builder._requestedResourceAsUri_(URI.create(item.toString()));
             }
         }
         return builder.build();
@@ -191,35 +171,6 @@ public class ResourceCatalogImpl implements ResourceCatalog {
     @Override
     public void setOfferedResource(List<Resource> _offeredResource_) {
         this._offeredResource = _offeredResource_;
-        this._offeredResourceAsUri = new ArrayList<>();
-    }
-
-    @Override
-    public List<URI> getOfferedResourceAsUri() {
-        return _offeredResourceAsUri;
-    }
-
-    @Override
-    public void setOfferedResourceAsUri(List<URI> _offeredResource_) {
-        this._offeredResourceAsUri = _offeredResource_;
-        this._offeredResource = new ArrayList<>();
-    }
-
-    /**
-     * Helper function for (de-)serialization of the _resourceCatalog and the _resourceCatalogAsfields.
-     *
-     * @return Returns the a UriOrModelClass object with the content of the field or null if the field
-     *         is not set.
-     */
-    @Override
-    public UriOrModelClass getOfferedResourceAsObject() {
-        if (!_offeredResourceAsUri.isEmpty()) {
-            return new UriOrModelClass(_offeredResourceAsUri);
-        } else if (!_offeredResource.isEmpty()) {
-            return new UriOrModelClass(_offeredResource);
-        } else {
-            return null;
-        }
     }
 
     @Override
@@ -230,35 +181,6 @@ public class ResourceCatalogImpl implements ResourceCatalog {
     @Override
     public void setRequestedResource(List<Resource> _requestedResource_) {
         this._requestedResource = _requestedResource_;
-        this._requestedResourceAsUri = new ArrayList<>();
-    }
-
-    @Override
-    public List<URI> getRequestedResourceAsUri() {
-        return _requestedResourceAsUri;
-    }
-
-    @Override
-    public void setRequestedResourceAsUri(List<URI> _requestedResource_) {
-        this._requestedResourceAsUri = _requestedResource_;
-        this._requestedResource = new ArrayList<>();
-    }
-
-    /**
-     * Helper function for (de-)serialization of the _resourceCatalog and the _resourceCatalogAsfields.
-     *
-     * @return Returns the a UriOrModelClass object with the content of the field or null if the field
-     *         is not set.
-     */
-    @Override
-    public UriOrModelClass getRequestedResourceAsObject() {
-        if (!_requestedResourceAsUri.isEmpty()) {
-            return new UriOrModelClass(_requestedResourceAsUri);
-        } else if (!_requestedResource.isEmpty()) {
-            return new UriOrModelClass(_requestedResource);
-        } else {
-            return null;
-        }
     }
 
 }

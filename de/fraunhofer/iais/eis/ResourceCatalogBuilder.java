@@ -1,7 +1,6 @@
 package de.fraunhofer.iais.eis;
 
 import java.net.URI;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -39,35 +38,7 @@ public class ResourceCatalogBuilder implements Builder<ResourceCatalog> {
      * @return Builder object with new value for _offeredResource
      */
     public ResourceCatalogBuilder _offeredResource_(Resource _offeredResource_) {
-        if (!this.resourceCatalogImpl.getOfferedResourceAsUri().isEmpty()) {
-            this.resourceCatalogImpl.setOfferedResourceAsUri(new ArrayList<>());
-        }
         this.resourceCatalogImpl.getOfferedResource().add(_offeredResource_);
-        return this;
-    }
-
-    /**
-     * This function allows setting a value for _offeredResourceAsUri
-     * 
-     * @param _offeredResource_ desired value to be set
-     * @return Builder object with new value for _offeredResourceAsUri
-     */
-    public ResourceCatalogBuilder _offeredResourceAsUri_(List<URI> _offeredResource_) {
-        this.resourceCatalogImpl.setOfferedResourceAsUri(_offeredResource_);
-        return this;
-    }
-
-    /**
-     * This function allows adding a value to the List _offeredResourceAsUri
-     * 
-     * @param _offeredResource_ desired value to be added
-     * @return Builder object with new value for _offeredResourceAsUri
-     */
-    public ResourceCatalogBuilder _offeredResourceAsUri_(URI _offeredResource_) {
-        if (!this.resourceCatalogImpl.getOfferedResource().isEmpty()) {
-            this.resourceCatalogImpl.setOfferedResource(new ArrayList<>());
-        }
-        this.resourceCatalogImpl.getOfferedResourceAsUri().add(_offeredResource_);
         return this;
     }
 
@@ -89,35 +60,7 @@ public class ResourceCatalogBuilder implements Builder<ResourceCatalog> {
      * @return Builder object with new value for _requestedResource
      */
     public ResourceCatalogBuilder _requestedResource_(Resource _requestedResource_) {
-        if (!this.resourceCatalogImpl.getRequestedResourceAsUri().isEmpty()) {
-            this.resourceCatalogImpl.setRequestedResourceAsUri(new ArrayList<>());
-        }
         this.resourceCatalogImpl.getRequestedResource().add(_requestedResource_);
-        return this;
-    }
-
-    /**
-     * This function allows setting a value for _requestedResourceAsUri
-     * 
-     * @param _requestedResource_ desired value to be set
-     * @return Builder object with new value for _requestedResourceAsUri
-     */
-    public ResourceCatalogBuilder _requestedResourceAsUri_(List<URI> _requestedResource_) {
-        this.resourceCatalogImpl.setRequestedResourceAsUri(_requestedResource_);
-        return this;
-    }
-
-    /**
-     * This function allows adding a value to the List _requestedResourceAsUri
-     * 
-     * @param _requestedResource_ desired value to be added
-     * @return Builder object with new value for _requestedResourceAsUri
-     */
-    public ResourceCatalogBuilder _requestedResourceAsUri_(URI _requestedResource_) {
-        if (!this.resourceCatalogImpl.getRequestedResource().isEmpty()) {
-            this.resourceCatalogImpl.setRequestedResource(new ArrayList<>());
-        }
-        this.resourceCatalogImpl.getRequestedResourceAsUri().add(_requestedResource_);
         return this;
     }
 

@@ -32,17 +32,6 @@ public class DAPSBuilder implements Builder<DAPS> {
     }
 
     /**
-     * This function allows setting a value for _maintainerAsParticipant
-     * 
-     * @param _maintainer_ desired value to be set
-     * @return Builder object with new value for _maintainerAsParticipant
-     */
-    public DAPSBuilder _maintainerAsParticipant_(Participant _maintainer_) {
-        this.dAPSImpl.setMaintainerAsParticipant(_maintainer_);
-        return this;
-    }
-
-    /**
      * This function allows setting a value for _curator
      * 
      * @param _curator_ desired value to be set
@@ -50,17 +39,6 @@ public class DAPSBuilder implements Builder<DAPS> {
      */
     public DAPSBuilder _curator_(URI _curator_) {
         this.dAPSImpl.setCurator(_curator_);
-        return this;
-    }
-
-    /**
-     * This function allows setting a value for _curatorAsParticipant
-     * 
-     * @param _curator_ desired value to be set
-     * @return Builder object with new value for _curatorAsParticipant
-     */
-    public DAPSBuilder _curatorAsParticipant_(Participant _curator_) {
-        this.dAPSImpl.setCuratorAsParticipant(_curator_);
         return this;
     }
 

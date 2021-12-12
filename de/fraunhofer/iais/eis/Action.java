@@ -26,14 +26,6 @@ import de.fraunhofer.iais.eis.util.*;
 public enum Action implements ModelClass {
 
     /**
-     * This action modifies a number by adding a given value to it. This action modifies a number by
-     * adding a given value to it. The field to be modified and the given value are specified in the
-     * policy as idsc:JSONPATH/idsc:XPATH and idsc:OPERAND, respectively.
-     */
-    ADD("https://w3id.org/idsa/code/ADD", Arrays.asList(new TypedLiteral("add", "en")),
-        Arrays.asList(new TypedLiteral("This action modifies a number by adding a given value to it.", "en"))),
-
-    /**
      * Data will be part of another piece of data so that it is not distinguishable anymore. This action
      * is always evaluated at the consumer side.
      */
@@ -81,14 +73,6 @@ public enum Action implements ModelClass {
         Arrays.asList(new TypedLiteral("To forward or supply a resource to a third-party.", "en"))),
 
     /**
-     * This action modifies dividing something by something else. This action modifies dividing
-     * something by something else. The field to be modified and the given value are specified in the
-     * policy as idsc:JSONPATH/idsc:XPATH and idsc:OPERAND, respectively.
-     */
-    DIVIDE("https://w3id.org/idsa/code/DIVIDE", Arrays.asList(new TypedLiteral("divide", "en")),
-        Arrays.asList(new TypedLiteral("This action modifies dividing something by something else.", "en"))),
-
-    /**
      * The data artifact or parts of it are encrypted and can not be read by neither the
      * ids:DataConsumer nor any other third party. The encryption algorithm might be specified by a
      * constraint. This action is always evaluated at the provider side.
@@ -106,21 +90,6 @@ public enum Action implements ModelClass {
         Arrays.asList(new TypedLiteral("To grant use of a resource to another party. Does *not* imply any other usage rights.", "en"))),
 
     /**
-     * This action modifies a value by replacing it with a hash of the value. This action modifies a
-     * value by replacing it with a hash of the value. The field to be modified and the hash algorithm
-     * are specified in the policy as idsc:JSONPATH/idsc:XPATH and idsc:HASH_ALGORITHM (eg. SHA256),
-     * respectively.
-     */
-    HASH("https://w3id.org/idsa/code/HASH", Arrays.asList(new TypedLiteral("hash", "en")),
-        Arrays.asList(new TypedLiteral("This action modifies a value by replacing it with a hash of the value.", "en"))),
-
-    /**
-     * An action to be used in the count usage policy where the idsc:COUNT left operand is used.
-     */
-    INCREMENT_COUNTER("https://w3id.org/idsa/code/INCREMENT_COUNTER", Arrays.asList(new TypedLiteral("increment counter", "en")),
-        Arrays.asList(new TypedLiteral("An action to be used in the count usage policy where the idsc:COUNT left operand is used.", "en"))),
-
-    /**
      * To log information or store information about incidents in a local file or database. Is not
      * necessarily available to external parties but can be used to create transparency on happened
      * events. This action is always evaluated at the consumer side.
@@ -135,14 +104,6 @@ public enum Action implements ModelClass {
      */
     MODIFY("https://w3id.org/idsa/code/MODIFY", Arrays.asList(new TypedLiteral("modify", "en")),
         Arrays.asList(new TypedLiteral("To change a resource locally.", "en"))),
-
-    /**
-     * This action modifies a number by multiplying it to a given value. This action modifies a number
-     * by multiplying it to a given value. The field to be modified and the given value are specified in
-     * the policy as idsc:JSONPATH/idsc:XPATH and idsc:OPERAND, respectively.
-     */
-    MULTIPLY("https://w3id.org/idsa/code/MULTIPLY", Arrays.asList(new TypedLiteral("multiply", "en")),
-        Arrays.asList(new TypedLiteral("This action modifies a number by multiplying it to a given value.", "en"))),
 
     /**
      * To forward the resource under the same policy. Implies a permission to distribute. This action is
@@ -164,22 +125,6 @@ public enum Action implements ModelClass {
      */
     READ("https://w3id.org/idsa/code/READ", Arrays.asList(new TypedLiteral("read", "en")),
         Arrays.asList(new TypedLiteral("To obtain data from the resource.", "en"))),
-
-    /**
-     * To replace some value. This action modifies a value by replacing it with a given value. The field
-     * to be modified and the given value are specified in the policy as idsc:JSONPATH/idsc:XPATH and
-     * idsc:REPLACE_WITH, respectively.
-     */
-    REPLACE("https://w3id.org/idsa/code/REPLACE", Arrays.asList(new TypedLiteral("replace", "en")),
-        Arrays.asList(new TypedLiteral("To replace some value.", "en"))),
-
-    /**
-     * This action modifies a value by replacing it with an anagram of the value. This action modifies a
-     * value by replacing it with an anagram of the value. The field to be modified is specified in the
-     * policy as idsc:JSONPATH/idsc:XPATH.
-     */
-    SHUFFLE("https://w3id.org/idsa/code/SHUFFLE", Arrays.asList(new TypedLiteral("shuffle", "en")),
-        Arrays.asList(new TypedLiteral("This action modifies a value by replacing it with an anagram of the value.", "en"))),
 
     /**
      * To accept that the use of the Asset may be tracked. This action is always evaluated at the
@@ -301,14 +246,6 @@ public enum Action implements ModelClass {
 
     @JsonProperty("ids:includedIn")
     final public Action getIncludedIn() {
-        // not implemented for enums
-        throw new UnsupportedOperationException();
-    }
-
-    @JsonIgnore
-
-    @JsonProperty("ids:pxpEndpoint")
-    final public PXP getPxpEndpoint() {
         // not implemented for enums
         throw new UnsupportedOperationException();
     }

@@ -59,11 +59,9 @@ public class BrokerImpl implements Broker {
     @JsonAlias({"ids:connectorCatalog", "connectorCatalog"})
     protected List<ConnectorCatalog> _connectorCatalog = new ArrayList<>();
 
+    @NotNull
     @JsonAlias({"ids:curator", "curator"})
     protected URI _curator;
-
-    @JsonAlias({"ids:curator", "curator"})
-    protected Participant _curatorAsParticipant;
 
     @JsonAlias({"ids:description", "description"})
     protected List<TypedLiteral> _description = new ArrayList<>();
@@ -85,11 +83,9 @@ public class BrokerImpl implements Broker {
     @JsonAlias({"ids:inboundModelVersion", "inboundModelVersion"})
     protected List<String> _inboundModelVersion = new ArrayList<>();
 
+    @NotNull
     @JsonAlias({"ids:maintainer", "maintainer"})
     protected URI _maintainer;
-
-    @JsonAlias({"ids:maintainer", "maintainer"})
-    protected Participant _maintainerAsParticipant;
 
     @NotNull
     @JsonAlias({"ids:outboundModelVersion", "outboundModelVersion"})
@@ -193,9 +189,7 @@ public class BrokerImpl implements Broker {
             this._securityProfile,
             this._extendedGuarantee,
             this._maintainer,
-            this._maintainerAsParticipant,
             this._curator,
-            this._curatorAsParticipant,
             this._physicalLocation,
             this._inboundModelVersion,
             this._outboundModelVersion,
@@ -225,9 +219,7 @@ public class BrokerImpl implements Broker {
                 Objects.equals(this._securityProfile, other._securityProfile) &&
                 Objects.equals(this._extendedGuarantee, other._extendedGuarantee) &&
                 Objects.equals(this._maintainer, other._maintainer) &&
-                Objects.equals(this._maintainerAsParticipant, other._maintainerAsParticipant) &&
                 Objects.equals(this._curator, other._curator) &&
-                Objects.equals(this._curatorAsParticipant, other._curatorAsParticipant) &&
                 Objects.equals(this._physicalLocation, other._physicalLocation) &&
                 Objects.equals(this._inboundModelVersion, other._inboundModelVersion) &&
                 Objects.equals(this._outboundModelVersion, other._outboundModelVersion) &&
@@ -275,14 +267,8 @@ public class BrokerImpl implements Broker {
         if (this._maintainer != null) {
             builder._maintainer_(URI.create(this._maintainer.toString()));
         }
-        if (this._maintainerAsParticipant != null) {
-            builder._maintainerAsParticipant_(this._maintainerAsParticipant.deepCopy());
-        }
         if (this._curator != null) {
             builder._curator_(URI.create(this._curator.toString()));
-        }
-        if (this._curatorAsParticipant != null) {
-            builder._curatorAsParticipant_(this._curatorAsParticipant.deepCopy());
         }
         if (this._physicalLocation != null) {
             builder._physicalLocation_(this._physicalLocation.deepCopy());
@@ -400,6 +386,7 @@ public class BrokerImpl implements Broker {
     }
 
     @Override
+    @NotNull
     public URI getMaintainer() {
         return _maintainer;
     }
@@ -407,39 +394,10 @@ public class BrokerImpl implements Broker {
     @Override
     public void setMaintainer(URI _maintainer_) {
         this._maintainer = _maintainer_;
-        this._maintainerAsParticipant = null;
     }
 
-    @Override
-    public Participant getMaintainerAsParticipant() {
-        return _maintainerAsParticipant;
-    }
-
-    @Override
-    public void setMaintainerAsParticipant(Participant _maintainer_) {
-        this._maintainerAsParticipant = _maintainer_;
-        this._maintainer = null;
-    }
-
-    /**
-     * Helper function for (de-)serialization of the _broker and the _brokerAsfields.
-     *
-     * @return Returns the a UriOrModelClass object with the content of the field or null if the field
-     *         is not set.
-     */
     @Override
     @NotNull
-    public UriOrModelClass getMaintainerAsObject() {
-        if (_maintainerAsParticipant != null) {
-            return new UriOrModelClass(_maintainerAsParticipant);
-        } else if (_maintainer != null) {
-            return new UriOrModelClass(_maintainer);
-        } else {
-            return null;
-        }
-    }
-
-    @Override
     public URI getCurator() {
         return _curator;
     }
@@ -447,35 +405,6 @@ public class BrokerImpl implements Broker {
     @Override
     public void setCurator(URI _curator_) {
         this._curator = _curator_;
-        this._curatorAsParticipant = null;
-    }
-
-    @Override
-    public Participant getCuratorAsParticipant() {
-        return _curatorAsParticipant;
-    }
-
-    @Override
-    public void setCuratorAsParticipant(Participant _curator_) {
-        this._curatorAsParticipant = _curator_;
-        this._curator = null;
-    }
-
-    /**
-     * Helper function for (de-)serialization of the _broker and the _brokerAsfields.
-     *
-     * @return Returns the a UriOrModelClass object with the content of the field or null if the field
-     *         is not set.
-     */
-    @Override
-    public UriOrModelClass getCuratorAsObject() {
-        if (_curatorAsParticipant != null) {
-            return new UriOrModelClass(_curatorAsParticipant);
-        } else if (_curator != null) {
-            return new UriOrModelClass(_curator);
-        } else {
-            return null;
-        }
     }
 
     @Override

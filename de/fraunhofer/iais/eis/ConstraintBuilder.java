@@ -80,7 +80,7 @@ public class ConstraintBuilder implements Builder<Constraint> {
      * @param _pipEndpoint_ desired value to be set
      * @return Builder object with new value for _pipEndpoint
      */
-    public ConstraintBuilder _pipEndpoint_(PIP _pipEndpoint_) {
+    public ConstraintBuilder _pipEndpoint_(URI _pipEndpoint_) {
         this.constraintImpl.setPipEndpoint(_pipEndpoint_);
         return this;
     }

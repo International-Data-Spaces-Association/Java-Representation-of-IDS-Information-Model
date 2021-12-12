@@ -6,8 +6,6 @@ import java.util.List;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -19,7 +17,6 @@ import de.fraunhofer.iais.eis.util.*;
  */
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 @JsonSubTypes({
-    @JsonSubTypes.Type(value = InfrastructureComponentImpl.class),
     @JsonSubTypes.Type(value = ClearingHouse.class),
     @JsonSubTypes.Type(value = Connector.class),
     @JsonSubTypes.Type(value = DAPS.class),
@@ -41,7 +38,8 @@ public interface InfrastructureComponent extends ManagedEntity {
      *
      * @return Returns the URI for the property _maintainer.
      */
-    @JsonIgnore
+    @NotNull
+    @JsonProperty("ids:maintainer")
     URI getMaintainer();
 
     /**
@@ -54,36 +52,6 @@ public interface InfrastructureComponent extends ManagedEntity {
     void setMaintainer(URI _maintainer_);
 
     /**
-     * Participant responsible for technical maintenance of the InfrastructureComponent.
-     *
-     * More information under https://w3id.org/idsa/core/maintainer
-     *
-     * @return Returns the Participant for the property _maintainerAsParticipant.
-     */
-    @JsonIgnore
-    Participant getMaintainerAsParticipant();
-
-    /**
-     * Participant responsible for technical maintenance of the InfrastructureComponent.
-     *
-     * More information under https://w3id.org/idsa/core/maintainer
-     *
-     * @param _maintainer_ desired value for the property _maintainerAsParticipant.
-     */
-    void setMaintainerAsParticipant(Participant _maintainer_);
-
-    /**
-     * Helper function for (de-)serialization of the _infrastructureComponent and the
-     * _infrastructureComponentAsfields.
-     *
-     * @return Returns the a UriOrModelClass object with the content of the field or null if the field
-     *         is not set.
-     */
-    @NotNull
-    @JsonGetter("ids:maintainer")
-    UriOrModelClass getMaintainerAsObject();
-
-    /**
      * Participant responsible for the correctness of the content offered by the
      * InfrastructureComponent.
      *
@@ -91,7 +59,8 @@ public interface InfrastructureComponent extends ManagedEntity {
      *
      * @return Returns the URI for the property _curator.
      */
-    @JsonIgnore
+    @NotNull
+    @JsonProperty("ids:curator")
     URI getCurator();
 
     /**
@@ -103,37 +72,6 @@ public interface InfrastructureComponent extends ManagedEntity {
      * @param _curator_ desired value for the property _curator.
      */
     void setCurator(URI _curator_);
-
-    /**
-     * Participant responsible for the correctness of the content offered by the
-     * InfrastructureComponent.
-     *
-     * More information under https://w3id.org/idsa/core/curator
-     *
-     * @return Returns the Participant for the property _curatorAsParticipant.
-     */
-    @JsonIgnore
-    Participant getCuratorAsParticipant();
-
-    /**
-     * Participant responsible for the correctness of the content offered by the
-     * InfrastructureComponent.
-     *
-     * More information under https://w3id.org/idsa/core/curator
-     *
-     * @param _curator_ desired value for the property _curatorAsParticipant.
-     */
-    void setCuratorAsParticipant(Participant _curator_);
-
-    /**
-     * Helper function for (de-)serialization of the _infrastructureComponent and the
-     * _infrastructureComponentAsfields.
-     *
-     * @return Returns the a UriOrModelClass object with the content of the field or null if the field
-     *         is not set.
-     */
-    @JsonGetter("ids:curator")
-    UriOrModelClass getCuratorAsObject();
 
     /**
      * The location where the Connector is physically deployed.

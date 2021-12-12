@@ -1,6 +1,7 @@
 package de.fraunhofer.iais.eis;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -26,7 +27,7 @@ public class ProhibitionBuilder implements Builder<Prohibition> {
      * @param _assignee_ desired value to be set
      * @return Builder object with new value for _assignee
      */
-    public ProhibitionBuilder _assignee_(List<URI> _assignee_) {
+    public ProhibitionBuilder _assignee_(List<Participant> _assignee_) {
         this.prohibitionImpl.setAssignee(_assignee_);
         return this;
     }
@@ -37,8 +38,36 @@ public class ProhibitionBuilder implements Builder<Prohibition> {
      * @param _assignee_ desired value to be added
      * @return Builder object with new value for _assignee
      */
-    public ProhibitionBuilder _assignee_(URI _assignee_) {
+    public ProhibitionBuilder _assignee_(Participant _assignee_) {
+        if (!this.prohibitionImpl.getAssigneeAsUri().isEmpty()) {
+            this.prohibitionImpl.setAssigneeAsUri(new ArrayList<>());
+        }
         this.prohibitionImpl.getAssignee().add(_assignee_);
+        return this;
+    }
+
+    /**
+     * This function allows setting a value for _assigneeAsUri
+     * 
+     * @param _assignee_ desired value to be set
+     * @return Builder object with new value for _assigneeAsUri
+     */
+    public ProhibitionBuilder _assigneeAsUri_(List<Participant> _assignee_) {
+        this.prohibitionImpl.setAssigneeAsUri(_assignee_);
+        return this;
+    }
+
+    /**
+     * This function allows adding a value to the List _assigneeAsUri
+     * 
+     * @param _assignee_ desired value to be added
+     * @return Builder object with new value for _assigneeAsUri
+     */
+    public ProhibitionBuilder _assigneeAsUri_(Participant _assignee_) {
+        if (!this.prohibitionImpl.getAssignee().isEmpty()) {
+            this.prohibitionImpl.setAssignee(new ArrayList<>());
+        }
+        this.prohibitionImpl.getAssigneeAsUri().add(_assignee_);
         return this;
     }
 
@@ -48,7 +77,7 @@ public class ProhibitionBuilder implements Builder<Prohibition> {
      * @param _assigner_ desired value to be set
      * @return Builder object with new value for _assigner
      */
-    public ProhibitionBuilder _assigner_(List<URI> _assigner_) {
+    public ProhibitionBuilder _assigner_(List<Participant> _assigner_) {
         this.prohibitionImpl.setAssigner(_assigner_);
         return this;
     }
@@ -59,8 +88,36 @@ public class ProhibitionBuilder implements Builder<Prohibition> {
      * @param _assigner_ desired value to be added
      * @return Builder object with new value for _assigner
      */
-    public ProhibitionBuilder _assigner_(URI _assigner_) {
+    public ProhibitionBuilder _assigner_(Participant _assigner_) {
+        if (!this.prohibitionImpl.getAssignerAsUri().isEmpty()) {
+            this.prohibitionImpl.setAssignerAsUri(new ArrayList<>());
+        }
         this.prohibitionImpl.getAssigner().add(_assigner_);
+        return this;
+    }
+
+    /**
+     * This function allows setting a value for _assignerAsUri
+     * 
+     * @param _assigner_ desired value to be set
+     * @return Builder object with new value for _assignerAsUri
+     */
+    public ProhibitionBuilder _assignerAsUri_(List<Participant> _assigner_) {
+        this.prohibitionImpl.setAssignerAsUri(_assigner_);
+        return this;
+    }
+
+    /**
+     * This function allows adding a value to the List _assignerAsUri
+     * 
+     * @param _assigner_ desired value to be added
+     * @return Builder object with new value for _assignerAsUri
+     */
+    public ProhibitionBuilder _assignerAsUri_(Participant _assigner_) {
+        if (!this.prohibitionImpl.getAssigner().isEmpty()) {
+            this.prohibitionImpl.setAssigner(new ArrayList<>());
+        }
+        this.prohibitionImpl.getAssignerAsUri().add(_assigner_);
         return this;
     }
 
@@ -70,8 +127,19 @@ public class ProhibitionBuilder implements Builder<Prohibition> {
      * @param _target_ desired value to be set
      * @return Builder object with new value for _target
      */
-    public ProhibitionBuilder _target_(URI _target_) {
+    public ProhibitionBuilder _target_(Asset _target_) {
         this.prohibitionImpl.setTarget(_target_);
+        return this;
+    }
+
+    /**
+     * This function allows setting a value for _targetAsUri
+     * 
+     * @param _target_ desired value to be set
+     * @return Builder object with new value for _targetAsUri
+     */
+    public ProhibitionBuilder _targetAsUri_(Asset _target_) {
+        this.prohibitionImpl.setTargetAsUri(_target_);
         return this;
     }
 

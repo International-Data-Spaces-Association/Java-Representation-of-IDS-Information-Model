@@ -53,9 +53,6 @@ public class ParticipantCatalogImpl implements ParticipantCatalog {
     @JsonAlias({"ids:member", "member"})
     protected List<Participant> _member = new ArrayList<>();
 
-    @JsonAlias({"ids:member", "member"})
-    protected List<URI> _memberAsUri = new ArrayList<>();
-
     protected ParticipantCatalogImpl() {
         id = VocabUtil.getInstance().createRandomUrl("participantCatalog");
     }
@@ -126,8 +123,7 @@ public class ParticipantCatalogImpl implements ParticipantCatalog {
 
     @Override
     public int hashCode() {
-        return Objects.hash(this._member,
-            this._memberAsUri);
+        return Objects.hash(this._member);
     }
 
     @Override
@@ -140,8 +136,7 @@ public class ParticipantCatalogImpl implements ParticipantCatalog {
             return false;
         } else {
             ParticipantCatalogImpl other = (ParticipantCatalogImpl) obj;
-            return Objects.equals(this._member, other._member) &&
-                Objects.equals(this._memberAsUri, other._memberAsUri);
+            return Objects.equals(this._member, other._member);
         }
     }
 
@@ -151,11 +146,6 @@ public class ParticipantCatalogImpl implements ParticipantCatalog {
         for (Participant item : this._member) {
             if (item != null) {
                 builder._member_(item.deepCopy());
-            }
-        }
-        for (URI item : this._memberAsUri) {
-            if (item != null) {
-                builder._memberAsUri_(URI.create(item.toString()));
             }
         }
         return builder.build();
@@ -171,36 +161,6 @@ public class ParticipantCatalogImpl implements ParticipantCatalog {
     @Override
     public void setMember(List<Participant> _member_) {
         this._member = _member_;
-        this._memberAsUri = new ArrayList<>();
-    }
-
-    @Override
-    public List<URI> getMemberAsUri() {
-        return _memberAsUri;
-    }
-
-    @Override
-    public void setMemberAsUri(List<URI> _member_) {
-        this._memberAsUri = _member_;
-        this._member = new ArrayList<>();
-    }
-
-    /**
-     * Helper function for (de-)serialization of the _participantCatalog and the
-     * _participantCatalogAsfields.
-     *
-     * @return Returns the a UriOrModelClass object with the content of the field or null if the field
-     *         is not set.
-     */
-    @Override
-    public UriOrModelClass getMemberAsObject() {
-        if (!_memberAsUri.isEmpty()) {
-            return new UriOrModelClass(_memberAsUri);
-        } else if (!_member.isEmpty()) {
-            return new UriOrModelClass(_member);
-        } else {
-            return null;
-        }
     }
 
 }
