@@ -6,7 +6,6 @@ import java.util.List;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -36,7 +35,6 @@ public interface DigitalContent extends Described {
      *
      * @return Returns the ContentType for the property _contentType.
      */
-    @JsonProperty("ids:contentType")
     ContentType getContentType();
 
     /**
@@ -56,7 +54,6 @@ public interface DigitalContent extends Described {
      *
      * @return Returns the List of DigitalContents for the property _contentPart.
      */
-    @JsonProperty("ids:contentPart")
     List<DigitalContent> getContentPart();
 
     /**
@@ -76,7 +73,6 @@ public interface DigitalContent extends Described {
      *
      * @return Returns the List of Representations for the property _representation.
      */
-    @JsonProperty("ids:representation")
     List<Representation> getRepresentation();
 
     /**
@@ -95,7 +91,6 @@ public interface DigitalContent extends Described {
      *
      * @return Returns the List of Representations for the property _defaultRepresentation.
      */
-    @JsonProperty("ids:defaultRepresentation")
     List<Representation> getDefaultRepresentation();
 
     /**
@@ -114,7 +109,6 @@ public interface DigitalContent extends Described {
      *
      * @return Returns the List of URIs for the property _theme.
      */
-    @JsonProperty("ids:theme")
     List<URI> getTheme();
 
     /**
@@ -133,7 +127,6 @@ public interface DigitalContent extends Described {
      *
      * @return Returns the List of TypedLiterals for the property _keyword.
      */
-    @JsonProperty("ids:keyword")
     List<TypedLiteral> getKeyword();
 
     /**
@@ -152,7 +145,6 @@ public interface DigitalContent extends Described {
      *
      * @return Returns the List of TemporalEntitys for the property _temporalCoverage.
      */
-    @JsonProperty("ids:temporalCoverage")
     List<TemporalEntity> getTemporalCoverage();
 
     /**
@@ -171,7 +163,6 @@ public interface DigitalContent extends Described {
      *
      * @return Returns the Frequency for the property _temporalResolution.
      */
-    @JsonProperty("ids:temporalResolution")
     Frequency getTemporalResolution();
 
     /**
@@ -190,7 +181,6 @@ public interface DigitalContent extends Described {
      *
      * @return Returns the List of Locations for the property _spatialCoverage.
      */
-    @JsonProperty("ids:spatialCoverage")
     List<Location> getSpatialCoverage();
 
     /**
@@ -209,7 +199,6 @@ public interface DigitalContent extends Described {
      *
      * @return Returns the Frequency for the property _accrualPeriodicity.
      */
-    @JsonProperty("ids:accrualPeriodicity")
     Frequency getAccrualPeriodicity();
 
     /**
@@ -229,7 +218,6 @@ public interface DigitalContent extends Described {
      *
      * @return Returns the URI for the property _contentStandard.
      */
-    @JsonProperty("ids:contentStandard")
     URI getContentStandard();
 
     /**
@@ -249,7 +237,6 @@ public interface DigitalContent extends Described {
      *
      * @return Returns the List of Languages for the property _language.
      */
-    @JsonProperty("ids:language")
     List<Language> getLanguage();
 
     /**
@@ -271,7 +258,6 @@ public interface DigitalContent extends Described {
      * @return Returns the XMLGregorianCalendar for the property _created.
      */
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
-    @JsonProperty("ids:created")
     XMLGregorianCalendar getCreated();
 
     /**
@@ -294,7 +280,6 @@ public interface DigitalContent extends Described {
      * @return Returns the XMLGregorianCalendar for the property _modified.
      */
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
-    @JsonProperty("ids:modified")
     XMLGregorianCalendar getModified();
 
     /**

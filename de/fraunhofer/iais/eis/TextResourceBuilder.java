@@ -121,24 +121,46 @@ public class TextResourceBuilder implements Builder<TextResource> {
     }
 
     /**
-     * This function allows setting a value for _publisher
+     * This function allows setting a value for _publisherAsObject
      * 
      * @param _publisher_ desired value to be set
-     * @return Builder object with new value for _publisher
+     * @return Builder object with new value for _publisherAsObject
      */
-    public TextResourceBuilder _publisher_(URI _publisher_) {
-        this.textResourceImpl.setPublisher(_publisher_);
+    public TextResourceBuilder _publisherAsObject_(Agent _publisher_) {
+        this.textResourceImpl.setPublisherAsObject(_publisher_);
         return this;
     }
 
     /**
-     * This function allows setting a value for _sovereign
+     * This function allows setting a value for _publisherAsUri
+     * 
+     * @param _publisher_ desired value to be set
+     * @return Builder object with new value for _publisherAsUri
+     */
+    public TextResourceBuilder _publisherAsUri_(URI _publisher_) {
+        this.textResourceImpl.setPublisherAsUri(_publisher_);
+        return this;
+    }
+
+    /**
+     * This function allows setting a value for _sovereignAsObject
      * 
      * @param _sovereign_ desired value to be set
-     * @return Builder object with new value for _sovereign
+     * @return Builder object with new value for _sovereignAsObject
      */
-    public TextResourceBuilder _sovereign_(URI _sovereign_) {
-        this.textResourceImpl.setSovereign(_sovereign_);
+    public TextResourceBuilder _sovereignAsObject_(Agent _sovereign_) {
+        this.textResourceImpl.setSovereignAsObject(_sovereign_);
+        return this;
+    }
+
+    /**
+     * This function allows setting a value for _sovereignAsUri
+     * 
+     * @param _sovereign_ desired value to be set
+     * @return Builder object with new value for _sovereignAsUri
+     */
+    public TextResourceBuilder _sovereignAsUri_(URI _sovereign_) {
+        this.textResourceImpl.setSovereignAsUri(_sovereign_);
         return this;
     }
 

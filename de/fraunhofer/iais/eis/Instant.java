@@ -4,7 +4,6 @@ package de.fraunhofer.iais.eis;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -34,7 +33,6 @@ public interface Instant extends TemporalEntity {
      * @return Returns the XMLGregorianCalendar for the property _dateTime.
      */
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
-    @JsonProperty("ids:dateTime")
     XMLGregorianCalendar getDateTime();
 
     /**

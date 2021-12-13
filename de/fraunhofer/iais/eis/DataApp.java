@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.validation.constraints.NotEmpty;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -37,7 +36,6 @@ public interface DataApp extends ModelClass {
      *
      * @return Returns the String for the property _appDocumentation.
      */
-    @JsonProperty("ids:appDocumentation")
     String getAppDocumentation();
 
     /**
@@ -57,7 +55,6 @@ public interface DataApp extends ModelClass {
      * @return Returns the List of AppEndpoints for the property _appEndpoint.
      */
     @NotEmpty
-    @JsonProperty("ids:appEndpoint")
     List<AppEndpoint> getAppEndpoint();
 
     /**
@@ -76,7 +73,6 @@ public interface DataApp extends ModelClass {
      *
      * @return Returns the String for the property _appEnvironmentVariables.
      */
-    @JsonProperty("ids:appEnvironmentVariables")
     String getAppEnvironmentVariables();
 
     /**
@@ -96,7 +92,6 @@ public interface DataApp extends ModelClass {
      *
      * @return Returns the String for the property _appStorageConfiguration.
      */
-    @JsonProperty("ids:appStorageConfiguration")
     String getAppStorageConfiguration();
 
     /**
@@ -116,7 +111,6 @@ public interface DataApp extends ModelClass {
      *
      * @return Returns the List of UsagePolicyClasss for the property _supportedUsagePolicies.
      */
-    @JsonProperty("ids:supportedUsagePolicies")
     List<UsagePolicyClass> getSupportedUsagePolicies();
 
     /**

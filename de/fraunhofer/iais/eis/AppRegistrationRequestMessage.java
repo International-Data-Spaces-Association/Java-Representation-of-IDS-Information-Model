@@ -3,7 +3,6 @@ package de.fraunhofer.iais.eis;
 import java.net.URI;
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -36,7 +35,6 @@ public interface AppRegistrationRequestMessage extends RequestMessage {
      *
      * @return Returns the URI for the property _affectedDataApp.
      */
-    @JsonProperty("ids:affectedDataApp")
     URI getAffectedDataApp();
 
     /**

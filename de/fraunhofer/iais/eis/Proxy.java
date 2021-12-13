@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -35,7 +34,6 @@ public interface Proxy extends ModelClass {
      * @return Returns the URI for the property _proxyURI.
      */
     @NotNull
-    @JsonProperty("ids:proxyURI")
     URI getProxyURI();
 
     /**
@@ -55,7 +53,6 @@ public interface Proxy extends ModelClass {
      *
      * @return Returns the List of URIs for the property _noProxy.
      */
-    @JsonProperty("ids:noProxy")
     List<URI> getNoProxy();
 
     /**
@@ -75,7 +72,6 @@ public interface Proxy extends ModelClass {
      *
      * @return Returns the BasicAuthentication for the property _proxyAuthentication.
      */
-    @JsonProperty("ids:proxyAuthentication")
     BasicAuthentication getProxyAuthentication();
 
     /**

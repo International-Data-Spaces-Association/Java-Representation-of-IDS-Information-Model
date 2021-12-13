@@ -7,7 +7,6 @@ import javax.validation.constraints.NotNull;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -39,7 +38,6 @@ public interface Message extends ModelClass {
      * @return Returns the String for the property _modelVersion.
      */
     @NotNull
-    @JsonProperty("ids:modelVersion")
     String getModelVersion();
 
     /**
@@ -60,7 +58,6 @@ public interface Message extends ModelClass {
      */
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
     @NotNull
-    @JsonProperty("ids:issued")
     XMLGregorianCalendar getIssued();
 
     /**
@@ -79,7 +76,6 @@ public interface Message extends ModelClass {
      *
      * @return Returns the URI for the property _correlationMessage.
      */
-    @JsonProperty("ids:correlationMessage")
     URI getCorrelationMessage();
 
     /**
@@ -99,7 +95,6 @@ public interface Message extends ModelClass {
      * @return Returns the URI for the property _issuerConnector.
      */
     @NotNull
-    @JsonProperty("ids:issuerConnector")
     URI getIssuerConnector();
 
     /**
@@ -118,7 +113,6 @@ public interface Message extends ModelClass {
      *
      * @return Returns the List of URIs for the property _recipientConnector.
      */
-    @JsonProperty("ids:recipientConnector")
     List<URI> getRecipientConnector();
 
     /**
@@ -138,7 +132,6 @@ public interface Message extends ModelClass {
      * @return Returns the URI for the property _senderAgent.
      */
     @NotNull
-    @JsonProperty("ids:senderAgent")
     URI getSenderAgent();
 
     /**
@@ -157,7 +150,6 @@ public interface Message extends ModelClass {
      *
      * @return Returns the List of URIs for the property _recipientAgent.
      */
-    @JsonProperty("ids:recipientAgent")
     List<URI> getRecipientAgent();
 
     /**
@@ -177,7 +169,6 @@ public interface Message extends ModelClass {
      * @return Returns the DynamicAttributeToken for the property _securityToken.
      */
     @NotNull
-    @JsonProperty("ids:securityToken")
     DynamicAttributeToken getSecurityToken();
 
     /**
@@ -196,7 +187,6 @@ public interface Message extends ModelClass {
      *
      * @return Returns the Token for the property _authorizationToken.
      */
-    @JsonProperty("ids:authorizationToken")
     Token getAuthorizationToken();
 
     /**
@@ -215,7 +205,6 @@ public interface Message extends ModelClass {
      *
      * @return Returns the URI for the property _transferContract.
      */
-    @JsonProperty("ids:transferContract")
     URI getTransferContract();
 
     /**
@@ -235,7 +224,6 @@ public interface Message extends ModelClass {
      *
      * @return Returns the String for the property _contentVersion.
      */
-    @JsonProperty("ids:contentVersion")
     String getContentVersion();
 
     /**

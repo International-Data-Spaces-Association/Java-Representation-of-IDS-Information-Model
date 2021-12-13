@@ -3,7 +3,6 @@ package de.fraunhofer.iais.eis;
 import java.util.List;
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -38,7 +37,6 @@ public interface DatPayload extends JwtPayload {
      *
      * @return Returns the List of SecurityGuarantees for the property _extendedGuarantee.
      */
-    @JsonProperty("ids:extendedGuarantee")
     List<SecurityGuarantee> getExtendedGuarantee();
 
     /**

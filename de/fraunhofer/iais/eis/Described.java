@@ -3,7 +3,6 @@ package de.fraunhofer.iais.eis;
 import java.util.List;
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -36,7 +35,6 @@ public interface Described extends ModelClass {
      *
      * @return Returns the List of TypedLiterals for the property _title.
      */
-    @JsonProperty("ids:title")
     List<TypedLiteral> getTitle();
 
     /**
@@ -55,7 +53,6 @@ public interface Described extends ModelClass {
      *
      * @return Returns the List of TypedLiterals for the property _description.
      */
-    @JsonProperty("ids:description")
     List<TypedLiteral> getDescription();
 
     /**

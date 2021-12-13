@@ -3,7 +3,6 @@ package de.fraunhofer.iais.eis;
 import java.util.List;
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -33,7 +32,6 @@ public interface ParIS extends Connector {
      *
      * @return Returns the List of ParticipantCatalogs for the property _participantCatalog.
      */
-    @JsonProperty("ids:participantCatalog")
     List<ParticipantCatalog> getParticipantCatalog();
 
     /**

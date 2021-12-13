@@ -4,7 +4,6 @@ import java.net.URI;
 
 import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -36,7 +35,6 @@ public interface ResourceNotificationMessage extends NotificationMessage {
      * @return Returns the URI for the property _affectedResource.
      */
     @NotNull
-    @JsonProperty("ids:affectedResource")
     URI getAffectedResource();
 
     /**

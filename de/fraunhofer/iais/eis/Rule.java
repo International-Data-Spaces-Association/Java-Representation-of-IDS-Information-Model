@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.validation.constraints.NotEmpty;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -36,7 +35,6 @@ public interface Rule extends Described {
      *
      * @return Returns the List of URIs for the property _assignee.
      */
-    @JsonProperty("ids:assignee")
     List<URI> getAssignee();
 
     /**
@@ -55,7 +53,6 @@ public interface Rule extends Described {
      *
      * @return Returns the List of URIs for the property _assigner.
      */
-    @JsonProperty("ids:assigner")
     List<URI> getAssigner();
 
     /**
@@ -74,7 +71,6 @@ public interface Rule extends Described {
      *
      * @return Returns the URI for the property _target.
      */
-    @JsonProperty("ids:target")
     URI getTarget();
 
     /**
@@ -93,7 +89,6 @@ public interface Rule extends Described {
      *
      * @return Returns the List of AbstractConstraints for the property _constraint.
      */
-    @JsonProperty("ids:constraint")
     List<AbstractConstraint> getConstraint();
 
     /**
@@ -113,7 +108,6 @@ public interface Rule extends Described {
      * @return Returns the List of Actions for the property _action.
      */
     @NotEmpty
-    @JsonProperty("ids:action")
     List<Action> getAction();
 
     /**
@@ -133,7 +127,6 @@ public interface Rule extends Described {
      *
      * @return Returns the AbstractConstraint for the property _assetRefinement.
      */
-    @JsonProperty("ids:assetRefinement")
     AbstractConstraint getAssetRefinement();
 
     /**

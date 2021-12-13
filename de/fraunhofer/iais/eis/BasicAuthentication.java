@@ -2,7 +2,6 @@ package de.fraunhofer.iais.eis;
 
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -32,7 +31,6 @@ public interface BasicAuthentication extends UserAuthentication {
      *
      * @return Returns the String for the property _authPassword.
      */
-    @JsonProperty("ids:authPassword")
     String getAuthPassword();
 
     /**

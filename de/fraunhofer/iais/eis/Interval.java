@@ -3,7 +3,6 @@ package de.fraunhofer.iais.eis;
 
 import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -33,7 +32,6 @@ public interface Interval extends TemporalEntity {
      * @return Returns the Instant for the property _begin.
      */
     @NotNull
-    @JsonProperty("ids:begin")
     Instant getBegin();
 
     /**
@@ -52,7 +50,6 @@ public interface Interval extends TemporalEntity {
      *
      * @return Returns the Instant for the property _end.
      */
-    @JsonProperty("ids:end")
     Instant getEnd();
 
     /**

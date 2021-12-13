@@ -2,7 +2,6 @@ package de.fraunhofer.iais.eis;
 
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -31,7 +30,6 @@ public interface AudioRepresentation extends Representation {
      *
      * @return Returns the java.math.BigDecimal for the property _samplingRate.
      */
-    @JsonProperty("ids:samplingRate")
     java.math.BigDecimal getSamplingRate();
 
     /**

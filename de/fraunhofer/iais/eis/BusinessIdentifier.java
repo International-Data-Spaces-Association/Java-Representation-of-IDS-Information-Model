@@ -3,7 +3,6 @@ package de.fraunhofer.iais.eis;
 
 import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -34,7 +33,6 @@ public interface BusinessIdentifier extends ModelClass {
      * @return Returns the String for the property _identifierSystem.
      */
     @NotNull
-    @JsonProperty("ids:identifierSystem")
     String getIdentifierSystem();
 
     /**
@@ -54,7 +52,6 @@ public interface BusinessIdentifier extends ModelClass {
      * @return Returns the String for the property _identifierNumber.
      */
     @NotNull
-    @JsonProperty("ids:identifierNumber")
     String getIdentifierNumber();
 
     /**

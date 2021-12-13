@@ -4,7 +4,6 @@ import java.net.URI;
 
 import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -43,7 +42,6 @@ public interface AppUploadMessage extends UploadMessage {
      * @return Returns the URI for the property _appArtifactReference.
      */
     @NotNull
-    @JsonProperty("ids:appArtifactReference")
     URI getAppArtifactReference();
 
     /**

@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -41,7 +40,6 @@ public interface AppRoute extends ModelClass {
      * @return Returns the String for the property _routeDeployMethod.
      */
     @NotNull
-    @JsonProperty("ids:routeDeployMethod")
     String getRouteDeployMethod();
 
     /**
@@ -60,7 +58,6 @@ public interface AppRoute extends ModelClass {
      *
      * @return Returns the String for the property _routeDescription.
      */
-    @JsonProperty("ids:routeDescription")
     String getRouteDescription();
 
     /**
@@ -80,7 +77,6 @@ public interface AppRoute extends ModelClass {
      *
      * @return Returns the String for the property _routeConfiguration.
      */
-    @JsonProperty("ids:routeConfiguration")
     String getRouteConfiguration();
 
     /**
@@ -100,7 +96,6 @@ public interface AppRoute extends ModelClass {
      *
      * @return Returns the List of RouteSteps for the property _hasSubRoute.
      */
-    @JsonProperty("ids:hasSubRoute")
     List<RouteStep> getHasSubRoute();
 
     /**
@@ -119,7 +114,6 @@ public interface AppRoute extends ModelClass {
      *
      * @return Returns the List of Endpoints for the property _appRouteStart.
      */
-    @JsonProperty("ids:appRouteStart")
     List<Endpoint> getAppRouteStart();
 
     /**
@@ -138,7 +132,6 @@ public interface AppRoute extends ModelClass {
      *
      * @return Returns the List of Endpoints for the property _appRouteEnd.
      */
-    @JsonProperty("ids:appRouteEnd")
     List<Endpoint> getAppRouteEnd();
 
     /**
@@ -167,7 +160,6 @@ public interface AppRoute extends ModelClass {
      *
      * @return Returns the List of Resources for the property _appRouteOutput.
      */
-    @JsonProperty("ids:appRouteOutput")
     List<Resource> getAppRouteOutput();
 
     /**
@@ -199,7 +191,6 @@ public interface AppRoute extends ModelClass {
      *
      * @return Returns the List of Brokers for the property _appRouteBroker.
      */
-    @JsonProperty("ids:appRouteBroker")
     List<Broker> getAppRouteBroker();
 
     /**
@@ -225,7 +216,6 @@ public interface AppRoute extends ModelClass {
      *
      * @return Returns the List of ClearingHouses for the property _appRouteClearingHouse.
      */
-    @JsonProperty("ids:appRouteClearingHouse")
     List<ClearingHouse> getAppRouteClearingHouse();
 
     /**

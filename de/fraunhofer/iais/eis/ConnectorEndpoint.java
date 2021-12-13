@@ -2,7 +2,6 @@ package de.fraunhofer.iais.eis;
 
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -31,7 +30,6 @@ public interface ConnectorEndpoint extends Endpoint {
      *
      * @return Returns the Artifact for the property _endpointArtifact.
      */
-    @JsonProperty("ids:endpointArtifact")
     Artifact getEndpointArtifact();
 
     /**

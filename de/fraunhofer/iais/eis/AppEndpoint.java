@@ -4,7 +4,6 @@ import java.math.BigInteger;
 
 import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -35,7 +34,6 @@ public interface AppEndpoint extends Endpoint {
      * @return Returns the AppEndpointType for the property _appEndpointType.
      */
     @NotNull
-    @JsonProperty("ids:appEndpointType")
     AppEndpointType getAppEndpointType();
 
     /**
@@ -55,7 +53,6 @@ public interface AppEndpoint extends Endpoint {
      *
      * @return Returns the BigInteger for the property _appEndpointPort.
      */
-    @JsonProperty("ids:appEndpointPort")
     BigInteger getAppEndpointPort();
 
     /**
@@ -74,7 +71,6 @@ public interface AppEndpoint extends Endpoint {
      *
      * @return Returns the MediaType for the property _appEndpointMediaType.
      */
-    @JsonProperty("ids:appEndpointMediaType")
     MediaType getAppEndpointMediaType();
 
     /**
@@ -93,7 +89,6 @@ public interface AppEndpoint extends Endpoint {
      *
      * @return Returns the String for the property _appEndpointProtocol.
      */
-    @JsonProperty("ids:appEndpointProtocol")
     String getAppEndpointProtocol();
 
     /**
@@ -112,7 +107,6 @@ public interface AppEndpoint extends Endpoint {
      *
      * @return Returns the Language for the property _language.
      */
-    @JsonProperty("ids:language")
     Language getLanguage();
 
     /**

@@ -3,7 +3,6 @@ package de.fraunhofer.iais.eis;
 import java.util.List;
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -32,7 +31,6 @@ public interface ClearingHouseCatalog extends Catalog {
      *
      * @return Returns the List of ClearingHouses for the property _listedClearingHouse.
      */
-    @JsonProperty("ids:listedClearingHouse")
     List<ClearingHouse> getListedClearingHouse();
 
     /**

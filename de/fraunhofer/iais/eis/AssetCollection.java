@@ -3,7 +3,6 @@ package de.fraunhofer.iais.eis;
 import java.net.URI;
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -32,7 +31,6 @@ public interface AssetCollection extends Asset {
      *
      * @return Returns the URI for the property _assetSource.
      */
-    @JsonProperty("ids:assetSource")
     URI getAssetSource();
 
     /**
@@ -52,7 +50,6 @@ public interface AssetCollection extends Asset {
      *
      * @return Returns the AbstractConstraint for the property _assetRefinement.
      */
-    @JsonProperty("ids:assetRefinement")
     AbstractConstraint getAssetRefinement();
 
     /**

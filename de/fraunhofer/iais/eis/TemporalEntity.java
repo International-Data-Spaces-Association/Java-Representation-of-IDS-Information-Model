@@ -2,7 +2,6 @@ package de.fraunhofer.iais.eis;
 
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -36,7 +35,6 @@ public interface TemporalEntity extends ModelClass {
      *
      * @return Returns the javax.xml.datatype.Duration for the property _hasDuration.
      */
-    @JsonProperty("ids:hasDuration")
     javax.xml.datatype.Duration getHasDuration();
 
     /**

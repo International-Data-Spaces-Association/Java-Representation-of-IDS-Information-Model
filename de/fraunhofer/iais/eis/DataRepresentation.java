@@ -3,7 +3,6 @@ package de.fraunhofer.iais.eis;
 import java.net.URI;
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -32,7 +31,6 @@ public interface DataRepresentation extends Representation {
      *
      * @return Returns the URI for the property _dataType.
      */
-    @JsonProperty("ids:dataType")
     URI getDataType();
 
     /**
@@ -51,7 +49,6 @@ public interface DataRepresentation extends Representation {
      *
      * @return Returns the Resource for the property _dataTypeSchema.
      */
-    @JsonProperty("ids:dataTypeSchema")
     Resource getDataTypeSchema();
 
     /**

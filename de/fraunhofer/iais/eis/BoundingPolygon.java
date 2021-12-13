@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.validation.constraints.NotEmpty;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -34,7 +33,6 @@ public interface BoundingPolygon extends Geometry {
      * @return Returns the List of GeoPoints for the property _geoPoint.
      */
     @NotEmpty
-    @JsonProperty("ids:geoPoint")
     List<GeoPoint> getGeoPoint();
 
     /**

@@ -2,7 +2,6 @@ package de.fraunhofer.iais.eis;
 
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -33,7 +32,6 @@ public interface RejectionMessage extends ResponseMessage {
      *
      * @return Returns the RejectionReason for the property _rejectionReason.
      */
-    @JsonProperty("ids:rejectionReason")
     RejectionReason getRejectionReason();
 
     /**

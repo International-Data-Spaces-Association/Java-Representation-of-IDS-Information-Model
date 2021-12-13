@@ -4,7 +4,6 @@ import java.net.URI;
 import java.util.List;
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -36,7 +35,6 @@ public interface Endpoint extends ModelClass {
      *
      * @return Returns the URI for the property _accessURL.
      */
-    @JsonProperty("ids:accessURL")
     URI getAccessURL();
 
     /**
@@ -55,7 +53,6 @@ public interface Endpoint extends ModelClass {
      *
      * @return Returns the List of TypedLiterals for the property _endpointInformation.
      */
-    @JsonProperty("ids:endpointInformation")
     List<TypedLiteral> getEndpointInformation();
 
     /**
@@ -75,7 +72,6 @@ public interface Endpoint extends ModelClass {
      *
      * @return Returns the List of URIs for the property _endpointDocumentation.
      */
-    @JsonProperty("ids:endpointDocumentation")
     List<URI> getEndpointDocumentation();
 
     /**
@@ -95,7 +91,6 @@ public interface Endpoint extends ModelClass {
      *
      * @return Returns the String for the property _path.
      */
-    @JsonProperty("ids:path")
     String getPath();
 
     /**
@@ -115,7 +110,6 @@ public interface Endpoint extends ModelClass {
      *
      * @return Returns the String for the property _inboundPath.
      */
-    @JsonProperty("ids:inboundPath")
     String getInboundPath();
 
     /**
@@ -136,7 +130,6 @@ public interface Endpoint extends ModelClass {
      *
      * @return Returns the String for the property _outboundPath.
      */
-    @JsonProperty("ids:outboundPath")
     String getOutboundPath();
 
     /**
@@ -156,7 +149,6 @@ public interface Endpoint extends ModelClass {
      *
      * @return Returns the List of IdsProtocolSpecifications for the property _apiSpecifiation.
      */
-    @JsonProperty("ids:apiSpecifiation")
     List<IdsProtocolSpecification> getApiSpecifiation();
 
     /**

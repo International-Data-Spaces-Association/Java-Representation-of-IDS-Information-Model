@@ -142,24 +142,46 @@ public class TrustedConnectorBuilder implements Builder<TrustedConnector> {
     }
 
     /**
-     * This function allows setting a value for _maintainer
+     * This function allows setting a value for _maintainerAsObject
      * 
      * @param _maintainer_ desired value to be set
-     * @return Builder object with new value for _maintainer
+     * @return Builder object with new value for _maintainerAsObject
      */
-    public TrustedConnectorBuilder _maintainer_(URI _maintainer_) {
-        this.trustedConnectorImpl.setMaintainer(_maintainer_);
+    public TrustedConnectorBuilder _maintainerAsObject_(Participant _maintainer_) {
+        this.trustedConnectorImpl.setMaintainerAsObject(_maintainer_);
         return this;
     }
 
     /**
-     * This function allows setting a value for _curator
+     * This function allows setting a value for _maintainerAsUri
+     * 
+     * @param _maintainer_ desired value to be set
+     * @return Builder object with new value for _maintainerAsUri
+     */
+    public TrustedConnectorBuilder _maintainerAsUri_(URI _maintainer_) {
+        this.trustedConnectorImpl.setMaintainerAsUri(_maintainer_);
+        return this;
+    }
+
+    /**
+     * This function allows setting a value for _curatorAsObject
      * 
      * @param _curator_ desired value to be set
-     * @return Builder object with new value for _curator
+     * @return Builder object with new value for _curatorAsObject
      */
-    public TrustedConnectorBuilder _curator_(URI _curator_) {
-        this.trustedConnectorImpl.setCurator(_curator_);
+    public TrustedConnectorBuilder _curatorAsObject_(Participant _curator_) {
+        this.trustedConnectorImpl.setCuratorAsObject(_curator_);
+        return this;
+    }
+
+    /**
+     * This function allows setting a value for _curatorAsUri
+     * 
+     * @param _curator_ desired value to be set
+     * @return Builder object with new value for _curatorAsUri
+     */
+    public TrustedConnectorBuilder _curatorAsUri_(URI _curator_) {
+        this.trustedConnectorImpl.setCuratorAsUri(_curator_);
         return this;
     }
 

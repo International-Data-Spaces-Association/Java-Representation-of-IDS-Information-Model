@@ -3,7 +3,6 @@ package de.fraunhofer.iais.eis;
 import java.net.URI;
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -32,7 +31,6 @@ public interface AppRepresentation extends SoftwareRepresentation {
      *
      * @return Returns the DataApp for the property _dataAppInformation.
      */
-    @JsonProperty("ids:dataAppInformation")
     DataApp getDataAppInformation();
 
     /**
@@ -53,7 +51,6 @@ public interface AppRepresentation extends SoftwareRepresentation {
      *
      * @return Returns the URI for the property _dataAppDistributionService.
      */
-    @JsonProperty("ids:dataAppDistributionService")
     URI getDataAppDistributionService();
 
     /**
@@ -74,7 +71,6 @@ public interface AppRepresentation extends SoftwareRepresentation {
      *
      * @return Returns the String for the property _dataAppRuntimeEnvironment.
      */
-    @JsonProperty("ids:dataAppRuntimeEnvironment")
     String getDataAppRuntimeEnvironment();
 
     /**

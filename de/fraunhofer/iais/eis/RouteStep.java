@@ -2,7 +2,6 @@ package de.fraunhofer.iais.eis;
 
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -39,7 +38,6 @@ public interface RouteStep extends AppRoute {
      *
      * @return Returns the AppRepresentation for the property _requiredDataApp.
      */
-    @JsonProperty("ids:requiredDataApp")
     AppRepresentation getRequiredDataApp();
 
     /**

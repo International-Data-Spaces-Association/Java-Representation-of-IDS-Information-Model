@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -41,7 +40,6 @@ public interface Connector extends InfrastructureComponent {
      * @return Returns the ConnectorEndpoint for the property _hasDefaultEndpoint.
      */
     @NotNull
-    @JsonProperty("ids:hasDefaultEndpoint")
     ConnectorEndpoint getHasDefaultEndpoint();
 
     /**
@@ -62,7 +60,6 @@ public interface Connector extends InfrastructureComponent {
      *
      * @return Returns the List of ConnectorEndpoints for the property _hasEndpoint.
      */
-    @JsonProperty("ids:hasEndpoint")
     List<ConnectorEndpoint> getHasEndpoint();
 
     /**
@@ -82,7 +79,6 @@ public interface Connector extends InfrastructureComponent {
      *
      * @return Returns the AuthInfo for the property _authInfo.
      */
-    @JsonProperty("ids:authInfo")
     AuthInfo getAuthInfo();
 
     /**
@@ -101,7 +97,6 @@ public interface Connector extends InfrastructureComponent {
      *
      * @return Returns the List of ResourceCatalogs for the property _resourceCatalog.
      */
-    @JsonProperty("ids:resourceCatalog")
     List<ResourceCatalog> getResourceCatalog();
 
     /**
@@ -120,7 +115,6 @@ public interface Connector extends InfrastructureComponent {
      *
      * @return Returns the List of URIs for the property _hasAgent.
      */
-    @JsonProperty("ids:hasAgent")
     List<URI> getHasAgent();
 
     /**
@@ -140,7 +134,6 @@ public interface Connector extends InfrastructureComponent {
      * @return Returns the SecurityProfile for the property _securityProfile.
      */
     @NotNull
-    @JsonProperty("ids:securityProfile")
     SecurityProfile getSecurityProfile();
 
     /**
@@ -160,7 +153,6 @@ public interface Connector extends InfrastructureComponent {
      *
      * @return Returns the List of SecurityGuarantees for the property _extendedGuarantee.
      */
-    @JsonProperty("ids:extendedGuarantee")
     List<SecurityGuarantee> getExtendedGuarantee();
 
     /**

@@ -4,7 +4,7 @@ import java.net.URI;
 import java.util.List;
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -48,7 +48,6 @@ public interface Resource extends Asset, DigitalContent, DescribedSemantically, 
      *
      * @return Returns the URI for the property _standardLicense.
      */
-    @JsonProperty("ids:standardLicense")
     URI getStandardLicense();
 
     /**
@@ -73,7 +72,6 @@ public interface Resource extends Asset, DigitalContent, DescribedSemantically, 
      *
      * @return Returns the URI for the property _customLicense.
      */
-    @JsonProperty("ids:customLicense")
     URI getCustomLicense();
 
     /**
@@ -92,7 +90,6 @@ public interface Resource extends Asset, DigitalContent, DescribedSemantically, 
      *
      * @return Returns the List of Resources for the property _resourcePart.
      */
-    @JsonProperty("ids:resourcePart")
     List<Resource> getResourcePart();
 
     /**
@@ -112,7 +109,6 @@ public interface Resource extends Asset, DigitalContent, DescribedSemantically, 
      *
      * @return Returns the List of ConnectorEndpoints for the property _resourceEndpoint.
      */
-    @JsonProperty("ids:resourceEndpoint")
     List<ConnectorEndpoint> getResourceEndpoint();
 
     /**
@@ -132,7 +128,6 @@ public interface Resource extends Asset, DigitalContent, DescribedSemantically, 
      *
      * @return Returns the List of ContractOffers for the property _contractOffer.
      */
-    @JsonProperty("ids:contractOffer")
     List<ContractOffer> getContractOffer();
 
     /**
@@ -153,7 +148,6 @@ public interface Resource extends Asset, DigitalContent, DescribedSemantically, 
      *
      * @return Returns the PaymentModality for the property _paymentModality.
      */
-    @JsonProperty("ids:paymentModality")
     PaymentModality getPaymentModality();
 
     /**
@@ -172,10 +166,9 @@ public interface Resource extends Asset, DigitalContent, DescribedSemantically, 
      *
      * More information under https://w3id.org/idsa/core/publisher
      *
-     * @return Returns the URI for the property _publisher.
+     * @return Returns the Agent for the property _publisher.
      */
-    @JsonProperty("ids:publisher")
-    URI getPublisher();
+    Agent getPublisherAsObject();
 
     /**
      * The publisher of the resource (which may differ from the sovereign).
@@ -184,17 +177,43 @@ public interface Resource extends Asset, DigitalContent, DescribedSemantically, 
      *
      * @param _publisher_ desired value for the property _publisher.
      */
-    void setPublisher(URI _publisher_);
+    void setPublisherAsObject(Agent _publisher_);
+
+    /**
+     * The publisher of the resource (which may differ from the sovereign).
+     *
+     * More information under https://w3id.org/idsa/core/publisher
+     *
+     * @return Returns the URI for the property .
+     */
+    URI getPublisherAsUri();
+
+    /**
+     * The publisher of the resource (which may differ from the sovereign).
+     *
+     * More information under https://w3id.org/idsa/core/publisher
+     *
+     * @param _publisher_ desired value for the property .
+     */
+    void setPublisherAsUri(URI _publisher_);
+
+    /**
+     * Helper function for (de-)serialization of the Resource and the _publisher fields.
+     *
+     * @return Returns the a UriOrModelClass object with the content of the field or null if the field
+     *         is not set.
+     */
+    @JsonIgnore
+    UriOrModelClass getPublisher();
 
     /**
      * The 'owner', i.e. sovereign of the data.
      *
      * More information under https://w3id.org/idsa/core/sovereign
      *
-     * @return Returns the URI for the property _sovereign.
+     * @return Returns the Agent for the property _sovereign.
      */
-    @JsonProperty("ids:sovereign")
-    URI getSovereign();
+    Agent getSovereignAsObject();
 
     /**
      * The 'owner', i.e. sovereign of the data.
@@ -203,7 +222,34 @@ public interface Resource extends Asset, DigitalContent, DescribedSemantically, 
      *
      * @param _sovereign_ desired value for the property _sovereign.
      */
-    void setSovereign(URI _sovereign_);
+    void setSovereignAsObject(Agent _sovereign_);
+
+    /**
+     * The 'owner', i.e. sovereign of the data.
+     *
+     * More information under https://w3id.org/idsa/core/sovereign
+     *
+     * @return Returns the URI for the property .
+     */
+    URI getSovereignAsUri();
+
+    /**
+     * The 'owner', i.e. sovereign of the data.
+     *
+     * More information under https://w3id.org/idsa/core/sovereign
+     *
+     * @param _sovereign_ desired value for the property .
+     */
+    void setSovereignAsUri(URI _sovereign_);
+
+    /**
+     * Helper function for (de-)serialization of the Resource and the _sovereign fields.
+     *
+     * @return Returns the a UriOrModelClass object with the content of the field or null if the field
+     *         is not set.
+     */
+    @JsonIgnore
+    UriOrModelClass getSovereign();
 
     /**
      * Sample Resource instance.
@@ -212,7 +258,6 @@ public interface Resource extends Asset, DigitalContent, DescribedSemantically, 
      *
      * @return Returns the List of Resources for the property _sample.
      */
-    @JsonProperty("ids:sample")
     List<Resource> getSample();
 
     /**
@@ -231,7 +276,6 @@ public interface Resource extends Asset, DigitalContent, DescribedSemantically, 
      *
      * @return Returns the Resource for the property _variant.
      */
-    @JsonProperty("ids:variant")
     Resource getVariant();
 
     /**

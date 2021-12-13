@@ -5,7 +5,6 @@ import java.math.BigInteger;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -35,7 +34,6 @@ public interface Artifact extends Asset, RepresentationInstance {
      *
      * @return Returns the BigInteger for the property _byteSize.
      */
-    @JsonProperty("ids:byteSize")
     BigInteger getByteSize();
 
     /**
@@ -54,7 +52,6 @@ public interface Artifact extends Asset, RepresentationInstance {
      *
      * @return Returns the String for the property _fileName.
      */
-    @JsonProperty("ids:fileName")
     String getFileName();
 
     /**
@@ -74,7 +71,6 @@ public interface Artifact extends Asset, RepresentationInstance {
      * @return Returns the XMLGregorianCalendar for the property _creationDate.
      */
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
-    @JsonProperty("ids:creationDate")
     XMLGregorianCalendar getCreationDate();
 
     /**
@@ -93,7 +89,6 @@ public interface Artifact extends Asset, RepresentationInstance {
      *
      * @return Returns the String for the property _checkSum.
      */
-    @JsonProperty("ids:checkSum")
     String getCheckSum();
 
     /**
@@ -112,7 +107,6 @@ public interface Artifact extends Asset, RepresentationInstance {
      *
      * @return Returns the java.math.BigDecimal for the property _duration.
      */
-    @JsonProperty("ids:duration")
     java.math.BigDecimal getDuration();
 
     /**

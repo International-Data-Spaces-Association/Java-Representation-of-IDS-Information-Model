@@ -2,7 +2,6 @@ package de.fraunhofer.iais.eis;
 
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -31,7 +30,6 @@ public interface GenericEndpoint extends Endpoint {
      *
      * @return Returns the BasicAuthentication for the property _genericEndpointAuthentication.
      */
-    @JsonProperty("ids:genericEndpointAuthentication")
     BasicAuthentication getGenericEndpointAuthentication();
 
     /**
@@ -51,7 +49,6 @@ public interface GenericEndpoint extends Endpoint {
      *
      * @return Returns the String for the property _genericEndpointConfiguration.
      */
-    @JsonProperty("ids:genericEndpointConfiguration")
     String getGenericEndpointConfiguration();
 
     /**

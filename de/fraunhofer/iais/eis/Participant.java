@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -37,7 +36,6 @@ public interface Participant extends Agent, ManagedEntity {
      *
      * @return Returns the List of Strings for the property _legalName.
      */
-    @JsonProperty("ids:legalName")
     List<String> getLegalName();
 
     /**
@@ -59,7 +57,6 @@ public interface Participant extends Agent, ManagedEntity {
      *
      * @return Returns the Site for the property _primarySite.
      */
-    @JsonProperty("ids:primarySite")
     Site getPrimarySite();
 
     /**
@@ -79,7 +76,6 @@ public interface Participant extends Agent, ManagedEntity {
      *
      * @return Returns the List of Strings for the property _corporateEmailAddress.
      */
-    @JsonProperty("ids:corporateEmailAddress")
     List<String> getCorporateEmailAddress();
 
     /**
@@ -98,7 +94,6 @@ public interface Participant extends Agent, ManagedEntity {
      *
      * @return Returns the URI for the property _corporateHomepage.
      */
-    @JsonProperty("ids:corporateHomepage")
     URI getCorporateHomepage();
 
     /**
@@ -119,7 +114,6 @@ public interface Participant extends Agent, ManagedEntity {
      *
      * @return Returns the List of Participants for the property _memberParticipant.
      */
-    @JsonProperty("ids:memberParticipant")
     List<Participant> getMemberParticipant();
 
     /**
@@ -140,7 +134,6 @@ public interface Participant extends Agent, ManagedEntity {
      *
      * @return Returns the ParticipantCertification for the property _participantCertification.
      */
-    @JsonProperty("ids:participantCertification")
     ParticipantCertification getParticipantCertification();
 
     /**
@@ -161,7 +154,6 @@ public interface Participant extends Agent, ManagedEntity {
      *
      * @return Returns the AbstractConstraint for the property _participantRefinement.
      */
-    @JsonProperty("ids:participantRefinement")
     AbstractConstraint getParticipantRefinement();
 
     /**
@@ -182,7 +174,6 @@ public interface Participant extends Agent, ManagedEntity {
      *
      * @return Returns the List of BusinessIdentifiers for the property _businessIdentifier.
      */
-    @JsonProperty("ids:businessIdentifier")
     List<BusinessIdentifier> getBusinessIdentifier();
 
     /**
@@ -202,7 +193,6 @@ public interface Participant extends Agent, ManagedEntity {
      *
      * @return Returns the String for the property _vatID.
      */
-    @JsonProperty("ids:vatID")
     String getVatID();
 
     /**
@@ -223,7 +213,6 @@ public interface Participant extends Agent, ManagedEntity {
      * @return Returns the String for the property _legalForm.
      */
     @NotNull
-    @JsonProperty("ids:legalForm")
     String getLegalForm();
 
     /**
@@ -243,7 +232,6 @@ public interface Participant extends Agent, ManagedEntity {
      *
      * @return Returns the String for the property _jurisdiction.
      */
-    @JsonProperty("ids:jurisdiction")
     String getJurisdiction();
 
     /**
@@ -263,7 +251,6 @@ public interface Participant extends Agent, ManagedEntity {
      *
      * @return Returns the List of Persons for the property _memberPerson.
      */
-    @JsonProperty("ids:memberPerson")
     List<Person> getMemberPerson();
 
     /**

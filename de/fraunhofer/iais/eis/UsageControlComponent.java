@@ -4,7 +4,6 @@ import java.net.URI;
 
 import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -16,8 +15,8 @@ import de.fraunhofer.iais.eis.util.*;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 @JsonSubTypes({
     @JsonSubTypes.Type(value = UsageControlComponentImpl.class),
-    @JsonSubTypes.Type(value = PXP.class),
-    @JsonSubTypes.Type(value = PIP.class)
+    @JsonSubTypes.Type(value = PIP.class),
+    @JsonSubTypes.Type(value = PXP.class)
 })
 public interface UsageControlComponent extends ModelClass {
 
@@ -36,7 +35,6 @@ public interface UsageControlComponent extends ModelClass {
      * @return Returns the URI for the property _interfaceDescription.
      */
     @NotNull
-    @JsonProperty("ids:interfaceDescription")
     URI getInterfaceDescription();
 
     /**
@@ -55,7 +53,6 @@ public interface UsageControlComponent extends ModelClass {
      *
      * @return Returns the URI for the property _endpointURI.
      */
-    @JsonProperty("ids:endpointURI")
     URI getEndpointURI();
 
     /**

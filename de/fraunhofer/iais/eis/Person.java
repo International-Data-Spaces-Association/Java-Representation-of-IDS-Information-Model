@@ -3,7 +3,6 @@ package de.fraunhofer.iais.eis;
 import java.util.List;
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -32,7 +31,6 @@ public interface Person extends ModelClass {
      *
      * @return Returns the String for the property _familyName.
      */
-    @JsonProperty("ids:familyName")
     String getFamilyName();
 
     /**
@@ -51,7 +49,6 @@ public interface Person extends ModelClass {
      *
      * @return Returns the String for the property _givenName.
      */
-    @JsonProperty("ids:givenName")
     String getGivenName();
 
     /**
@@ -70,7 +67,6 @@ public interface Person extends ModelClass {
      *
      * @return Returns the List of Strings for the property _phoneNumber.
      */
-    @JsonProperty("ids:phoneNumber")
     List<String> getPhoneNumber();
 
     /**
@@ -89,7 +85,6 @@ public interface Person extends ModelClass {
      *
      * @return Returns the List of Strings for the property _emailAddress.
      */
-    @JsonProperty("ids:emailAddress")
     List<String> getEmailAddress();
 
     /**
@@ -108,7 +103,6 @@ public interface Person extends ModelClass {
      *
      * @return Returns the String for the property _homepage.
      */
-    @JsonProperty("ids:homepage")
     String getHomepage();
 
     /**

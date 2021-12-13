@@ -6,7 +6,6 @@ import java.util.List;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -39,7 +38,6 @@ public interface Contract extends ModelClass {
      * @return Returns the XMLGregorianCalendar for the property _contractStart.
      */
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
-    @JsonProperty("ids:contractStart")
     XMLGregorianCalendar getContractStart();
 
     /**
@@ -61,7 +59,6 @@ public interface Contract extends ModelClass {
      * @return Returns the XMLGregorianCalendar for the property _contractEnd.
      */
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
-    @JsonProperty("ids:contractEnd")
     XMLGregorianCalendar getContractEnd();
 
     /**
@@ -82,7 +79,6 @@ public interface Contract extends ModelClass {
      * @return Returns the XMLGregorianCalendar for the property _contractDate.
      */
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
-    @JsonProperty("ids:contractDate")
     XMLGregorianCalendar getContractDate();
 
     /**
@@ -102,7 +98,6 @@ public interface Contract extends ModelClass {
      *
      * @return Returns the URI for the property _provider.
      */
-    @JsonProperty("ids:provider")
     URI getProvider();
 
     /**
@@ -123,7 +118,6 @@ public interface Contract extends ModelClass {
      *
      * @return Returns the URI for the property _consumer.
      */
-    @JsonProperty("ids:consumer")
     URI getConsumer();
 
     /**
@@ -143,7 +137,6 @@ public interface Contract extends ModelClass {
      *
      * @return Returns the TextResource for the property _contractDocument.
      */
-    @JsonProperty("ids:contractDocument")
     TextResource getContractDocument();
 
     /**
@@ -162,7 +155,6 @@ public interface Contract extends ModelClass {
      *
      * @return Returns the Resource for the property _contractAnnex.
      */
-    @JsonProperty("ids:contractAnnex")
     Resource getContractAnnex();
 
     /**
@@ -181,7 +173,6 @@ public interface Contract extends ModelClass {
      *
      * @return Returns the List of Permissions for the property _permission.
      */
-    @JsonProperty("ids:permission")
     List<Permission> getPermission();
 
     /**
@@ -200,7 +191,6 @@ public interface Contract extends ModelClass {
      *
      * @return Returns the List of Prohibitions for the property _prohibition.
      */
-    @JsonProperty("ids:prohibition")
     List<Prohibition> getProhibition();
 
     /**
@@ -219,7 +209,6 @@ public interface Contract extends ModelClass {
      *
      * @return Returns the List of Dutys for the property _obligation.
      */
-    @JsonProperty("ids:obligation")
     List<Duty> getObligation();
 
     /**

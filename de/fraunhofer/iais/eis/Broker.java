@@ -3,7 +3,6 @@ package de.fraunhofer.iais.eis;
 import java.util.List;
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -32,7 +31,6 @@ public interface Broker extends Connector {
      *
      * @return Returns the List of ConnectorCatalogs for the property _connectorCatalog.
      */
-    @JsonProperty("ids:connectorCatalog")
     List<ConnectorCatalog> getConnectorCatalog();
 
     /**

@@ -3,7 +3,6 @@ package de.fraunhofer.iais.eis;
 import java.util.List;
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -32,7 +31,6 @@ public interface Permission extends Rule {
      *
      * @return Returns the List of Dutys for the property _preDuty.
      */
-    @JsonProperty("ids:preDuty")
     List<Duty> getPreDuty();
 
     /**
@@ -51,7 +49,6 @@ public interface Permission extends Rule {
      *
      * @return Returns the List of Dutys for the property _postDuty.
      */
-    @JsonProperty("ids:postDuty")
     List<Duty> getPostDuty();
 
     /**

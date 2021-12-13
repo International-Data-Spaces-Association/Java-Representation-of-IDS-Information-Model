@@ -21,24 +21,46 @@ public class ParticipantCatalogBuilder implements Builder<ParticipantCatalog> {
     }
 
     /**
-     * This function allows setting a value for _member
+     * This function allows setting a value for _memberAsObject
      * 
      * @param _member_ desired value to be set
-     * @return Builder object with new value for _member
+     * @return Builder object with new value for _memberAsObject
      */
-    public ParticipantCatalogBuilder _member_(List<Participant> _member_) {
-        this.participantCatalogImpl.setMember(_member_);
+    public ParticipantCatalogBuilder _memberAsObject_(List<Participant> _member_) {
+        this.participantCatalogImpl.setMemberAsObject(_member_);
         return this;
     }
 
     /**
-     * This function allows adding a value to the List _member
+     * This function allows adding a value to the List _memberAsObject
      * 
      * @param _member_ desired value to be added
-     * @return Builder object with new value for _member
+     * @return Builder object with new value for _memberAsObject
      */
-    public ParticipantCatalogBuilder _member_(Participant _member_) {
-        this.participantCatalogImpl.getMember().add(_member_);
+    public ParticipantCatalogBuilder _memberAsObject_(Participant _member_) {
+        this.participantCatalogImpl.getMemberAsObject().add(_member_);
+        return this;
+    }
+
+    /**
+     * This function allows setting a value for _memberAsUri
+     * 
+     * @param _member_ desired value to be set
+     * @return Builder object with new value for _memberAsUri
+     */
+    public ParticipantCatalogBuilder _memberAsUri_(List<URI> _member_) {
+        this.participantCatalogImpl.setMemberAsUri(_member_);
+        return this;
+    }
+
+    /**
+     * This function allows adding a value to the List _memberAsUri
+     * 
+     * @param _member_ desired value to be added
+     * @return Builder object with new value for _memberAsUri
+     */
+    public ParticipantCatalogBuilder _memberAsUri_(URI _member_) {
+        this.participantCatalogImpl.getMemberAsUri().add(_member_);
         return this;
     }
 

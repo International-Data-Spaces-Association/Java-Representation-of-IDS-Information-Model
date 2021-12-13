@@ -4,7 +4,6 @@ import java.net.URI;
 
 import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -35,7 +34,6 @@ public interface ArtifactRequestMessage extends RequestMessage {
      * @return Returns the URI for the property _requestedArtifact.
      */
     @NotNull
-    @JsonProperty("ids:requestedArtifact")
     URI getRequestedArtifact();
 
     /**

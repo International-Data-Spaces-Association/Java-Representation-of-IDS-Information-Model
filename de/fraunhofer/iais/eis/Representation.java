@@ -6,7 +6,6 @@ import java.util.List;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -41,7 +40,6 @@ public interface Representation extends Asset, Described, DescribedSemantically 
      *
      * @return Returns the List of RepresentationInstances for the property _instance.
      */
-    @JsonProperty("ids:instance")
     List<RepresentationInstance> getInstance();
 
     /**
@@ -60,7 +58,6 @@ public interface Representation extends Asset, Described, DescribedSemantically 
      *
      * @return Returns the MediaType for the property _mediaType.
      */
-    @JsonProperty("ids:mediaType")
     MediaType getMediaType();
 
     /**
@@ -80,7 +77,6 @@ public interface Representation extends Asset, Described, DescribedSemantically 
      *
      * @return Returns the URI for the property _representationStandard.
      */
-    @JsonProperty("ids:representationStandard")
     URI getRepresentationStandard();
 
     /**
@@ -100,7 +96,6 @@ public interface Representation extends Asset, Described, DescribedSemantically 
      *
      * @return Returns the Language for the property _language.
      */
-    @JsonProperty("ids:language")
     Language getLanguage();
 
     /**
@@ -122,7 +117,6 @@ public interface Representation extends Asset, Described, DescribedSemantically 
      * @return Returns the XMLGregorianCalendar for the property _created.
      */
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
-    @JsonProperty("ids:created")
     XMLGregorianCalendar getCreated();
 
     /**
@@ -145,7 +139,6 @@ public interface Representation extends Asset, Described, DescribedSemantically 
      * @return Returns the XMLGregorianCalendar for the property _modified.
      */
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
-    @JsonProperty("ids:modified")
     XMLGregorianCalendar getModified();
 
     /**

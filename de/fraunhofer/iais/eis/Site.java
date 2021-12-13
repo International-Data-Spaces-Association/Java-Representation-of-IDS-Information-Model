@@ -2,7 +2,6 @@ package de.fraunhofer.iais.eis;
 
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -31,7 +30,6 @@ public interface Site extends ModelClass {
      *
      * @return Returns the String for the property _siteAddress.
      */
-    @JsonProperty("ids:siteAddress")
     String getSiteAddress();
 
     /**

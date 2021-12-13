@@ -3,7 +3,6 @@ package de.fraunhofer.iais.eis;
 import java.util.List;
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -35,7 +34,6 @@ public interface LogicalConstraint extends AbstractConstraint {
      *
      * @return Returns the List of Constraints for the property _and.
      */
-    @JsonProperty("ids:and")
     List<Constraint> getAnd();
 
     /**
@@ -58,7 +56,6 @@ public interface LogicalConstraint extends AbstractConstraint {
      *
      * @return Returns the List of Constraints for the property _or.
      */
-    @JsonProperty("ids:or")
     List<Constraint> getOr();
 
     /**
@@ -81,7 +78,6 @@ public interface LogicalConstraint extends AbstractConstraint {
      *
      * @return Returns the List of Constraints for the property _xone.
      */
-    @JsonProperty("ids:xone")
     List<Constraint> getXone();
 
     /**

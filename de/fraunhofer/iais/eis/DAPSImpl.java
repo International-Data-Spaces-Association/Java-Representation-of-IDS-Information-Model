@@ -57,9 +57,11 @@ public class DAPSImpl implements DAPS {
     @JsonAlias({"ids:componentCertification", "componentCertification"})
     protected ComponentCertification _componentCertification;
 
-    @NotNull
-    @JsonAlias({"ids:curator", "curator"})
-    protected URI _curator;
+    @JsonAlias({"ids:curatorAsObject", "curatorAsObject"})
+    protected Participant _curatorAsObject;
+
+    @JsonAlias({"ids:curatorAsUri", "curatorAsUri"})
+    protected URI _curatorAsUri;
 
     @JsonAlias({"ids:description", "description"})
     protected List<TypedLiteral> _description = new ArrayList<>();
@@ -68,9 +70,11 @@ public class DAPSImpl implements DAPS {
     @JsonAlias({"ids:inboundModelVersion", "inboundModelVersion"})
     protected List<String> _inboundModelVersion = new ArrayList<>();
 
-    @NotNull
-    @JsonAlias({"ids:maintainer", "maintainer"})
-    protected URI _maintainer;
+    @JsonAlias({"ids:maintainerAsObject", "maintainerAsObject"})
+    protected Participant _maintainerAsObject;
+
+    @JsonAlias({"ids:maintainerAsUri", "maintainerAsUri"})
+    protected URI _maintainerAsUri;
 
     @NotNull
     @JsonAlias({"ids:outboundModelVersion", "outboundModelVersion"})
@@ -158,8 +162,10 @@ public class DAPSImpl implements DAPS {
 
     @Override
     public int hashCode() {
-        return Objects.hash(this._maintainer,
-            this._curator,
+        return Objects.hash(this._maintainerAsObject,
+            this._maintainerAsUri,
+            this._curatorAsObject,
+            this._curatorAsUri,
             this._physicalLocation,
             this._inboundModelVersion,
             this._outboundModelVersion,
@@ -180,8 +186,10 @@ public class DAPSImpl implements DAPS {
             return false;
         } else {
             DAPSImpl other = (DAPSImpl) obj;
-            return Objects.equals(this._maintainer, other._maintainer) &&
-                Objects.equals(this._curator, other._curator) &&
+            return Objects.equals(this._maintainerAsObject, other._maintainerAsObject) &&
+                Objects.equals(this._maintainerAsUri, other._maintainerAsUri) &&
+                Objects.equals(this._curatorAsObject, other._curatorAsObject) &&
+                Objects.equals(this._curatorAsUri, other._curatorAsUri) &&
                 Objects.equals(this._physicalLocation, other._physicalLocation) &&
                 Objects.equals(this._inboundModelVersion, other._inboundModelVersion) &&
                 Objects.equals(this._outboundModelVersion, other._outboundModelVersion) &&
@@ -196,11 +204,17 @@ public class DAPSImpl implements DAPS {
     @Override
     public DAPS deepCopy() {
         DAPSBuilder builder = new DAPSBuilder();
-        if (this._maintainer != null) {
-            builder._maintainer_(URI.create(this._maintainer.toString()));
+        if (this._maintainerAsObject != null) {
+            builder._maintainerAsObject_(this._maintainerAsObject.deepCopy());
         }
-        if (this._curator != null) {
-            builder._curator_(URI.create(this._curator.toString()));
+        if (this._maintainerAsUri != null) {
+            builder._maintainerAsUri_(URI.create(this._maintainerAsUri.toString()));
+        }
+        if (this._curatorAsObject != null) {
+            builder._curatorAsObject_(this._curatorAsObject.deepCopy());
+        }
+        if (this._curatorAsUri != null) {
+            builder._curatorAsUri_(URI.create(this._curatorAsUri.toString()));
         }
         if (this._physicalLocation != null) {
             builder._physicalLocation_(this._physicalLocation.deepCopy());
@@ -236,25 +250,66 @@ public class DAPSImpl implements DAPS {
     // accessor method implementations as derived from the IDS Information Model ontology
 
     @Override
+    public Participant getMaintainerAsObject() {
+        return _maintainerAsObject;
+    }
+
+    @Override
+    public void setMaintainerAsObject(Participant _maintainer_) {
+        this._maintainerAsObject = _maintainer_;
+    }
+
+    @Override
+    public URI getMaintainerAsUri() {
+        return _maintainerAsUri;
+    }
+
+    @Override
+    public void setMaintainerAsUri(URI _maintainer_) {
+        this._maintainerAsUri = _maintainer_;
+    }
+
+    @Override
     @NotNull
-    public URI getMaintainer() {
-        return _maintainer;
+    public UriOrModelClass getMaintainer() {
+        if (_maintainerAsObject != null) {
+            return new UriOrModelClass(_maintainerAsObject);
+        } else if (_maintainerAsUri != null) {
+            return new UriOrModelClass(_maintainerAsUri);
+        } else {
+            return null;
+        }
     }
 
     @Override
-    public void setMaintainer(URI _maintainer_) {
-        this._maintainer = _maintainer_;
+    public Participant getCuratorAsObject() {
+        return _curatorAsObject;
     }
 
     @Override
-    @NotNull
-    public URI getCurator() {
-        return _curator;
+    public void setCuratorAsObject(Participant _curator_) {
+        this._curatorAsObject = _curator_;
     }
 
     @Override
-    public void setCurator(URI _curator_) {
-        this._curator = _curator_;
+    public URI getCuratorAsUri() {
+        return _curatorAsUri;
+    }
+
+    @Override
+    public void setCuratorAsUri(URI _curator_) {
+        this._curatorAsUri = _curator_;
+    }
+
+    @Override
+    public UriOrModelClass getCurator() {
+        if (_curatorAsObject != null) {
+            return new UriOrModelClass(_curatorAsObject);
+        } else if (_curatorAsUri != null) {
+            return new UriOrModelClass(_curatorAsUri);
+        } else {
+            return null;
+        }
     }
 
     @Override

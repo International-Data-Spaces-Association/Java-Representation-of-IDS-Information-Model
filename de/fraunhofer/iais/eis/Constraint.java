@@ -4,7 +4,6 @@ import java.net.URI;
 
 import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -34,7 +33,6 @@ public interface Constraint extends AbstractConstraint {
      * @return Returns the LeftOperand for the property _leftOperand.
      */
     @NotNull
-    @JsonProperty("ids:leftOperand")
     LeftOperand getLeftOperand();
 
     /**
@@ -54,7 +52,6 @@ public interface Constraint extends AbstractConstraint {
      * @return Returns the BinaryOperator for the property _operator.
      */
     @NotNull
-    @JsonProperty("ids:operator")
     BinaryOperator getOperator();
 
     /**
@@ -75,7 +72,6 @@ public interface Constraint extends AbstractConstraint {
      *
      * @return Returns the RdfResource for the property _rightOperand.
      */
-    @JsonProperty("ids:rightOperand")
     RdfResource getRightOperand();
 
     /**
@@ -98,7 +94,6 @@ public interface Constraint extends AbstractConstraint {
      *
      * @return Returns the URI for the property _rightOperandReference.
      */
-    @JsonProperty("ids:rightOperandReference")
     URI getRightOperandReference();
 
     /**
@@ -119,7 +114,6 @@ public interface Constraint extends AbstractConstraint {
      *
      * @return Returns the URI for the property _unit.
      */
-    @JsonProperty("ids:unit")
     URI getUnit();
 
     /**
@@ -140,7 +134,6 @@ public interface Constraint extends AbstractConstraint {
      * @return Returns the PIP for the property _pipEndpoint.
      */
     @NotNull
-    @JsonProperty("ids:pipEndpoint")
     PIP getPipEndpoint();
 
     /**

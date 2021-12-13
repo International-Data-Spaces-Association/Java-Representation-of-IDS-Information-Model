@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -34,7 +33,6 @@ public interface ConfigurationModel extends ModelClass {
      *
      * @return Returns the List of UserAuthentications for the property _userAuthentication.
      */
-    @JsonProperty("ids:userAuthentication")
     List<UserAuthentication> getUserAuthentication();
 
     /**
@@ -54,7 +52,6 @@ public interface ConfigurationModel extends ModelClass {
      * @return Returns the LogLevel for the property _configurationModelLogLevel.
      */
     @NotNull
-    @JsonProperty("ids:configurationModelLogLevel")
     LogLevel getConfigurationModelLogLevel();
 
     /**
@@ -74,7 +71,6 @@ public interface ConfigurationModel extends ModelClass {
      * @return Returns the ConnectorStatus for the property _connectorStatus.
      */
     @NotNull
-    @JsonProperty("ids:connectorStatus")
     ConnectorStatus getConnectorStatus();
 
     /**
@@ -94,7 +90,6 @@ public interface ConfigurationModel extends ModelClass {
      * @return Returns the ConnectorDeployMode for the property _connectorDeployMode.
      */
     @NotNull
-    @JsonProperty("ids:connectorDeployMode")
     ConnectorDeployMode getConnectorDeployMode();
 
     /**
@@ -113,7 +108,6 @@ public interface ConfigurationModel extends ModelClass {
      *
      * @return Returns the Connector for the property _connectorDescription.
      */
-    @JsonProperty("ids:connectorDescription")
     Connector getConnectorDescription();
 
     /**
@@ -132,7 +126,6 @@ public interface ConfigurationModel extends ModelClass {
      *
      * @return Returns the List of Proxys for the property _connectorProxy.
      */
-    @JsonProperty("ids:connectorProxy")
     List<Proxy> getConnectorProxy();
 
     /**
@@ -151,7 +144,6 @@ public interface ConfigurationModel extends ModelClass {
      *
      * @return Returns the URI for the property _trustStore.
      */
-    @JsonProperty("ids:trustStore")
     URI getTrustStore();
 
     /**
@@ -170,7 +162,6 @@ public interface ConfigurationModel extends ModelClass {
      *
      * @return Returns the String for the property _trustStoreAlias.
      */
-    @JsonProperty("ids:trustStoreAlias")
     String getTrustStoreAlias();
 
     /**
@@ -189,7 +180,6 @@ public interface ConfigurationModel extends ModelClass {
      *
      * @return Returns the String for the property _trustStorePassword.
      */
-    @JsonProperty("ids:trustStorePassword")
     String getTrustStorePassword();
 
     /**
@@ -208,7 +198,6 @@ public interface ConfigurationModel extends ModelClass {
      *
      * @return Returns the URI for the property _keyStore.
      */
-    @JsonProperty("ids:keyStore")
     URI getKeyStore();
 
     /**
@@ -227,7 +216,6 @@ public interface ConfigurationModel extends ModelClass {
      *
      * @return Returns the String for the property _keyStoreAlias.
      */
-    @JsonProperty("ids:keyStoreAlias")
     String getKeyStoreAlias();
 
     /**
@@ -246,7 +234,6 @@ public interface ConfigurationModel extends ModelClass {
      *
      * @return Returns the String for the property _keyStorePassword.
      */
-    @JsonProperty("ids:keyStorePassword")
     String getKeyStorePassword();
 
     /**
@@ -266,7 +253,6 @@ public interface ConfigurationModel extends ModelClass {
      *
      * @return Returns the BrokerCatalog for the property _configuredBroker.
      */
-    @JsonProperty("ids:configuredBroker")
     BrokerCatalog getConfiguredBroker();
 
     /**
@@ -285,7 +271,6 @@ public interface ConfigurationModel extends ModelClass {
      *
      * @return Returns the List of AppRoutes for the property _appRoute.
      */
-    @JsonProperty("ids:appRoute")
     List<AppRoute> getAppRoute();
 
     /**
@@ -304,7 +289,6 @@ public interface ConfigurationModel extends ModelClass {
      *
      * @return Returns the AppStoreCatalog for the property _configuredAppStore.
      */
-    @JsonProperty("ids:configuredAppStore")
     AppStoreCatalog getConfiguredAppStore();
 
     /**
@@ -325,7 +309,6 @@ public interface ConfigurationModel extends ModelClass {
      *
      * @return Returns the AppResourceCatalog for the property _configuredAppResource.
      */
-    @JsonProperty("ids:configuredAppResource")
     AppResourceCatalog getConfiguredAppResource();
 
     /**
@@ -345,7 +328,6 @@ public interface ConfigurationModel extends ModelClass {
      *
      * @return Returns the ClearingHouseCatalog for the property _configuredClearingHouse.
      */
-    @JsonProperty("ids:configuredClearingHouse")
     ClearingHouseCatalog getConfiguredClearingHouse();
 
     /**

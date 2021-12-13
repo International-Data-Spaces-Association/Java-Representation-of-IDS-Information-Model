@@ -3,7 +3,6 @@ package de.fraunhofer.iais.eis;
 import java.net.URI;
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -33,7 +32,6 @@ public interface DescribedSemantically extends ModelClass {
      *
      * @return Returns the URI for the property _shapesGraph.
      */
-    @JsonProperty("ids:shapesGraph")
     URI getShapesGraph();
 
     /**

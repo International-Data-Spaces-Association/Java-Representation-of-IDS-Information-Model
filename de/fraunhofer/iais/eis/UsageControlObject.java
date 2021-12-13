@@ -8,7 +8,6 @@ import javax.validation.constraints.NotNull;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -38,7 +37,6 @@ public interface UsageControlObject extends ModelClass {
      * @return Returns the URI for the property _data.
      */
     @NotNull
-    @JsonProperty("ids:data")
     URI getData();
 
     /**
@@ -57,7 +55,6 @@ public interface UsageControlObject extends ModelClass {
      *
      * @return Returns the Participant for the property _user.
      */
-    @JsonProperty("ids:user")
     Participant getUser();
 
     /**
@@ -77,7 +74,6 @@ public interface UsageControlObject extends ModelClass {
      *
      * @return Returns the URI for the property _source.
      */
-    @JsonProperty("ids:source")
     URI getSource();
 
     /**
@@ -98,7 +94,6 @@ public interface UsageControlObject extends ModelClass {
      * @return Returns the List of ContractAgreements for the property _contract.
      */
     @NotEmpty
-    @JsonProperty("ids:contract")
     List<ContractAgreement> getContract();
 
     /**
@@ -118,7 +113,6 @@ public interface UsageControlObject extends ModelClass {
      *
      * @return Returns the javax.xml.datatype.Duration for the property _usageDuration.
      */
-    @JsonProperty("ids:usageDuration")
     javax.xml.datatype.Duration getUsageDuration();
 
     /**
@@ -139,7 +133,6 @@ public interface UsageControlObject extends ModelClass {
      * @return Returns the XMLGregorianCalendar for the property _accessed.
      */
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
-    @JsonProperty("ids:accessed")
     XMLGregorianCalendar getAccessed();
 
     /**
@@ -158,7 +151,6 @@ public interface UsageControlObject extends ModelClass {
      *
      * @return Returns the List of ArtifactStates for the property _hasState.
      */
-    @JsonProperty("ids:hasState")
     List<ArtifactState> getHasState();
 
     /**
@@ -178,7 +170,6 @@ public interface UsageControlObject extends ModelClass {
      *
      * @return Returns the URI for the property _requester.
      */
-    @JsonProperty("ids:requester")
     URI getRequester();
 
     /**
@@ -202,7 +193,6 @@ public interface UsageControlObject extends ModelClass {
      */
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
     @NotNull
-    @JsonProperty("ids:created")
     XMLGregorianCalendar getCreated();
 
     /**
@@ -225,7 +215,6 @@ public interface UsageControlObject extends ModelClass {
      * @return Returns the XMLGregorianCalendar for the property _modified.
      */
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
-    @JsonProperty("ids:modified")
     XMLGregorianCalendar getModified();
 
     /**
@@ -245,7 +234,6 @@ public interface UsageControlObject extends ModelClass {
      *
      * @return Returns the List of Actions for the property _action.
      */
-    @JsonProperty("ids:action")
     List<Action> getAction();
 
     /**

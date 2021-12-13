@@ -121,24 +121,46 @@ public class SoftwareResourceBuilder implements Builder<SoftwareResource> {
     }
 
     /**
-     * This function allows setting a value for _publisher
+     * This function allows setting a value for _publisherAsObject
      * 
      * @param _publisher_ desired value to be set
-     * @return Builder object with new value for _publisher
+     * @return Builder object with new value for _publisherAsObject
      */
-    public SoftwareResourceBuilder _publisher_(URI _publisher_) {
-        this.softwareResourceImpl.setPublisher(_publisher_);
+    public SoftwareResourceBuilder _publisherAsObject_(Agent _publisher_) {
+        this.softwareResourceImpl.setPublisherAsObject(_publisher_);
         return this;
     }
 
     /**
-     * This function allows setting a value for _sovereign
+     * This function allows setting a value for _publisherAsUri
+     * 
+     * @param _publisher_ desired value to be set
+     * @return Builder object with new value for _publisherAsUri
+     */
+    public SoftwareResourceBuilder _publisherAsUri_(URI _publisher_) {
+        this.softwareResourceImpl.setPublisherAsUri(_publisher_);
+        return this;
+    }
+
+    /**
+     * This function allows setting a value for _sovereignAsObject
      * 
      * @param _sovereign_ desired value to be set
-     * @return Builder object with new value for _sovereign
+     * @return Builder object with new value for _sovereignAsObject
      */
-    public SoftwareResourceBuilder _sovereign_(URI _sovereign_) {
-        this.softwareResourceImpl.setSovereign(_sovereign_);
+    public SoftwareResourceBuilder _sovereignAsObject_(Agent _sovereign_) {
+        this.softwareResourceImpl.setSovereignAsObject(_sovereign_);
+        return this;
+    }
+
+    /**
+     * This function allows setting a value for _sovereignAsUri
+     * 
+     * @param _sovereign_ desired value to be set
+     * @return Builder object with new value for _sovereignAsUri
+     */
+    public SoftwareResourceBuilder _sovereignAsUri_(URI _sovereign_) {
+        this.softwareResourceImpl.setSovereignAsUri(_sovereign_);
         return this;
     }
 

@@ -2,7 +2,6 @@ package de.fraunhofer.iais.eis;
 
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -31,7 +30,6 @@ public interface QueryMessage extends RequestMessage {
      *
      * @return Returns the QueryLanguage for the property _queryLanguage.
      */
-    @JsonProperty("ids:queryLanguage")
     QueryLanguage getQueryLanguage();
 
     /**
@@ -50,7 +48,6 @@ public interface QueryMessage extends RequestMessage {
      *
      * @return Returns the QueryScope for the property _queryScope.
      */
-    @JsonProperty("ids:queryScope")
     QueryScope getQueryScope();
 
     /**
@@ -69,7 +66,6 @@ public interface QueryMessage extends RequestMessage {
      *
      * @return Returns the QueryTarget for the property _recipientScope.
      */
-    @JsonProperty("ids:recipientScope")
     QueryTarget getRecipientScope();
 
     /**
