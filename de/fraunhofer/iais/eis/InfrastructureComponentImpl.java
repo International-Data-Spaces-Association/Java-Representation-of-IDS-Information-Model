@@ -266,7 +266,6 @@ public class InfrastructureComponentImpl implements InfrastructureComponent {
     }
 
     @Override
-    @NotNull
     public UriOrModelClass getMaintainer() {
         if (_maintainerAsObject != null) {
             return new UriOrModelClass(_maintainerAsObject);

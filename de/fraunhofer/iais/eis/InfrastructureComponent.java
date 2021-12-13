@@ -74,7 +74,6 @@ public interface InfrastructureComponent extends ManagedEntity {
      * @return Returns the a UriOrModelClass object with the content of the field or null if the field
      *         is not set.
      */
-    @NotNull
     @JsonIgnore
     UriOrModelClass getMaintainer();
 

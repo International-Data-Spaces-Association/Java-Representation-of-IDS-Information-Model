@@ -33,7 +33,6 @@ public interface InfrastructureComponentMixin {
 
     @JsonIgnore(false)
     @JsonGetter("ids:maintainer")
-    @NotNull
     public UriOrModelClass getMaintainer();
 
     @JsonIgnore

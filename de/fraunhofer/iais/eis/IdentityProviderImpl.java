@@ -268,7 +268,6 @@ public class IdentityProviderImpl implements IdentityProvider {
     }
 
     @Override
-    @NotNull
     public UriOrModelClass getMaintainer() {
         if (_maintainerAsObject != null) {
             return new UriOrModelClass(_maintainerAsObject);

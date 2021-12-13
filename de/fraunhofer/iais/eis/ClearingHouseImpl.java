@@ -268,7 +268,6 @@ public class ClearingHouseImpl implements ClearingHouse {
     }
 
     @Override
-    @NotNull
     public UriOrModelClass getMaintainer() {
         if (_maintainerAsObject != null) {
             return new UriOrModelClass(_maintainerAsObject);
