@@ -289,4 +289,25 @@ public enum Action implements ModelClass {
         return id.toString();
     }
 
+    @JsonIgnore
+
+    final public List<Constraint> getActionRefinement() {
+        // not implemented for enums
+        throw new UnsupportedOperationException();
+    }
+
+    @JsonIgnore
+
+    final public Action getIncludedIn() {
+        // not implemented for enums
+        throw new UnsupportedOperationException();
+    }
+
+    @JsonIgnore
+
+    final public PXP getPxpEndpoint() {
+        // not implemented for enums
+        throw new UnsupportedOperationException();
+    }
+
 }

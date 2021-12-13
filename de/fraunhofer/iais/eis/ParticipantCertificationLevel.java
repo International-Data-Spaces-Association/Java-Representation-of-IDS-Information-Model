@@ -143,4 +143,11 @@ public enum ParticipantCertificationLevel implements ModelClass {
         return id.toString();
     }
 
+    @JsonIgnore
+
+    final public CertificationLevel getIncludedCertificationLevel() {
+        // not implemented for enums
+        throw new UnsupportedOperationException();
+    }
+
 }

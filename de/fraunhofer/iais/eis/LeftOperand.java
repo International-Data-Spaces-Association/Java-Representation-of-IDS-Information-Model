@@ -368,4 +368,11 @@ public enum LeftOperand implements ModelClass {
         return id.toString();
     }
 
+    @JsonIgnore
+
+    final public LeftOperand getBroader() {
+        // not implemented for enums
+        throw new UnsupportedOperationException();
+    }
+
 }
