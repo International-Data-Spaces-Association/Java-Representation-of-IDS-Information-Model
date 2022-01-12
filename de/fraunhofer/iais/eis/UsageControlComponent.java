@@ -15,8 +15,8 @@ import de.fraunhofer.iais.eis.util.*;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 @JsonSubTypes({
     @JsonSubTypes.Type(value = UsageControlComponentImpl.class),
-    @JsonSubTypes.Type(value = PIP.class),
-    @JsonSubTypes.Type(value = PXP.class)
+    @JsonSubTypes.Type(value = PXP.class),
+    @JsonSubTypes.Type(value = PIP.class)
 })
 public interface UsageControlComponent extends ModelClass {
 

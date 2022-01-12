@@ -15,8 +15,8 @@ import de.fraunhofer.iais.eis.util.*;
 @JsonTypeName("UsageControlComponent")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 @JsonSubTypes({
-    @JsonSubTypes.Type(value = PIP.class),
-    @JsonSubTypes.Type(value = PXP.class)
+    @JsonSubTypes.Type(value = PXP.class),
+    @JsonSubTypes.Type(value = PIP.class)
 })
 public interface UsageControlComponentMixin {
     @JsonProperty("ids:interfaceDescription")
