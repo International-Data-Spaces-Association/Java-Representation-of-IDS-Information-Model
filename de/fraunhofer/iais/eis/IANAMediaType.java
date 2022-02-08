@@ -21,4 +21,6 @@ public interface IANAMediaType extends MediaType {
     @Beta
     public IANAMediaType deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

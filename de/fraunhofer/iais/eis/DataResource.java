@@ -21,4 +21,6 @@ public interface DataResource extends Resource {
     @Beta
     public DataResource deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

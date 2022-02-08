@@ -3,6 +3,7 @@ package de.fraunhofer.iais.eis;
 import java.net.URI;
 
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -31,6 +32,7 @@ public interface DataRepresentation extends Representation {
      *
      * @return Returns the URI for the property _dataType.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/dataType", "ids:dataType", "dataType"})
     URI getDataType();
 
     /**
@@ -49,6 +51,7 @@ public interface DataRepresentation extends Representation {
      *
      * @return Returns the Resource for the property _dataTypeSchema.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/dataTypeSchema", "ids:dataTypeSchema", "dataTypeSchema"})
     Resource getDataTypeSchema();
 
     /**
@@ -59,5 +62,7 @@ public interface DataRepresentation extends Representation {
      * @param _dataTypeSchema_ desired value for the property _dataTypeSchema.
      */
     void setDataTypeSchema(Resource _dataTypeSchema_);
+
+    // Default instances of this class as defined in the ontology
 
 }

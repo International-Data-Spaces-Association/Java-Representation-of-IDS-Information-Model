@@ -4,6 +4,7 @@ import java.math.BigInteger;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -34,6 +35,7 @@ public interface Artifact extends Asset, RepresentationInstance {
      *
      * @return Returns the BigInteger for the property _byteSize.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/byteSize", "ids:byteSize", "byteSize"})
     BigInteger getByteSize();
 
     /**
@@ -52,6 +54,7 @@ public interface Artifact extends Asset, RepresentationInstance {
      *
      * @return Returns the String for the property _fileName.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/fileName", "ids:fileName", "fileName"})
     String getFileName();
 
     /**
@@ -71,6 +74,7 @@ public interface Artifact extends Asset, RepresentationInstance {
      * @return Returns the XMLGregorianCalendar for the property _creationDate.
      */
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
+    @JsonAlias({"https://w3id.org/idsa/core/creationDate", "ids:creationDate", "creationDate"})
     XMLGregorianCalendar getCreationDate();
 
     /**
@@ -89,6 +93,7 @@ public interface Artifact extends Asset, RepresentationInstance {
      *
      * @return Returns the String for the property _checkSum.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/checkSum", "ids:checkSum", "checkSum"})
     String getCheckSum();
 
     /**
@@ -107,6 +112,7 @@ public interface Artifact extends Asset, RepresentationInstance {
      *
      * @return Returns the java.math.BigDecimal for the property _duration.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/duration", "ids:duration", "duration"})
     java.math.BigDecimal getDuration();
 
     /**
@@ -117,5 +123,7 @@ public interface Artifact extends Asset, RepresentationInstance {
      * @param _duration_ desired value for the property _duration.
      */
     void setDuration(java.math.BigDecimal _duration_);
+
+    // Default instances of this class as defined in the ontology
 
 }

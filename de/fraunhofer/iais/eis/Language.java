@@ -1,863 +1,770 @@
 package de.fraunhofer.iais.eis;
 
 import java.net.URI;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonTypeName;
-import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 import de.fraunhofer.iais.eis.util.*;
 
 /**
  * The class of languages potentially being used by textual Data Assets.
  */
-@JsonFormat(shape = JsonFormat.Shape.OBJECT)
-@JsonTypeName("ids:Language")
-public enum Language implements ModelClass {
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
+@JsonSubTypes({
+    @JsonSubTypes.Type(value = LanguageImpl.class)
+})
+public interface Language extends ModelClass {
 
+    // standard methods
+
+    @Beta
+    public Language deepCopy();
+
+    // Default instances of this class as defined in the ontology
+
     /** 
     */
-    AA("https://w3id.org/idsa/code/AA", Arrays.asList(new TypedLiteral("Afar", "en")), Collections.emptyList()),
+    Language AA = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/AA")).build();
 
     /** 
     */
-    AB("https://w3id.org/idsa/code/AB", Arrays.asList(new TypedLiteral("Abkhaz", "en")), Collections.emptyList()),
+    Language AB = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/AB")).build();
 
     /** 
     */
-    AE("https://w3id.org/idsa/code/AE", Arrays.asList(new TypedLiteral("Avestan", "en")), Collections.emptyList()),
+    Language AE = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/AE")).build();
 
     /** 
     */
-    AF("https://w3id.org/idsa/code/AF", Arrays.asList(new TypedLiteral("Afrikaans", "en")), Collections.emptyList()),
+    Language AF = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/AF")).build();
 
     /** 
     */
-    AK("https://w3id.org/idsa/code/AK", Arrays.asList(new TypedLiteral("Akan", "en")), Collections.emptyList()),
+    Language AK = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/AK")).build();
 
     /** 
     */
-    AM("https://w3id.org/idsa/code/AM", Arrays.asList(new TypedLiteral("Amharic", "en")), Collections.emptyList()),
+    Language AM = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/AM")).build();
 
     /** 
     */
-    AN("https://w3id.org/idsa/code/AN", Arrays.asList(new TypedLiteral("Aragonese", "en")), Collections.emptyList()),
+    Language AN = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/AN")).build();
 
     /** 
     */
-    AR("https://w3id.org/idsa/code/AR", Arrays.asList(new TypedLiteral("Arabic", "en")), Collections.emptyList()),
+    Language AR = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/AR")).build();
 
     /** 
     */
-    AS("https://w3id.org/idsa/code/AS", Arrays.asList(new TypedLiteral("Assamese", "en")), Collections.emptyList()),
+    Language AS = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/AS")).build();
 
     /** 
     */
-    AV("https://w3id.org/idsa/code/AV", Arrays.asList(new TypedLiteral("Avaric", "en")), Collections.emptyList()),
+    Language AV = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/AV")).build();
 
     /** 
     */
-    AY("https://w3id.org/idsa/code/AY", Arrays.asList(new TypedLiteral("Aymara", "en")), Collections.emptyList()),
+    Language AY = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/AY")).build();
 
     /** 
     */
-    AZ("https://w3id.org/idsa/code/AZ", Arrays.asList(new TypedLiteral("Azerbaijani", "en")), Collections.emptyList()),
+    Language AZ = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/AZ")).build();
 
     /** 
     */
-    BA("https://w3id.org/idsa/code/BA", Arrays.asList(new TypedLiteral("Bashkir", "en")), Collections.emptyList()),
+    Language BA = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/BA")).build();
 
     /** 
     */
-    BE("https://w3id.org/idsa/code/BE", Arrays.asList(new TypedLiteral("Belarusian", "en")), Collections.emptyList()),
+    Language BE = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/BE")).build();
 
     /** 
     */
-    BG("https://w3id.org/idsa/code/BG", Arrays.asList(new TypedLiteral("Bulgarian", "en")), Collections.emptyList()),
+    Language BG = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/BG")).build();
 
     /** 
     */
-    BH("https://w3id.org/idsa/code/BH", Arrays.asList(new TypedLiteral("Bihari", "en")), Collections.emptyList()),
+    Language BH = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/BH")).build();
 
     /** 
     */
-    BI("https://w3id.org/idsa/code/BI", Arrays.asList(new TypedLiteral("Bislama", "en")), Collections.emptyList()),
+    Language BI = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/BI")).build();
 
     /** 
     */
-    BM("https://w3id.org/idsa/code/BM", Arrays.asList(new TypedLiteral("Bambara", "en")), Collections.emptyList()),
+    Language BM = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/BM")).build();
 
     /** 
     */
-    BN("https://w3id.org/idsa/code/BN", Arrays.asList(new TypedLiteral("Bengali, Bangla", "en")), Collections.emptyList()),
+    Language BN = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/BN")).build();
 
     /** 
     */
-    BO("https://w3id.org/idsa/code/BO", Arrays.asList(new TypedLiteral("Tibetan Standard, Tibetan, Central", "en")),
-        Collections.emptyList()),
+    Language BO = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/BO")).build();
 
     /** 
     */
-    BR("https://w3id.org/idsa/code/BR", Arrays.asList(new TypedLiteral("Breton", "en")), Collections.emptyList()),
+    Language BR = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/BR")).build();
 
     /** 
     */
-    BS("https://w3id.org/idsa/code/BS", Arrays.asList(new TypedLiteral("Bosnian", "en")), Collections.emptyList()),
+    Language BS = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/BS")).build();
 
     /** 
     */
-    CA("https://w3id.org/idsa/code/CA", Arrays.asList(new TypedLiteral("Catalan", "en")), Collections.emptyList()),
+    Language CA = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/CA")).build();
 
     /** 
     */
-    CE("https://w3id.org/idsa/code/CE", Arrays.asList(new TypedLiteral("Chechen", "en")), Collections.emptyList()),
+    Language CE = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/CE")).build();
 
     /** 
     */
-    CH("https://w3id.org/idsa/code/CH", Arrays.asList(new TypedLiteral("Chamorro", "en")), Collections.emptyList()),
+    Language CH = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/CH")).build();
 
     /** 
     */
-    CO("https://w3id.org/idsa/code/CO", Arrays.asList(new TypedLiteral("Corsican", "en")), Collections.emptyList()),
+    Language CO = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/CO")).build();
 
     /** 
     */
-    CR("https://w3id.org/idsa/code/CR", Arrays.asList(new TypedLiteral("Cree", "en")), Collections.emptyList()),
+    Language CR = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/CR")).build();
 
     /** 
     */
-    CS("https://w3id.org/idsa/code/CS", Arrays.asList(new TypedLiteral("Czech", "en")), Collections.emptyList()),
+    Language CS = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/CS")).build();
 
     /** 
     */
-    CU("https://w3id.org/idsa/code/CU", Arrays.asList(new TypedLiteral("Old Church Slavonic, Church Slavonic, Old Bulgarian", "en")),
-        Collections.emptyList()),
+    Language CU = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/CU")).build();
 
     /** 
     */
-    CV("https://w3id.org/idsa/code/CV", Arrays.asList(new TypedLiteral("Chuvash", "en")), Collections.emptyList()),
+    Language CV = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/CV")).build();
 
     /** 
     */
-    CY("https://w3id.org/idsa/code/CY", Arrays.asList(new TypedLiteral("Welsh", "en")), Collections.emptyList()),
+    Language CY = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/CY")).build();
 
     /** 
     */
-    DA("https://w3id.org/idsa/code/DA", Arrays.asList(new TypedLiteral("Danish", "en")), Collections.emptyList()),
+    Language DA = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/DA")).build();
 
     /** 
     */
-    DE("https://w3id.org/idsa/code/DE", Arrays.asList(new TypedLiteral("German", "en")), Collections.emptyList()),
+    Language DE = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/DE")).build();
 
     /** 
     */
-    DV("https://w3id.org/idsa/code/DV", Arrays.asList(new TypedLiteral("Divehi, Dhivehi, Maldivian", "en")), Collections.emptyList()),
+    Language DV = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/DV")).build();
 
     /** 
     */
-    DZ("https://w3id.org/idsa/code/DZ", Arrays.asList(new TypedLiteral("Dzongkha", "en")), Collections.emptyList()),
+    Language DZ = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/DZ")).build();
 
     /** 
     */
-    EE("https://w3id.org/idsa/code/EE", Arrays.asList(new TypedLiteral("Ewe", "en")), Collections.emptyList()),
+    Language EE = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/EE")).build();
 
     /** 
     */
-    EL("https://w3id.org/idsa/code/EL", Arrays.asList(new TypedLiteral("Greek (modern)", "en")), Collections.emptyList()),
+    Language EL = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/EL")).build();
 
     /** 
     */
-    EN("https://w3id.org/idsa/code/EN", Arrays.asList(new TypedLiteral("English", "en")), Collections.emptyList()),
+    Language EN = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/EN")).build();
 
     /** 
     */
-    EO("https://w3id.org/idsa/code/EO", Arrays.asList(new TypedLiteral("Esperanto", "en")), Collections.emptyList()),
+    Language EO = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/EO")).build();
 
     /** 
     */
-    ES("https://w3id.org/idsa/code/ES", Arrays.asList(new TypedLiteral("Spanish", "en")), Collections.emptyList()),
+    Language ES = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/ES")).build();
 
     /** 
     */
-    ET("https://w3id.org/idsa/code/ET", Arrays.asList(new TypedLiteral("Estonian", "en")), Collections.emptyList()),
+    Language ET = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/ET")).build();
 
     /** 
     */
-    EU("https://w3id.org/idsa/code/EU", Arrays.asList(new TypedLiteral("Basque", "en")), Collections.emptyList()),
+    Language EU = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/EU")).build();
 
     /** 
     */
-    FA("https://w3id.org/idsa/code/FA", Arrays.asList(new TypedLiteral("Persian (Farsi)", "en")), Collections.emptyList()),
+    Language FA = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/FA")).build();
 
     /** 
     */
-    FF("https://w3id.org/idsa/code/FF", Arrays.asList(new TypedLiteral("Fula, Fulah, Pulaar, Pular", "en")), Collections.emptyList()),
+    Language FF = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/FF")).build();
 
     /** 
     */
-    FI("https://w3id.org/idsa/code/FI", Arrays.asList(new TypedLiteral("Finnish", "en")), Collections.emptyList()),
+    Language FI = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/FI")).build();
 
     /** 
     */
-    FJ("https://w3id.org/idsa/code/FJ", Arrays.asList(new TypedLiteral("Fijian", "en")), Collections.emptyList()),
+    Language FJ = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/FJ")).build();
 
     /** 
     */
-    FO("https://w3id.org/idsa/code/FO", Arrays.asList(new TypedLiteral("Faroese", "en")), Collections.emptyList()),
+    Language FO = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/FO")).build();
 
     /** 
     */
-    FR("https://w3id.org/idsa/code/FR", Arrays.asList(new TypedLiteral("French", "en")), Collections.emptyList()),
+    Language FR = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/FR")).build();
 
     /** 
     */
-    FY("https://w3id.org/idsa/code/FY", Arrays.asList(new TypedLiteral("Western Frisian", "en")), Collections.emptyList()),
+    Language FY = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/FY")).build();
 
     /** 
     */
-    GA("https://w3id.org/idsa/code/GA", Arrays.asList(new TypedLiteral("Irish", "en")), Collections.emptyList()),
+    Language GA = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/GA")).build();
 
     /** 
     */
-    GD("https://w3id.org/idsa/code/GD", Arrays.asList(new TypedLiteral("Scottish Gaelic, Gaelic", "en")), Collections.emptyList()),
+    Language GD = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/GD")).build();
 
     /** 
     */
-    GL("https://w3id.org/idsa/code/GL", Arrays.asList(new TypedLiteral("Galician", "en")), Collections.emptyList()),
+    Language GL = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/GL")).build();
 
     /** 
     */
-    GN("https://w3id.org/idsa/code/GN", Arrays.asList(new TypedLiteral("Guaraní", "en")), Collections.emptyList()),
+    Language GN = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/GN")).build();
 
     /** 
     */
-    GU("https://w3id.org/idsa/code/GU", Arrays.asList(new TypedLiteral("Gujarati", "en")), Collections.emptyList()),
+    Language GU = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/GU")).build();
 
     /** 
     */
-    GV("https://w3id.org/idsa/code/GV", Arrays.asList(new TypedLiteral("Manx", "en")), Collections.emptyList()),
+    Language GV = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/GV")).build();
 
     /** 
     */
-    HA("https://w3id.org/idsa/code/HA", Arrays.asList(new TypedLiteral("Hausa", "en")), Collections.emptyList()),
+    Language HA = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/HA")).build();
 
     /** 
     */
-    HE("https://w3id.org/idsa/code/HE", Arrays.asList(new TypedLiteral("Hebrew (modern)", "en")), Collections.emptyList()),
+    Language HE = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/HE")).build();
 
     /** 
     */
-    HI("https://w3id.org/idsa/code/HI", Arrays.asList(new TypedLiteral("Hindi", "en")), Collections.emptyList()),
+    Language HI = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/HI")).build();
 
     /** 
     */
-    HO("https://w3id.org/idsa/code/HO", Arrays.asList(new TypedLiteral("Hiri Motu", "en")), Collections.emptyList()),
+    Language HO = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/HO")).build();
 
     /** 
     */
-    HR("https://w3id.org/idsa/code/HR", Arrays.asList(new TypedLiteral("Croatian", "en")), Collections.emptyList()),
+    Language HR = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/HR")).build();
 
     /** 
     */
-    HT("https://w3id.org/idsa/code/HT", Arrays.asList(new TypedLiteral("Haitian, Haitian Creole", "en")), Collections.emptyList()),
+    Language HT = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/HT")).build();
 
     /** 
     */
-    HU("https://w3id.org/idsa/code/HU", Arrays.asList(new TypedLiteral("Hungarian", "en")), Collections.emptyList()),
+    Language HU = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/HU")).build();
 
     /** 
     */
-    HY("https://w3id.org/idsa/code/HY", Arrays.asList(new TypedLiteral("Armenian", "en")), Collections.emptyList()),
+    Language HY = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/HY")).build();
 
     /** 
     */
-    HZ("https://w3id.org/idsa/code/HZ", Arrays.asList(new TypedLiteral("Herero", "en")), Collections.emptyList()),
+    Language HZ = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/HZ")).build();
 
     /** 
     */
-    IA("https://w3id.org/idsa/code/IA", Arrays.asList(new TypedLiteral("Interlingua", "en")), Collections.emptyList()),
+    Language IA = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/IA")).build();
 
     /** 
     */
-    ID("https://w3id.org/idsa/code/ID", Arrays.asList(new TypedLiteral("Indonesian", "en")), Collections.emptyList()),
+    Language ID = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/ID")).build();
 
     /** 
     */
-    IE("https://w3id.org/idsa/code/IE", Arrays.asList(new TypedLiteral("Interlingue", "en")), Collections.emptyList()),
+    Language IE = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/IE")).build();
 
     /** 
     */
-    IG("https://w3id.org/idsa/code/IG", Arrays.asList(new TypedLiteral("Igbo", "en")), Collections.emptyList()),
+    Language IG = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/IG")).build();
 
     /** 
     */
-    II("https://w3id.org/idsa/code/II", Arrays.asList(new TypedLiteral("Nuosu", "en")), Collections.emptyList()),
+    Language II = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/II")).build();
 
     /** 
     */
-    IK("https://w3id.org/idsa/code/IK", Arrays.asList(new TypedLiteral("Inupiaq", "en")), Collections.emptyList()),
+    Language IK = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/IK")).build();
 
     /** 
     */
-    IO("https://w3id.org/idsa/code/IO", Arrays.asList(new TypedLiteral("Ido", "en")), Collections.emptyList()),
+    Language IO = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/IO")).build();
 
     /** 
     */
-    IS("https://w3id.org/idsa/code/IS", Arrays.asList(new TypedLiteral("Icelandic", "en")), Collections.emptyList()),
+    Language IS = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/IS")).build();
 
     /** 
     */
-    IT("https://w3id.org/idsa/code/IT", Arrays.asList(new TypedLiteral("Italian", "en")), Collections.emptyList()),
+    Language IT = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/IT")).build();
 
     /** 
     */
-    IU("https://w3id.org/idsa/code/IU", Arrays.asList(new TypedLiteral("Inuktitut", "en")), Collections.emptyList()),
+    Language IU = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/IU")).build();
 
     /** 
     */
-    JA("https://w3id.org/idsa/code/JA", Arrays.asList(new TypedLiteral("Japanese", "en")), Collections.emptyList()),
+    Language JA = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/JA")).build();
 
     /** 
     */
-    JV("https://w3id.org/idsa/code/JV", Arrays.asList(new TypedLiteral("Javanese", "en")), Collections.emptyList()),
+    Language JV = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/JV")).build();
 
     /** 
     */
-    KA("https://w3id.org/idsa/code/KA", Arrays.asList(new TypedLiteral("Georgian", "en")), Collections.emptyList()),
+    Language KA = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/KA")).build();
 
     /** 
     */
-    KG("https://w3id.org/idsa/code/KG", Arrays.asList(new TypedLiteral("Kongo", "en")), Collections.emptyList()),
+    Language KG = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/KG")).build();
 
     /** 
     */
-    KI("https://w3id.org/idsa/code/KI", Arrays.asList(new TypedLiteral("Kikuyu, Gikuyu", "en")), Collections.emptyList()),
+    Language KI = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/KI")).build();
 
     /** 
     */
-    KJ("https://w3id.org/idsa/code/KJ", Arrays.asList(new TypedLiteral("Kwanyama, Kuanyama", "en")), Collections.emptyList()),
+    Language KJ = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/KJ")).build();
 
     /** 
     */
-    KK("https://w3id.org/idsa/code/KK", Arrays.asList(new TypedLiteral("Kazakh", "en")), Collections.emptyList()),
+    Language KK = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/KK")).build();
 
     /** 
     */
-    KL("https://w3id.org/idsa/code/KL", Arrays.asList(new TypedLiteral("Kalaallisut, Greenlandic", "en")), Collections.emptyList()),
+    Language KL = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/KL")).build();
 
     /** 
     */
-    KM("https://w3id.org/idsa/code/KM", Arrays.asList(new TypedLiteral("Khmer", "en")), Collections.emptyList()),
+    Language KM = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/KM")).build();
 
     /** 
     */
-    KN("https://w3id.org/idsa/code/KN", Arrays.asList(new TypedLiteral("Kannada", "en")), Collections.emptyList()),
+    Language KN = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/KN")).build();
 
     /** 
     */
-    KO("https://w3id.org/idsa/code/KO", Arrays.asList(new TypedLiteral("Korean", "en")), Collections.emptyList()),
+    Language KO = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/KO")).build();
 
     /** 
     */
-    KR("https://w3id.org/idsa/code/KR", Arrays.asList(new TypedLiteral("Kanuri", "en")), Collections.emptyList()),
+    Language KR = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/KR")).build();
 
     /** 
     */
-    KS("https://w3id.org/idsa/code/KS", Arrays.asList(new TypedLiteral("Kashmiri", "en")), Collections.emptyList()),
+    Language KS = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/KS")).build();
 
     /** 
     */
-    KU("https://w3id.org/idsa/code/KU", Arrays.asList(new TypedLiteral("Kurdish", "en")), Collections.emptyList()),
+    Language KU = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/KU")).build();
 
     /** 
     */
-    KV("https://w3id.org/idsa/code/KV", Arrays.asList(new TypedLiteral("Komi", "en")), Collections.emptyList()),
+    Language KV = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/KV")).build();
 
     /** 
     */
-    KW("https://w3id.org/idsa/code/KW", Arrays.asList(new TypedLiteral("Cornish", "en")), Collections.emptyList()),
+    Language KW = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/KW")).build();
 
     /** 
     */
-    KY("https://w3id.org/idsa/code/KY", Arrays.asList(new TypedLiteral("Kyrgyz", "en")), Collections.emptyList()),
+    Language KY = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/KY")).build();
 
     /** 
     */
-    LA("https://w3id.org/idsa/code/LA", Arrays.asList(new TypedLiteral("Latin", "en")), Collections.emptyList()),
+    Language LA = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/LA")).build();
 
     /** 
     */
-    LB("https://w3id.org/idsa/code/LB", Arrays.asList(new TypedLiteral("Luxembourgish, Letzeburgesch", "en")), Collections.emptyList()),
+    Language LB = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/LB")).build();
 
     /** 
     */
-    LG("https://w3id.org/idsa/code/LG", Arrays.asList(new TypedLiteral("Ganda", "en")), Collections.emptyList()),
+    Language LG = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/LG")).build();
 
     /** 
     */
-    LI("https://w3id.org/idsa/code/LI", Arrays.asList(new TypedLiteral("Limburgish, Limburgan, Limburger", "en")), Collections.emptyList()),
+    Language LI = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/LI")).build();
 
     /** 
     */
-    LN("https://w3id.org/idsa/code/LN", Arrays.asList(new TypedLiteral("Lingala", "en")), Collections.emptyList()),
+    Language LN = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/LN")).build();
 
     /** 
     */
-    LO("https://w3id.org/idsa/code/LO", Arrays.asList(new TypedLiteral("Lao", "en")), Collections.emptyList()),
+    Language LO = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/LO")).build();
 
     /**
      * Less-than operator. Can be used for numeric (2 idsc:LT 5) comparisons. Do not confuse with
      * idsc:LT (which is a language).
      */
-    LT("https://w3id.org/idsa/code/LT", Arrays.asList(new TypedLiteral("less than", "en"), new TypedLiteral("Lithuanian", "en")),
-        Arrays.asList(new TypedLiteral("Less-than operator. Can be used for numeric (2 idsc:LT 5) comparisons.", "en"))),
+    Language LT = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/LT")).build();
 
     /** 
     */
-    LU("https://w3id.org/idsa/code/LU", Arrays.asList(new TypedLiteral("Luba-Katanga", "en")), Collections.emptyList()),
+    Language LU = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/LU")).build();
 
     /** 
     */
-    LV("https://w3id.org/idsa/code/LV", Arrays.asList(new TypedLiteral("Latvian", "en")), Collections.emptyList()),
+    Language LV = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/LV")).build();
 
     /** 
     */
-    MG("https://w3id.org/idsa/code/MG", Arrays.asList(new TypedLiteral("Malagasy", "en")), Collections.emptyList()),
+    Language MG = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/MG")).build();
 
     /** 
     */
-    MH("https://w3id.org/idsa/code/MH", Arrays.asList(new TypedLiteral("Marshallese", "en")), Collections.emptyList()),
+    Language MH = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/MH")).build();
 
     /** 
     */
-    MI("https://w3id.org/idsa/code/MI", Arrays.asList(new TypedLiteral("Māori", "en")), Collections.emptyList()),
+    Language MI = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/MI")).build();
 
     /** 
     */
-    MK("https://w3id.org/idsa/code/MK", Arrays.asList(new TypedLiteral("Macedonian", "en")), Collections.emptyList()),
+    Language MK = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/MK")).build();
 
     /** 
     */
-    ML("https://w3id.org/idsa/code/ML", Arrays.asList(new TypedLiteral("Malayalam", "en")), Collections.emptyList()),
+    Language ML = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/ML")).build();
 
     /** 
     */
-    MN("https://w3id.org/idsa/code/MN", Arrays.asList(new TypedLiteral("Mongolian", "en")), Collections.emptyList()),
+    Language MN = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/MN")).build();
 
     /** 
     */
-    MR("https://w3id.org/idsa/code/MR", Arrays.asList(new TypedLiteral("Marathi (Marāṭhī)", "en")), Collections.emptyList()),
+    Language MR = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/MR")).build();
 
     /** 
     */
-    MS("https://w3id.org/idsa/code/MS", Arrays.asList(new TypedLiteral("Malay", "en")), Collections.emptyList()),
+    Language MS = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/MS")).build();
 
     /** 
     */
-    MT("https://w3id.org/idsa/code/MT", Arrays.asList(new TypedLiteral("Maltese", "en")), Collections.emptyList()),
+    Language MT = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/MT")).build();
 
     /**
      * Code indicates that several languages are used or no concrete language can be determined.
      */
-    MULTI_LINGUAL("https://w3id.org/idsa/code/MULTI_LINGUAL", Arrays.asList(new TypedLiteral("Multilingual", "en")),
-        Arrays.asList(new TypedLiteral("Code indicates that several languages are used or no concrete language can be determined.", ""))),
+    Language MULTI_LINGUAL = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/MULTI_LINGUAL")).build();
 
     /** 
     */
-    MY("https://w3id.org/idsa/code/MY", Arrays.asList(new TypedLiteral("Burmese", "en")), Collections.emptyList()),
+    Language MY = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/MY")).build();
 
     /** 
     */
-    NA("https://w3id.org/idsa/code/NA", Arrays.asList(new TypedLiteral("Nauruan", "en")), Collections.emptyList()),
+    Language NA = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/NA")).build();
 
     /** 
     */
-    NB("https://w3id.org/idsa/code/NB", Arrays.asList(new TypedLiteral("Norwegian Bokmål", "en")), Collections.emptyList()),
+    Language NB = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/NB")).build();
 
     /** 
     */
-    ND("https://w3id.org/idsa/code/ND", Arrays.asList(new TypedLiteral("Northern Ndebele", "en")), Collections.emptyList()),
+    Language ND = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/ND")).build();
 
     /** 
     */
-    NE("https://w3id.org/idsa/code/NE", Arrays.asList(new TypedLiteral("Nepali", "en")), Collections.emptyList()),
+    Language NE = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/NE")).build();
 
     /** 
     */
-    NG("https://w3id.org/idsa/code/NG", Arrays.asList(new TypedLiteral("Ndonga", "en")), Collections.emptyList()),
+    Language NG = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/NG")).build();
 
     /** 
     */
-    NL("https://w3id.org/idsa/code/NL", Arrays.asList(new TypedLiteral("Dutch", "en")), Collections.emptyList()),
+    Language NL = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/NL")).build();
 
     /** 
     */
-    NN("https://w3id.org/idsa/code/NN", Arrays.asList(new TypedLiteral("Norwegian Nynorsk", "en")), Collections.emptyList()),
+    Language NN = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/NN")).build();
 
     /** 
     */
-    NO("https://w3id.org/idsa/code/NO", Arrays.asList(new TypedLiteral("Norwegian", "en")), Collections.emptyList()),
+    Language NO = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/NO")).build();
 
     /** 
     */
-    NR("https://w3id.org/idsa/code/NR", Arrays.asList(new TypedLiteral("Southern Ndebele", "en")), Collections.emptyList()),
+    Language NR = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/NR")).build();
 
     /** 
     */
-    NV("https://w3id.org/idsa/code/NV", Arrays.asList(new TypedLiteral("Navajo, Navaho", "en")), Collections.emptyList()),
+    Language NV = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/NV")).build();
 
     /** 
     */
-    NY("https://w3id.org/idsa/code/NY", Arrays.asList(new TypedLiteral("Chichewa, Chewa, Nyanja", "en")), Collections.emptyList()),
+    Language NY = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/NY")).build();
 
     /** 
     */
-    OC("https://w3id.org/idsa/code/OC", Arrays.asList(new TypedLiteral("Occitan", "en")), Collections.emptyList()),
+    Language OC = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/OC")).build();
 
     /** 
     */
-    OJ("https://w3id.org/idsa/code/OJ", Arrays.asList(new TypedLiteral("Ojibwe, Ojibwa", "en")), Collections.emptyList()),
+    Language OJ = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/OJ")).build();
 
     /** 
     */
-    OM("https://w3id.org/idsa/code/OM", Arrays.asList(new TypedLiteral("Oromo", "en")), Collections.emptyList()),
+    Language OM = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/OM")).build();
 
     /** 
     */
-    OR("https://w3id.org/idsa/code/OR", Arrays.asList(new TypedLiteral("Oriya", "en")), Collections.emptyList()),
+    Language OR = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/OR")).build();
 
     /** 
     */
-    OS("https://w3id.org/idsa/code/OS", Arrays.asList(new TypedLiteral("Ossetian, Ossetic", "en")), Collections.emptyList()),
+    Language OS = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/OS")).build();
 
     /** 
     */
-    PA("https://w3id.org/idsa/code/PA", Arrays.asList(new TypedLiteral("(Eastern) Punjabi", "en")), Collections.emptyList()),
+    Language PA = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/PA")).build();
 
     /** 
     */
-    PI("https://w3id.org/idsa/code/PI", Arrays.asList(new TypedLiteral("Pāli", "en")), Collections.emptyList()),
+    Language PI = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/PI")).build();
 
     /** 
     */
-    PL("https://w3id.org/idsa/code/PL", Arrays.asList(new TypedLiteral("Polish", "en")), Collections.emptyList()),
+    Language PL = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/PL")).build();
 
     /** 
     */
-    PS("https://w3id.org/idsa/code/PS", Arrays.asList(new TypedLiteral("Pashto, Pushto", "en")), Collections.emptyList()),
+    Language PS = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/PS")).build();
 
     /** 
     */
-    PT("https://w3id.org/idsa/code/PT", Arrays.asList(new TypedLiteral("Portuguese", "en")), Collections.emptyList()),
+    Language PT = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/PT")).build();
 
     /** 
     */
-    QU("https://w3id.org/idsa/code/QU", Arrays.asList(new TypedLiteral("Quechua", "en")), Collections.emptyList()),
+    Language QU = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/QU")).build();
 
     /** 
     */
-    RM("https://w3id.org/idsa/code/RM", Arrays.asList(new TypedLiteral("Romansh", "en")), Collections.emptyList()),
+    Language RM = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/RM")).build();
 
     /** 
     */
-    RN("https://w3id.org/idsa/code/RN", Arrays.asList(new TypedLiteral("Kirundi", "en")), Collections.emptyList()),
+    Language RN = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/RN")).build();
 
     /** 
     */
-    RO("https://w3id.org/idsa/code/RO", Arrays.asList(new TypedLiteral("Romanian", "en")), Collections.emptyList()),
+    Language RO = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/RO")).build();
 
     /** 
     */
-    RU("https://w3id.org/idsa/code/RU", Arrays.asList(new TypedLiteral("Russian", "en")), Collections.emptyList()),
+    Language RU = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/RU")).build();
 
     /** 
     */
-    RW("https://w3id.org/idsa/code/RW", Arrays.asList(new TypedLiteral("Kinyarwanda", "en")), Collections.emptyList()),
+    Language RW = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/RW")).build();
 
     /** 
     */
-    SA("https://w3id.org/idsa/code/SA", Arrays.asList(new TypedLiteral("Sanskrit (Saṁskṛta)", "en")), Collections.emptyList()),
+    Language SA = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/SA")).build();
 
     /** 
     */
-    SC("https://w3id.org/idsa/code/SC", Arrays.asList(new TypedLiteral("Sardinian", "en")), Collections.emptyList()),
+    Language SC = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/SC")).build();
 
     /** 
     */
-    SD("https://w3id.org/idsa/code/SD", Arrays.asList(new TypedLiteral("Sindhi", "en")), Collections.emptyList()),
+    Language SD = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/SD")).build();
 
     /** 
     */
-    SE("https://w3id.org/idsa/code/SE", Arrays.asList(new TypedLiteral("Northern Sami", "en")), Collections.emptyList()),
+    Language SE = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/SE")).build();
 
     /** 
     */
-    SG("https://w3id.org/idsa/code/SG", Arrays.asList(new TypedLiteral("Sango", "en")), Collections.emptyList()),
+    Language SG = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/SG")).build();
 
     /** 
     */
-    SI("https://w3id.org/idsa/code/SI", Arrays.asList(new TypedLiteral("Sinhalese, Sinhala", "en")), Collections.emptyList()),
+    Language SI = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/SI")).build();
 
     /** 
     */
-    SK("https://w3id.org/idsa/code/SK", Arrays.asList(new TypedLiteral("Slovak", "en")), Collections.emptyList()),
+    Language SK = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/SK")).build();
 
     /** 
     */
-    SL("https://w3id.org/idsa/code/SL", Arrays.asList(new TypedLiteral("Slovene", "en")), Collections.emptyList()),
+    Language SL = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/SL")).build();
 
     /** 
     */
-    SM("https://w3id.org/idsa/code/SM", Arrays.asList(new TypedLiteral("Samoan", "en")), Collections.emptyList()),
+    Language SM = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/SM")).build();
 
     /** 
     */
-    SN("https://w3id.org/idsa/code/SN", Arrays.asList(new TypedLiteral("Shona", "en")), Collections.emptyList()),
+    Language SN = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/SN")).build();
 
     /** 
     */
-    SO("https://w3id.org/idsa/code/SO", Arrays.asList(new TypedLiteral("Somali", "en")), Collections.emptyList()),
+    Language SO = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/SO")).build();
 
     /** 
     */
-    SQ("https://w3id.org/idsa/code/SQ", Arrays.asList(new TypedLiteral("Albanian", "en")), Collections.emptyList()),
+    Language SQ = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/SQ")).build();
 
     /** 
     */
-    SR("https://w3id.org/idsa/code/SR", Arrays.asList(new TypedLiteral("Serbian", "en")), Collections.emptyList()),
+    Language SR = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/SR")).build();
 
     /** 
     */
-    SS("https://w3id.org/idsa/code/SS", Arrays.asList(new TypedLiteral("Swati", "en")), Collections.emptyList()),
+    Language SS = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/SS")).build();
 
     /** 
     */
-    ST("https://w3id.org/idsa/code/ST", Arrays.asList(new TypedLiteral("Southern Sotho", "en")), Collections.emptyList()),
+    Language ST = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/ST")).build();
 
     /** 
     */
-    SU("https://w3id.org/idsa/code/SU", Arrays.asList(new TypedLiteral("Sundanese", "en")), Collections.emptyList()),
+    Language SU = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/SU")).build();
 
     /** 
     */
-    SV("https://w3id.org/idsa/code/SV", Arrays.asList(new TypedLiteral("Swedish", "en")), Collections.emptyList()),
+    Language SV = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/SV")).build();
 
     /** 
     */
-    SW("https://w3id.org/idsa/code/SW", Arrays.asList(new TypedLiteral("Swahili", "en")), Collections.emptyList()),
+    Language SW = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/SW")).build();
 
     /** 
     */
-    TA("https://w3id.org/idsa/code/TA", Arrays.asList(new TypedLiteral("Tamil", "en")), Collections.emptyList()),
+    Language TA = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/TA")).build();
 
     /** 
     */
-    TE("https://w3id.org/idsa/code/TE", Arrays.asList(new TypedLiteral("Telugu", "en")), Collections.emptyList()),
+    Language TE = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/TE")).build();
 
     /** 
     */
-    TG("https://w3id.org/idsa/code/TG", Arrays.asList(new TypedLiteral("Tajik", "en")), Collections.emptyList()),
+    Language TG = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/TG")).build();
 
     /** 
     */
-    TH("https://w3id.org/idsa/code/TH", Arrays.asList(new TypedLiteral("Thai", "en")), Collections.emptyList()),
+    Language TH = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/TH")).build();
 
     /** 
     */
-    TI("https://w3id.org/idsa/code/TI", Arrays.asList(new TypedLiteral("Tigrinya", "en")), Collections.emptyList()),
+    Language TI = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/TI")).build();
 
     /** 
     */
-    TK("https://w3id.org/idsa/code/TK", Arrays.asList(new TypedLiteral("Turkmen", "en")), Collections.emptyList()),
+    Language TK = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/TK")).build();
 
     /** 
     */
-    TL("https://w3id.org/idsa/code/TL", Arrays.asList(new TypedLiteral("Tagalog", "en")), Collections.emptyList()),
+    Language TL = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/TL")).build();
 
     /** 
     */
-    TN("https://w3id.org/idsa/code/TN", Arrays.asList(new TypedLiteral("Tswana", "en")), Collections.emptyList()),
+    Language TN = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/TN")).build();
 
     /** 
     */
-    TO("https://w3id.org/idsa/code/TO", Arrays.asList(new TypedLiteral("Tonga (Tonga Islands)", "en")), Collections.emptyList()),
+    Language TO = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/TO")).build();
 
     /** 
     */
-    TR("https://w3id.org/idsa/code/TR", Arrays.asList(new TypedLiteral("Turkish", "en")), Collections.emptyList()),
+    Language TR = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/TR")).build();
 
     /** 
     */
-    TS("https://w3id.org/idsa/code/TS", Arrays.asList(new TypedLiteral("Tsonga", "en")), Collections.emptyList()),
+    Language TS = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/TS")).build();
 
     /** 
     */
-    TT("https://w3id.org/idsa/code/TT", Arrays.asList(new TypedLiteral("Tatar", "en")), Collections.emptyList()),
+    Language TT = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/TT")).build();
 
     /** 
     */
-    TW("https://w3id.org/idsa/code/TW", Arrays.asList(new TypedLiteral("Twi", "en")), Collections.emptyList()),
+    Language TW = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/TW")).build();
 
     /** 
     */
-    TY("https://w3id.org/idsa/code/TY", Arrays.asList(new TypedLiteral("Tahitian", "en")), Collections.emptyList()),
+    Language TY = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/TY")).build();
 
     /** 
     */
-    UG("https://w3id.org/idsa/code/UG", Arrays.asList(new TypedLiteral("Uyghur", "en")), Collections.emptyList()),
+    Language UG = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/UG")).build();
 
     /** 
     */
-    UK("https://w3id.org/idsa/code/UK", Arrays.asList(new TypedLiteral("Ukrainian", "en")), Collections.emptyList()),
+    Language UK = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/UK")).build();
 
     /** 
     */
-    UR("https://w3id.org/idsa/code/UR", Arrays.asList(new TypedLiteral("Urdu", "en")), Collections.emptyList()),
+    Language UR = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/UR")).build();
 
     /** 
     */
-    UZ("https://w3id.org/idsa/code/UZ", Arrays.asList(new TypedLiteral("Uzbek", "en")), Collections.emptyList()),
+    Language UZ = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/UZ")).build();
 
     /** 
     */
-    VE("https://w3id.org/idsa/code/VE", Arrays.asList(new TypedLiteral("Venda", "en")), Collections.emptyList()),
+    Language VE = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/VE")).build();
 
     /** 
     */
-    VI("https://w3id.org/idsa/code/VI", Arrays.asList(new TypedLiteral("Vietnamese", "en")), Collections.emptyList()),
+    Language VI = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/VI")).build();
 
     /** 
     */
-    VO("https://w3id.org/idsa/code/VO", Arrays.asList(new TypedLiteral("Volapük", "en")), Collections.emptyList()),
+    Language VO = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/VO")).build();
 
     /** 
     */
-    WA("https://w3id.org/idsa/code/WA", Arrays.asList(new TypedLiteral("Walloon", "en")), Collections.emptyList()),
+    Language WA = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/WA")).build();
 
     /** 
     */
-    WO("https://w3id.org/idsa/code/WO", Arrays.asList(new TypedLiteral("Wolof", "en")), Collections.emptyList()),
+    Language WO = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/WO")).build();
 
     /** 
     */
-    XH("https://w3id.org/idsa/code/XH", Arrays.asList(new TypedLiteral("Xhosa", "en")), Collections.emptyList()),
+    Language XH = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/XH")).build();
 
     /** 
     */
-    YI("https://w3id.org/idsa/code/YI", Arrays.asList(new TypedLiteral("Yiddish", "en")), Collections.emptyList()),
+    Language YI = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/YI")).build();
 
     /** 
     */
-    YO("https://w3id.org/idsa/code/YO", Arrays.asList(new TypedLiteral("Yoruba", "en")), Collections.emptyList()),
+    Language YO = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/YO")).build();
 
     /** 
     */
-    ZA("https://w3id.org/idsa/code/ZA", Arrays.asList(new TypedLiteral("Zhuang, Chuang", "en")), Collections.emptyList()),
+    Language ZA = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/ZA")).build();
 
     /** 
     */
-    ZH("https://w3id.org/idsa/code/ZH", Arrays.asList(new TypedLiteral("Chinese", "en")), Collections.emptyList()),
+    Language ZH = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/ZH")).build();
 
     /** 
     */
-    ZU("https://w3id.org/idsa/code/ZU", Arrays.asList(new TypedLiteral("Zulu", "en")), Collections.emptyList());
-
-    private static final Map<String, Language> uriInstanceMapping;
-    static {
-        uriInstanceMapping = new HashMap<>();
-        uriInstanceMapping.putAll(Stream.of(values()).collect(Collectors.toMap(instance -> instance.toString(), instance -> instance)));
-        uriInstanceMapping
-            .putAll(Stream.of(values()).collect(Collectors.toMap(instance -> instance.getSerializedId().toString(), instance -> instance)));
-    }
-
-    private URI id;
-    private List<TypedLiteral> label;
-    private List<TypedLiteral> comment;
-
-    Language(String id, List<TypedLiteral> label, List<TypedLiteral> comment) {
-        try {
-            this.id = new URI(id);
-            this.label = label;
-            this.comment = comment;
-        } catch (java.net.URISyntaxException e) {
-            throw new IllegalArgumentException(e);
-        }
-    }
-
-    // TODO dummy method for generic properties, should be deleted in future versions
-    public Map<String, Object> getProperties() {
-        return null;
-    }
-
-    public void setProperty(String property, Object value) {
-        // do nothing
-    }
-
-    /**
-     * This function retrieves the ID of the current object (can be set via the constructor of the
-     * builder class)
-     * 
-     * @return ID of current object as URI
-     */
-
-    @JsonIgnore
-    @Override
-    final public URI getId() {
-        return id;
-    }
-
-    /**
-     * This function retrieves a human readable label about the current class, as defined in the
-     * ontology. This label could, for example, be used as a field heading in a user interface
-     * 
-     * @return Human readable label
-     */
-    @JsonIgnore
-    @Override
-    final public List<TypedLiteral> getLabel() {
-        return label;
-    }
-
-    /**
-     * This function retrieves a human readable explanatory comment about the current class, as defined
-     * in the ontology. This comment could, for example, be used as a tooltip in a user interface
-     * 
-     * @return Human readable explanatory comment
-     */
-    @JsonIgnore
-    @Override
-    final public List<TypedLiteral> getComment() {
-        return comment;
-    }
-
-    public String toRdf() {
-        return VocabUtil.getInstance().toRdf(this);
-    }
-
-    @JsonProperty("@id")
-    final public URI getSerializedId() {
-        return id;
-    }
-
-    @JsonCreator
-    public static Language deserialize(JsonNode node) {
-        return uriInstanceMapping.get(node.has("@id") ? node.get("@id").textValue() : node.textValue());
-    }
-
-    @Override
-    public String toString() {
-        return id.toString();
-    }
+    Language ZU = new LanguageBuilder(URI.create("https://w3id.org/idsa/code/ZU")).build();
 
 }

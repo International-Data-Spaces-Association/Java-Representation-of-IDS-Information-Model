@@ -22,4 +22,6 @@ public interface DescriptionResponseMessage extends ResponseMessage {
     @Beta
     public DescriptionResponseMessage deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

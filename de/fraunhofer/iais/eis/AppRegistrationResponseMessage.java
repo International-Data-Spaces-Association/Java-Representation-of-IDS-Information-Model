@@ -22,4 +22,6 @@ public interface AppRegistrationResponseMessage extends ResponseMessage {
     @Beta
     public AppRegistrationResponseMessage deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

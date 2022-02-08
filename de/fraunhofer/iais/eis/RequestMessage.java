@@ -32,4 +32,6 @@ public interface RequestMessage extends Message {
     @Beta
     public RequestMessage deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

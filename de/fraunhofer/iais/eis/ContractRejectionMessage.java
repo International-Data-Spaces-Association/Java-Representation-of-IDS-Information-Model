@@ -2,6 +2,7 @@ package de.fraunhofer.iais.eis;
 
 
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -30,6 +31,7 @@ public interface ContractRejectionMessage extends RejectionMessage {
      *
      * @return Returns the TypedLiteral for the property _contractRejectionReason.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/contractRejectionReason", "ids:contractRejectionReason", "contractRejectionReason"})
     TypedLiteral getContractRejectionReason();
 
     /**
@@ -40,5 +42,7 @@ public interface ContractRejectionMessage extends RejectionMessage {
      * @param _contractRejectionReason_ desired value for the property _contractRejectionReason.
      */
     void setContractRejectionReason(TypedLiteral _contractRejectionReason_);
+
+    // Default instances of this class as defined in the ontology
 
 }

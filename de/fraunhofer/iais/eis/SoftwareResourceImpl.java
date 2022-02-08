@@ -90,11 +90,8 @@ public class SoftwareResourceImpl implements SoftwareResource {
     @JsonAlias({"ids:paymentModality", "paymentModality"})
     protected PaymentModality _paymentModality;
 
-    @JsonAlias({"ids:publisherAsObject", "publisherAsObject"})
-    protected Agent _publisherAsObject;
-
-    @JsonAlias({"ids:publisherAsUri", "publisherAsUri"})
-    protected URI _publisherAsUri;
+    @JsonAlias({"ids:publisher", "publisher"})
+    protected URI _publisher;
 
     @JsonAlias({"ids:representation", "representation"})
     protected List<Representation> _representation = new ArrayList<>();
@@ -111,11 +108,8 @@ public class SoftwareResourceImpl implements SoftwareResource {
     @JsonAlias({"ids:shapesGraph", "shapesGraph"})
     protected URI _shapesGraph;
 
-    @JsonAlias({"ids:sovereignAsObject", "sovereignAsObject"})
-    protected Agent _sovereignAsObject;
-
-    @JsonAlias({"ids:sovereignAsUri", "sovereignAsUri"})
-    protected URI _sovereignAsUri;
+    @JsonAlias({"ids:sovereign", "sovereign"})
+    protected URI _sovereign;
 
     @JsonAlias({"ids:spatialCoverage", "spatialCoverage"})
     protected List<Location> _spatialCoverage = new ArrayList<>();
@@ -217,10 +211,8 @@ public class SoftwareResourceImpl implements SoftwareResource {
             this._resourceEndpoint,
             this._contractOffer,
             this._paymentModality,
-            this._publisherAsObject,
-            this._publisherAsUri,
-            this._sovereignAsObject,
-            this._sovereignAsUri,
+            this._publisher,
+            this._sovereign,
             this._sample,
             this._variant,
             this._contentType,
@@ -259,10 +251,8 @@ public class SoftwareResourceImpl implements SoftwareResource {
                 Objects.equals(this._resourceEndpoint, other._resourceEndpoint) &&
                 Objects.equals(this._contractOffer, other._contractOffer) &&
                 Objects.equals(this._paymentModality, other._paymentModality) &&
-                Objects.equals(this._publisherAsObject, other._publisherAsObject) &&
-                Objects.equals(this._publisherAsUri, other._publisherAsUri) &&
-                Objects.equals(this._sovereignAsObject, other._sovereignAsObject) &&
-                Objects.equals(this._sovereignAsUri, other._sovereignAsUri) &&
+                Objects.equals(this._publisher, other._publisher) &&
+                Objects.equals(this._sovereign, other._sovereign) &&
                 Objects.equals(this._sample, other._sample) &&
                 Objects.equals(this._variant, other._variant) &&
                 Objects.equals(this._contentType, other._contentType) &&
@@ -311,17 +301,11 @@ public class SoftwareResourceImpl implements SoftwareResource {
             }
         }
         builder._paymentModality_(this._paymentModality);
-        if (this._publisherAsObject != null) {
-            builder._publisherAsObject_(this._publisherAsObject.deepCopy());
+        if (this._publisher != null) {
+            builder._publisher_(URI.create(this._publisher.toString()));
         }
-        if (this._publisherAsUri != null) {
-            builder._publisherAsUri_(URI.create(this._publisherAsUri.toString()));
-        }
-        if (this._sovereignAsObject != null) {
-            builder._sovereignAsObject_(this._sovereignAsObject.deepCopy());
-        }
-        if (this._sovereignAsUri != null) {
-            builder._sovereignAsUri_(URI.create(this._sovereignAsUri.toString()));
+        if (this._sovereign != null) {
+            builder._sovereign_(URI.create(this._sovereign.toString()));
         }
         for (Resource item : this._sample) {
             if (item != null) {
@@ -467,65 +451,23 @@ public class SoftwareResourceImpl implements SoftwareResource {
     }
 
     @Override
-    public Agent getPublisherAsObject() {
-        return _publisherAsObject;
+    public URI getPublisher() {
+        return _publisher;
     }
 
     @Override
-    public void setPublisherAsObject(Agent _publisher_) {
-        this._publisherAsObject = _publisher_;
+    public void setPublisher(URI _publisher_) {
+        this._publisher = _publisher_;
     }
 
     @Override
-    public URI getPublisherAsUri() {
-        return _publisherAsUri;
+    public URI getSovereign() {
+        return _sovereign;
     }
 
     @Override
-    public void setPublisherAsUri(URI _publisher_) {
-        this._publisherAsUri = _publisher_;
-    }
-
-    @Override
-    public UriOrModelClass getPublisher() {
-        if (_publisherAsObject != null) {
-            return new UriOrModelClass(_publisherAsObject);
-        } else if (_publisherAsUri != null) {
-            return new UriOrModelClass(_publisherAsUri);
-        } else {
-            return null;
-        }
-    }
-
-    @Override
-    public Agent getSovereignAsObject() {
-        return _sovereignAsObject;
-    }
-
-    @Override
-    public void setSovereignAsObject(Agent _sovereign_) {
-        this._sovereignAsObject = _sovereign_;
-    }
-
-    @Override
-    public URI getSovereignAsUri() {
-        return _sovereignAsUri;
-    }
-
-    @Override
-    public void setSovereignAsUri(URI _sovereign_) {
-        this._sovereignAsUri = _sovereign_;
-    }
-
-    @Override
-    public UriOrModelClass getSovereign() {
-        if (_sovereignAsObject != null) {
-            return new UriOrModelClass(_sovereignAsObject);
-        } else if (_sovereignAsUri != null) {
-            return new UriOrModelClass(_sovereignAsUri);
-        } else {
-            return null;
-        }
+    public void setSovereign(URI _sovereign_) {
+        this._sovereign = _sovereign_;
     }
 
     @Override

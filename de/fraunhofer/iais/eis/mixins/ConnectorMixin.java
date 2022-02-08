@@ -18,9 +18,9 @@ import de.fraunhofer.iais.eis.util.*;
 @JsonSubTypes({
     @JsonSubTypes.Type(value = Broker.class),
     @JsonSubTypes.Type(value = AppStore.class),
+    @JsonSubTypes.Type(value = ParIS.class),
     @JsonSubTypes.Type(value = BaseConnector.class),
-    @JsonSubTypes.Type(value = TrustedConnector.class),
-    @JsonSubTypes.Type(value = ParIS.class)
+    @JsonSubTypes.Type(value = TrustedConnector.class)
 })
 public interface ConnectorMixin {
     @JsonProperty("ids:hasDefaultEndpoint")

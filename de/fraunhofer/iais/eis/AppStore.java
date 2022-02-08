@@ -21,4 +21,6 @@ public interface AppStore extends Connector {
     @Beta
     public AppStore deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

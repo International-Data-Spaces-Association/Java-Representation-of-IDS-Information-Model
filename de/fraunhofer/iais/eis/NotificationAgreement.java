@@ -21,4 +21,6 @@ public interface NotificationAgreement extends ContractAgreement {
     @Beta
     public NotificationAgreement deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

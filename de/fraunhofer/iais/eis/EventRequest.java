@@ -21,4 +21,6 @@ public interface EventRequest extends ContractRequest {
     @Beta
     public EventRequest deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

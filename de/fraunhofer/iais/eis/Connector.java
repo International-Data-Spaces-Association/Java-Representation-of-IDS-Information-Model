@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -18,9 +19,9 @@ import de.fraunhofer.iais.eis.util.*;
 @JsonSubTypes({
     @JsonSubTypes.Type(value = Broker.class),
     @JsonSubTypes.Type(value = AppStore.class),
+    @JsonSubTypes.Type(value = ParIS.class),
     @JsonSubTypes.Type(value = BaseConnector.class),
-    @JsonSubTypes.Type(value = TrustedConnector.class),
-    @JsonSubTypes.Type(value = ParIS.class)
+    @JsonSubTypes.Type(value = TrustedConnector.class)
 })
 public interface Connector extends InfrastructureComponent {
 
@@ -40,6 +41,7 @@ public interface Connector extends InfrastructureComponent {
      * @return Returns the ConnectorEndpoint for the property _hasDefaultEndpoint.
      */
     @NotNull
+    @JsonAlias({"https://w3id.org/idsa/core/hasDefaultEndpoint", "ids:hasDefaultEndpoint", "hasDefaultEndpoint"})
     ConnectorEndpoint getHasDefaultEndpoint();
 
     /**
@@ -60,6 +62,7 @@ public interface Connector extends InfrastructureComponent {
      *
      * @return Returns the List of ConnectorEndpoints for the property _hasEndpoint.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/hasEndpoint", "ids:hasEndpoint", "hasEndpoint"})
     List<ConnectorEndpoint> getHasEndpoint();
 
     /**
@@ -79,6 +82,7 @@ public interface Connector extends InfrastructureComponent {
      *
      * @return Returns the AuthInfo for the property _authInfo.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/authInfo", "ids:authInfo", "authInfo"})
     AuthInfo getAuthInfo();
 
     /**
@@ -97,6 +101,7 @@ public interface Connector extends InfrastructureComponent {
      *
      * @return Returns the List of ResourceCatalogs for the property _resourceCatalog.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/resourceCatalog", "ids:resourceCatalog", "resourceCatalog"})
     List<ResourceCatalog> getResourceCatalog();
 
     /**
@@ -115,6 +120,7 @@ public interface Connector extends InfrastructureComponent {
      *
      * @return Returns the List of URIs for the property _hasAgent.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/hasAgent", "ids:hasAgent", "hasAgent"})
     List<URI> getHasAgent();
 
     /**
@@ -134,6 +140,7 @@ public interface Connector extends InfrastructureComponent {
      * @return Returns the SecurityProfile for the property _securityProfile.
      */
     @NotNull
+    @JsonAlias({"https://w3id.org/idsa/core/securityProfile", "ids:securityProfile", "securityProfile"})
     SecurityProfile getSecurityProfile();
 
     /**
@@ -153,6 +160,7 @@ public interface Connector extends InfrastructureComponent {
      *
      * @return Returns the List of SecurityGuarantees for the property _extendedGuarantee.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/extendedGuarantee", "ids:extendedGuarantee", "extendedGuarantee"})
     List<SecurityGuarantee> getExtendedGuarantee();
 
     /**

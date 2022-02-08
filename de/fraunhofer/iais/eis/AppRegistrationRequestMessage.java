@@ -3,6 +3,7 @@ package de.fraunhofer.iais.eis;
 import java.net.URI;
 
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -35,6 +36,7 @@ public interface AppRegistrationRequestMessage extends RequestMessage {
      *
      * @return Returns the URI for the property _affectedDataApp.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/affectedDataApp", "ids:affectedDataApp", "affectedDataApp"})
     URI getAffectedDataApp();
 
     /**
@@ -45,5 +47,7 @@ public interface AppRegistrationRequestMessage extends RequestMessage {
      * @param _affectedDataApp_ desired value for the property _affectedDataApp.
      */
     void setAffectedDataApp(URI _affectedDataApp_);
+
+    // Default instances of this class as defined in the ontology
 
 }

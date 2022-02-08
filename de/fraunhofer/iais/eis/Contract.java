@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -38,6 +39,7 @@ public interface Contract extends ModelClass {
      * @return Returns the XMLGregorianCalendar for the property _contractStart.
      */
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
+    @JsonAlias({"https://w3id.org/idsa/core/contractStart", "ids:contractStart", "contractStart"})
     XMLGregorianCalendar getContractStart();
 
     /**
@@ -59,6 +61,7 @@ public interface Contract extends ModelClass {
      * @return Returns the XMLGregorianCalendar for the property _contractEnd.
      */
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
+    @JsonAlias({"https://w3id.org/idsa/core/contractEnd", "ids:contractEnd", "contractEnd"})
     XMLGregorianCalendar getContractEnd();
 
     /**
@@ -79,6 +82,7 @@ public interface Contract extends ModelClass {
      * @return Returns the XMLGregorianCalendar for the property _contractDate.
      */
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
+    @JsonAlias({"https://w3id.org/idsa/core/contractDate", "ids:contractDate", "contractDate"})
     XMLGregorianCalendar getContractDate();
 
     /**
@@ -98,6 +102,7 @@ public interface Contract extends ModelClass {
      *
      * @return Returns the URI for the property _provider.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/provider", "ids:provider", "provider"})
     URI getProvider();
 
     /**
@@ -118,6 +123,7 @@ public interface Contract extends ModelClass {
      *
      * @return Returns the URI for the property _consumer.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/consumer", "ids:consumer", "consumer"})
     URI getConsumer();
 
     /**
@@ -137,6 +143,7 @@ public interface Contract extends ModelClass {
      *
      * @return Returns the TextResource for the property _contractDocument.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/contractDocument", "ids:contractDocument", "contractDocument"})
     TextResource getContractDocument();
 
     /**
@@ -155,6 +162,7 @@ public interface Contract extends ModelClass {
      *
      * @return Returns the Resource for the property _contractAnnex.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/contractAnnex", "ids:contractAnnex", "contractAnnex"})
     Resource getContractAnnex();
 
     /**
@@ -173,6 +181,7 @@ public interface Contract extends ModelClass {
      *
      * @return Returns the List of Permissions for the property _permission.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/permission", "ids:permission", "permission"})
     List<Permission> getPermission();
 
     /**
@@ -191,6 +200,7 @@ public interface Contract extends ModelClass {
      *
      * @return Returns the List of Prohibitions for the property _prohibition.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/prohibition", "ids:prohibition", "prohibition"})
     List<Prohibition> getProhibition();
 
     /**
@@ -209,6 +219,7 @@ public interface Contract extends ModelClass {
      *
      * @return Returns the List of Dutys for the property _obligation.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/obligation", "ids:obligation", "obligation"})
     List<Duty> getObligation();
 
     /**

@@ -22,4 +22,6 @@ public interface ResourceUnavailableMessage extends ResourceNotificationMessage 
     @Beta
     public ResourceUnavailableMessage deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

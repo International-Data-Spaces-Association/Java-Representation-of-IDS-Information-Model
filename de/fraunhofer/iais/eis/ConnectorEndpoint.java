@@ -2,6 +2,7 @@ package de.fraunhofer.iais.eis;
 
 
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -30,6 +31,7 @@ public interface ConnectorEndpoint extends Endpoint {
      *
      * @return Returns the Artifact for the property _endpointArtifact.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/endpointArtifact", "ids:endpointArtifact", "endpointArtifact"})
     Artifact getEndpointArtifact();
 
     /**
@@ -40,5 +42,7 @@ public interface ConnectorEndpoint extends Endpoint {
      * @param _endpointArtifact_ desired value for the property _endpointArtifact.
      */
     void setEndpointArtifact(Artifact _endpointArtifact_);
+
+    // Default instances of this class as defined in the ontology
 
 }

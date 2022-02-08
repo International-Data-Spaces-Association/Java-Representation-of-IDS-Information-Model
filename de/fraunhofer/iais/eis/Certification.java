@@ -3,6 +3,7 @@ package de.fraunhofer.iais.eis;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -33,6 +34,7 @@ public interface Certification extends ManagedEntity {
      *
      * @return Returns the CertificationLevel for the property _certificationLevel.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/certificationLevel", "ids:certificationLevel", "certificationLevel"})
     CertificationLevel getCertificationLevel();
 
     /**
@@ -52,6 +54,7 @@ public interface Certification extends ManagedEntity {
      * @return Returns the XMLGregorianCalendar for the property _lastValidDate.
      */
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
+    @JsonAlias({"https://w3id.org/idsa/core/lastValidDate", "ids:lastValidDate", "lastValidDate"})
     XMLGregorianCalendar getLastValidDate();
 
     /**
@@ -70,6 +73,7 @@ public interface Certification extends ManagedEntity {
      *
      * @return Returns the EvaluationFacility for the property _evaluationFacility.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/evaluationFacility", "ids:evaluationFacility", "evaluationFacility"})
     EvaluationFacility getEvaluationFacility();
 
     /**

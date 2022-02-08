@@ -22,4 +22,6 @@ public interface ConnectorUnavailableMessage extends ConnectorNotificationMessag
     @Beta
     public ConnectorUnavailableMessage deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

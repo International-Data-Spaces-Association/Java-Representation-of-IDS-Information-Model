@@ -21,4 +21,6 @@ public interface SmartDataApp extends DataApp {
     @Beta
     public SmartDataApp deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

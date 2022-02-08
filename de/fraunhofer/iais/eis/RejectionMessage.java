@@ -2,6 +2,7 @@ package de.fraunhofer.iais.eis;
 
 
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -32,6 +33,7 @@ public interface RejectionMessage extends ResponseMessage {
      *
      * @return Returns the RejectionReason for the property _rejectionReason.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/rejectionReason", "ids:rejectionReason", "rejectionReason"})
     RejectionReason getRejectionReason();
 
     /**
@@ -42,5 +44,7 @@ public interface RejectionMessage extends ResponseMessage {
      * @param _rejectionReason_ desired value for the property _rejectionReason.
      */
     void setRejectionReason(RejectionReason _rejectionReason_);
+
+    // Default instances of this class as defined in the ontology
 
 }

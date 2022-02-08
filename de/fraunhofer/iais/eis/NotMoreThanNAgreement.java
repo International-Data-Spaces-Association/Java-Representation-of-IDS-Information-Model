@@ -21,4 +21,6 @@ public interface NotMoreThanNAgreement extends ContractAgreement {
     @Beta
     public NotMoreThanNAgreement deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

@@ -22,4 +22,6 @@ public interface EvaluationFacility extends ModelClass {
     @Beta
     public EvaluationFacility deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

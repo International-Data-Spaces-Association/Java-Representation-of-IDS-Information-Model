@@ -21,4 +21,6 @@ public interface SwapRequest extends ContractRequest {
     @Beta
     public SwapRequest deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

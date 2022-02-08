@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -36,6 +37,7 @@ public interface Participant extends Agent, ManagedEntity {
      *
      * @return Returns the List of Strings for the property _legalName.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/legalName", "ids:legalName", "legalName"})
     List<String> getLegalName();
 
     /**
@@ -57,6 +59,7 @@ public interface Participant extends Agent, ManagedEntity {
      *
      * @return Returns the Site for the property _primarySite.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/primarySite", "ids:primarySite", "primarySite"})
     Site getPrimarySite();
 
     /**
@@ -76,6 +79,7 @@ public interface Participant extends Agent, ManagedEntity {
      *
      * @return Returns the List of Strings for the property _corporateEmailAddress.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/corporateEmailAddress", "ids:corporateEmailAddress", "corporateEmailAddress"})
     List<String> getCorporateEmailAddress();
 
     /**
@@ -94,6 +98,7 @@ public interface Participant extends Agent, ManagedEntity {
      *
      * @return Returns the URI for the property _corporateHomepage.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/corporateHomepage", "ids:corporateHomepage", "corporateHomepage"})
     URI getCorporateHomepage();
 
     /**
@@ -114,6 +119,7 @@ public interface Participant extends Agent, ManagedEntity {
      *
      * @return Returns the List of Participants for the property _memberParticipant.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/memberParticipant", "ids:memberParticipant", "memberParticipant"})
     List<Participant> getMemberParticipant();
 
     /**
@@ -134,6 +140,7 @@ public interface Participant extends Agent, ManagedEntity {
      *
      * @return Returns the ParticipantCertification for the property _participantCertification.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/participantCertification", "ids:participantCertification", "participantCertification"})
     ParticipantCertification getParticipantCertification();
 
     /**
@@ -154,6 +161,7 @@ public interface Participant extends Agent, ManagedEntity {
      *
      * @return Returns the AbstractConstraint for the property _participantRefinement.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/participantRefinement", "ids:participantRefinement", "participantRefinement"})
     AbstractConstraint getParticipantRefinement();
 
     /**
@@ -174,6 +182,7 @@ public interface Participant extends Agent, ManagedEntity {
      *
      * @return Returns the List of BusinessIdentifiers for the property _businessIdentifier.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/businessIdentifier", "ids:businessIdentifier", "businessIdentifier"})
     List<BusinessIdentifier> getBusinessIdentifier();
 
     /**
@@ -193,6 +202,7 @@ public interface Participant extends Agent, ManagedEntity {
      *
      * @return Returns the String for the property _vatID.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/vatID", "ids:vatID", "vatID"})
     String getVatID();
 
     /**
@@ -213,6 +223,7 @@ public interface Participant extends Agent, ManagedEntity {
      * @return Returns the String for the property _legalForm.
      */
     @NotNull
+    @JsonAlias({"https://w3id.org/idsa/core/legalForm", "ids:legalForm", "legalForm"})
     String getLegalForm();
 
     /**
@@ -232,6 +243,7 @@ public interface Participant extends Agent, ManagedEntity {
      *
      * @return Returns the String for the property _jurisdiction.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/jurisdiction", "ids:jurisdiction", "jurisdiction"})
     String getJurisdiction();
 
     /**
@@ -251,6 +263,7 @@ public interface Participant extends Agent, ManagedEntity {
      *
      * @return Returns the List of Persons for the property _memberPerson.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/memberPerson", "ids:memberPerson", "memberPerson"})
     List<Person> getMemberPerson();
 
     /**
@@ -261,5 +274,7 @@ public interface Participant extends Agent, ManagedEntity {
      * @param _memberPerson_ desired value for the property _memberPerson.
      */
     void setMemberPerson(List<Person> _memberPerson_);
+
+    // Default instances of this class as defined in the ontology
 
 }

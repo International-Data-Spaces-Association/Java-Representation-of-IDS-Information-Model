@@ -4,6 +4,7 @@ import java.net.URI;
 
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -34,6 +35,7 @@ public interface AuthInfo extends ModelClass {
      * @return Returns the URI for the property _authService.
      */
     @NotNull
+    @JsonAlias({"https://w3id.org/idsa/core/authService", "ids:authService", "authService"})
     URI getAuthService();
 
     /**
@@ -52,6 +54,7 @@ public interface AuthInfo extends ModelClass {
      *
      * @return Returns the AuthStandard for the property _authStandard.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/authStandard", "ids:authStandard", "authStandard"})
     AuthStandard getAuthStandard();
 
     /**
@@ -62,5 +65,7 @@ public interface AuthInfo extends ModelClass {
      * @param _authStandard_ desired value for the property _authStandard.
      */
     void setAuthStandard(AuthStandard _authStandard_);
+
+    // Default instances of this class as defined in the ontology
 
 }

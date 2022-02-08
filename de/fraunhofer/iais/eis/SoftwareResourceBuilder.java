@@ -121,46 +121,24 @@ public class SoftwareResourceBuilder implements Builder<SoftwareResource> {
     }
 
     /**
-     * This function allows setting a value for _publisherAsObject
+     * This function allows setting a value for _publisher
      * 
      * @param _publisher_ desired value to be set
-     * @return Builder object with new value for _publisherAsObject
+     * @return Builder object with new value for _publisher
      */
-    public SoftwareResourceBuilder _publisherAsObject_(Agent _publisher_) {
-        this.softwareResourceImpl.setPublisherAsObject(_publisher_);
+    public SoftwareResourceBuilder _publisher_(URI _publisher_) {
+        this.softwareResourceImpl.setPublisher(_publisher_);
         return this;
     }
 
     /**
-     * This function allows setting a value for _publisherAsUri
-     * 
-     * @param _publisher_ desired value to be set
-     * @return Builder object with new value for _publisherAsUri
-     */
-    public SoftwareResourceBuilder _publisherAsUri_(URI _publisher_) {
-        this.softwareResourceImpl.setPublisherAsUri(_publisher_);
-        return this;
-    }
-
-    /**
-     * This function allows setting a value for _sovereignAsObject
+     * This function allows setting a value for _sovereign
      * 
      * @param _sovereign_ desired value to be set
-     * @return Builder object with new value for _sovereignAsObject
+     * @return Builder object with new value for _sovereign
      */
-    public SoftwareResourceBuilder _sovereignAsObject_(Agent _sovereign_) {
-        this.softwareResourceImpl.setSovereignAsObject(_sovereign_);
-        return this;
-    }
-
-    /**
-     * This function allows setting a value for _sovereignAsUri
-     * 
-     * @param _sovereign_ desired value to be set
-     * @return Builder object with new value for _sovereignAsUri
-     */
-    public SoftwareResourceBuilder _sovereignAsUri_(URI _sovereign_) {
-        this.softwareResourceImpl.setSovereignAsUri(_sovereign_);
+    public SoftwareResourceBuilder _sovereign_(URI _sovereign_) {
+        this.softwareResourceImpl.setSovereign(_sovereign_);
         return this;
     }
 

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -40,6 +41,7 @@ public interface AppRoute extends ModelClass {
      * @return Returns the String for the property _routeDeployMethod.
      */
     @NotNull
+    @JsonAlias({"https://w3id.org/idsa/core/routeDeployMethod", "ids:routeDeployMethod", "routeDeployMethod"})
     String getRouteDeployMethod();
 
     /**
@@ -58,6 +60,7 @@ public interface AppRoute extends ModelClass {
      *
      * @return Returns the String for the property _routeDescription.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/routeDescription", "ids:routeDescription", "routeDescription"})
     String getRouteDescription();
 
     /**
@@ -77,6 +80,7 @@ public interface AppRoute extends ModelClass {
      *
      * @return Returns the String for the property _routeConfiguration.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/routeConfiguration", "ids:routeConfiguration", "routeConfiguration"})
     String getRouteConfiguration();
 
     /**
@@ -96,6 +100,7 @@ public interface AppRoute extends ModelClass {
      *
      * @return Returns the List of RouteSteps for the property _hasSubRoute.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/hasSubRoute", "ids:hasSubRoute", "hasSubRoute"})
     List<RouteStep> getHasSubRoute();
 
     /**
@@ -114,6 +119,7 @@ public interface AppRoute extends ModelClass {
      *
      * @return Returns the List of Endpoints for the property _appRouteStart.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/appRouteStart", "ids:appRouteStart", "appRouteStart"})
     List<Endpoint> getAppRouteStart();
 
     /**
@@ -132,6 +138,7 @@ public interface AppRoute extends ModelClass {
      *
      * @return Returns the List of Endpoints for the property _appRouteEnd.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/appRouteEnd", "ids:appRouteEnd", "appRouteEnd"})
     List<Endpoint> getAppRouteEnd();
 
     /**
@@ -160,6 +167,7 @@ public interface AppRoute extends ModelClass {
      *
      * @return Returns the List of Resources for the property _appRouteOutput.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/appRouteOutput", "ids:appRouteOutput", "appRouteOutput"})
     List<Resource> getAppRouteOutput();
 
     /**
@@ -191,6 +199,7 @@ public interface AppRoute extends ModelClass {
      *
      * @return Returns the List of Brokers for the property _appRouteBroker.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/appRouteBroker", "ids:appRouteBroker", "appRouteBroker"})
     List<Broker> getAppRouteBroker();
 
     /**
@@ -216,6 +225,7 @@ public interface AppRoute extends ModelClass {
      *
      * @return Returns the List of ClearingHouses for the property _appRouteClearingHouse.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/appRouteClearingHouse", "ids:appRouteClearingHouse", "appRouteClearingHouse"})
     List<ClearingHouse> getAppRouteClearingHouse();
 
     /**
@@ -230,5 +240,7 @@ public interface AppRoute extends ModelClass {
      * @param _appRouteClearingHouse_ desired value for the property _appRouteClearingHouse.
      */
     void setAppRouteClearingHouse(List<ClearingHouse> _appRouteClearingHouse_);
+
+    // Default instances of this class as defined in the ontology
 
 }

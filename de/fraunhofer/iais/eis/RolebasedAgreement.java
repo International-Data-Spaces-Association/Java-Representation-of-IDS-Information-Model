@@ -21,4 +21,6 @@ public interface RolebasedAgreement extends ContractAgreement {
     @Beta
     public RolebasedAgreement deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

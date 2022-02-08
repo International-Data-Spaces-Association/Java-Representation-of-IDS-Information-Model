@@ -4,6 +4,7 @@ import java.math.BigInteger;
 
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -34,6 +35,7 @@ public interface AppEndpoint extends Endpoint {
      * @return Returns the AppEndpointType for the property _appEndpointType.
      */
     @NotNull
+    @JsonAlias({"https://w3id.org/idsa/core/appEndpointType", "ids:appEndpointType", "appEndpointType"})
     AppEndpointType getAppEndpointType();
 
     /**
@@ -53,6 +55,7 @@ public interface AppEndpoint extends Endpoint {
      *
      * @return Returns the BigInteger for the property _appEndpointPort.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/appEndpointPort", "ids:appEndpointPort", "appEndpointPort"})
     BigInteger getAppEndpointPort();
 
     /**
@@ -71,6 +74,7 @@ public interface AppEndpoint extends Endpoint {
      *
      * @return Returns the MediaType for the property _appEndpointMediaType.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/appEndpointMediaType", "ids:appEndpointMediaType", "appEndpointMediaType"})
     MediaType getAppEndpointMediaType();
 
     /**
@@ -89,6 +93,7 @@ public interface AppEndpoint extends Endpoint {
      *
      * @return Returns the String for the property _appEndpointProtocol.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/appEndpointProtocol", "ids:appEndpointProtocol", "appEndpointProtocol"})
     String getAppEndpointProtocol();
 
     /**
@@ -107,6 +112,7 @@ public interface AppEndpoint extends Endpoint {
      *
      * @return Returns the Language for the property _language.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/language", "ids:language", "language"})
     Language getLanguage();
 
     /**
@@ -117,5 +123,7 @@ public interface AppEndpoint extends Endpoint {
      * @param _language_ desired value for the property _language.
      */
     void setLanguage(Language _language_);
+
+    // Default instances of this class as defined in the ontology
 
 }

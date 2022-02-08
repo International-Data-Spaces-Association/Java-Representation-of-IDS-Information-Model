@@ -22,4 +22,6 @@ public interface IdentityProvider extends InfrastructureComponent {
     @Beta
     public IdentityProvider deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

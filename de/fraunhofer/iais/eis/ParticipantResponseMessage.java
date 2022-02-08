@@ -23,4 +23,6 @@ public interface ParticipantResponseMessage extends ResponseMessage {
     @Beta
     public ParticipantResponseMessage deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

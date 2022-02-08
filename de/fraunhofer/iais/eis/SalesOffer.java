@@ -21,4 +21,6 @@ public interface SalesOffer extends ContractOffer {
     @Beta
     public SalesOffer deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

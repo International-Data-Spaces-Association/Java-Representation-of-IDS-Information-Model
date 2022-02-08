@@ -22,4 +22,6 @@ public interface ConnectorCertificateGrantedMessage extends ConnectorNotificatio
     @Beta
     public ConnectorCertificateGrantedMessage deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

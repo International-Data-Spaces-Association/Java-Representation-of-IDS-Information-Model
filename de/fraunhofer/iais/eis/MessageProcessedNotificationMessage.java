@@ -21,4 +21,6 @@ public interface MessageProcessedNotificationMessage extends NotificationMessage
     @Beta
     public MessageProcessedNotificationMessage deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

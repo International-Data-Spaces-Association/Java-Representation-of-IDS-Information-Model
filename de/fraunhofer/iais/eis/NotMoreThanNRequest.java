@@ -21,4 +21,6 @@ public interface NotMoreThanNRequest extends ContractRequest {
     @Beta
     public NotMoreThanNRequest deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

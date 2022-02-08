@@ -22,4 +22,6 @@ public interface ContractSupplementMessage extends NotificationMessage {
     @Beta
     public ContractSupplementMessage deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

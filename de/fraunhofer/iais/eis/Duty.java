@@ -21,4 +21,6 @@ public interface Duty extends Rule {
     @Beta
     public Duty deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

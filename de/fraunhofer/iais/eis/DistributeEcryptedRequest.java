@@ -21,4 +21,6 @@ public interface DistributeEcryptedRequest extends ContractRequest {
     @Beta
     public DistributeEcryptedRequest deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

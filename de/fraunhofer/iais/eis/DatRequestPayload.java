@@ -29,4 +29,6 @@ public interface DatRequestPayload extends JwtPayload {
     @Beta
     public DatRequestPayload deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

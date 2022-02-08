@@ -22,4 +22,6 @@ public interface ComponentCertification extends Certification {
     @Beta
     public ComponentCertification deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

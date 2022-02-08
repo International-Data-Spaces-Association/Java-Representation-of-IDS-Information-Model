@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -34,6 +35,7 @@ public interface Proxy extends ModelClass {
      * @return Returns the URI for the property _proxyURI.
      */
     @NotNull
+    @JsonAlias({"https://w3id.org/idsa/core/proxyURI", "ids:proxyURI", "proxyURI"})
     URI getProxyURI();
 
     /**
@@ -53,6 +55,7 @@ public interface Proxy extends ModelClass {
      *
      * @return Returns the List of URIs for the property _noProxy.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/noProxy", "ids:noProxy", "noProxy"})
     List<URI> getNoProxy();
 
     /**
@@ -72,6 +75,7 @@ public interface Proxy extends ModelClass {
      *
      * @return Returns the BasicAuthentication for the property _proxyAuthentication.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/proxyAuthentication", "ids:proxyAuthentication", "proxyAuthentication"})
     BasicAuthentication getProxyAuthentication();
 
     /**
@@ -82,5 +86,7 @@ public interface Proxy extends ModelClass {
      * @param _proxyAuthentication_ desired value for the property _proxyAuthentication.
      */
     void setProxyAuthentication(BasicAuthentication _proxyAuthentication_);
+
+    // Default instances of this class as defined in the ontology
 
 }

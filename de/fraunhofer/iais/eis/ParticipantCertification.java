@@ -3,6 +3,7 @@ package de.fraunhofer.iais.eis;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -34,6 +35,7 @@ public interface ParticipantCertification extends Certification {
      * @return Returns the XMLGregorianCalendar for the property _membershipEnd.
      */
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
+    @JsonAlias({"https://w3id.org/idsa/core/membershipEnd", "ids:membershipEnd", "membershipEnd"})
     XMLGregorianCalendar getMembershipEnd();
 
     /**
@@ -44,5 +46,7 @@ public interface ParticipantCertification extends Certification {
      * @param _membershipEnd_ desired value for the property _membershipEnd.
      */
     void setMembershipEnd(XMLGregorianCalendar _membershipEnd_);
+
+    // Default instances of this class as defined in the ontology
 
 }

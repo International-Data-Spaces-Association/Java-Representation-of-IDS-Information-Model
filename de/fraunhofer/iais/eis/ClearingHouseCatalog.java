@@ -3,6 +3,7 @@ package de.fraunhofer.iais.eis;
 import java.util.List;
 
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -31,6 +32,7 @@ public interface ClearingHouseCatalog extends Catalog {
      *
      * @return Returns the List of ClearingHouses for the property _listedClearingHouse.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/listedClearingHouse", "ids:listedClearingHouse", "listedClearingHouse"})
     List<ClearingHouse> getListedClearingHouse();
 
     /**
@@ -41,5 +43,7 @@ public interface ClearingHouseCatalog extends Catalog {
      * @param _listedClearingHouse_ desired value for the property _listedClearingHouse.
      */
     void setListedClearingHouse(List<ClearingHouse> _listedClearingHouse_);
+
+    // Default instances of this class as defined in the ontology
 
 }

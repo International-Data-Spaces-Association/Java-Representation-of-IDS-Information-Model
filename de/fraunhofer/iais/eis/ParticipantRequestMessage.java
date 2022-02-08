@@ -4,6 +4,7 @@ import java.net.URI;
 
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -36,6 +37,7 @@ public interface ParticipantRequestMessage extends RequestMessage {
      * @return Returns the URI for the property _requestedParticipant.
      */
     @NotNull
+    @JsonAlias({"https://w3id.org/idsa/core/requestedParticipant", "ids:requestedParticipant", "requestedParticipant"})
     URI getRequestedParticipant();
 
     /**
@@ -47,5 +49,7 @@ public interface ParticipantRequestMessage extends RequestMessage {
      * @param _requestedParticipant_ desired value for the property _requestedParticipant.
      */
     void setRequestedParticipant(URI _requestedParticipant_);
+
+    // Default instances of this class as defined in the ontology
 
 }

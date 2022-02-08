@@ -3,6 +3,7 @@ package de.fraunhofer.iais.eis;
 
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -32,6 +33,7 @@ public interface Named extends ModelClass {
      * @return Returns the String for the property _name.
      */
     @NotNull
+    @JsonAlias({"https://w3id.org/idsa/core/name", "ids:name", "name"})
     String getName();
 
     /**
@@ -42,5 +44,7 @@ public interface Named extends ModelClass {
      * @param _name_ desired value for the property _name.
      */
     void setName(String _name_);
+
+    // Default instances of this class as defined in the ontology
 
 }

@@ -22,4 +22,6 @@ public interface SoftwareRepresentation extends Representation {
     @Beta
     public SoftwareRepresentation deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

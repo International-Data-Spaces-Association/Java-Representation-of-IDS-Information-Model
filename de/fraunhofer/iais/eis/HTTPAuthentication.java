@@ -3,6 +3,7 @@ package de.fraunhofer.iais.eis;
 import java.net.URI;
 
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -31,6 +32,7 @@ public interface HTTPAuthentication extends BasicAuthentication {
      *
      * @return Returns the URI for the property _httpAuthURI.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/httpAuthURI", "ids:httpAuthURI", "httpAuthURI"})
     URI getHttpAuthURI();
 
     /**
@@ -41,5 +43,7 @@ public interface HTTPAuthentication extends BasicAuthentication {
      * @param _httpAuthURI_ desired value for the property _httpAuthURI.
      */
     void setHttpAuthURI(URI _httpAuthURI_);
+
+    // Default instances of this class as defined in the ontology
 
 }

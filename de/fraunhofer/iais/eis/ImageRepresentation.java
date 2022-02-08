@@ -2,6 +2,7 @@ package de.fraunhofer.iais.eis;
 
 
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -30,6 +31,7 @@ public interface ImageRepresentation extends Representation {
      *
      * @return Returns the java.math.BigDecimal for the property _width.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/width", "ids:width", "width"})
     java.math.BigDecimal getWidth();
 
     /**
@@ -48,6 +50,7 @@ public interface ImageRepresentation extends Representation {
      *
      * @return Returns the java.math.BigDecimal for the property _height.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/height", "ids:height", "height"})
     java.math.BigDecimal getHeight();
 
     /**
@@ -58,5 +61,7 @@ public interface ImageRepresentation extends Representation {
      * @param _height_ desired value for the property _height.
      */
     void setHeight(java.math.BigDecimal _height_);
+
+    // Default instances of this class as defined in the ontology
 
 }

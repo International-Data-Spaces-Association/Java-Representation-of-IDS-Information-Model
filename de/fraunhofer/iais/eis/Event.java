@@ -21,4 +21,6 @@ public interface Event extends ModelClass {
     @Beta
     public Event deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

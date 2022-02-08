@@ -3,6 +3,7 @@ package de.fraunhofer.iais.eis;
 import java.util.List;
 
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -34,6 +35,7 @@ public interface LogicalConstraint extends AbstractConstraint {
      *
      * @return Returns the List of Constraints for the property _and.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/and", "ids:and", "and"})
     List<Constraint> getAnd();
 
     /**
@@ -56,6 +58,7 @@ public interface LogicalConstraint extends AbstractConstraint {
      *
      * @return Returns the List of Constraints for the property _or.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/or", "ids:or", "or"})
     List<Constraint> getOr();
 
     /**
@@ -78,6 +81,7 @@ public interface LogicalConstraint extends AbstractConstraint {
      *
      * @return Returns the List of Constraints for the property _xone.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/xone", "ids:xone", "xone"})
     List<Constraint> getXone();
 
     /**
@@ -90,5 +94,7 @@ public interface LogicalConstraint extends AbstractConstraint {
      * @param _xone_ desired value for the property _xone.
      */
     void setXone(List<Constraint> _xone_);
+
+    // Default instances of this class as defined in the ontology
 
 }

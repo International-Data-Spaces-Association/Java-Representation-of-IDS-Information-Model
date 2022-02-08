@@ -2,6 +2,7 @@ package de.fraunhofer.iais.eis;
 
 
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -30,6 +31,7 @@ public interface Site extends ModelClass {
      *
      * @return Returns the String for the property _siteAddress.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/siteAddress", "ids:siteAddress", "siteAddress"})
     String getSiteAddress();
 
     /**
@@ -40,5 +42,7 @@ public interface Site extends ModelClass {
      * @param _siteAddress_ desired value for the property _siteAddress.
      */
     void setSiteAddress(String _siteAddress_);
+
+    // Default instances of this class as defined in the ontology
 
 }

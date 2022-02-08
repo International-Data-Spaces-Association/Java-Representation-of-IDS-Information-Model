@@ -22,4 +22,6 @@ public interface CustomMediaType extends MediaType {
     @Beta
     public CustomMediaType deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

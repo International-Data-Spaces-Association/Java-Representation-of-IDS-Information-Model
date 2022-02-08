@@ -1,68 +1,123 @@
 package de.fraunhofer.iais.eis;
 
 import java.net.URI;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonTypeName;
-import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 import de.fraunhofer.iais.eis.util.*;
 
 /**
  * A thing one might be permitted to do or prohibited from doing to something.
  */
-@JsonFormat(shape = JsonFormat.Shape.OBJECT)
-@JsonTypeName("ids:Action")
-public enum Action implements ModelClass {
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
+@JsonSubTypes({
+    @JsonSubTypes.Type(value = ActionImpl.class)
+})
+public interface Action extends ModelClass {
+
+    // standard methods
+
+    @Beta
+    public Action deepCopy();
+
+    // accessor methods as derived from the IDS Information Model ontology
+
+    /**
+     * Constraint that refines an Action.
+     *
+     * More information under https://w3id.org/idsa/core/actionRefinement
+     *
+     * @return Returns the List of Constraints for the property _actionRefinement.
+     */
+    @JsonAlias({"https://w3id.org/idsa/core/actionRefinement", "ids:actionRefinement", "actionRefinement"})
+    List<Constraint> getActionRefinement();
+
+    /**
+     * Constraint that refines an Action.
+     *
+     * More information under https://w3id.org/idsa/core/actionRefinement
+     *
+     * @param _actionRefinement_ desired value for the property _actionRefinement.
+     */
+    void setActionRefinement(List<Constraint> _actionRefinement_);
+
+    /**
+     * The subject transitively asserts the object Action.
+     *
+     * More information under https://w3id.org/idsa/core/includedIn
+     *
+     * @return Returns the Action for the property _includedIn.
+     */
+    @JsonAlias({"https://w3id.org/idsa/core/includedIn", "ids:includedIn", "includedIn"})
+    Action getIncludedIn();
+
+    /**
+     * The subject transitively asserts the object Action.
+     *
+     * More information under https://w3id.org/idsa/core/includedIn
+     *
+     * @param _includedIn_ desired value for the property _includedIn.
+     */
+    void setIncludedIn(Action _includedIn_);
+
+    /**
+     * The reference to the PXP which operates a specific action, URI or reference to an associated PXP
+     * interface.
+     *
+     * More information under https://w3id.org/idsa/core/pxpEndpoint
+     *
+     * @return Returns the PXP for the property _pxpEndpoint.
+     */
+    @JsonAlias({"https://w3id.org/idsa/core/pxpEndpoint", "ids:pxpEndpoint", "pxpEndpoint"})
+    PXP getPxpEndpoint();
+
+    /**
+     * The reference to the PXP which operates a specific action, URI or reference to an associated PXP
+     * interface.
+     *
+     * More information under https://w3id.org/idsa/core/pxpEndpoint
+     *
+     * @param _pxpEndpoint_ desired value for the property _pxpEndpoint.
+     */
+    void setPxpEndpoint(PXP _pxpEndpoint_);
+
+    // Default instances of this class as defined in the ontology
 
     /**
      * This action modifies a number by adding a given value to it. This action modifies a number by
      * adding a given value to it. The field to be modified and the given value are specified in the
      * policy as idsc:JSONPATH/idsc:XPATH and idsc:OPERAND, respectively.
      */
-    ADD("https://w3id.org/idsa/code/ADD", Arrays.asList(new TypedLiteral("add", "en")),
-        Arrays.asList(new TypedLiteral("This action modifies a number by adding a given value to it.", "en"))),
+    Action ADD = new ActionBuilder(URI.create("https://w3id.org/idsa/code/ADD")).build();
 
     /**
      * Data will be part of another piece of data so that it is not distinguishable anymore. This action
      * is always evaluated at the consumer side.
      */
-    AGGREGATE_BY_CONSUMER("https://w3id.org/idsa/code/AGGREGATE_BY_CONSUMER",
-        Arrays.asList(new TypedLiteral("aggregate by consumer", "en")),
-        Arrays.asList(new TypedLiteral("Data will be part of another piece of data so that it is not distinguishable anymore.", "en"))),
+    Action AGGREGATE_BY_CONSUMER = new ActionBuilder(URI.create("https://w3id.org/idsa/code/AGGREGATE_BY_CONSUMER")).build();
 
     /**
      * Data will be part of another piece of data so that it is not distinguishable anymore. This action
      * is always evaluated at the provider side.
      */
-    AGGREGATE_BY_PROVIDER("https://w3id.org/idsa/code/AGGREGATE_BY_PROVIDER",
-        Arrays.asList(new TypedLiteral("aggregate by provider", "en")),
-        Arrays.asList(new TypedLiteral("Data will be part of another piece of data so that it is not distinguishable anymore.", "en"))),
+    Action AGGREGATE_BY_PROVIDER = new ActionBuilder(URI.create("https://w3id.org/idsa/code/AGGREGATE_BY_PROVIDER")).build();
 
     /**
      * To anonymize all, parts or certain attributes of the resource. This action is always evaluated at
      * the provider side.
      */
-    ANONYMIZE("https://w3id.org/idsa/code/ANONYMIZE", Arrays.asList(new TypedLiteral("anonymize", "en")),
-        Arrays.asList(new TypedLiteral("To anonymize all, parts or certain attributes of the resource.", "en"))),
+    Action ANONYMIZE = new ActionBuilder(URI.create("https://w3id.org/idsa/code/ANONYMIZE")).build();
 
     /**
      * To pay a certain amount of money in order to use a resource. This action must be evaluated both
      * at the consumer and provider side. A compensation might be required before access is granted
      * (provider-side), or each time the usage action is performed (consumer-side).
      */
-    COMPENSATE("https://w3id.org/idsa/code/COMPENSATE", Arrays.asList(new TypedLiteral("compensate", "en")),
-        Arrays.asList(new TypedLiteral("To pay a certain amount of money in order to use a resource.", "en"))),
+    Action COMPENSATE = new ActionBuilder(URI.create("https://w3id.org/idsa/code/COMPENSATE")).build();
 
     /**
      * To remove a resource or inhibit any further access with reasonable measures. This action is
@@ -70,40 +125,34 @@ public enum Action implements ModelClass {
      * its data resources. If used in a permission clause, it is effecting the data provider as it
      * allows the consumer to delete the provider's resource remotely.
      */
-    DELETE("https://w3id.org/idsa/code/DELETE", Arrays.asList(new TypedLiteral("delete", "en")),
-        Arrays.asList(new TypedLiteral("To remove a resource or inhibit any further access with reasonable measures.", "en"))),
+    Action DELETE = new ActionBuilder(URI.create("https://w3id.org/idsa/code/DELETE")).build();
 
     /**
      * To forward or supply a resource to a third-party. This action is always evaluated at the consumer
      * side and allows it to become a data provider of this resource.
      */
-    DISTRIBUTE("https://w3id.org/idsa/code/DISTRIBUTE", Arrays.asList(new TypedLiteral("distribute", "en")),
-        Arrays.asList(new TypedLiteral("To forward or supply a resource to a third-party.", "en"))),
+    Action DISTRIBUTE = new ActionBuilder(URI.create("https://w3id.org/idsa/code/DISTRIBUTE")).build();
 
     /**
      * This action modifies dividing something by something else. This action modifies dividing
      * something by something else. The field to be modified and the given value are specified in the
      * policy as idsc:JSONPATH/idsc:XPATH and idsc:OPERAND, respectively.
      */
-    DIVIDE("https://w3id.org/idsa/code/DIVIDE", Arrays.asList(new TypedLiteral("divide", "en")),
-        Arrays.asList(new TypedLiteral("This action modifies dividing something by something else.", "en"))),
+    Action DIVIDE = new ActionBuilder(URI.create("https://w3id.org/idsa/code/DIVIDE")).build();
 
     /**
      * The data artifact or parts of it are encrypted and can not be read by neither the
      * ids:DataConsumer nor any other third party. The encryption algorithm might be specified by a
      * constraint. This action is always evaluated at the provider side.
      */
-    ENCRYPT("https://w3id.org/idsa/code/ENCRYPT", Arrays.asList(new TypedLiteral("encrypt", "en")), Arrays.asList(new TypedLiteral(
-        "The data artifact or parts of it are encrypted and can not be read by neither the ids:DataConsumer nor any other third party. The encryption algorithm might be specified by a constraint.",
-        "en"))),
+    Action ENCRYPT = new ActionBuilder(URI.create("https://w3id.org/idsa/code/ENCRYPT")).build();
 
     /**
      * To grant use of a resource to another party. Does *not* imply any other usage rights. This action
      * is always evaluated at the consumer side, at the moment a third party intends to access the
      * resource as received by the original consumer.
      */
-    GRANT_USE("https://w3id.org/idsa/code/GRANT_USE", Arrays.asList(new TypedLiteral("grant use", "en")),
-        Arrays.asList(new TypedLiteral("To grant use of a resource to another party. Does *not* imply any other usage rights.", "en"))),
+    Action GRANT_USE = new ActionBuilder(URI.create("https://w3id.org/idsa/code/GRANT_USE")).build();
 
     /**
      * This action modifies a value by replacing it with a hash of the value. This action modifies a
@@ -111,203 +160,81 @@ public enum Action implements ModelClass {
      * are specified in the policy as idsc:JSONPATH/idsc:XPATH and idsc:HASH_ALGORITHM (eg. SHA256),
      * respectively.
      */
-    HASH("https://w3id.org/idsa/code/HASH", Arrays.asList(new TypedLiteral("hash", "en")),
-        Arrays.asList(new TypedLiteral("This action modifies a value by replacing it with a hash of the value.", "en"))),
+    Action HASH = new ActionBuilder(URI.create("https://w3id.org/idsa/code/HASH")).build();
 
     /**
      * An action to be used in the count usage policy where the idsc:COUNT left operand is used.
      */
-    INCREMENT_COUNTER("https://w3id.org/idsa/code/INCREMENT_COUNTER", Arrays.asList(new TypedLiteral("increment counter", "en")),
-        Arrays.asList(new TypedLiteral("An action to be used in the count usage policy where the idsc:COUNT left operand is used.", "en"))),
+    Action INCREMENT_COUNTER = new ActionBuilder(URI.create("https://w3id.org/idsa/code/INCREMENT_COUNTER")).build();
 
     /**
      * To log information or store information about incidents in a local file or database. Is not
      * necessarily available to external parties but can be used to create transparency on happened
      * events. This action is always evaluated at the consumer side.
      */
-    LOG("https://w3id.org/idsa/code/LOG", Arrays.asList(new TypedLiteral("log", "en")), Arrays.asList(new TypedLiteral(
-        "To log information or store information about incidents in a local file or database. Is not necessarily available to external parties but can be used to create transparency on happened events.",
-        "en"))),
+    Action LOG = new ActionBuilder(URI.create("https://w3id.org/idsa/code/LOG")).build();
 
     /**
      * To change a resource locally. This action is always evaluated at the consumer side. It
      * corresponds to 'allow changes of the copied resource'.
      */
-    MODIFY("https://w3id.org/idsa/code/MODIFY", Arrays.asList(new TypedLiteral("modify", "en")),
-        Arrays.asList(new TypedLiteral("To change a resource locally.", "en"))),
+    Action MODIFY = new ActionBuilder(URI.create("https://w3id.org/idsa/code/MODIFY")).build();
 
     /**
      * This action modifies a number by multiplying it to a given value. This action modifies a number
      * by multiplying it to a given value. The field to be modified and the given value are specified in
      * the policy as idsc:JSONPATH/idsc:XPATH and idsc:OPERAND, respectively.
      */
-    MULTIPLY("https://w3id.org/idsa/code/MULTIPLY", Arrays.asList(new TypedLiteral("multiply", "en")),
-        Arrays.asList(new TypedLiteral("This action modifies a number by multiplying it to a given value.", "en"))),
+    Action MULTIPLY = new ActionBuilder(URI.create("https://w3id.org/idsa/code/MULTIPLY")).build();
 
     /**
      * To forward the resource under the same policy. Implies a permission to distribute. This action is
      * always evaluated at the consumer side.
      */
-    NEXT_POLICY("https://w3id.org/idsa/code/NEXT_POLICY", Arrays.asList(new TypedLiteral("next policy", "en")),
-        Arrays.asList(new TypedLiteral("To forward the resource under the same policy. Implies a permission to distribute.", "en"))),
+    Action NEXT_POLICY = new ActionBuilder(URI.create("https://w3id.org/idsa/code/NEXT_POLICY")).build();
 
     /**
      * To log information or notify an instance about incidents. Can be used to define Clearing House
      * interactions. This action can target the consumer and the data provider of the resource.
      */
-    NOTIFY("https://w3id.org/idsa/code/NOTIFY", Arrays.asList(new TypedLiteral("notify", "en")), Arrays.asList(new TypedLiteral(
-        "To log information or notify an instance about incidents. Can be used to define Clearing House interactions.", "en"))),
+    Action NOTIFY = new ActionBuilder(URI.create("https://w3id.org/idsa/code/NOTIFY")).build();
 
     /**
      * To obtain data from the resource. This action is always evaluated at the provider side. It
      * corresponds to 'give access to a resource'.
      */
-    READ("https://w3id.org/idsa/code/READ", Arrays.asList(new TypedLiteral("read", "en")),
-        Arrays.asList(new TypedLiteral("To obtain data from the resource.", "en"))),
+    Action READ = new ActionBuilder(URI.create("https://w3id.org/idsa/code/READ")).build();
 
     /**
      * To replace some value. This action modifies a value by replacing it with a given value. The field
      * to be modified and the given value are specified in the policy as idsc:JSONPATH/idsc:XPATH and
      * idsc:REPLACE_WITH, respectively.
      */
-    REPLACE("https://w3id.org/idsa/code/REPLACE", Arrays.asList(new TypedLiteral("replace", "en")),
-        Arrays.asList(new TypedLiteral("To replace some value.", "en"))),
+    Action REPLACE = new ActionBuilder(URI.create("https://w3id.org/idsa/code/REPLACE")).build();
 
     /**
      * This action modifies a value by replacing it with an anagram of the value. This action modifies a
      * value by replacing it with an anagram of the value. The field to be modified is specified in the
      * policy as idsc:JSONPATH/idsc:XPATH.
      */
-    SHUFFLE("https://w3id.org/idsa/code/SHUFFLE", Arrays.asList(new TypedLiteral("shuffle", "en")),
-        Arrays.asList(new TypedLiteral("This action modifies a value by replacing it with an anagram of the value.", "en"))),
+    Action SHUFFLE = new ActionBuilder(URI.create("https://w3id.org/idsa/code/SHUFFLE")).build();
 
     /**
      * To accept that the use of the Asset may be tracked. This action is always evaluated at the
      * consumer side.
      */
-    TRACK_PROVENANCE("https://w3id.org/idsa/code/TRACK_PROVENANCE", Arrays.asList(new TypedLiteral("track provenance", "en")),
-        Arrays.asList(new TypedLiteral("To accept that the use of the Asset may be tracked.", "en"))),
+    Action TRACK_PROVENANCE = new ActionBuilder(URI.create("https://w3id.org/idsa/code/TRACK_PROVENANCE")).build();
 
     /**
      * To use a resource in any possible way. Includes all other actions. This action is always
      * evaluated at the consumer side.
      */
-    USE("https://w3id.org/idsa/code/USE", Arrays.asList(new TypedLiteral("use", "en")),
-        Arrays.asList(new TypedLiteral("To use a resource in any possible way. Includes all other actions.", "en"))),
+    Action USE = new ActionBuilder(URI.create("https://w3id.org/idsa/code/USE")).build();
 
     /**
      * To change a remote resource. This action is always evaluated at the provider side. It corresponds
      * to 'allow changes of a resource' but *not* including its deletion.
      */
-    WRITE("https://w3id.org/idsa/code/WRITE", Arrays.asList(new TypedLiteral("write", "en")),
-        Arrays.asList(new TypedLiteral("To change a remote resource.", "en")));
-
-    private static final Map<String, Action> uriInstanceMapping;
-    static {
-        uriInstanceMapping = new HashMap<>();
-        uriInstanceMapping.putAll(Stream.of(values()).collect(Collectors.toMap(instance -> instance.toString(), instance -> instance)));
-        uriInstanceMapping
-            .putAll(Stream.of(values()).collect(Collectors.toMap(instance -> instance.getSerializedId().toString(), instance -> instance)));
-    }
-
-    private URI id;
-    private List<TypedLiteral> label;
-    private List<TypedLiteral> comment;
-
-    Action(String id, List<TypedLiteral> label, List<TypedLiteral> comment) {
-        try {
-            this.id = new URI(id);
-            this.label = label;
-            this.comment = comment;
-        } catch (java.net.URISyntaxException e) {
-            throw new IllegalArgumentException(e);
-        }
-    }
-
-    // TODO dummy method for generic properties, should be deleted in future versions
-    public Map<String, Object> getProperties() {
-        return null;
-    }
-
-    public void setProperty(String property, Object value) {
-        // do nothing
-    }
-
-    /**
-     * This function retrieves the ID of the current object (can be set via the constructor of the
-     * builder class)
-     * 
-     * @return ID of current object as URI
-     */
-
-    @JsonIgnore
-    @Override
-    final public URI getId() {
-        return id;
-    }
-
-    /**
-     * This function retrieves a human readable label about the current class, as defined in the
-     * ontology. This label could, for example, be used as a field heading in a user interface
-     * 
-     * @return Human readable label
-     */
-    @JsonIgnore
-    @Override
-    final public List<TypedLiteral> getLabel() {
-        return label;
-    }
-
-    /**
-     * This function retrieves a human readable explanatory comment about the current class, as defined
-     * in the ontology. This comment could, for example, be used as a tooltip in a user interface
-     * 
-     * @return Human readable explanatory comment
-     */
-    @JsonIgnore
-    @Override
-    final public List<TypedLiteral> getComment() {
-        return comment;
-    }
-
-    public String toRdf() {
-        return VocabUtil.getInstance().toRdf(this);
-    }
-
-    @JsonProperty("@id")
-    final public URI getSerializedId() {
-        return id;
-    }
-
-    @JsonCreator
-    public static Action deserialize(JsonNode node) {
-        return uriInstanceMapping.get(node.has("@id") ? node.get("@id").textValue() : node.textValue());
-    }
-
-    @Override
-    public String toString() {
-        return id.toString();
-    }
-
-    @JsonIgnore
-
-    final public List<Constraint> getActionRefinement() {
-        // not implemented for enums
-        throw new UnsupportedOperationException();
-    }
-
-    @JsonIgnore
-
-    final public Action getIncludedIn() {
-        // not implemented for enums
-        throw new UnsupportedOperationException();
-    }
-
-    @JsonIgnore
-
-    final public PXP getPxpEndpoint() {
-        // not implemented for enums
-        throw new UnsupportedOperationException();
-    }
+    Action WRITE = new ActionBuilder(URI.create("https://w3id.org/idsa/code/WRITE")).build();
 
 }

@@ -21,4 +21,6 @@ public interface EventAgreement extends ContractAgreement {
     @Beta
     public EventAgreement deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

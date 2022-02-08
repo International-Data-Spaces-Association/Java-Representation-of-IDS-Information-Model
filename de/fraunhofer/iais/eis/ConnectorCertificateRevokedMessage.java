@@ -2,6 +2,7 @@ package de.fraunhofer.iais.eis;
 
 
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -33,6 +34,7 @@ public interface ConnectorCertificateRevokedMessage extends ConnectorNotificatio
      *
      * @return Returns the TypedLiteral for the property _revocationReason.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/revocationReason", "ids:revocationReason", "revocationReason"})
     TypedLiteral getRevocationReason();
 
     /**
@@ -44,5 +46,7 @@ public interface ConnectorCertificateRevokedMessage extends ConnectorNotificatio
      * @param _revocationReason_ desired value for the property _revocationReason.
      */
     void setRevocationReason(TypedLiteral _revocationReason_);
+
+    // Default instances of this class as defined in the ontology
 
 }

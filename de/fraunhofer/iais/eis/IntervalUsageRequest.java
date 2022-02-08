@@ -21,4 +21,6 @@ public interface IntervalUsageRequest extends ContractRequest {
     @Beta
     public IntervalUsageRequest deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

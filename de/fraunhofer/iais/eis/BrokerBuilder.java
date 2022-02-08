@@ -164,46 +164,24 @@ public class BrokerBuilder implements Builder<Broker> {
     }
 
     /**
-     * This function allows setting a value for _maintainerAsObject
+     * This function allows setting a value for _maintainer
      * 
      * @param _maintainer_ desired value to be set
-     * @return Builder object with new value for _maintainerAsObject
+     * @return Builder object with new value for _maintainer
      */
-    public BrokerBuilder _maintainerAsObject_(Participant _maintainer_) {
-        this.brokerImpl.setMaintainerAsObject(_maintainer_);
+    public BrokerBuilder _maintainer_(URI _maintainer_) {
+        this.brokerImpl.setMaintainer(_maintainer_);
         return this;
     }
 
     /**
-     * This function allows setting a value for _maintainerAsUri
-     * 
-     * @param _maintainer_ desired value to be set
-     * @return Builder object with new value for _maintainerAsUri
-     */
-    public BrokerBuilder _maintainerAsUri_(URI _maintainer_) {
-        this.brokerImpl.setMaintainerAsUri(_maintainer_);
-        return this;
-    }
-
-    /**
-     * This function allows setting a value for _curatorAsObject
+     * This function allows setting a value for _curator
      * 
      * @param _curator_ desired value to be set
-     * @return Builder object with new value for _curatorAsObject
+     * @return Builder object with new value for _curator
      */
-    public BrokerBuilder _curatorAsObject_(Participant _curator_) {
-        this.brokerImpl.setCuratorAsObject(_curator_);
-        return this;
-    }
-
-    /**
-     * This function allows setting a value for _curatorAsUri
-     * 
-     * @param _curator_ desired value to be set
-     * @return Builder object with new value for _curatorAsUri
-     */
-    public BrokerBuilder _curatorAsUri_(URI _curator_) {
-        this.brokerImpl.setCuratorAsUri(_curator_);
+    public BrokerBuilder _curator_(URI _curator_) {
+        this.brokerImpl.setCurator(_curator_);
         return this;
     }
 

@@ -21,4 +21,6 @@ public interface SwapAgreement extends ContractAgreement {
     @Beta
     public SwapAgreement deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

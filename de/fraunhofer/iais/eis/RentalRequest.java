@@ -21,4 +21,6 @@ public interface RentalRequest extends ContractRequest {
     @Beta
     public RentalRequest deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

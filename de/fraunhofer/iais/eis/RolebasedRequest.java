@@ -21,4 +21,6 @@ public interface RolebasedRequest extends ContractRequest {
     @Beta
     public RolebasedRequest deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

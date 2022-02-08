@@ -21,4 +21,6 @@ public interface EventOffer extends ContractOffer {
     @Beta
     public EventOffer deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

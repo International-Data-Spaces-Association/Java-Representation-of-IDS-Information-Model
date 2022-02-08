@@ -21,4 +21,6 @@ public interface PurposeRequest extends ContractRequest {
     @Beta
     public PurposeRequest deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

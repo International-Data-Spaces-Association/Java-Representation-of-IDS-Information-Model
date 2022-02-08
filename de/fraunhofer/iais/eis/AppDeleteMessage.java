@@ -21,4 +21,6 @@ public interface AppDeleteMessage extends AppNotificationMessage {
     @Beta
     public AppDeleteMessage deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

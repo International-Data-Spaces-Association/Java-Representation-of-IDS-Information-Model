@@ -3,6 +3,7 @@ package de.fraunhofer.iais.eis;
 import java.net.URI;
 
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -31,6 +32,7 @@ public interface AppRepresentation extends SoftwareRepresentation {
      *
      * @return Returns the DataApp for the property _dataAppInformation.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/dataAppInformation", "ids:dataAppInformation", "dataAppInformation"})
     DataApp getDataAppInformation();
 
     /**
@@ -51,6 +53,7 @@ public interface AppRepresentation extends SoftwareRepresentation {
      *
      * @return Returns the URI for the property _dataAppDistributionService.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/dataAppDistributionService", "ids:dataAppDistributionService", "dataAppDistributionService"})
     URI getDataAppDistributionService();
 
     /**
@@ -71,6 +74,7 @@ public interface AppRepresentation extends SoftwareRepresentation {
      *
      * @return Returns the String for the property _dataAppRuntimeEnvironment.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/dataAppRuntimeEnvironment", "ids:dataAppRuntimeEnvironment", "dataAppRuntimeEnvironment"})
     String getDataAppRuntimeEnvironment();
 
     /**
@@ -81,5 +85,7 @@ public interface AppRepresentation extends SoftwareRepresentation {
      * @param _dataAppRuntimeEnvironment_ desired value for the property _dataAppRuntimeEnvironment.
      */
     void setDataAppRuntimeEnvironment(String _dataAppRuntimeEnvironment_);
+
+    // Default instances of this class as defined in the ontology
 
 }

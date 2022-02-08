@@ -22,4 +22,6 @@ public interface ArtifactResponseMessage extends ResponseMessage {
     @Beta
     public ArtifactResponseMessage deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

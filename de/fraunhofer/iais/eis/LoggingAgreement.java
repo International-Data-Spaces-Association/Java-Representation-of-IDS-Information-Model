@@ -21,4 +21,6 @@ public interface LoggingAgreement extends ContractAgreement {
     @Beta
     public LoggingAgreement deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

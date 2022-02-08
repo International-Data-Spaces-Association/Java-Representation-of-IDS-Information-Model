@@ -121,46 +121,24 @@ public class ImageResourceBuilder implements Builder<ImageResource> {
     }
 
     /**
-     * This function allows setting a value for _publisherAsObject
+     * This function allows setting a value for _publisher
      * 
      * @param _publisher_ desired value to be set
-     * @return Builder object with new value for _publisherAsObject
+     * @return Builder object with new value for _publisher
      */
-    public ImageResourceBuilder _publisherAsObject_(Agent _publisher_) {
-        this.imageResourceImpl.setPublisherAsObject(_publisher_);
+    public ImageResourceBuilder _publisher_(URI _publisher_) {
+        this.imageResourceImpl.setPublisher(_publisher_);
         return this;
     }
 
     /**
-     * This function allows setting a value for _publisherAsUri
-     * 
-     * @param _publisher_ desired value to be set
-     * @return Builder object with new value for _publisherAsUri
-     */
-    public ImageResourceBuilder _publisherAsUri_(URI _publisher_) {
-        this.imageResourceImpl.setPublisherAsUri(_publisher_);
-        return this;
-    }
-
-    /**
-     * This function allows setting a value for _sovereignAsObject
+     * This function allows setting a value for _sovereign
      * 
      * @param _sovereign_ desired value to be set
-     * @return Builder object with new value for _sovereignAsObject
+     * @return Builder object with new value for _sovereign
      */
-    public ImageResourceBuilder _sovereignAsObject_(Agent _sovereign_) {
-        this.imageResourceImpl.setSovereignAsObject(_sovereign_);
-        return this;
-    }
-
-    /**
-     * This function allows setting a value for _sovereignAsUri
-     * 
-     * @param _sovereign_ desired value to be set
-     * @return Builder object with new value for _sovereignAsUri
-     */
-    public ImageResourceBuilder _sovereignAsUri_(URI _sovereign_) {
-        this.imageResourceImpl.setSovereignAsUri(_sovereign_);
+    public ImageResourceBuilder _sovereign_(URI _sovereign_) {
+        this.imageResourceImpl.setSovereign(_sovereign_);
         return this;
     }
 

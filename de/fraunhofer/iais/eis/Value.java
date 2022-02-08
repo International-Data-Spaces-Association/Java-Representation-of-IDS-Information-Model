@@ -21,4 +21,6 @@ public interface Value extends RepresentationInstance {
     @Beta
     public Value deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

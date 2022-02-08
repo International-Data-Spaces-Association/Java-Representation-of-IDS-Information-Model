@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.validation.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -36,6 +37,7 @@ public interface DataApp extends ModelClass {
      *
      * @return Returns the String for the property _appDocumentation.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/appDocumentation", "ids:appDocumentation", "appDocumentation"})
     String getAppDocumentation();
 
     /**
@@ -55,6 +57,7 @@ public interface DataApp extends ModelClass {
      * @return Returns the List of AppEndpoints for the property _appEndpoint.
      */
     @NotEmpty
+    @JsonAlias({"https://w3id.org/idsa/core/appEndpoint", "ids:appEndpoint", "appEndpoint"})
     List<AppEndpoint> getAppEndpoint();
 
     /**
@@ -73,6 +76,7 @@ public interface DataApp extends ModelClass {
      *
      * @return Returns the String for the property _appEnvironmentVariables.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/appEnvironmentVariables", "ids:appEnvironmentVariables", "appEnvironmentVariables"})
     String getAppEnvironmentVariables();
 
     /**
@@ -92,6 +96,7 @@ public interface DataApp extends ModelClass {
      *
      * @return Returns the String for the property _appStorageConfiguration.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/appStorageConfiguration", "ids:appStorageConfiguration", "appStorageConfiguration"})
     String getAppStorageConfiguration();
 
     /**
@@ -111,6 +116,7 @@ public interface DataApp extends ModelClass {
      *
      * @return Returns the List of UsagePolicyClasss for the property _supportedUsagePolicies.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/supportedUsagePolicies", "ids:supportedUsagePolicies", "supportedUsagePolicies"})
     List<UsagePolicyClass> getSupportedUsagePolicies();
 
     /**

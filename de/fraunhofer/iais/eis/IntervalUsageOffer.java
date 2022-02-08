@@ -21,4 +21,6 @@ public interface IntervalUsageOffer extends ContractOffer {
     @Beta
     public IntervalUsageOffer deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

@@ -3,6 +3,7 @@ package de.fraunhofer.iais.eis;
 import java.util.List;
 
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -32,6 +33,7 @@ public interface ParIS extends Connector {
      *
      * @return Returns the List of ParticipantCatalogs for the property _participantCatalog.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/participantCatalog", "ids:participantCatalog", "participantCatalog"})
     List<ParticipantCatalog> getParticipantCatalog();
 
     /**
@@ -42,5 +44,7 @@ public interface ParIS extends Connector {
      * @param _participantCatalog_ desired value for the property _participantCatalog.
      */
     void setParticipantCatalog(List<ParticipantCatalog> _participantCatalog_);
+
+    // Default instances of this class as defined in the ontology
 
 }

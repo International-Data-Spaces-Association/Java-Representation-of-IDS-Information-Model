@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -40,6 +41,7 @@ public interface Representation extends Asset, Described, DescribedSemantically 
      *
      * @return Returns the List of RepresentationInstances for the property _instance.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/instance", "ids:instance", "instance"})
     List<RepresentationInstance> getInstance();
 
     /**
@@ -58,6 +60,7 @@ public interface Representation extends Asset, Described, DescribedSemantically 
      *
      * @return Returns the MediaType for the property _mediaType.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/mediaType", "ids:mediaType", "mediaType"})
     MediaType getMediaType();
 
     /**
@@ -77,6 +80,7 @@ public interface Representation extends Asset, Described, DescribedSemantically 
      *
      * @return Returns the URI for the property _representationStandard.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/representationStandard", "ids:representationStandard", "representationStandard"})
     URI getRepresentationStandard();
 
     /**
@@ -96,6 +100,7 @@ public interface Representation extends Asset, Described, DescribedSemantically 
      *
      * @return Returns the Language for the property _language.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/language", "ids:language", "language"})
     Language getLanguage();
 
     /**
@@ -117,6 +122,7 @@ public interface Representation extends Asset, Described, DescribedSemantically 
      * @return Returns the XMLGregorianCalendar for the property _created.
      */
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
+    @JsonAlias({"https://w3id.org/idsa/core/created", "ids:created", "created"})
     XMLGregorianCalendar getCreated();
 
     /**
@@ -139,6 +145,7 @@ public interface Representation extends Asset, Described, DescribedSemantically 
      * @return Returns the XMLGregorianCalendar for the property _modified.
      */
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
+    @JsonAlias({"https://w3id.org/idsa/core/modified", "ids:modified", "modified"})
     XMLGregorianCalendar getModified();
 
     /**
@@ -150,5 +157,7 @@ public interface Representation extends Asset, Described, DescribedSemantically 
      * @param _modified_ desired value for the property _modified.
      */
     void setModified(XMLGregorianCalendar _modified_);
+
+    // Default instances of this class as defined in the ontology
 
 }

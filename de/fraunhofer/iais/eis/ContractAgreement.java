@@ -37,4 +37,6 @@ public interface ContractAgreement extends Contract {
     @Beta
     public ContractAgreement deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

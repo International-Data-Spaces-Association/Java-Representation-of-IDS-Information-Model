@@ -21,4 +21,6 @@ public interface AppAvailableMessage extends AppNotificationMessage {
     @Beta
     public AppAvailableMessage deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

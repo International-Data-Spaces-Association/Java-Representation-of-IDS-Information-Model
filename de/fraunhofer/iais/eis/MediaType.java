@@ -2,6 +2,7 @@ package de.fraunhofer.iais.eis;
 
 
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -33,6 +34,7 @@ public interface MediaType extends ModelClass {
      *
      * @return Returns the String for the property _filenameExtension.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/filenameExtension", "ids:filenameExtension", "filenameExtension"})
     String getFilenameExtension();
 
     /**

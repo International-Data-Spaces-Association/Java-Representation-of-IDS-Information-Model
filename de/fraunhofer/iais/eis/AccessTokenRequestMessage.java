@@ -22,4 +22,6 @@ public interface AccessTokenRequestMessage extends RequestMessage {
     @Beta
     public AccessTokenRequestMessage deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

@@ -4,6 +4,7 @@ import java.net.URI;
 
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -36,6 +37,7 @@ public interface ParticipantNotificationMessage extends NotificationMessage {
      * @return Returns the URI for the property _affectedParticipant.
      */
     @NotNull
+    @JsonAlias({"https://w3id.org/idsa/core/affectedParticipant", "ids:affectedParticipant", "affectedParticipant"})
     URI getAffectedParticipant();
 
     /**

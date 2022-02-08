@@ -21,4 +21,6 @@ public interface GeoFeature extends Location {
     @Beta
     public GeoFeature deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

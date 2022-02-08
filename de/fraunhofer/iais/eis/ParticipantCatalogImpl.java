@@ -8,8 +8,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import javax.validation.constraints.NotNull;
 
@@ -52,11 +50,8 @@ public class ParticipantCatalogImpl implements ParticipantCatalog {
 
     // instance fields as derived from the IDS Information Model ontology
 
-    @JsonAlias({"ids:memberAsObject", "memberAsObject"})
-    protected List<Participant> _memberAsObject = new ArrayList<>();
-
-    @JsonAlias({"ids:memberAsUri", "memberAsUri"})
-    protected List<URI> _memberAsUri = new ArrayList<>();
+    @JsonAlias({"ids:member", "member"})
+    protected List<Participant> _member = new ArrayList<>();
 
     protected ParticipantCatalogImpl() {
         id = VocabUtil.getInstance().createRandomUrl("participantCatalog");
@@ -128,8 +123,7 @@ public class ParticipantCatalogImpl implements ParticipantCatalog {
 
     @Override
     public int hashCode() {
-        return Objects.hash(this._memberAsObject,
-            this._memberAsUri);
+        return Objects.hash(this._member);
     }
 
     @Override
@@ -142,22 +136,16 @@ public class ParticipantCatalogImpl implements ParticipantCatalog {
             return false;
         } else {
             ParticipantCatalogImpl other = (ParticipantCatalogImpl) obj;
-            return Objects.equals(this._memberAsObject, other._memberAsObject) &&
-                Objects.equals(this._memberAsUri, other._memberAsUri);
+            return Objects.equals(this._member, other._member);
         }
     }
 
     @Override
     public ParticipantCatalog deepCopy() {
         ParticipantCatalogBuilder builder = new ParticipantCatalogBuilder();
-        for (Participant item : this._memberAsObject) {
+        for (Participant item : this._member) {
             if (item != null) {
-                builder._memberAsObject_(item.deepCopy());
-            }
-        }
-        for (URI item : this._memberAsUri) {
-            if (item != null) {
-                builder._memberAsUri_(URI.create(item.toString()));
+                builder._member_(item.deepCopy());
             }
         }
         return builder.build();
@@ -166,37 +154,13 @@ public class ParticipantCatalogImpl implements ParticipantCatalog {
     // accessor method implementations as derived from the IDS Information Model ontology
 
     @Override
-    public List<Participant> getMemberAsObject() {
-        return _memberAsObject;
+    public List<Participant> getMember() {
+        return _member;
     }
 
     @Override
-    public void setMemberAsObject(List<Participant> _member_) {
-        this._memberAsObject = _member_;
-        for (Participant item : this._memberAsObject) {
-            this._memberAsUri.remove(item.getId());
-        }
-    }
-
-    @Override
-    public List<URI> getMemberAsUri() {
-        return _memberAsUri;
-    }
-
-    @Override
-    public void setMemberAsUri(List<URI> _member_) {
-        this._memberAsUri = _member_;
-        for (Participant item : this._memberAsObject) {
-            this._memberAsUri.remove(item.getId());
-        }
-    }
-
-    @Override
-    public UriOrModelClass getMember() {
-        return new UriOrModelClass(
-            Stream.concat(
-                this._memberAsObject.stream(),
-                this._memberAsUri.stream()).collect(Collectors.toList()));
+    public void setMember(List<Participant> _member_) {
+        this._member = _member_;
     }
 
 }

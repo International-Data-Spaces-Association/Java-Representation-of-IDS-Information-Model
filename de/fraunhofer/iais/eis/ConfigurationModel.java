@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -33,6 +34,7 @@ public interface ConfigurationModel extends ModelClass {
      *
      * @return Returns the List of UserAuthentications for the property _userAuthentication.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/userAuthentication", "ids:userAuthentication", "userAuthentication"})
     List<UserAuthentication> getUserAuthentication();
 
     /**
@@ -52,6 +54,7 @@ public interface ConfigurationModel extends ModelClass {
      * @return Returns the LogLevel for the property _configurationModelLogLevel.
      */
     @NotNull
+    @JsonAlias({"https://w3id.org/idsa/core/configurationModelLogLevel", "ids:configurationModelLogLevel", "configurationModelLogLevel"})
     LogLevel getConfigurationModelLogLevel();
 
     /**
@@ -71,6 +74,7 @@ public interface ConfigurationModel extends ModelClass {
      * @return Returns the ConnectorStatus for the property _connectorStatus.
      */
     @NotNull
+    @JsonAlias({"https://w3id.org/idsa/core/connectorStatus", "ids:connectorStatus", "connectorStatus"})
     ConnectorStatus getConnectorStatus();
 
     /**
@@ -90,6 +94,7 @@ public interface ConfigurationModel extends ModelClass {
      * @return Returns the ConnectorDeployMode for the property _connectorDeployMode.
      */
     @NotNull
+    @JsonAlias({"https://w3id.org/idsa/core/connectorDeployMode", "ids:connectorDeployMode", "connectorDeployMode"})
     ConnectorDeployMode getConnectorDeployMode();
 
     /**
@@ -108,6 +113,7 @@ public interface ConfigurationModel extends ModelClass {
      *
      * @return Returns the Connector for the property _connectorDescription.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/connectorDescription", "ids:connectorDescription", "connectorDescription"})
     Connector getConnectorDescription();
 
     /**
@@ -126,6 +132,7 @@ public interface ConfigurationModel extends ModelClass {
      *
      * @return Returns the List of Proxys for the property _connectorProxy.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/connectorProxy", "ids:connectorProxy", "connectorProxy"})
     List<Proxy> getConnectorProxy();
 
     /**
@@ -144,6 +151,7 @@ public interface ConfigurationModel extends ModelClass {
      *
      * @return Returns the URI for the property _trustStore.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/trustStore", "ids:trustStore", "trustStore"})
     URI getTrustStore();
 
     /**
@@ -162,6 +170,7 @@ public interface ConfigurationModel extends ModelClass {
      *
      * @return Returns the String for the property _trustStoreAlias.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/trustStoreAlias", "ids:trustStoreAlias", "trustStoreAlias"})
     String getTrustStoreAlias();
 
     /**
@@ -180,6 +189,7 @@ public interface ConfigurationModel extends ModelClass {
      *
      * @return Returns the String for the property _trustStorePassword.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/trustStorePassword", "ids:trustStorePassword", "trustStorePassword"})
     String getTrustStorePassword();
 
     /**
@@ -198,6 +208,7 @@ public interface ConfigurationModel extends ModelClass {
      *
      * @return Returns the URI for the property _keyStore.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/keyStore", "ids:keyStore", "keyStore"})
     URI getKeyStore();
 
     /**
@@ -216,6 +227,7 @@ public interface ConfigurationModel extends ModelClass {
      *
      * @return Returns the String for the property _keyStoreAlias.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/keyStoreAlias", "ids:keyStoreAlias", "keyStoreAlias"})
     String getKeyStoreAlias();
 
     /**
@@ -234,6 +246,7 @@ public interface ConfigurationModel extends ModelClass {
      *
      * @return Returns the String for the property _keyStorePassword.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/keyStorePassword", "ids:keyStorePassword", "keyStorePassword"})
     String getKeyStorePassword();
 
     /**
@@ -253,6 +266,7 @@ public interface ConfigurationModel extends ModelClass {
      *
      * @return Returns the BrokerCatalog for the property _configuredBroker.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/configuredBroker", "ids:configuredBroker", "configuredBroker"})
     BrokerCatalog getConfiguredBroker();
 
     /**
@@ -271,6 +285,7 @@ public interface ConfigurationModel extends ModelClass {
      *
      * @return Returns the List of AppRoutes for the property _appRoute.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/appRoute", "ids:appRoute", "appRoute"})
     List<AppRoute> getAppRoute();
 
     /**
@@ -289,6 +304,7 @@ public interface ConfigurationModel extends ModelClass {
      *
      * @return Returns the AppStoreCatalog for the property _configuredAppStore.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/configuredAppStore", "ids:configuredAppStore", "configuredAppStore"})
     AppStoreCatalog getConfiguredAppStore();
 
     /**
@@ -309,6 +325,7 @@ public interface ConfigurationModel extends ModelClass {
      *
      * @return Returns the AppResourceCatalog for the property _configuredAppResource.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/configuredAppResource", "ids:configuredAppResource", "configuredAppResource"})
     AppResourceCatalog getConfiguredAppResource();
 
     /**
@@ -328,6 +345,7 @@ public interface ConfigurationModel extends ModelClass {
      *
      * @return Returns the ClearingHouseCatalog for the property _configuredClearingHouse.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/configuredClearingHouse", "ids:configuredClearingHouse", "configuredClearingHouse"})
     ClearingHouseCatalog getConfiguredClearingHouse();
 
     /**
@@ -338,5 +356,7 @@ public interface ConfigurationModel extends ModelClass {
      * @param _configuredClearingHouse_ desired value for the property _configuredClearingHouse.
      */
     void setConfiguredClearingHouse(ClearingHouseCatalog _configuredClearingHouse_);
+
+    // Default instances of this class as defined in the ontology
 
 }

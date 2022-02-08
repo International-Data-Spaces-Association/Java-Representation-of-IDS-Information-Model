@@ -22,4 +22,6 @@ public interface ParticipantCertificateGrantedMessage extends ParticipantNotific
     @Beta
     public ParticipantCertificateGrantedMessage deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

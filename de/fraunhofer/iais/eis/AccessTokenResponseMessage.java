@@ -21,4 +21,6 @@ public interface AccessTokenResponseMessage extends ResponseMessage {
     @Beta
     public AccessTokenResponseMessage deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

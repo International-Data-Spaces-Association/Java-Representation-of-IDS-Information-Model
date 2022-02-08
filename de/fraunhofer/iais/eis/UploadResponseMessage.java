@@ -22,4 +22,6 @@ public interface UploadResponseMessage extends ResponseMessage {
     @Beta
     public UploadResponseMessage deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

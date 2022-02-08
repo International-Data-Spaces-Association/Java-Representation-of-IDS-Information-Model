@@ -22,4 +22,6 @@ public interface ParticipantUnavailableMessage extends ParticipantNotificationMe
     @Beta
     public ParticipantUnavailableMessage deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

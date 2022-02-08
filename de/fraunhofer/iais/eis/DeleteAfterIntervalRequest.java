@@ -22,4 +22,6 @@ public interface DeleteAfterIntervalRequest extends ContractRequest {
     @Beta
     public DeleteAfterIntervalRequest deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

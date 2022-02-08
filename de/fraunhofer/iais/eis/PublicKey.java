@@ -2,6 +2,7 @@ package de.fraunhofer.iais.eis;
 
 
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -30,6 +31,7 @@ public interface PublicKey extends ModelClass {
      *
      * @return Returns the KeyType for the property _keyType.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/keyType", "ids:keyType", "keyType"})
     KeyType getKeyType();
 
     /**
@@ -48,6 +50,7 @@ public interface PublicKey extends ModelClass {
      *
      * @return Returns the byte[] for the property _keyValue.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/keyValue", "ids:keyValue", "keyValue"})
     byte[] getKeyValue();
 
     /**
@@ -58,5 +61,7 @@ public interface PublicKey extends ModelClass {
      * @param _keyValue_ desired value for the property _keyValue.
      */
     void setKeyValue(byte[] _keyValue_);
+
+    // Default instances of this class as defined in the ontology
 
 }

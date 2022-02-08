@@ -21,4 +21,6 @@ public interface AppStoreCatalog extends ConnectorCatalog {
     @Beta
     public AppStoreCatalog deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

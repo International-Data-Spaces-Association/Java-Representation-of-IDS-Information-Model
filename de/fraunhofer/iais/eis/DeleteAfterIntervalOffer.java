@@ -22,4 +22,6 @@ public interface DeleteAfterIntervalOffer extends ContractOffer {
     @Beta
     public DeleteAfterIntervalOffer deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

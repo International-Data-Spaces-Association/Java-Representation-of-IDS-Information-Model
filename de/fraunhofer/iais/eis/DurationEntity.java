@@ -23,4 +23,6 @@ public interface DurationEntity extends TemporalEntity {
     @Beta
     public DurationEntity deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

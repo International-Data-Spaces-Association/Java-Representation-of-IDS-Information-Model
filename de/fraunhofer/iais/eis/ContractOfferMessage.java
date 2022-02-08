@@ -24,4 +24,6 @@ public interface ContractOfferMessage extends NotificationMessage {
     @Beta
     public ContractOfferMessage deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

@@ -3,6 +3,7 @@ package de.fraunhofer.iais.eis;
 import java.net.URI;
 
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -36,6 +37,7 @@ public interface DescriptionRequestMessage extends RequestMessage {
      *
      * @return Returns the URI for the property _requestedElement.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/requestedElement", "ids:requestedElement", "requestedElement"})
     URI getRequestedElement();
 
     /**
@@ -46,5 +48,7 @@ public interface DescriptionRequestMessage extends RequestMessage {
      * @param _requestedElement_ desired value for the property _requestedElement.
      */
     void setRequestedElement(URI _requestedElement_);
+
+    // Default instances of this class as defined in the ontology
 
 }

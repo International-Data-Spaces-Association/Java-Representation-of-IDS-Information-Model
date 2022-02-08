@@ -21,4 +21,6 @@ public interface SpatialRequest extends ContractRequest {
     @Beta
     public SpatialRequest deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

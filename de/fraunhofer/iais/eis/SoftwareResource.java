@@ -21,4 +21,6 @@ public interface SoftwareResource extends Resource {
     @Beta
     public SoftwareResource deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

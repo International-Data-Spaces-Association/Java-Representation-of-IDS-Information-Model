@@ -22,4 +22,6 @@ public interface PIP extends UsageControlComponent {
     @Beta
     public PIP deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

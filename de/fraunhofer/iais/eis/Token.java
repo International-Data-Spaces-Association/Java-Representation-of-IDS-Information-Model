@@ -3,6 +3,7 @@ package de.fraunhofer.iais.eis;
 
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -33,6 +34,7 @@ public interface Token extends ModelClass {
      * @return Returns the String for the property _tokenValue.
      */
     @NotNull
+    @JsonAlias({"https://w3id.org/idsa/core/tokenValue", "ids:tokenValue", "tokenValue"})
     String getTokenValue();
 
     /**
@@ -52,6 +54,7 @@ public interface Token extends ModelClass {
      * @return Returns the TokenFormat for the property _tokenFormat.
      */
     @NotNull
+    @JsonAlias({"https://w3id.org/idsa/core/tokenFormat", "ids:tokenFormat", "tokenFormat"})
     TokenFormat getTokenFormat();
 
     /**
@@ -62,5 +65,7 @@ public interface Token extends ModelClass {
      * @param _tokenFormat_ desired value for the property _tokenFormat.
      */
     void setTokenFormat(TokenFormat _tokenFormat_);
+
+    // Default instances of this class as defined in the ontology
 
 }

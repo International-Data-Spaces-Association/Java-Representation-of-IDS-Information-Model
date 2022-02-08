@@ -21,4 +21,6 @@ public interface DistributeEcryptedAgreement extends ContractAgreement {
     @Beta
     public DistributeEcryptedAgreement deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

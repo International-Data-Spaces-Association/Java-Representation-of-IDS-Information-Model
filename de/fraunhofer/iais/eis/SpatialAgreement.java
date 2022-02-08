@@ -21,4 +21,6 @@ public interface SpatialAgreement extends ContractAgreement {
     @Beta
     public SpatialAgreement deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

@@ -21,4 +21,6 @@ public interface SecurityAgreement extends ContractAgreement {
     @Beta
     public SecurityAgreement deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

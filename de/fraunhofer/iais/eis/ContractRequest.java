@@ -37,4 +37,6 @@ public interface ContractRequest extends Contract {
     @Beta
     public ContractRequest deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

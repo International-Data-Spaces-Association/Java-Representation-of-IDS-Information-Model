@@ -3,6 +3,7 @@ package de.fraunhofer.iais.eis;
 
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -32,6 +33,7 @@ public interface GeoPoint extends Location {
      * @return Returns the float for the property _latitude.
      */
     @NotNull
+    @JsonAlias({"https://w3id.org/idsa/core/latitude", "ids:latitude", "latitude"})
     float getLatitude();
 
     /**
@@ -51,6 +53,7 @@ public interface GeoPoint extends Location {
      * @return Returns the float for the property _longitude.
      */
     @NotNull
+    @JsonAlias({"https://w3id.org/idsa/core/longitude", "ids:longitude", "longitude"})
     float getLongitude();
 
     /**
@@ -61,5 +64,7 @@ public interface GeoPoint extends Location {
      * @param _longitude_ desired value for the property _longitude.
      */
     void setLongitude(float _longitude_);
+
+    // Default instances of this class as defined in the ontology
 
 }

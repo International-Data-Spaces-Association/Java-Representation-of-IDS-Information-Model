@@ -21,4 +21,6 @@ public interface RentalOffer extends ContractOffer {
     @Beta
     public RentalOffer deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

@@ -2,6 +2,7 @@ package de.fraunhofer.iais.eis;
 
 
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -30,6 +31,7 @@ public interface VideoRepresentation extends Representation {
      *
      * @return Returns the java.math.BigDecimal for the property _frameRate.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/frameRate", "ids:frameRate", "frameRate"})
     java.math.BigDecimal getFrameRate();
 
     /**
@@ -40,5 +42,7 @@ public interface VideoRepresentation extends Representation {
      * @param _frameRate_ desired value for the property _frameRate.
      */
     void setFrameRate(java.math.BigDecimal _frameRate_);
+
+    // Default instances of this class as defined in the ontology
 
 }

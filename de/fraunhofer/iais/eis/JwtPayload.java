@@ -7,6 +7,7 @@ import java.util.List;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -42,6 +43,7 @@ public interface JwtPayload extends ModelClass {
      * @return Returns the List of Strings for the property _transportCertsSha256.
      */
     @NotEmpty
+    @JsonAlias({"https://w3id.org/idsa/core/transportCertsSha256", "ids:transportCertsSha256", "transportCertsSha256"})
     List<String> getTransportCertsSha256();
 
     /**
@@ -65,6 +67,7 @@ public interface JwtPayload extends ModelClass {
      * @return Returns the Audience for the property _aud.
      */
     @NotNull
+    @JsonAlias({"https://w3id.org/idsa/core/aud", "ids:aud", "aud"})
     Audience getAud();
 
     /**
@@ -85,6 +88,7 @@ public interface JwtPayload extends ModelClass {
      * @return Returns the BigInteger for the property _exp.
      */
     @NotNull
+    @JsonAlias({"https://w3id.org/idsa/core/exp", "ids:exp", "exp"})
     BigInteger getExp();
 
     /**
@@ -105,6 +109,7 @@ public interface JwtPayload extends ModelClass {
      * @return Returns the BigInteger for the property _iat.
      */
     @NotNull
+    @JsonAlias({"https://w3id.org/idsa/core/iat", "ids:iat", "iat"})
     BigInteger getIat();
 
     /**
@@ -123,6 +128,7 @@ public interface JwtPayload extends ModelClass {
      *
      * @return Returns the String for the property _iss.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/iss", "ids:iss", "iss"})
     String getIss();
 
     /**
@@ -142,6 +148,7 @@ public interface JwtPayload extends ModelClass {
      * @return Returns the BigInteger for the property _nbf.
      */
     @NotNull
+    @JsonAlias({"https://w3id.org/idsa/core/nbf", "ids:nbf", "nbf"})
     BigInteger getNbf();
 
     /**
@@ -161,6 +168,7 @@ public interface JwtPayload extends ModelClass {
      *
      * @return Returns the URI for the property _referringConnector.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/referringConnector", "ids:referringConnector", "referringConnector"})
     URI getReferringConnector();
 
     /**
@@ -182,6 +190,7 @@ public interface JwtPayload extends ModelClass {
      * @return Returns the String for the property _scope.
      */
     @NotNull
+    @JsonAlias({"https://w3id.org/idsa/core/scope", "ids:scope", "scope"})
     String getScope();
 
     /**
@@ -202,6 +211,7 @@ public interface JwtPayload extends ModelClass {
      * @return Returns the String for the property _sub.
      */
     @NotNull
+    @JsonAlias({"https://w3id.org/idsa/core/sub", "ids:sub", "sub"})
     String getSub();
 
     /**
@@ -221,6 +231,7 @@ public interface JwtPayload extends ModelClass {
      * @return Returns the SecurityProfile for the property _securityProfile.
      */
     @NotNull
+    @JsonAlias({"https://w3id.org/idsa/core/securityProfile", "ids:securityProfile", "securityProfile"})
     SecurityProfile getSecurityProfile();
 
     /**

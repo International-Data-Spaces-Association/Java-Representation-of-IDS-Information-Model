@@ -21,4 +21,6 @@ public interface ConnectorbasedRequest extends ContractRequest {
     @Beta
     public ConnectorbasedRequest deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

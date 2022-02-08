@@ -21,4 +21,6 @@ public interface License extends ModelClass {
     @Beta
     public License deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

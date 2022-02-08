@@ -4,6 +4,7 @@ import java.net.URI;
 
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -35,6 +36,7 @@ public interface UsageControlComponent extends ModelClass {
      * @return Returns the URI for the property _interfaceDescription.
      */
     @NotNull
+    @JsonAlias({"https://w3id.org/idsa/core/interfaceDescription", "ids:interfaceDescription", "interfaceDescription"})
     URI getInterfaceDescription();
 
     /**
@@ -53,6 +55,7 @@ public interface UsageControlComponent extends ModelClass {
      *
      * @return Returns the URI for the property _endpointURI.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/endpointURI", "ids:endpointURI", "endpointURI"})
     URI getEndpointURI();
 
     /**
@@ -63,5 +66,7 @@ public interface UsageControlComponent extends ModelClass {
      * @param _endpointURI_ desired value for the property _endpointURI.
      */
     void setEndpointURI(URI _endpointURI_);
+
+    // Default instances of this class as defined in the ontology
 
 }

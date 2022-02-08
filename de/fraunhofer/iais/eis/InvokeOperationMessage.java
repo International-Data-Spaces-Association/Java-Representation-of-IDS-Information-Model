@@ -4,6 +4,7 @@ import java.net.URI;
 
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -33,6 +34,7 @@ public interface InvokeOperationMessage extends RequestMessage {
      * @return Returns the URI for the property _operationReference.
      */
     @NotNull
+    @JsonAlias({"https://w3id.org/idsa/core/operationReference", "ids:operationReference", "operationReference"})
     URI getOperationReference();
 
     /**
@@ -43,5 +45,7 @@ public interface InvokeOperationMessage extends RequestMessage {
      * @param _operationReference_ desired value for the property _operationReference.
      */
     void setOperationReference(URI _operationReference_);
+
+    // Default instances of this class as defined in the ontology
 
 }

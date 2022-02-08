@@ -22,4 +22,6 @@ public interface CommandMessage extends RequestMessage {
     @Beta
     public CommandMessage deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

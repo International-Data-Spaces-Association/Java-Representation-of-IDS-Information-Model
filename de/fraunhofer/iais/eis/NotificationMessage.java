@@ -29,4 +29,6 @@ public interface NotificationMessage extends Message {
     @Beta
     public NotificationMessage deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

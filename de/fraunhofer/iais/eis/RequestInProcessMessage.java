@@ -21,4 +21,6 @@ public interface RequestInProcessMessage extends NotificationMessage {
     @Beta
     public RequestInProcessMessage deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

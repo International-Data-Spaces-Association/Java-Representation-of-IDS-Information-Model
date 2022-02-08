@@ -21,46 +21,24 @@ public class ClearingHouseBuilder implements Builder<ClearingHouse> {
     }
 
     /**
-     * This function allows setting a value for _maintainerAsObject
+     * This function allows setting a value for _maintainer
      * 
      * @param _maintainer_ desired value to be set
-     * @return Builder object with new value for _maintainerAsObject
+     * @return Builder object with new value for _maintainer
      */
-    public ClearingHouseBuilder _maintainerAsObject_(Participant _maintainer_) {
-        this.clearingHouseImpl.setMaintainerAsObject(_maintainer_);
+    public ClearingHouseBuilder _maintainer_(URI _maintainer_) {
+        this.clearingHouseImpl.setMaintainer(_maintainer_);
         return this;
     }
 
     /**
-     * This function allows setting a value for _maintainerAsUri
-     * 
-     * @param _maintainer_ desired value to be set
-     * @return Builder object with new value for _maintainerAsUri
-     */
-    public ClearingHouseBuilder _maintainerAsUri_(URI _maintainer_) {
-        this.clearingHouseImpl.setMaintainerAsUri(_maintainer_);
-        return this;
-    }
-
-    /**
-     * This function allows setting a value for _curatorAsObject
+     * This function allows setting a value for _curator
      * 
      * @param _curator_ desired value to be set
-     * @return Builder object with new value for _curatorAsObject
+     * @return Builder object with new value for _curator
      */
-    public ClearingHouseBuilder _curatorAsObject_(Participant _curator_) {
-        this.clearingHouseImpl.setCuratorAsObject(_curator_);
-        return this;
-    }
-
-    /**
-     * This function allows setting a value for _curatorAsUri
-     * 
-     * @param _curator_ desired value to be set
-     * @return Builder object with new value for _curatorAsUri
-     */
-    public ClearingHouseBuilder _curatorAsUri_(URI _curator_) {
-        this.clearingHouseImpl.setCuratorAsUri(_curator_);
+    public ClearingHouseBuilder _curator_(URI _curator_) {
+        this.clearingHouseImpl.setCurator(_curator_);
         return this;
     }
 

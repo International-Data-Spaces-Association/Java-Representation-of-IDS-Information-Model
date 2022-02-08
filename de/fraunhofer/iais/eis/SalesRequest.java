@@ -21,4 +21,6 @@ public interface SalesRequest extends ContractRequest {
     @Beta
     public SalesRequest deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

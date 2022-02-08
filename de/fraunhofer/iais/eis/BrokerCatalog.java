@@ -21,4 +21,6 @@ public interface BrokerCatalog extends ConnectorCatalog {
     @Beta
     public BrokerCatalog deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

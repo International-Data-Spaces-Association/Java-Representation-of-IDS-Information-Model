@@ -22,4 +22,6 @@ public interface ResourceUpdateMessage extends ResourceNotificationMessage {
     @Beta
     public ResourceUpdateMessage deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

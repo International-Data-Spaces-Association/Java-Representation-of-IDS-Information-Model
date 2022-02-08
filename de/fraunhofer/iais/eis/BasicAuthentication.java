@@ -2,6 +2,7 @@ package de.fraunhofer.iais.eis;
 
 
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -31,6 +32,7 @@ public interface BasicAuthentication extends UserAuthentication {
      *
      * @return Returns the String for the property _authPassword.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/authPassword", "ids:authPassword", "authPassword"})
     String getAuthPassword();
 
     /**
@@ -41,5 +43,7 @@ public interface BasicAuthentication extends UserAuthentication {
      * @param _authPassword_ desired value for the property _authPassword.
      */
     void setAuthPassword(String _authPassword_);
+
+    // Default instances of this class as defined in the ontology
 
 }

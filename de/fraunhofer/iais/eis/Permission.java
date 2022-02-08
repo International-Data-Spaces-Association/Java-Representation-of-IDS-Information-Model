@@ -3,6 +3,7 @@ package de.fraunhofer.iais.eis;
 import java.util.List;
 
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -31,6 +32,7 @@ public interface Permission extends Rule {
      *
      * @return Returns the List of Dutys for the property _preDuty.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/preDuty", "ids:preDuty", "preDuty"})
     List<Duty> getPreDuty();
 
     /**
@@ -49,6 +51,7 @@ public interface Permission extends Rule {
      *
      * @return Returns the List of Dutys for the property _postDuty.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/postDuty", "ids:postDuty", "postDuty"})
     List<Duty> getPostDuty();
 
     /**
@@ -59,5 +62,7 @@ public interface Permission extends Rule {
      * @param _postDuty_ desired value for the property _postDuty.
      */
     void setPostDuty(List<Duty> _postDuty_);
+
+    // Default instances of this class as defined in the ontology
 
 }

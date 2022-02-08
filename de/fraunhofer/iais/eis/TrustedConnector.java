@@ -21,4 +21,6 @@ public interface TrustedConnector extends Connector {
     @Beta
     public TrustedConnector deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

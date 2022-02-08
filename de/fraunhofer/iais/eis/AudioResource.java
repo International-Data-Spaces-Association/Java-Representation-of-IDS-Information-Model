@@ -21,4 +21,6 @@ public interface AudioResource extends Resource {
     @Beta
     public AudioResource deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

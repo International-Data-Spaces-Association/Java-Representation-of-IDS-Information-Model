@@ -6,6 +6,7 @@ import java.util.List;
 import javax.validation.constraints.NotNull;
 import javax.xml.datatype.XMLGregorianCalendar;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -38,6 +39,7 @@ public interface Message extends ModelClass {
      * @return Returns the String for the property _modelVersion.
      */
     @NotNull
+    @JsonAlias({"https://w3id.org/idsa/core/modelVersion", "ids:modelVersion", "modelVersion"})
     String getModelVersion();
 
     /**
@@ -58,6 +60,7 @@ public interface Message extends ModelClass {
      */
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
     @NotNull
+    @JsonAlias({"https://w3id.org/idsa/core/issued", "ids:issued", "issued"})
     XMLGregorianCalendar getIssued();
 
     /**
@@ -76,6 +79,7 @@ public interface Message extends ModelClass {
      *
      * @return Returns the URI for the property _correlationMessage.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/correlationMessage", "ids:correlationMessage", "correlationMessage"})
     URI getCorrelationMessage();
 
     /**
@@ -95,6 +99,7 @@ public interface Message extends ModelClass {
      * @return Returns the URI for the property _issuerConnector.
      */
     @NotNull
+    @JsonAlias({"https://w3id.org/idsa/core/issuerConnector", "ids:issuerConnector", "issuerConnector"})
     URI getIssuerConnector();
 
     /**
@@ -113,6 +118,7 @@ public interface Message extends ModelClass {
      *
      * @return Returns the List of URIs for the property _recipientConnector.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/recipientConnector", "ids:recipientConnector", "recipientConnector"})
     List<URI> getRecipientConnector();
 
     /**
@@ -132,6 +138,7 @@ public interface Message extends ModelClass {
      * @return Returns the URI for the property _senderAgent.
      */
     @NotNull
+    @JsonAlias({"https://w3id.org/idsa/core/senderAgent", "ids:senderAgent", "senderAgent"})
     URI getSenderAgent();
 
     /**
@@ -150,6 +157,7 @@ public interface Message extends ModelClass {
      *
      * @return Returns the List of URIs for the property _recipientAgent.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/recipientAgent", "ids:recipientAgent", "recipientAgent"})
     List<URI> getRecipientAgent();
 
     /**
@@ -169,6 +177,7 @@ public interface Message extends ModelClass {
      * @return Returns the DynamicAttributeToken for the property _securityToken.
      */
     @NotNull
+    @JsonAlias({"https://w3id.org/idsa/core/securityToken", "ids:securityToken", "securityToken"})
     DynamicAttributeToken getSecurityToken();
 
     /**
@@ -187,6 +196,7 @@ public interface Message extends ModelClass {
      *
      * @return Returns the Token for the property _authorizationToken.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/authorizationToken", "ids:authorizationToken", "authorizationToken"})
     Token getAuthorizationToken();
 
     /**
@@ -205,6 +215,7 @@ public interface Message extends ModelClass {
      *
      * @return Returns the URI for the property _transferContract.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/transferContract", "ids:transferContract", "transferContract"})
     URI getTransferContract();
 
     /**
@@ -224,6 +235,7 @@ public interface Message extends ModelClass {
      *
      * @return Returns the String for the property _contentVersion.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/contentVersion", "ids:contentVersion", "contentVersion"})
     String getContentVersion();
 
     /**

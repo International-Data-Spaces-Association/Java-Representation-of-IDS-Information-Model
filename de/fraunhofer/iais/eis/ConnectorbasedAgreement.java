@@ -21,4 +21,6 @@ public interface ConnectorbasedAgreement extends ContractAgreement {
     @Beta
     public ConnectorbasedAgreement deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

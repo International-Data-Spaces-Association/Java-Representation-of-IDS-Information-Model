@@ -3,6 +3,7 @@ package de.fraunhofer.iais.eis;
 import java.util.List;
 
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -31,6 +32,7 @@ public interface Broker extends Connector {
      *
      * @return Returns the List of ConnectorCatalogs for the property _connectorCatalog.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/connectorCatalog", "ids:connectorCatalog", "connectorCatalog"})
     List<ConnectorCatalog> getConnectorCatalog();
 
     /**
@@ -41,5 +43,7 @@ public interface Broker extends Connector {
      * @param _connectorCatalog_ desired value for the property _connectorCatalog.
      */
     void setConnectorCatalog(List<ConnectorCatalog> _connectorCatalog_);
+
+    // Default instances of this class as defined in the ontology
 
 }

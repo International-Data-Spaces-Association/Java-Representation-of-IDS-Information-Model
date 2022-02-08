@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.validation.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -35,6 +36,7 @@ public interface Rule extends Described {
      *
      * @return Returns the List of URIs for the property _assignee.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/assignee", "ids:assignee", "assignee"})
     List<URI> getAssignee();
 
     /**
@@ -53,6 +55,7 @@ public interface Rule extends Described {
      *
      * @return Returns the List of URIs for the property _assigner.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/assigner", "ids:assigner", "assigner"})
     List<URI> getAssigner();
 
     /**
@@ -71,6 +74,7 @@ public interface Rule extends Described {
      *
      * @return Returns the URI for the property _target.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/target", "ids:target", "target"})
     URI getTarget();
 
     /**
@@ -89,6 +93,7 @@ public interface Rule extends Described {
      *
      * @return Returns the List of AbstractConstraints for the property _constraint.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/constraint", "ids:constraint", "constraint"})
     List<AbstractConstraint> getConstraint();
 
     /**
@@ -108,6 +113,7 @@ public interface Rule extends Described {
      * @return Returns the List of Actions for the property _action.
      */
     @NotEmpty
+    @JsonAlias({"https://w3id.org/idsa/core/action", "ids:action", "action"})
     List<Action> getAction();
 
     /**
@@ -127,6 +133,7 @@ public interface Rule extends Described {
      *
      * @return Returns the AbstractConstraint for the property _assetRefinement.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/assetRefinement", "ids:assetRefinement", "assetRefinement"})
     AbstractConstraint getAssetRefinement();
 
     /**

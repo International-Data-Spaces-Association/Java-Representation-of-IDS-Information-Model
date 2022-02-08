@@ -24,4 +24,6 @@ public interface DynamicAttributeToken extends Token {
     @Beta
     public DynamicAttributeToken deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

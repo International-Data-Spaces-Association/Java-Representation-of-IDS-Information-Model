@@ -22,4 +22,6 @@ public interface ContractRequestMessage extends RequestMessage {
     @Beta
     public ContractRequestMessage deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

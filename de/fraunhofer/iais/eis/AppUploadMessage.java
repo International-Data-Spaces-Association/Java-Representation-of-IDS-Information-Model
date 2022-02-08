@@ -4,6 +4,7 @@ import java.net.URI;
 
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -42,6 +43,7 @@ public interface AppUploadMessage extends UploadMessage {
      * @return Returns the URI for the property _appArtifactReference.
      */
     @NotNull
+    @JsonAlias({"https://w3id.org/idsa/core/appArtifactReference", "ids:appArtifactReference", "appArtifactReference"})
     URI getAppArtifactReference();
 
     /**
@@ -54,5 +56,7 @@ public interface AppUploadMessage extends UploadMessage {
      * @param _appArtifactReference_ desired value for the property _appArtifactReference.
      */
     void setAppArtifactReference(URI _appArtifactReference_);
+
+    // Default instances of this class as defined in the ontology
 
 }

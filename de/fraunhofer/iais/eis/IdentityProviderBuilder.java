@@ -21,46 +21,24 @@ public class IdentityProviderBuilder implements Builder<IdentityProvider> {
     }
 
     /**
-     * This function allows setting a value for _maintainerAsObject
+     * This function allows setting a value for _maintainer
      * 
      * @param _maintainer_ desired value to be set
-     * @return Builder object with new value for _maintainerAsObject
+     * @return Builder object with new value for _maintainer
      */
-    public IdentityProviderBuilder _maintainerAsObject_(Participant _maintainer_) {
-        this.identityProviderImpl.setMaintainerAsObject(_maintainer_);
+    public IdentityProviderBuilder _maintainer_(URI _maintainer_) {
+        this.identityProviderImpl.setMaintainer(_maintainer_);
         return this;
     }
 
     /**
-     * This function allows setting a value for _maintainerAsUri
-     * 
-     * @param _maintainer_ desired value to be set
-     * @return Builder object with new value for _maintainerAsUri
-     */
-    public IdentityProviderBuilder _maintainerAsUri_(URI _maintainer_) {
-        this.identityProviderImpl.setMaintainerAsUri(_maintainer_);
-        return this;
-    }
-
-    /**
-     * This function allows setting a value for _curatorAsObject
+     * This function allows setting a value for _curator
      * 
      * @param _curator_ desired value to be set
-     * @return Builder object with new value for _curatorAsObject
+     * @return Builder object with new value for _curator
      */
-    public IdentityProviderBuilder _curatorAsObject_(Participant _curator_) {
-        this.identityProviderImpl.setCuratorAsObject(_curator_);
-        return this;
-    }
-
-    /**
-     * This function allows setting a value for _curatorAsUri
-     * 
-     * @param _curator_ desired value to be set
-     * @return Builder object with new value for _curatorAsUri
-     */
-    public IdentityProviderBuilder _curatorAsUri_(URI _curator_) {
-        this.identityProviderImpl.setCuratorAsUri(_curator_);
+    public IdentityProviderBuilder _curator_(URI _curator_) {
+        this.identityProviderImpl.setCurator(_curator_);
         return this;
     }
 

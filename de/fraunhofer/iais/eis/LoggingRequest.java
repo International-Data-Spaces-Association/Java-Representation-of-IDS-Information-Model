@@ -21,4 +21,6 @@ public interface LoggingRequest extends ContractRequest {
     @Beta
     public LoggingRequest deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

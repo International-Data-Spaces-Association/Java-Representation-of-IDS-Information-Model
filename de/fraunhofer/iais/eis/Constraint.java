@@ -4,6 +4,7 @@ import java.net.URI;
 
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -33,6 +34,7 @@ public interface Constraint extends AbstractConstraint {
      * @return Returns the LeftOperand for the property _leftOperand.
      */
     @NotNull
+    @JsonAlias({"https://w3id.org/idsa/core/leftOperand", "ids:leftOperand", "leftOperand"})
     LeftOperand getLeftOperand();
 
     /**
@@ -52,6 +54,7 @@ public interface Constraint extends AbstractConstraint {
      * @return Returns the BinaryOperator for the property _operator.
      */
     @NotNull
+    @JsonAlias({"https://w3id.org/idsa/core/operator", "ids:operator", "operator"})
     BinaryOperator getOperator();
 
     /**
@@ -72,6 +75,7 @@ public interface Constraint extends AbstractConstraint {
      *
      * @return Returns the RdfResource for the property _rightOperand.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/rightOperand", "ids:rightOperand", "rightOperand"})
     RdfResource getRightOperand();
 
     /**
@@ -94,6 +98,7 @@ public interface Constraint extends AbstractConstraint {
      *
      * @return Returns the URI for the property _rightOperandReference.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/rightOperandReference", "ids:rightOperandReference", "rightOperandReference"})
     URI getRightOperandReference();
 
     /**
@@ -114,6 +119,7 @@ public interface Constraint extends AbstractConstraint {
      *
      * @return Returns the URI for the property _unit.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/unit", "ids:unit", "unit"})
     URI getUnit();
 
     /**
@@ -134,6 +140,7 @@ public interface Constraint extends AbstractConstraint {
      * @return Returns the PIP for the property _pipEndpoint.
      */
     @NotNull
+    @JsonAlias({"https://w3id.org/idsa/core/pipEndpoint", "ids:pipEndpoint", "pipEndpoint"})
     PIP getPipEndpoint();
 
     /**
@@ -145,5 +152,7 @@ public interface Constraint extends AbstractConstraint {
      * @param _pipEndpoint_ desired value for the property _pipEndpoint.
      */
     void setPipEndpoint(PIP _pipEndpoint_);
+
+    // Default instances of this class as defined in the ontology
 
 }

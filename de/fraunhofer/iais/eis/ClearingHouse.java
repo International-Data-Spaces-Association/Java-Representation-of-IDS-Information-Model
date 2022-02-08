@@ -22,4 +22,6 @@ public interface ClearingHouse extends InfrastructureComponent {
     @Beta
     public ClearingHouse deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

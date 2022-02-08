@@ -2,6 +2,7 @@ package de.fraunhofer.iais.eis;
 
 
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -30,6 +31,7 @@ public interface QueryMessage extends RequestMessage {
      *
      * @return Returns the QueryLanguage for the property _queryLanguage.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/queryLanguage", "ids:queryLanguage", "queryLanguage"})
     QueryLanguage getQueryLanguage();
 
     /**
@@ -48,6 +50,7 @@ public interface QueryMessage extends RequestMessage {
      *
      * @return Returns the QueryScope for the property _queryScope.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/queryScope", "ids:queryScope", "queryScope"})
     QueryScope getQueryScope();
 
     /**
@@ -66,6 +69,7 @@ public interface QueryMessage extends RequestMessage {
      *
      * @return Returns the QueryTarget for the property _recipientScope.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/recipientScope", "ids:recipientScope", "recipientScope"})
     QueryTarget getRecipientScope();
 
     /**
@@ -76,5 +80,7 @@ public interface QueryMessage extends RequestMessage {
      * @param _recipientScope_ desired value for the property _recipientScope.
      */
     void setRecipientScope(QueryTarget _recipientScope_);
+
+    // Default instances of this class as defined in the ontology
 
 }

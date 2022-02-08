@@ -21,4 +21,6 @@ public interface PurposeOffer extends ContractOffer {
     @Beta
     public PurposeOffer deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

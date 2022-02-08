@@ -21,4 +21,6 @@ public interface DurationOffer extends ContractOffer {
     @Beta
     public DurationOffer deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

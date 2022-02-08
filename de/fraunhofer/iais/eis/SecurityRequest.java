@@ -21,4 +21,6 @@ public interface SecurityRequest extends ContractRequest {
     @Beta
     public SecurityRequest deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

@@ -2,6 +2,7 @@ package de.fraunhofer.iais.eis;
 
 
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -31,6 +32,7 @@ public interface UserAuthentication extends ModelClass {
      *
      * @return Returns the String for the property _authUsername.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/authUsername", "ids:authUsername", "authUsername"})
     String getAuthUsername();
 
     /**

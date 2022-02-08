@@ -21,4 +21,6 @@ public interface Prohibition extends Rule {
     @Beta
     public Prohibition deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

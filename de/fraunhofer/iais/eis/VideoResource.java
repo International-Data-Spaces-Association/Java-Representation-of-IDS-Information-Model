@@ -21,4 +21,6 @@ public interface VideoResource extends Resource {
     @Beta
     public VideoResource deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

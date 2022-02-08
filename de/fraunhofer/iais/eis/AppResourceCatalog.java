@@ -3,6 +3,7 @@ package de.fraunhofer.iais.eis;
 import java.util.List;
 
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -32,6 +33,7 @@ public interface AppResourceCatalog extends Catalog {
      *
      * @return Returns the List of AppResources for the property _listedAppResource.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/listedAppResource", "ids:listedAppResource", "listedAppResource"})
     List<AppResource> getListedAppResource();
 
     /**
@@ -42,5 +44,7 @@ public interface AppResourceCatalog extends Catalog {
      * @param _listedAppResource_ desired value for the property _listedAppResource.
      */
     void setListedAppResource(List<AppResource> _listedAppResource_);
+
+    // Default instances of this class as defined in the ontology
 
 }

@@ -22,4 +22,6 @@ public interface ParticipantUpdateMessage extends ParticipantNotificationMessage
     @Beta
     public ParticipantUpdateMessage deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

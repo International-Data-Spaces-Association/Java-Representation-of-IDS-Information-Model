@@ -3,6 +3,7 @@ package de.fraunhofer.iais.eis;
 import java.util.List;
 
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -31,6 +32,7 @@ public interface Person extends ModelClass {
      *
      * @return Returns the String for the property _familyName.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/familyName", "ids:familyName", "familyName"})
     String getFamilyName();
 
     /**
@@ -49,6 +51,7 @@ public interface Person extends ModelClass {
      *
      * @return Returns the String for the property _givenName.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/givenName", "ids:givenName", "givenName"})
     String getGivenName();
 
     /**
@@ -67,6 +70,7 @@ public interface Person extends ModelClass {
      *
      * @return Returns the List of Strings for the property _phoneNumber.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/phoneNumber", "ids:phoneNumber", "phoneNumber"})
     List<String> getPhoneNumber();
 
     /**
@@ -85,6 +89,7 @@ public interface Person extends ModelClass {
      *
      * @return Returns the List of Strings for the property _emailAddress.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/emailAddress", "ids:emailAddress", "emailAddress"})
     List<String> getEmailAddress();
 
     /**
@@ -103,6 +108,7 @@ public interface Person extends ModelClass {
      *
      * @return Returns the String for the property _homepage.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/homepage", "ids:homepage", "homepage"})
     String getHomepage();
 
     /**
@@ -113,5 +119,7 @@ public interface Person extends ModelClass {
      * @param _homepage_ desired value for the property _homepage.
      */
     void setHomepage(String _homepage_);
+
+    // Default instances of this class as defined in the ontology
 
 }

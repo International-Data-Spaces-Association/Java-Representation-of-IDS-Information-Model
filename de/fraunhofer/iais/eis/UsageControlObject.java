@@ -7,6 +7,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.xml.datatype.XMLGregorianCalendar;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -37,6 +38,7 @@ public interface UsageControlObject extends ModelClass {
      * @return Returns the URI for the property _data.
      */
     @NotNull
+    @JsonAlias({"https://w3id.org/idsa/core/data", "ids:data", "data"})
     URI getData();
 
     /**
@@ -55,6 +57,7 @@ public interface UsageControlObject extends ModelClass {
      *
      * @return Returns the Participant for the property _user.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/user", "ids:user", "user"})
     Participant getUser();
 
     /**
@@ -74,6 +77,7 @@ public interface UsageControlObject extends ModelClass {
      *
      * @return Returns the URI for the property _source.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/source", "ids:source", "source"})
     URI getSource();
 
     /**
@@ -94,6 +98,7 @@ public interface UsageControlObject extends ModelClass {
      * @return Returns the List of ContractAgreements for the property _contract.
      */
     @NotEmpty
+    @JsonAlias({"https://w3id.org/idsa/core/contract", "ids:contract", "contract"})
     List<ContractAgreement> getContract();
 
     /**
@@ -113,6 +118,7 @@ public interface UsageControlObject extends ModelClass {
      *
      * @return Returns the javax.xml.datatype.Duration for the property _usageDuration.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/usageDuration", "ids:usageDuration", "usageDuration"})
     javax.xml.datatype.Duration getUsageDuration();
 
     /**
@@ -133,6 +139,7 @@ public interface UsageControlObject extends ModelClass {
      * @return Returns the XMLGregorianCalendar for the property _accessed.
      */
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
+    @JsonAlias({"https://w3id.org/idsa/core/accessed", "ids:accessed", "accessed"})
     XMLGregorianCalendar getAccessed();
 
     /**
@@ -151,6 +158,7 @@ public interface UsageControlObject extends ModelClass {
      *
      * @return Returns the List of ArtifactStates for the property _hasState.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/hasState", "ids:hasState", "hasState"})
     List<ArtifactState> getHasState();
 
     /**
@@ -170,6 +178,7 @@ public interface UsageControlObject extends ModelClass {
      *
      * @return Returns the URI for the property _requester.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/requester", "ids:requester", "requester"})
     URI getRequester();
 
     /**
@@ -193,6 +202,7 @@ public interface UsageControlObject extends ModelClass {
      */
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
     @NotNull
+    @JsonAlias({"https://w3id.org/idsa/core/created", "ids:created", "created"})
     XMLGregorianCalendar getCreated();
 
     /**
@@ -215,6 +225,7 @@ public interface UsageControlObject extends ModelClass {
      * @return Returns the XMLGregorianCalendar for the property _modified.
      */
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSzzz")
+    @JsonAlias({"https://w3id.org/idsa/core/modified", "ids:modified", "modified"})
     XMLGregorianCalendar getModified();
 
     /**
@@ -234,6 +245,7 @@ public interface UsageControlObject extends ModelClass {
      *
      * @return Returns the List of Actions for the property _action.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/action", "ids:action", "action"})
     List<Action> getAction();
 
     /**
@@ -244,5 +256,7 @@ public interface UsageControlObject extends ModelClass {
      * @param _action_ desired value for the property _action.
      */
     void setAction(List<Action> _action_);
+
+    // Default instances of this class as defined in the ontology
 
 }

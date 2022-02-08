@@ -21,4 +21,6 @@ public interface SalesAgreement extends ContractAgreement {
     @Beta
     public SalesAgreement deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

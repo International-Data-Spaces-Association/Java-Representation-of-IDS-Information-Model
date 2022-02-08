@@ -21,4 +21,6 @@ public interface BaseConnector extends Connector {
     @Beta
     public BaseConnector deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

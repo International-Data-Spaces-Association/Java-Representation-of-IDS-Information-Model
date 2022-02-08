@@ -21,4 +21,6 @@ public interface LogMessage extends NotificationMessage {
     @Beta
     public LogMessage deepCopy();
 
+    // Default instances of this class as defined in the ontology
+
 }

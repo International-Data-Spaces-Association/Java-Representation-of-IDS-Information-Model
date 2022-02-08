@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.List;
 
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -35,6 +36,7 @@ public interface Endpoint extends ModelClass {
      *
      * @return Returns the URI for the property _accessURL.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/accessURL", "ids:accessURL", "accessURL"})
     URI getAccessURL();
 
     /**
@@ -53,6 +55,7 @@ public interface Endpoint extends ModelClass {
      *
      * @return Returns the List of TypedLiterals for the property _endpointInformation.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/endpointInformation", "ids:endpointInformation", "endpointInformation"})
     List<TypedLiteral> getEndpointInformation();
 
     /**
@@ -72,6 +75,7 @@ public interface Endpoint extends ModelClass {
      *
      * @return Returns the List of URIs for the property _endpointDocumentation.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/endpointDocumentation", "ids:endpointDocumentation", "endpointDocumentation"})
     List<URI> getEndpointDocumentation();
 
     /**
@@ -91,6 +95,7 @@ public interface Endpoint extends ModelClass {
      *
      * @return Returns the String for the property _path.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/path", "ids:path", "path"})
     String getPath();
 
     /**
@@ -110,6 +115,7 @@ public interface Endpoint extends ModelClass {
      *
      * @return Returns the String for the property _inboundPath.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/inboundPath", "ids:inboundPath", "inboundPath"})
     String getInboundPath();
 
     /**
@@ -130,6 +136,7 @@ public interface Endpoint extends ModelClass {
      *
      * @return Returns the String for the property _outboundPath.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/outboundPath", "ids:outboundPath", "outboundPath"})
     String getOutboundPath();
 
     /**
@@ -149,6 +156,7 @@ public interface Endpoint extends ModelClass {
      *
      * @return Returns the List of IdsProtocolSpecifications for the property _apiSpecifiation.
      */
+    @JsonAlias({"https://w3id.org/idsa/core/apiSpecifiation", "ids:apiSpecifiation", "apiSpecifiation"})
     List<IdsProtocolSpecification> getApiSpecifiation();
 
     /**
@@ -159,5 +167,7 @@ public interface Endpoint extends ModelClass {
      * @param _apiSpecifiation_ desired value for the property _apiSpecifiation.
      */
     void setApiSpecifiation(List<IdsProtocolSpecification> _apiSpecifiation_);
+
+    // Default instances of this class as defined in the ontology
 
 }
