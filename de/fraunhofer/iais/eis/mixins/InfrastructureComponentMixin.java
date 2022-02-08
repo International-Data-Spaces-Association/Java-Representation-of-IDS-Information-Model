@@ -6,6 +6,8 @@ import java.util.List;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -23,19 +25,38 @@ import de.fraunhofer.iais.eis.util.*;
     @JsonSubTypes.Type(value = IdentityProvider.class)
 })
 public interface InfrastructureComponentMixin {
-    @JsonProperty("ids:maintainer")
+    @JsonIgnore
+    public Participant getMaintainerAsObject();
+
+    @JsonIgnore
+    public URI getMaintainerAsUri();
+
+    @JsonIgnore(false)
+    @JsonGetter("ids:maintainer")
+    public UriOrModelClass getMaintainer();
+
+    @JsonIgnore
+    public void setMaintainerAsObject(Participant _maintainer_);
+
+    @JsonIgnore
+    public void setMaintainerAsUri(URI _maintainer_);
+
+    @JsonIgnore
+    public Participant getCuratorAsObject();
+
+    @JsonIgnore
+    public URI getCuratorAsUri();
+
+    @JsonIgnore(false)
+    @JsonGetter("ids:curator")
     @NotNull
-    public URI getMaintainer();
+    public UriOrModelClass getCurator();
 
-    @JsonProperty("ids:maintainer")
-    public void setMaintainer(URI _maintainer_);
+    @JsonIgnore
+    public void setCuratorAsObject(Participant _curator_);
 
-    @JsonProperty("ids:curator")
-    @NotNull
-    public URI getCurator();
-
-    @JsonProperty("ids:curator")
-    public void setCurator(URI _curator_);
+    @JsonIgnore
+    public void setCuratorAsUri(URI _curator_);
 
     @JsonProperty("ids:physicalLocation")
     public Location getPhysicalLocation();

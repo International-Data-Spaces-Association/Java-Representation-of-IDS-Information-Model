@@ -7,17 +7,17 @@ import java.util.List;
 
 import de.fraunhofer.iais.eis.util.*;
 
-public class DAPSBuilder implements Builder<DAPS> {
+public class InfrastructureComponentBuilder implements Builder<InfrastructureComponent> {
 
-    private DAPSImpl dAPSImpl;
+    private InfrastructureComponentImpl infrastructureComponentImpl;
 
-    public DAPSBuilder() {
-        dAPSImpl = new DAPSImpl();
+    public InfrastructureComponentBuilder() {
+        infrastructureComponentImpl = new InfrastructureComponentImpl();
     }
 
-    public DAPSBuilder(URI id) {
+    public InfrastructureComponentBuilder(URI id) {
         this();
-        dAPSImpl.id = id;
+        infrastructureComponentImpl.id = id;
     }
 
     /**
@@ -26,8 +26,8 @@ public class DAPSBuilder implements Builder<DAPS> {
      * @param _maintainer_ desired value to be set
      * @return Builder object with new value for _maintainerAsObject
      */
-    public DAPSBuilder _maintainerAsObject_(Participant _maintainer_) {
-        this.dAPSImpl.setMaintainerAsObject(_maintainer_);
+    public InfrastructureComponentBuilder _maintainerAsObject_(Participant _maintainer_) {
+        this.infrastructureComponentImpl.setMaintainerAsObject(_maintainer_);
         return this;
     }
 
@@ -37,8 +37,8 @@ public class DAPSBuilder implements Builder<DAPS> {
      * @param _maintainer_ desired value to be set
      * @return Builder object with new value for _maintainerAsUri
      */
-    public DAPSBuilder _maintainerAsUri_(URI _maintainer_) {
-        this.dAPSImpl.setMaintainerAsUri(_maintainer_);
+    public InfrastructureComponentBuilder _maintainerAsUri_(URI _maintainer_) {
+        this.infrastructureComponentImpl.setMaintainerAsUri(_maintainer_);
         return this;
     }
 
@@ -48,8 +48,8 @@ public class DAPSBuilder implements Builder<DAPS> {
      * @param _curator_ desired value to be set
      * @return Builder object with new value for _curatorAsObject
      */
-    public DAPSBuilder _curatorAsObject_(Participant _curator_) {
-        this.dAPSImpl.setCuratorAsObject(_curator_);
+    public InfrastructureComponentBuilder _curatorAsObject_(Participant _curator_) {
+        this.infrastructureComponentImpl.setCuratorAsObject(_curator_);
         return this;
     }
 
@@ -59,8 +59,8 @@ public class DAPSBuilder implements Builder<DAPS> {
      * @param _curator_ desired value to be set
      * @return Builder object with new value for _curatorAsUri
      */
-    public DAPSBuilder _curatorAsUri_(URI _curator_) {
-        this.dAPSImpl.setCuratorAsUri(_curator_);
+    public InfrastructureComponentBuilder _curatorAsUri_(URI _curator_) {
+        this.infrastructureComponentImpl.setCuratorAsUri(_curator_);
         return this;
     }
 
@@ -70,8 +70,8 @@ public class DAPSBuilder implements Builder<DAPS> {
      * @param _physicalLocation_ desired value to be set
      * @return Builder object with new value for _physicalLocation
      */
-    public DAPSBuilder _physicalLocation_(Location _physicalLocation_) {
-        this.dAPSImpl.setPhysicalLocation(_physicalLocation_);
+    public InfrastructureComponentBuilder _physicalLocation_(Location _physicalLocation_) {
+        this.infrastructureComponentImpl.setPhysicalLocation(_physicalLocation_);
         return this;
     }
 
@@ -81,8 +81,8 @@ public class DAPSBuilder implements Builder<DAPS> {
      * @param _inboundModelVersion_ desired value to be set
      * @return Builder object with new value for _inboundModelVersion
      */
-    public DAPSBuilder _inboundModelVersion_(List<String> _inboundModelVersion_) {
-        this.dAPSImpl.setInboundModelVersion(_inboundModelVersion_);
+    public InfrastructureComponentBuilder _inboundModelVersion_(List<String> _inboundModelVersion_) {
+        this.infrastructureComponentImpl.setInboundModelVersion(_inboundModelVersion_);
         return this;
     }
 
@@ -92,8 +92,8 @@ public class DAPSBuilder implements Builder<DAPS> {
      * @param _inboundModelVersion_ desired value to be added
      * @return Builder object with new value for _inboundModelVersion
      */
-    public DAPSBuilder _inboundModelVersion_(String _inboundModelVersion_) {
-        this.dAPSImpl.getInboundModelVersion().add(_inboundModelVersion_);
+    public InfrastructureComponentBuilder _inboundModelVersion_(String _inboundModelVersion_) {
+        this.infrastructureComponentImpl.getInboundModelVersion().add(_inboundModelVersion_);
         return this;
     }
 
@@ -103,8 +103,8 @@ public class DAPSBuilder implements Builder<DAPS> {
      * @param _outboundModelVersion_ desired value to be set
      * @return Builder object with new value for _outboundModelVersion
      */
-    public DAPSBuilder _outboundModelVersion_(String _outboundModelVersion_) {
-        this.dAPSImpl.setOutboundModelVersion(_outboundModelVersion_);
+    public InfrastructureComponentBuilder _outboundModelVersion_(String _outboundModelVersion_) {
+        this.infrastructureComponentImpl.setOutboundModelVersion(_outboundModelVersion_);
         return this;
     }
 
@@ -114,8 +114,8 @@ public class DAPSBuilder implements Builder<DAPS> {
      * @param _componentCertification_ desired value to be set
      * @return Builder object with new value for _componentCertification
      */
-    public DAPSBuilder _componentCertification_(ComponentCertification _componentCertification_) {
-        this.dAPSImpl.setComponentCertification(_componentCertification_);
+    public InfrastructureComponentBuilder _componentCertification_(ComponentCertification _componentCertification_) {
+        this.infrastructureComponentImpl.setComponentCertification(_componentCertification_);
         return this;
     }
 
@@ -125,8 +125,8 @@ public class DAPSBuilder implements Builder<DAPS> {
      * @param _publicKey_ desired value to be set
      * @return Builder object with new value for _publicKey
      */
-    public DAPSBuilder _publicKey_(PublicKey _publicKey_) {
-        this.dAPSImpl.setPublicKey(_publicKey_);
+    public InfrastructureComponentBuilder _publicKey_(PublicKey _publicKey_) {
+        this.infrastructureComponentImpl.setPublicKey(_publicKey_);
         return this;
     }
 
@@ -136,8 +136,8 @@ public class DAPSBuilder implements Builder<DAPS> {
      * @param _version_ desired value to be set
      * @return Builder object with new value for _version
      */
-    public DAPSBuilder _version_(String _version_) {
-        this.dAPSImpl.setVersion(_version_);
+    public InfrastructureComponentBuilder _version_(String _version_) {
+        this.infrastructureComponentImpl.setVersion(_version_);
         return this;
     }
 
@@ -147,8 +147,8 @@ public class DAPSBuilder implements Builder<DAPS> {
      * @param _title_ desired value to be set
      * @return Builder object with new value for _title
      */
-    public DAPSBuilder _title_(List<TypedLiteral> _title_) {
-        this.dAPSImpl.setTitle(_title_);
+    public InfrastructureComponentBuilder _title_(List<TypedLiteral> _title_) {
+        this.infrastructureComponentImpl.setTitle(_title_);
         return this;
     }
 
@@ -158,8 +158,8 @@ public class DAPSBuilder implements Builder<DAPS> {
      * @param _title_ desired value to be added
      * @return Builder object with new value for _title
      */
-    public DAPSBuilder _title_(TypedLiteral _title_) {
-        this.dAPSImpl.getTitle().add(_title_);
+    public InfrastructureComponentBuilder _title_(TypedLiteral _title_) {
+        this.infrastructureComponentImpl.getTitle().add(_title_);
         return this;
     }
 
@@ -169,8 +169,8 @@ public class DAPSBuilder implements Builder<DAPS> {
      * @param _description_ desired value to be set
      * @return Builder object with new value for _description
      */
-    public DAPSBuilder _description_(List<TypedLiteral> _description_) {
-        this.dAPSImpl.setDescription(_description_);
+    public InfrastructureComponentBuilder _description_(List<TypedLiteral> _description_) {
+        this.infrastructureComponentImpl.setDescription(_description_);
         return this;
     }
 
@@ -180,8 +180,8 @@ public class DAPSBuilder implements Builder<DAPS> {
      * @param _description_ desired value to be added
      * @return Builder object with new value for _description
      */
-    public DAPSBuilder _description_(TypedLiteral _description_) {
-        this.dAPSImpl.getDescription().add(_description_);
+    public InfrastructureComponentBuilder _description_(TypedLiteral _description_) {
+        this.infrastructureComponentImpl.getDescription().add(_description_);
         return this;
     }
 
@@ -194,8 +194,8 @@ public class DAPSBuilder implements Builder<DAPS> {
      *         violation is found.
      */
     @Override
-    public DAPS build() throws ConstraintViolationException {
-        VocabUtil.getInstance().validate(dAPSImpl);
-        return dAPSImpl;
+    public InfrastructureComponent build() throws ConstraintViolationException {
+        VocabUtil.getInstance().validate(infrastructureComponentImpl);
+        return infrastructureComponentImpl;
     }
 }

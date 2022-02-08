@@ -23,13 +23,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import de.fraunhofer.iais.eis.util.*;
 
 /**
- * Default implementation of package de.fraunhofer.iais.eis.Broker
+ * Default implementation of package de.fraunhofer.iais.eis.InfrastructureComponent
  * 
- * Broker holding an index of published data endpoints.
+ * The class of all infrastructure components of the IDS.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonTypeName("ids:Broker")
-public class BrokerImpl implements Broker {
+@JsonTypeName("ids:InfrastructureComponent")
+public class InfrastructureComponentImpl implements InfrastructureComponent {
 
     @JsonProperty("@id")
     @JsonAlias({"@id", "id"})
@@ -38,11 +38,11 @@ public class BrokerImpl implements Broker {
 
     // List of all labels of this class
     @JsonIgnore
-    protected List<TypedLiteral> label = Arrays.asList(new TypedLiteral("Broker", "en"));
+    protected List<TypedLiteral> label = Arrays.asList(new TypedLiteral("InfrastructureComponent", "en"));
 
     // List of all comments of this class
     @JsonIgnore
-    protected List<TypedLiteral> comment = Arrays.asList(new TypedLiteral("Broker holding an index of published data endpoints.", "en"));
+    protected List<TypedLiteral> comment = Arrays.asList(new TypedLiteral("The class of all infrastructure components of the IDS.", "en"));
 
     // all classes have a generic property array
     @JsonIgnore
@@ -50,14 +50,8 @@ public class BrokerImpl implements Broker {
 
     // instance fields as derived from the IDS Information Model ontology
 
-    @JsonAlias({"ids:authInfo", "authInfo"})
-    protected AuthInfo _authInfo;
-
     @JsonAlias({"ids:componentCertification", "componentCertification"})
     protected ComponentCertification _componentCertification;
-
-    @JsonAlias({"ids:connectorCatalog", "connectorCatalog"})
-    protected List<ConnectorCatalog> _connectorCatalog = new ArrayList<>();
 
     @JsonAlias({"ids:curatorAsObject", "curatorAsObject"})
     protected Participant _curatorAsObject;
@@ -67,19 +61,6 @@ public class BrokerImpl implements Broker {
 
     @JsonAlias({"ids:description", "description"})
     protected List<TypedLiteral> _description = new ArrayList<>();
-
-    @JsonAlias({"ids:extendedGuarantee", "extendedGuarantee"})
-    protected List<SecurityGuarantee> _extendedGuarantee = new ArrayList<>();
-
-    @JsonAlias({"ids:hasAgent", "hasAgent"})
-    protected List<URI> _hasAgent = new ArrayList<>();
-
-    @NotNull
-    @JsonAlias({"ids:hasDefaultEndpoint", "hasDefaultEndpoint"})
-    protected ConnectorEndpoint _hasDefaultEndpoint;
-
-    @JsonAlias({"ids:hasEndpoint", "hasEndpoint"})
-    protected List<ConnectorEndpoint> _hasEndpoint = new ArrayList<>();
 
     @NotEmpty
     @JsonAlias({"ids:inboundModelVersion", "inboundModelVersion"})
@@ -101,21 +82,14 @@ public class BrokerImpl implements Broker {
     @JsonAlias({"ids:publicKey", "publicKey"})
     protected PublicKey _publicKey;
 
-    @JsonAlias({"ids:resourceCatalog", "resourceCatalog"})
-    protected List<ResourceCatalog> _resourceCatalog = new ArrayList<>();
-
-    @NotNull
-    @JsonAlias({"ids:securityProfile", "securityProfile"})
-    protected SecurityProfile _securityProfile;
-
     @JsonAlias({"ids:title", "title"})
     protected List<TypedLiteral> _title = new ArrayList<>();
 
     @JsonAlias({"ids:version", "version"})
     protected String _version;
 
-    protected BrokerImpl() {
-        id = VocabUtil.getInstance().createRandomUrl("broker");
+    protected InfrastructureComponentImpl() {
+        id = VocabUtil.getInstance().createRandomUrl("infrastructureComponent");
     }
 
     @JsonProperty("@id")
@@ -184,15 +158,7 @@ public class BrokerImpl implements Broker {
 
     @Override
     public int hashCode() {
-        return Objects.hash(this._connectorCatalog,
-            this._hasDefaultEndpoint,
-            this._hasEndpoint,
-            this._authInfo,
-            this._resourceCatalog,
-            this._hasAgent,
-            this._securityProfile,
-            this._extendedGuarantee,
-            this._maintainerAsObject,
+        return Objects.hash(this._maintainerAsObject,
             this._maintainerAsUri,
             this._curatorAsObject,
             this._curatorAsUri,
@@ -215,16 +181,8 @@ public class BrokerImpl implements Broker {
         } else if (this.getClass() != obj.getClass()) {
             return false;
         } else {
-            BrokerImpl other = (BrokerImpl) obj;
-            return Objects.equals(this._connectorCatalog, other._connectorCatalog) &&
-                Objects.equals(this._hasDefaultEndpoint, other._hasDefaultEndpoint) &&
-                Objects.equals(this._hasEndpoint, other._hasEndpoint) &&
-                Objects.equals(this._authInfo, other._authInfo) &&
-                Objects.equals(this._resourceCatalog, other._resourceCatalog) &&
-                Objects.equals(this._hasAgent, other._hasAgent) &&
-                Objects.equals(this._securityProfile, other._securityProfile) &&
-                Objects.equals(this._extendedGuarantee, other._extendedGuarantee) &&
-                Objects.equals(this._maintainerAsObject, other._maintainerAsObject) &&
+            InfrastructureComponentImpl other = (InfrastructureComponentImpl) obj;
+            return Objects.equals(this._maintainerAsObject, other._maintainerAsObject) &&
                 Objects.equals(this._maintainerAsUri, other._maintainerAsUri) &&
                 Objects.equals(this._curatorAsObject, other._curatorAsObject) &&
                 Objects.equals(this._curatorAsUri, other._curatorAsUri) &&
@@ -240,38 +198,8 @@ public class BrokerImpl implements Broker {
     }
 
     @Override
-    public Broker deepCopy() {
-        BrokerBuilder builder = new BrokerBuilder();
-        for (ConnectorCatalog item : this._connectorCatalog) {
-            if (item != null) {
-                builder._connectorCatalog_(item.deepCopy());
-            }
-        }
-        if (this._hasDefaultEndpoint != null) {
-            builder._hasDefaultEndpoint_(this._hasDefaultEndpoint.deepCopy());
-        }
-        for (ConnectorEndpoint item : this._hasEndpoint) {
-            if (item != null) {
-                builder._hasEndpoint_(item.deepCopy());
-            }
-        }
-        if (this._authInfo != null) {
-            builder._authInfo_(this._authInfo.deepCopy());
-        }
-        for (ResourceCatalog item : this._resourceCatalog) {
-            if (item != null) {
-                builder._resourceCatalog_(item.deepCopy());
-            }
-        }
-        for (URI item : this._hasAgent) {
-            if (item != null) {
-                builder._hasAgent_(URI.create(item.toString()));
-            }
-        }
-        builder._securityProfile_(this._securityProfile);
-        for (SecurityGuarantee item : this._extendedGuarantee) {
-            builder._extendedGuarantee_(item);
-        }
+    public InfrastructureComponent deepCopy() {
+        InfrastructureComponentBuilder builder = new InfrastructureComponentBuilder();
         if (this._maintainerAsObject != null) {
             builder._maintainerAsObject_(this._maintainerAsObject.deepCopy());
         }
@@ -316,88 +244,6 @@ public class BrokerImpl implements Broker {
     }
 
     // accessor method implementations as derived from the IDS Information Model ontology
-
-    @Override
-    public List<ConnectorCatalog> getConnectorCatalog() {
-        return _connectorCatalog;
-    }
-
-    @Override
-    public void setConnectorCatalog(List<ConnectorCatalog> _connectorCatalog_) {
-        this._connectorCatalog = _connectorCatalog_;
-    }
-
-    @Override
-    @NotNull
-    public ConnectorEndpoint getHasDefaultEndpoint() {
-        return _hasDefaultEndpoint;
-    }
-
-    @Override
-    public void setHasDefaultEndpoint(ConnectorEndpoint _hasDefaultEndpoint_) {
-        this._hasDefaultEndpoint = _hasDefaultEndpoint_;
-    }
-
-    @Override
-    public List<ConnectorEndpoint> getHasEndpoint() {
-        return _hasEndpoint;
-    }
-
-    @Override
-    public void setHasEndpoint(List<ConnectorEndpoint> _hasEndpoint_) {
-        this._hasEndpoint = _hasEndpoint_;
-    }
-
-    @Override
-    public AuthInfo getAuthInfo() {
-        return _authInfo;
-    }
-
-    @Override
-    public void setAuthInfo(AuthInfo _authInfo_) {
-        this._authInfo = _authInfo_;
-    }
-
-    @Override
-    public List<ResourceCatalog> getResourceCatalog() {
-        return _resourceCatalog;
-    }
-
-    @Override
-    public void setResourceCatalog(List<ResourceCatalog> _resourceCatalog_) {
-        this._resourceCatalog = _resourceCatalog_;
-    }
-
-    @Override
-    public List<URI> getHasAgent() {
-        return _hasAgent;
-    }
-
-    @Override
-    public void setHasAgent(List<URI> _hasAgent_) {
-        this._hasAgent = _hasAgent_;
-    }
-
-    @Override
-    @NotNull
-    public SecurityProfile getSecurityProfile() {
-        return _securityProfile;
-    }
-
-    @Override
-    public void setSecurityProfile(SecurityProfile _securityProfile_) {
-        this._securityProfile = _securityProfile_;
-    }
-
-    @Override
-    public List<SecurityGuarantee> getExtendedGuarantee() {
-        return _extendedGuarantee;
-    }
-
-    @Override
-    public void setExtendedGuarantee(List<SecurityGuarantee> _extendedGuarantee_) {
-        this._extendedGuarantee = _extendedGuarantee_;
-    }
 
     @Override
     public Participant getMaintainerAsObject() {

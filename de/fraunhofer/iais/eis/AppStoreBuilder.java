@@ -142,24 +142,46 @@ public class AppStoreBuilder implements Builder<AppStore> {
     }
 
     /**
-     * This function allows setting a value for _maintainer
+     * This function allows setting a value for _maintainerAsObject
      * 
      * @param _maintainer_ desired value to be set
-     * @return Builder object with new value for _maintainer
+     * @return Builder object with new value for _maintainerAsObject
      */
-    public AppStoreBuilder _maintainer_(URI _maintainer_) {
-        this.appStoreImpl.setMaintainer(_maintainer_);
+    public AppStoreBuilder _maintainerAsObject_(Participant _maintainer_) {
+        this.appStoreImpl.setMaintainerAsObject(_maintainer_);
         return this;
     }
 
     /**
-     * This function allows setting a value for _curator
+     * This function allows setting a value for _maintainerAsUri
+     * 
+     * @param _maintainer_ desired value to be set
+     * @return Builder object with new value for _maintainerAsUri
+     */
+    public AppStoreBuilder _maintainerAsUri_(URI _maintainer_) {
+        this.appStoreImpl.setMaintainerAsUri(_maintainer_);
+        return this;
+    }
+
+    /**
+     * This function allows setting a value for _curatorAsObject
      * 
      * @param _curator_ desired value to be set
-     * @return Builder object with new value for _curator
+     * @return Builder object with new value for _curatorAsObject
      */
-    public AppStoreBuilder _curator_(URI _curator_) {
-        this.appStoreImpl.setCurator(_curator_);
+    public AppStoreBuilder _curatorAsObject_(Participant _curator_) {
+        this.appStoreImpl.setCuratorAsObject(_curator_);
+        return this;
+    }
+
+    /**
+     * This function allows setting a value for _curatorAsUri
+     * 
+     * @param _curator_ desired value to be set
+     * @return Builder object with new value for _curatorAsUri
+     */
+    public AppStoreBuilder _curatorAsUri_(URI _curator_) {
+        this.appStoreImpl.setCuratorAsUri(_curator_);
         return this;
     }
 

@@ -121,24 +121,46 @@ public class AudioResourceBuilder implements Builder<AudioResource> {
     }
 
     /**
-     * This function allows setting a value for _publisher
+     * This function allows setting a value for _publisherAsObject
      * 
      * @param _publisher_ desired value to be set
-     * @return Builder object with new value for _publisher
+     * @return Builder object with new value for _publisherAsObject
      */
-    public AudioResourceBuilder _publisher_(URI _publisher_) {
-        this.audioResourceImpl.setPublisher(_publisher_);
+    public AudioResourceBuilder _publisherAsObject_(Agent _publisher_) {
+        this.audioResourceImpl.setPublisherAsObject(_publisher_);
         return this;
     }
 
     /**
-     * This function allows setting a value for _sovereign
+     * This function allows setting a value for _publisherAsUri
+     * 
+     * @param _publisher_ desired value to be set
+     * @return Builder object with new value for _publisherAsUri
+     */
+    public AudioResourceBuilder _publisherAsUri_(URI _publisher_) {
+        this.audioResourceImpl.setPublisherAsUri(_publisher_);
+        return this;
+    }
+
+    /**
+     * This function allows setting a value for _sovereignAsObject
      * 
      * @param _sovereign_ desired value to be set
-     * @return Builder object with new value for _sovereign
+     * @return Builder object with new value for _sovereignAsObject
      */
-    public AudioResourceBuilder _sovereign_(URI _sovereign_) {
-        this.audioResourceImpl.setSovereign(_sovereign_);
+    public AudioResourceBuilder _sovereignAsObject_(Agent _sovereign_) {
+        this.audioResourceImpl.setSovereignAsObject(_sovereign_);
+        return this;
+    }
+
+    /**
+     * This function allows setting a value for _sovereignAsUri
+     * 
+     * @param _sovereign_ desired value to be set
+     * @return Builder object with new value for _sovereignAsUri
+     */
+    public AudioResourceBuilder _sovereignAsUri_(URI _sovereign_) {
+        this.audioResourceImpl.setSovereignAsUri(_sovereign_);
         return this;
     }
 

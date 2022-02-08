@@ -1,9 +1,11 @@
 package de.fraunhofer.iais.eis.mixins;
 
+import java.net.URI;
 import java.util.List;
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
@@ -13,9 +15,19 @@ import de.fraunhofer.iais.eis.util.*;
 @JsonTypeName("ParticipantCatalog")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 public interface ParticipantCatalogMixin {
-    @JsonProperty("ids:member")
-    public List<Participant> getMember();
+    @JsonIgnore
+    public List<Participant> getMemberAsObject();
 
-    @JsonProperty("ids:member")
-    public void setMember(List<Participant> _member_);
+    @JsonIgnore
+    public List<URI> getMemberAsUri();
+
+    @JsonIgnore(false)
+    @JsonGetter("ids:member")
+    public UriOrModelClass getMember();
+
+    @JsonIgnore
+    public void setMemberAsObject(List<Participant> _member_);
+
+    @JsonIgnore
+    public void setMemberAsUri(List<URI> _member_);
 }

@@ -142,24 +142,46 @@ public class BaseConnectorBuilder implements Builder<BaseConnector> {
     }
 
     /**
-     * This function allows setting a value for _maintainer
+     * This function allows setting a value for _maintainerAsObject
      * 
      * @param _maintainer_ desired value to be set
-     * @return Builder object with new value for _maintainer
+     * @return Builder object with new value for _maintainerAsObject
      */
-    public BaseConnectorBuilder _maintainer_(URI _maintainer_) {
-        this.baseConnectorImpl.setMaintainer(_maintainer_);
+    public BaseConnectorBuilder _maintainerAsObject_(Participant _maintainer_) {
+        this.baseConnectorImpl.setMaintainerAsObject(_maintainer_);
         return this;
     }
 
     /**
-     * This function allows setting a value for _curator
+     * This function allows setting a value for _maintainerAsUri
+     * 
+     * @param _maintainer_ desired value to be set
+     * @return Builder object with new value for _maintainerAsUri
+     */
+    public BaseConnectorBuilder _maintainerAsUri_(URI _maintainer_) {
+        this.baseConnectorImpl.setMaintainerAsUri(_maintainer_);
+        return this;
+    }
+
+    /**
+     * This function allows setting a value for _curatorAsObject
      * 
      * @param _curator_ desired value to be set
-     * @return Builder object with new value for _curator
+     * @return Builder object with new value for _curatorAsObject
      */
-    public BaseConnectorBuilder _curator_(URI _curator_) {
-        this.baseConnectorImpl.setCurator(_curator_);
+    public BaseConnectorBuilder _curatorAsObject_(Participant _curator_) {
+        this.baseConnectorImpl.setCuratorAsObject(_curator_);
+        return this;
+    }
+
+    /**
+     * This function allows setting a value for _curatorAsUri
+     * 
+     * @param _curator_ desired value to be set
+     * @return Builder object with new value for _curatorAsUri
+     */
+    public BaseConnectorBuilder _curatorAsUri_(URI _curator_) {
+        this.baseConnectorImpl.setCuratorAsUri(_curator_);
         return this;
     }
 

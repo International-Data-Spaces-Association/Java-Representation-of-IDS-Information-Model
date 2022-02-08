@@ -121,24 +121,46 @@ public class ResourceBuilder implements Builder<Resource> {
     }
 
     /**
-     * This function allows setting a value for _publisher
+     * This function allows setting a value for _publisherAsObject
      * 
      * @param _publisher_ desired value to be set
-     * @return Builder object with new value for _publisher
+     * @return Builder object with new value for _publisherAsObject
      */
-    public ResourceBuilder _publisher_(URI _publisher_) {
-        this.resourceImpl.setPublisher(_publisher_);
+    public ResourceBuilder _publisherAsObject_(Agent _publisher_) {
+        this.resourceImpl.setPublisherAsObject(_publisher_);
         return this;
     }
 
     /**
-     * This function allows setting a value for _sovereign
+     * This function allows setting a value for _publisherAsUri
+     * 
+     * @param _publisher_ desired value to be set
+     * @return Builder object with new value for _publisherAsUri
+     */
+    public ResourceBuilder _publisherAsUri_(URI _publisher_) {
+        this.resourceImpl.setPublisherAsUri(_publisher_);
+        return this;
+    }
+
+    /**
+     * This function allows setting a value for _sovereignAsObject
      * 
      * @param _sovereign_ desired value to be set
-     * @return Builder object with new value for _sovereign
+     * @return Builder object with new value for _sovereignAsObject
      */
-    public ResourceBuilder _sovereign_(URI _sovereign_) {
-        this.resourceImpl.setSovereign(_sovereign_);
+    public ResourceBuilder _sovereignAsObject_(Agent _sovereign_) {
+        this.resourceImpl.setSovereignAsObject(_sovereign_);
+        return this;
+    }
+
+    /**
+     * This function allows setting a value for _sovereignAsUri
+     * 
+     * @param _sovereign_ desired value to be set
+     * @return Builder object with new value for _sovereignAsUri
+     */
+    public ResourceBuilder _sovereignAsUri_(URI _sovereign_) {
+        this.resourceImpl.setSovereignAsUri(_sovereign_);
         return this;
     }
 

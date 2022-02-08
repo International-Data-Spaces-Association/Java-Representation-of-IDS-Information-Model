@@ -21,46 +21,90 @@ public class ResourceCatalogBuilder implements Builder<ResourceCatalog> {
     }
 
     /**
-     * This function allows setting a value for _offeredResource
+     * This function allows setting a value for _offeredResourceAsObject
      * 
      * @param _offeredResource_ desired value to be set
-     * @return Builder object with new value for _offeredResource
+     * @return Builder object with new value for _offeredResourceAsObject
      */
-    public ResourceCatalogBuilder _offeredResource_(List<Resource> _offeredResource_) {
-        this.resourceCatalogImpl.setOfferedResource(_offeredResource_);
+    public ResourceCatalogBuilder _offeredResourceAsObject_(List<Resource> _offeredResource_) {
+        this.resourceCatalogImpl.setOfferedResourceAsObject(_offeredResource_);
         return this;
     }
 
     /**
-     * This function allows adding a value to the List _offeredResource
+     * This function allows adding a value to the List _offeredResourceAsObject
      * 
      * @param _offeredResource_ desired value to be added
-     * @return Builder object with new value for _offeredResource
+     * @return Builder object with new value for _offeredResourceAsObject
      */
-    public ResourceCatalogBuilder _offeredResource_(Resource _offeredResource_) {
-        this.resourceCatalogImpl.getOfferedResource().add(_offeredResource_);
+    public ResourceCatalogBuilder _offeredResourceAsObject_(Resource _offeredResource_) {
+        this.resourceCatalogImpl.getOfferedResourceAsObject().add(_offeredResource_);
         return this;
     }
 
     /**
-     * This function allows setting a value for _requestedResource
+     * This function allows setting a value for _offeredResourceAsUri
+     * 
+     * @param _offeredResource_ desired value to be set
+     * @return Builder object with new value for _offeredResourceAsUri
+     */
+    public ResourceCatalogBuilder _offeredResourceAsUri_(List<URI> _offeredResource_) {
+        this.resourceCatalogImpl.setOfferedResourceAsUri(_offeredResource_);
+        return this;
+    }
+
+    /**
+     * This function allows adding a value to the List _offeredResourceAsUri
+     * 
+     * @param _offeredResource_ desired value to be added
+     * @return Builder object with new value for _offeredResourceAsUri
+     */
+    public ResourceCatalogBuilder _offeredResourceAsUri_(URI _offeredResource_) {
+        this.resourceCatalogImpl.getOfferedResourceAsUri().add(_offeredResource_);
+        return this;
+    }
+
+    /**
+     * This function allows setting a value for _requestedResourceAsObject
      * 
      * @param _requestedResource_ desired value to be set
-     * @return Builder object with new value for _requestedResource
+     * @return Builder object with new value for _requestedResourceAsObject
      */
-    public ResourceCatalogBuilder _requestedResource_(List<Resource> _requestedResource_) {
-        this.resourceCatalogImpl.setRequestedResource(_requestedResource_);
+    public ResourceCatalogBuilder _requestedResourceAsObject_(List<Resource> _requestedResource_) {
+        this.resourceCatalogImpl.setRequestedResourceAsObject(_requestedResource_);
         return this;
     }
 
     /**
-     * This function allows adding a value to the List _requestedResource
+     * This function allows adding a value to the List _requestedResourceAsObject
      * 
      * @param _requestedResource_ desired value to be added
-     * @return Builder object with new value for _requestedResource
+     * @return Builder object with new value for _requestedResourceAsObject
      */
-    public ResourceCatalogBuilder _requestedResource_(Resource _requestedResource_) {
-        this.resourceCatalogImpl.getRequestedResource().add(_requestedResource_);
+    public ResourceCatalogBuilder _requestedResourceAsObject_(Resource _requestedResource_) {
+        this.resourceCatalogImpl.getRequestedResourceAsObject().add(_requestedResource_);
+        return this;
+    }
+
+    /**
+     * This function allows setting a value for _requestedResourceAsUri
+     * 
+     * @param _requestedResource_ desired value to be set
+     * @return Builder object with new value for _requestedResourceAsUri
+     */
+    public ResourceCatalogBuilder _requestedResourceAsUri_(List<URI> _requestedResource_) {
+        this.resourceCatalogImpl.setRequestedResourceAsUri(_requestedResource_);
+        return this;
+    }
+
+    /**
+     * This function allows adding a value to the List _requestedResourceAsUri
+     * 
+     * @param _requestedResource_ desired value to be added
+     * @return Builder object with new value for _requestedResourceAsUri
+     */
+    public ResourceCatalogBuilder _requestedResourceAsUri_(URI _requestedResource_) {
+        this.resourceCatalogImpl.getRequestedResourceAsUri().add(_requestedResource_);
         return this;
     }
 

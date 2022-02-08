@@ -8,6 +8,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import javax.validation.constraints.NotNull;
 
@@ -50,11 +52,17 @@ public class ResourceCatalogImpl implements ResourceCatalog {
 
     // instance fields as derived from the IDS Information Model ontology
 
-    @JsonAlias({"ids:offeredResource", "offeredResource"})
-    protected List<Resource> _offeredResource = new ArrayList<>();
+    @JsonAlias({"ids:offeredResourceAsObject", "offeredResourceAsObject"})
+    protected List<Resource> _offeredResourceAsObject = new ArrayList<>();
 
-    @JsonAlias({"ids:requestedResource", "requestedResource"})
-    protected List<Resource> _requestedResource = new ArrayList<>();
+    @JsonAlias({"ids:offeredResourceAsUri", "offeredResourceAsUri"})
+    protected List<URI> _offeredResourceAsUri = new ArrayList<>();
+
+    @JsonAlias({"ids:requestedResourceAsObject", "requestedResourceAsObject"})
+    protected List<Resource> _requestedResourceAsObject = new ArrayList<>();
+
+    @JsonAlias({"ids:requestedResourceAsUri", "requestedResourceAsUri"})
+    protected List<URI> _requestedResourceAsUri = new ArrayList<>();
 
     protected ResourceCatalogImpl() {
         id = VocabUtil.getInstance().createRandomUrl("resourceCatalog");
@@ -126,8 +134,10 @@ public class ResourceCatalogImpl implements ResourceCatalog {
 
     @Override
     public int hashCode() {
-        return Objects.hash(this._offeredResource,
-            this._requestedResource);
+        return Objects.hash(this._offeredResourceAsObject,
+            this._offeredResourceAsUri,
+            this._requestedResourceAsObject,
+            this._requestedResourceAsUri);
     }
 
     @Override
@@ -140,22 +150,34 @@ public class ResourceCatalogImpl implements ResourceCatalog {
             return false;
         } else {
             ResourceCatalogImpl other = (ResourceCatalogImpl) obj;
-            return Objects.equals(this._offeredResource, other._offeredResource) &&
-                Objects.equals(this._requestedResource, other._requestedResource);
+            return Objects.equals(this._offeredResourceAsObject, other._offeredResourceAsObject) &&
+                Objects.equals(this._offeredResourceAsUri, other._offeredResourceAsUri) &&
+                Objects.equals(this._requestedResourceAsObject, other._requestedResourceAsObject) &&
+                Objects.equals(this._requestedResourceAsUri, other._requestedResourceAsUri);
         }
     }
 
     @Override
     public ResourceCatalog deepCopy() {
         ResourceCatalogBuilder builder = new ResourceCatalogBuilder();
-        for (Resource item : this._offeredResource) {
+        for (Resource item : this._offeredResourceAsObject) {
             if (item != null) {
-                builder._offeredResource_(item.deepCopy());
+                builder._offeredResourceAsObject_(item.deepCopy());
             }
         }
-        for (Resource item : this._requestedResource) {
+        for (URI item : this._offeredResourceAsUri) {
             if (item != null) {
-                builder._requestedResource_(item.deepCopy());
+                builder._offeredResourceAsUri_(URI.create(item.toString()));
+            }
+        }
+        for (Resource item : this._requestedResourceAsObject) {
+            if (item != null) {
+                builder._requestedResourceAsObject_(item.deepCopy());
+            }
+        }
+        for (URI item : this._requestedResourceAsUri) {
+            if (item != null) {
+                builder._requestedResourceAsUri_(URI.create(item.toString()));
             }
         }
         return builder.build();
@@ -164,23 +186,71 @@ public class ResourceCatalogImpl implements ResourceCatalog {
     // accessor method implementations as derived from the IDS Information Model ontology
 
     @Override
-    public List<Resource> getOfferedResource() {
-        return _offeredResource;
+    public List<Resource> getOfferedResourceAsObject() {
+        return _offeredResourceAsObject;
     }
 
     @Override
-    public void setOfferedResource(List<Resource> _offeredResource_) {
-        this._offeredResource = _offeredResource_;
+    public void setOfferedResourceAsObject(List<Resource> _offeredResource_) {
+        this._offeredResourceAsObject = _offeredResource_;
+        for (Resource item : this._offeredResourceAsObject) {
+            this._offeredResourceAsUri.remove(item.getId());
+        }
     }
 
     @Override
-    public List<Resource> getRequestedResource() {
-        return _requestedResource;
+    public List<URI> getOfferedResourceAsUri() {
+        return _offeredResourceAsUri;
     }
 
     @Override
-    public void setRequestedResource(List<Resource> _requestedResource_) {
-        this._requestedResource = _requestedResource_;
+    public void setOfferedResourceAsUri(List<URI> _offeredResource_) {
+        this._offeredResourceAsUri = _offeredResource_;
+        for (Resource item : this._offeredResourceAsObject) {
+            this._offeredResourceAsUri.remove(item.getId());
+        }
+    }
+
+    @Override
+    public UriOrModelClass getOfferedResource() {
+        return new UriOrModelClass(
+            Stream.concat(
+                this._offeredResourceAsObject.stream(),
+                this._offeredResourceAsUri.stream()).collect(Collectors.toList()));
+    }
+
+    @Override
+    public List<Resource> getRequestedResourceAsObject() {
+        return _requestedResourceAsObject;
+    }
+
+    @Override
+    public void setRequestedResourceAsObject(List<Resource> _requestedResource_) {
+        this._requestedResourceAsObject = _requestedResource_;
+        for (Resource item : this._requestedResourceAsObject) {
+            this._requestedResourceAsUri.remove(item.getId());
+        }
+    }
+
+    @Override
+    public List<URI> getRequestedResourceAsUri() {
+        return _requestedResourceAsUri;
+    }
+
+    @Override
+    public void setRequestedResourceAsUri(List<URI> _requestedResource_) {
+        this._requestedResourceAsUri = _requestedResource_;
+        for (Resource item : this._requestedResourceAsObject) {
+            this._requestedResourceAsUri.remove(item.getId());
+        }
+    }
+
+    @Override
+    public UriOrModelClass getRequestedResource() {
+        return new UriOrModelClass(
+            Stream.concat(
+                this._requestedResourceAsObject.stream(),
+                this._requestedResourceAsUri.stream()).collect(Collectors.toList()));
     }
 
 }

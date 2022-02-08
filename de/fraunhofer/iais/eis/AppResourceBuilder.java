@@ -121,24 +121,46 @@ public class AppResourceBuilder implements Builder<AppResource> {
     }
 
     /**
-     * This function allows setting a value for _publisher
+     * This function allows setting a value for _publisherAsObject
      * 
      * @param _publisher_ desired value to be set
-     * @return Builder object with new value for _publisher
+     * @return Builder object with new value for _publisherAsObject
      */
-    public AppResourceBuilder _publisher_(URI _publisher_) {
-        this.appResourceImpl.setPublisher(_publisher_);
+    public AppResourceBuilder _publisherAsObject_(Agent _publisher_) {
+        this.appResourceImpl.setPublisherAsObject(_publisher_);
         return this;
     }
 
     /**
-     * This function allows setting a value for _sovereign
+     * This function allows setting a value for _publisherAsUri
+     * 
+     * @param _publisher_ desired value to be set
+     * @return Builder object with new value for _publisherAsUri
+     */
+    public AppResourceBuilder _publisherAsUri_(URI _publisher_) {
+        this.appResourceImpl.setPublisherAsUri(_publisher_);
+        return this;
+    }
+
+    /**
+     * This function allows setting a value for _sovereignAsObject
      * 
      * @param _sovereign_ desired value to be set
-     * @return Builder object with new value for _sovereign
+     * @return Builder object with new value for _sovereignAsObject
      */
-    public AppResourceBuilder _sovereign_(URI _sovereign_) {
-        this.appResourceImpl.setSovereign(_sovereign_);
+    public AppResourceBuilder _sovereignAsObject_(Agent _sovereign_) {
+        this.appResourceImpl.setSovereignAsObject(_sovereign_);
+        return this;
+    }
+
+    /**
+     * This function allows setting a value for _sovereignAsUri
+     * 
+     * @param _sovereign_ desired value to be set
+     * @return Builder object with new value for _sovereignAsUri
+     */
+    public AppResourceBuilder _sovereignAsUri_(URI _sovereign_) {
+        this.appResourceImpl.setSovereignAsUri(_sovereign_);
         return this;
     }
 
