@@ -218,12 +218,9 @@ All notable changes to this project will be documented in this file.
 - replaced processing of `byte[]` fields in the `hashCode()` method to using `Arrays.hashCode`.
 
 
-## [4.3.0] - 2022-09-03
-Reset to version 4.2.3 because of some problems with the newly added features.
+## <s>[4.3.0] - 2022-09-03</s>
+**THIS VERSION WAS DELETED!** Version 4.3.0 does not exist anymore because this was a versioning mistake. For anyone potentially still using this version, please change to version 4.2.3 because these two are identical.
 
-### Removed
-- relaxation of enums (version 4.2.8)
-- relaxation of properties (4.2.7)
 
 ## [4.2.8] - 2021-12-12
 **Unstable version. It is highly recommended to skip this one!**
