@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Created-By: Apache Maven 3.8.6
+Built-By: plinden
+Build-Jdk: 11.0.11
+
