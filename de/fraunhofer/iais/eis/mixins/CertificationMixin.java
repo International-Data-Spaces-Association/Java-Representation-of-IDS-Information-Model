@@ -1,6 +1,5 @@
 package de.fraunhofer.iais.eis.mixins;
 
-
 import javax.xml.datatype.XMLGregorianCalendar;
 
 import com.fasterxml.jackson.annotation.JsonFormat;

@@ -4,8 +4,6 @@ import java.math.BigInteger;
 import java.net.URI;
 import java.util.List;
 
-
-
 import de.fraunhofer.iais.eis.util.*;
 
 public class AppEndpointBuilder implements Builder<AppEndpoint> {

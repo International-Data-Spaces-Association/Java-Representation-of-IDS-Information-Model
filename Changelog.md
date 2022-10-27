@@ -2,6 +2,16 @@
 # Changelog for Java Representation of Information Model
 All notable changes to this project will be documented in this file.
 
+## [5.0.3] - 2022-10-26
+### Changed
+- `@NotNull` constraint on `ids:pipEndpoint` has been removed (ids:Contraint).
+
+## [5.0.2] - 2022-09-15
+*no changes*, just updating version number for alignment with other IDS tools.
+
+## [5.0.1] - 2022-06-30
+*no changes*, just updating version number for alignment with other IDS tools.
+
 ## [5.0.0] - 2022-03-23
 ### (Breaking) Change - Relaxation of Enums V2
 - Enums are replaced with interface, implementation and builder to represent the RDF classes from the ontology where default values are provided. Additionally, it is also possible to create custom instances using interfaces, implementations and builders that are now available again.
@@ -36,7 +46,7 @@ All notable changes to this project will be documented in this file.
       public interface Action extends ModelClass {
           // standard methods ...
           Action ANONYMIZE = new ActionBuilder(URI.create("https://w3id.org/idsa/code/ANONYMIZE")).build();
-          ...
+          ...
       }
 
       ```
@@ -84,7 +94,7 @@ All notable changes to this project will be documented in this file.
     ```
     ...
     "ids:action": {
-       "@id": "https://w3id.org/idsa/code/ANONYMIZE"
+       "@id": "https://w3id.org/idsa/code/ANONYMIZE"
     }
     ...
     ```
@@ -93,8 +103,8 @@ All notable changes to this project will be documented in this file.
     ```
     ...
     "ids:action": {
-       "@id": "https://w3id.org/idsa/code/ANONYMIZE",
-       "@type": "ids:Action"
+       "@id": "https://w3id.org/idsa/code/ANONYMIZE",
+       "@type": "ids:Action"
     }
     ...
     ```
@@ -102,7 +112,7 @@ All notable changes to this project will be documented in this file.
     ```
     ...
     "ids:action": {
-       "@id": "https://w3id.org/idsa/code/MY_CUSTOM_ACTION"
+       "@id": "https://w3id.org/idsa/code/MY_CUSTOM_ACTION"
     }
     ...
     ```
@@ -110,8 +120,8 @@ All notable changes to this project will be documented in this file.
     ```
     ...
     "ids:action": {
-       "@id": "https://w3id.org/idsa/code/MY_CUSTOM_ACTION",
-       "@type": "ids:Action"
+       "@id": "https://w3id.org/idsa/code/MY_CUSTOM_ACTION",
+       "@type": "ids:Action"
     }
     ...
     ```
@@ -220,7 +230,6 @@ All notable changes to this project will be documented in this file.
 
 ## <s>[4.3.0] - 2022-09-03</s>
 **THIS VERSION WAS DELETED!** Version 4.3.0 does not exist anymore because this was a versioning mistake. For anyone potentially still using this version, please change to version 4.2.3 because these two are identical.
-
 
 ## [4.2.8] - 2021-12-12
 **Unstable version. It is highly recommended to skip this one!**

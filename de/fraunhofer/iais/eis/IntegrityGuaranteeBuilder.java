@@ -2,8 +2,6 @@ package de.fraunhofer.iais.eis;
 
 import java.net.URI;
 
-
-
 import de.fraunhofer.iais.eis.util.*;
 
 public class IntegrityGuaranteeBuilder implements Builder<IntegrityGuarantee> {

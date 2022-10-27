@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 
-
 import de.fraunhofer.iais.eis.util.*;
 
 public class DistributeEcryptedRequestBuilder implements Builder<DistributeEcryptedRequest> {

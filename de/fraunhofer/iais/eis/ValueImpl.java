@@ -18,7 +18,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
-
 import de.fraunhofer.iais.eis.util.*;
 
 /**
@@ -141,5 +140,7 @@ public class ValueImpl implements Value {
 
         return builder.build();
     }
+
+    // accessor method implementations as derived from the IDS Information Model ontology
 
 }

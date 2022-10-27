@@ -1,13 +1,11 @@
 package de.fraunhofer.iais.eis;
 
-
 import javax.xml.datatype.XMLGregorianCalendar;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-
 import de.fraunhofer.iais.eis.util.*;
 
 /**

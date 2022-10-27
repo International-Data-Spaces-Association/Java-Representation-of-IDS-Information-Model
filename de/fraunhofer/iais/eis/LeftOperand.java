@@ -2,11 +2,9 @@ package de.fraunhofer.iais.eis;
 
 import java.net.URI;
 
-
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-
 import de.fraunhofer.iais.eis.util.*;
 
 /**
@@ -220,7 +218,7 @@ public interface LeftOperand extends ModelClass {
 
     /**
      * The ODRL definitions is “An identified computing system or computing device used for exercising
-     * the action of the Rule.”
+     * the action of the Rule.�?
      */
     LeftOperand SYSTEM_DEVICE = new LeftOperandBuilder(URI.create("https://w3id.org/idsa/code/SYSTEM_DEVICE")).build();
 
