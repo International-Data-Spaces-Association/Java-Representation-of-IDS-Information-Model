@@ -2,6 +2,7 @@ package de.fraunhofer.iais.eis.mixins;
 
 import java.util.List;
 
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;

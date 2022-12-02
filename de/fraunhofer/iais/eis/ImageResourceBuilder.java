@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 
+
 import de.fraunhofer.iais.eis.util.*;
 
 public class ImageResourceBuilder implements Builder<ImageResource> {
@@ -193,6 +194,28 @@ public class ImageResourceBuilder implements Builder<ImageResource> {
      */
     public ImageResourceBuilder _variant_(Resource _variant_) {
         this.imageResourceImpl.setVariant(_variant_);
+        return this;
+    }
+
+    /**
+     * This function allows setting a value for _hasQualityMeasurement
+     * 
+     * @param _hasQualityMeasurement_ desired value to be set
+     * @return Builder object with new value for _hasQualityMeasurement
+     */
+    public ImageResourceBuilder _hasQualityMeasurement_(List<QualityMeasurement> _hasQualityMeasurement_) {
+        this.imageResourceImpl.setHasQualityMeasurement(_hasQualityMeasurement_);
+        return this;
+    }
+
+    /**
+     * This function allows adding a value to the List _hasQualityMeasurement
+     * 
+     * @param _hasQualityMeasurement_ desired value to be added
+     * @return Builder object with new value for _hasQualityMeasurement
+     */
+    public ImageResourceBuilder _hasQualityMeasurement_(QualityMeasurement _hasQualityMeasurement_) {
+        this.imageResourceImpl.getHasQualityMeasurement().add(_hasQualityMeasurement_);
         return this;
     }
 

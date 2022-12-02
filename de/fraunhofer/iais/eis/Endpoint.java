@@ -3,9 +3,11 @@ package de.fraunhofer.iais.eis;
 import java.net.URI;
 import java.util.List;
 
+
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
 import de.fraunhofer.iais.eis.util.*;
 
 /**

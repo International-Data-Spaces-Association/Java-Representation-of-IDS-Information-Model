@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 
+
 import de.fraunhofer.iais.eis.util.*;
 
 public class AppResourceBuilder implements Builder<AppResource> {
@@ -193,6 +194,28 @@ public class AppResourceBuilder implements Builder<AppResource> {
      */
     public AppResourceBuilder _variant_(Resource _variant_) {
         this.appResourceImpl.setVariant(_variant_);
+        return this;
+    }
+
+    /**
+     * This function allows setting a value for _hasQualityMeasurement
+     * 
+     * @param _hasQualityMeasurement_ desired value to be set
+     * @return Builder object with new value for _hasQualityMeasurement
+     */
+    public AppResourceBuilder _hasQualityMeasurement_(List<QualityMeasurement> _hasQualityMeasurement_) {
+        this.appResourceImpl.setHasQualityMeasurement(_hasQualityMeasurement_);
+        return this;
+    }
+
+    /**
+     * This function allows adding a value to the List _hasQualityMeasurement
+     * 
+     * @param _hasQualityMeasurement_ desired value to be added
+     * @return Builder object with new value for _hasQualityMeasurement
+     */
+    public AppResourceBuilder _hasQualityMeasurement_(QualityMeasurement _hasQualityMeasurement_) {
+        this.appResourceImpl.getHasQualityMeasurement().add(_hasQualityMeasurement_);
         return this;
     }
 

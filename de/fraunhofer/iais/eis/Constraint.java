@@ -7,6 +7,7 @@ import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
 import de.fraunhofer.iais.eis.util.*;
 
 /**
@@ -138,6 +139,7 @@ public interface Constraint extends AbstractConstraint {
      *
      * @return Returns the PIP for the property _pipEndpoint.
      */
+    @NotNull
     @JsonAlias({"https://w3id.org/idsa/core/pipEndpoint", "ids:pipEndpoint", "pipEndpoint"})
     PIP getPipEndpoint();
 

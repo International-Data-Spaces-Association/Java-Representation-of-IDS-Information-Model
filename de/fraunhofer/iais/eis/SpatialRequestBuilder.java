@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 
+
 import de.fraunhofer.iais.eis.util.*;
 
 public class SpatialRequestBuilder implements Builder<SpatialRequest> {

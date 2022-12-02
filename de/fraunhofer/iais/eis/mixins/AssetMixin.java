@@ -1,5 +1,7 @@
 package de.fraunhofer.iais.eis.mixins;
 
+
+
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;

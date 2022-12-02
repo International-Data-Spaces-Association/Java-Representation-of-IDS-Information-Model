@@ -3,6 +3,7 @@ package de.fraunhofer.iais.eis.mixins;
 import java.net.URI;
 import java.util.List;
 
+
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -104,4 +105,10 @@ public interface ResourceMixin {
 
     @JsonProperty("ids:variant")
     public void setVariant(Resource _variant_);
+
+    @JsonProperty("http://www.w3.org/ns/dqv#hasQualityMeasurement")
+    public List<QualityMeasurement> getHasQualityMeasurement();
+
+    @JsonProperty("http://www.w3.org/ns/dqv#hasQualityMeasurement")
+    public void setHasQualityMeasurement(List<QualityMeasurement> _hasQualityMeasurement_);
 }

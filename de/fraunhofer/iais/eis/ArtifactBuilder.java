@@ -5,6 +5,7 @@ import java.net.URI;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 
+
 import de.fraunhofer.iais.eis.util.*;
 
 public class ArtifactBuilder implements Builder<Artifact> {

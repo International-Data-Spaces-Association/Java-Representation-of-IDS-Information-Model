@@ -2,12 +2,15 @@
 # Changelog for Java Representation of Information Model
 All notable changes to this project will be documented in this file.
 
-## [5.0.3] - 2022-10-26
-### Changed
-- `@NotNull` constraint on `ids:pipEndpoint` has been removed (ids:Contraint).
-
-## [5.0.2] - 2022-09-15
-*no changes*, just updating version number for alignment with other IDS tools.
+## [5.0.1-DQV] - 2022-12-02
+### Added
+- Classes: 
+  - `dqv:Category`
+  - `dqv:Dimension`
+  - `dqv:Metric` with default objects `POPULATION_COMPLETENESS, SPATIAL_ACCURACY, SPATIAL_RESOLUTION_AS_ANGULAR_DISTANCE, RATEOFOBJECTSWITHINCONSISTENCYBETWEENGIVENPROPERTIES`
+  - `dqv:QualityMeasurement` with properties `dqv:isMeasurementOf, dqv:value`
+- Properties:
+  - `dqv:hasQualityMeasurement` to `ids:Resource`. This change affects all subclasses (`ids:AppResource, ids:AudioResource, ids:DataResource, ids:ImageResource, ids:SoftwareResource, ids:TextResource, ids:VideoResource`) 
 
 ## [5.0.1] - 2022-06-30
 *no changes*, just updating version number for alignment with other IDS tools.

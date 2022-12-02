@@ -47,6 +47,7 @@ public interface ConstraintMixin {
     public void setUnit(URI _unit_);
 
     @JsonProperty("ids:pipEndpoint")
+    @NotNull
     public PIP getPipEndpoint();
 
     @JsonProperty("ids:pipEndpoint")

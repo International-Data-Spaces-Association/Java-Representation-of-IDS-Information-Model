@@ -18,6 +18,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
+
 import de.fraunhofer.iais.eis.util.*;
 
 /**
@@ -56,6 +57,7 @@ public class ConstraintImpl implements Constraint {
     @JsonAlias({"ids:operator", "operator"})
     protected BinaryOperator _operator;
 
+    @NotNull
     @JsonAlias({"ids:pipEndpoint", "pipEndpoint"})
     protected PIP _pipEndpoint;
 
@@ -240,6 +242,7 @@ public class ConstraintImpl implements Constraint {
     }
 
     @Override
+    @NotNull
     public PIP getPipEndpoint() {
         return _pipEndpoint;
     }

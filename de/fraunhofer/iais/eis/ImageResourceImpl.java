@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
+
 import de.fraunhofer.iais.eis.util.*;
 
 /**
@@ -49,6 +50,9 @@ public class ImageResourceImpl implements ImageResource {
     protected Map<String, Object> properties;
 
     // instance fields as derived from the IDS Information Model ontology
+
+    @JsonAlias({"http://www.w3.org/ns/dqv#hasQualityMeasurement", "hasQualityMeasurement"})
+    protected List<QualityMeasurement> _hasQualityMeasurement = new ArrayList<>();
 
     @JsonAlias({"ids:accrualPeriodicity", "accrualPeriodicity"})
     protected Frequency _accrualPeriodicity;
@@ -222,6 +226,7 @@ public class ImageResourceImpl implements ImageResource {
             this._sovereignAsUri,
             this._sample,
             this._variant,
+            this._hasQualityMeasurement,
             this._contentType,
             this._contentPart,
             this._representation,
@@ -264,6 +269,7 @@ public class ImageResourceImpl implements ImageResource {
                 Objects.equals(this._sovereignAsUri, other._sovereignAsUri) &&
                 Objects.equals(this._sample, other._sample) &&
                 Objects.equals(this._variant, other._variant) &&
+                Objects.equals(this._hasQualityMeasurement, other._hasQualityMeasurement) &&
                 Objects.equals(this._contentType, other._contentType) &&
                 Objects.equals(this._contentPart, other._contentPart) &&
                 Objects.equals(this._representation, other._representation) &&
@@ -329,6 +335,11 @@ public class ImageResourceImpl implements ImageResource {
         }
         if (this._variant != null) {
             builder._variant_(this._variant.deepCopy());
+        }
+        for (QualityMeasurement item : this._hasQualityMeasurement) {
+            if (item != null) {
+                builder._hasQualityMeasurement_(item.deepCopy());
+            }
         }
         builder._contentType_(this._contentType);
         for (DigitalContent item : this._contentPart) {
@@ -545,6 +556,16 @@ public class ImageResourceImpl implements ImageResource {
     @Override
     public void setVariant(Resource _variant_) {
         this._variant = _variant_;
+    }
+
+    @Override
+    public List<QualityMeasurement> getHasQualityMeasurement() {
+        return _hasQualityMeasurement;
+    }
+
+    @Override
+    public void setHasQualityMeasurement(List<QualityMeasurement> _hasQualityMeasurement_) {
+        this._hasQualityMeasurement = _hasQualityMeasurement_;
     }
 
     @Override

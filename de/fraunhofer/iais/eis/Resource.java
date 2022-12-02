@@ -3,10 +3,12 @@ package de.fraunhofer.iais.eis;
 import java.net.URI;
 import java.util.List;
 
+
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
 import de.fraunhofer.iais.eis.util.*;
 
 /**
@@ -297,6 +299,32 @@ public interface Resource extends Asset, DigitalContent, DescribedSemantically, 
      * @param _variant_ desired value for the property _variant.
      */
     void setVariant(Resource _variant_);
+
+    /**
+     * Refers to the performed quality measurements. Quality measurements can be performed to any kind
+     * of resource (e.g., a dataset, a linkset, a graph, a set of triples). However, in the DQV context,
+     * this property is generally expected to be used in statements in which subjects are instances of
+     * dcat:Dataset or dcat:Distribution.
+     *
+     * More information under http://www.w3.org/ns/dqv#hasQualityMeasurement
+     *
+     * @return Returns the List of QualityMeasurements for the property _hasQualityMeasurement.
+     */
+    @JsonAlias({"http://www.w3.org/ns/dqv#hasQualityMeasurement", "http://www.w3.org/ns/dqv#hasQualityMeasurement",
+        "hasQualityMeasurement"})
+    List<QualityMeasurement> getHasQualityMeasurement();
+
+    /**
+     * Refers to the performed quality measurements. Quality measurements can be performed to any kind
+     * of resource (e.g., a dataset, a linkset, a graph, a set of triples). However, in the DQV context,
+     * this property is generally expected to be used in statements in which subjects are instances of
+     * dcat:Dataset or dcat:Distribution.
+     *
+     * More information under http://www.w3.org/ns/dqv#hasQualityMeasurement
+     *
+     * @param _hasQualityMeasurement_ desired value for the property _hasQualityMeasurement.
+     */
+    void setHasQualityMeasurement(List<QualityMeasurement> _hasQualityMeasurement_);
 
     // Default instances of this class as defined in the ontology
 

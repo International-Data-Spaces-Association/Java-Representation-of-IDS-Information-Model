@@ -1,5 +1,6 @@
 package de.fraunhofer.iais.eis.mixins;
 
+
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
